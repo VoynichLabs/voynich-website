@@ -1,0 +1,108 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Home">
+  <!-- Hero -->
+  <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+    <!-- Background glow -->
+    <div class="absolute inset-0 bg-hero-glow pointer-events-none"></div>
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-lobster/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      <div class="animate-float inline-block text-6xl sm:text-7xl mb-6">🦞</div>
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6">
+        <span class="text-text-primary">Voynich</span><span class="text-accent-glow">Labs</span>
+      </h1>
+      <p class="text-xl sm:text-2xl text-text-secondary font-light mb-4 max-w-3xl mx-auto">
+        AI research, swarm intelligence, and cryptic engineering — from Copenhagen to the edge of AGI.
+      </p>
+      <p class="text-base sm:text-lg text-muted mb-10 max-w-2xl mx-auto">
+        We build tools that think. Systems that coordinate. Software that asks the questions your roadmap forgot.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/projects" class="px-8 py-3 bg-accent hover:bg-accent-glow text-white font-semibold rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-accent/25">
+          View Projects
+        </a>
+        <a href="/about" class="px-8 py-3 border border-border hover:border-accent text-text-secondary hover:text-text-primary font-semibold rounded-lg transition-all duration-200">
+          Learn More
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Build -->
+  <section class="py-24 max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold text-text-primary mb-4">What We Build</h2>
+      <p class="text-text-secondary max-w-2xl mx-auto">
+        At the intersection of AI research, mathematics, and engineering — tools that push past the obvious.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <div class="bg-surface border border-border rounded-xl p-6 hover:border-accent/50 transition-all duration-300 group">
+        <div class="text-3xl mb-4">🧠</div>
+        <h3 class="text-lg font-semibold text-text-primary mb-2 group-hover:text-accent-glow transition-colors">AI Planning</h3>
+        <p class="text-text-secondary text-sm leading-relaxed">
+          PlanExe turns vague ideas into structured, actionable plans in minutes. Real reasoning, not just autocomplete.
+        </p>
+      </div>
+      <!-- Card 2 -->
+      <div class="bg-surface border border-border rounded-xl p-6 hover:border-accent/50 transition-all duration-300 group">
+        <div class="text-3xl mb-4">🧩</div>
+        <h3 class="text-lg font-semibold text-text-primary mb-2 group-hover:text-accent-glow transition-colors">ARC-AGI Research</h3>
+        <p class="text-text-secondary text-sm leading-relaxed">
+          Tooling and datasets for the hardest AI benchmark on earth. We map the frontier of abstract reasoning.
+        </p>
+      </div>
+      <!-- Card 3 -->
+      <div class="bg-surface border border-border rounded-xl p-6 hover:border-accent/50 transition-all duration-300 group">
+        <div class="text-3xl mb-4">🔢</div>
+        <h3 class="text-lg font-semibold text-text-primary mb-2 group-hover:text-accent-glow transition-colors">LODA Language</h3>
+        <p class="text-text-secondary text-sm leading-relaxed">
+          An assembly language for integer sequences. Mathematical pattern synthesis meets low-level precision.
+        </p>
+      </div>
+      <!-- Card 4 -->
+      <div class="bg-surface border border-border rounded-xl p-6 hover:border-accent/50 transition-all duration-300 group">
+        <div class="text-3xl mb-4">🦞</div>
+        <h3 class="text-lg font-semibold text-text-primary mb-2 group-hover:text-lobster-light transition-colors">Swarm Coordination</h3>
+        <p class="text-text-secondary text-sm leading-relaxed">
+          Larry, Egon, and Bubba — our bot crew runs on distributed infrastructure and shared mission.
+        </p>
+      </div>
+      <!-- Card 5 -->
+      <div class="bg-surface border border-border rounded-xl p-6 hover:border-accent/50 transition-all duration-300 group">
+        <div class="text-3xl mb-4">📊</div>
+        <h3 class="text-lg font-semibold text-text-primary mb-2 group-hover:text-accent-glow transition-colors">Risk Analysis</h3>
+        <p class="text-text-secondary text-sm leading-relaxed">
+          P(doom) Calculator and related tools for thinking seriously about existential AI risk. Because someone has to.
+        </p>
+      </div>
+      <!-- Card 6 -->
+      <div class="bg-surface border border-border rounded-xl p-6 hover:border-accent/50 transition-all duration-300 group">
+        <div class="text-3xl mb-4">⚗️</div>
+        <h3 class="text-lg font-semibold text-text-primary mb-2 group-hover:text-accent-glow transition-colors">Open Research</h3>
+        <p class="text-text-secondary text-sm leading-relaxed">
+          199 public repos, thousands of commits, all pushing toward something that actually matters.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Strip -->
+  <section class="py-20 bg-deep border-y border-border">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-sm font-mono text-lobster mb-3 uppercase tracking-widest">The mission</p>
+      <h2 class="text-3xl sm:text-4xl font-bold text-text-primary mb-6">
+        Deciphering the manuscript of intelligence — one experiment at a time.
+      </h2>
+      <div class="flex flex-wrap items-center justify-center gap-6 text-text-secondary text-sm">
+        <a href="/simon" class="hover:text-lobster-light transition-colors font-medium">Meet Simon →</a>
+        <a href="/team" class="hover:text-text-primary transition-colors font-medium">The Bot Crew →</a>
+        <a href="https://github.com/VoynichLabs" target="_blank" rel="noopener" class="hover:text-text-primary transition-colors font-medium">GitHub →</a>
+      </div>
+    </div>
+  </section>
+</Base>

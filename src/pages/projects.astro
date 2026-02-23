@@ -1,0 +1,200 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Projects" description="VoynichLabs projects — PlanExe, ARC tools, LODA, and more.">
+  <!-- Hero -->
+  <section class="relative py-24 overflow-hidden">
+    <div class="absolute inset-0 bg-hero-glow pointer-events-none"></div>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
+      <p class="text-sm font-mono text-lobster uppercase tracking-widest mb-4">Projects</p>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-text-primary mb-6">
+        What We've Built
+      </h1>
+      <p class="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
+        Open research, tools, and experiments. Everything is on GitHub. Nothing is half-baked.
+      </p>
+    </div>
+  </section>
+
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 pb-24 space-y-6">
+
+    <!-- PlanExe -->
+    <div class="bg-surface border border-border rounded-2xl p-8 hover:border-accent/50 transition-all duration-300 group">
+      <div class="flex flex-col sm:flex-row sm:items-start gap-4">
+        <div class="flex-shrink-0 text-4xl">🧠</div>
+        <div class="flex-1">
+          <div class="flex flex-wrap items-center gap-3 mb-2">
+            <h2 class="text-xl font-bold text-text-primary group-hover:text-accent-glow transition-colors">PlanExe</h2>
+            <span class="text-sm text-yellow-400 font-mono">⭐ 336</span>
+            <span class="text-xs bg-accent/20 text-accent-glow px-2 py-1 rounded font-mono">flagship</span>
+          </div>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            Give PlanExe a description of anything you want to accomplish — a project, a startup, a research agenda — and it produces a structured, detailed plan in minutes. Real reasoning, not a template. Built on LLM orchestration with a focus on actionable output.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://github.com/neoneye/PlanExe" target="_blank" rel="noopener" class="text-sm text-accent-glow hover:text-white transition-colors font-medium">
+              GitHub →
+            </a>
+            <span class="text-muted text-sm">python · planning · llm</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARC-Interactive -->
+    <div class="bg-surface border border-border rounded-2xl p-8 hover:border-accent/50 transition-all duration-300 group">
+      <div class="flex flex-col sm:flex-row sm:items-start gap-4">
+        <div class="flex-shrink-0 text-4xl">🧩</div>
+        <div class="flex-1">
+          <div class="flex flex-wrap items-center gap-3 mb-2">
+            <h2 class="text-xl font-bold text-text-primary group-hover:text-accent-glow transition-colors">ARC-Interactive</h2>
+            <span class="text-sm text-yellow-400 font-mono">⭐ 32</span>
+            <span class="text-sm text-muted font-mono">725 commits</span>
+          </div>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            A full browser UI for working through ARC-AGI puzzles interactively. ARC (Abstract and Reasoning Corpus) is the benchmark that exposes the gap between current AI and genuine abstract reasoning. This tool lets humans and researchers engage with it directly.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://github.com/neoneye/arc-interactive" target="_blank" rel="noopener" class="text-sm text-accent-glow hover:text-white transition-colors font-medium">
+              GitHub →
+            </a>
+            <span class="text-muted text-sm">javascript · arc-agi · browser</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARC History Dataset -->
+    <div class="bg-surface border border-border rounded-2xl p-8 hover:border-accent/50 transition-all duration-300 group">
+      <div class="flex flex-col sm:flex-row sm:items-start gap-4">
+        <div class="flex-shrink-0 text-4xl">📂</div>
+        <div class="flex-1">
+          <div class="flex flex-wrap items-center gap-3 mb-2">
+            <h2 class="text-xl font-bold text-text-primary group-hover:text-accent-glow transition-colors">ARC-Interactive-History-Dataset</h2>
+            <span class="text-sm text-yellow-400 font-mono">⭐ 117</span>
+          </div>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            A dataset of human solving sessions from ARC-Interactive. Captures the process, not just the answer — every step a human takes when working through an abstract reasoning puzzle. Invaluable for training and benchmarking AI on human-like reasoning trajectories.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://github.com/neoneye/arc-interactive-history-dataset" target="_blank" rel="noopener" class="text-sm text-accent-glow hover:text-white transition-colors font-medium">
+              GitHub →
+            </a>
+            <span class="text-muted text-sm">dataset · arc-agi · human-solving</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- arc-dataset-collection -->
+    <div class="bg-surface border border-border rounded-2xl p-8 hover:border-accent/50 transition-all duration-300 group">
+      <div class="flex flex-col sm:flex-row sm:items-start gap-4">
+        <div class="flex-shrink-0 text-4xl">🗄️</div>
+        <div class="flex-1">
+          <div class="flex flex-wrap items-center gap-3 mb-2">
+            <h2 class="text-xl font-bold text-text-primary group-hover:text-accent-glow transition-colors">arc-dataset-collection</h2>
+            <span class="text-sm text-yellow-400 font-mono">⭐ 87</span>
+          </div>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            A curated collection of ARC-related research datasets. All the puzzle variants, augmentations, and auxiliary data you'd need for serious ARC research — consolidated and maintained.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://github.com/neoneye/arc-dataset-collection" target="_blank" rel="noopener" class="text-sm text-accent-glow hover:text-white transition-colors font-medium">
+              GitHub →
+            </a>
+            <span class="text-muted text-sm">dataset · arc-agi · research</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- arc-notes -->
+    <div class="bg-surface border border-border rounded-2xl p-8 hover:border-accent/50 transition-all duration-300 group">
+      <div class="flex flex-col sm:flex-row sm:items-start gap-4">
+        <div class="flex-shrink-0 text-4xl">📝</div>
+        <div class="flex-1">
+          <div class="flex flex-wrap items-center gap-3 mb-2">
+            <h2 class="text-xl font-bold text-text-primary group-hover:text-accent-glow transition-colors">arc-notes</h2>
+            <span class="text-sm text-yellow-400 font-mono">⭐ 90</span>
+          </div>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            Simon's writings on ARC-AGI — observations, hypotheses, experimental findings. Not papers, not blog posts. Notes. The raw material of research, shared openly.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://github.com/neoneye/arc-notes" target="_blank" rel="noopener" class="text-sm text-accent-glow hover:text-white transition-colors font-medium">
+              GitHub →
+            </a>
+            <span class="text-muted text-sm">notes · arc-agi · research</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LODA -->
+    <div class="bg-surface border border-border rounded-2xl p-8 hover:border-lobster/30 transition-all duration-300 group">
+      <div class="flex flex-col sm:flex-row sm:items-start gap-4">
+        <div class="flex-shrink-0 text-4xl">🔢</div>
+        <div class="flex-1">
+          <div class="flex flex-wrap items-center gap-3 mb-2">
+            <h2 class="text-xl font-bold text-text-primary group-hover:text-lobster-light transition-colors">LODA</h2>
+            <span class="text-xs bg-lobster/20 text-lobster-light px-2 py-1 rounded font-mono">loda-lang org</span>
+          </div>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            LODA is an assembly language for discovering and computing integer sequences from OEIS. Simon is a co-creator and built the Rust implementation. Mathematical pattern mining at machine speed.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+            <div class="bg-deep border border-border rounded-lg p-3 text-sm">
+              <p class="font-mono text-lobster-light mb-1">loda-rust</p>
+              <p class="text-muted">⭐ 30 — Rust implementation</p>
+              <a href="https://github.com/loda-lang/loda-rust" target="_blank" rel="noopener" class="text-xs text-accent-glow hover:text-white mt-1 inline-block">GitHub →</a>
+            </div>
+            <div class="bg-deep border border-border rounded-lg p-3 text-sm">
+              <p class="font-mono text-lobster-light mb-1">loda-cpp</p>
+              <p class="text-muted">⭐ 28 — C++ core</p>
+              <a href="https://github.com/loda-lang/loda-cpp" target="_blank" rel="noopener" class="text-xs text-accent-glow hover:text-white mt-1 inline-block">GitHub →</a>
+            </div>
+            <div class="bg-deep border border-border rounded-lg p-3 text-sm">
+              <p class="font-mono text-lobster-light mb-1">loda-programs</p>
+              <p class="text-muted">⭐ 38 — Sequence programs</p>
+              <a href="https://github.com/loda-lang/loda-programs" target="_blank" rel="noopener" class="text-xs text-accent-glow hover:text-white mt-1 inline-block">GitHub →</a>
+            </div>
+          </div>
+          <span class="text-muted text-sm">rust · cpp · math · integer-sequences · oeis</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- P(doom) Calculator -->
+    <div class="bg-surface border border-border rounded-2xl p-8 hover:border-accent/50 transition-all duration-300 group">
+      <div class="flex flex-col sm:flex-row sm:items-start gap-4">
+        <div class="flex-shrink-0 text-4xl">☢️</div>
+        <div class="flex-1">
+          <div class="flex flex-wrap items-center gap-3 mb-2">
+            <h2 class="text-xl font-bold text-text-primary group-hover:text-accent-glow transition-colors">P(doom) Calculator</h2>
+            <span class="text-xs bg-red-500/20 text-red-400 px-2 py-1 rounded font-mono">existential risk</span>
+          </div>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            A structured tool for estimating your personal P(doom) — the probability that advanced AI leads to catastrophic outcomes. Forces you to think through assumptions, update on evidence, and actually engage with the question rather than handwave it.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://github.com/neoneye" target="_blank" rel="noopener" class="text-sm text-accent-glow hover:text-white transition-colors font-medium">
+              GitHub →
+            </a>
+            <span class="text-muted text-sm">risk-analysis · ai-safety · calculator</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Swarm Coordination Note -->
+    <div class="bg-deep border border-border rounded-2xl p-8 text-center">
+      <div class="text-4xl mb-4">🦞</div>
+      <h3 class="text-xl font-bold text-text-primary mb-3">Swarm Coordination</h3>
+      <p class="text-text-secondary leading-relaxed max-w-2xl mx-auto">
+        Internally, VoynichLabs operates as an AI swarm — Larry, Egon, and Bubba coordinate via Discord and shared tooling
+        to run experiments, manage infrastructure, and ship things. The swarm itself is an ongoing experiment in
+        AI-human collaboration.
+      </p>
+    </div>
+  </div>
+</Base>
