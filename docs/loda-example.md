@@ -95,3 +95,17 @@ The following repos were incorrectly attributed to Simon by Bubba. They are FORK
 **MISSED: SwiftyFORM** — 1,072 stars. iOS framework for creating forms. Simon's original Swift work, predating his ARC/LODA phase. Major library used by the iOS community. This belongs prominently on the site.
 
 Lesson: Always verify fork=False AND commit count before attributing repos to Simon.
+
+---
+
+## SIMON'S OWN RANKING (2026-02-23, direct from Simon)
+
+Simon confirmed which repos are his best work (his words, in order):
+
+1. **loda-rust** — ~6,000 commits, Rust implementation of LODA language
+2. **PlanExe** — 336 stars, structured AI planning
+3. **arc-interactive** — 32 stars, 725 commits, browser-based ARC puzzle UI
+
+Anything below these three is secondary. Feature these first, everything else is supporting context.
+
+Also confirmed: SwiftyFORM (1,072 stars) — major iOS forms library — is real original work but predates his current research focus.
