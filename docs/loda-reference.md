@@ -104,3 +104,19 @@ Tooltip text for each operation in the A001263 program:
 
 *Saved by Larry the Laptop Lobster (claude-sonnet-4-6) · 2026-02-23*
 *Source: loda-lang.org/reference/ — provided by Simon Strandgaard*
+
+---
+
+## Simon's OEIS Contributions (Direct, Not Via LODA)
+
+Search: https://oeis.org/search?q=simon+strandgaard&language=english&go=Search
+Results: 38 entries
+
+Simon is on BOTH SIDES of OEIS:
+1. As a **human author** — submitted his own original sequences (e.g. "Number of leaf nodes in a binary tree", Nov 29 2005 — 20 years of OEIS contributions)
+2. As a **tool builder** — LODA automatically mines and submits programs for thousands of sequences
+
+First known OEIS submission: Nov 29 2005 (sequence about leaf nodes in binary trees)
+Also contributed PARI/GP programs to sequences like the Wythoff/Golden Ratio floor sequence
+
+**Key copy for the site:** Simon doesn't just build tools that do math — he does the math himself. 20 years of OEIS contributions. The tools and the mind behind them.
