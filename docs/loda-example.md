@@ -50,6 +50,23 @@ div $1,$0
 mov $0,$1
 ```
 
+### THE CORE INSIGHT — Simon's Entire Body of Work
+
+**Simon confirmed (2026-02-23):** His Toolbox application was "DAGs of tools that does stuff."
+
+Directed Acyclic Graphs of processing nodes. This is the unifying mental model across EVERYTHING he has built:
+
+| Project | The DAG |
+|---|---|
+| Toolbox (2003-2007) | Nodes (Stripe, Noise, Bump) → connected → procedural graphics |
+| LODA programs | Assembly instructions chained → computes integer sequences |
+| ARC-Interactive | Input grid → transformation rules → output grid |
+| PlanExe | Task descriptions → dependency graph → execution plan |
+
+The philosophy never changed. Only the domain did. **Compute the output from minimal rules. Don't enumerate. Don't store. Generate.**
+
+This is the sentence that should anchor every Simon page on the website.
+
 ### Why This Matters for the Site
 
 - Shows LODA is **assembly-level precision** — not Python scripts, actual low-level register operations

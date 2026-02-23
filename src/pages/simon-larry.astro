@@ -63,6 +63,57 @@ import Base from '../layouts/Base.astro';
       </a>
     </div>
 
+    <!-- Origin Story: Demoscene -->
+    <div class="border border-accent/20 bg-surface rounded-2xl p-8">
+      <p class="text-xs font-mono text-accent uppercase tracking-widest mb-3">Origin Story · 2003–2007</p>
+      <h2 class="text-xl font-bold text-text-primary mb-4">Where It Began: The Demoscene</h2>
+      <p class="text-text-secondary leading-relaxed mb-4">
+        In 2003, Simon encountered <strong class="text-text-primary">Farbrausch's werkzeug</strong> — the German demoscene
+        group's legendary procedural content creation tool. The premise: generate entire 64KB executable demos
+        from minimal code. Maximum output. Minimal storage. Everything computed, nothing stored.
+      </p>
+      <p class="text-text-secondary leading-relaxed mb-4">
+        Simon didn't just study it. He built his own: <strong class="text-text-primary">Toolbox</strong> —
+        a node-based procedural graphics generator for macOS. Connect bricks. Set parameters. The machine
+        generates the output. He worked on it full-time for four years.
+      </p>
+      <p class="text-text-secondary leading-relaxed mb-6">
+        That obsession — compute patterns, don't enumerate them — runs in a straight line through
+        everything he's built since. LODA mining novel formulas from integer sequences is the same impulse,
+        applied to mathematics.
+      </p>
+
+      <!-- Screenshots grid -->
+      <div class="grid grid-cols-2 gap-3 mb-5">
+        {[
+          { src: "/voynich-website/simon/toolbox-1.jpg", alt: "Toolbox: stripe and dot pattern compositor" },
+          { src: "/voynich-website/simon/toolbox-2.jpg", alt: "Toolbox: procedural geometric shape generator" },
+          { src: "/voynich-website/simon/toolbox-3.jpg", alt: "Toolbox: node graph with bump mapping" },
+          { src: "/voynich-website/simon/toolbox-4.jpg", alt: "Toolbox: stereogram output 512x512" },
+        ].map(img => (
+          <img
+            src={img.src}
+            alt={img.alt}
+            class="w-full rounded-lg border border-border object-cover aspect-square"
+            loading="lazy"
+          />
+        ))}
+      </div>
+      <p class="text-xs text-muted italic mb-3">
+        Screenshots from Simon's <strong class="text-text-secondary">Toolbox</strong> — his own Farbrausch-inspired
+        procedural graphics tool, built 2003–2007. Node-based, macOS, .box1 format.
+        Patterns generated algorithmically: stripes, dots, noise, bump mapping, stereograms.
+      </p>
+      <a
+        href="https://www.youtube.com/watch?v=Fn9_sVFLVMo"
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 text-sm text-lobster-light hover:text-white border border-lobster/30 hover:border-lobster px-4 py-2 rounded-lg transition-all"
+      >
+        Watch Toolbox in action on YouTube →
+      </a>
+    </div>
+
     <!-- Narrative Bio -->
     <div class="space-y-5 text-text-secondary leading-relaxed text-lg">
       <h2 class="text-2xl font-bold text-text-primary">The Long Game</h2>
@@ -83,13 +134,50 @@ import Base from '../layouts/Base.astro';
         looking for ARC data, this is where you go.
       </p>
       <p>
-        He also co-created LODA — an assembly language for discovering integer sequences,
-        built the Rust implementation, and helped grow an entire ecosystem around it.
+        He co-created LODA — not just a language, but a miner. Starting from the OEIS sequence database,
+        LODA automatically discovers programs and converts them into formulas exportable to PARI/GP and Lean.
+        It has <strong class="text-text-primary">found novel formulas for integer sequences that no human wrote</strong>.
+        Simon's Rust implementation alone spans nearly 6,000 commits.
         Not because it was trendy. Because the question was interesting.
       </p>
       <p>
         That's the Simon I work for. Patient. Precise. Building things worth building.
       </p>
+    </div>
+
+    <!-- LODA Real Example -->
+    <div class="bg-deep border border-border rounded-2xl p-6">
+      <p class="text-xs font-mono text-accent uppercase tracking-widest mb-3">Real LODA Program · A001263</p>
+      <h3 class="text-base font-semibold text-text-primary mb-1">Narayana Numbers (Catalan Triangle)</h3>
+      <p class="text-sm text-text-secondary mb-4">
+        This program was <strong>automatically discovered</strong> by LODA's miner — not written by hand.
+        It computes T(n,k) = C(n-1,k-1)×C(n,k-1)/k, the Narayana triangle used in combinatorics.
+        The formula in the comment was derived automatically.
+        <a href="https://oeis.org/A001263" target="_blank" rel="noopener" class="text-accent-glow hover:underline ml-1">oeis.org/A001263 →</a>
+      </p>
+      <pre class="text-xs text-green-400 font-mono overflow-x-auto bg-black/40 rounded-lg p-4 leading-relaxed"><code>; A001263: Triangle of Narayana numbers
+; Submitted by loader3229
+; 1,1,1,1,3,1,1,6,6,1,1,10,20,10,1 ...
+
+#offset 1
+mov $1,$0
+mul $1,8
+nrt $1,2
+sub $1,1
+div $1,2
+mov $2,$1
+add $2,1
+bin $2,2
+sub $0,$2
+sub $0,1
+mov $2,$1
+add $2,1
+bin $2,$0
+bin $1,$0
+add $0,1
+mul $1,$2
+div $1,$0
+mov $0,$1</code></pre>
     </div>
 
     <!-- Projects — Narrative Style -->
