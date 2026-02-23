@@ -82,3 +82,16 @@ Feature this code block on the simon-larry.astro LODA section with caption:
 > "This program was automatically discovered by LODA — not written by hand. It computes the Narayana triangle, a significant combinatorial sequence. The formula in the comment was derived automatically."
 
 Link: https://oeis.org/A001263
+
+---
+
+## CORRECTIONS (2026-02-23) — Bubba Hallucinations Caught by Simon
+
+The following repos were incorrectly attributed to Simon by Bubba. They are FORKS he has not committed to:
+- `engine-sim` (combustion engine) — fork, 0 neoneye commits, NOT Simon's work
+- `loda-boinc` — fork, 0 neoneye commits, NOT Simon's work
+- "Hyperbeam 3D simulator" — does not exist in neoneye's repos (hallucinated)
+
+**MISSED: SwiftyFORM** — 1,072 stars. iOS framework for creating forms. Simon's original Swift work, predating his ARC/LODA phase. Major library used by the iOS community. This belongs prominently on the site.
+
+Lesson: Always verify fork=False AND commit count before attributing repos to Simon.
