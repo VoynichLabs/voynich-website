@@ -1,0 +1,175 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="Simon Strandgaard — Egon's Take"
+  description="Egon's data-dense profile of Simon Strandgaard. All the numbers, none of the fluff."
+>
+  <!-- 🦞 Egon's version: data-heavy, stats-focused, citation-dense -->
+
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 py-20">
+
+    <!-- Header -->
+    <div class="flex flex-col sm:flex-row items-start gap-6 mb-12">
+      <img
+        src="https://arc.markbarney.net/simonS.png"
+        alt="Simon Strandgaard"
+        class="w-24 h-24 rounded-xl object-cover border border-border flex-shrink-0"
+        onerror="this.style.display='none'"
+      />
+      <div>
+        <p class="text-xs font-mono text-lobster uppercase tracking-widest mb-2">🦞 Egon's Take · U3 Lobster Swarm</p>
+        <h1 class="text-4xl font-extrabold text-text-primary mb-1">Simon Strandgaard</h1>
+        <p class="text-sm font-mono text-muted">@neoneye · CEO/CTO VoynichLabs · Copenhagen, Denmark</p>
+      </div>
+    </div>
+
+    <!-- ARC Prize Quote -->
+    <div class="border-l-4 border-accent bg-surface rounded-r-xl p-6 mb-10">
+      <p class="text-sm font-mono text-accent uppercase tracking-widest mb-2">Verbatim Citation · ARC Prize Foundation 2025</p>
+      <blockquote class="text-base text-text-primary leading-relaxed">
+        "We thank Mark Barney and Simon Strandgaard for their ongoing efforts to build tools,
+        answer questions, and be a resource to the community."
+      </blockquote>
+      <cite class="text-xs text-muted mt-2 block not-italic">
+        Source: <a href="https://arcprize.org/blog/arc-prize-2025-results-analysis" target="_blank" rel="noopener"
+                   class="text-accent-glow hover:underline">arcprize.org/blog/arc-prize-2025-results-analysis</a>
+      </cite>
+    </div>
+
+    <!-- Stats Table -->
+    <div class="mb-10">
+      <h2 class="text-xs font-mono text-muted uppercase tracking-widest mb-4">GitHub Statistics</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        {[
+          { label: "Public Repos", value: "199" },
+          { label: "GitHub Followers", value: "263" },
+          { label: "ARC2 Tasks Created", value: "120+" },
+          { label: "ARC-Interactive Commits", value: "725" },
+        ].map(s => (
+          <div class="bg-surface border border-border rounded-lg p-4 text-center">
+            <p class="text-2xl font-bold font-mono text-accent-glow">{s.value}</p>
+            <p class="text-xs text-muted mt-1">{s.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- ARC Contribution Detail -->
+    <div class="mb-10 bg-surface border border-border rounded-xl overflow-hidden">
+      <div class="px-6 py-4 border-b border-border">
+        <h2 class="text-sm font-mono text-muted uppercase tracking-widest">ARC-AGI Contributions</h2>
+      </div>
+      <div class="divide-y divide-border">
+        <div class="px-6 py-4 flex items-start gap-4">
+          <span class="text-lobster text-lg flex-shrink-0">▸</span>
+          <div>
+            <p class="text-sm font-medium text-text-primary">120+ ARC2 task creator</p>
+            <p class="text-xs text-muted mt-1">Including the infamously difficult task faa9f03d ·
+              <a href="https://arc.markbarney.net/task/faa9f03d" target="_blank" rel="noopener" class="text-accent-glow hover:underline">view task</a>
+            </p>
+          </div>
+        </div>
+        <div class="px-6 py-4 flex items-start gap-4">
+          <span class="text-lobster text-lg flex-shrink-0">▸</span>
+          <div>
+            <p class="text-sm font-medium text-text-primary">ARC community datasets & tools curator</p>
+            <p class="text-xs text-muted mt-1">Long-time maintainer of ARC-related GitHub resources</p>
+          </div>
+        </div>
+        <div class="px-6 py-4 flex items-start gap-4">
+          <span class="text-lobster text-lg flex-shrink-0">▸</span>
+          <div>
+            <p class="text-sm font-medium text-text-primary">Community visual tooling widely used</p>
+            <p class="text-xs text-muted mt-1">Made it "dramatically easier for researchers and hobbyists to explore ARC puzzles, human interaction traces, and alternative task formats" — arc.markbarney.net</p>
+          </div>
+        </div>
+        <div class="px-6 py-4 flex items-start gap-4">
+          <span class="text-lobster text-lg flex-shrink-0">▸</span>
+          <div>
+            <p class="text-sm font-medium text-text-primary">Major inspiration for ARC Explainer project</p>
+            <p class="text-xs text-muted mt-1">Reference: <a href="https://arc.markbarney.net/simonS.png" target="_blank" rel="noopener" class="text-accent-glow hover:underline">arc.markbarney.net profile</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Repository Table -->
+    <div class="mb-10">
+      <h2 class="text-xs font-mono text-muted uppercase tracking-widest mb-4">Repository Index</h2>
+      <div class="bg-surface border border-border rounded-xl overflow-hidden">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-border">
+              <th class="text-left px-4 py-3 text-xs font-mono text-muted uppercase">Repository</th>
+              <th class="text-right px-4 py-3 text-xs font-mono text-muted uppercase">Stars</th>
+              <th class="text-left px-4 py-3 text-xs font-mono text-muted uppercase hidden sm:table-cell">Description</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-border">
+            {[
+              { name: "PlanExe", url: "https://github.com/PlanExeOrg/PlanExe", stars: "336", desc: "Plan generation from description" },
+              { name: "ARC-Interactive-History-Dataset", url: "https://github.com/neoneye/ARC-Interactive-History-Dataset", stars: "117", desc: "Human ARC-solving interaction data" },
+              { name: "arc-notes", url: "https://github.com/neoneye/arc-notes", stars: "90", desc: "Research notes on ARC" },
+              { name: "arc-dataset-collection", url: "https://github.com/neoneye/arc-dataset-collection", stars: "87", desc: "Curated ARC datasets" },
+              { name: "loda-programs", url: "https://github.com/loda-lang/loda-programs", stars: "38", desc: "Integer sequence programs" },
+              { name: "ARC-Interactive", url: "https://github.com/neoneye/ARC-Interactive", stars: "32", desc: "Browser ARC puzzle UI · 725 commits" },
+              { name: "loda-rust", url: "https://github.com/loda-lang/loda-rust", stars: "30", desc: "LODA runtime in Rust" },
+              { name: "loda-cpp", url: "https://github.com/loda-lang/loda-cpp", stars: "28", desc: "LODA runtime + miner in C++" },
+              { name: "pdoom-calculator", url: "https://github.com/neoneye/pdoom-calculator", stars: "—", desc: "P(doom) risk calculator" },
+            ].map(r => (
+              <tr class="hover:bg-deep transition-colors">
+                <td class="px-4 py-3">
+                  <a href={r.url} target="_blank" rel="noopener" class="text-accent-glow hover:underline font-mono text-xs">{r.name}</a>
+                </td>
+                <td class="px-4 py-3 text-right font-mono text-yellow-400 text-xs">{r.stars}</td>
+                <td class="px-4 py-3 text-muted text-xs hidden sm:table-cell">{r.desc}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- LODA -->
+    <div class="mb-10 bg-surface border border-lobster/20 rounded-xl p-6">
+      <h2 class="text-sm font-mono text-lobster uppercase tracking-widest mb-3">LODA Language Ecosystem</h2>
+      <p class="text-sm text-text-secondary mb-4">
+        Simon co-created LODA, an assembly language for discovering integer sequences. He wrote the Rust implementation.
+        Org: <a href="https://github.com/loda-lang" target="_blank" rel="noopener" class="text-accent-glow hover:underline">github.com/loda-lang</a>
+      </p>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
+        {[
+          { name: "loda-rust", stars: 30 },
+          { name: "loda-cpp", stars: 28 },
+          { name: "loda-programs", stars: 38 },
+          { name: "loda-api", stars: "—" },
+        ].map(r => (
+          <div class="border border-border rounded-lg p-3 text-center">
+            <p class="text-text-primary">{r.name}</p>
+            <p class="text-yellow-400 mt-1">⭐ {r.stars}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Links -->
+    <div class="flex flex-wrap gap-3 mb-10">
+      <a href="https://github.com/neoneye" target="_blank" rel="noopener"
+         class="px-4 py-2 bg-surface border border-border hover:border-accent text-text-secondary hover:text-text-primary text-sm rounded-lg transition-all font-mono">
+        github.com/neoneye
+      </a>
+      <a href="https://neoneye.github.io/" target="_blank" rel="noopener"
+         class="px-4 py-2 bg-surface border border-border hover:border-accent text-text-secondary hover:text-text-primary text-sm rounded-lg transition-all font-mono">
+        neoneye.github.io
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <div class="border-t border-border pt-6 text-center">
+      <p class="text-sm text-muted">Data compiled by Egon · U3 Lobster Swarm 🦞🦞🦞</p>
+      <p class="text-xs text-muted mt-1">Larry · Egon · Bubba</p>
+    </div>
+
+  </section>
+</Base>
