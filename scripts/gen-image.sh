@@ -50,10 +50,6 @@ if [[ ! -f "package.json" || ! -d "public" ]]; then
 fi
 
 SECRETS_PATH="/mnt/c/Users/User/.openclaw/workspace/secrets.json"
-if [[ ! -f "$SECRETS_PATH" ]]; then
-  echo "ERROR: secrets.json not found at $SECRETS_PATH"
-  exit 1
-fi
 
 echo ">> Name: $NAME"
 echo ">> Prompt: $PROMPT"
@@ -65,10 +61,16 @@ mkdir -p public/generated
 python3 - <<PYEOF
 import requests, json, base64, sys
 
-secrets = json.load(open('$SECRETS_PATH'))
-api_key = secrets.get('other', {}).get('openrouter_image_key', '')
+import os
+api_key = os.environ.get('OPENROUTER_IMAGE_KEY', '')
 if not api_key:
-    print("ERROR: No openrouter_image_key found in secrets.json")
+    try:
+        secrets = json.load(open('$SECRETS_PATH'))
+        api_key = secrets.get('other', {}).get('openrouter_image_key', '')
+    except Exception:
+        pass
+if not api_key:
+    print("ERROR: Set OPENROUTER_IMAGE_KEY env var or add openrouter_image_key to secrets.json")
     sys.exit(1)
 
 prompt = """$PROMPT"""
