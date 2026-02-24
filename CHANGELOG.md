@@ -5,6 +5,15 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.2.3] - 2026-02-24
+
+### Added
+- **Docs** — `docs/2026-02-24-voynich-website-mission-and-research-plan.md` documents the updated mission/research story for the about page.
+
+### Changed — About page
+- **Positioning & differentiators** now call out the ARC affiliation, hardware independence, federal funding history, and policy translation commitments from the positioning statement.
+- **Research focus & funding roadmap** walks through the interpretability, intent-alignment, safety benchmark, and policy pillars plus the Year 1–3 NSF/DARPA/DOD/DHS/NIH funding trajectory from the executive summary.
+
 ## [0.2.2] - 2026-02-23
 
 ### Changed — Branding, identity, collaborators

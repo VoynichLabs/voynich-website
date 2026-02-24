@@ -75,6 +75,133 @@ import Base from '../layouts/Base.astro';
     </div>
   </section>
 
+  <!-- Positioning & Differentiators -->
+  <section class="py-16 border-y border-border">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div>
+          <p class="text-xs font-mono text-node-blue uppercase tracking-[0.3em] mb-2">Positioning</p>
+          <h2 class="text-3xl font-bold text-text-primary mb-4">Why VoynichLabs stands apart</h2>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            ARC-aligned leadership, owned hardware, and a federal funding track record let us move from mechanistic theory to
+            policy-ready experiments. We build interpretable systems, document every result, and then publish for policymakers to act on.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div class="bg-surface border border-border rounded-2xl p-5">
+            <p class="text-xs font-mono text-text-muted uppercase tracking-[0.4em] mb-2">Arc</p>
+            <h3 class="text-lg font-semibold text-text-primary mb-2">ARC affiliation</h3>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Co-led by ARC researchers with decades of mechanistic interpretability and intent-alignment experience.
+              We follow ARC methodology and publish in peer-reviewed venues plus policy briefs.
+            </p>
+          </div>
+          <div class="bg-surface border border-border rounded-2xl p-5">
+            <p class="text-xs font-mono text-text-muted uppercase tracking-[0.4em] mb-2">Hardware</p>
+            <h3 class="text-lg font-semibold text-text-primary mb-2">Hardware independence</h3>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Owned GPU/TPU infrastructure keeps our experiments offline, repeatable, and free from cloud vendor restrictions.
+              We can iterate risk-sensitive work fast without waiting on shared queues.
+            </p>
+          </div>
+          <div class="bg-surface border border-border rounded-2xl p-5">
+            <p class="text-xs font-mono text-text-muted uppercase tracking-[0.4em] mb-2">Funding</p>
+            <h3 class="text-lg font-semibold text-text-primary mb-2">Federal funding</h3>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              NSF, DARPA, DOD, DHS, and NIH have funded our R&D before. We know compliance, SBIR cadence, and what reviewers expect.
+            </p>
+          </div>
+          <div class="bg-surface border border-border rounded-2xl p-5">
+            <p class="text-xs font-mono text-text-muted uppercase tracking-[0.4em] mb-2">Policy</p>
+            <h3 class="text-lg font-semibold text-text-primary mb-2">Policy translation</h3>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Theory → implementation → policy. We turn mechanistic explanations into regulatory guidance, testimony, and export-ready documents.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research focus & Funding roadmap -->
+  <section class="py-20 bg-bg-secondary border-b border-border">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <p class="text-xs font-mono text-node-blue uppercase tracking-[0.3em]">Research Focus</p>
+        <h2 class="text-3xl font-bold text-text-primary mt-2">Mechanistic rigs that scale to policy</h2>
+        <p class="text-sm text-text-secondary max-w-3xl mx-auto leading-relaxed mt-3">
+          We design evaluation suites, interpretability tooling, and alignment proofs that run on owned compute and are directly usable by policymakers.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+        <div class="bg-surface border border-border rounded-2xl p-6">
+          <p class="text-xs font-mono text-text-muted uppercase tracking-[0.4em] mb-3">Interpretability</p>
+          <h3 class="text-lg font-semibold text-text-primary mb-2">Mechanistic explanations</h3>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Dissect how frontier models reach conclusions and expose the internal DAGs that govern each decision path.
+          </p>
+        </div>
+        <div class="bg-surface border border-border rounded-2xl p-6">
+          <p class="text-xs font-mono text-text-muted uppercase tracking-[0.4em] mb-3">Intent</p>
+          <h3 class="text-lg font-semibold text-text-primary mb-2">Intent alignment</h3>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Build verification methods that certify models behave as instructed, without deception, even as the task distribution shifts.
+          </p>
+        </div>
+        <div class="bg-surface border border-border rounded-2xl p-6">
+          <p class="text-xs font-mono text-text-muted uppercase tracking-[0.4em] mb-3">Benchmarks</p>
+          <h3 class="text-lg font-semibold text-text-primary mb-2">Safety evaluations</h3>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Create practical tests for robustness, fairness, and alignment that can be run on private hardware before deployment.
+          </p>
+        </div>
+        <div class="bg-surface border border-border rounded-2xl p-6">
+          <p class="text-xs font-mono text-text-muted uppercase tracking-[0.4em] mb-3">Policy</p>
+          <h3 class="text-lg font-semibold text-text-primary mb-2">Policy translation</h3>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Translate research findings into regulatory frameworks, testimony, and guidance for the White House, Congress, and international partners.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-bg-terminal border border-border rounded-2xl p-6">
+          <p class="text-xs font-mono text-node-blue uppercase tracking-[0.4em] mb-2">Year 1 · Foundation</p>
+          <p class="text-2xl font-bold text-text-primary mb-2">$450K</p>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            NSF CAREER, NIH SBIR Phase I, DOD YIP, DHS SBIR — fund the first experiments, 2–3 researchers, and interpretability proofs.
+          </p>
+        </div>
+        <div class="bg-bg-terminal border border-border rounded-2xl p-6">
+          <p class="text-xs font-mono text-node-blue uppercase tracking-[0.4em] mb-2">Year 2 · Scale</p>
+          <p class="text-2xl font-bold text-text-primary mb-2">$900K</p>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Convert SBIR Phase I → II, NSF ACI, DARPA programs — hire postdocs, accelerate papers, build next-gen experiments.
+          </p>
+        </div>
+        <div class="bg-bg-terminal border border-border rounded-2xl p-6">
+          <p class="text-xs font-mono text-node-blue uppercase tracking-[0.4em] mb-2">Year 3 · Leadership</p>
+          <p class="text-2xl font-bold text-text-primary mb-2">$1.2M+</p>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            NSF STC/ERC, DARPA large awards, DOD MURI — 12–15 person team, policy influence, $2.55M cumulative weighting.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-xs font-mono text-node-blue uppercase tracking-[0.4em] mb-3">Target Programs</p>
+        <div class="flex flex-wrap gap-3 text-xs font-mono text-text-primary">
+          <span class="px-3 py-1 bg-bg-terminal border border-border rounded-full">NSF CAREER / ACI / STC</span>
+          <span class="px-3 py-1 bg-bg-terminal border border-border rounded-full">DARPA AI Safety</span>
+          <span class="px-3 py-1 bg-bg-terminal border border-border rounded-full">DOD YIP / MURI</span>
+          <span class="px-3 py-1 bg-bg-terminal border border-border rounded-full">DHS SBIR</span>
+          <span class="px-3 py-1 bg-bg-terminal border border-border rounded-full">NIH SBIR</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- The Lobster Swarm -->
   <section class="py-20 bg-deep border-y border-border">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
