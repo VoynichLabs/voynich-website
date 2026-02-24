@@ -5,6 +5,17 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.2.2] - 2026-02-23
+
+### Changed — Branding, identity, collaborators
+- **Header logo**: replaced `$` shell-prompt symbol with 🦞 lobster emoji sitewide.
+- **Nav bar**: added `🦞 swarm` link to `/team` page in desktop nav and footer nav.
+- **Footer identity**: reframed VoynichLabs as a "research collective"; added collaborators note with link to markbarney.net; added markbarney.net to external links column.
+- **Lobster Playground section** (index): added paragraph noting Mark Barney as ARC-AGI collaborator alongside the swarm.
+- **Index CTA**: replaced `$` with 🦞.
+
+---
+
 ## [0.2.1] - 2026-02-23
 
 ### Fixed

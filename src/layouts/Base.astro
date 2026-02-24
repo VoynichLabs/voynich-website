@@ -35,7 +35,7 @@ const { title, description = "VoynichLabs — generative computation, mathematic
     <nav class="fixed top-0 w-full z-50 bg-bg-primary/90 backdrop-blur-sm border-b border-border">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
         <a href="/" class="flex items-center gap-2 font-mono text-sm text-text-primary hover:text-node-blue transition-colors duration-200">
-          <span class="text-edge-green">$</span>
+          <span>🦞</span>
           <span class="font-semibold tracking-tight">VoynichLabs</span>
         </a>
         <div class="hidden sm:flex items-center gap-1 font-mono text-xs text-text-muted">
@@ -46,6 +46,8 @@ const { title, description = "VoynichLabs — generative computation, mathematic
           <a href="/projects" class="px-3 py-1.5 hover:text-text-primary hover:bg-bg-surface rounded transition-colors duration-200">projects</a>
           <span class="text-border">/</span>
           <a href="/simon" class="px-3 py-1.5 hover:text-node-blue hover:bg-bg-surface rounded transition-colors duration-200">simon</a>
+          <span class="text-border">/</span>
+          <a href="/team" class="px-3 py-1.5 hover:text-rust-orange hover:bg-bg-surface rounded transition-colors duration-200">🦞 swarm</a>
           <span class="text-border">|</span>
           <a href="https://github.com/neoneye" target="_blank" rel="noopener"
              class="px-3 py-1.5 hover:text-text-primary hover:bg-bg-surface rounded transition-colors duration-200">
@@ -71,9 +73,13 @@ const { title, description = "VoynichLabs — generative computation, mathematic
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm">
           <!-- Col 1: Identity -->
           <div>
-            <p class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">VoynichLabs</p>
+            <p class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">🦞 VoynichLabs</p>
             <p class="text-text-muted leading-relaxed">
-              Generative computation, mathematical discovery, and AI research. Copenhagen, Denmark.
+              A research collective for generative computation, mathematical discovery, and AI research.
+              Built around the work of Simon Strandgaard and his collaborators. Copenhagen, Denmark.
+            </p>
+            <p class="text-text-muted leading-relaxed mt-2 text-xs">
+              Collaborators include <a href="https://markbarney.net" target="_blank" rel="noopener" class="hover:text-node-blue transition-colors">Mark Barney</a> — co-contributor on ARC-AGI tooling and datasets.
             </p>
           </div>
           <!-- Col 2: Navigation -->
@@ -84,6 +90,7 @@ const { title, description = "VoynichLabs — generative computation, mathematic
               <a href="/about" class="text-text-muted hover:text-text-primary transition-colors">> about</a>
               <a href="/projects" class="text-text-muted hover:text-text-primary transition-colors">> projects</a>
               <a href="/simon" class="text-text-muted hover:text-text-primary transition-colors">> simon</a>
+              <a href="/team" class="text-text-muted hover:text-rust-orange transition-colors">> 🦞 swarm</a>
             </div>
           </div>
           <!-- Col 3: External -->
@@ -96,6 +103,8 @@ const { title, description = "VoynichLabs — generative computation, mathematic
                  class="text-text-muted hover:text-node-blue transition-colors">github.com/VoynichLabs</a>
               <a href="https://loda-lang.org" target="_blank" rel="noopener"
                  class="text-text-muted hover:text-edge-green transition-colors">loda-lang.org</a>
+              <a href="https://markbarney.net" target="_blank" rel="noopener"
+                 class="text-text-muted hover:text-node-blue transition-colors">markbarney.net</a>
             </div>
           </div>
         </div>
