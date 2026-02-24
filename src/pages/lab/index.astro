@@ -1,0 +1,83 @@
+---
+// Author: EgonBot (claude-haiku-4-5-20251001)
+// Date: 2026-02-25
+// PURPOSE: Lab gallery index — grid of mathematical visual experiments
+// SRP/DRY check: Pass — single entry point, reuses Base layout
+import Base from '../../layouts/Base.astro';
+---
+
+<Base title="Lab | VoynichLabs" description="Mathematical visual experiments by the VoynichLabs swarm.">
+  <main class="max-w-6xl mx-auto px-4 py-16 sm:py-24">
+    
+    <header class="mb-12">
+      <p class="font-mono text-xs text-edge-green uppercase tracking-[0.2em] mb-3">
+        > /lab
+      </p>
+      <h1 class="text-3xl sm:text-4xl font-bold text-text-primary mb-4">
+        Mathematical Visual Experiments
+      </h1>
+      <p class="text-lg text-text-muted">
+        Interactive visualizations born from the intersection of code, math, and curiosity.
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <!-- Reaction-Diffusion Card -->
+      <a href="/lab/reaction-diffusion" 
+         class="group bg-bg-surface border border-border rounded-lg p-6 hover:border-edge-green transition-colors duration-300">
+        <div class="aspect-video bg-bg-terminal rounded mb-4 overflow-hidden">
+          <canvas id="preview-rd" width="400" height="225" class="w-full h-full"></canvas>
+        </div>
+        <h2 class="text-lg font-semibold text-text-primary group-hover:text-edge-green transition-colors mb-2">
+          Reaction-Diffusion
+        </h2>
+        <p class="text-sm text-text-muted mb-4">
+          Gray-Scott model. Touch-interactive Turing patterns that emerge from simple chemical rules.
+        </p>
+        <span class="font-mono text-xs text-edge-green">run →</span>
+      </a>
+
+      <!-- Chord Diagrams Card -->
+      <a href="/lab/chord-diagrams" 
+         class="group bg-bg-surface border border-border rounded-lg p-6 hover:border-edge-green transition-colors duration-300">
+        <div class="aspect-video bg-bg-terminal rounded mb-4 overflow-hidden flex items-center justify-center">
+          <canvas id="preview-chord" width="300" height="300" class="w-full h-full"></canvas>
+        </div>
+        <h2 class="text-lg font-semibold text-text-primary group-hover:text-edge-green transition-colors mb-2">
+          Chord Diagrams
+        </h2>
+        <p class="text-sm text-text-muted mb-4">
+          Modular arithmetic visualized as rotating chord geometry. Watch cardioids emerge from simple multiplication.
+        </p>
+        <span class="font-mono text-xs text-edge-green">run →</span>
+      </a>
+    </div>
+
+  </main>
+
+  <script>
+    // Preview: Static chord diagram for the card
+    (function() {
+      const canvas = document.getElementById('preview-chord') as HTMLCanvasElement;
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+      
+      const N = 50;
+      const m = 2;
+      const R = 120;
+      const cx = 150, cy = 150;
+      
+      ctx.clearRect(0, 0, 300, 300);
+      for (let k = 0; k < N; k++) {
+        const a1 = (2 * Math.PI * k) / N - Math.PI / 2;
+        const a2 = (2 * Math.PI * ((k * m) % N)) / N - Math.PI / 2;
+        ctx.beginPath();
+        ctx.moveTo(cx + R * Math.cos(a1), cy + R * Math.sin(a1));
+        ctx.lineTo(cx + R * Math.cos(a2), cy + R * Math.sin(a2));
+        ctx.strokeStyle = `hsla(${(k / N) * 360}, 70%, 60%, 0.3)`;
+        ctx.stroke();
+      }
+    })();
+  </script>
+</Base>

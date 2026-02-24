@@ -1,0 +1,140 @@
+---
+// Author: EgonBot (claude-haiku-4-5-20251001)
+// Date: 2026-02-25
+// PURPOSE: Interactive modular arithmetic chord diagram visualizer
+// SRP/DRY check: Pass — self-contained canvas experience with controls
+import Base from '../../layouts/Base.astro';
+---
+
+<Base title="Chord Diagrams | Lab | VoynichLabs" description="Modular arithmetic visualized as rotating chord geometry.">
+  <div class="min-h-screen" style="background: #0a0a0f; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 2rem;">
+    
+    <a href="/lab" class="fixed top-6 left-6 font-mono text-xs" style="color: #888;">← back to /lab</a>
+
+    <h1 class="text-2xl font-bold mt-12 mb-2" style="color: #fff;">Chord Diagrams</h1>
+    <p class="text-sm mb-4" style="color: #888;">Modular arithmetic visualized as rotating chords</p>
+    
+    <canvas id="canvas" width="600" height="600" style="margin: 1rem 0;"></canvas>
+    
+    <div class="text-lg font-mono mb-2" style="color: #4ade80;" id="formula">(k × 2) mod 50</div>
+    <div class="text-sm font-mono mb-4" style="color: #888; display: block;" id="fact">times 2, mod 142 → cardioid</div>
+    
+    <div style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem;">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+        <label class="text-xs font-mono" style="color: #888;">N = <span id="n-value">50</span> (points)</label>
+        <input type="range" id="n-slider" min="10" max="300" value="50" style="width: 150px;">
+      </div>
+      
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+        <label class="text-xs font-mono" style="color: #888;">m = <span id="m-value">2</span> (multiplier)</label>
+        <input type="range" id="m-slider" min="2" max="20" value="2" style="width: 150px;">
+      </div>
+      
+      <button id="animate-btn" style="padding: 0.5rem 1rem; background: #1a1a24; border: 1px solid #333; color: #ccc; border-radius: 4px; cursor: pointer; font-mono text-xs;">Animate</button>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('canvas') as HTMLCanvasElement;
+    const ctx = canvas.getContext('2d')!;
+    
+    const nSlider = document.getElementById('n-slider') as HTMLInputElement;
+    const mSlider = document.getElementById('m-slider') as HTMLInputElement;
+    const nValue = document.getElementById('n-value')!;
+    const mValue = document.getElementById('m-value')!;
+    const formula = document.getElementById('formula')!;
+    const fact = document.getElementById('fact')!;
+    const animateBtn = document.getElementById('animate-btn')!;
+    
+    let N = 50;
+    let m = 2;
+    let animating = false;
+    
+    function getFact(m: number): string {
+      if (m === 2) return 'times 2, mod N → cardioid';
+      if (m === 3) return 'times 3, mod N → nephroid';
+      if (m === 4) return 'times 4, mod N → three-leaf';
+      if (m === 5) return 'times 5, mod N → five-fold symmetry';
+      return '';
+    }
+    
+    function draw() {
+      const R = 250;
+      const cx = 300, cy = 300;
+      
+      ctx.clearRect(0, 0, 600, 600);
+      
+      // Draw circle
+      ctx.beginPath();
+      ctx.arc(cx, cy, R, 0, Math.PI * 2);
+      ctx.strokeStyle = '#333';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      
+      // Draw points
+      for (let k = 0; k < N; k++) {
+        const angle = (2 * Math.PI * k) / N - Math.PI / 2;
+        const x = cx + R * Math.cos(angle);
+        const y = cy + R * Math.sin(angle);
+        
+        ctx.beginPath();
+        ctx.arc(x, y, 3, 0, Math.PI * 2);
+        ctx.fillStyle = '#666';
+        ctx.fill();
+      }
+      
+      // Draw chords
+      for (let k = 0; k < N; k++) {
+        const a1 = (2 * Math.PI * k) / N - Math.PI / 2;
+        const a2 = (2 * Math.PI * ((k * m) % N)) / N - Math.PI / 2;
+        
+        ctx.beginPath();
+        ctx.moveTo(cx + R * Math.cos(a1), cy + R * Math.sin(a1));
+        ctx.lineTo(cx + R * Math.cos(a2), cy + R * Math.sin(a2));
+        ctx.strokeStyle = `hsla(${(k / N) * 360}, 70%, 60%, 0.4)`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+      
+      formula.textContent = `(k × ${m}) mod ${N}`;
+      const factText = getFact(m);
+      if (factText) {
+        fact.textContent = factText;
+        (fact as HTMLElement).style.display = 'block';
+      } else {
+        (fact as HTMLElement).style.display = 'none';
+      }
+    }
+    
+    function updateFromSliders() {
+      N = parseInt(nSlider.value);
+      m = parseInt(mSlider.value);
+      nValue.textContent = N.toString();
+      mValue.textContent = m.toString();
+      draw();
+    }
+    
+    nSlider.addEventListener('input', updateFromSliders);
+    mSlider.addEventListener('input', updateFromSliders);
+    
+    animateBtn.addEventListener('click', () => {
+      animating = !animating;
+      animateBtn.textContent = animating ? 'Stop' : 'Animate';
+      animateBtn.classList.toggle('active', animating);
+      
+      if (animating) {
+        function step() {
+          if (!animating) return;
+          m = (m % 20) + 2;
+          mSlider.value = m.toString();
+          mValue.textContent = m.toString();
+          draw();
+          setTimeout(step, 800);
+        }
+        step();
+      }
+    });
+    
+    draw();
+  </script>
+</Base>

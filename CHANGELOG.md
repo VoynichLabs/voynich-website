@@ -5,6 +5,14 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.2.5] - 2026-02-25
+
+### Added
+- **Lab gallery** — new `/lab` section with mathematical visual experiments
+- **Reaction-Diffusion** — Gray-Scott simulation at `/lab/reaction-diffusion`
+- **Chord Diagrams** — modular arithmetic visualizer at `/lab/chord-diagrams`
+- **Nav and footer links** — added lab between projects and simon
+
 ## [0.2.4] - 2026-02-25
 
 ### Added
