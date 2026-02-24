@@ -21,7 +21,7 @@ This repo maintains a strict staging-first workflow. Follow these steps for ever
    - Merge back into `staging` after peer-review, keeping `main` untouched.
 
 5. **Staging Deployment**
-   - The `staging` branch is what Railway builds (via `voynich-website` project). Confirm the staging deployment looks correct before requesting human sign-off.
+   - The `staging` branch is what Railway builds (via `voynich-website` project) and drives the staging site at <https://voynich-website-staging.up.railway.app>. Confirm that build before requesting human sign-off and document exactly what facts you're shipping.
    - Log any new deploy or notable change in `docs/health-checks/` or the applicable plan file.
 
 6. **Production Release**

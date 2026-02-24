@@ -47,6 +47,7 @@ This repo follows a documentation-first workflow and enforces a staging-first br
 - Create a dated plan in `docs/` before substantial changes
 - Use real data and real integrations (no placeholder/mock content in shipped pages)
 - Do all work in the `staging` branch; never push directly to `main`
+- Railway builds staging automatically and publishes <https://voynich-website-staging.up.railway.app>
 - Update `CHANGELOG.md` and relevant docs when behavior or content changes
 - Merge `staging` into `main` only after a human reviews the staging deployment and explicitly signs off
 
