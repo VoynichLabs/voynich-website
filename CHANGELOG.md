@@ -8,10 +8,16 @@ Format: SemVer. Author/model included per Mark's coding standards.
 ## [0.2.5] - 2026-02-25
 
 ### Added
-- **Lab gallery** — new `/lab` section with mathematical visual experiments
-- **Reaction-Diffusion** — Gray-Scott simulation at `/lab/reaction-diffusion`
-- **Chord Diagrams** — modular arithmetic visualizer at `/lab/chord-diagrams`
-- **Nav and footer links** — added lab between projects and simon
+- **/lab** gallery index with experiment previews for the Gray-Scott reaction-diffusion and modular chord experiments.
+- **/lab/reaction-diffusion** — full-screen Gray-Scott canvas with touch disturbance, marine palette, and legend overlay.
+- **/lab/chord-diagrams** — modular arithmetic chords drawn on a 600×600 canvas with slider controls and animation toggle.
+
+### Changed
+- **Base layout** — navigation and footer now expose a `/lab` link, and new `hideNav`/`hideFooter` props let experiments drop the chrome.
+- **Navigation** — added the `/lab` link between `projects` and `simon`, and the footer now echoes the same path for parity.
+
+### Author
+- Larry Sub-Agent (claude-sonnet-4-6)
 
 ## [0.2.4] - 2026-02-25
 
