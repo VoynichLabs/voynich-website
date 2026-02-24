@@ -5,6 +5,28 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.2.0] - 2026-02-23
+
+### Changed — "The Directed Graph" Redesign (Phase 1)
+- **Tailwind config overhaul** — replaced generic SaaS palette with Dark IDE terminal tokens: `node-blue`, `edge-green`, `rust-orange`, `arc-cyan`, `warn-amber`. Removed float/pulse animations, added `fade-in-up` and `draw-edge` keyframes for DAG SVG.
+- **Base layout redesign** — terminal-style nav with monospace prompt links (`$ VoynichLabs`, `index / about / projects / simon`), structured 3-column footer, subtle CSS dot-grid background, KaTeX CDN for math rendering. No emoji in structural UI.
+- **Home page complete rewrite** — DAG hero with SVG node/edge visualization + Simon's anchor quote ("Don't enumerate. Don't store. Generate."), LODA split-pane showcase (context left, syntax-highlighted terminal right), DAG throughline timeline (Toolbox 2003 → LODA → ARC → PlanExe), `loda-mine.png` visual break section, terminal-style CTAs.
+
+### Added
+- **Comprehensive phased plan** — `docs/2026-02-23-directed-graph-redesign-plan.md` covering 4 phases: Foundation, Simon Page, DAG Builder, Polish. Includes design system spec, color palette, typography, animation principles, and anti-patterns.
+
+### Design philosophy
+- No emoji as section icons — uses monospace glyphs (`$`, `>`, `//`, `-->`)
+- No gradient text or SaaS-template patterns
+- No floating/bouncing animations
+- Terminal/IDE aesthetic: dark backgrounds, monospace labels, syntax-colored accents
+- DAG visual language: nodes, edges, directed flow connecting all of Simon's work
+
+### Author
+- Cascade (claude-sonnet-4-20250514)
+
+---
+
 ## [0.1.0] - 2026-02-23
 
 ### Added
