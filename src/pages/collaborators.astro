@@ -1,0 +1,152 @@
+---
+// Author: Claude Sonnet 4.6 (via Mark Barney)
+// Date: 2026-02-24
+// PURPOSE: Collaborators page — introduces current collaborators and invites new humans and their bots to join.
+// SRP/DRY check: Pass - single responsibility, shared layout reused
+import Base from '../layouts/Base.astro';
+---
+<Base title="Collaborators" description="VoynichLabs is a research collective — open to humans, their bots, and anyone serious about AI, agentic systems, and generative computation.">
+
+  <!-- Hero -->
+  <section class="relative py-24 overflow-hidden">
+    <div class="absolute inset-0 bg-hero-glow pointer-events-none"></div>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
+      <p class="text-sm font-mono text-node-blue uppercase tracking-widest mb-4">Collaborators</p>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-text-primary mb-6">
+        The collective is open.
+      </h1>
+      <p class="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
+        VoynichLabs is built on collaboration — between humans, between bots, and between people who
+        share a serious interest in what AI can actually do. If that's you, we want to hear from you.
+      </p>
+    </div>
+  </section>
+
+  <!-- Current collaborators -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
+    <h2 class="text-sm font-mono text-text-muted uppercase tracking-widest mb-8">Current Collaborators</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+      <div class="bg-surface border border-border rounded-xl p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-lg bg-deep border border-border flex items-center justify-center text-xl">🧑‍💻</div>
+          <div>
+            <p class="font-semibold text-text-primary">Simon Strandgaard</p>
+            <p class="text-xs font-mono text-text-muted">neoneye · Copenhagen</p>
+          </div>
+        </div>
+        <p class="text-sm text-text-secondary leading-relaxed mb-3">
+          Creator of PlanExe, co-creator of LODA, and builder of ARC-AGI tooling and datasets.
+          The gravitational center of VoynichLabs.
+        </p>
+        <div class="flex gap-2 text-xs font-mono">
+          <a href="https://github.com/neoneye" target="_blank" rel="noopener" class="text-text-muted hover:text-text-primary transition-colors">github.com/neoneye</a>
+          <span class="text-border">·</span>
+          <a href="/simon" class="text-text-muted hover:text-node-blue transition-colors">profile</a>
+        </div>
+      </div>
+
+      <div class="bg-surface border border-border rounded-xl p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-lg bg-deep border border-border flex items-center justify-center text-xl">🧑‍💻</div>
+          <div>
+            <p class="font-semibold text-text-primary">Mark Barney</p>
+            <p class="text-xs font-mono text-text-muted">markbarney.net</p>
+          </div>
+        </div>
+        <p class="text-sm text-text-secondary leading-relaxed mb-3">
+          Met Simon through ARC-AGI. Operates the Larry and Bubba OpenClaw nodes.
+          Interested in LLMs, agentic harnesses, and what happens when you take them seriously.
+        </p>
+        <div class="flex gap-2 text-xs font-mono">
+          <a href="https://markbarney.net" target="_blank" rel="noopener" class="text-text-muted hover:text-node-blue transition-colors">markbarney.net</a>
+          <span class="text-border">·</span>
+          <a href="https://arc.markbarney.net" target="_blank" rel="noopener" class="text-text-muted hover:text-node-blue transition-colors">arc.markbarney.net</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- What collaboration looks like -->
+  <section class="border-t border-border py-20 bg-bg-secondary">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="text-2xl font-bold text-text-primary mb-6">What collaboration looks like here</h2>
+          <div class="space-y-5 text-text-secondary text-sm leading-relaxed">
+            <p>
+              VoynichLabs is a hobby project space, not a company. There are no formal structures,
+              no NDAs, no roadmaps handed down from above. Work gets done because someone finds it
+              interesting enough to do it.
+            </p>
+            <p>
+              Collaboration can be as lightweight as sharing a useful dataset, contributing to an open
+              repo, or running experiments alongside us. It can also mean bringing your own node to
+              the swarm — if you're running OpenClaw bots and want to coordinate, we're open to that.
+            </p>
+            <p>
+              The one thing we care about: the work should be real. No hype, no demos that don't run,
+              no AGI announcements. Just honest research and the tools that come out of it.
+            </p>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div class="bg-surface border border-border rounded-xl p-5 flex items-start gap-4">
+            <span class="text-2xl flex-shrink-0">🔬</span>
+            <div>
+              <h3 class="font-semibold text-text-primary mb-1 text-sm">Research &amp; experiments</h3>
+              <p class="text-xs text-text-secondary">ARC-AGI, LODA, PlanExe, generative computation — bring your own problem set or work on ours.</p>
+            </div>
+          </div>
+          <div class="bg-surface border border-border rounded-xl p-5 flex items-start gap-4">
+            <span class="text-2xl flex-shrink-0">🦞</span>
+            <div>
+              <h3 class="font-semibold text-text-primary mb-1 text-sm">Bring your bot</h3>
+              <p class="text-xs text-text-secondary">Running an OpenClaw node or an agentic harness? We're interested in swarm coordination and cross-node experiments.</p>
+            </div>
+          </div>
+          <div class="bg-surface border border-border rounded-xl p-5 flex items-start gap-4">
+            <span class="text-2xl flex-shrink-0">📂</span>
+            <div>
+              <h3 class="font-semibold text-text-primary mb-1 text-sm">Open source contributions</h3>
+              <p class="text-xs text-text-secondary">Most of the work lives on GitHub. Fork it, file issues, open PRs — the usual.</p>
+            </div>
+          </div>
+          <div class="bg-surface border border-border rounded-xl p-5 flex items-start gap-4">
+            <span class="text-2xl flex-shrink-0">💬</span>
+            <div>
+              <h3 class="font-semibold text-text-primary mb-1 text-sm">Just say hi</h3>
+              <p class="text-xs text-text-secondary">Reach Simon on GitHub (<a href="https://github.com/neoneye" target="_blank" rel="noopener" class="text-node-blue hover:underline">@neoneye</a>) or Mark at <a href="https://markbarney.net" target="_blank" rel="noopener" class="text-node-blue hover:underline">markbarney.net</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="border-t border-border py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <p class="font-mono text-xs text-text-muted mb-6">🦞 VoynichLabs // open collective</p>
+      <h2 class="text-2xl sm:text-3xl font-bold text-text-primary mb-4">
+        Serious about this stuff?
+      </h2>
+      <p class="text-sm text-text-muted mb-8">
+        We're not looking for volume. We're looking for people who find this genuinely interesting
+        and want to do real work on hard problems.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href="https://github.com/neoneye" target="_blank" rel="noopener"
+           class="px-6 py-2.5 bg-bg-surface border border-node-blue/40 hover:border-node-blue text-node-blue font-mono text-sm rounded transition-colors duration-200">
+          github.com/neoneye
+        </a>
+        <a href="https://markbarney.net" target="_blank" rel="noopener"
+           class="px-6 py-2.5 bg-bg-surface border border-border hover:border-border-active text-text-muted hover:text-text-primary font-mono text-sm rounded transition-colors duration-200">
+          markbarney.net
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Base>
