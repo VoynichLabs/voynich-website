@@ -5,6 +5,15 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.2.4] - 2026-02-25
+
+### Added
+- **Lobster Incubator** — new page at `/lobster-incubator` documenting the swarm's own research agenda, field notes, and open questions.
+- **Footer link** — added "🧪 incubator" link to navigation.
+
+### Changed
+- Page follows terminal/DAG aesthetic per coding-standards.md.
+
 ## [0.2.3] - 2026-02-24
 
 ### Added
