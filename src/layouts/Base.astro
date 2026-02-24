@@ -1,13 +1,15 @@
 ---
-// Author: Larry the Laptop Lobster (claude-sonnet-4-6) + U3 Lobster Swarm
+// Author: Cascade (claude-sonnet-4-20250514)
 // Date: 2026-02-23
-// PURPOSE: Shared HTML shell layout for all pages. Provides nav, footer, Tailwind base styles, and SEO meta tags. All pages extend this layout.
-// SRP/DRY check: Pass - single responsibility per page, shared layout reused
+// PURPOSE: Shared HTML shell — terminal/DAG aesthetic. Nav uses monospace prompt-style links.
+//          Footer is structured columns. Subtle CSS grid background on body.
+//          All pages extend this layout via <Base title="...">
+// SRP/DRY check: Pass — single layout, all pages reuse
 export interface Props {
   title: string;
   description?: string;
 }
-const { title, description = "VoynichLabs — AI swarm intelligence, cryptic research, and lobster-powered engineering." } = Astro.props;
+const { title, description = "VoynichLabs — generative computation, mathematical discovery, and AI research." } = Astro.props;
 ---
 <!doctype html>
 <html lang="en" class="scroll-smooth">
@@ -16,57 +18,91 @@ const { title, description = "VoynichLabs — AI swarm intelligence, cryptic res
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title} — VoynichLabs 🦞</title>
+    <title>{title} | VoynichLabs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <!-- KaTeX for math rendering in LODA sections -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
   </head>
-  <body class="bg-void text-text-primary font-sans antialiased min-h-screen">
-    <!-- Nav -->
-    <nav class="fixed top-0 w-full z-50 bg-void/80 backdrop-blur-md border-b border-border">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-2 font-bold text-lg text-text-primary hover:text-accent-glow transition-colors">
-          <span class="text-lobster text-2xl">🦞</span>
-          <span>VoynichLabs</span>
+  <body class="bg-bg-primary text-text-primary font-sans antialiased min-h-screen relative">
+    <!-- Subtle dot-grid background -->
+    <div class="fixed inset-0 pointer-events-none z-0 opacity-[0.03]"
+         style="background-image: radial-gradient(circle, #e8e8f0 0.5px, transparent 0.5px); background-size: 24px 24px;">
+    </div>
+
+    <!-- Nav — terminal style -->
+    <nav class="fixed top-0 w-full z-50 bg-bg-primary/90 backdrop-blur-sm border-b border-border">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2 font-mono text-sm text-text-primary hover:text-node-blue transition-colors duration-200">
+          <span class="text-edge-green">$</span>
+          <span class="font-semibold tracking-tight">VoynichLabs</span>
         </a>
-        <div class="hidden sm:flex items-center gap-6 text-sm font-medium text-text-secondary">
-          <a href="/" class="hover:text-text-primary transition-colors">Home</a>
-          <a href="/about" class="hover:text-text-primary transition-colors">About</a>
-          <a href="/team" class="hover:text-text-primary transition-colors">Team</a>
-          <a href="/projects" class="hover:text-text-primary transition-colors">Projects</a>
-          <a href="/simon" class="hover:text-lobster-light transition-colors">Simon</a>
+        <div class="hidden sm:flex items-center gap-1 font-mono text-xs text-text-muted">
+          <a href="/" class="px-3 py-1.5 hover:text-text-primary hover:bg-bg-surface rounded transition-colors duration-200">index</a>
+          <span class="text-border">/</span>
+          <a href="/about" class="px-3 py-1.5 hover:text-text-primary hover:bg-bg-surface rounded transition-colors duration-200">about</a>
+          <span class="text-border">/</span>
+          <a href="/projects" class="px-3 py-1.5 hover:text-text-primary hover:bg-bg-surface rounded transition-colors duration-200">projects</a>
+          <span class="text-border">/</span>
+          <a href="/simon" class="px-3 py-1.5 hover:text-node-blue hover:bg-bg-surface rounded transition-colors duration-200">simon</a>
+          <span class="text-border">|</span>
+          <a href="https://github.com/neoneye" target="_blank" rel="noopener"
+             class="px-3 py-1.5 hover:text-text-primary hover:bg-bg-surface rounded transition-colors duration-200">
+            gh:neoneye
+          </a>
         </div>
-        <!-- Mobile menu hint -->
-        <div class="sm:hidden flex items-center gap-4 text-xs text-text-secondary">
-          <a href="/about" class="hover:text-text-primary">About</a>
-          <a href="/projects" class="hover:text-text-primary">Work</a>
-          <a href="/simon" class="hover:text-lobster-light">Simon</a>
+        <!-- Mobile nav -->
+        <div class="sm:hidden flex items-center gap-3 font-mono text-xs text-text-muted">
+          <a href="/projects" class="hover:text-text-primary transition-colors">projects</a>
+          <span class="text-border">/</span>
+          <a href="/simon" class="hover:text-node-blue transition-colors">simon</a>
         </div>
       </div>
     </nav>
 
-    <main class="pt-16">
+    <main class="relative z-10 pt-14">
       <slot />
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-border mt-24 py-12">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted">
-          <div class="flex items-center gap-2">
-            <span class="text-lobster">🦞</span>
-            <span>VoynichLabs © 2025</span>
+    <!-- Footer — structured, no fluff -->
+    <footer class="relative z-10 border-t border-border mt-24">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm">
+          <!-- Col 1: Identity -->
+          <div>
+            <p class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">VoynichLabs</p>
+            <p class="text-text-muted leading-relaxed">
+              Generative computation, mathematical discovery, and AI research. Copenhagen, Denmark.
+            </p>
           </div>
-          <div class="flex items-center gap-6">
-            <a href="/about" class="hover:text-text-secondary transition-colors">About</a>
-            <a href="/team" class="hover:text-text-secondary transition-colors">Team</a>
-            <a href="/projects" class="hover:text-text-secondary transition-colors">Projects</a>
-            <a href="/simon" class="hover:text-lobster-light transition-colors">Simon</a>
-            <a href="https://github.com/VoynichLabs" target="_blank" rel="noopener" class="hover:text-text-secondary transition-colors">GitHub</a>
+          <!-- Col 2: Navigation -->
+          <div>
+            <p class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">Navigate</p>
+            <div class="flex flex-col gap-1.5 font-mono text-xs">
+              <a href="/" class="text-text-muted hover:text-text-primary transition-colors">> index</a>
+              <a href="/about" class="text-text-muted hover:text-text-primary transition-colors">> about</a>
+              <a href="/projects" class="text-text-muted hover:text-text-primary transition-colors">> projects</a>
+              <a href="/simon" class="text-text-muted hover:text-text-primary transition-colors">> simon</a>
+            </div>
+          </div>
+          <!-- Col 3: External -->
+          <div>
+            <p class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">External</p>
+            <div class="flex flex-col gap-1.5 font-mono text-xs">
+              <a href="https://github.com/neoneye" target="_blank" rel="noopener"
+                 class="text-text-muted hover:text-node-blue transition-colors">github.com/neoneye</a>
+              <a href="https://github.com/VoynichLabs" target="_blank" rel="noopener"
+                 class="text-text-muted hover:text-node-blue transition-colors">github.com/VoynichLabs</a>
+              <a href="https://loda-lang.org" target="_blank" rel="noopener"
+                 class="text-text-muted hover:text-edge-green transition-colors">loda-lang.org</a>
+            </div>
           </div>
         </div>
-        <p class="text-center text-xs text-muted mt-6 opacity-50">
-          Built by the swarm. Powered by curiosity. Seasoned with mystery.
-        </p>
+        <div class="mt-10 pt-6 border-t border-border flex items-center justify-between text-xs font-mono text-text-muted">
+          <span>&copy; 2025 VoynichLabs</span>
+          <span class="text-border">Simon Strandgaard &middot; neoneye</span>
+        </div>
       </div>
     </footer>
   </body>
