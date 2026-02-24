@@ -19,6 +19,16 @@ export default {
         'rust-orange':   '#f97316',
         'arc-cyan':      '#22d3ee',
         'warn-amber':    '#fbbf24',
+        // Legacy aliases — keeps old pages functional until Phase 2-4 redesign
+        'void':           '#0c0c14',
+        'deep':           '#111119',
+        'surface':        '#16161e',
+        'muted':          '#6b7085',
+        'accent':         '#38bdf8',
+        'accent-glow':    '#60ccff',
+        'lobster':        '#f97316',
+        'lobster-light':  '#fb923c',
+        'text-secondary': '#8b8ba8',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
