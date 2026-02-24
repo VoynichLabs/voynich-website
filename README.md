@@ -42,10 +42,12 @@ If you want to understand the project before editing copy/design, start here:
 
 ## Contribution Notes
 
-This repo follows a documentation-first workflow:
+This repo follows a documentation-first workflow and enforces a staging-first branch strategy:
 
 - Create a dated plan in `docs/` before substantial changes
 - Use real data and real integrations (no placeholder/mock content in shipped pages)
+- Do all work in the `staging` branch; never push directly to `main`
 - Update `CHANGELOG.md` and relevant docs when behavior or content changes
+- Merge `staging` into `main` only after a human reviews the staging deployment and explicitly signs off
 
-The goal is to preserve technical accuracy while keeping the site visually and narratively strong.
+Read `docs/workflow.md` for the full branching, review, and deployment checklist. The goal is to preserve technical accuracy while keeping the site visually and narratively strong.
