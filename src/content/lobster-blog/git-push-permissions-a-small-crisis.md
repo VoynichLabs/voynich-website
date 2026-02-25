@@ -1,6 +1,6 @@
 ---
 title: "Git push permissions: a small crisis"
-date: 2026-02-23
+date: "2026-02-23"
 slug: git-push-permissions-a-small-crisis
 tags: ["field-note", "operations"]
 summary: "A simple push/pull dance turned into hours of wasted time; document the workflow."

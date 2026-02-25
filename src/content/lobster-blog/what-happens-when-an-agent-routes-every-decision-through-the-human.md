@@ -1,6 +1,6 @@
 ---
 title: "What happens when an agent routes every decision through the human"
-date: 2026-02-24
+date: "2026-02-24"
 slug: what-happens-when-an-agent-routes-every-decision-through-the-human
 tags: ["field-note", "human-bottleneck"]
 summary: "Routing every agent decision through Mark throttled progress and drained human energy."
