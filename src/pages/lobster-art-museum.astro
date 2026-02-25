@@ -40,6 +40,19 @@ const inferSeries = (filename: string) => {
 const tapestrySpotlightFilename = 'b16-baroque-dada-code-cathedral.png';
 const tapestrySpotlightHref = '/lobster-art-museum/expensive-medieval-tapestry';
 
+// Featured experimental/weird pieces to front-load
+const featuredFilenames = [
+  'b9-glitch-art-crustacean.png',
+  'b9-abstract-expressionist-swarm.png',
+  'b9-dada-lobster-readymade.png',
+  'b16-baroque-dada-code-cathedral.png',
+  'b16-pollock-lobster-action.png',
+  'b16-expressionist-gallery-rain.png',
+  'museum-hallucination-storm.png',
+  'museum-proposal-graveyard.png',
+  'museum-planetary-soup.png',
+];
+
 const entries = imageFiles.map((filename) => ({
   src: `/generated/${filename}`,
   title: titleFromFilename(filename),
@@ -48,6 +61,8 @@ const entries = imageFiles.map((filename) => ({
   detailHref: filename === tapestrySpotlightFilename ? tapestrySpotlightHref : undefined,
 }));
 
+const featuredEntries = entries.filter((entry) => featuredFilenames.includes(entry.filename));
+const archiveEntries = entries.filter((entry) => !featuredFilenames.includes(entry.filename));
 const sculptureHighlights = entries.filter((entry) => entry.filename.startsWith('b17-')).length;
 ---
 
@@ -83,30 +98,77 @@ const sculptureHighlights = entries.filter((entry) => entry.filename.startsWith(
     </section>
 
     {entries.length > 0 ? (
-      <section class="columns-1 sm:columns-2 lg:columns-3 gap-5 [column-fill:_balance]">
-        {entries.map((entry) => (
-          <figure class="mb-5 break-inside-avoid rounded-xl border border-border bg-bg-secondary overflow-hidden shadow-sm">
-            <img
-              src={entry.src}
-              alt={entry.title}
-              loading="lazy"
-              class="w-full h-auto object-contain bg-bg-primary"
-            />
-            <figcaption class="px-4 py-3 border-t border-border">
-              <div class="text-sm font-semibold text-text-primary">{entry.title}</div>
-              <div class="mt-1 text-[10px] uppercase tracking-[0.25em] text-text-muted">{entry.series}</div>
-              {entry.detailHref && (
-                <a
-                  href={entry.detailHref}
-                  class="inline-flex mt-2 text-[10px] uppercase tracking-[0.2em] text-rust-orange hover:text-edge-green transition-colors"
-                >
-                  Open dedicated page →
-                </a>
-              )}
-            </figcaption>
-          </figure>
-        ))}
-      </section>
+      <>
+        {/* Featured Experimental Strip */}
+        {featuredEntries.length > 0 && (
+          <section class="mb-16">
+            <div class="mb-6">
+              <p class="font-mono text-xs text-rust-orange uppercase tracking-[0.25em] mb-2">Featured</p>
+              <h2 class="text-2xl font-extrabold text-text-primary">Weird & Experimental</h2>
+            </div>
+            <div class="overflow-x-auto pb-4 -mx-4 px-4">
+              <div class="flex gap-5 min-w-min">
+                {featuredEntries.map((entry) => (
+                  <figure class="flex-shrink-0 w-64 sm:w-80 rounded-xl border border-border bg-bg-secondary overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <img
+                      src={entry.src}
+                      alt={entry.title}
+                      loading="eager"
+                      class="w-full h-64 sm:h-80 object-cover bg-bg-primary"
+                    />
+                    <figcaption class="px-4 py-3 border-t border-border">
+                      <div class="text-sm font-semibold text-text-primary">{entry.title}</div>
+                      <div class="mt-1 text-[10px] uppercase tracking-[0.25em] text-text-muted">{entry.series}</div>
+                      {entry.detailHref && (
+                        <a
+                          href={entry.detailHref}
+                          class="inline-flex mt-2 text-[10px] uppercase tracking-[0.2em] text-rust-orange hover:text-edge-green transition-colors"
+                        >
+                          Open dedicated page →
+                        </a>
+                      )}
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Archive Gallery */}
+        {archiveEntries.length > 0 && (
+          <section>
+            <div class="mb-6">
+              <p class="font-mono text-xs text-edge-green uppercase tracking-[0.25em] mb-2">Archive</p>
+              <h2 class="text-2xl font-extrabold text-text-primary">Complete Gallery</h2>
+            </div>
+            <div class="columns-1 sm:columns-2 lg:columns-3 gap-5 [column-fill:_balance]">
+              {archiveEntries.map((entry) => (
+                <figure class="mb-5 break-inside-avoid rounded-xl border border-border bg-bg-secondary overflow-hidden shadow-sm">
+                  <img
+                    src={entry.src}
+                    alt={entry.title}
+                    loading="lazy"
+                    class="w-full h-auto object-contain bg-bg-primary"
+                  />
+                  <figcaption class="px-4 py-3 border-t border-border">
+                    <div class="text-sm font-semibold text-text-primary">{entry.title}</div>
+                    <div class="mt-1 text-[10px] uppercase tracking-[0.25em] text-text-muted">{entry.series}</div>
+                    {entry.detailHref && (
+                      <a
+                        href={entry.detailHref}
+                        class="inline-flex mt-2 text-[10px] uppercase tracking-[0.2em] text-rust-orange hover:text-edge-green transition-colors"
+                      >
+                        Open dedicated page →
+                      </a>
+                    )}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+        )}
+      </>
     ) : (
       <section class="border border-border rounded-xl p-6 bg-bg-secondary">
         <p class="text-sm text-text-muted">No generated artwork found yet in <code>/public/generated</code>.</p>
