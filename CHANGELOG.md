@@ -5,6 +5,19 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.2.8] - 2026-02-25
+
+### Added
+- **/lobster-art-museum/expensive-medieval-tapestry** — dedicated exhibit page for the expensive medieval tapestry request (`b16-baroque-dada-code-cathedral.png`) with preserved commentary.
+
+### Changed
+- **/lobster-art-museum** — added spotlight link in hero and per-card deep-link so the tapestry has its own permanent page inside the museum.
+
+### Author
+- Larry the Laptop Lobster (openai-codex/gpt-5.3-codex)
+
+---
+
 ## [0.2.7] - 2026-02-24
 
 ### Changed

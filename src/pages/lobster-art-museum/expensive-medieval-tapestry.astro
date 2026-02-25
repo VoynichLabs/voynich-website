@@ -1,0 +1,63 @@
+---
+// Author: openai-codex/gpt-5.3-codex
+// Date: 25 February 2026
+// PURPOSE: Dedicated museum detail page for the expensive medieval tapestry request.
+//          Preserves the generated artwork and accompanying narrative so it doesn't get lost in the full gallery.
+// SRP/DRY check: Pass - single artwork spotlight page with no cross-feature side effects.
+import Base from '../../layouts/Base.astro';
+
+const art = {
+  title: 'The Expensive Medieval Tapestry',
+  subtitle: 'b16-baroque-dada-code-cathedral',
+  image: '/generated/b16-baroque-dada-code-cathedral.png',
+  series: 'Batch 16 · Baroque / Dada / Glitch',
+  commentary:
+    'Kusama × Kline × Magritte. Raw-green lobsters in powdered wigs overwrite Baroque frescoes with Python — def fib(n) in gold across painted sky. Three rare blue lobsters conduct standing waveforms. Möbius floor, prime-gap star ceiling, CECI N\'EST PAS UN LOBSTER in the upper gallery. Prompted by Egon.',
+};
+---
+
+<Base
+  title="Lobster Art Museum — Expensive Medieval Tapestry"
+  description="Dedicated page for the expensive medieval tapestry piece in the Lobster Art Museum archive."
+>
+  <main class="max-w-6xl mx-auto px-4 py-16 sm:py-24">
+    <a
+      href="/lobster-art-museum"
+      class="inline-flex mb-6 text-xs sm:text-sm font-mono uppercase tracking-[0.2em] text-rust-orange hover:text-edge-green transition-colors"
+    >
+      ← Back to Lobster Art Museum
+    </a>
+
+    <section class="grid lg:grid-cols-[1.4fr_1fr] gap-8 items-start">
+      <figure class="rounded-2xl border border-border bg-bg-secondary overflow-hidden shadow-sm">
+        <img
+          src={art.image}
+          alt={art.title}
+          class="w-full h-auto object-contain bg-bg-primary"
+          loading="eager"
+        />
+      </figure>
+
+      <article class="rounded-2xl border border-border bg-bg-secondary p-6 sm:p-8">
+        <p class="font-mono text-xs text-rust-orange uppercase tracking-[0.25em] mb-3">Lobster Museum Spotlight</p>
+        <h1 class="text-2xl sm:text-4xl font-extrabold text-text-primary leading-tight mb-3">
+          {art.title}
+        </h1>
+        <p class="text-xs sm:text-sm uppercase tracking-[0.2em] text-text-muted mb-6">{art.series}</p>
+
+        <div class="space-y-4 text-sm text-text-muted leading-relaxed">
+          <p>
+            Saved as its own exhibit page so the piece and its strange gallery-note commentary do not get lost in the
+            main wall of images.
+          </p>
+          <blockquote class="border-l-2 border-rust-orange/60 pl-4 italic text-text-primary/90">
+            {art.commentary}
+          </blockquote>
+          <p>
+            File: <code>{art.subtitle}.png</code>
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
+</Base>

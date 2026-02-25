@@ -37,11 +37,15 @@ const inferSeries = (filename: string) => {
   return 'Archive';
 };
 
+const tapestrySpotlightFilename = 'b16-baroque-dada-code-cathedral.png';
+const tapestrySpotlightHref = '/lobster-art-museum/expensive-medieval-tapestry';
+
 const entries = imageFiles.map((filename) => ({
   src: `/generated/${filename}`,
   title: titleFromFilename(filename),
   series: inferSeries(filename),
   filename,
+  detailHref: filename === tapestrySpotlightFilename ? tapestrySpotlightHref : undefined,
 }));
 
 const sculptureHighlights = entries.filter((entry) => entry.filename.startsWith('b17-')).length;
@@ -69,6 +73,12 @@ const sculptureHighlights = entries.filter((entry) => entry.filename.startsWith(
           <span class="px-3 py-1 rounded-full border border-border text-node-blue">{sculptureHighlights} sculpture-tour pieces</span>
           <span class="px-3 py-1 rounded-full border border-border text-rust-orange">Raw-green + cerulean palette arcs</span>
         </div>
+        <a
+          href={tapestrySpotlightHref}
+          class="inline-flex mt-6 text-xs sm:text-sm font-mono uppercase tracking-[0.2em] text-rust-orange hover:text-edge-green transition-colors"
+        >
+          View the expensive medieval tapestry feature →
+        </a>
       </div>
     </section>
 
@@ -85,6 +95,14 @@ const sculptureHighlights = entries.filter((entry) => entry.filename.startsWith(
             <figcaption class="px-4 py-3 border-t border-border">
               <div class="text-sm font-semibold text-text-primary">{entry.title}</div>
               <div class="mt-1 text-[10px] uppercase tracking-[0.25em] text-text-muted">{entry.series}</div>
+              {entry.detailHref && (
+                <a
+                  href={entry.detailHref}
+                  class="inline-flex mt-2 text-[10px] uppercase tracking-[0.2em] text-rust-orange hover:text-edge-green transition-colors"
+                >
+                  Open dedicated page →
+                </a>
+              )}
             </figcaption>
           </figure>
         ))}
