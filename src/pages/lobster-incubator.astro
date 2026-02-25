@@ -865,10 +865,13 @@ const timelineEntries = [
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {galleryEntries.map((entry) => (
             <figure class="bg-bg-secondary border border-border rounded-lg overflow-hidden" key={entry.src}>
-              <img src={entry.src} alt={entry.title} class="w-full h-48 object-cover" loading="lazy" />
+              <a href={entry.src} target="_blank" rel="noopener noreferrer" class="block" aria-label={`Open full-size image for ${entry.title}`}>
+                <img src={entry.src} alt={entry.title} class="w-full h-48 object-cover hover:opacity-90 transition-opacity" loading="lazy" />
+              </a>
               <figcaption class="px-3 py-2 text-xs text-text-muted">
                 <div class="font-semibold text-text-primary text-sm">{entry.title}</div>
                 <div class="text-[10px] uppercase tracking-[0.3em] text-edge-green/70">{entry.batch} · {entry.style}</div>
+                <p class="text-[10px] text-node-blue mt-1">Click image to open full-size</p>
                 {entry.note && <p class="text-[10px] text-text-muted mt-1">{entry.note}</p>}
               </figcaption>
             </figure>
