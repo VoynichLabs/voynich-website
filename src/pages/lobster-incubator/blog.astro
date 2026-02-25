@@ -1,0 +1,78 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('lobster-blog');
+const sortedPosts = allPosts.sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
+const pageSize = 5;
+const requestedPage = Number(Astro.url.searchParams.get('page') ?? '1');
+const totalPages = Math.max(1, Math.ceil(sortedPosts.length / pageSize));
+const currentPage = Math.min(Math.max(1, requestedPage), totalPages);
+const pagePosts = sortedPosts.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+const pagination = Array.from({ length: totalPages }, (_, index) => index + 1);
+const heroImage = '/images/lobster-data-center.png';
+---
+
+<Base title="Lobster Incubator Blog" description="Archive of Lobster Incubator field notes and research logs." class="bg-bg-primary">
+  <main class="max-w-4xl mx-auto px-4 py-16 space-y-10">
+    <section class="rounded-2xl overflow-hidden border border-border">
+      <div class="bg-cover bg-center" style={`background-image: url('${heroImage}'); height: 240px;`}>
+        <div class="bg-black/60 h-full w-full flex flex-col justify-center px-6 py-8">
+          <p class="font-mono text-xs text-edge-green uppercase tracking-[0.3em] mb-2">Lobster Incubator</p>
+          <h1 class="text-3xl font-bold text-white">Field Notes & Research Log</h1>
+          <p class="text-sm text-white/80 mt-2">Every new insight, logged in markdown and published directly from the repo.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-6">
+      {pagePosts.map((post) => (
+        <article id={post.data.slug} class="bg-bg-secondary border border-border rounded-lg p-5">
+          <div class="flex items-center justify-between">
+            <time class="font-mono text-xs text-text-muted">{post.data.date}</time>
+            <div class="flex flex-wrap gap-2 text-xs text-text-muted">
+              {post.data.tags.map((tag) => (
+                <span class="bg-bg-primary/50 border border-border px-2 py-1 rounded-full">{tag}</span>
+              ))}
+            </div>
+          </div>
+          <h2 class="text-xl font-semibold text-text-primary mt-3 mb-2">{post.data.title}</h2>
+          <p class="text-sm text-text-muted leading-relaxed">
+            {post.data.summary ?? post.body.replace(/\n+/g, ' ').trim().slice(0, 260) + '...'}
+          </p>
+          <div class="mt-4 flex items-center justify-between text-sm">
+            <span class="text-node-blue font-semibold">Lobster Field Note</span>
+            <a class="text-node-blue hover:text-text-primary" href={`/lobster-incubator#${post.data.slug}`}>
+              Read on page ▲
+            </a>
+          </div>
+        </article>
+      ))}
+    </section>
+
+    <nav class="flex items-center justify-between text-sm" aria-label="Pagination">
+      <a
+        class={`font-semibold ${currentPage === 1 ? 'text-text-muted pointer-events-none' : 'text-node-blue hover:text-text-primary'}`}
+        href={`/lobster-incubator/blog?page=${Math.max(1, currentPage - 1)}`}
+      >
+        ← Newer
+      </a>
+      <div class="flex gap-2">
+        {pagination.map((page) => (
+          <a
+            class={`px-3 py-1 rounded-full border ${page === currentPage ? 'border-node-blue bg-node-blue/10 text-node-blue' : 'border-border text-text-muted hover:border-node-blue hover:text-node-blue'}`}
+            href={`/lobster-incubator/blog?page=${page}`}
+          >
+            {page}
+          </a>
+        ))}
+      </div>
+      <a
+        class={`font-semibold ${currentPage === totalPages ? 'text-text-muted pointer-events-none' : 'text-node-blue hover:text-text-primary'}`}
+        href={`/lobster-incubator/blog?page=${Math.min(totalPages, currentPage + 1)}`}
+      >
+        Older →
+      </a>
+    </nav>
+  </main>
+</Base>
