@@ -1,6 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import fs from 'fs';
+import path from 'path';
 
 const posts = await getCollection('lobster-blog');
 const sortedPosts = posts.sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
@@ -8,23 +10,17 @@ const latestNotes = sortedPosts.slice(0, 5);
 const heroImage = '/images/lobster-data-center.png';
 const fieldNoteGrid = latestNotes;
 
-const galleryImages = Object.values(import.meta.glob('/generated/*.{png,jpg,jpeg,webp}', { eager: true, query: '?url', import: 'default' }));
+// Read generated images from public/generated folder at build time
+const generatedDir = path.join(import.meta.env.RENV_ROOT || process.cwd(), 'public', 'generated');
+const imageFiles = fs.existsSync(generatedDir) 
+  ? fs.readdirSync(generatedDir)
+      .filter(f => /\.(png|jpg|jpeg|webp)$/i.test(f))
+      .map(f => `/generated/${f}`)
+      .sort()
+  : [];
+const galleryImages = imageFiles;
 const galleryMetadata = {
-  'lobster-blue-workstation': {
-    batch: 'Batch 1',
-    style: 'cubo-futurist planner',
-    note: 'Blue lobsters orchestrating holographic DAG nodes at a crystalline terminal.'
-  },
-  'lobster-green-servers': {
-    batch: 'Batch 2',
-    style: 'synthwave swarm',
-    note: 'Green lobsters tending a living server cluster shaped like bioluminescent shells.'
-  },
-  'red-lobster-cluster': {
-    batch: 'Batch 2',
-    style: 'hyperreal coordination',
-    note: 'Red lobsters operate a synchronized terminal array while keeping the swarm accountable.'
-  },
+  // Lab & Original Assets
   'arc-grid': {
     batch: 'Prelaunch',
     style: 'experimental grid',
@@ -45,6 +41,16 @@ const galleryMetadata = {
     style: 'probe asset',
     note: 'Placeholder lobster asset capturing the raw energy before refining styles.'
   },
+  'lobster-blue-workstation': {
+    batch: 'Batch 1',
+    style: 'cubo-futurist planner',
+    note: 'Blue lobsters orchestrating holographic DAG nodes at a crystalline terminal.'
+  },
+  'lobster-green-servers': {
+    batch: 'Batch 2',
+    style: 'synthwave swarm',
+    note: 'Green lobsters tending a living server cluster shaped like bioluminescent shells.'
+  },
   'lobster-swarm': {
     batch: 'Batch 3',
     style: 'automaton swarm',
@@ -54,6 +60,193 @@ const galleryMetadata = {
     batch: 'Batch 3',
     style: 'mathematical mining',
     note: 'Lobsters as miners chipping away at numerical deposits in the LODA mine.'
+  },
+  'red-lobster-cluster': {
+    batch: 'Batch 2',
+    style: 'hyperreal coordination',
+    note: 'Red lobsters operate a synchronized terminal array while keeping the swarm accountable.'
+  },
+  // Batch 1: Cubo-futurist
+  'b1-cubo-futurist-planner': {
+    batch: 'Batch 1',
+    style: 'cubo-futurist',
+    note: 'Geometric lobster architect planning quantum arrays.'
+  },
+  'b1-red-cellular-automaton': {
+    batch: 'Batch 1',
+    style: 'cellular automaton',
+    note: 'Red lobsters as living cells in a computational grid.'
+  },
+  'b1-green-topology-morph': {
+    batch: 'Batch 1',
+    style: 'topological morph',
+    note: 'Verdant lobster evolving through twisted topological space.'
+  },
+  'b1-loda-sequence-poster': {
+    batch: 'Batch 1',
+    style: 'LODA sequence',
+    note: 'Lobster mining the LODA number sequence as an infinite poster.'
+  },
+  'b1-brutalist-bunker': {
+    batch: 'Batch 1',
+    style: 'brutalist bunker',
+    note: 'Concrete lobster fortification guarding algorithmic secrets.'
+  },
+  // Batch 2: Neural & Signal
+  'b2-verdant-neural-fabric': {
+    batch: 'Batch 2',
+    style: 'neural fabric',
+    note: 'Green lobster woven into living neural networks.'
+  },
+  'b2-red-signal-interference': {
+    batch: 'Batch 2',
+    style: 'signal interference',
+    note: 'Red lobsters creating harmonic interference patterns in data streams.'
+  },
+  'b2-brutalist-quantum': {
+    batch: 'Batch 2',
+    style: 'brutalist quantum',
+    note: 'Heavy concrete forms containing uncertain lobster superposition.'
+  },
+  'b2-cubo-mosaic-collab': {
+    batch: 'Batch 2',
+    style: 'cubo-mosaic',
+    note: 'Geometric lobster collaboration tiling a crystalline plane.'
+  },
+  'b2-cerulean-orchestra-retry': {
+    batch: 'Batch 2',
+    style: 'cerulean orchestra',
+    note: 'Blue lobsters conducting harmonic coordination across multiple dimensions.'
+  },
+  // Batch 3: Fractal & Data-lace
+  'b3-blue-fractal-labyrinth': {
+    batch: 'Batch 3',
+    style: 'fractal labyrinth',
+    note: 'Blue lobster navigating infinitely recursive maze.'
+  },
+  'b3-green-data-lace': {
+    batch: 'Batch 3',
+    style: 'data-lace',
+    note: 'Verdant lobster woven into delicate data fabric.'
+  },
+  'b3-red-blue-signal-synapse': {
+    batch: 'Batch 3',
+    style: 'signal synapse',
+    note: 'Lobsters firing across synaptic junction of pure signal.'
+  },
+  'b3-brutalist-citadel': {
+    batch: 'Batch 3',
+    style: 'brutalist citadel',
+    note: 'Concrete fortress where lobsters guard knowledge repositories.'
+  },
+  'b3-cubo-golden-ratio': {
+    batch: 'Batch 3',
+    style: 'golden ratio',
+    note: 'Geometric lobster spiraling through phi-proportioned space.'
+  },
+  // Batch 4: Recursive & Circuit
+  'b4-blue-recursive-tree': {
+    batch: 'Batch 4',
+    style: 'recursive tree',
+    note: 'Blue lobster climbing infinitely self-similar branches.'
+  },
+  'b4-green-bioluminescent-circuit': {
+    batch: 'Batch 4',
+    style: 'bioluminescent circuit',
+    note: 'Verdant lobster as glowing node in organic circuit board.'
+  },
+  'b4-red-swarm-algorithm': {
+    batch: 'Batch 4',
+    style: 'swarm algorithm',
+    note: 'Red lobsters executing distributed coordination algorithm.'
+  },
+  'b4-brutalist-void-watcher': {
+    batch: 'Batch 4',
+    style: 'brutalist void',
+    note: 'Concrete lobster sentinel watching the empty abyss.'
+  },
+  'b4-tessellation-harmony': {
+    batch: 'Batch 4',
+    style: 'tessellation',
+    note: 'Lobsters perfectly tiling Euclidean space in harmonic pattern.'
+  },
+  // Batch 5: Quantum & Mycelium
+  'b5-blue-quantum-foam': {
+    batch: 'Batch 5',
+    style: 'quantum foam',
+    note: 'Blue lobster surfing quantum vacuum fluctuations.'
+  },
+  'b5-green-mycelium-network': {
+    batch: 'Batch 5',
+    style: 'mycelium network',
+    note: 'Verdant lobster part of vast underground fungal intelligence.'
+  },
+  'b5-holographic-debate': {
+    batch: 'Batch 5',
+    style: 'holographic debate',
+    note: 'Lobsters arguing across holographic projection planes.'
+  },
+  'b5-red-epidemic-spiral-retry': {
+    batch: 'Batch 5',
+    style: 'epidemic spiral',
+    note: 'Red lobster at center of exponential growth spiral.'
+  },
+  'b5-brutalist-archive': {
+    batch: 'Batch 5',
+    style: 'brutalist archive',
+    note: 'Concrete repository where lobsters catalog all knowledge.'
+  },
+  // Batch 6: Laser & Entropy
+  'b6-blue-laser-loom': {
+    batch: 'Batch 6',
+    style: 'laser loom',
+    note: 'Blue lobster weaving light itself into computational fabric.'
+  },
+  'b6-green-recursive-bloom': {
+    batch: 'Batch 6',
+    style: 'recursive bloom',
+    note: 'Verdant lobster flowering through infinite self-generation.'
+  },
+  'b6-red-entropy-cascade': {
+    batch: 'Batch 6',
+    style: 'entropy cascade',
+    note: 'Red lobster riding the heat death of ordered systems.'
+  },
+  'b6-brutalist-signal-vault': {
+    batch: 'Batch 6',
+    style: 'signal vault',
+    note: 'Concrete chamber where lobsters preserve pure signal.'
+  },
+  'b6-cubo-collab-grid': {
+    batch: 'Batch 6',
+    style: 'collab grid',
+    note: 'Geometric lobsters collaborating across crystalline lattice.'
+  },
+  // Batch 7: Cathedral & Markets
+  'b7-blue-signal-cathedral': {
+    batch: 'Batch 7',
+    style: 'signal cathedral',
+    note: 'Blue lobster in vast cathedral of resonating signals.'
+  },
+  'b7-green-folding-hypercube': {
+    batch: 'Batch 7',
+    style: 'hypercube',
+    note: 'Verdant lobster navigating 4D folding geometry.'
+  },
+  'b7-red-market-simulation': {
+    batch: 'Batch 7',
+    style: 'market simulation',
+    note: 'Red lobster orchestrating emergent economic dynamics.'
+  },
+  'b7-brutalist-observatory': {
+    batch: 'Batch 7',
+    style: 'brutalist observatory',
+    note: 'Concrete tower where lobsters watch computational cosmos.'
+  },
+  'b7-cubo-parliament': {
+    batch: 'Batch 7',
+    style: 'parliament',
+    note: 'Geometric lobsters assembled in crystalline deliberative body.'
   }
 };
 const galleryEntries = galleryImages.map((src) => {
