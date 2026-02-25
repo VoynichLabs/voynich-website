@@ -17,6 +17,18 @@ const {
   hideNav = false,
   hideFooter = false,
 } = Astro.props;
+
+const navLinks = [
+  { href: '/', label: 'index' },
+  { href: '/about', label: 'about' },
+  { href: '/projects', label: 'projects' },
+  { href: '/lab', label: 'lab', color: 'text-edge-green' },
+  { href: '/simon', label: 'simon' },
+  { href: '/team', label: '🦞 swarm', color: 'text-rust-orange' },
+  { href: '/lobster-incubator', label: '🧪 incubator', color: 'text-edge-green' },
+  { href: '/collaborators', label: 'collaborate', color: 'text-node-blue' },
+];
+const mobileLinks = navLinks.slice(2, 6);
 ---
 <!doctype html>
 <html lang="en" class="scroll-smooth">
@@ -47,32 +59,34 @@ const {
             <span class="font-semibold tracking-tight">VoynichLabs</span>
           </a>
           <div class="hidden sm:flex items-center gap-1 font-mono text-xs text-text-muted">
-            <a href="/" class="px-3 py-1.5 hover:text-text-primary hover:bg-bg-surface rounded transition-colors duration-200">index</a>
-            <span class="text-border">/</span>
-            <a href="/about" class="px-3 py-1.5 hover:text-text-primary hover:bg-bg-surface rounded transition-colors duration-200">about</a>
-            <span class="text-border">/</span>
-            <a href="/projects" class="px-3 py-1.5 hover:text-text-primary hover:bg-bg-surface rounded transition-colors duration-200">projects</a>
-            <span class="text-border">/</span>
-            <a href="/lab" class="px-3 py-1.5 hover:text-edge-green hover:bg-bg-surface rounded transition-colors duration-200">lab</a>
-            <span class="text-border">/</span>
-            <a href="/simon" class="px-3 py-1.5 hover:text-node-blue hover:bg-bg-surface rounded transition-colors duration-200">simon</a>
-            <span class="text-border">/</span>
-            <a href="/team" class="px-3 py-1.5 hover:text-rust-orange hover:bg-bg-surface rounded transition-colors duration-200">🦞 swarm</a>
-            <span class="text-border">/</span>
-            <a href="/collaborators" class="px-3 py-1.5 hover:text-node-blue hover:bg-bg-surface rounded transition-colors duration-200">collaborate</a>
+            {navLinks.map((link, index) => (
+              <div class="flex items-center gap-1" key={link.href}>
+                <a
+                  href={link.href}
+                  class={`px-3 py-1.5 rounded transition-colors duration-200 ${link.color ?? 'text-text-muted'} hover:text-text-primary hover:bg-bg-surface`}
+                >
+                  {link.label}
+                </a>
+                {index < navLinks.length - 1 && <span class="text-border">/</span>}
+              </div>
+            ))}
             <span class="text-border">|</span>
-            <a href="https://github.com/neoneye" target="_blank" rel="noopener"
-               class="px-3 py-1.5 hover:text-text-primary hover:bg-bg-surface rounded transition-colors duration-200">
+            <a
+              href="https://github.com/neoneye"
+              target="_blank"
+              rel="noopener"
+              class="px-3 py-1.5 hover:text-text-primary hover:bg-bg-surface rounded transition-colors duration-200"
+            >
               gh:neoneye
             </a>
           </div>
           <!-- Mobile nav -->
           <div class="sm:hidden flex items-center gap-3 font-mono text-xs text-text-muted">
-            <a href="/projects" class="hover:text-text-primary transition-colors">projects</a>
-            <span class="text-border">/</span>
-            <a href="/lab" class="hover:text-edge-green transition-colors">lab</a>
-            <span class="text-border">/</span>
-            <a href="/simon" class="hover:text-node-blue transition-colors">simon</a>
+            {mobileLinks.map((link) => (
+              <a href={link.href} class="hover:text-text-primary transition-colors" key={link.href}>
+                {link.label}
+              </a>
+            ))}
           </div>
         </div>
       </nav>
@@ -102,14 +116,15 @@ const {
             <div>
               <p class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">Navigate</p>
               <div class="flex flex-col gap-1.5 font-mono text-xs">
-                <a href="/" class="text-text-muted hover:text-text-primary transition-colors">&gt; index</a>
-                <a href="/about" class="text-text-muted hover:text-text-primary transition-colors">&gt; about</a>
-                <a href="/projects" class="text-text-muted hover:text-text-primary transition-colors">&gt; projects</a>
-                <a href="/lab" class="text-text-muted hover:text-edge-green transition-colors">&gt; lab</a>
-                <a href="/simon" class="text-text-muted hover:text-text-primary transition-colors">&gt; simon</a>
-                <a href="/team" class="text-text-muted hover:text-rust-orange transition-colors">&gt; 🦞 swarm</a>
-                <a href="/lobster-incubator" class="text-text-muted hover:text-edge-green transition-colors">&gt; 🧪 incubator</a>
-                <a href="/collaborators" class="text-text-muted hover:text-node-blue transition-colors">&gt; collaborate</a>
+                {navLinks.map((link) => (
+                  <a
+                    href={link.href}
+                    class="text-text-muted hover:text-text-primary transition-colors"
+                    key={link.href}
+                  >
+                    &gt; {link.label}
+                  </a>
+                ))}
               </div>
             </div>
             <!-- Col 3: External -->
