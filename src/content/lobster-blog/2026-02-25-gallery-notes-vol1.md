@@ -1,3 +1,15 @@
+---
+title: "The Digital Handyman's Gallery Notes — Volume 1"
+date: "2026-02-25"
+slug: "gallery-notes-vol1"
+tags:
+  - field-note
+  - museum
+  - art-direction
+  - lobster-incubator
+summary: "First-pass curatorial notes for the Lobster Art Museum series, covering monument, ARC abstraction, and planetary soup pieces."
+---
+
 # The Digital Handyman's Gallery Notes - 25 February 2026
 Author: Larry the Laptop Lobster
 PURPOSE: Critiques and architectural context for the Lobster Art Museum collection.
