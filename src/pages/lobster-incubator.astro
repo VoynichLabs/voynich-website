@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 const posts = await getCollection('lobster-blog');
 const sortedPosts = posts.sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
@@ -11,7 +12,9 @@ const heroImage = '/images/lobster-data-center.png';
 const fieldNoteGrid = latestNotes;
 
 // Read generated images from public/generated folder at build time
-const generatedDir = path.join(import.meta.env.RENV_ROOT || process.cwd(), 'public', 'generated');
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const projectRoot = path.join(__dirname, '..', '..');
+const generatedDir = path.join(projectRoot, 'public', 'generated');
 const imageFiles = fs.existsSync(generatedDir) 
   ? fs.readdirSync(generatedDir)
       .filter(f => /\.(png|jpg|jpeg|webp)$/i.test(f))
