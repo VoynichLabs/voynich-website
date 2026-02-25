@@ -612,13 +612,15 @@ const timelineEntries = [
         {fieldNoteGrid.map((post) => (
           <article id={post.data.slug} class="bg-bg-secondary border border-border rounded-md p-5 flex flex-col gap-3">
             <time class="font-mono text-xs text-text-muted">{post.data.date}</time>
-            <h3 class="font-semibold text-text-primary text-lg leading-tight">{post.data.title}</h3>
+            <a href={`/lobster-incubator/${post.data.slug}`} class="hover:text-node-blue transition-colors">
+              <h3 class="font-semibold text-text-primary text-lg leading-tight">{post.data.title}</h3>
+            </a>
             <p class="text-sm text-text-muted">
               {post.data.summary ?? post.body.replace(/\n+/g, ' ').trim().slice(0, 180) + '...'}
             </p>
             <div class="flex flex-wrap gap-2 text-xs text-text-muted">
               {post.data.tags.map((tag) => (
-                <span class="bg-bg-primary/50 border border-border px-2 py-1 rounded-full">{tag}</span>
+                <a href={`/lobster-incubator/tag/${tag}`} class="bg-bg-primary/50 border border-border px-2 py-1 rounded-full hover:border-node-blue hover:text-node-blue transition-colors">{tag}</a>
               ))}
             </div>
           </article>
