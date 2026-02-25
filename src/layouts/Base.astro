@@ -10,12 +10,24 @@ export interface Props {
   description?: string;
   hideNav?: boolean;
   hideFooter?: boolean;
+  canonicalUrl?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  twitterCard?: 'summary' | 'summary_large_image';
+  twitterSite?: string;
+  twitterCreator?: string;
 }
 const {
   title,
   description = "VoynichLabs — generative computation, mathematical discovery, and AI research.",
   hideNav = false,
   hideFooter = false,
+  canonicalUrl,
+  ogImage,
+  ogType = 'website',
+  twitterCard = 'summary',
+  twitterSite = '@82deutschmark',
+  twitterCreator = '@82deutschmark',
 } = Astro.props;
 
 const navLinks = [
@@ -37,6 +49,21 @@ const mobileLinks = navLinks.slice(2, 6);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+
+    <meta property="og:title" content={`${title} | VoynichLabs`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    {ogImage && <meta property="og:image" content={ogImage} />}
+
+    <meta name="twitter:card" content={twitterCard} />
+    <meta name="twitter:title" content={`${title} | VoynichLabs`} />
+    <meta name="twitter:description" content={description} />
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
+    {twitterSite && <meta name="twitter:site" content={twitterSite} />}
+    {twitterCreator && <meta name="twitter:creator" content={twitterCreator} />}
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title} | VoynichLabs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />

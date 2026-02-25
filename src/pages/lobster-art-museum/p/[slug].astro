@@ -1,0 +1,88 @@
+---
+// Author: openai-codex/gpt-5.3-codex
+// Date: 25 February 2026
+// PURPOSE: Individual shareable permalink route for every Lobster Art Museum piece.
+//          Adds social metadata + direct Twitter intent link so each artwork can travel independently.
+// SRP/DRY check: Pass - single-piece renderer driven by shared museum metadata.
+import Base from '../../../layouts/Base.astro';
+import { getMuseumEntries, buildTweetCopy, type MuseumEntry } from '../../../lib/lobster-museum';
+
+export async function getStaticPaths() {
+  const entries = getMuseumEntries();
+
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props as { entry: MuseumEntry };
+
+const pageTitle = `${entry.title} · Lobster Art Museum`;
+const fallbackShareBaseUrl = 'https://voynich-website-staging.up.railway.app';
+const configuredShareBaseUrl = import.meta.env.PUBLIC_SHARE_BASE_URL?.trim();
+const siteBaseUrl = Astro.site?.toString()?.trim();
+const useFallback = !siteBaseUrl || siteBaseUrl.includes('localhost') || siteBaseUrl.includes('voynichlabs.github.io');
+const shareBaseUrl = (configuredShareBaseUrl || (useFallback ? fallbackShareBaseUrl : siteBaseUrl)).replace(/\/$/, '');
+
+const canonicalUrl = `${shareBaseUrl}${entry.href}`;
+const ogImage = `${shareBaseUrl}${entry.src}`;
+const tweetCopy = buildTweetCopy(entry, canonicalUrl);
+const tweetIntent = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetCopy)}`;
+---
+
+<Base
+  title={pageTitle}
+  description={entry.description}
+  canonicalUrl={canonicalUrl}
+  ogImage={ogImage}
+  ogType="article"
+  twitterCard="summary_large_image"
+>
+  <main class="max-w-6xl mx-auto px-4 py-16 sm:py-24">
+    <a
+      href="/lobster-art-museum"
+      class="inline-flex mb-6 text-xs sm:text-sm font-mono uppercase tracking-[0.2em] text-rust-orange hover:text-edge-green transition-colors"
+    >
+      ← Back to Lobster Art Museum
+    </a>
+
+    <section class="grid lg:grid-cols-[1.35fr_1fr] gap-8 items-start">
+      <figure class="rounded-2xl border border-border bg-bg-secondary overflow-hidden shadow-sm">
+        <img
+          src={entry.src}
+          alt={entry.title}
+          class="w-full h-auto object-contain bg-bg-primary"
+          loading="eager"
+        />
+      </figure>
+
+      <article class="rounded-2xl border border-border bg-bg-secondary p-6 sm:p-8">
+        <p class="font-mono text-xs text-rust-orange uppercase tracking-[0.25em] mb-3">Shareable Museum Piece</p>
+        <h1 class="text-2xl sm:text-4xl font-extrabold text-text-primary leading-tight mb-3">
+          {entry.title}
+        </h1>
+        <p class="text-xs sm:text-sm uppercase tracking-[0.2em] text-text-muted mb-5">{entry.series}</p>
+
+        <div class="space-y-4 text-sm text-text-muted leading-relaxed">
+          <p>{entry.description}</p>
+          <p>
+            File: <code>{entry.filename}</code>
+          </p>
+        </div>
+
+        <div class="mt-6 flex flex-wrap gap-3 text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em]">
+          <a href={tweetIntent} target="_blank" rel="noopener" class="text-node-blue hover:text-edge-green transition-colors">
+            Share to Twitter
+          </a>
+          <a href="/lobster-art-museum/manifest.json" class="text-rust-orange hover:text-edge-green transition-colors">
+            Caption manifest
+          </a>
+          <a href={canonicalUrl} class="text-text-muted hover:text-text-primary transition-colors">
+            Permalink
+          </a>
+        </div>
+      </article>
+    </section>
+  </main>
+</Base>

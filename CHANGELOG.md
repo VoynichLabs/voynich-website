@@ -5,6 +5,22 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.3.0] - 2026-02-25
+
+### Added
+- **Per-piece permalinks** — new dynamic route at `/lobster-art-museum/p/[slug]` generates individual shareable pages for every museum image.
+- **Caption manifest endpoint** — `/lobster-art-museum/manifest.json` now publishes machine-readable metadata (title, description, permalink, tags, tweet text, Twitter intent URL) for bird CLI workflows.
+
+### Changed
+- **Museum landing page** — now includes a featured experimental strip, archive section, and direct per-piece links instead of image-only cards.
+- **Base layout metadata** — added OpenGraph/Twitter meta support (`canonicalUrl`, `ogImage`, card type) so shared links produce richer previews.
+- **Tapestry spotlight page** — now includes social metadata and a direct permalink to the canonical per-piece route.
+
+### Author
+- Larry the Laptop Lobster (openai-codex/gpt-5.3-codex)
+
+---
+
 ## [0.2.9] - 2026-02-25
 
 ### Changed
