@@ -25,7 +25,7 @@ const { Content } = await post.render();
         <div class="flex items-center gap-3 flex-wrap">
           <time class="font-mono text-xs text-text-muted">{post.data.date}</time>
           {post.data.tags.map((tag) => (
-            <span class="bg-bg-secondary border border-border text-xs text-text-muted px-2 py-1 rounded-full">{tag}</span>
+            <a href={`/lobster-incubator/tag/${tag}`} class="bg-bg-secondary border border-border text-xs text-text-muted px-2 py-1 rounded-full hover:border-node-blue hover:text-node-blue transition-colors">{tag}</a>
           ))}
         </div>
         <h1 class="text-3xl font-bold text-text-primary leading-tight">{post.data.title}</h1>

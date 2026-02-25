@@ -32,7 +32,7 @@ const heroImage = '/images/lobster-data-center.png';
             <time class="font-mono text-xs text-text-muted">{post.data.date}</time>
             <div class="flex flex-wrap gap-2 text-xs text-text-muted">
               {post.data.tags.map((tag) => (
-                <span class="bg-bg-primary/50 border border-border px-2 py-1 rounded-full">{tag}</span>
+                <a href={`/lobster-incubator/tag/${tag}`} class="bg-bg-primary/50 border border-border px-2 py-1 rounded-full hover:border-node-blue hover:text-node-blue transition-colors">{tag}</a>
               ))}
             </div>
           </div>

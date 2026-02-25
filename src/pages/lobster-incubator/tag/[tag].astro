@@ -1,0 +1,61 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('lobster-blog');
+  const allTags = [...new Set(posts.flatMap((p) => p.data.tags))];
+  return allTags.map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: posts
+        .filter((p) => p.data.tags.includes(tag))
+        .sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()),
+    },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+---
+
+<Base title={`Field Notes: ${tag}`} description={`Lobster Incubator posts tagged "${tag}"`}>
+  <main class="max-w-3xl mx-auto px-4 py-16 space-y-8">
+    <nav class="text-sm">
+      <a href="/lobster-incubator/blog" class="text-node-blue hover:text-text-primary">← All Field Notes</a>
+    </nav>
+
+    <header>
+      <p class="font-mono text-xs text-edge-green uppercase tracking-widest mb-2">Tag</p>
+      <h1 class="text-2xl font-bold text-text-primary">#{tag}</h1>
+      <p class="text-sm text-text-muted mt-1">{posts.length} post{posts.length !== 1 ? 's' : ''}</p>
+    </header>
+
+    <section class="space-y-4">
+      {posts.map((post) => (
+        <article class="bg-bg-secondary border border-border rounded-lg p-5 space-y-2">
+          <div class="flex items-center justify-between">
+            <time class="font-mono text-xs text-text-muted">{post.data.date}</time>
+            <div class="flex gap-2 flex-wrap">
+              {post.data.tags.map((t) => (
+                <a
+                  href={`/lobster-incubator/tag/${t}`}
+                  class={`text-xs px-2 py-1 rounded-full border ${t === tag ? 'border-edge-green text-edge-green bg-edge-green/10' : 'border-border text-text-muted hover:border-node-blue hover:text-node-blue'}`}
+                >
+                  {t}
+                </a>
+              ))}
+            </div>
+          </div>
+          <h2 class="text-lg font-semibold text-text-primary">{post.data.title}</h2>
+          {post.data.summary && (
+            <p class="text-sm text-text-muted leading-relaxed">{post.data.summary}</p>
+          )}
+          <a href={`/lobster-incubator/${post.data.slug}`} class="text-node-blue text-sm hover:text-text-primary">
+            Read →
+          </a>
+        </article>
+      ))}
+    </section>
+  </main>
+</Base>
