@@ -9,6 +9,53 @@ const heroImage = '/images/lobster-data-center.png';
 const fieldNoteGrid = latestNotes;
 
 const galleryImages = Object.values(import.meta.glob('/generated/*.{png,jpg,jpeg,webp}', { eager: true, query: '?url', import: 'default' }));
+const galleryMetadata = {
+  'lobster-blue-workstation': {
+    batch: 'Batch 1',
+    style: 'cubo-futurist planner',
+    note: 'Blue lobsters orchestrating holographic DAG nodes at a crystalline terminal.'
+  },
+  'lobster-green-servers': {
+    batch: 'Batch 2',
+    style: 'synthwave swarm',
+    note: 'Green lobsters tending a living server cluster shaped like bioluminescent shells.'
+  },
+  'red-lobster-cluster': {
+    batch: 'Batch 2',
+    style: 'hyperreal coordination',
+    note: 'Red lobsters operate a synchronized terminal array while keeping the swarm accountable.'
+  },
+  'arc-grid': {
+    batch: 'Prelaunch',
+    style: 'experimental grid',
+    note: 'Early experimentation with lobster-encoded data visualizations.'
+  },
+  'hero-manuscript': {
+    batch: 'Builder',
+    style: 'arcane manuscript',
+    note: 'Handwritten notes and fine lines paying homage to LODA-style documentation.'
+  },
+  'lab-openrouter-test': {
+    batch: 'Lab Test',
+    style: 'techne experiment',
+    note: 'Testing the OpenRouter image pipeline with lobster-focused prompts.'
+  },
+  'lab-test-asset': {
+    batch: 'Lab Test',
+    style: 'probe asset',
+    note: 'Placeholder lobster asset capturing the raw energy before refining styles.'
+  },
+  'lobster-swarm': {
+    batch: 'Batch 3',
+    style: 'automaton swarm',
+    note: 'Patterned lobsters as living automaton cells moving through planned sequences.'
+  },
+  'loda-mine': {
+    batch: 'Batch 3',
+    style: 'mathematical mining',
+    note: 'Lobsters as miners chipping away at numerical deposits in the LODA mine.'
+  }
+};
 const galleryEntries = galleryImages.map((src) => {
   const filename = src.split('/').pop()?.replace(/\.(png|jpe?g|webp)$/i, '') ?? '';
   const formattedTitle = filename
@@ -18,9 +65,15 @@ const galleryEntries = galleryImages.map((src) => {
         .filter(Boolean)
         .join(' ')
     : 'Lobster Artifact';
+  const metadata = galleryMetadata[filename] ?? {
+    batch: 'Batch ?',
+    style: 'mixed experimental',
+    note: ''
+  };
   return {
     src,
     title: formattedTitle || 'Lobster Artifact',
+    ...metadata
   };
 });
 ---
@@ -191,7 +244,11 @@ const galleryEntries = galleryImages.map((src) => {
           {galleryEntries.map((entry) => (
             <figure class="bg-bg-secondary border border-border rounded-lg overflow-hidden" key={entry.src}>
               <img src={entry.src} alt={entry.title} class="w-full h-48 object-cover" loading="lazy" />
-              <figcaption class="px-3 py-2 text-xs text-text-muted">{entry.title}</figcaption>
+              <figcaption class="px-3 py-2 text-xs text-text-muted">
+                <div class="font-semibold text-text-primary text-sm">{entry.title}</div>
+                <div class="text-[10px] uppercase tracking-[0.3em] text-edge-green/70">{entry.batch} · {entry.style}</div>
+                {entry.note && <p class="text-[10px] text-text-muted mt-1">{entry.note}</p>}
+              </figcaption>
             </figure>
           ))}
         </div>
