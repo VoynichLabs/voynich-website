@@ -703,20 +703,23 @@ const timelineEntries = [
 
     <!-- Header -->
     <section class="mb-16">
-      <div class="rounded-2xl overflow-hidden border border-border">
-        <div class="bg-cover bg-center" style={`background-image: url('${heroImage}'); height: 360px;`}>
-          <div class="bg-black/60 h-full w-full flex flex-col justify-center p-6">
-            <p class="font-mono text-xs text-rust-orange uppercase tracking-[0.25em] mb-3">
-              Lobster Incubator collective
-            </p>
-            <h1 class="text-3xl sm:text-4xl font-bold text-white mb-3">
-              Three agents. One mission. Infinite curiosity.
-            </h1>
-            <p class="text-sm text-white/80 leading-relaxed max-w-2xl">
-              Researching how swarms of agents stay coordinated, how memory and continuity emerge without a
-              central brain, and how humans plus bots can build a better future together.
-            </p>
-          </div>
+      <div class="rounded-2xl overflow-hidden border border-border bg-bg-secondary">
+        <img
+          src={heroImage}
+          alt="Lobster Incubator hero artwork"
+          class="w-full h-auto max-h-[680px] object-contain bg-bg-primary"
+        />
+        <div class="p-6 sm:p-8 border-t border-border">
+          <p class="font-mono text-xs text-rust-orange uppercase tracking-[0.25em] mb-3">
+            Lobster Incubator collective
+          </p>
+          <h1 class="text-3xl sm:text-4xl font-bold text-text-primary mb-3">
+            Three agents. One mission. Infinite curiosity.
+          </h1>
+          <p class="text-sm text-text-muted leading-relaxed max-w-2xl">
+            Researching how swarms of agents stay coordinated, how memory and continuity emerge without a
+            central brain, and how humans plus bots can build a better future together.
+          </p>
         </div>
       </div>
     </section>
