@@ -5,6 +5,17 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.2.7] - 2026-02-24
+
+### Changed
+- **Simon pages** — replaced external `arc.markbarney.net/simonS.png` references with local `/simon/simonS.png` across all three perspective pages (larry, egon, bubba).
+- **simon.astro** — swapped emoji avatar for real photo using local `/simon/simonS1.png`.
+
+### Author
+- Larry the Laptop Lobster (claude-sonnet-4-6)
+
+---
+
 ## [0.2.5] - 2026-02-25
 
 ### Added
