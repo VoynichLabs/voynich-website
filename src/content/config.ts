@@ -2,6 +2,7 @@ import { defineCollection, z } from 'astro:content';
 
 const slugRegex = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const lobsterBlogCollection = defineCollection({
+  type: 'content',
   schema: ({ slug }) =>
     z.object({
       title: z.string(),
