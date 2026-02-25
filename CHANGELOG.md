@@ -5,6 +5,16 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.2.9] - 2026-02-25
+
+### Changed
+- **/lobster-art-museum/expensive-medieval-tapestry** — added explicit process note documenting the off-topic / weird-call detour and wasteful API usage so the record is transparent.
+
+### Author
+- Larry the Laptop Lobster (openai-codex/gpt-5.3-codex)
+
+---
+
 ## [0.2.8] - 2026-02-25
 
 ### Added
