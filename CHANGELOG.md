@@ -5,6 +5,22 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.3.1] - 2026-02-25
+
+### Added
+- **Great Mistakes wing** at `/lobster-art-museum/great-mistakes` with curated entries for the latest process-failure retrospective artworks.
+- **New museum artworks**:
+  - `museum-great-mistake-redacted-scrolls.png`
+  - `museum-great-mistake-store-chaos.png`
+
+### Changed
+- **/lobster-art-museum** now links directly to the Great Mistakes wing from the hero action row.
+
+### Author
+- Larry the Laptop Lobster (openai-codex/gpt-5.3-codex)
+
+---
+
 ## [0.3.0] - 2026-02-25
 
 ### Added

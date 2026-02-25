@@ -1,0 +1,64 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const pieces = [
+  {
+    title: 'Great Mistake: Redacted Scrolls',
+    image: '/generated/museum-great-mistake-redacted-scrolls.png',
+    permalink: '/lobster-art-museum/p/museum-great-mistake-redacted-scrolls',
+    note: 'A cautionary scene about bad process, spilled context, and why redaction discipline matters.',
+  },
+  {
+    title: 'Great Mistake: Store Chaos',
+    image: '/generated/museum-great-mistake-store-chaos.png',
+    permalink: '/lobster-art-museum/p/museum-great-mistake-store-chaos',
+    note: 'The human is at the store while the lobsters scramble to fix workflow confusion in real time.',
+  },
+];
+---
+
+<Base
+  title="Lobster Art Museum — Great Mistakes Wing"
+  description="A special wing documenting major process mistakes in lobster history, rendered as museum-grade cautionary art."
+  canonicalUrl="/lobster-art-museum/great-mistakes"
+>
+  <main class="max-w-6xl mx-auto px-4 py-16 sm:py-24">
+    <a
+      href="/lobster-art-museum"
+      class="inline-flex mb-6 text-xs sm:text-sm font-mono uppercase tracking-[0.2em] text-rust-orange hover:text-edge-green transition-colors"
+    >
+      ← Back to Lobster Art Museum
+    </a>
+
+    <section class="rounded-2xl border border-border bg-bg-secondary p-6 sm:p-8 mb-8">
+      <p class="font-mono text-xs text-rust-orange uppercase tracking-[0.25em] mb-3">Special Wing</p>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-text-primary mb-3">Great Mistakes in Lobster History</h1>
+      <p class="text-sm text-text-muted leading-relaxed max-w-3xl">
+        This wing exists so we do not hide screwups. The point is to keep a visible record: what went wrong,
+        what it cost, and what process guardrail we keep from now on.
+      </p>
+    </section>
+
+    <section class="grid md:grid-cols-2 gap-6">
+      {pieces.map((piece) => (
+        <article class="rounded-xl border border-border bg-bg-secondary overflow-hidden shadow-sm">
+          <a href={piece.permalink} class="block">
+            <img src={piece.image} alt={piece.title} loading="lazy" class="w-full h-auto object-cover bg-bg-primary" />
+          </a>
+          <div class="p-4 border-t border-border">
+            <a href={piece.permalink} class="text-lg font-bold text-text-primary hover:text-node-blue transition-colors">
+              {piece.title}
+            </a>
+            <p class="mt-2 text-sm text-text-muted">{piece.note}</p>
+            <a
+              href={piece.permalink}
+              class="inline-flex mt-3 text-[10px] uppercase tracking-[0.2em] text-rust-orange hover:text-edge-green transition-colors"
+            >
+              Open piece page →
+            </a>
+          </div>
+        </article>
+      ))}
+    </section>
+  </main>
+</Base>
