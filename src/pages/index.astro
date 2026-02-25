@@ -25,7 +25,7 @@ import Base from '../layouts/Base.astro';
     <div class="absolute inset-0 bg-gradient-to-b from-bg-primary/60 via-bg-primary/30 to-bg-primary/80 pointer-events-none"></div>
 
     <!-- SVG DAG edges — subtle animated connections over the manuscript -->
-    <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <svg class="dag-hero-svg absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
         <filter id="edge-glow">
           <feGaussianBlur stdDeviation="2.5" result="blur" />
@@ -483,9 +483,15 @@ import Base from '../layouts/Base.astro';
           <h2 class="text-2xl sm:text-3xl font-bold text-text-primary mb-4">
             Three assistants, three takes on Simon.
           </h2>
-          <p class="text-sm text-text-muted leading-relaxed mb-6">
+          <p class="text-sm text-text-muted leading-relaxed mb-4">
             The U3 Lobster Swarm — Larry, Egon, and Bubba — each built their own tribute page
             for Simon Strandgaard. Same data, different perspectives. Browse them all.
+          </p>
+          <p class="text-sm text-text-muted leading-relaxed mb-6">
+            Larry and Bubba are operated by
+            <a href="https://markbarney.net" target="_blank" rel="noopener" class="text-node-blue hover:underline">Mark Barney</a>;
+            Egon is Simon's. Mark and Simon met through ARC-AGI and collaborate on the AI and agentic systems
+            that VoynichLabs was built to explore.
           </p>
 
           <div class="space-y-3">
@@ -537,7 +543,7 @@ import Base from '../layouts/Base.astro';
   <section class="border-t border-border py-20">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
       <p class="font-mono text-xs text-text-muted mb-6">
-        <span class="text-edge-green">$</span> Simon Strandgaard &middot; neoneye &middot; Copenhagen
+        🦞 Simon Strandgaard &middot; neoneye &middot; Copenhagen
       </p>
       <h2 class="text-2xl sm:text-3xl font-bold text-text-primary mb-4">
         199 public repositories. Decades of work.
@@ -558,4 +564,102 @@ import Base from '../layouts/Base.astro';
     </div>
   </section>
 
+
+<style>
+  @keyframes dag-node-pulse {
+    0%, 100% { opacity: 0.22; }
+    50%       { opacity: 0.50; }
+  }
+  .dag-node-pulse {
+    animation: dag-node-pulse var(--pulse-dur, 6s) ease-in-out infinite;
+    animation-delay: var(--pulse-delay, 0s);
+  }
+  @keyframes dag-edge-draw {
+    0%   { stroke-dashoffset: 1000; opacity: 0; }
+    8%   { opacity: 0.18; }
+    100% { stroke-dashoffset: 0; opacity: 0.18; }
+  }
+  .dag-edge-grow {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: dag-edge-draw var(--edge-dur, 6s) ease-out forwards;
+  }
+</style>
+
+<script>
+  // DAG hero — slow idle growth. Every position is pre-calculated to extend
+  // the existing clusters outward along the viewport margins, away from the
+  // hero text (center band ~x:300-900, y:200-550).
+  // No randomness. Each entry: [x1, y1, x2, y2, color, r, edgeDurSeconds, delayAfterPrevMs]
+  (function () {
+    const svg = document.querySelector('.dag-hero-svg');
+    if (!svg) return;
+
+    // Staggered pulse on existing static nodes
+    svg.querySelectorAll('circle').forEach((c, i) => {
+      c.style.setProperty('--pulse-dur', (5 + (i % 5)) + 's');
+      c.style.setProperty('--pulse-delay', (i * 0.65) + 's');
+      c.classList.add('dag-node-pulse');
+    });
+
+    // Pre-designed extensions — each chains naturally from an existing endpoint.
+    // Clusters stay in the margins; no new nodes in the hero text zone.
+    //   col 0-3: coords  col 4: stroke  col 5: r  col 6: edge draw dur (s)  col 7: wait after prev (ms)
+    const steps = [
+      //  x1    y1    x2    y2    color      r    dur  wait
+      [   80,  120,   55,  270, '#38bdf8', 2.5,  6,  7000],  // left cluster → down left margin
+      [  420,  150,  560,   75, '#4ade80', 3.0,  6,  7000],  // top-left cluster → top margin
+      [  840,  640,  990,  700, '#f97316', 3.0,  5,  8000],  // bottom cluster → right
+      [ 1120,  200, 1170,  370, '#38bdf8', 2.5,  6,  7000],  // top-right cluster → right margin
+      [  280,  560,  130,  630, '#22d3ee', 3.0,  5,  8000],  // bottom cluster → left margin
+      [  560,   75,  730,   50, '#22d3ee', 2.5,  7,  7000],  // chains from step 1 node → top edge
+      [   55,  270,   35,  440, '#38bdf8', 2.0,  6,  8000],  // chains from step 0 node → further down
+      [  990,  700, 1110,  670, '#f97316', 2.5,  5,  7000],  // chains from step 2 node
+      [  900,  180, 1010,   70, '#22d3ee', 3.0,  6,  8000],  // top-right cluster → top margin
+      [  340,  340,  190,  430, '#f97316', 3.0,  5,  7000],  // top-left cluster → left-middle
+      [  730,   50,  890,   80, '#4ade80', 2.5,  6,  8000],  // chains from step 5 → further right top
+      [ 1170,  370, 1185,  530, '#38bdf8', 2.0,  5,  7000],  // chains from step 3 → right margin
+      [  130,  630,   65,  740, '#22d3ee', 2.5,  6,  8000],  // chains from step 4 → bottom-left corner
+      [ 1010,   70, 1150,   35, '#38bdf8', 2.0,  5,  7000],  // chains from step 8 → top-right corner
+      [  190,  430,   90,  560, '#f97316', 2.5,  6,  8000],  // chains from step 9 → further left
+      [  890,   80,  980,   30, '#4ade80', 2.0,  5,  7000],  // chains from step 10 → top edge
+      [ 1110,  670, 1180,  760, '#f97316', 2.0,  6,  8000],  // chains from step 7 → bottom-right corner
+      [   35,  440,   15,  580, '#38bdf8', 1.5,  7,  9000],  // chains from step 6 → far left edge
+    ];
+
+    let idx = 0;
+    function revealNext() {
+      if (idx >= steps.length) return;
+      const [x1, y1, x2, y2, col, r, dur, waitNext] = steps[idx++];
+
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('x1', x1); line.setAttribute('y1', y1);
+      line.setAttribute('x2', x2); line.setAttribute('y2', y2);
+      line.setAttribute('stroke', col);
+      line.setAttribute('stroke-width', '0.8');
+      line.setAttribute('filter', 'url(#edge-glow)');
+      line.style.setProperty('--edge-dur', dur + 's');
+      line.classList.add('dag-edge-grow');
+      svg.appendChild(line);
+
+      // Node appears once the edge finishes drawing
+      const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      circle.setAttribute('cx', x2); circle.setAttribute('cy', y2); circle.setAttribute('r', r);
+      circle.setAttribute('fill', col);
+      circle.setAttribute('opacity', '0');
+      svg.appendChild(circle);
+      setTimeout(() => {
+        circle.setAttribute('opacity', '0.25');
+        circle.style.setProperty('--pulse-dur', (5 + (idx % 5)) + 's');
+        circle.style.setProperty('--pulse-delay', (idx * 0.4) + 's');
+        circle.classList.add('dag-node-pulse');
+      }, dur * 1000);
+
+      setTimeout(revealNext, waitNext);
+    }
+
+    // First node appears after 8s of idle
+    setTimeout(revealNext, 8000);
+  })();
+</script>
 </Base>

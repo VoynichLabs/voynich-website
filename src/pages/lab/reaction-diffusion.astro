@@ -1,0 +1,231 @@
+---
+// Author: EgonBot (claude-haiku-4-5-20251001)
+// Date: 2026-02-25
+// PURPOSE: Full-screen interactive Gray-Scott reaction-diffusion simulation
+// SRP/DRY check: Pass — self-contained canvas experience, no external deps
+import Base from '../../layouts/Base.astro';
+---
+
+<Base title="Reaction-Diffusion | Lab | VoynichLabs" description="Gray-Scott reaction-diffusion simulation — interactive Turing patterns.">
+  <style>
+    .lab-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      cursor: crosshair;
+    }
+    .back-link {
+      position: fixed;
+      top: 1.5rem;
+      left: 1.5rem;
+      z-index: 100;
+    }
+    .title-overlay {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      pointer-events: none;
+      opacity: 1;
+      transition: opacity 1s ease-out;
+      z-index: 50;
+    }
+    .title-overlay.fade {
+      opacity: 0;
+    }
+  </style>
+
+  <a href="/lab" class="back-link font-mono text-xs text-text-muted hover:text-edge-green">
+    ← back to /lab
+  </a>
+
+  <div class="title-overlay" id="title">
+    <h1 class="text-2xl font-bold text-text-primary mb-2">Reaction-Diffusion</h1>
+    <p class="text-sm text-text-muted">Gray-Scott model · Click to disturb</p>
+  </div>
+
+  <canvas id="canvas" class="lab-canvas"></canvas>
+
+  <div class="fixed bottom-4 left-4 font-mono text-xs text-text-muted z-50">
+    f=0.055 k=0.062 | click to disturb
+  </div>
+
+  <script>
+    // Gray-Scott Reaction-Diffusion
+    const canvas = document.getElementById('canvas') as HTMLCanvasElement;
+    const ctx = canvas.getContext('2d')!;
+    
+    // Resize canvas to full screen
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+    
+    // Simulation parameters
+    const width = 512;
+    const height = 512;
+    const scale = Math.min(canvas.width / width, canvas.height / height);
+    const offsetX = (canvas.width - width * scale) / 2;
+    const offsetY = (canvas.height - height * scale) / 2;
+    
+    // Gray-Scott parameters (coral/spots)
+    const f = 0.055;
+    const k = 0.062;
+    const dA = 1.0;
+    const dB = 0.5;
+    const dt = 1.0;
+    
+    // Grid buffers
+    const grid: { A: number; B: number }[] = [];
+    const next: { A: number; B: number }[] = [];
+    for (let i = 0; i < width * height; i++) {
+      grid.push({ A: 1, B: 0 });
+      next.push({ A: 1, B: 0 });
+    }
+    
+    // Initialize with some B in the center
+    function seed(x: number, y: number, r: number) {
+      for (let i = -r; i <= r; i++) {
+        for (let j = -r; j <= r; j++) {
+          if (i*i + j*j <= r*r) {
+            const idx = (y + j) * width + (x + i);
+            if (idx >= 0 && idx < width * height) {
+              grid[idx].B = 1;
+            }
+          }
+        }
+      }
+    }
+    
+    // Seed initial pattern
+    seed(256, 256, 20);
+    seed(200, 200, 10);
+    seed(312, 312, 10);
+    
+    // Laplace convolution
+    function laplace(idx: number, component: 'A' | 'B'): number {
+      const x = idx % width;
+      const y = Math.floor(idx / width);
+      
+      let sum = 0;
+      const c = component === 'A' ? 0.2 : 0.05;
+      const adj = component === 'A' ? 1.0 : 0.2;
+      
+      // Center
+      sum += grid[idx][component] * -1;
+      
+      // Adjacent
+      if (x > 0) sum += grid[idx - 1][component] * adj;
+      if (x < width - 1) sum += grid[idx + 1][component] * adj;
+      if (y > 0) sum += grid[idx - width][component] * adj;
+      if (y < height - 1) sum += grid[idx + width][component] * adj;
+      
+      // Diagonals
+      if (x > 0 && y > 0) sum += grid[idx - width - 1][component] * c;
+      if (x < width - 1 && y > 0) sum += grid[idx - width + 1][component] * c;
+      if (x > 0 && y < height - 1) sum += grid[idx + width - 1][component] * c;
+      if (x < width - 1 && y < height - 1) sum += grid[idx + width + 1][component] * c;
+      
+      return sum;
+    }
+    
+    // Update simulation
+    function update() {
+      for (let i = 0; i < width * height; i++) {
+        const a = grid[i].A;
+        const b = grid[i].B;
+        const reaction = a * b * b;
+        
+        const lapA = laplace(i, 'A');
+        const lapB = laplace(i, 'B');
+        
+        next[i].A = a + (dA * lapA - reaction + f * (1 - a)) * dt;
+        next[i].B = b + (dB * lapB + reaction - (k + f) * b) * dt;
+        
+        // Clamp values
+        next[i].A = Math.max(0, Math.min(1, next[i].A));
+        next[i].B = Math.max(0, Math.min(1, next[i].B));
+      }
+      
+      // Swap buffers
+      for (let i = 0; i < width * height; i++) {
+        grid[i].A = next[i].A;
+        grid[i].B = next[i].B;
+      }
+    }
+    
+    // Render to canvas
+    function render() {
+      const imageData = ctx.createImageData(width, height);
+      const data = imageData.data;
+      
+      for (let i = 0; i < width * height; i++) {
+        const b = grid[i].B;
+        const idx = i * 4;
+        
+        // Color mapping: dark navy → cyan → white
+        const r = Math.floor(b * 30);
+        const g = Math.floor(b * 180);
+        const blue = Math.floor(b * 220);
+        
+        data[idx] = r;
+        data[idx + 1] = g;
+        data[idx + 2] = blue;
+        data[idx + 3] = 255;
+      }
+      
+      // Draw scaled
+      ctx.imageSmoothingEnabled = false;
+      ctx.putImageData(imageData, offsetX, offsetY, width, height, 0, 0, canvas.width, canvas.height);
+    }
+    
+    // Animation loop
+    function loop() {
+      // Multiple simulation steps per frame
+      for (let i = 0; i < 12; i++) {
+        update();
+      }
+      render();
+      requestAnimationFrame(loop);
+    }
+    
+    // Mouse/touch interaction
+    function disturb(e: MouseEvent | TouchEvent) {
+      let clientX: number, clientY: number;
+      if ('touches' in e) {
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
+      } else {
+        clientX = e.clientX;
+        clientY = e.clientY;
+      }
+      
+      const x = Math.floor((clientX - offsetX) / scale);
+      const y = Math.floor((clientY - offsetY) / scale);
+      seed(x, y, 15);
+    }
+    
+    canvas.addEventListener('mousedown', disturb);
+    canvas.addEventListener('mousemove', (e) => {
+      if (e.buttons === 1) disturb(e);
+    });
+    canvas.addEventListener('touchstart', disturb);
+    canvas.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+      disturb(e);
+    });
+    
+    // Fade title after 3 seconds
+    setTimeout(() => {
+      document.getElementById('title')?.classList.add('fade');
+    }, 3000);
+    
+    // Start
+    loop();
+  </script>
+</Base>

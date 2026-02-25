@@ -1,6 +1,6 @@
 ---
 // Author: Larry the Laptop Lobster (claude-sonnet-4-6) + U3 Lobster Swarm
-// Date: 2026-02-23
+// Date: 2026-02-24
 // PURPOSE: Default Simon Strandgaard profile page. Biographical narrative, projects, and links.
 // SRP/DRY check: Pass - single responsibility per page, shared layout reused
 import Base from '../layouts/Base.astro';
@@ -18,9 +18,11 @@ import Base from '../layouts/Base.astro';
     <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
       <div class="flex flex-col sm:flex-row items-start sm:items-center gap-8">
         <div class="flex-shrink-0">
-          <div class="w-28 h-28 rounded-3xl bg-deep border-2 border-accent/40 flex items-center justify-center text-5xl shadow-lg shadow-accent/10">
-            🧑‍💻
-          </div>
+          <img
+            src="/simon/simonS1.png"
+            alt="Simon Strandgaard"
+            class="w-28 h-28 rounded-3xl object-cover border-2 border-accent/40 shadow-lg shadow-accent/10"
+          />
         </div>
         <div>
           <p class="text-sm font-mono text-lobster uppercase tracking-widest mb-2">CEO / CTO · VoynichLabs</p>

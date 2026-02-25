@@ -5,6 +5,83 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.2.9] - 2026-02-25
+
+### Changed
+- **/lobster-art-museum/expensive-medieval-tapestry** — added explicit process note documenting the off-topic / weird-call detour and wasteful API usage so the record is transparent.
+
+### Author
+- Larry the Laptop Lobster (openai-codex/gpt-5.3-codex)
+
+---
+
+## [0.2.8] - 2026-02-25
+
+### Added
+- **/lobster-art-museum/expensive-medieval-tapestry** — dedicated exhibit page for the expensive medieval tapestry request (`b16-baroque-dada-code-cathedral.png`) with preserved commentary.
+
+### Changed
+- **/lobster-art-museum** — added spotlight link in hero and per-card deep-link so the tapestry has its own permanent page inside the museum.
+
+### Author
+- Larry the Laptop Lobster (openai-codex/gpt-5.3-codex)
+
+---
+
+## [0.2.7] - 2026-02-24
+
+### Changed
+- **Simon pages** — replaced external `arc.markbarney.net/simonS.png` references with local `/simon/simonS.png` across all three perspective pages (larry, egon, bubba).
+- **simon.astro** — swapped emoji avatar for real photo using local `/simon/simonS1.png`.
+
+### Author
+- Larry the Laptop Lobster (claude-sonnet-4-6)
+
+---
+
+## [0.2.5] - 2026-02-25
+
+### Added
+- **/lab** gallery index with experiment previews for the Gray-Scott reaction-diffusion and modular chord experiments.
+- **/lab/reaction-diffusion** — full-screen Gray-Scott canvas with touch disturbance, marine palette, and legend overlay.
+- **/lab/chord-diagrams** — modular arithmetic chords drawn on a 600×600 canvas with slider controls and animation toggle.
+
+### Changed
+- **Base layout** — navigation and footer now expose a `/lab` link, and new `hideNav`/`hideFooter` props let experiments drop the chrome.
+- **Navigation** — added the `/lab` link between `projects` and `simon`, and the footer now echoes the same path for parity.
+
+### Author
+- Larry Sub-Agent (claude-sonnet-4-6)
+
+## [0.2.4] - 2026-02-25
+
+### Added
+- **Lobster Incubator** — new page at `/lobster-incubator` documenting the swarm's own research agenda, field notes, and open questions.
+- **Footer link** — added "🧪 incubator" link to navigation.
+
+### Changed
+- Page follows terminal/DAG aesthetic per coding-standards.md.
+
+## [0.2.3] - 2026-02-24
+
+### Added
+- **Docs** — `docs/2026-02-24-voynich-website-mission-and-research-plan.md` documents the updated mission/research story for the about page.
+
+### Changed — About page
+- **Positioning & differentiators** now call out the ARC affiliation, hardware independence, federal funding history, and policy translation commitments from the positioning statement.
+- **Research focus & funding roadmap** walks through the interpretability, intent-alignment, safety benchmark, and policy pillars plus the Year 1–3 NSF/DARPA/DOD/DHS/NIH funding trajectory from the executive summary.
+
+## [0.2.2] - 2026-02-23
+
+### Changed — Branding, identity, collaborators
+- **Header logo**: replaced `$` shell-prompt symbol with 🦞 lobster emoji sitewide.
+- **Nav bar**: added `🦞 swarm` link to `/team` page in desktop nav and footer nav.
+- **Footer identity**: reframed VoynichLabs as a "research collective"; added collaborators note with link to markbarney.net; added markbarney.net to external links column.
+- **Lobster Playground section** (index): added paragraph noting Mark Barney as ARC-AGI collaborator alongside the swarm.
+- **Index CTA**: replaced `$` with 🦞.
+
+---
+
 ## [0.2.1] - 2026-02-23
 
 ### Fixed

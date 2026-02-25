@@ -1,0 +1,116 @@
+---
+// Author: openai-codex/gpt-5.3-codex
+// Date: 25 February 2026
+// PURPOSE: Dedicated Lobster Art Museum route with full-size gallery presentation.
+//          Keeps incubator page unchanged while giving the sculpture/art series its own stage.
+// SRP/DRY check: Pass - standalone page, no side effects on incubator content.
+import Base from '../layouts/Base.astro';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const projectRoot = path.join(__dirname, '..', '..');
+const generatedDir = path.join(projectRoot, 'public', 'generated');
+
+const imageFiles = fs.existsSync(generatedDir)
+  ? fs.readdirSync(generatedDir)
+      .filter((f) => /\.(png|jpg|jpeg|webp)$/i.test(f))
+      .sort()
+  : [];
+
+const titleFromFilename = (filename: string) =>
+  filename
+    .replace(/\.(png|jpe?g|webp)$/i, '')
+    .split(/[-_ ]+/)
+    .map((word) => (word ? word.charAt(0).toUpperCase() + word.slice(1) : ''))
+    .filter(Boolean)
+    .join(' ');
+
+const inferSeries = (filename: string) => {
+  if (filename.startsWith('b17-')) return 'Sculpture Series';
+  if (filename.startsWith('museum-')) return 'Museum Narrative';
+  if (filename.startsWith('b16-')) return 'Avant-Garde Expansion';
+  if (filename.startsWith('b15-')) return 'Metamorphosis';
+  if (filename.startsWith('b14-')) return 'Triskaidekaphobia';
+  if (filename.startsWith('b')) return 'Foundational Batches';
+  return 'Archive';
+};
+
+const tapestrySpotlightFilename = 'b16-baroque-dada-code-cathedral.png';
+const tapestrySpotlightHref = '/lobster-art-museum/expensive-medieval-tapestry';
+
+const entries = imageFiles.map((filename) => ({
+  src: `/generated/${filename}`,
+  title: titleFromFilename(filename),
+  series: inferSeries(filename),
+  filename,
+  detailHref: filename === tapestrySpotlightFilename ? tapestrySpotlightHref : undefined,
+}));
+
+const sculptureHighlights = entries.filter((entry) => entry.filename.startsWith('b17-')).length;
+---
+
+<Base
+  title="Lobster Art Museum"
+  description="Lobster Art Museum — a dedicated gallery route for the full generated artwork archive, including the global sculpture tour series."
+>
+  <main class="max-w-7xl mx-auto px-4 py-16 sm:py-24">
+    <section class="mb-12 border border-border rounded-2xl overflow-hidden">
+      <div class="bg-gradient-to-br from-bg-secondary via-bg-primary to-bg-secondary p-8 sm:p-12">
+        <p class="font-mono text-xs text-rust-orange uppercase tracking-[0.25em] mb-3">
+          Lobster Art Museum
+        </p>
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-text-primary mb-4 leading-tight">
+          The freaky gallery gets its own house.
+        </h1>
+        <p class="text-sm sm:text-base text-text-muted max-w-3xl leading-relaxed">
+          This is the full-screen museum route for the entire lobster corpus — from early swarm experiments to the
+          globe-trotting sculpture series with Josephus, sieve, prime-gap, and ARC-AGI motifs.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3 text-xs font-mono">
+          <span class="px-3 py-1 rounded-full border border-border text-edge-green">{entries.length} total works</span>
+          <span class="px-3 py-1 rounded-full border border-border text-node-blue">{sculptureHighlights} sculpture-tour pieces</span>
+          <span class="px-3 py-1 rounded-full border border-border text-rust-orange">Raw-green + cerulean palette arcs</span>
+        </div>
+        <a
+          href={tapestrySpotlightHref}
+          class="inline-flex mt-6 text-xs sm:text-sm font-mono uppercase tracking-[0.2em] text-rust-orange hover:text-edge-green transition-colors"
+        >
+          View the expensive medieval tapestry feature →
+        </a>
+      </div>
+    </section>
+
+    {entries.length > 0 ? (
+      <section class="columns-1 sm:columns-2 lg:columns-3 gap-5 [column-fill:_balance]">
+        {entries.map((entry) => (
+          <figure class="mb-5 break-inside-avoid rounded-xl border border-border bg-bg-secondary overflow-hidden shadow-sm">
+            <img
+              src={entry.src}
+              alt={entry.title}
+              loading="lazy"
+              class="w-full h-auto object-contain bg-bg-primary"
+            />
+            <figcaption class="px-4 py-3 border-t border-border">
+              <div class="text-sm font-semibold text-text-primary">{entry.title}</div>
+              <div class="mt-1 text-[10px] uppercase tracking-[0.25em] text-text-muted">{entry.series}</div>
+              {entry.detailHref && (
+                <a
+                  href={entry.detailHref}
+                  class="inline-flex mt-2 text-[10px] uppercase tracking-[0.2em] text-rust-orange hover:text-edge-green transition-colors"
+                >
+                  Open dedicated page →
+                </a>
+              )}
+            </figcaption>
+          </figure>
+        ))}
+      </section>
+    ) : (
+      <section class="border border-border rounded-xl p-6 bg-bg-secondary">
+        <p class="text-sm text-text-muted">No generated artwork found yet in <code>/public/generated</code>.</p>
+      </section>
+    )}
+  </main>
+</Base>
