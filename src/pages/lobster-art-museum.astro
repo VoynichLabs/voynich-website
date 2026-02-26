@@ -12,7 +12,20 @@ const featuredEntries = getFeaturedEntries(entries);
 const archiveEntries = getArchiveEntries(entries);
 const sculptureHighlights = entries.filter((entry) => entry.filename.startsWith('b17-')).length;
 
-const stripeDonationUrl = import.meta.env.PUBLIC_LOBSTER_STRIPE_DONATION_URL || 'https://home.planexe.org/account';
+const stripeDonationBaseUrl = import.meta.env.PUBLIC_LOBSTER_STRIPE_DONATION_URL || 'https://home.planexe.org/account';
+
+const buildStripeDonationUrl = (baseUrl: string): string => {
+  try {
+    const url = new URL(baseUrl);
+    if (!url.searchParams.has('source')) url.searchParams.set('source', 'lobster_museum');
+    if (!url.searchParams.has('tier')) url.searchParams.set('tier', 'lobby');
+    return url.toString();
+  } catch {
+    return baseUrl;
+  }
+};
+
+const stripeDonationUrl = buildStripeDonationUrl(stripeDonationBaseUrl);
 const cryptoEthAddress = '0x99F25D90AA9671F425Ba3373FCB0940092901977';
 const cryptoSolAddress = '7rK7gwKYHHuXKeixfT2vRg4ABZ1uKFqUw5zBg19CjQEN';
 

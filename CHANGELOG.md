@@ -5,6 +5,16 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.3.3] - 2026-02-26
+
+### Changed
+- **Museum Stripe donation link** now auto-tags routing metadata in the URL (`source=lobster_museum`, `tier=lobby`) unless already present, so PlanExe can classify and route donations without extra frontend wiring.
+
+### Author
+- Larry the Laptop Lobster (openai-codex/gpt-5.3-codex)
+
+---
+
 ## [0.3.2] - 2026-02-26
 
 ### Added
