@@ -22,15 +22,15 @@ const IMAGE_EXT_RE = /\.(png|jpe?g|webp)$/i;
 const GENERATED_DIR = path.join(process.cwd(), 'public', 'generated');
 
 const FEATURED_FILENAMES = new Set([
-  'b9-glitch-art-crustacean.png',
-  'b9-abstract-expressionist-swarm.png',
-  'b9-dada-lobster-readymade.png',
   'b16-baroque-dada-code-cathedral.png',
+  'b12-rococo-lobster-throne.png',
+  'b10-photorealistic-circuit.png',
+  'b17-sculpture-tour-monument.png',
+  'museum-liquid-metal-lobster-rise.png',
+  'museum-lobster-treasure-chaos.png',
+  'voynich-python-scriptorium-01.png',
+  'the-bronze-sovereign-monument.png',
   'b16-pollock-lobster-action.png',
-  'b16-expressionist-gallery-rain.png',
-  'museum-hallucination-storm.png',
-  'museum-proposal-graveyard.png',
-  'museum-planetary-soup.png',
 ]);
 
 const DEFAULT_TAGS = ['#LobsterArt', '#VoynichLabs', '#GenerativeArt'];
