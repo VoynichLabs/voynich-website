@@ -1,0 +1,15 @@
+{
+  "files": {
+    "logs/2026-02-26-museum-rebuild-task.md": [
+      88,
+      0,
+      0
+    ]
+  },
+  "totals": {
+    "instruction_tokens": 88,
+    "chatter_tokens": 0,
+    "general_tokens": 0,
+    "total_tokens": 88
+  }
+}
