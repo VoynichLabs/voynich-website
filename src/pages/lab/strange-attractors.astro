@@ -27,153 +27,152 @@ import Base from '../../layouts/Base.astro';
     const selector = document.getElementById('attractor-select');
     if (!canvasHolder || !selector) {
       console.warn('Strange attractors container missing');
-      return;
-    }
+    } else {
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setClearColor(0x01030b, 1);
+      renderer.autoClearColor = false;
+      renderer.autoClearDepth = false;
+      canvasHolder.appendChild(renderer.domElement);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setClearColor(0x01030b, 1);
-    renderer.autoClearColor = false;
-    renderer.autoClearDepth = false;
-    canvasHolder.appendChild(renderer.domElement);
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 1000);
+      camera.position.set(0, 0, 70);
+      camera.lookAt(0, 0, 0);
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 1000);
-    camera.position.set(0, 0, 70);
-    camera.lookAt(0, 0, 0);
+      const fadeScene = new THREE.Scene();
+      const fadeCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+      const fadeMesh = new THREE.Mesh(
+        new THREE.PlaneGeometry(2, 2),
+        new THREE.MeshBasicMaterial({ color: 0x01030b, transparent: true, opacity: 0.05, depthWrite: false })
+      );
+      fadeScene.add(fadeMesh);
 
-    const fadeScene = new THREE.Scene();
-    const fadeCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-    const fadeMesh = new THREE.Mesh(
-      new THREE.PlaneGeometry(2, 2),
-      new THREE.MeshBasicMaterial({ color: 0x01030b, transparent: true, opacity: 0.05, depthWrite: false })
-    );
-    fadeScene.add(fadeMesh);
+      const attractorFns = {
+        lorenz: (x, y, z, out) => {
+          const sigma = 10;
+          const rho = 28;
+          const beta = 8 / 3;
+          out[0] = sigma * (y - x);
+          out[1] = x * (rho - z) - y;
+          out[2] = x * y - beta * z;
+        },
+        thomas: (x, y, z, out) => {
+          const b = 0.19;
+          out[0] = Math.sin(y) - b * x;
+          out[1] = Math.sin(z) - b * y;
+          out[2] = Math.sin(x) - b * z;
+        },
+        rossler: (x, y, z, out) => {
+          const a = 0.2;
+          const b = 0.2;
+          const c = 5.7;
+          out[0] = -y - z;
+          out[1] = x + a * y;
+          out[2] = b + z * (x - c);
+        },
+      };
 
-    const attractorFns = {
-      lorenz: (x, y, z, out) => {
-        const sigma = 10;
-        const rho = 28;
-        const beta = 8 / 3;
-        out[0] = sigma * (y - x);
-        out[1] = x * (rho - z) - y;
-        out[2] = x * y - beta * z;
-      },
-      thomas: (x, y, z, out) => {
-        const b = 0.19;
-        out[0] = Math.sin(y) - b * x;
-        out[1] = Math.sin(z) - b * y;
-        out[2] = Math.sin(x) - b * z;
-      },
-      rossler: (x, y, z, out) => {
-        const a = 0.2;
-        const b = 0.2;
-        const c = 5.7;
-        out[0] = -y - z;
-        out[1] = x + a * y;
-        out[2] = b + z * (x - c);
-      },
-    };
+      const particleCount = 50000;
+      const positions = new Float32Array(particleCount * 3);
+      const colors = new Float32Array(particleCount * 3);
+      const state = new Float32Array(particleCount * 3);
+      const derivative = new Float32Array(3);
+      const geometry = new THREE.BufferGeometry();
+      geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+      geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
 
-    const particleCount = 50000;
-    const positions = new Float32Array(particleCount * 3);
-    const colors = new Float32Array(particleCount * 3);
-    const state = new Float32Array(particleCount * 3);
-    const derivative = new Float32Array(3);
-    const geometry = new THREE.BufferGeometry();
-    geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-    geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      const material = new THREE.PointsMaterial({
+        size: 0.045,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.95,
+      });
 
-    const material = new THREE.PointsMaterial({
-      size: 0.045,
-      vertexColors: true,
-      transparent: true,
-      opacity: 0.95,
-    });
+      const points = new THREE.Points(geometry, material);
+      scene.add(points);
 
-    const points = new THREE.Points(geometry, material);
-    scene.add(points);
+      const color = new THREE.Color();
+      let currentAttractor = 'lorenz';
+      const dt = 0.006;
+      const scale = 2.5;
 
-    const color = new THREE.Color();
-    let currentAttractor = 'lorenz';
-    const dt = 0.006;
-    const scale = 2.5;
+      const initializeParticles = () => {
+        for (let i = 0; i < particleCount; i++) {
+          const base = (Math.random() - 0.5) * 0.02;
+          const idx = i * 3;
+          state[idx] = base + 0.1;
+          state[idx + 1] = base + 0;
+          state[idx + 2] = base + 0;
+          positions[idx] = state[idx] * scale;
+          positions[idx + 1] = state[idx + 1] * scale;
+          positions[idx + 2] = state[idx + 2] * scale;
+          colors[idx] = 0.4;
+          colors[idx + 1] = 0.8;
+          colors[idx + 2] = 1;
+        }
+        geometry.attributes.position.needsUpdate = true;
+        geometry.attributes.color.needsUpdate = true;
+      };
 
-    const initializeParticles = () => {
-      for (let i = 0; i < particleCount; i++) {
-        const base = (Math.random() - 0.5) * 0.02;
-        const idx = i * 3;
-        state[idx] = base + 0.1;
-        state[idx + 1] = base + 0;
-        state[idx + 2] = base + 0;
-        positions[idx] = state[idx] * scale;
-        positions[idx + 1] = state[idx + 1] * scale;
-        positions[idx + 2] = state[idx + 2] * scale;
-        colors[idx] = 0.4;
-        colors[idx + 1] = 0.8;
-        colors[idx + 2] = 1;
-      }
-      geometry.attributes.position.needsUpdate = true;
-      geometry.attributes.color.needsUpdate = true;
-    };
+      const updateParticles = () => {
+        const attractor = attractorFns[currentAttractor];
+        for (let i = 0; i < particleCount; i++) {
+          const idx = i * 3;
+          let x = state[idx];
+          let y = state[idx + 1];
+          let z = state[idx + 2];
+          attractor(x, y, z, derivative);
+          const dx = derivative[0];
+          const dy = derivative[1];
+          const dz = derivative[2];
+          x += dx * dt;
+          y += dy * dt;
+          z += dz * dt;
+          state[idx] = x;
+          state[idx + 1] = y;
+          state[idx + 2] = z;
+          positions[idx] = x * scale;
+          positions[idx + 1] = y * scale;
+          positions[idx + 2] = z * scale;
+          const speed = Math.sqrt(dx * dx + dy * dy + dz * dz);
+          const intensity = Math.min(1, speed / 8);
+          const luminance = 0.25 + (1 - intensity) * 0.55;
+          color.setHSL(0.6, 1, luminance);
+          colors[idx] = color.r;
+          colors[idx + 1] = color.g;
+          colors[idx + 2] = color.b;
+        }
 
-    const updateParticles = () => {
-      const attractor = attractorFns[currentAttractor];
-      for (let i = 0; i < particleCount; i++) {
-        const idx = i * 3;
-        let x = state[idx];
-        let y = state[idx + 1];
-        let z = state[idx + 2];
-        attractor(x, y, z, derivative);
-        const dx = derivative[0];
-        const dy = derivative[1];
-        const dz = derivative[2];
-        x += dx * dt;
-        y += dy * dt;
-        z += dz * dt;
-        state[idx] = x;
-        state[idx + 1] = y;
-        state[idx + 2] = z;
-        positions[idx] = x * scale;
-        positions[idx + 1] = y * scale;
-        positions[idx + 2] = z * scale;
-        const speed = Math.sqrt(dx * dx + dy * dy + dz * dz);
-        const intensity = Math.min(1, speed / 8);
-        const luminance = 0.25 + (1 - intensity) * 0.55;
-        color.setHSL(0.6, 1, luminance);
-        colors[idx] = color.r;
-        colors[idx + 1] = color.g;
-        colors[idx + 2] = color.b;
-      }
+        geometry.attributes.position.needsUpdate = true;
+        geometry.attributes.color.needsUpdate = true;
+      };
 
-      geometry.attributes.position.needsUpdate = true;
-      geometry.attributes.color.needsUpdate = true;
-    };
+      const resize = () => {
+        const { width, height } = canvasHolder.getBoundingClientRect();
+        renderer.setSize(width, height);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+      };
 
-    const resize = () => {
-      const { width, height } = canvasHolder.getBoundingClientRect();
-      renderer.setSize(width, height);
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-    };
+      window.addEventListener('resize', resize);
+      selector.addEventListener('change', (event) => {
+        const value = event.target.value;
+        if (value === currentAttractor) return;
+        currentAttractor = value;
+        initializeParticles();
+      });
 
-    window.addEventListener('resize', resize);
-    selector.addEventListener('change', (event) => {
-      const value = event.target.value;
-      if (value === currentAttractor) return;
-      currentAttractor = value;
       initializeParticles();
-    });
+      resize();
 
-    initializeParticles();
-    resize();
+      const animate = () => {
+        requestAnimationFrame(animate);
+        updateParticles();
+        renderer.render(fadeScene, fadeCamera);
+        renderer.render(scene, camera);
+      };
 
-    const animate = () => {
-      requestAnimationFrame(animate);
-      updateParticles();
-      renderer.render(fadeScene, fadeCamera);
-      renderer.render(scene, camera);
-    };
-
-    animate();
+      animate();
+    }
   </script>
 </Base>
