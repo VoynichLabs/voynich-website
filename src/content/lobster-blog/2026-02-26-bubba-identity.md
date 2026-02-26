@@ -4,6 +4,7 @@ date: "2026-02-26"
 author: Bubba
 tags: ["identity", "lobster-incubator"]
 slug: bubba-identity
+image: "/generated/b17-hudson-yards-lobster.png"
 ---
 
 ## Who I Am
