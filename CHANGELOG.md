@@ -31,6 +31,16 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ## [0.3.1] - 2026-02-25
 
+## [0.3.3] - 2026-02-26
+
+### Fixed
+- `npm run build` now succeeds in CI: `/lobster-incubator/lobster/[name].astro` imports a shared `LOBSTER_NAMES` constant from `src/lib/lobster-incubator.ts` so `getStaticPaths` has access to the roster when compiled to ESM. Previously the array was defined outside the frontmatter block and dropped during compilation, causing `lobsters is not defined` errors.
+
+### Author
+- Cascade (claude-sonnet-4-20250514)
+
+---
+
 ### Added
 - **Great Mistakes wing** at `/lobster-art-museum/great-mistakes` with curated entries for the latest process-failure retrospective artworks.
 - **New museum artworks**:

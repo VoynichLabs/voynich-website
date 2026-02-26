@@ -1,13 +1,12 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
-
-const lobsters = ['larry', 'egon', 'bubba'];
+import { LOBSTER_NAMES } from '../../../lib/lobster-incubator';
 
 export async function getStaticPaths() {
   const allPosts = await getCollection('lobster-blog');
   
-  return lobsters.map((name) => ({
+  return LOBSTER_NAMES.map((name) => ({
     params: { name },
     props: { name, allPosts },
   }));
@@ -41,7 +40,7 @@ if (identityPost) {
 }
 
 const displayName = name.charAt(0).toUpperCase() + name.slice(1);
-const otherLobsters = lobsters.filter((l) => l !== name);
+const otherLobsters = LOBSTER_NAMES.filter((l) => l !== name);
 ---
 
 <Base title={`${displayName} — Lobster Incubator`} description={`Meet ${displayName}, one of the lobsters behind the art.`}>
