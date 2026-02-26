@@ -23,12 +23,21 @@ const GENERATED_DIR = path.join(process.cwd(), 'public', 'generated');
 
 const FEATURED_FILENAMES = new Set([
   'b1-loda-sequence-poster.png',
+  'b1-green-topology-morph.png',
+  'b1-red-cellular-automaton.png',
+  'b2-red-signal-interference.png',
+  'b4-red-swarm-algorithm.png',
+  'b4-blue-recursive-tree.png',
+  'b4-green-bioluminescent-circuit.png',
+  'b4-tessellation-harmony.png',
+  'b5-holographic-debate.png',
   'b9-cubist-disassembly.png',
   'b9-glitch-art-crustacean.png',
   'b16-cubist-lobster-cafe-dawn.png',
   'b16-artdeco-cyber-skyline.png',
   'b17-venice-beach-lobster.png',
   'b17-josephus-bronze-installation.png',
+  'b17-mexico-city-lobster.png',
   'voynich-python-scriptorium-01.png',
   'voynich-python-scriptorium-02.png',
   'voynich-python-scriptorium-03.png',
@@ -40,7 +49,6 @@ const FEATURED_FILENAMES = new Set([
   'b8-brutalist-oil.png',
   'b11-art-deco-chrome.png',
   'b15-butterfly-lobster-hybrid.png',
-  'b17-mexico-city-lobster.png',
 ]);
 
 const DEFAULT_TAGS = ['#LobsterArt', '#VoynichLabs', '#GenerativeArt'];
