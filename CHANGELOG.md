@@ -5,6 +5,20 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.3.2] - 2026-02-26
+
+### Added
+- **Museum support section** on `/lobster-art-museum` with public crypto receive addresses for ETH/EVM and SOL tips.
+- **Stripe donation CTA** on `/lobster-art-museum` that routes to `PUBLIC_LOBSTER_STRIPE_DONATION_URL` (fallback: `https://home.planexe.org/account`).
+
+### Changed
+- **Museum hero badges** now include a direct “Tip the Lobster” jump link to the support block.
+
+### Author
+- Larry the Laptop Lobster (openai-codex/gpt-5.3-codex)
+
+---
+
 ## [0.3.1] - 2026-02-25
 
 ### Added
