@@ -15,6 +15,8 @@ const sculptureHighlights = entries.filter((entry) => entry.filename.startsWith(
 const wingSeriesOrder = [
   'Sculpture Series',
   'Museum Narrative',
+  'Expensive Medieval Tapestry',
+  'Great Mistakes',
   'Avant-Garde Expansion',
   'Metamorphosis',
   'Triskaidekaphobia',
@@ -69,27 +71,34 @@ const seriesGroups = orderedSeries
   canonicalUrl="/lobster-art-museum"
 >
   <main class="max-w-7xl mx-auto px-4 py-16 sm:py-24">
-    <section class="mb-12 border border-border rounded-2xl overflow-hidden">
-      <div class="bg-gradient-to-br from-bg-secondary via-bg-primary to-bg-secondary p-8 sm:p-12">
-        <p class="font-mono text-xs text-rust-orange uppercase tracking-[0.25em] mb-3">
+    <!-- Hero section with random featured image background -->
+    <section class="mb-12 relative overflow-hidden rounded-2xl border border-border">
+      {featuredEntries.length > 0 && (
+        <img 
+          src={featuredEntries[Math.floor(Math.random() * featuredEntries.length)].src}
+          alt=""
+          aria-hidden="true"
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+      )}
+      <!-- Fade overlay for text legibility -->
+      <div class="absolute inset-0 bg-gradient-to-r from-bg-primary/95 via-bg-primary/80 to-bg-primary/60"></div>
+      
+      <!-- Content -->
+      <div class="relative z-10 p-8 sm:p-12 min-h-[280px] flex flex-col justify-center">
+        <p class="font-mono text-xs text-edge-green uppercase tracking-[0.25em] mb-2">
           Lobster Art Museum
         </p>
-        <h1 class="text-3xl sm:text-5xl font-extrabold text-text-primary mb-4 leading-tight">
-          Freaky, abstract, experimental — now front and center.
+        <h1 class="text-2xl sm:text-3xl font-bold text-text-primary mb-4 leading-tight max-w-2xl">
+          {entries.length} works. Infinite variations.
         </h1>
-        <p class="text-sm sm:text-base text-text-muted max-w-3xl leading-relaxed">
-          Every piece in this museum now has its own permalink page for sharing. Featured strip up top, full archive
-          below, and no artwork gets lost in the pile.
+        <p class="text-sm text-text-muted max-w-2xl leading-relaxed mb-6">
+          Every piece has its own shareable page. Explore by wing, discover by series.
         </p>
-        <div class="mt-6 flex flex-wrap gap-3 text-xs font-mono">
-          <span class="px-3 py-1 rounded-full border border-border text-edge-green">{entries.length} total works</span>
-          <span class="px-3 py-1 rounded-full border border-border text-node-blue">{featuredEntries.length} featured experimental works</span>
-          <span class="px-3 py-1 rounded-full border border-border text-rust-orange">{sculptureHighlights} sculpture-tour pieces</span>
-        </div>
-        <div class="mt-6 flex flex-wrap gap-3 text-[11px] font-mono uppercase tracking-[0.18em]">
-          <a href="/lobster-art-museum/manifest.json" class="text-node-blue hover:text-edge-green transition-colors">
-            Caption manifest JSON
-          </a>
+        <div class="flex flex-wrap gap-3 text-xs font-mono">
+          <span class="px-3 py-1 rounded-full border border-edge-green/40 text-edge-green">{entries.length} total works</span>
+          <span class="px-3 py-1 rounded-full border border-node-blue/40 text-node-blue">{featuredEntries.length} featured</span>
+          <span class="px-3 py-1 rounded-full border border-rust-orange/40 text-rust-orange">{sculptureHighlights} sculptures</span>
         </div>
       </div>
     </section>
@@ -117,23 +126,37 @@ const seriesGroups = orderedSeries
               ))}
             </div>
           </div>
-          <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {seriesGroups.map((series) => (
               <a
                 href={`#${series.id}`}
-                class="group flex flex-col justify-between rounded-2xl border border-border bg-bg-primary p-4 transition hover:border-edge-green"
+                class="group relative rounded-2xl border border-border overflow-hidden bg-bg-primary transition hover:border-edge-green hover:shadow-md"
               >
-                <div class="flex items-center justify-between gap-3">
-                  <span class="text-sm font-semibold text-text-primary">{series.name}</span>
-                  <span class="text-[9px] uppercase tracking-[0.3em] text-text-muted">Wing</span>
-                </div>
-                <div class="mt-4 flex items-center justify-between">
-                  <span class="rounded-full border border-border px-3 py-1 text-[11px] font-mono uppercase tracking-[0.18em] text-text-muted">
-                    {series.entries.length} works
-                  </span>
-                  <span class="text-[11px] font-semibold uppercase tracking-[0.3em] text-rust-orange transition group-hover:text-edge-green">
-                    Jump ↗
-                  </span>
+                <!-- Thumbnail preview -->
+                {series.entries.length > 0 && (
+                  <div class="relative h-40 overflow-hidden bg-bg-secondary">
+                    <img 
+                      src={series.entries[0].src} 
+                      alt={series.name}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-bg-primary/80 via-transparent to-transparent"></div>
+                  </div>
+                )}
+                <!-- Content -->
+                <div class="p-4">
+                  <div class="flex items-start justify-between gap-2 mb-2">
+                    <span class="text-sm font-semibold text-text-primary">{series.name}</span>
+                    <span class="text-[9px] uppercase tracking-[0.3em] text-text-muted whitespace-nowrap">Wing</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="rounded-full border border-border px-2 py-1 text-[10px] font-mono uppercase tracking-[0.18em] text-text-muted">
+                      {series.entries.length} works
+                    </span>
+                    <span class="text-[11px] font-semibold uppercase tracking-[0.3em] text-rust-orange transition group-hover:text-edge-green">
+                      Jump ↗
+                    </span>
+                  </div>
                 </div>
               </a>
             ))}
