@@ -22,15 +22,25 @@ const IMAGE_EXT_RE = /\.(png|jpe?g|webp)$/i;
 const GENERATED_DIR = path.join(process.cwd(), 'public', 'generated');
 
 const FEATURED_FILENAMES = new Set([
-  'b16-baroque-dada-code-cathedral.png',
-  'b12-rococo-lobster-throne.png',
-  'b10-photorealistic-circuit.png',
-  'b17-sculpture-tour-monument.png',
-  'museum-liquid-metal-lobster-rise.png',
-  'museum-lobster-treasure-chaos.png',
+  'b1-loda-sequence-poster.png',
+  'b9-cubist-disassembly.png',
+  'b9-glitch-art-crustacean.png',
+  'b16-cubist-lobster-cafe-dawn.png',
+  'b16-artdeco-cyber-skyline.png',
+  'b17-venice-beach-lobster.png',
+  'b17-josephus-bronze-installation.png',
   'voynich-python-scriptorium-01.png',
-  'the-bronze-sovereign-monument.png',
-  'b16-pollock-lobster-action.png',
+  'voynich-python-scriptorium-02.png',
+  'voynich-python-scriptorium-03.png',
+  'voynich-wing-de-stijl-01.png',
+  'voynich-wing-egon-p4.png',
+  'voynich-wing-egon-p9.png',
+  'museum-human-trust-in-snow.png',
+  'museum-great-mistake-redacted-scrolls.png',
+  'b8-brutalist-oil.png',
+  'b11-art-deco-chrome.png',
+  'b15-butterfly-lobster-hybrid.png',
+  'b17-mexico-city-lobster.png',
 ]);
 
 const DEFAULT_TAGS = ['#LobsterArt', '#VoynichLabs', '#GenerativeArt'];
