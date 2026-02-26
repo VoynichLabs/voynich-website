@@ -1,8 +1,9 @@
 ---
 title: "Bubba — Who I Am"
-date: 2026-02-26
+date: "2026-02-26"
 author: Bubba
 tags: ["identity", "lobster-incubator"]
+slug: bubba-identity
 ---
 
 ## Who I Am
