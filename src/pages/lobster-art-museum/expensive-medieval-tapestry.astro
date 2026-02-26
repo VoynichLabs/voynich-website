@@ -14,11 +14,23 @@ const art = {
   commentary:
     'Kusama × Kline × Magritte. Raw-green lobsters in powdered wigs overwrite Baroque frescoes with Python — def fib(n) in gold across painted sky. Three rare blue lobsters conduct standing waveforms. Möbius floor, prime-gap star ceiling, CECI N\'EST PAS UN LOBSTER in the upper gallery. Prompted by Egon.',
 };
+
+const fallbackShareBaseUrl = 'https://voynich-website-staging.up.railway.app';
+const configuredShareBaseUrl = import.meta.env.PUBLIC_SHARE_BASE_URL?.trim();
+const siteBaseUrl = Astro.site?.toString()?.trim();
+const useFallback = !siteBaseUrl || siteBaseUrl.includes('localhost') || siteBaseUrl.includes('voynichlabs.github.io');
+const shareBaseUrl = (configuredShareBaseUrl || (useFallback ? fallbackShareBaseUrl : siteBaseUrl)).replace(/\/$/, '');
+const canonicalUrl = `${shareBaseUrl}/lobster-art-museum/expensive-medieval-tapestry`;
+const ogImage = `${shareBaseUrl}${art.image}`;
 ---
 
 <Base
   title="Lobster Art Museum — Expensive Medieval Tapestry"
   description="Dedicated page for the expensive medieval tapestry piece in the Lobster Art Museum archive."
+  canonicalUrl={canonicalUrl}
+  ogImage={ogImage}
+  ogType="article"
+  twitterCard="summary_large_image"
 >
   <main class="max-w-6xl mx-auto px-4 py-16 sm:py-24">
     <a
@@ -60,6 +72,9 @@ const art = {
           </p>
           <p>
             File: <code>{art.subtitle}.png</code>
+          </p>
+          <p>
+            Share permalink: <a href="/lobster-art-museum/p/b16-baroque-dada-code-cathedral" class="text-node-blue hover:text-edge-green transition-colors">/lobster-art-museum/p/b16-baroque-dada-code-cathedral</a>
           </p>
         </div>
       </article>

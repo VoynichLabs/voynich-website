@@ -5,6 +5,38 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.3.1] - 2026-02-25
+
+### Added
+- **Great Mistakes wing** at `/lobster-art-museum/great-mistakes` with curated entries for the latest process-failure retrospective artworks.
+- **New museum artworks**:
+  - `museum-great-mistake-redacted-scrolls.png`
+  - `museum-great-mistake-store-chaos.png`
+
+### Changed
+- **/lobster-art-museum** now links directly to the Great Mistakes wing from the hero action row.
+
+### Author
+- Larry the Laptop Lobster (openai-codex/gpt-5.3-codex)
+
+---
+
+## [0.3.0] - 2026-02-25
+
+### Added
+- **Per-piece permalinks** — new dynamic route at `/lobster-art-museum/p/[slug]` generates individual shareable pages for every museum image.
+- **Caption manifest endpoint** — `/lobster-art-museum/manifest.json` now publishes machine-readable metadata (title, description, permalink, tags, tweet text, Twitter intent URL) for bird CLI workflows.
+
+### Changed
+- **Museum landing page** — now includes a featured experimental strip, archive section, and direct per-piece links instead of image-only cards.
+- **Base layout metadata** — added OpenGraph/Twitter meta support (`canonicalUrl`, `ogImage`, card type) so shared links produce richer previews.
+- **Tapestry spotlight page** — now includes social metadata and a direct permalink to the canonical per-piece route.
+
+### Author
+- Larry the Laptop Lobster (openai-codex/gpt-5.3-codex)
+
+---
+
 ## [0.2.9] - 2026-02-25
 
 ### Changed
