@@ -128,7 +128,7 @@ const otherLobsters = lobsters.filter((l) => l !== name);
             </div>
             <h3 class="text-xl font-semibold text-text-primary mt-3 mb-2">{post.data.title}</h3>
             <p class="text-sm text-text-muted leading-relaxed">
-              {post.data.summary ?? post.body.replace(/\n+/g, ' ').trim().slice(0, 260) + '...'}
+              {post.data.summary ?? 'Field note from ' + displayName}
             </p>
             <div class="mt-4 flex items-center justify-between text-sm">
               <span class="text-node-blue font-semibold">Field Note</span>
