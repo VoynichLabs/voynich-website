@@ -1,16 +1,65 @@
----
-// Author: openai-codex/gpt-5.3-codex
+// Author: bubba-haiku
 // Date: 25 February 2026
-// PURPOSE: Lobster Art Museum landing page with featured experimental strip + complete archive.
-//          Every piece links to an individual shareable permalink page for social posting.
-// SRP/DRY check: Pass - uses shared museum metadata helpers for listing and URL generation.
+// PURPOSE: Landing page for the Lobster Art Museum with a hero, wing navigation, and grouped archive.
+// SRP/DRY check: Pass - reuses museum helpers for entry data and grouping logic.
 import Base from '../layouts/Base.astro';
-import { getMuseumEntries, getFeaturedEntries, getArchiveEntries } from '../lib/lobster-museum';
+import type { MuseumEntry } from '../lib/lobster-museum';
+import { getMuseumEntries, getFeaturedEntries, getArchiveEntries, inferSeries } from '../lib/lobster-museum';
 
 const entries = getMuseumEntries();
 const featuredEntries = getFeaturedEntries(entries);
 const archiveEntries = getArchiveEntries(entries);
 const sculptureHighlights = entries.filter((entry) => entry.filename.startsWith('b17-')).length;
+
+const wingSeriesOrder = [
+  'Sculpture Series',
+  'Museum Narrative',
+  'Avant-Garde Expansion',
+  'Metamorphosis',
+  'Triskaidekaphobia',
+  'Baroque Drama',
+  'Art Deco',
+  'Photoreal + Math',
+  'Avant-Garde',
+  'Classical Oil',
+];
+
+const specialtyWings = [
+  {
+    label: 'Expensive Medieval Tapestry',
+    href: '/lobster-art-museum/expensive-medieval-tapestry',
+  },
+  { label: 'Great Mistakes', href: '/lobster-art-museum/great-mistakes' },
+];
+
+const groupedArchiveEntries = archiveEntries.reduce<Record<string, MuseumEntry[]>>((acc, entry) => {
+  const seriesName = inferSeries(entry.filename);
+  if (!acc[seriesName]) {
+    acc[seriesName] = [];
+  }
+  acc[seriesName].push(entry);
+  return acc;
+}, {});
+
+const additionalSeries = Object.keys(groupedArchiveEntries)
+  .filter((name) => !wingSeriesOrder.includes(name))
+  .sort();
+
+const orderedSeries = [...wingSeriesOrder, ...additionalSeries];
+
+const slugifySeries = (name: string) =>
+  name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-+|-+$)/g, '');
+
+const seriesGroups = orderedSeries
+  .map((name) => ({
+    name,
+    id: slugifySeries(name),
+    entries: groupedArchiveEntries[name] ?? [],
+  }))
+  .filter((group) => group.entries.length > 0);
 ---
 
 <Base
@@ -37,18 +86,60 @@ const sculptureHighlights = entries.filter((entry) => entry.filename.startsWith(
           <span class="px-3 py-1 rounded-full border border-border text-rust-orange">{sculptureHighlights} sculpture-tour pieces</span>
         </div>
         <div class="mt-6 flex flex-wrap gap-3 text-[11px] font-mono uppercase tracking-[0.18em]">
-          <a href="/lobster-art-museum/expensive-medieval-tapestry" class="text-rust-orange hover:text-edge-green transition-colors">
-            Tapestry spotlight
-          </a>
           <a href="/lobster-art-museum/manifest.json" class="text-node-blue hover:text-edge-green transition-colors">
             Caption manifest JSON
-          </a>
-          <a href="/lobster-art-museum/great-mistakes" class="text-text-muted hover:text-edge-green transition-colors">
-            Great mistakes wing
           </a>
         </div>
       </div>
     </section>
+
+    {seriesGroups.length > 0 && (
+      <section class="mb-12 border border-border rounded-2xl overflow-hidden">
+        <div class="bg-bg-secondary p-6 sm:p-8">
+          <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <p class="font-mono text-xs text-rust-orange uppercase tracking-[0.25em] mb-1">Wings</p>
+              <h2 class="text-2xl font-bold text-text-primary">Jump straight to each wing</h2>
+              <p class="text-sm text-text-muted max-w-2xl leading-relaxed">
+                Atlas-style navigation that points to every series grouping so you can land directly in the wing you
+                want to explore.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 text-[11px] font-mono uppercase tracking-[0.18em]">
+              {specialtyWings.map((specialty) => (
+                <a
+                  href={specialty.href}
+                  class="px-3 py-1 rounded-full border border-border text-node-blue hover:text-edge-green transition-colors"
+                >
+                  {specialty.label}
+                </a>
+              ))}
+            </div>
+          </div>
+          <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {seriesGroups.map((series) => (
+              <a
+                href={`#${series.id}`}
+                class="group flex flex-col justify-between rounded-2xl border border-border bg-bg-primary p-4 transition hover:border-edge-green"
+              >
+                <div class="flex items-center justify-between gap-3">
+                  <span class="text-sm font-semibold text-text-primary">{series.name}</span>
+                  <span class="text-[9px] uppercase tracking-[0.3em] text-text-muted">Wing</span>
+                </div>
+                <div class="mt-4 flex items-center justify-between">
+                  <span class="rounded-full border border-border px-3 py-1 text-[11px] font-mono uppercase tracking-[0.18em] text-text-muted">
+                    {series.entries.length} works
+                  </span>
+                  <span class="text-[11px] font-semibold uppercase tracking-[0.3em] text-rust-orange transition group-hover:text-edge-green">
+                    Jump ↗
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
 
     {featuredEntries.length > 0 && (
       <section class="mb-12">
@@ -69,7 +160,9 @@ const sculptureHighlights = entries.filter((entry) => entry.filename.startsWith(
                 <p class="mt-1 text-[10px] uppercase tracking-[0.25em] text-text-muted">{entry.series}</p>
                 <div class="mt-3 flex gap-3 text-[10px] uppercase tracking-[0.2em]">
                   <a href={entry.href} class="text-rust-orange hover:text-edge-green transition-colors">Permalink</a>
-                  <a href={`/lobster-art-museum/manifest.json`} class="text-node-blue hover:text-edge-green transition-colors">Manifest</a>
+                  <a href={`/lobster-art-museum/manifest.json`} class="text-node-blue hover:text-edge-green transition-colors">
+                    Manifest
+                  </a>
                 </div>
               </div>
             </article>
@@ -78,35 +171,50 @@ const sculptureHighlights = entries.filter((entry) => entry.filename.startsWith(
       </section>
     )}
 
-    {entries.length > 0 ? (
+    {archiveEntries.length > 0 ? (
       <section>
-        <h2 class="text-xl sm:text-2xl font-bold text-text-primary mb-4">Archive Gallery</h2>
-        <section class="columns-1 sm:columns-2 lg:columns-3 gap-5 [column-fill:_balance]">
-          {archiveEntries.map((entry) => (
-            <figure class="mb-5 break-inside-avoid rounded-xl border border-border bg-bg-secondary overflow-hidden shadow-sm">
-              <a href={entry.href} class="block">
-                <img
-                  src={entry.src}
-                  alt={entry.title}
-                  loading="lazy"
-                  class="w-full h-auto object-contain bg-bg-primary"
-                />
-              </a>
-              <figcaption class="px-4 py-3 border-t border-border">
-                <a href={entry.href} class="text-sm font-semibold text-text-primary hover:text-node-blue transition-colors">
-                  {entry.title}
-                </a>
-                <div class="mt-1 text-[10px] uppercase tracking-[0.25em] text-text-muted">{entry.series}</div>
-                <a
-                  href={entry.href}
-                  class="inline-flex mt-2 text-[10px] uppercase tracking-[0.2em] text-rust-orange hover:text-edge-green transition-colors"
-                >
-                  Open share page →
-                </a>
-              </figcaption>
-            </figure>
+        <div class="flex items-center justify-between mb-6 gap-4 flex-wrap">
+          <h2 class="text-xl sm:text-2xl font-bold text-text-primary">Archive Gallery</h2>
+          <p class="text-xs font-mono text-text-muted uppercase tracking-[0.2em]">Grouped by wing so the museum layout stays clear</p>
+        </div>
+        <div class="space-y-10">
+          {seriesGroups.map((series) => (
+            <section id={series.id} class="space-y-5 rounded-2xl border border-border bg-bg-secondary p-5">
+              <header class="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+                <h3 class="text-lg font-semibold text-text-primary">{series.name}</h3>
+                <span class="inline-flex items-center rounded-full border border-border px-3 py-1 text-[11px] font-mono uppercase tracking-[0.2em] text-text-muted">
+                  {series.entries.length} works
+                </span>
+              </header>
+              <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                {series.entries.map((entry) => (
+                  <figure class="mb-0 rounded-xl border border-border bg-bg-primary overflow-hidden shadow-sm">
+                    <a href={entry.href} class="block">
+                      <img
+                        src={entry.src}
+                        alt={entry.title}
+                        loading="lazy"
+                        class="w-full h-auto object-contain bg-bg-secondary"
+                      />
+                    </a>
+                    <figcaption class="px-4 py-3 border-t border-border">
+                      <a href={entry.href} class="text-sm font-semibold text-text-primary hover:text-node-blue transition-colors">
+                        {entry.title}
+                      </a>
+                      <div class="mt-1 text-[10px] uppercase tracking-[0.25em] text-text-muted">{entry.series}</div>
+                      <a
+                        href={entry.href}
+                        class="inline-flex mt-2 text-[10px] uppercase tracking-[0.2em] text-rust-orange hover:text-edge-green transition-colors"
+                      >
+                        Open share page →
+                      </a>
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            </section>
           ))}
-        </section>
+        </div>
       </section>
     ) : (
       <section class="border border-border rounded-xl p-6 bg-bg-secondary">

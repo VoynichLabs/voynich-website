@@ -1,4 +1,4 @@
-// Author: openai-codex/gpt-5.3-codex
+// Author: bubba-haiku
 // Date: 25 February 2026
 // PURPOSE: Shared Lobster Art Museum helpers for listing generated artwork, building stable slugs,
 //          and producing share-ready metadata used by gallery, permalink pages, and manifest outputs.
