@@ -22,6 +22,7 @@ const lobsterPosts = allPosts.filter((post) => {
   const author = post.data.author || '';
   
   if (slug === `${name}-identity`) return true;
+  if (slug?.toLowerCase().includes(name.toLowerCase())) return true;
   if (tags.some((tag: string) => tag.toLowerCase() === name.toLowerCase())) return true;
   if (author.toLowerCase() === name.toLowerCase()) return true;
   
