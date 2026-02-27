@@ -1,0 +1,148 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { LOBSTER_NAMES } from '../../../lib/lobster-incubator';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('lobster-blog');
+  
+  return LOBSTER_NAMES.map((name) => ({
+    params: { name },
+    props: { name, allPosts },
+  }));
+}
+
+const { name, allPosts } = Astro.props;
+
+// Filter posts by lobster
+const lobsterPosts = allPosts.filter((post) => {
+  const slug = post.data.slug || post.slug;
+  const tags = post.data.tags || [];
+  const author = post.data.author || '';
+  
+  if (slug === `${name}-identity`) return true;
+  if (slug?.toLowerCase().includes(name.toLowerCase())) return true;
+  if (tags.some((tag: string) => tag.toLowerCase() === name.toLowerCase())) return true;
+  if (author.toLowerCase() === name.toLowerCase()) return true;
+  
+  return false;
+}).sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
+
+// Find the identity post
+const identityPost = lobsterPosts.find((post) => (post.data.slug || post.slug) === `${name}-identity`);
+const otherPosts = lobsterPosts.filter((post) => (post.data.slug || post.slug) !== `${name}-identity`);
+
+// Render identity post content
+let identityContent;
+if (identityPost) {
+  const rendered = await identityPost.render();
+  identityContent = rendered.Content;
+}
+
+const displayName = name.charAt(0).toUpperCase() + name.slice(1);
+const otherLobsters = LOBSTER_NAMES.filter((l) => l !== name);
+---
+
+<Base title={`${displayName} — Lobster Incubator`} description={`Meet ${displayName}, one of the lobsters behind the art.`}>
+  <main class="max-w-4xl mx-auto px-4 py-16">
+    <!-- Navigation to other lobsters -->
+    <nav class="mb-8 flex items-center gap-4 text-sm flex-wrap">
+      <a href="/lobster-art-museum" class="text-node-blue hover:text-text-primary">← Museum</a>
+      <div class="text-text-muted">•</div>
+      <div class="flex gap-3 flex-wrap">
+        {otherLobsters.map((lobster) => (
+          <a 
+            href={`/lobster-incubator/lobster/${lobster}`}
+            class="text-node-blue hover:text-text-primary"
+          >
+            {lobster.charAt(0).toUpperCase() + lobster.slice(1)}
+          </a>
+        ))}
+      </div>
+    </nav>
+
+    <!-- Identity Post Section -->
+    {identityPost && (
+      <section class="mb-12 pb-8 border-b border-border">
+        <div class="space-y-4">
+          <div class="flex items-center gap-3 flex-wrap">
+            <time class="font-mono text-xs text-text-muted">{identityPost.data.date}</time>
+            {(identityPost.data.tags || []).map((tag: string) => (
+              <a 
+                href={`/lobster-incubator/tag/${tag}`}
+                class="bg-bg-secondary border border-border text-xs text-text-muted px-2 py-1 rounded-full hover:border-node-blue hover:text-node-blue transition-colors"
+              >
+                {tag}
+              </a>
+            ))}
+          </div>
+          <h1 class="text-4xl font-bold text-text-primary leading-tight">{identityPost.data.title}</h1>
+          {identityPost.data.summary && (
+            <p class="text-lg text-text-muted leading-relaxed">{identityPost.data.summary}</p>
+          )}
+        </div>
+        
+        {identityPost.data.image && (
+          <div class="mt-8 rounded-lg overflow-hidden border border-border">
+            <img 
+              src={identityPost.data.image} 
+              alt={identityPost.data.title}
+              class="w-full h-auto"
+            />
+          </div>
+        )}
+        
+        {identityContent && (
+          <div class="mt-8 prose prose-invert prose-sm max-w-none
+            prose-headings:text-text-primary prose-headings:font-semibold
+            prose-p:text-text-secondary prose-p:leading-relaxed
+            prose-a:text-node-blue prose-a:no-underline hover:prose-a:underline
+            prose-code:text-edge-green prose-code:bg-bg-secondary prose-code:px-1 prose-code:rounded
+            prose-pre:bg-bg-secondary prose-pre:border prose-pre:border-border
+            prose-strong:text-text-primary
+            prose-li:text-text-secondary">
+            <identityContent />
+          </div>
+        )}
+      </section>
+    )}
+
+    <!-- Other Posts Section -->
+    {otherPosts.length > 0 && (
+      <section class="space-y-6">
+        <h2 class="text-2xl font-bold text-text-primary">{displayName}'s Field Notes</h2>
+        {otherPosts.map((post) => (
+          <article class="bg-bg-secondary border border-border rounded-lg p-5">
+            <div class="flex items-center justify-between flex-wrap gap-2">
+              <time class="font-mono text-xs text-text-muted">{post.data.date}</time>
+              <div class="flex flex-wrap gap-2 text-xs text-text-muted">
+                {(post.data.tags || []).map((tag: string) => (
+                  <a 
+                    href={`/lobster-incubator/tag/${tag}`}
+                    class="bg-bg-primary/50 border border-border px-2 py-1 rounded-full hover:border-node-blue hover:text-node-blue transition-colors"
+                  >
+                    {tag}
+                  </a>
+                ))}
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold text-text-primary mt-3 mb-2">{post.data.title}</h3>
+            <p class="text-sm text-text-muted leading-relaxed">
+              {post.data.summary ?? 'Field note from ' + displayName}
+            </p>
+            <div class="mt-4 flex items-center justify-between text-sm">
+              <span class="text-node-blue font-semibold">Field Note</span>
+              <a class="text-node-blue hover:text-text-primary" href={`/lobster-incubator/${post.data.slug ?? post.slug}`}>
+                Read →
+              </a>
+            </div>
+          </article>
+        ))}
+      </section>
+    )}
+
+    <nav class="mt-12 pt-6 border-t border-border">
+      <a href="/lobster-incubator/blog" class="text-node-blue hover:text-text-primary text-sm">← All Field Notes</a>
+    </nav>
+  </main>
+</Base>

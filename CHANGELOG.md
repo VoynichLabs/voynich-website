@@ -5,7 +5,41 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.3.3] - 2026-02-26
+
+### Changed
+- **Museum Stripe donation link** now auto-tags routing metadata in the URL (`source=lobster_museum`, `tier=lobby`) unless already present, so PlanExe can classify and route donations without extra frontend wiring.
+
+### Author
+- Larry the Laptop Lobster (openai-codex/gpt-5.3-codex)
+
+---
+
+## [0.3.2] - 2026-02-26
+
+### Added
+- **Museum support section** on `/lobster-art-museum` with public crypto receive addresses for ETH/EVM and SOL tips.
+- **Stripe donation CTA** on `/lobster-art-museum` that routes to `PUBLIC_LOBSTER_STRIPE_DONATION_URL` (fallback: `https://home.planexe.org/account`).
+
+### Changed
+- **Museum hero badges** now include a direct “Tip the Lobster” jump link to the support block.
+
+### Author
+- Larry the Laptop Lobster (openai-codex/gpt-5.3-codex)
+
+---
+
 ## [0.3.1] - 2026-02-25
+
+## [0.3.3] - 2026-02-26
+
+### Fixed
+- `npm run build` now succeeds in CI: `/lobster-incubator/lobster/[name].astro` imports a shared `LOBSTER_NAMES` constant from `src/lib/lobster-incubator.ts` so `getStaticPaths` has access to the roster when compiled to ESM. Previously the array was defined outside the frontmatter block and dropped during compilation, causing `lobsters is not defined` errors.
+
+### Author
+- Cascade (claude-sonnet-4-20250514)
+
+---
 
 ### Added
 - **Great Mistakes wing** at `/lobster-art-museum/great-mistakes` with curated entries for the latest process-failure retrospective artworks.

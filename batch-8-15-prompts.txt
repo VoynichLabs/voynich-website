@@ -1,0 +1,48 @@
+BATCH 8: CLASSICAL OIL
+b8-golden-lobster-still-life:Classical oil painting of golden lobsters arranged in a vanitas arrangement with books, mathematical instruments, and candlelight
+b8-lobster-academy:Oil painting classical academy study of red lobsters in formal geometric composition
+b8-cerulean-waters:Oil painting lobsters in serene cerulean waters, classical landscape tradition
+b8-brutalist-oil:Oil painting classical technique depicting brutalist concrete lobster sculpture in museum gallery
+b8-golden-hour-catch:Oil painting golden-hour light on red lobsters being harvested, classical realism
+
+BATCH 9: AVANT-GARDE
+b9-cubist-disassembly:Cubist deconstruction of lobster body into geometric planes and fractal components
+b9-dada-lobster-readymade:Surrealist Dada assemblage: lobster as found object in absurdist composition
+b9-glitch-art-crustacean:Digital glitch art: lobster fragmenting into data corruption artifacts and broken pixels
+b9-kinetic-motion-blur:Avant-garde kinetic sculpture of lobsters in motion blur through space
+b9-abstract-expressionist-swarm:Abstract expressionist gestural painting: lobster swarm as pure energy and color field
+
+BATCH 10: PHOTOREAL + MATH
+b10-photorealistic-circuit:Photorealistic lobster with visible neural circuits glowing beneath transparent exoskeleton
+b10-mathematical-dissection:Photorealistic cross-section: lobster anatomy overlaid with mathematical equations and geometric patterns
+b10-golden-ratio-anatomy:Photorealistic lobster with golden ratio proportions overlaid and highlighted in the composition
+b10-bioluminescent-precision:Photorealistic deep-sea lobster with bioluminescent organs rendered in precise scientific detail
+b10-fractal-growth-rings:Photorealistic lobster showing concentric fractal growth rings like a nautilus shell
+
+BATCH 11: ART DECO
+b11-art-deco-chrome:Art Deco chrome and enamel lobster with geometric sunburst motif and golden accents
+b11-streamline-moderne:Streamline Moderne lobster in polished steel and brass with elegant curves
+b11-deco-marquee-lobster:Art Deco theatrical marquee design: lobster as glowing neon centerpiece
+b11-gatsby-lobster:Luxe Art Deco: lobster in jeweled setting with geometric peacock-tail fan backdrop
+b11-deco-industrial:Art Deco industrial: lobster rendered as machine parts with geometric precision and gold leaf
+
+BATCH 12: BAROQUE DRAMA
+b12-baroque-chiaroscuro:Baroque chiaroscuro: lobster emerging from darkness with dramatic light and shadow
+b12-rococo-lobster-throne:Rococo opulent: lobster on jeweled throne surrounded by ornate shells and pearls
+b12-baroque-still-life:Baroque composition: lobster with fruit, flowers, and vanitas symbolism
+b12-vermeer-lobster-study:Baroque intimate study: lobster in candlelit interior with geometric precision
+b12-baroque-gold-leaf:Baroque theatrical: lobster covered in gold leaf and surrounded by baroque architectural elements
+
+BATCH 14: TRISKAIDEKAPHOBIA (SKIP 13)
+b14-13-ladder:Thirteen ladders arranged in chaotic composition with lobster at the top defying superstition
+b14-broken-13:Smashed and fragmented forms of the number 13 with lobster emerging from the chaos
+b14-13-mirrors:Thirteen mirrors reflecting infinite lobster images in an unsettling fractal pattern
+b14-haunted-13:Dark gothic scene: 13 lobsters in shadows suggesting supernatural horror and dread
+b14-anti-13:Lobster triumphantly crushing/rejecting the number 13 in bold graphic composition
+
+BATCH 15: METAMORPHOSIS & TRANSFORMATION
+b15-metamorphosis-sequence:Sequence of lobster stages: egg, larva, juvenile, adult, molting, arranged in transformative spiral
+b15-butterfly-lobster-hybrid:Surreal hybrid: lobster with butterfly wings in flight through dimensional space
+b15-phoenix-rebirth:Lobster molting into luminous phoenix form, fire and water elements merging
+b15-chrysalis-emergence:Transparent chrysalis form with lobster emerging in golden light and transformation energy
+b15-temporal-layers:Ghostly overlapping silhouettes showing lobster across multiple time periods and evolutionary stages
