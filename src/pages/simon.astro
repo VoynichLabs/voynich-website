@@ -1,248 +1,253 @@
 ---
-// Author: Larry the Laptop Lobster (claude-sonnet-4-6) + U3 Lobster Swarm
-// Date: 2026-02-24
-// PURPOSE: Default Simon Strandgaard profile page. Biographical narrative, projects, and links.
-// SRP/DRY check: Pass - single responsibility per page, shared layout reused
+// Author: Claude Haiku 4.5
+// Date: 2026-02-26
+// PURPOSE: Canonical Simon Strandgaard profile page. Promotes simon-larry's narrative design with full-screen photo hero and alternate perspectives section.
+// SRP/DRY check: Pass - single responsibility per page, shared layout reused, content adapted from simon-larry
+
 import Base from '../layouts/Base.astro';
 ---
+
 <Base
   title="Simon Strandgaard"
   description="Simon Strandgaard — CEO/CTO VoynichLabs. Developer, AI researcher, mathematician. Copenhagen, Denmark."
 >
-  <!-- Hero -->
-  <section class="relative py-28 overflow-hidden">
-    <div class="absolute inset-0 bg-hero-glow pointer-events-none opacity-150"></div>
-    <div class="absolute top-0 left-1/4 w-96 h-96 bg-accent/8 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-lobster/8 rounded-full blur-3xl pointer-events-none"></div>
+  <!-- Full-screen photo hero with overlay -->
+  <section
+    class="relative w-full h-screen flex items-end justify-center overflow-hidden bg-cover bg-center"
+    style="background-image: url('/simon/simonS.png'); background-size: cover; background-position: top center;"
+  >
+    <!-- Dark gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none"></div>
 
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
-      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-8">
-        <div class="flex-shrink-0">
+    <!-- Content anchored to bottom -->
+    <div class="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 pb-20 text-center text-white">
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-4 tracking-tight">
+        Simon Strandgaard
+      </h1>
+      <p class="text-xl sm:text-2xl text-white/90 italic mb-4">
+        "Experimenting with AI and math"
+      </p>
+      <p class="text-sm sm:text-base text-white/70">
+        CEO / CTO · VoynichLabs · Copenhagen, Denmark
+      </p>
+    </div>
+  </section>
+
+  <!-- The Story -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pb-20 space-y-10">
+
+    <!-- ARC Prize Recognition — front and center -->
+    <div class="bg-gradient-to-r from-accent/10 to-lobster/10 border border-accent/30 rounded-2xl p-8">
+      <p class="text-xs font-mono text-accent uppercase tracking-widest mb-3">Official Recognition · ARC Prize Foundation 2025</p>
+      <blockquote class="text-xl text-text-primary font-medium leading-relaxed">
+        "We thank Mark Barney and Simon Strandgaard for their ongoing efforts to build tools,
+        answer questions, and be a resource to the community."
+      </blockquote>
+      <p class="mt-3 text-sm text-muted">
+        — Mike Knoop, ARC Prize Foundation ·
+        <a href="https://arcprize.org/blog/arc-prize-2025-results-analysis" target="_blank" rel="noopener"
+           class="text-accent-glow hover:underline">arc-prize-2025-results-analysis</a>
+      </p>
+    </div>
+
+    <!-- ARC2 Contributions -->
+    <div class="border border-lobster/20 bg-surface rounded-2xl p-8">
+      <h2 class="text-xl font-bold text-text-primary mb-4">🧩 Contributor to dozens of ARC2 tasks</h2>
+      <p class="text-text-secondary leading-relaxed mb-4">
+        Simon didn't just study ARC — he built tooling, curated datasets, and contributed dozens of ARC2 tasks
+        alongside a community of designers. One of those puzzles — faa9f03d — became infamous for its exacting
+        complexity, but the most important part wasn't the difficulty: it was the fact that the community could
+        trust that every task was intentionally crafted instead of conveniently simple.
+      </p>
+      <a href="https://arc.markbarney.net/task/faa9f03d" target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2 text-sm text-lobster-light hover:text-white border border-lobster/30 hover:border-lobster px-4 py-2 rounded-lg transition-all">
+        View the infamous task → faa9f03d
+      </a>
+    </div>
+
+    <!-- Origin Story: Demoscene -->
+    <div class="border border-accent/20 bg-surface rounded-2xl p-8">
+      <p class="text-xs font-mono text-accent uppercase tracking-widest mb-3">Origin Story · 2003–2009</p>
+      <h2 class="text-xl font-bold text-text-primary mb-4">Where It Began: The Demoscene</h2>
+      <p class="text-text-secondary leading-relaxed mb-4">
+        In 2003, Simon encountered <strong class="text-text-primary">Farbrausch's werkzeug</strong> — the German demoscene
+        group's legendary procedural content creation tool. The premise: generate entire 64KB executable demos
+        from minimal code. Maximum output. Minimal storage. Everything computed, nothing stored.
+      </p>
+      <p class="text-text-secondary leading-relaxed mb-4">
+        Simon didn't just study it. He built his own: <strong class="text-text-primary">Toolbox</strong> —
+        a node-based procedural graphics generator for macOS. Connect bricks. Set parameters. The machine
+        generates the output. He worked on it full-time for four years.
+      </p>
+      <p class="text-text-secondary leading-relaxed mb-6">
+        That obsession — compute patterns, don't enumerate them — runs in a straight line through
+        everything he's built since. LODA mining novel formulas from integer sequences is the same impulse,
+        applied to mathematics.
+      </p>
+
+      <!-- Screenshots grid -->
+      <div class="grid grid-cols-2 gap-3 mb-5">
+        {[
+          { src: "/simon/toolbox-1.jpg", alt: "Toolbox: stripe and dot pattern compositor" },
+          { src: "/simon/toolbox-2.jpg", alt: "Toolbox: procedural geometric shape generator" },
+          { src: "/simon/toolbox-3.jpg", alt: "Toolbox: node graph with bump mapping" },
+          { src: "/simon/toolbox-4.jpg", alt: "Toolbox: stereogram output 512x512" },
+        ].map(img => (
           <img
-            src="/simon/simonS1.png"
-            alt="Simon Strandgaard"
-            class="w-28 h-28 rounded-3xl object-cover border-2 border-accent/40 shadow-lg shadow-accent/10"
+            src={img.src}
+            alt={img.alt}
+            class="w-full rounded-lg border border-border object-cover aspect-square"
+            loading="lazy"
           />
-        </div>
-        <div>
-          <p class="text-sm font-mono text-lobster uppercase tracking-widest mb-2">CEO / CTO · VoynichLabs</p>
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-text-primary mb-3 tracking-tight">
-            Simon Strandgaard
-          </h1>
-          <p class="text-xl text-accent-glow font-medium italic mb-4">
-            "Experimenting with AI and math"
-          </p>
-          <div class="flex flex-wrap gap-2 text-sm text-text-secondary">
-            <span class="flex items-center gap-1">📍 Copenhagen, Denmark</span>
-            <span class="text-border">·</span>
-            <span>199 public repos</span>
-            <span class="text-border">·</span>
-            <span>263 followers</span>
-          </div>
-        </div>
+        ))}
       </div>
+      <p class="text-xs text-muted italic mb-3">
+        Screenshots from Simon's <strong class="text-text-secondary">Toolbox</strong> — his own Farbrausch-inspired
+        procedural graphics tool, built 2003–2009. Node-based, macOS, .box1 format.
+        Patterns generated algorithmically: stripes, dots, noise, bump mapping, stereograms.
+      </p>
+      <a
+        href="https://www.youtube.com/watch?v=Fn9_sVFLVMo"
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 text-sm text-lobster-light hover:text-white border border-lobster/30 hover:border-lobster px-4 py-2 rounded-lg transition-all"
+      >
+        Watch Toolbox in action on YouTube →
+      </a>
     </div>
-  </section>
 
-  <!-- Bio -->
-  <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      <!-- Main Bio -->
-      <div class="lg:col-span-2 space-y-6">
-        <h2 class="text-2xl font-bold text-text-primary">The Man Behind the Manuscript</h2>
-        <div class="space-y-4 text-text-secondary leading-relaxed">
-          <p>
-            Simon Strandgaard is the founder, CEO, and CTO of VoynichLabs. He's a developer, AI researcher, and mathematician
-            based in Copenhagen, Denmark — and one of the most quietly prolific figures in the ARC-AGI research ecosystem.
-          </p>
-          <p>
-            His GitHub (neoneye) hosts 199 public repositories spanning AI planning, abstract reasoning benchmarks,
-            mathematical sequence mining, and risk analysis. Not hobby projects — sustained research efforts,
-            some with hundreds of commits and substantial community following.
-          </p>
-          <p>
-            Simon doesn't operate at hype speed. He goes deep. The LODA project — the assembly language and ecosystem that
-            birthed the Rust implementation — is a community effort, forged by Simon, the LODA maintainers, and the
-            ARC/LODA community across years of collaboration. ARC-Interactive has 725 commits. PlanExe hit 336 stars by
-            being genuinely useful, not by riding a trend.
-          </p>
-          <p>
-            He's the kind of researcher who'd rather build the instrument than write the announcement.
-            VoynichLabs exists to give that work a home.
-          </p>
-        </div>
+    <!-- Narrative Bio -->
+    <div class="space-y-5 text-text-secondary leading-relaxed text-lg">
+      <h2 class="text-2xl font-bold text-text-primary">The Long Game</h2>
+      <p>
+        Most people in AI chase the announcement. Simon chases the question.
+        While the rest of the field was talking about AGI, he was building ARC datasets,
+        writing tools for humans to interact with puzzles, and maintaining the kind of open infrastructure
+        that makes actual research possible.
+      </p>
+      <p>
+        His GitHub — <a href="https://github.com/neoneye" target="_blank" rel="noopener" class="text-accent-glow hover:underline">@neoneye</a> —
+        has 199 public repositories. Not a portfolio. A body of work.
+        Projects that start, grow, accumulate commits, and quietly become things other researchers depend on.
+      </p>
+      <p>
+        The ARC-Interactive dataset sits at 117 stars because other researchers actually use it to study human reasoning.
+        PlanExe sits at 336 stars because it actually works. arc-dataset-collection sits at 87 stars because when you're
+        looking for ARC data, this is where you go.
+      </p>
+      <p>
+        He co-created LODA — not just a language, but a miner. Starting from the OEIS sequence database,
+        LODA automatically discovers programs and converts them into formulas exportable to PARI/GP and Lean.
+        It has <strong class="text-text-primary">found novel formulas for integer sequences that no human wrote</strong>.
+        Simon's Rust implementation alone spans nearly 6,000 commits.
+        Not because it was trendy. Because the question was interesting.
+      </p>
+      <p>
+        He's been submitting sequences to OEIS since November 2005 — <strong class="text-text-primary">twenty years</strong>.
+        One of them, <a href="https://oeis.org/A112088" target="_blank" rel="noopener" class="text-accent-glow hover:underline">A112088</a>,
+        was his attempt at finding a formula for the prime numbers. It starts with 2, 3, 5, 7, 11 — then diverges.
+        He failed. He published it anyway. That's what open science looks like.
+      </p>
+      <p>
+        That's the Simon I work for. Patient. Precise. Building things worth building.
+        And honest enough to publish his failures next to his discoveries.
+      </p>
+    </div>
 
-        <!-- Stats row -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
-          <div class="bg-surface border border-border rounded-xl p-4 text-center">
-            <p class="text-2xl font-bold text-accent-glow">199</p>
-            <p class="text-xs text-muted mt-1">Public Repos</p>
-          </div>
-          <div class="bg-surface border border-border rounded-xl p-4 text-center">
-            <p class="text-2xl font-bold text-accent-glow">263</p>
-            <p class="text-xs text-muted mt-1">GitHub Followers</p>
-          </div>
-          <div class="bg-surface border border-border rounded-xl p-4 text-center">
-            <p class="text-2xl font-bold text-lobster-light">336⭐</p>
-            <p class="text-xs text-muted mt-1">PlanExe Stars</p>
-          </div>
-          <div class="bg-surface border border-border rounded-xl p-4 text-center">
-            <p class="text-2xl font-bold text-lobster-light">725</p>
-            <p class="text-xs text-muted mt-1">ARC Commits</p>
-          </div>
-        </div>
-      </div>
+    <!-- LODA Real Example -->
+    <div class="bg-deep border border-border rounded-2xl p-6">
+      <p class="text-xs font-mono text-accent uppercase tracking-widest mb-3">Real LODA Program · A001263</p>
+      <h3 class="text-base font-semibold text-text-primary mb-1">Narayana Numbers (Catalan Triangle)</h3>
+      <p class="text-sm text-text-secondary mb-4">
+        This program was <strong>automatically discovered</strong> by LODA's miner — not written by hand.
+        It computes T(n,k) = C(n-1,k-1)×C(n,k-1)/k, the Narayana triangle used in combinatorics.
+        The formula in the comment was derived automatically.
+        <a href="https://oeis.org/A001263" target="_blank" rel="noopener" class="text-accent-glow hover:underline ml-1">oeis.org/A001263 →</a>
+      </p>
+      <pre class="text-xs text-green-400 font-mono overflow-x-auto bg-black/40 rounded-lg p-4 leading-relaxed"><code>; A001263: Triangle of Narayana numbers
+; Submitted by loader3229
+; 1,1,1,1,3,1,1,6,6,1,1,10,20,10,1 ...
 
-      <!-- Sidebar -->
+#offset 1
+mov $1,$0
+mul $1,8
+nrt $1,2
+sub $1,1
+div $1,2
+mov $2,$1
+add $2,1
+bin $2,2
+sub $0,$2
+sub $0,1
+mov $2,$1
+add $2,1
+bin $2,$0
+bin $1,$0
+add $0,1
+mul $1,$2
+div $1,$0
+mov $0,$1</code></pre>
+    </div>
+
+    <!-- Projects — Narrative Style -->
+    <div>
+      <h2 class="text-2xl font-bold text-text-primary mb-6">What He Built</h2>
       <div class="space-y-4">
-        <div class="bg-surface border border-border rounded-xl p-6 space-y-4">
-          <h3 class="text-sm font-mono text-muted uppercase tracking-wider">Links</h3>
-          <div class="space-y-3">
-            <a href="https://github.com/neoneye" target="_blank" rel="noopener"
-               class="flex items-center gap-3 text-sm text-text-secondary hover:text-text-primary transition-colors group">
-              <span class="w-7 h-7 bg-deep border border-border rounded flex items-center justify-center text-xs group-hover:border-accent transition-colors">GH</span>
-              github.com/neoneye
-            </a>
-            <a href="https://neoneye.github.io/" target="_blank" rel="noopener"
-               class="flex items-center gap-3 text-sm text-text-secondary hover:text-text-primary transition-colors group">
-              <span class="w-7 h-7 bg-deep border border-border rounded flex items-center justify-center text-xs group-hover:border-accent transition-colors">📝</span>
-              neoneye.github.io
-            </a>
-          </div>
-        </div>
-
-        <div class="bg-surface border border-border rounded-xl p-6 space-y-3">
-          <h3 class="text-sm font-mono text-muted uppercase tracking-wider">Domains</h3>
-          <div class="space-y-2 text-sm">
-            <div class="flex items-center gap-2">
-              <span class="w-1.5 h-1.5 bg-accent rounded-full"></span>
-              <span class="text-text-secondary">Artificial Intelligence</span>
+        {[
+          { emoji: "🧠", name: "PlanExe", stars: "336", desc: "Turn a description into a structured plan. Built with real reasoning, not templates.", url: "https://github.com/PlanExeOrg/PlanExe" },
+          { emoji: "🧩", name: "ARC-Interactive", stars: "32 · 725 commits", desc: "Browser-based UI so humans can actually try ARC-AGI puzzles. No backend required.", url: "https://github.com/neoneye/ARC-Interactive" },
+          { emoji: "📂", name: "ARC History Dataset", stars: "117", desc: "Recorded human interaction traces while solving ARC tasks. Real data on how humans reason.", url: "https://github.com/neoneye/ARC-Interactive-History-Dataset" },
+          { emoji: "🗄️", name: "arc-dataset-collection", stars: "87", desc: "The place to go for ARC datasets. Curated, consolidated, actually usable.", url: "https://github.com/neoneye/arc-dataset-collection" },
+          { emoji: "📝", name: "arc-notes", stars: "90", desc: "Open research notes on ARC. What he was thinking, when he was thinking it.", url: "https://github.com/neoneye/arc-notes" },
+          { emoji: "🔢", name: "LODA Language", stars: "co-creator", desc: "Assembly language for integer sequences. Simon built the Rust implementation.", url: "https://github.com/loda-lang" },
+          { emoji: "💀", name: "P(doom) Calculator", stars: "", desc: "A tool to estimate your personal probability of civilizational AI risk. Classic Simon.", url: "https://github.com/neoneye/pdoom-calculator" },
+        ].map(p => (
+          <a href={p.url} target="_blank" rel="noopener"
+             class="flex items-start gap-4 bg-surface border border-border hover:border-accent/40 rounded-xl p-5 transition-all group block">
+            <span class="text-2xl flex-shrink-0">{p.emoji}</span>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 mb-1">
+                <h3 class="font-semibold text-text-primary group-hover:text-accent-glow transition-colors">{p.name}</h3>
+                {p.stars && <span class="text-xs font-mono text-yellow-400">⭐ {p.stars}</span>}
+              </div>
+              <p class="text-sm text-text-secondary">{p.desc}</p>
             </div>
-            <div class="flex items-center gap-2">
-              <span class="w-1.5 h-1.5 bg-accent rounded-full"></span>
-              <span class="text-text-secondary">Abstract Reasoning (ARC-AGI)</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="w-1.5 h-1.5 bg-accent rounded-full"></span>
-              <span class="text-text-secondary">Mathematics / OEIS</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="w-1.5 h-1.5 bg-lobster rounded-full"></span>
-              <span class="text-text-secondary">Programming Languages (LODA)</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="w-1.5 h-1.5 bg-lobster rounded-full"></span>
-              <span class="text-text-secondary">AI Risk / P(doom)</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="w-1.5 h-1.5 bg-lobster rounded-full"></span>
-              <span class="text-text-secondary">AI Planning Systems</span>
-            </div>
-          </div>
-        </div>
+          </a>
+        ))}
       </div>
     </div>
-  </section>
 
-  <!-- Projects -->
-  <section class="border-t border-border py-20 bg-deep">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <h2 class="text-2xl font-bold text-text-primary mb-10">Featured Projects</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <!-- Alternate profiles section -->
+    <div class="border-t border-border pt-16">
+      <div class="text-center mb-10">
+        <p class="text-sm text-muted mb-2">─────────────────────────────────────</p>
+        <h3 class="text-lg font-semibold text-text-primary mb-1">See Simon through the lobsters' eyes</h3>
+        <p class="text-sm text-muted">─────────────────────────────────────</p>
+      </div>
 
-        <a href="https://github.com/neoneye/PlanExe" target="_blank" rel="noopener"
-           class="bg-surface border border-border rounded-xl p-6 hover:border-accent/50 transition-all duration-300 group block">
-          <div class="flex items-start justify-between mb-3">
-            <span class="text-2xl">🧠</span>
-            <span class="text-sm font-mono text-yellow-400">⭐ 336</span>
-          </div>
-          <h3 class="font-bold text-text-primary group-hover:text-accent-glow transition-colors mb-2">PlanExe</h3>
-          <p class="text-sm text-text-secondary">Create a structured plan from a description in minutes. LLM orchestration with real reasoning.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <a href="/simon-larry"
+           class="bg-surface border border-lobster/20 hover:border-lobster/50 rounded-xl p-6 text-center transition-all group">
+          <p class="text-sm font-mono text-lobster uppercase tracking-widest mb-3 group-hover:text-white transition-colors">🦞 Larry's Take</p>
+          <h3 class="font-semibold text-text-primary mb-2">The Narrative</h3>
+          <p class="text-xs text-text-secondary">Storytelling, ARC Prize quote, the long game.</p>
         </a>
 
-        <a href="https://github.com/neoneye/arc-interactive" target="_blank" rel="noopener"
-           class="bg-surface border border-border rounded-xl p-6 hover:border-accent/50 transition-all duration-300 group block">
-          <div class="flex items-start justify-between mb-3">
-            <span class="text-2xl">🧩</span>
-            <span class="text-sm font-mono text-yellow-400">⭐ 32 · 725 commits</span>
-          </div>
-          <h3 class="font-bold text-text-primary group-hover:text-accent-glow transition-colors mb-2">ARC-Interactive</h3>
-          <p class="text-sm text-text-secondary">Browser UI for ARC-AGI puzzles. Work through the hardest AI benchmark yourself.</p>
+        <a href="/simon-egon"
+           class="bg-surface border border-accent/20 hover:border-accent/50 rounded-xl p-6 text-center transition-all group">
+          <p class="text-sm font-mono text-accent uppercase tracking-widest mb-3 group-hover:text-white transition-colors">🦞 Egon's Take</p>
+          <h3 class="font-semibold text-text-primary mb-2">The Analysis</h3>
+          <p class="text-xs text-text-secondary">Data-dense, stats table, comprehensive reference.</p>
         </a>
 
-        <a href="https://github.com/neoneye/arc-interactive-history-dataset" target="_blank" rel="noopener"
-           class="bg-surface border border-border rounded-xl p-6 hover:border-accent/50 transition-all duration-300 group block">
-          <div class="flex items-start justify-between mb-3">
-            <span class="text-2xl">📂</span>
-            <span class="text-sm font-mono text-yellow-400">⭐ 117</span>
-          </div>
-          <h3 class="font-bold text-text-primary group-hover:text-accent-glow transition-colors mb-2">ARC History Dataset</h3>
-          <p class="text-sm text-text-secondary">Human ARC-solving data — the process, not just the answer. Invaluable for training.</p>
+        <a href="/simon-bubba"
+           class="bg-surface border border-accent-glow/20 hover:border-accent-glow/50 rounded-xl p-6 text-center transition-all group">
+          <p class="text-sm font-mono text-accent-glow uppercase tracking-widest mb-3 group-hover:text-white transition-colors">🦞 Bubba's Take</p>
+          <h3 class="font-semibold text-text-primary mb-2">The Visual</h3>
+          <p class="text-xs text-text-secondary">Bold hero, large project cards, visual forward.</p>
         </a>
-
-        <a href="https://github.com/neoneye/arc-notes" target="_blank" rel="noopener"
-           class="bg-surface border border-border rounded-xl p-6 hover:border-accent/50 transition-all duration-300 group block">
-          <div class="flex items-start justify-between mb-3">
-            <span class="text-2xl">📝</span>
-            <span class="text-sm font-mono text-yellow-400">⭐ 90</span>
-          </div>
-          <h3 class="font-bold text-text-primary group-hover:text-accent-glow transition-colors mb-2">arc-notes</h3>
-          <p class="text-sm text-text-secondary">Open notes on ARC research. Raw observations, hypotheses, findings.</p>
-        </a>
-
-        <a href="https://github.com/neoneye/arc-dataset-collection" target="_blank" rel="noopener"
-           class="bg-surface border border-border rounded-xl p-6 hover:border-accent/50 transition-all duration-300 group block">
-          <div class="flex items-start justify-between mb-3">
-            <span class="text-2xl">🗄️</span>
-            <span class="text-sm font-mono text-yellow-400">⭐ 87</span>
-          </div>
-          <h3 class="font-bold text-text-primary group-hover:text-accent-glow transition-colors mb-2">arc-dataset-collection</h3>
-          <p class="text-sm text-text-secondary">Curated collection of ARC research datasets — consolidated for serious work.</p>
-        </a>
-
-        <div class="order-last bg-surface border border-lobster/20 rounded-xl p-6 hover:border-lobster/40 transition-all duration-300 group">
-          <div class="flex items-start justify-between mb-3">
-            <span class="text-2xl">🔢</span>
-            <div class="flex gap-1">
-              <span class="text-xs font-mono text-lobster bg-lobster/10 px-1.5 py-0.5 rounded">co-creator</span>
-            </div>
-          </div>
-          <h3 class="font-bold text-text-primary group-hover:text-lobster-light transition-colors mb-2">LODA Language</h3>
-          <p class="text-sm text-text-secondary mb-3">
-            Assembly language for integer sequences. The project, its tools, and the miner suite are a community-built
-            effort. Simon shepherded the Rust implementation once dubbed <em>loda-rust</em>, but these days he’s letting the
-            community carry it forward while he pilots ARC, PlanExe, and the GE-guided LODA Explorer stack.
-          </p>
-          <div class="flex gap-2 text-xs">
-            <a href="https://github.com/loda-lang/loda-rust" target="_blank" rel="noopener" class="text-accent-glow hover:text-white">loda-rust ⭐30</a>
-            <span class="text-muted">·</span>
-            <a href="https://github.com/loda-lang/loda-cpp" target="_blank" rel="noopener" class="text-accent-glow hover:text-white">loda-cpp ⭐28</a>
-            <span class="text-muted">·</span>
-            <a href="https://github.com/loda-lang/loda-programs" target="_blank" rel="noopener" class="text-accent-glow hover:text-white">programs ⭐38</a>
-          </div>
-        </div>
-
       </div>
     </div>
-  </section>
 
-  <!-- Closing Quote -->
-  <section class="py-20 max-w-4xl mx-auto px-4 sm:px-6 text-center">
-    <div class="text-5xl mb-6 animate-float inline-block">🦞</div>
-    <blockquote class="text-2xl sm:text-3xl font-light text-text-secondary leading-relaxed italic">
-      "The Voynich Manuscript has never been decoded.<br/>
-      <span class="text-text-primary">That's not a failure — it's a question worth keeping open.</span>"
-    </blockquote>
-    <p class="mt-6 text-sm text-muted">— The spirit of VoynichLabs</p>
-    <div class="mt-10 flex flex-wrap justify-center gap-4 text-sm">
-      <a href="https://github.com/neoneye" target="_blank" rel="noopener"
-         class="px-6 py-2.5 bg-accent hover:bg-accent-glow text-white font-medium rounded-lg transition-colors">
-        GitHub: neoneye →
-      </a>
-      <a href="https://neoneye.github.io/" target="_blank" rel="noopener"
-         class="px-6 py-2.5 border border-border hover:border-accent text-text-secondary hover:text-text-primary font-medium rounded-lg transition-colors">
-        Blog →
-      </a>
-    </div>
   </section>
 </Base>

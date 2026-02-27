@@ -5,6 +5,17 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.3.4] - 2026-02-26
+
+### Changed
+- **Simon canonical profile** (`/simon`) — redesigned with full-viewport background photo hero (simonS.png), dark gradient overlay, and centered text. Content body promoted from `/simon-larry` (narrative-driven: ARC Prize quote, Toolbox origin story, biography, LODA examples, projects list). Removed "Larry's Take" label to establish canonical identity.
+- **Alternate profiles section** (new, before footer) — added three simple bordered cards linking to `/simon-larry` (Larry's narrative take), `/simon-egon` (data-dense analysis), and `/simon-bubba` (visual-forward approach). Allows readers to see Simon through different lobster perspectives.
+
+### Author
+- Claude Haiku 4.5
+
+---
+
 ## [0.3.3] - 2026-02-26
 
 ### Changed
