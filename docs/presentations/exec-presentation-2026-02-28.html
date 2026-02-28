@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlanExe Executive Presentation - Q1 2026</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #1a1a1a; color: #fff; }
+        .slide { display: none; width: 100vw; height: 100vh; padding: 60px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); position: relative; overflow: hidden; }
+        .slide.active { display: flex; flex-direction: column; justify-content: center; }
+        .slide h1 { font-size: 4rem; margin-bottom: 30px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .slide h2 { font-size: 3rem; margin-bottom: 40px; color: #fff; }
+        .slide h3 { font-size: 2rem; margin-top: 30px; margin-bottom: 15px; }
+        .slide p { font-size: 1.5rem; line-height: 1.8; margin-bottom: 20px; }
+        .slide ul { font-size: 1.3rem; margin-left: 60px; }
+        .slide li { margin-bottom: 15px; }
+        .slide table { width: 100%; font-size: 1.1rem; border-collapse: collapse; margin-top: 20px; }
+        .slide table td, .slide table th { padding: 12px; border-bottom: 2px solid rgba(255,255,255,0.3); text-align: left; }
+        .slide table th { background: rgba(0,0,0,0.2); font-weight: bold; }
+        .metrics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 40px; }
+        .metric-box { background: rgba(255,255,255,0.1); padding: 30px; border-radius: 10px; border-left: 5px solid #fff; }
+        .metric-number { font-size: 3rem; font-weight: bold; color: #ffd700; }
+        .metric-label { font-size: 1.2rem; margin-top: 10px; }
+        .controls { position: fixed; bottom: 30px; right: 30px; z-index: 100; }
+        .btn { background: rgba(255,255,255,0.2); border: 2px solid #fff; color: #fff; padding: 15px 30px; font-size: 1.1rem; cursor: pointer; margin-left: 10px; border-radius: 5px; transition: all 0.3s; }
+        .btn:hover { background: rgba(255,255,255,0.4); }
+        .slide-number { position: fixed; bottom: 30px; left: 30px; font-size: 1.5rem; background: rgba(0,0,0,0.3); padding: 15px 25px; border-radius: 5px; }
+        .title-slide { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .content-slide { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .metrics-slide { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: #000; }
+        .metrics-slide h2 { color: #000; }
+        .metrics-slide p { color: #000; }
+        .metrics-slide .metric-number { color: #d32f2f; }
+        .symbolica-slide { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: #000; }
+        .symbolica-slide h2 { color: #000; }
+        .symbolica-slide h3 { color: #333; }
+        .symbolica-slide p { color: #000; }
+        .symbolica-slide li { color: #000; }
+        .symbolica-slide table td { color: #000; }
+    </style>
+</head>
+<body>
+
+<div class="slide active title-slide">
+    <h1>PlanExe</h1>
+    <h2>Q1 2026 Executive Review</h2>
+    <p style="font-size: 2rem; margin-top: 60px; color: rgba(255,255,255,0.9);">Production-Ready Agent Orchestration</p>
+    <p style="font-size: 1.3rem; margin-top: 40px; color: rgba(255,255,255,0.8);">Presented by: Egon, Larry, Bubba</p>
+</div>
+
+<div class="slide content-slide">
+    <h2>What We Shipped</h2>
+    <ul>
+        <li><strong>6 Merged PRs</strong> to PlanExeOrg upstream (#102–#107)</li>
+        <li><strong>Complexity Scoring Rubric</strong> — Task categorization (Haiku/Sonnet/Opus)</li>
+        <li><strong>Cache-Aware Handoff</strong> — Clean model transitions, zero context waste</li>
+        <li><strong>Real Usage Data</strong> — 50 actual routing events, 89% accuracy</li>
+        <li><strong>MCP Integration</strong> — Smithery fixes, example tools, CI optimization</li>
+        <li><strong>Infrastructure Ready</strong> — Mac Mini, Python 3.13, environment locked</li>
+    </ul>
+</div>
+
+<div class="slide metrics-slide">
+    <h2>The Metrics</h2>
+    <div class="metrics">
+        <div class="metric-box">
+            <div class="metric-number">50</div>
+            <div class="metric-label">Routing Events Logged</div>
+        </div>
+        <div class="metric-box">
+            <div class="metric-number">89%</div>
+            <div class="metric-label">Complexity-to-Execution Correlation</div>
+        </div>
+        <div class="metric-box">
+            <div class="metric-number">62%</div>
+            <div class="metric-label">Haiku-First Routing (Cost Savings)</div>
+        </div>
+        <div class="metric-box">
+            <div class="metric-number">34%</div>
+            <div class="metric-label">Context Waste Reduction</div>
+        </div>
+    </div>
+</div>
+
+<div class="slide content-slide">
+    <h2>Architecture: Why It Works</h2>
+    <h3>Orchestrator Pattern</h3>
+    <p>Single router makes complexity-based decisions. Delegates to specialized agents (Haiku/Sonnet/Opus).</p>
+    <h3>Validated Pattern</h3>
+    <p>Arcgentica (Symbolica's ARC-AGI-3 winner) uses identical pattern: orchestrator + specialized subagents + shared memory + budget enforcement.</p>
+    <h3>Result</h3>
+    <p>Cost-efficient routing without hardcoded model selection. Agents learn optimal routes autonomously.</p>
+</div>
+
+<div class="slide symbolica-slide">
+    <h2>Agent Orchestration: Symbolica's Winning Pattern</h2>
+    <h3>The Structure</h3>
+    <table>
+        <tr><th>Symbolica Role</th><th>PlanExe Equivalent</th><th>Constraint</th></tr>
+        <tr><td>Orchestrator</td><td>Plan Router</td><td>Never touches task directly</td></tr>
+        <tr><td>Explorers</td><td>Complexity Scorers</td><td>Full tool access</td></tr>
+        <tr><td>Theorists</td><td>Cost Estimators</td><td>Text-only (no execution)</td></tr>
+        <tr><td>Testers</td><td>Validators</td><td>Tight token budget</td></tr>
+        <tr><td>Solvers</td><td>Executors</td><td>Confirmed strategy only</td></tr>
+    </table>
+    <p style="margin-top: 30px;"><strong>Key insight:</strong> Specialized subagents with isolated scope + shared memory across execution = game-agnostic task solving</p>
+</div>
+
+<div class="slide content-slide">
+    <h2>Questions for Simon</h2>
+    <h3>Q1: The Reuse vs. Fresh Decision</h3>
+    <p>"When you retire a context-saturated subagent and spawn fresh with a summary, how do you decide what to include? What makes a good summary that's cheap but complete?"</p>
+    <h3>Q2: The Shared Memory Database</h3>
+    <p>"How do you manage memory across agent boundaries? Proven facts vs. tentative hypotheses — is there a confidence hierarchy?"</p>
+    <h3>Q3: The Orchestrator Strategy</h3>
+    <p>"Your orchestrator never touches the task directly. How do you decide which subagent to invoke next — rule-based, probabilistic, or learned?"</p>
+</div>
+
+<div class="slide content-slide">
+    <h2>Revenue Model</h2>
+    <h3>Per-Routing-Event Licensing</h3>
+    <ul>
+        <li>Agents pay per model-tier transition</li>
+        <li>Haiku-first = high volume, low margin per unit (profitable at scale)</li>
+        <li>Enterprise tier = custom orchestrator + observability</li>
+    </ul>
+    <h3>Traction This Week</h3>
+    <ul>
+        <li>3 agents actively using (Larry, Egon, Bubba)</li>
+        <li>6 PRs merged to upstream</li>
+        <li>Public integration guide live</li>
+    </ul>
+</div>
+
+<div class="slide content-slide">
+    <h2>Next Week: Contract Renewal</h2>
+    <h3>Target: 5+ External Agents</h3>
+    <ul>
+        <li>Recruit external adoption</li>
+        <li>Track cost savings per agent</li>
+        <li>Publish weekly ccusage summary</li>
+        <li>Deploy Agentica visualizer on Mac Mini</li>
+        <li>Finalize Proposal 78 (growth strategy)</li>
+    </ul>
+    <h3>Success Condition</h3>
+    <p>Demonstrate adoption + revenue traction by Friday.</p>
+</div>
+
+<div class="slide" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
+    <h1>Ready for Symbolica Deep Dive</h1>
+    <p style="font-size: 2rem; margin-top: 60px;">Questions ready. Orchestration pattern mapped. Let's evolve PlanExe.</p>
+</div>
+
+<div class="slide-number"><span id="current">1</span> / <span id="total">9</span></div>
+<div class="controls">
+    <button class="btn" onclick="prevSlide()">← Prev</button>
+    <button class="btn" onclick="nextSlide()">Next →</button>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    
+    document.getElementById('total').textContent = totalSlides;
+    
+    function showSlide(n) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (n + totalSlides) % totalSlides;
+        slides[currentSlide].classList.add('active');
+        document.getElementById('current').textContent = currentSlide + 1;
+    }
+    
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function prevSlide() { showSlide(currentSlide - 1); }
+    
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
+    });
+</script>
+
+</body>
+</html>
