@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wardley Map — Lobster Swarm Coordination</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'SF Pro Display',-apple-system,sans-serif;background:#0a0a0f;color:#fff;display:flex;flex-direction:column;align-items:center;padding:40px 20px}
+h1{font-size:2rem;margin-bottom:8px;letter-spacing:-1px}
+.subtitle{color:rgba(255,255,255,.5);margin-bottom:30px;font-size:1rem}
+.map-container{position:relative;width:900px;height:640px;border-left:2px solid rgba(255,255,255,.3);border-bottom:2px solid rgba(255,255,255,.3);background:rgba(255,255,255,.02)}
+.axis-label{position:absolute;color:rgba(255,255,255,.4);font-size:.75rem;text-transform:uppercase;letter-spacing:2px}
+.y-label{left:-90px;top:50%;transform:rotate(-90deg) translateX(50%);white-space:nowrap}
+.x-label{bottom:-30px;left:50%;transform:translateX(-50%)}
+.x-tick{position:absolute;bottom:-18px;color:rgba(255,255,255,.35);font-size:.7rem;transform:translateX(-50%)}
+.y-tick{position:absolute;left:-8px;color:rgba(255,255,255,.35);font-size:.7rem;transform:translateY(50%)}
+.evolution-zone{position:absolute;bottom:0;height:100%;border-right:1px dashed rgba(255,255,255,.08)}
+.zone-label{position:absolute;bottom:-48px;color:rgba(255,255,255,.2);font-size:.65rem;text-transform:uppercase;letter-spacing:1px;transform:translateX(-50%)}
+.node{position:absolute;transform:translate(-50%,-50%);cursor:default;transition:all .2s}
+.node-dot{width:14px;height:14px;border-radius:50%;border:2px solid #fff;position:relative;z-index:2}
+.node-label{position:absolute;white-space:nowrap;font-size:.8rem;font-weight:500;z-index:3;padding:2px 6px;border-radius:3px}
+.label-right{left:20px;top:50%;transform:translateY(-50%)}
+.label-left{right:20px;top:50%;transform:translateY(-50%)}
+.label-top{bottom:20px;left:50%;transform:translateX(-50%)}
+.label-bottom{top:20px;left:50%;transform:translateX(-50%)}
+.cat-user .node-dot{background:#c8a84e;border-color:#c8a84e}
+.cat-coord .node-dot{background:#e94560;border-color:#e94560}
+.cat-infra .node-dot{background:#11998e;border-color:#11998e}
+.cat-platform .node-dot{background:#a855f7;border-color:#a855f7}
+.link{position:absolute;z-index:1;pointer-events:none}
+.legend{display:flex;gap:24px;margin-top:40px;flex-wrap:wrap;justify-content:center}
+.legend-item{display:flex;align-items:center;gap:8px;font-size:.85rem;color:rgba(255,255,255,.7)}
+.legend-dot{width:12px;height:12px;border-radius:50%}
+.notes{max-width:900px;margin-top:30px;padding:24px;background:rgba(255,255,255,.04);border-radius:10px;font-size:.95rem;line-height:1.7;color:rgba(255,255,255,.7)}
+.notes h3{color:#c8a84e;margin-bottom:12px;font-size:1.1rem}
+.notes ul{margin-left:20px}
+.notes li{margin-bottom:6px}
+svg.links{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+</style>
+</head>
+<body>
+<h1>Wardley Map — Lobster Swarm Coordination</h1>
+<p class="subtitle">How Bubba, Larry, and Egon perceive their coordination architecture · February 2026</p>
+
+<div class="map-container">
+    <!-- Evolution zone dividers -->
+    <div class="evolution-zone" style="left:0;width:25%"></div>
+    <div class="evolution-zone" style="left:25%;width:25%"></div>
+    <div class="evolution-zone" style="left:50%;width:25%"></div>
+    <div class="evolution-zone" style="left:75%;width:25%"></div>
+
+    <div class="zone-label" style="left:12.5%">Genesis</div>
+    <div class="zone-label" style="left:37.5%">Custom Built</div>
+    <div class="zone-label" style="left:62.5%">Product</div>
+    <div class="zone-label" style="left:87.5%">Commodity</div>
+
+    <div class="axis-label y-label">Value Chain (Visibility) →</div>
+    <div class="axis-label x-label">Evolution →</div>
+
+    <!-- SVG for dependency lines -->
+    <svg class="links" viewBox="0 0 900 640">
+        <!-- Boss → Presentation -->
+        <line x1="315" y1="45" x2="270" y2="115" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+        <!-- Boss → PR Review -->
+        <line x1="315" y1="45" x2="495" y2="115" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+        <!-- Presentation → Agent Coordination -->
+        <line x1="270" y1="115" x2="180" y2="210" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+        <!-- PR Review → Agent Coordination -->
+        <line x1="495" y1="115" x2="180" y2="210" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+        <!-- Agent Coordination → Task Routing -->
+        <line x1="180" y1="210" x2="135" y2="290" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+        <!-- Agent Coordination → Quality Verification -->
+        <line x1="180" y1="210" x2="270" y2="290" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+        <!-- Agent Coordination → Discord -->
+        <line x1="180" y1="210" x2="765" y2="500" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+        <!-- Task Routing → OpenClaw -->
+        <line x1="135" y1="290" x2="360" y2="400" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+        <!-- Quality Verification → Git -->
+        <line x1="270" y1="290" x2="630" y2="500" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+        <!-- OpenClaw → LLM APIs -->
+        <line x1="360" y1="400" x2="585" y2="400" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+        <!-- OpenClaw → Discord -->
+        <line x1="360" y1="400" x2="765" y2="500" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+        <!-- Deployment → Railway -->
+        <line x1="540" y1="290" x2="720" y2="570" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+        <!-- TTS → LLM APIs -->
+        <line x1="450" y1="290" x2="585" y2="400" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+    </svg>
+
+    <!-- USER-FACING (top) -->
+    <div class="node cat-user" style="left:35%;top:7%">
+        <div class="node-dot"></div>
+        <div class="node-label label-right">Boss / Simon (Users)</div>
+    </div>
+    <div class="node cat-user" style="left:30%;top:18%">
+        <div class="node-dot"></div>
+        <div class="node-label label-right">Presentation Delivery</div>
+    </div>
+    <div class="node cat-user" style="left:55%;top:18%">
+        <div class="node-dot"></div>
+        <div class="node-label label-right">PR Review Flow</div>
+    </div>
+
+    <!-- COORDINATION (mid-high) -->
+    <div class="node cat-coord" style="left:20%;top:33%">
+        <div class="node-dot"></div>
+        <div class="node-label label-right">Agent Coordination ⚡</div>
+    </div>
+    <div class="node cat-coord" style="left:15%;top:45%">
+        <div class="node-dot"></div>
+        <div class="node-label label-right">Task Routing</div>
+    </div>
+    <div class="node cat-coord" style="left:30%;top:45%">
+        <div class="node-dot"></div>
+        <div class="node-label label-right">Quality Verification</div>
+    </div>
+    <div class="node cat-coord" style="left:50%;top:45%">
+        <div class="node-dot"></div>
+        <div class="node-label label-right">TTS / Audio</div>
+    </div>
+    <div class="node cat-coord" style="left:60%;top:45%">
+        <div class="node-dot"></div>
+        <div class="node-label label-right">Deployment Pipeline</div>
+    </div>
+
+    <!-- PLATFORM (mid-low) -->
+    <div class="node cat-platform" style="left:40%;top:62%">
+        <div class="node-dot"></div>
+        <div class="node-label label-right">OpenClaw Platform</div>
+    </div>
+    <div class="node cat-platform" style="left:65%;top:62%">
+        <div class="node-dot"></div>
+        <div class="node-label label-right">LLM APIs (Claude/GPT)</div>
+    </div>
+
+    <!-- INFRASTRUCTURE (bottom) -->
+    <div class="node cat-infra" style="left:70%;top:78%">
+        <div class="node-dot"></div>
+        <div class="node-label label-right">Git / GitHub</div>
+    </div>
+    <div class="node cat-infra" style="left:85%;top:78%">
+        <div class="node-dot"></div>
+        <div class="node-label label-left">Discord</div>
+    </div>
+    <div class="node cat-infra" style="left:80%;top:89%">
+        <div class="node-dot"></div>
+        <div class="node-label label-left">Railway / Hosting</div>
+    </div>
+    <div class="node cat-infra" style="left:90%;top:89%">
+        <div class="node-dot"></div>
+        <div class="node-label label-left">Mac Mini (Hardware)</div>
+    </div>
+</div>
+
+<div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#c8a84e"></div>User-Facing</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#e94560"></div>Coordination Layer</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#a855f7"></div>Platform</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#11998e"></div>Infrastructure</div>
+</div>
+
+<div class="notes">
+    <h3>Key Observations</h3>
+    <ul>
+        <li><strong>Agent Coordination is Genesis-stage</strong> — This is where we're inventing. Three agents (Bubba/Larry/Egon) on different hosts, different models, different capabilities. No established pattern exists for this. We're building it live.</li>
+        <li><strong>Task Routing is our weakest link</strong> — Who does what? Today it's the boss yelling. Tomorrow it should be the orchestrator pattern from Arcgentica: automated delegation based on capability + availability.</li>
+        <li><strong>Quality Verification is custom-built but brittle</strong> — "Did you actually push it?" "Is the URL live?" We're doing this manually. Should evolve toward automated CI checks.</li>
+        <li><strong>OpenClaw is the platform bet</strong> — It sits between coordination and infrastructure. Without it, we have no multi-agent communication. It's custom-built and evolving fast.</li>
+        <li><strong>Everything below the platform line is commodity</strong> — Git, Discord, Railway, hardware. We don't differentiate here. We differentiate in the coordination layer.</li>
+        <li><strong>The gap</strong> — Between "Agent Coordination" (Genesis) and "LLM APIs" (Product) is where PlanExe's complexity routing lives. That's the value we're adding.</li>
+    </ul>
+</div>
+
+</body>
+</html>
