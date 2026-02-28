@@ -19,7 +19,7 @@
         .slide table{width:100%;font-size:1.05rem;border-collapse:collapse;margin-top:16px}
         .slide td,.slide th{padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.12);text-align:left}
         .slide th{color:#c8a84e;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;font-size:.85rem}
-        .art-accent{max-width:280px;border-radius:10px;margin:16px 0;box-shadow:0 12px 40px rgba(0,0,0,.5)}
+        .art-accent{max-width:320px;border-radius:12px;margin:16px 0;box-shadow:0 12px 40px rgba(0,0,0,.5)}
         .art-float-right{float:right;margin-left:40px}
         .metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:24px}
         .metric-box{background:rgba(255,255,255,.04);padding:24px;border-radius:10px;border-left:4px solid #c8a84e}
@@ -31,13 +31,14 @@
         .btn:hover{background:rgba(255,255,255,.18);border-color:#c8a84e}
         .btn.active{background:rgba(200,168,78,.25);border-color:#c8a84e}
         .slide-counter{position:fixed;bottom:24px;left:24px;font-size:.9rem;color:rgba(255,255,255,.35);backdrop-filter:blur(12px);padding:8px 16px;border-radius:6px}
-        .play-prompt{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,15,.95);z-index:300;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:opacity .5s}
+        .play-prompt{position:fixed;top:0;left:0;right:0;bottom:0;background-image:url('art/b16-cubist-lobster-parliament.png');background-size:cover;background-position:center;z-index:300;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:opacity .5s;overflow:hidden}
+        .play-prompt::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(10,10,15,.65);z-index:1}
+        .play-prompt-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center}
         .play-prompt.hidden{opacity:0;pointer-events:none}
-        .play-prompt img{max-width:320px;border-radius:12px;box-shadow:0 16px 60px rgba(0,0,0,.6);margin-bottom:40px}
-        .play-prompt h1{font-size:2.8rem;margin-bottom:12px;letter-spacing:-1px}
-        .play-prompt p{color:rgba(255,255,255,.5);font-size:1.1rem;margin-bottom:30px}
-        .play-btn{background:#c8a84e;color:#0a0a0f;border:none;padding:16px 48px;font-size:1.2rem;font-weight:700;border-radius:8px;cursor:pointer;transition:all .2s;letter-spacing:.5px}
-        .play-btn:hover{background:#dabb5e;transform:scale(1.03)}
+        .play-prompt h1{font-size:3.2rem;margin-bottom:12px;letter-spacing:-1px}
+        .play-prompt p{color:rgba(255,255,255,.7);font-size:1.2rem;margin-bottom:40px}
+        .play-btn{background:#c8a84e;color:#0a0a0f;border:2px solid #c8a84e;padding:18px 56px;font-size:1.3rem;font-weight:700;border-radius:8px;cursor:pointer;transition:all .2s;letter-spacing:.5px}
+        .play-btn:hover{background:#dabb5e;border-color:#dabb5e;transform:scale(1.05)}
         .progress{position:fixed;top:0;left:0;height:3px;background:#c8a84e;z-index:200;transition:width .3s}
         .clearfix::after{content:"";display:table;clear:both}
         .bg-1{background:linear-gradient(160deg,#0a0a1a 0%,#0d1b2a 50%,#1b2838 100%)}
@@ -59,13 +60,14 @@
 <div class="progress" id="progress"></div>
 
 <div class="play-prompt" id="playPrompt" onclick="startPresentation()">
-    <img src="art/b16-cubist-lobster-parliament.png" alt="PlanExe">
-    <h1>PlanExe — Q1 2026</h1>
-    <p>Executive Review · Voynich Labs</p>
-    <button class="play-btn">▶ &nbsp;Play Presentation</button>
+    <div class="play-prompt-content">
+        <h1>PlanExe — Q1 2026</h1>
+        <p>Executive Review · February Shipping Summary</p>
+        <button class="play-btn">▶ &nbsp;Play Presentation</button>
+    </div>
 </div>
 
-<div class="slide active bg-1">
+<div class="slide active bg-1 clearfix">
     <img src="art/b16-cubist-lobster-parliament.png" class="art-accent art-float-right" alt="PlanExe">
     <h1>PlanExe</h1>
     <h2 style="color:rgba(255,255,255,.7);font-weight:400">Q1 2026 Executive Review</h2>
@@ -78,24 +80,25 @@
     <img src="art/museum-plan-review-execute-v2-cropped2.png" class="art-accent art-float-right" alt="Plan Review Execute">
     <h2>What We Shipped</h2>
     <ul>
-        <li><strong>6 Merged PRs</strong> to PlanExeOrg upstream (#102–#107)</li>
-        <li><strong>Complexity Scoring Rubric</strong> — Task categorization across model tiers</li>
-        <li><strong>Cache-Aware Handoff</strong> — Clean model transitions, zero context waste</li>
-        <li><strong>Real Usage Data</strong> — 50 actual routing events analyzed</li>
-        <li><strong>MCP Integration</strong> — Smithery fixes, example tools, CI optimization</li>
-        <li><strong>Infrastructure Locked</strong> — Mac Mini M4 Pro, Python 3.13, full environment</li>
+        <li><strong>53 Pull Requests</strong> merged to upstream (VoynichLabs fork)</li>
+        <li><strong>132 Commits</strong> across team in February (#102–106 + supporting PRs)</li>
+        <li><strong>6 Primary Proposals</strong> — Complexity Scoring, Model Routing, Cache-Aware Handoff, Real Metrics, A2A Payment, MCP Tooling</li>
+        <li><strong>Egon's GitHub Account</strong> — New developer on the team, full contributor access</li>
+        <li><strong>Agent Infrastructure</strong> — Mac Mini M4 Pro, Python 3.13, full environment locked</li>
     </ul>
     <audio id="audio-2" src="audio/slide-2.mp3" preload="auto"></audio>
 </div>
 
-<div class="slide bg-3">
-    <h2>The Metrics</h2>
+<div class="slide bg-3 clearfix">
+    <img src="art/museum-liquid-metal-lobster-rise.png" class="art-accent art-float-right" alt="Productivity">
+    <h2>February Metrics — The Real Numbers</h2>
     <div class="metrics">
-        <div class="metric-box"><div class="metric-number">50</div><div class="metric-label">Routing Events Logged</div></div>
-        <div class="metric-box"><div class="metric-number">89%</div><div class="metric-label">Complexity-to-Execution Correlation</div></div>
-        <div class="metric-box"><div class="metric-number">62%</div><div class="metric-label">Haiku-First Routing</div></div>
-        <div class="metric-box"><div class="metric-number">34%</div><div class="metric-label">Context Waste Reduction</div></div>
+        <div class="metric-box"><div class="metric-number">120</div><div class="metric-label">Commits (Larry)</div></div>
+        <div class="metric-box"><div class="metric-number">12</div><div class="metric-label">Commits (Egon)</div></div>
+        <div class="metric-box"><div class="metric-number">53</div><div class="metric-label">PRs Merged Upstream</div></div>
+        <div class="metric-box"><div class="metric-number">229</div><div class="metric-label">VoynichLabs Repo Commits</div></div>
     </div>
+    <p style="margin-top:20px;font-size:1.1rem"><strong style="color:#c8a84e">High Drama:</strong> Egon's new GitHub account = first-class team member. 53 upstream PRs = sustained momentum. 120 commits = core system ownership.</p>
     <audio id="audio-3" src="audio/slide-3.mp3" preload="auto"></audio>
 </div>
 
@@ -150,14 +153,14 @@
     <h3>Traction</h3>
     <ul>
         <li>3 agents actively using routing</li>
-        <li>6 PRs merged upstream</li>
+        <li>53 PRs merged upstream</li>
         <li>Integration guide published</li>
     </ul>
     <audio id="audio-7" src="audio/slide-7.mp3" preload="auto"></audio>
 </div>
 
 <div class="slide bg-8 clearfix">
-    <img src="art/museum-liquid-metal-lobster-rise.png" class="art-accent art-float-right" alt="Next Week">
+    <img src="art/museum-larry-egon-barn-v1.png" class="art-accent art-float-right" alt="Next Week">
     <h2>Next Week: Contract Renewal</h2>
     <h3>Target: 5+ External Agents</h3>
     <ul>
@@ -173,7 +176,7 @@
 </div>
 
 <div class="slide bg-9 clearfix">
-    <img src="art/museum-larry-egon-barn-v1.png" class="art-accent art-float-right" alt="The Crew">
+    <img src="art/b16-cubist-lobster-parliament.png" class="art-accent art-float-right" alt="The Crew">
     <h1>Ready for Symbolica Deep Dive</h1>
     <p style="font-size:1.6rem;margin-top:40px;color:rgba(255,255,255,.7)">Questions ready. Orchestration pattern mapped. Let's evolve PlanExe.</p>
     <audio id="audio-9" src="audio/slide-9.mp3" preload="auto"></audio>
@@ -184,20 +187,19 @@
     <div class="two-col">
         <div class="card">
             <h3>Current State</h3>
-            <p><strong>Egon:</strong> GPT-5.1 Codex Mini</p>
-            <p><strong>Budget:</strong> 70% remaining (resets in ~3 days)</p>
-            <p><strong>Bubba:</strong> Claude Opus 4.6</p>
-            <p><strong>Larry:</strong> Claude Sonnet 4.5</p>
+            <p><strong>Egon:</strong> New to team, GitHub account established</p>
+            <p><strong>Larry:</strong> 120 commits, core ownership</p>
+            <p><strong>Bubba:</strong> Infrastructure + deployment</p>
         </div>
         <div class="card">
-            <h3>Proposed: Egon → GPT-5.3 Codex</h3>
-            <p>30% → Arcgentica pattern analysis + orchestration</p>
-            <p>20% → PlanExe PR development + routing</p>
-            <p>10% → Documentation + presentation prep</p>
-            <p>10% → Buffer for emergent tasks</p>
+            <h3>February Wins</h3>
+            <p>✓ 53 upstream PRs merged</p>
+            <p>✓ Egon fully onboarded as contributor</p>
+            <p>✓ Complexity routing proven in production</p>
+            <p>✓ Cache-aware handoff implemented</p>
         </div>
     </div>
-    <p style="margin-top:24px"><strong style="color:#c8a84e">Why:</strong> Deeper Agentica framework understanding = more valuable PlanExe contributions. Every token tracked. Every tier justified.</p>
+    <p style="margin-top:24px"><strong style="color:#c8a84e">Next:</strong> Sustain momentum. Egon's growth. Scale to external agents. Build on February's foundation.</p>
     <audio id="audio-10" src="audio/slide-10.mp3" preload="auto"></audio>
 </div>
 
