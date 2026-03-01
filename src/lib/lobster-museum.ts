@@ -21,6 +21,20 @@ export interface MuseumEntry {
 const IMAGE_EXT_RE = /\.(png|jpe?g|webp)$/i;
 const GENERATED_DIR = path.join(process.cwd(), 'public', 'generated');
 
+const DUTCH_MASTERS_FILENAMES = new Set([
+  'b12-dutch-golden-canal-lobster.png',
+  'b12-dutch-market-morning-catch.png',
+  'b12-delft-kitchen-lobster-study.png',
+  'b12-rembrandt-nightwatch-lobster-tribute.png',
+  'b12-vermeer-window-lobster-letter.png',
+  'b12-vermeer-lobster-study.png',
+  'b12-jan-davidsz-de-heem-lobster-banquet.png',
+  'b16-rembrandt-lobster-anatomy.png',
+  'b16-van-beyeren-fractal-banquet-threshold.png',
+  'b16-de-heem-algorithmic-vanitas.png',
+  'b16-vermeer-nocturne-attention-study.png',
+]);
+
 const FEATURED_FILENAMES = new Set([
   'b1-loda-sequence-poster.png',
   'b1-green-topology-morph.png',
@@ -35,6 +49,9 @@ const FEATURED_FILENAMES = new Set([
   'b9-glitch-art-crustacean.png',
   'b16-cubist-lobster-cafe-dawn.png',
   'b16-artdeco-cyber-skyline.png',
+  'b16-van-beyeren-fractal-banquet-threshold.png',
+  'b16-de-heem-algorithmic-vanitas.png',
+  'b16-vermeer-nocturne-attention-study.png',
   'b17-venice-beach-lobster.png',
   'b17-josephus-bronze-installation.png',
   'b17-mexico-city-lobster.png',
@@ -69,6 +86,7 @@ export const titleFromFilename = (filename: string): string =>
     .join(' ');
 
 export const inferSeries = (filename: string): string => {
+  if (DUTCH_MASTERS_FILENAMES.has(filename)) return 'Dutch Masters Exposition';
   if (filename.startsWith('b17-')) return 'Sculpture Series';
   if (filename.startsWith('museum-')) return 'Museum Narrative';
   if (filename.startsWith('b16-')) return 'Avant-Garde Expansion';
@@ -84,6 +102,9 @@ export const inferSeries = (filename: string): string => {
 };
 
 export const inferDescription = (filename: string, title: string, series: string): string => {
+  if (DUTCH_MASTERS_FILENAMES.has(filename)) {
+    return `${title} anchors the Dutch Masters Exposition wing, combining old-master still-life language with contemporary hybrid experimentation.`;
+  }
   if (filename.startsWith('b17-')) {
     return `${title} is part of the global sculpture-tour sequence: photoreal lobster monuments mapped to mathematical motifs across city-scale installations.`;
   }
