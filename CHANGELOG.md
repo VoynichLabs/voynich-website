@@ -5,6 +5,16 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.3.5] - 2026-03-01
+
+### Changed
+- **PlanExe exec deck** (`/presentations/planexe-exec-2026-02-28.html`) — replaced flat gradient backgrounds with full-bleed generated art (signal cathedral, art deco skyline, baroque gold leaf, futurist velocity, polyptych cathedral). Dark overlay + text-shadow + glass-morphism cards for readability. Removed redundant title slide and embarrassing "Mac Mini + Python installed" filler bullet. Audio IDs renumbered for 9-slide deck.
+
+### Author
+- Claude Opus 4.6
+
+---
+
 ## [0.3.4] - 2026-02-26
 
 ### Changed
