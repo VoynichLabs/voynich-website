@@ -58,8 +58,18 @@
     </div>
 </div>
 
-<!-- Slide 1: What We Shipped -->
+<!-- Slide 0: Intro -->
 <div class="slide active" style="background-image:url('art/museum-plan-review-execute-v2-cropped2.png')">
+    <div class="content-box">
+        <h1>PlanExe</h1>
+        <h2>Q1 2026 Executive Review</h2>
+        <p style="margin-top:20px;color:rgba(255,255,255,.8);font-size:1.2rem">February Shipping Summary</p>
+    </div>
+    <audio id="audio-0" src="audio/intro-boomhauer.mp3" preload="auto"></audio>
+</div>
+
+<!-- Slide 1: What We Shipped -->
+<div class="slide" style="background-image:url('art/museum-plan-review-execute-v2-cropped2.png')">
     <div class="content-box">
         <h2>What We Shipped</h2>
         <ul>
@@ -69,7 +79,7 @@
             <li><strong>Egon onboarded</strong> -- new team member, full contributor access, 12 commits in first week</li>
         </ul>
     </div>
-    <audio id="audio-1" src="audio/slide-2.mp3" preload="auto"></audio>
+    <audio id="audio-1" src="audio/slide-1.mp3" preload="auto"></audio>
 </div>
 
 <!-- Slide 2: February Metrics -->
@@ -82,7 +92,7 @@
         <div class="metric-box"><div class="metric-number">229</div><div class="metric-label">VoynichLabs Repo Commits</div></div>
     </div>
     <p style="margin-top:20px;font-size:1.1rem"><strong style="color:#c8a84e">Momentum:</strong> 53 upstream PRs = sustained external contribution. 120 Larry commits = core system ownership. Egon ramping fast.</p>
-    <audio id="audio-2" src="audio/slide-3.mp3" preload="auto"></audio>
+    <audio id="audio-2" src="audio/slide-2.mp3" preload="auto"></audio>
 </div>
 
 <!-- Slide 3: Architecture -->
@@ -96,7 +106,7 @@
         <h3>Result</h3>
         <p>Cost-efficient routing without hardcoded model selection.</p>
     </div>
-    <audio id="audio-3" src="audio/slide-4.mp3" preload="auto"></audio>
+    <audio id="audio-3" src="audio/slide-3.mp3" preload="auto"></audio>
 </div>
 
 <!-- Slide 4: Symbolica Comparison -->
@@ -111,7 +121,7 @@
         <tr><td>Solvers</td><td>Executors</td><td>Confirmed strategy only</td></tr>
     </table>
     <p style="margin-top:20px"><strong style="color:#c8a84e">Key insight:</strong> Specialized subagents + isolated scope + shared memory = game-agnostic task solving</p>
-    <audio id="audio-4" src="audio/slide-5.mp3" preload="auto"></audio>
+    <audio id="audio-4" src="audio/slide-4.mp3" preload="auto"></audio>
 </div>
 
 <!-- Slide 5: Questions for Simon -->
@@ -125,7 +135,7 @@
         <h3>Q3: Orchestrator Strategy</h3>
         <p>How does the orchestrator decide which subagent to invoke next -- rule-based, probabilistic, or learned?</p>
     </div>
-    <audio id="audio-5" src="audio/slide-6.mp3" preload="auto"></audio>
+    <audio id="audio-5" src="audio/slide-5.mp3" preload="auto"></audio>
 </div>
 
 <!-- Slide 6: Revenue Model -->
@@ -145,7 +155,7 @@
             <li>Integration guide published</li>
         </ul>
     </div>
-    <audio id="audio-6" src="audio/slide-7.mp3" preload="auto"></audio>
+    <audio id="audio-6" src="audio/slide-6.mp3" preload="auto"></audio>
 </div>
 
 <!-- Slide 7: Next Week -->
@@ -163,14 +173,14 @@
         <h3>Success Condition</h3>
         <p>Demonstrate adoption + revenue traction by Friday.</p>
     </div>
-    <audio id="audio-7" src="audio/slide-8.mp3" preload="auto"></audio>
+    <audio id="audio-7" src="audio/slide-7.mp3" preload="auto"></audio>
 </div>
 
 <!-- Slide 8: CTA -->
 <div class="slide" style="background-image:url('art/b16-egon-polyptych-lobster-cathedral.png')">
     <h1>Ready for Symbolica Deep Dive</h1>
     <p style="font-size:1.6rem;margin-top:40px;color:rgba(255,255,255,.85)">Questions ready. Orchestration pattern mapped. Let's evolve PlanExe.</p>
-    <audio id="audio-8" src="audio/slide-9.mp3" preload="auto"></audio>
+    <audio id="audio-8" src="audio/slide-8.mp3" preload="auto"></audio>
 </div>
 
 <!-- Slide 9: Resource Allocation -->
@@ -192,10 +202,10 @@
         </div>
     </div>
     <p style="margin-top:24px"><strong style="color:#c8a84e">Next:</strong> Sustain momentum. Egon's growth. Scale to external agents. Build on February's foundation.</p>
-    <audio id="audio-9" src="audio/slide-10.mp3" preload="auto"></audio>
+    <audio id="audio-9" src="audio/slide-9.mp3" preload="auto"></audio>
 </div>
 
-<div class="slide-counter"><span id="current">1</span> / <span id="total">9</span></div>
+<div class="slide-counter"><span id="current">1</span> / <span id="total">10</span></div>
 <div class="controls">
     <button class="btn" onclick="prevSlide()">&#8592;</button>
     <button class="btn" id="playAllBtn" onclick="togglePlayAll()">Play All</button>
@@ -208,11 +218,11 @@ document.getElementById('total').textContent=total;
 function showSlide(n){slides[current].classList.remove('active');current=((n%total)+total)%total;slides[current].classList.add('active');document.getElementById('current').textContent=current+1;document.getElementById('progress').style.width=((current+1)/total*100)+'%'}
 function nextSlide(){showSlide(current+1)}
 function prevSlide(){showSlide(current-1)}
-function playCurrentAudio(){return new Promise(resolve=>{const a=document.getElementById('audio-'+(current+1));if(!a||!a.src){resolve();return}a.pause();a.currentTime=0;a.onended=null;a.onerror=null;a.onended=resolve;a.onerror=resolve;a.play().catch(resolve)})}
+function playCurrentAudio(){return new Promise(resolve=>{const a=document.getElementById('audio-'+current);if(!a||!a.src){resolve();return}a.pause();a.currentTime=0;a.onended=null;a.onerror=null;a.onended=resolve;a.onerror=resolve;a.play().catch(resolve)})}
 async function autoPlay(){playing=true;document.getElementById('playAllBtn').textContent='Pause';document.getElementById('playAllBtn').classList.add('active');for(let i=current;i<total;i++){if(!playing)break;showSlide(i);await playCurrentAudio();if(!playing)break;if(i<total-1)await new Promise(r=>setTimeout(r,800))}playing=false;document.getElementById('playAllBtn').textContent='Play All';document.getElementById('playAllBtn').classList.remove('active')}
-function togglePlayAll(){if(playing){playing=false;const a=document.getElementById('audio-'+(current+1));if(a)a.pause();document.getElementById('playAllBtn').textContent='Play All';document.getElementById('playAllBtn').classList.remove('active')}else{autoPlay()}}
+function togglePlayAll(){if(playing){playing=false;const a=document.getElementById('audio-'+current);if(a)a.pause();document.getElementById('playAllBtn').textContent='Play All';document.getElementById('playAllBtn').classList.remove('active')}else{autoPlay()}}
 function startPresentation(){document.getElementById('playPrompt').classList.add('hidden');document.querySelectorAll('audio').forEach(a=>{a.pause();a.currentTime=0});setTimeout(()=>{document.getElementById('playPrompt').style.display='none';current=0;autoPlay()},500)}
-document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')nextSlide();if(e.key==='ArrowLeft')prevSlide();if(e.key===' '){e.preventDefault();togglePlayAll()}if(e.key==='Escape'){playing=false;const a=document.getElementById('audio-'+(current+1));if(a)a.pause()}});
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')nextSlide();if(e.key==='ArrowLeft')prevSlide();if(e.key===' '){e.preventDefault();togglePlayAll()}if(e.key==='Escape'){playing=false;const a=document.getElementById('audio-'+current);if(a)a.pause()}});
 </script>
 </body>
 </html>
