@@ -5,6 +5,20 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.4.0] - 2026-03-07
+
+### Changed
+- **Museum/Incubator separation** — extracted all gallery metadata and timeline entries from `lobster-incubator.astro` into `src/lib/gallery-metadata.ts` (single source of truth). Incubator now links to the museum rather than duplicating it. File shrank from ~963 to ~180 lines.
+- **Curator metadata on museum** — `lobster-museum.ts` now enriches each `MuseumEntry` with `batch`, `style`, and `note` from `GALLERY_METADATA`. Archive figcaptions display curator notes when present.
+- **Museum Timeline (Chronicle)** — new "Chronicle" section added to `lobster-art-museum.astro` between Wings nav and Curated Selection, sourced from `TIMELINE_ENTRIES`.
+- **Thumbnail fix** — wings nav cards and curated selection grid changed from `object-cover` to `object-contain` so artwork is never cropped. Great Mistakes wing updated too. Hero background left as `object-cover` (intentional fullbleed).
+- **PlanExe exec deck link** — added "Q1 Exec Deck →" button to the `/planexe` hero CTA row, opening `/presentations/planexe-exec-2026-02-28.html` in a new tab.
+
+### Author
+- claude-sonnet-4-6
+
+---
+
 ## [0.3.4] - 2026-02-26
 
 ### Changed

@@ -6,6 +6,7 @@
 import Base from '../layouts/Base.astro';
 import type { MuseumEntry } from '../lib/lobster-museum';
 import { getMuseumEntries, getFeaturedEntries, getArchiveEntries, inferSeries } from '../lib/lobster-museum';
+import { TIMELINE_ENTRIES } from '../lib/gallery-metadata';
 
 const entries = getMuseumEntries();
 const featuredEntries = getFeaturedEntries(entries);
@@ -222,10 +223,10 @@ const seriesGroups = orderedSeries
                 <!-- Thumbnail preview -->
                 {series.entries.length > 0 && (
                   <div class="relative h-40 overflow-hidden bg-bg-secondary">
-                    <img 
-                      src={series.entries[0].src} 
+                    <img
+                      src={series.entries[0].src}
                       alt={series.name}
-                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      class="w-full h-full object-contain bg-bg-primary group-hover:scale-105 transition-transform duration-300"
                     />
                     <div class="absolute inset-0 bg-gradient-to-t from-bg-primary/80 via-transparent to-transparent"></div>
                   </div>
@@ -252,6 +253,22 @@ const seriesGroups = orderedSeries
       </section>
     )}
 
+    <section class="mb-12 border border-border rounded-2xl bg-bg-secondary p-6 sm:p-8">
+      <p class="font-mono text-xs text-edge-green uppercase tracking-[0.25em] mb-1">Chronicle</p>
+      <h2 class="text-2xl font-bold text-text-primary mb-4">Museum Timeline</h2>
+      <div class="space-y-4 text-sm text-text-muted">
+        {TIMELINE_ENTRIES.map((entry) => (
+          <div class="flex items-start gap-3">
+            <span class="text-edge-green font-mono text-xs shrink-0 mt-0.5">{entry.year}</span>
+            <div>
+              <p class="font-semibold text-text-primary text-sm mb-0.5">{entry.label}</p>
+              <p class="text-[11px]">{entry.note}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
     {featuredEntries.length > 0 && (
       <section class="mb-12">
         <div class="mb-6">
@@ -267,7 +284,7 @@ const seriesGroups = orderedSeries
                   src={entry.src} 
                   alt={entry.title} 
                   loading="lazy" 
-                  class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-300" 
+                  class="w-full aspect-square object-contain bg-bg-primary group-hover:scale-105 transition-transform duration-300"
                 />
               </a>
               <div class="p-3 border-t border-border">
@@ -316,6 +333,9 @@ const seriesGroups = orderedSeries
                         {entry.title}
                       </a>
                       <div class="mt-1 text-[10px] uppercase tracking-[0.25em] text-text-muted">{entry.series}</div>
+                      {entry.note && (
+                        <p class="mt-1 text-[10px] text-text-muted leading-relaxed">{entry.note}</p>
+                      )}
                       <a
                         href={entry.href}
                         class="inline-flex mt-2 text-[10px] uppercase tracking-[0.2em] text-rust-orange hover:text-edge-green transition-colors"

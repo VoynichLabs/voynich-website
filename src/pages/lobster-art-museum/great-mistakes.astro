@@ -43,7 +43,7 @@ const pieces = [
       {pieces.map((piece) => (
         <article class="rounded-xl border border-border bg-bg-secondary overflow-hidden shadow-sm">
           <a href={piece.permalink} class="block">
-            <img src={piece.image} alt={piece.title} loading="lazy" class="w-full h-auto object-cover bg-bg-primary" />
+            <img src={piece.image} alt={piece.title} loading="lazy" class="w-full h-auto object-contain bg-bg-primary" />
           </a>
           <div class="p-4 border-t border-border">
             <a href={piece.permalink} class="text-lg font-bold text-text-primary hover:text-node-blue transition-colors">

@@ -1,10 +1,11 @@
-// Author: bubba-haiku
-// Date: 25 February 2026
+// Author: bubba-haiku / claude-sonnet-4-6
+// Date: 25 February 2026 / 2026-03-07
 // PURPOSE: Shared Lobster Art Museum helpers for listing generated artwork, building stable slugs,
 //          and producing share-ready metadata used by gallery, permalink pages, and manifest outputs.
 // SRP/DRY check: Pass - centralizes filename parsing and museum metadata derivation.
 import fs from 'fs';
 import path from 'path';
+import { GALLERY_METADATA } from './gallery-metadata';
 
 export interface MuseumEntry {
   filename: string;
@@ -16,6 +17,9 @@ export interface MuseumEntry {
   description: string;
   tags: string[];
   featured: boolean;
+  batch?: string;
+  style?: string;
+  note?: string;
 }
 
 const IMAGE_EXT_RE = /\.(png|jpe?g|webp)$/i;
@@ -137,6 +141,9 @@ export const getMuseumEntries = (): MuseumEntry[] => {
     const title = titleFromFilename(filename);
     const series = inferSeries(filename);
 
+    const stem = filename.replace(/\.(png|jpe?g|webp)$/i, '');
+    const curatorMeta = GALLERY_METADATA[stem];
+
     return {
       filename,
       slug: slugFromFilename(filename),
@@ -147,6 +154,7 @@ export const getMuseumEntries = (): MuseumEntry[] => {
       description: inferDescription(filename, title, series),
       tags: DEFAULT_TAGS,
       featured: FEATURED_FILENAMES.has(filename),
+      ...(curatorMeta ?? {}),
     } as MuseumEntry;
   });
 
