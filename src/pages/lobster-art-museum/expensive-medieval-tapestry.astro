@@ -15,13 +15,9 @@ const art = {
     'Kusama × Kline × Magritte. Raw-green lobsters in powdered wigs overwrite Baroque frescoes with Python — def fib(n) in gold across painted sky. Three rare blue lobsters conduct standing waveforms. Möbius floor, prime-gap star ceiling, CECI N\'EST PAS UN LOBSTER in the upper gallery. Prompted by Egon.',
 };
 
-const fallbackShareBaseUrl = 'https://voynich-website-staging.up.railway.app';
-const configuredShareBaseUrl = import.meta.env.PUBLIC_SHARE_BASE_URL?.trim();
-const siteBaseUrl = Astro.site?.toString()?.trim();
-const useFallback = !siteBaseUrl || siteBaseUrl.includes('localhost') || siteBaseUrl.includes('voynichlabs.github.io');
-const shareBaseUrl = (configuredShareBaseUrl || (useFallback ? fallbackShareBaseUrl : siteBaseUrl)).replace(/\/$/, '');
-const canonicalUrl = `${shareBaseUrl}/lobster-art-museum/expensive-medieval-tapestry`;
-const ogImage = `${shareBaseUrl}${art.image}`;
+const siteOrigin = new URL(Astro.site ?? 'https://voynichlabs.org').origin;
+const canonicalUrl = `${siteOrigin}/lobster-art-museum/expensive-medieval-tapestry`;
+const ogImage = `${siteOrigin}${art.image}`;
 ---
 
 <Base
@@ -32,7 +28,7 @@ const ogImage = `${shareBaseUrl}${art.image}`;
   ogType="article"
   twitterCard="summary_large_image"
 >
-  <main class="max-w-6xl mx-auto px-4 py-16 sm:py-24">
+  <section class="max-w-6xl mx-auto px-4 py-16 sm:py-24">
     <a
       href="/lobster-art-museum"
       class="inline-flex mb-6 text-xs sm:text-sm font-mono uppercase tracking-[0.2em] text-rust-orange hover:text-edge-green transition-colors"
@@ -79,5 +75,5 @@ const ogImage = `${shareBaseUrl}${art.image}`;
         </div>
       </article>
     </section>
-  </main>
+  </section>
 </Base>
