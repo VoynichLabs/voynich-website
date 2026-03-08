@@ -30,18 +30,19 @@ const {
   twitterCreator = '@82deutschmark',
 } = Astro.props;
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const navLinks = [
-  { href: '/', label: 'index' },
-  { href: '/about', label: 'about' },
-  { href: '/projects', label: 'projects' },
-  { href: '/docs/latentscript', label: 'latentscript', color: 'text-sky-300' },
-  { href: '/planexe', label: 'planexe', color: 'text-purple-400' },
-  { href: '/lab', label: 'lab', color: 'text-edge-green' },
-  { href: '/simon', label: 'simon' },
-  { href: '/team', label: '🦞 swarm', color: 'text-rust-orange' },
-  { href: '/lobster-incubator', label: '🧪 incubator', color: 'text-edge-green' },
-  { href: '/lobster-art-museum', label: '🎨 museum', color: 'text-rust-orange' },
-  { href: '/collaborators', label: 'collaborate', color: 'text-node-blue' },
+  { href: `${base}/`, label: 'index' },
+  { href: `${base}/about`, label: 'about' },
+  { href: `${base}/projects`, label: 'projects' },
+  { href: `${base}/docs/latentscript`, label: 'latentscript', color: 'text-sky-300' },
+  { href: `${base}/planexe`, label: 'planexe', color: 'text-purple-400' },
+  { href: `${base}/lab`, label: 'lab', color: 'text-edge-green' },
+  { href: `${base}/simon`, label: 'simon' },
+  { href: `${base}/team`, label: '🦞 swarm', color: 'text-rust-orange' },
+  { href: `${base}/lobster-incubator`, label: '🧪 incubator', color: 'text-edge-green' },
+  { href: `${base}/lobster-art-museum`, label: '🎨 museum', color: 'text-rust-orange' },
+  { href: `${base}/collaborators`, label: 'collaborate', color: 'text-node-blue' },
 ];
 const mobileLinks = navLinks.slice(2, 6);
 ---
@@ -66,7 +67,7 @@ const mobileLinks = navLinks.slice(2, 6);
     {twitterSite && <meta name="twitter:site" content={twitterSite} />}
     {twitterCreator && <meta name="twitter:creator" content={twitterCreator} />}
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
     <title>{title} | VoynichLabs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -84,7 +85,7 @@ const mobileLinks = navLinks.slice(2, 6);
       <!-- Nav — terminal style -->
       <nav class="fixed top-0 w-full z-50 bg-bg-primary/90 backdrop-blur-sm border-b border-border">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
-          <a href="/" class="flex items-center gap-2 font-mono text-sm text-text-primary hover:text-node-blue transition-colors duration-200">
+          <a href={`${base}/`} class="flex items-center gap-2 font-mono text-sm text-text-primary hover:text-node-blue transition-colors duration-200">
             <span>🦞</span>
             <span class="font-semibold tracking-tight">VoynichLabs</span>
           </a>
@@ -122,9 +123,9 @@ const mobileLinks = navLinks.slice(2, 6);
       </nav>
     )}
 
-    <main class="relative z-10 pt-14">
+    <div class="relative z-10 pt-14">
       <slot />
-    </main>
+    </div>
 
     {!hideFooter && (
       <!-- Footer — structured, no fluff -->
