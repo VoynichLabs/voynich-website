@@ -356,7 +356,7 @@ emit v2 as "json";</code></pre>
   </section>
 
   <script type="module" is:inline>
-    const EXAMPLES = /** @type {Record<string,string>} */ (${JSON.stringify(examples)});
+    const EXAMPLES = (${JSON.stringify(examples)});
 
     const editor = document.getElementById('ls-editor');
     const validationEl = document.getElementById('ls-validation');
