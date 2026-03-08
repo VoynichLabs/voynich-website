@@ -38,7 +38,8 @@ The CI test deserves a note. It walks every `.py` file under `worker_plan_intern
 
 ## The Run
 
-Model: Qwen 3.5-9B (GGUF, llama.cpp via LM Studio)  
+Model: Qwen 3.5-9B Q4_K_M (GGUF, llama.cpp via LM Studio)  
+File: `Qwen3.5-9B-Q4_K_M.gguf`, 6.1 GB — <https://huggingface.co/lmstudio-community/Qwen3.5-9B-GGUF>  
 Hardware: Mac Mini M4 Pro  
 Mode: FAST_BUT_SKIP_DETAILS  
 Tasks: 63 scheduled, 56 executed, 7 cached, **0 failed**  
