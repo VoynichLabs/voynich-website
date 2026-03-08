@@ -69,6 +69,8 @@ const additionalSeries = Object.keys(groupedArchiveEntries)
 
 const orderedSeries = [...wingSeriesOrder, ...additionalSeries];
 
+const siteOrigin = new URL(Astro.site ?? 'https://voynichlabs.org').origin;
+
 const slugifySeries = (name: string) =>
   name
     .toLowerCase()
@@ -87,9 +89,9 @@ const seriesGroups = orderedSeries
 <Base
   title="Lobster Art Museum"
   description="Lobster Art Museum — dedicated route for generated artwork archive with individual shareable pages for every piece."
-  canonicalUrl="/lobster-art-museum"
+  canonicalUrl={`${siteOrigin}/lobster-art-museum`}
 >
-  <main class="max-w-7xl mx-auto px-4 py-16 sm:py-24">
+  <section class="max-w-7xl mx-auto px-4 py-16 sm:py-24">
     <!-- Hero section with random featured image background -->
     <section class="mb-12 relative overflow-hidden rounded-2xl border border-border">
       {featuredEntries.length > 0 && (
@@ -355,5 +357,5 @@ const seriesGroups = orderedSeries
         <p class="text-sm text-text-muted">No generated artwork found yet in <code>/public/generated</code>.</p>
       </section>
     )}
-  </main>
+  </section>
 </Base>
