@@ -15,7 +15,7 @@ const { Content } = await post.render();
 ---
 
 <Base title={post.data.title} description={post.data.summary ?? post.data.title}>
-  <main class="max-w-3xl mx-auto px-4 py-16">
+  <section class="max-w-3xl mx-auto px-4 py-16">
     <nav class="mb-8 text-sm">
       <a href="/lobster-incubator/blog" class="text-node-blue hover:text-text-primary">← Back to Field Notes</a>
     </nav>
@@ -51,5 +51,5 @@ const { Content } = await post.render();
     <nav class="mt-12 pt-6 border-t border-border">
       <a href="/lobster-incubator/blog" class="text-node-blue hover:text-text-primary text-sm">← All Field Notes</a>
     </nav>
-  </main>
+  </section>
 </Base>

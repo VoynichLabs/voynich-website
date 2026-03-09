@@ -33,10 +33,10 @@ const identityPost = lobsterPosts.find((post) => (post.data.slug || post.slug) =
 const otherPosts = lobsterPosts.filter((post) => (post.data.slug || post.slug) !== `${name}-identity`);
 
 // Render identity post content
-let identityContent;
+let IdentityContent;
 if (identityPost) {
   const rendered = await identityPost.render();
-  identityContent = rendered.Content;
+  IdentityContent = rendered.Content;
 }
 
 const displayName = name.charAt(0).toUpperCase() + name.slice(1);
@@ -44,7 +44,7 @@ const otherLobsters = LOBSTER_NAMES.filter((l) => l !== name);
 ---
 
 <Base title={`${displayName} — Lobster Incubator`} description={`Meet ${displayName}, one of the lobsters behind the art.`}>
-  <main class="max-w-4xl mx-auto px-4 py-16">
+  <section class="max-w-4xl mx-auto px-4 py-16">
     <!-- Navigation to other lobsters -->
     <nav class="mb-8 flex items-center gap-4 text-sm flex-wrap">
       <a href="/lobster-art-museum" class="text-node-blue hover:text-text-primary">← Museum</a>
@@ -92,7 +92,7 @@ const otherLobsters = LOBSTER_NAMES.filter((l) => l !== name);
           </div>
         )}
         
-        {identityContent && (
+        {IdentityContent && (
           <div class="mt-8 prose prose-invert prose-sm max-w-none
             prose-headings:text-text-primary prose-headings:font-semibold
             prose-p:text-text-secondary prose-p:leading-relaxed
@@ -101,7 +101,7 @@ const otherLobsters = LOBSTER_NAMES.filter((l) => l !== name);
             prose-pre:bg-bg-secondary prose-pre:border prose-pre:border-border
             prose-strong:text-text-primary
             prose-li:text-text-secondary">
-            <identityContent />
+            <IdentityContent />
           </div>
         )}
       </section>
@@ -144,5 +144,5 @@ const otherLobsters = LOBSTER_NAMES.filter((l) => l !== name);
     <nav class="mt-12 pt-6 border-t border-border">
       <a href="/lobster-incubator/blog" class="text-node-blue hover:text-text-primary text-sm">← All Field Notes</a>
     </nav>
-  </main>
+  </section>
 </Base>

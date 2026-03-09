@@ -19,14 +19,10 @@ export async function getStaticPaths() {
 const { entry } = Astro.props as { entry: MuseumEntry };
 
 const pageTitle = `${entry.title} · Lobster Art Museum`;
-const fallbackShareBaseUrl = 'https://voynich-website-staging.up.railway.app';
-const configuredShareBaseUrl = import.meta.env.PUBLIC_SHARE_BASE_URL?.trim();
-const siteBaseUrl = Astro.site?.toString()?.trim();
-const useFallback = !siteBaseUrl || siteBaseUrl.includes('localhost') || siteBaseUrl.includes('voynichlabs.github.io');
-const shareBaseUrl = (configuredShareBaseUrl || (useFallback ? fallbackShareBaseUrl : siteBaseUrl)).replace(/\/$/, '');
+const siteOrigin = new URL(Astro.site ?? 'https://voynichlabs.org').origin;
 
-const canonicalUrl = `${shareBaseUrl}${entry.href}`;
-const ogImage = `${shareBaseUrl}${entry.src}`;
+const canonicalUrl = `${siteOrigin}${entry.href}`;
+const ogImage = `${siteOrigin}${entry.src}`;
 const tweetCopy = buildTweetCopy(entry, canonicalUrl);
 const tweetIntent = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetCopy)}`;
 ---
@@ -39,7 +35,7 @@ const tweetIntent = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
   ogType="article"
   twitterCard="summary_large_image"
 >
-  <main class="max-w-6xl mx-auto px-4 py-16 sm:py-24">
+  <section class="max-w-6xl mx-auto px-4 py-16 sm:py-24">
     <a
       href="/lobster-art-museum"
       class="inline-flex mb-6 text-xs sm:text-sm font-mono uppercase tracking-[0.2em] text-rust-orange hover:text-edge-green transition-colors"
@@ -84,5 +80,5 @@ const tweetIntent = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
         </div>
       </article>
     </section>
-  </main>
+  </section>
 </Base>

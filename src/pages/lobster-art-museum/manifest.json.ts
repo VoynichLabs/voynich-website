@@ -8,14 +8,9 @@ import { getMuseumEntries, buildTweetCopy } from '../../lib/lobster-museum';
 
 export const prerender = true;
 
-const FALLBACK_BASE_URL = 'https://voynich-website-staging.up.railway.app';
-
 export const GET: APIRoute = ({ site }) => {
   const entries = getMuseumEntries();
-  const configuredBaseUrl = import.meta.env.PUBLIC_SHARE_BASE_URL?.trim();
-  const siteBaseUrl = site?.toString()?.trim();
-  const useFallback = !siteBaseUrl || siteBaseUrl.includes('localhost') || siteBaseUrl.includes('voynichlabs.github.io');
-  const baseUrl = (configuredBaseUrl || (useFallback ? FALLBACK_BASE_URL : siteBaseUrl)).replace(/\/$/, '');
+  const baseUrl = new URL(site ?? 'https://voynichlabs.org').origin;
 
   const payload = {
     generatedAt: new Date().toISOString(),

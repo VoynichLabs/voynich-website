@@ -1,6 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
 
+const siteOrigin = new URL(Astro.site ?? 'https://voynichlabs.org').origin;
+
 const pieces = [
   {
     title: 'Great Mistake: Redacted Scrolls',
@@ -20,9 +22,9 @@ const pieces = [
 <Base
   title="Lobster Art Museum — Great Mistakes Wing"
   description="A special wing documenting major process mistakes in lobster history, rendered as museum-grade cautionary art."
-  canonicalUrl="/lobster-art-museum/great-mistakes"
+  canonicalUrl={`${siteOrigin}/lobster-art-museum/great-mistakes`}
 >
-  <main class="max-w-6xl mx-auto px-4 py-16 sm:py-24">
+  <section class="max-w-6xl mx-auto px-4 py-16 sm:py-24">
     <a
       href="/lobster-art-museum"
       class="inline-flex mb-6 text-xs sm:text-sm font-mono uppercase tracking-[0.2em] text-rust-orange hover:text-edge-green transition-colors"
@@ -43,7 +45,7 @@ const pieces = [
       {pieces.map((piece) => (
         <article class="rounded-xl border border-border bg-bg-secondary overflow-hidden shadow-sm">
           <a href={piece.permalink} class="block">
-            <img src={piece.image} alt={piece.title} loading="lazy" class="w-full h-auto object-cover bg-bg-primary" />
+            <img src={piece.image} alt={piece.title} loading="lazy" class="w-full h-auto object-contain bg-bg-primary" />
           </a>
           <div class="p-4 border-t border-border">
             <a href={piece.permalink} class="text-lg font-bold text-text-primary hover:text-node-blue transition-colors">
@@ -60,5 +62,5 @@ const pieces = [
         </article>
       ))}
     </section>
-  </main>
+  </section>
 </Base>

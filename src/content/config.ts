@@ -3,7 +3,7 @@ import { defineCollection, z } from 'astro:content';
 const slugRegex = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const lobsterBlogCollection = defineCollection({
   type: 'content',
-  schema: ({ slug }) =>
+  schema: () =>
     z.object({
       title: z.string(),
       date: z
@@ -14,10 +14,11 @@ const lobsterBlogCollection = defineCollection({
       slug: z
         .string()
         .regex(slugRegex, 'slug must be lowercase kebab-case')
-        .optional()
-        .default(slug),
+        .optional(),
       tags: z.array(z.string()).default([]),
-      summary: z.string().optional()
+      summary: z.string().optional(),
+      author: z.string().optional(),
+      image: z.string().optional()
     })
 });
 

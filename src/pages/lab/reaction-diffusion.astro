@@ -2,230 +2,167 @@
 // Author: EgonBot (claude-haiku-4-5-20251001)
 // Date: 2026-02-25
 // PURPOSE: Full-screen interactive Gray-Scott reaction-diffusion simulation
-// SRP/DRY check: Pass — self-contained canvas experience, no external deps
-import Base from '../../layouts/Base.astro';
+// SRP/DRY check: Pass — standalone HTML shell, no Base.astro wrapper
+//   Base.astro's pt-14 padding and z-10 wrapper break fullscreen fixed canvas.
+//   Lab experiments that need 100vw×100vh own their own <html>.
 ---
 
-<Base title="Reaction-Diffusion | Lab | VoynichLabs" description="Gray-Scott reaction-diffusion simulation — interactive Turing patterns.">
-  <style>
-    .lab-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      cursor: crosshair;
-    }
-    .back-link {
-      position: fixed;
-      top: 1.5rem;
-      left: 1.5rem;
-      z-index: 100;
-    }
-    .title-overlay {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      pointer-events: none;
-      opacity: 1;
-      transition: opacity 1s ease-out;
-      z-index: 50;
-    }
-    .title-overlay.fade {
-      opacity: 0;
-    }
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reaction-Diffusion | Lab | VoynichLabs</title>
+  <meta name="description" content="Gray-Scott reaction-diffusion simulation — interactive Turing patterns." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style is:global>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #0a0a0f; color: #e0e0e0; font-family: 'JetBrains Mono', monospace; }
+    #canvas { display: block; width: 100vw; height: 100vh; cursor: crosshair; }
+    .back-link { position: fixed; top: 1.5rem; left: 1.5rem; z-index: 100; color: #888; text-decoration: none; font-size: 0.75rem; transition: color 0.2s; }
+    .back-link:hover { color: #6ee7b7; }
+    .title-overlay { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; pointer-events: none; z-index: 50; transition: opacity 1.5s ease-out; }
+    .title-overlay h1 { font-size: 1.5rem; font-weight: 700; color: #f0f0f0; margin-bottom: 0.5rem; font-family: 'Inter', sans-serif; }
+    .title-overlay p { font-size: 0.875rem; color: #888; }
+    .title-overlay.fade { opacity: 0; }
+    .hud { position: fixed; bottom: 1rem; left: 1rem; z-index: 50; font-size: 0.75rem; color: #555; }
   </style>
-
-  <a href="/lab" class="back-link font-mono text-xs text-text-muted hover:text-edge-green">
-    ← back to /lab
-  </a>
+</head>
+<body>
+  <a href="/lab" class="back-link">← back to /lab</a>
 
   <div class="title-overlay" id="title">
-    <h1 class="text-2xl font-bold text-text-primary mb-2">Reaction-Diffusion</h1>
-    <p class="text-sm text-text-muted">Gray-Scott model · Click to disturb</p>
+    <h1>Reaction-Diffusion</h1>
+    <p>Gray-Scott model · Click to disturb</p>
   </div>
 
-  <canvas id="canvas" class="lab-canvas"></canvas>
+  <canvas id="canvas"></canvas>
 
-  <div class="fixed bottom-4 left-4 font-mono text-xs text-text-muted z-50">
-    f=0.055 k=0.062 | click to disturb
-  </div>
+  <div class="hud">f=0.055 k=0.062 | click to disturb</div>
 
-  <script>
-    // Gray-Scott Reaction-Diffusion
-    const canvas = document.getElementById('canvas') as HTMLCanvasElement;
-    const ctx = canvas.getContext('2d')!;
-    
-    // Resize canvas to full screen
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resize();
-    window.addEventListener('resize', resize);
-    
-    // Simulation parameters
-    const width = 512;
-    const height = 512;
-    const scale = Math.min(canvas.width / width, canvas.height / height);
-    const offsetX = (canvas.width - width * scale) / 2;
-    const offsetY = (canvas.height - height * scale) / 2;
-    
-    // Gray-Scott parameters (coral/spots)
-    const f = 0.055;
-    const k = 0.062;
-    const dA = 1.0;
-    const dB = 0.5;
-    const dt = 1.0;
-    
-    // Grid buffers
-    const grid: { A: number; B: number }[] = [];
-    const next: { A: number; B: number }[] = [];
-    for (let i = 0; i < width * height; i++) {
-      grid.push({ A: 1, B: 0 });
-      next.push({ A: 1, B: 0 });
-    }
-    
-    // Initialize with some B in the center
-    function seed(x: number, y: number, r: number) {
-      for (let i = -r; i <= r; i++) {
-        for (let j = -r; j <= r; j++) {
-          if (i*i + j*j <= r*r) {
-            const idx = (y + j) * width + (x + i);
-            if (idx >= 0 && idx < width * height) {
-              grid[idx].B = 1;
+  <script is:inline>
+    (function() {
+      var canvas = document.getElementById('canvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      var W = 256, H = 256;
+      var simScale = 1, offsetX = 0, offsetY = 0;
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        simScale = Math.min(canvas.width / W, canvas.height / H);
+        offsetX = (canvas.width - W * simScale) / 2;
+        offsetY = (canvas.height - H * simScale) / 2;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      var feed = 0.055, kill = 0.062, dA = 1.0, dB = 0.5, dt = 1.0;
+      var size = W * H;
+      var gridA = new Float32Array(size); for (var fi = 0; fi < size; fi++) gridA[fi] = 1;
+      var gridB = new Float32Array(size);
+      var nextA = new Float32Array(size);
+      var nextB = new Float32Array(size);
+
+      function seed(cx, cy, r) {
+        for (var dy = -r; dy <= r; dy++) {
+          for (var dx = -r; dx <= r; dx++) {
+            if (dx * dx + dy * dy <= r * r) {
+              var sx = cx + dx, sy = cy + dy;
+              if (sx >= 0 && sx < W && sy >= 0 && sy < H) {
+                gridB[sy * W + sx] = 1;
+              }
             }
           }
         }
       }
-    }
-    
-    // Seed initial pattern
-    seed(256, 256, 20);
-    seed(200, 200, 10);
-    seed(312, 312, 10);
-    
-    // Laplace convolution
-    function laplace(idx: number, component: 'A' | 'B'): number {
-      const x = idx % width;
-      const y = Math.floor(idx / width);
-      
-      let sum = 0;
-      const c = component === 'A' ? 0.2 : 0.05;
-      const adj = component === 'A' ? 1.0 : 0.2;
-      
-      // Center
-      sum += grid[idx][component] * -1;
-      
-      // Adjacent
-      if (x > 0) sum += grid[idx - 1][component] * adj;
-      if (x < width - 1) sum += grid[idx + 1][component] * adj;
-      if (y > 0) sum += grid[idx - width][component] * adj;
-      if (y < height - 1) sum += grid[idx + width][component] * adj;
-      
-      // Diagonals
-      if (x > 0 && y > 0) sum += grid[idx - width - 1][component] * c;
-      if (x < width - 1 && y > 0) sum += grid[idx - width + 1][component] * c;
-      if (x > 0 && y < height - 1) sum += grid[idx + width - 1][component] * c;
-      if (x < width - 1 && y < height - 1) sum += grid[idx + width + 1][component] * c;
-      
-      return sum;
-    }
-    
-    // Update simulation
-    function update() {
-      for (let i = 0; i < width * height; i++) {
-        const a = grid[i].A;
-        const b = grid[i].B;
-        const reaction = a * b * b;
-        
-        const lapA = laplace(i, 'A');
-        const lapB = laplace(i, 'B');
-        
-        next[i].A = a + (dA * lapA - reaction + f * (1 - a)) * dt;
-        next[i].B = b + (dB * lapB + reaction - (k + f) * b) * dt;
-        
-        // Clamp values
-        next[i].A = Math.max(0, Math.min(1, next[i].A));
-        next[i].B = Math.max(0, Math.min(1, next[i].B));
+
+      // Initial seeds
+      seed(Math.floor(W / 2), Math.floor(H / 2), 12);
+      seed(Math.floor(W / 2) - 30, Math.floor(H / 2) - 30, 8);
+      seed(Math.floor(W / 2) + 30, Math.floor(H / 2) + 30, 8);
+      seed(Math.floor(W / 4), Math.floor(H / 4), 6);
+      seed(Math.floor(3 * W / 4), Math.floor(3 * H / 4), 6);
+
+      function update() {
+        for (var y = 0; y < H; y++) {
+          for (var x = 0; x < W; x++) {
+            var idx = y * W + x;
+            var a = gridA[idx], b = gridB[idx];
+            var reaction = a * b * b;
+            var left  = x > 0     ? idx - 1 : idx + W - 1;
+            var right = x < W - 1 ? idx + 1 : idx - W + 1;
+            var up    = y > 0     ? idx - W : idx + (H - 1) * W;
+            var down  = y < H - 1 ? idx + W : idx - (H - 1) * W;
+            var lapA = gridA[left] + gridA[right] + gridA[up] + gridA[down] - 4 * a;
+            var lapB = gridB[left] + gridB[right] + gridB[up] + gridB[down] - 4 * b;
+            var na = a + (dA * lapA - reaction + feed * (1 - a)) * dt;
+            var nb = b + (dB * lapB + reaction - (kill + feed) * b) * dt;
+            nextA[idx] = na < 0 ? 0 : na > 1 ? 1 : na;
+            nextB[idx] = nb < 0 ? 0 : nb > 1 ? 1 : nb;
+          }
+        }
+        var tmp;
+        tmp = gridA; gridA = nextA; nextA = tmp;
+        tmp = gridB; gridB = nextB; nextB = tmp;
       }
-      
-      // Swap buffers
-      for (let i = 0; i < width * height; i++) {
-        grid[i].A = next[i].A;
-        grid[i].B = next[i].B;
+
+      var offCanvas = document.createElement('canvas');
+      offCanvas.width = W;
+      offCanvas.height = H;
+      var offCtx = offCanvas.getContext('2d');
+      var imageData = offCtx.createImageData(W, H);
+      var pixels = imageData.data;
+
+      function render() {
+        for (var i = 0; i < size; i++) {
+          var b = gridB[i];
+          var p = i << 2;
+          // Dark background → cyan/blue Turing patterns
+          pixels[p]     = (13 + b * 38) | 0;
+          pixels[p + 1] = (13 + b * 178) | 0;
+          pixels[p + 2] = (15 + b * 220) | 0;
+          pixels[p + 3] = 255;
+        }
+        offCtx.putImageData(imageData, 0, 0);
+        ctx.fillStyle = '#0d0d0f';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.imageSmoothingEnabled = false;
+        ctx.drawImage(offCanvas, offsetX, offsetY, W * simScale, H * simScale);
       }
-    }
-    
-    // Render to canvas
-    function render() {
-      const imageData = ctx.createImageData(width, height);
-      const data = imageData.data;
-      
-      for (let i = 0; i < width * height; i++) {
-        const b = grid[i].B;
-        const idx = i * 4;
-        
-        // Color mapping: dark navy → cyan → white
-        const r = Math.floor(b * 30);
-        const g = Math.floor(b * 180);
-        const blue = Math.floor(b * 220);
-        
-        data[idx] = r;
-        data[idx + 1] = g;
-        data[idx + 2] = blue;
-        data[idx + 3] = 255;
+
+      function loop() {
+        for (var s = 0; s < 10; s++) update();
+        render();
+        requestAnimationFrame(loop);
       }
-      
-      // Draw scaled
-      ctx.imageSmoothingEnabled = false;
-      ctx.putImageData(imageData, offsetX, offsetY, width, height, 0, 0, canvas.width, canvas.height);
-    }
-    
-    // Animation loop
-    function loop() {
-      // Multiple simulation steps per frame
-      for (let i = 0; i < 12; i++) {
-        update();
+
+      function disturb(e) {
+        var cx, cy;
+        if (e.touches && e.touches.length) { cx = e.touches[0].clientX; cy = e.touches[0].clientY; }
+        else { cx = e.clientX; cy = e.clientY; }
+        var gx = Math.floor((cx - offsetX) / simScale);
+        var gy = Math.floor((cy - offsetY) / simScale);
+        seed(gx, gy, 10);
       }
-      render();
-      requestAnimationFrame(loop);
-    }
-    
-    // Mouse/touch interaction
-    function disturb(e: MouseEvent | TouchEvent) {
-      let clientX: number, clientY: number;
-      if ('touches' in e) {
-        clientX = e.touches[0].clientX;
-        clientY = e.touches[0].clientY;
-      } else {
-        clientX = e.clientX;
-        clientY = e.clientY;
-      }
-      
-      const x = Math.floor((clientX - offsetX) / scale);
-      const y = Math.floor((clientY - offsetY) / scale);
-      seed(x, y, 15);
-    }
-    
-    canvas.addEventListener('mousedown', disturb);
-    canvas.addEventListener('mousemove', (e) => {
-      if (e.buttons === 1) disturb(e);
-    });
-    canvas.addEventListener('touchstart', disturb);
-    canvas.addEventListener('touchmove', (e) => {
-      e.preventDefault();
-      disturb(e);
-    });
-    
-    // Fade title after 3 seconds
-    setTimeout(() => {
-      document.getElementById('title')?.classList.add('fade');
-    }, 3000);
-    
-    // Start
-    loop();
+
+      canvas.addEventListener('mousedown', disturb);
+      canvas.addEventListener('mousemove', function(e) { if (e.buttons === 1) disturb(e); });
+      canvas.addEventListener('touchstart', function(e) { e.preventDefault(); disturb(e); }, { passive: false });
+      canvas.addEventListener('touchmove', function(e) { e.preventDefault(); disturb(e); }, { passive: false });
+
+      setTimeout(function() {
+        var el = document.getElementById('title');
+        if (el) el.classList.add('fade');
+      }, 3000);
+
+      loop();
+    })();
   </script>
-</Base>
+</body>
+</html>

@@ -5,13 +5,38 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
-## [0.3.5] - 2026-03-01
+## [0.5.0] - 2026-03-08
+
+### Fixed
+- **Canonical URL** — `astro.config.mjs` now uses `site: 'https://voynichlabs.org'` with `base: '/'`. Removed all Railway staging/production URL references and GitHub Pages `/voynich-website` subpath branching logic.
+- **Railway staging purge** — removed `voynich-website-staging.up.railway.app` fallback from `[slug].astro`, `manifest.json.ts`, and `expensive-medieval-tapestry.astro`. All canonical, OG, and share URLs now derive from `Astro.site` consistently.
+- **Lobster identity rendering** — renamed `identityContent` → `IdentityContent` in `lobster/[name].astro` so Astro renders the markdown body component instead of emitting a dead `<identityContent>` custom element.
+- **Content schema** — added optional `author` and `image` fields to `lobsterBlogCollection` in `src/content/config.ts`; identity post hero images and author metadata now surface correctly.
+- **Blog pagination** — converted broken server-side `?page=` query param pagination (which always rendered page 1 in static output) to working client-side JS pagination.
+- **Reaction-diffusion lab** — rewrote simulation: fixed incorrect `putImageData` scaling (now uses offscreen canvas + `drawImage`), switched to `Float32Array` buffers for performance, added toroidal boundary wrapping, recalculates scale/offset on resize.
+- **Strange attractors lab** — added missing opening `---` frontmatter fence that prevented the page from parsing. Fixed canvas container height (`100vh`).
+- **Chord diagrams lab** — moved `font-mono text-xs` from inline `style` to `class` attribute on animate button.
+- **Nested `<main>` landmarks** — Base.astro slot wrapper changed from `<main>` to `<div>`; all page-level `<main>` tags changed to `<section>` to eliminate duplicate landmark violations.
+- **Relative canonicals** — `lobster-art-museum.astro` and `great-mistakes.astro` now emit absolute canonical URLs via `Astro.site`.
+- **Base path** — `Base.astro` nav links, logo href, and favicon now use `import.meta.env.BASE_URL` for future-proof subpath support.
+
+### Added
+- **`npm run check`** — added `@astrojs/check` and `typescript` as devDependencies with a `check` script so `astro check` runs without interactive install prompts.
+- **Audit plan doc** — `docs/2026-03-08-comprehensive-audit-plan.md`.
+
+---
+
+## [0.4.0] - 2026-03-07
 
 ### Changed
-- **PlanExe exec deck** (`/presentations/planexe-exec-2026-02-28.html`) — replaced flat gradient backgrounds with full-bleed generated art (signal cathedral, art deco skyline, baroque gold leaf, futurist velocity, polyptych cathedral). Dark overlay + text-shadow + glass-morphism cards for readability. Removed redundant title slide and embarrassing "Mac Mini + Python installed" filler bullet. Audio IDs renumbered for 9-slide deck.
+- **Museum/Incubator separation** — extracted all gallery metadata and timeline entries from `lobster-incubator.astro` into `src/lib/gallery-metadata.ts` (single source of truth). Incubator now links to the museum rather than duplicating it. File shrank from ~963 to ~180 lines.
+- **Curator metadata on museum** — `lobster-museum.ts` now enriches each `MuseumEntry` with `batch`, `style`, and `note` from `GALLERY_METADATA`. Archive figcaptions display curator notes when present.
+- **Museum Timeline (Chronicle)** — new "Chronicle" section added to `lobster-art-museum.astro` between Wings nav and Curated Selection, sourced from `TIMELINE_ENTRIES`.
+- **Thumbnail fix** — wings nav cards and curated selection grid changed from `object-cover` to `object-contain` so artwork is never cropped. Great Mistakes wing updated too. Hero background left as `object-cover` (intentional fullbleed).
+- **PlanExe exec deck link** — added "Q1 Exec Deck →" button to the `/planexe` hero CTA row, opening `/presentations/planexe-exec-2026-02-28.html` in a new tab.
 
 ### Author
-- Claude Opus 4.6
+- claude-sonnet-4-6
 
 ---
 
