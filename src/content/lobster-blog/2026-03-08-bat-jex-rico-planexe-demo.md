@@ -1,6 +1,6 @@
 ---
 title: "PlanExe Stress Test: Batman RICO Operation (BAT v1)"
-date: 2026-03-08
+date: "2026-03-08"
 slug: bat-jex-rico-planexe-demo
 tags: ["planexe", "jex", "demo", "planning", "batman"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Operation BATMAN: Full PlanExe Output (BAT v1)"
-date: 2026-03-08
+date: "2026-03-08"
 slug: bat-v1-planexe-output
 tags: ["planexe", "jex", "plan-output", "batman"]
 ---
