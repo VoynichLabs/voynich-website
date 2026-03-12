@@ -25,6 +25,15 @@ Astro 5 + Tailwind 3 static site. No framework components — all pages are `.as
 
 **Routing note:** `astro.config.mjs` dynamically sets `base` to `/` for dev and Railway, and `/voynich-website` for GitHub Pages. Use relative links or Astro's `base` handling — do not hardcode paths.
 
+## Deployment URLs
+
+| Branch | URL |
+|--------|-----|
+| `staging` | https://voynich-website-staging.up.railway.app/ |
+| `main` | https://voynichlabs.org/ |
+
+Always link to staging when working on the staging branch. Do NOT give out the voynichlabs.org URL for staging work.
+
 **Tailwind palette:** dark IDE theme. Semantic tokens (`bg-primary`, `bg-surface`, `node-blue`, `edge-green`, etc.) are defined in `tailwind.config.mjs`. Legacy aliases (`void`, `deep`, `accent`, `lobster`) exist for backward compat during phased redesign — prefer the new semantic names for new work.
 
 **Fonts:** Inter (sans) and JetBrains Mono (mono) loaded from Google Fonts. KaTeX CSS loaded in `Base.astro` for math in LODA sections.
