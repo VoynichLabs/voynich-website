@@ -228,6 +228,48 @@
 	<audio id="audio-7" src="audio-refactor-2026/slide-7.mp3" preload="auto"></audio>
 </div>
 
+<!-- Slide 9: What We Missed -->
+<div class="slide" style="background-image:url('art/git-art-1a.png')">
+	<h2>What We Missed</h2>
+	<div class="two-col">
+		<div class="card">
+			<h3>JS — Invisible to Tests</h3>
+			<ul>
+				<li><strong>redrawGrid</strong> — deleted, put nowhere</li>
+				<li><strong>let currentUser</strong> — duplicated; crashed JS parser, app never started</li>
+				<li><strong>renderSessionTabs + getTabDotClass</strong> — deleted, called 20+ times</li>
+				<li><strong>_PROMPT_SECTION_MAP</strong> — removed, not re-added</li>
+				<li>3 split modules wired nowhere (session-storage, replay, persistence)</li>
+				<li>Duplicate function declarations across human*.js files</li>
+			</ul>
+		</div>
+		<div class="card">
+			<h3>Python</h3>
+			<ul>
+				<li><strong>agent_scaffold.py</strong> — broken import; batch runner crashes</li>
+				<li><strong>server/app.py</strong> — not directly executable (sys.path)</li>
+				<li><strong>app.py.backup</strong> — 836 lines of dead code committed</li>
+				<li style="margin-top:16px;color:#ff6b6b"><strong>283 tests passed. App did not run.</strong></li>
+			</ul>
+		</div>
+	</div>
+	<audio id="audio-9" src="audio-refactor-2026/slide-9.mp3" preload="auto"></audio>
+</div>
+
+<!-- Slide 10: The Lesson -->
+<div class="slide" style="background-image:url('art/bubba-field-protocol-1.png')">
+	<div class="content-box">
+		<h2>The Lesson</h2>
+		<ul style="margin-top:24px;font-size:1.2rem">
+			<li>Unit tests check code. They do not check whether the app loads.</li>
+			<li>283 green + 0 failed ≠ "ready to PR"</li>
+			<li>The agent driver (Mark) caught a non-functional browser app after the refactor was declared complete</li>
+			<li><strong style="color:#c8a84e">New rule:</strong> No PR without end-to-end browser smoke test + agent driver sign-off</li>
+		</ul>
+	</div>
+	<audio id="audio-10" src="audio-refactor-2026/slide-10.mp3" preload="auto"></audio>
+</div>
+
 <!-- Slide 8: Close -->
 <div class="slide" style="background-image:url('art/lobster-iterations-fractal.png')">
 	<div class="content-box">
@@ -239,7 +281,7 @@
 	<audio id="audio-8" src="audio-refactor-2026/slide-8.mp3" preload="auto"></audio>
 </div>
 
-<div class="slide-counter"><span id="current">1</span> / <span id="total">9</span></div>
+<div class="slide-counter"><span id="current">1</span> / <span id="total">11</span></div>
 
 <div class="controls">
 	<button class="btn" onclick="prevSlide()">&#8592; Prev</button>
