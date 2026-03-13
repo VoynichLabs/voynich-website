@@ -270,60 +270,46 @@
 	<audio id="audio-10" src="audio-refactor-2026/slide-10.mp3" preload="auto"></audio>
 </div>
 
-<!-- Slide 11: Claude Code OAuth Breakthrough -->
-<div class="slide" style="background-image:url('art/lobster-circuit-neon-alley.png')">
+<!-- Slide 11: OAuth Breakthrough -->
+<div class="slide" style="background-image:url('art/lobster-circuit-original.png')">
 	<div class="content-box">
 		<h2>The OAuth Breakthrough</h2>
-		<div class="two-col" style="margin-top:20px">
-			<div class="card">
-				<h3>What We Found</h3>
-				<ul>
-					<li><strong>Claude Code OAuth tokens</strong> (<code>sk-ant-oat*</code>) work with the Anthropic API</li>
-					<li>Required: <code>anthropic-beta: oauth-2025-04-20</code> header</li>
-					<li>Without it → <strong style="color:#ff6b6b">401 Unauthorized</strong></li>
-					<li>With it → <strong style="color:#51cf66">Full access</strong></li>
-				</ul>
-			</div>
-			<div class="card">
-				<h3>Implementation</h3>
-				<ul>
-					<li>Generate token: <code>claude setup-token</code> (Pro/Max required)</li>
-					<li>Browser calls blocked by CORS — route through server proxy</li>
-					<li>Proxy endpoint: <code>/api/llm/anthropic-proxy</code></li>
-					<li>All three Anthropic call paths updated</li>
-				</ul>
-			</div>
-		</div>
+		<ul style="margin-top:20px;font-size:1.1rem">
+			<li>Claude Code OAuth tokens (<code style="background:rgba(0,0,0,.4);padding:2px 6px;border-radius:4px">sk-ant-oat*</code>) work against the Anthropic API directly</li>
+			<li><strong style="color:#ff6b6b">Missing piece:</strong> header <code style="background:rgba(0,0,0,.4);padding:2px 6px;border-radius:4px">anthropic-beta: oauth-2025-04-20</code></li>
+			<li>Without it → 401. With it → authenticated.</li>
+			<li>Token generation: <code style="background:rgba(0,0,0,.4);padding:2px 6px;border-radius:4px">claude setup-token</code> (Pro/Max required)</li>
+			<li>Browser cannot send Bearer auth directly — CORS preflight blocked by Anthropic</li>
+			<li><strong style="color:#c8a84e">Fix:</strong> route through <code style="background:rgba(0,0,0,.4);padding:2px 6px;border-radius:4px">/api/llm/anthropic-proxy</code> — server-to-server, clean</li>
+		</ul>
 	</div>
 	<audio id="audio-11" src="audio-refactor-2026/slide-11.mp3" preload="auto"></audio>
 </div>
 
-<!-- Slide 12: What's Next — Model Testing -->
-<div class="slide" style="background-image:url('art/git-art-5.png')">
-	<div class="content-box">
-		<h2>What's Coming — Model Testing</h2>
-		<div class="two-col" style="margin-top:20px">
-			<div class="card">
-				<h3>Free + Premium</h3>
-				<ul>
-					<li>openrouter/hunter-alpha (1T params)</li>
-					<li>openrouter/healer-alpha (omni-modal)</li>
-					<li>x-ai/grok-4.20-multi-agent-beta</li>
-					<li>nvidia/nemotron-3-super-120b:free</li>
-					<li>google/gemini-3.1-flash-lite-preview</li>
-				</ul>
-			</div>
-			<div class="card">
-				<h3>Qwen + Others</h3>
-				<ul>
-					<li>qwen/qwen3.5-397b-a17b (flagship)</li>
-					<li>qwen/qwen3.5-122b-a10b</li>
-					<li>bytedance-seed/seed-2.0-mini</li>
-					<li>inception/mercury-2 (diffusion LLM)</li>
-					<li>liquid/lfm-2-24b-a2b ($0.03/$0.12)</li>
-					<li style="color:#c8a84e">18 models total through PlanExe gauntlet</li>
-				</ul>
-			</div>
+<!-- Slide 12: Models Under Test -->
+<div class="slide" style="background-image:url('art/lobster-blend-specimen-geometry.png')">
+	<h2>Models Under Test — March 2026</h2>
+	<div class="two-col">
+		<div class="card">
+			<h3>Free / Ultra-Cheap</h3>
+			<ul>
+				<li>openrouter/hunter-alpha — 1T params, planning</li>
+				<li>openrouter/healer-alpha — omni-modal</li>
+				<li>nvidia/nemotron-3-super-120b:free</li>
+				<li>qwen/qwen3.5-9b — $0.10/$0.15</li>
+				<li>liquid/lfm-2-24b-a2b — $0.03/$0.12</li>
+			</ul>
+		</div>
+		<div class="card">
+			<h3>Mid-Tier Contenders</h3>
+			<ul>
+				<li>x-ai/grok-4.20-beta — 2M ctx, $2/$6</li>
+				<li>qwen/qwen3.5-35b-a3b — $0.16/$1.30 (local baseline)</li>
+				<li>qwen/qwen3.5-122b-a10b — $0.26/$2.08</li>
+				<li>qwen/qwen3.5-397b-a17b — flagship MoE</li>
+				<li>inception/mercury-2 — 1000+ tok/sec diffusion</li>
+				<li>bytedance-seed/seed-2.0-mini — $0.10/$0.40</li>
+			</ul>
 		</div>
 	</div>
 	<audio id="audio-12" src="audio-refactor-2026/slide-12.mp3" preload="auto"></audio>
