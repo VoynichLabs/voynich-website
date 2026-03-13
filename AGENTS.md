@@ -3,6 +3,15 @@
 ## Project Structure & Module Organization
 This repo is an Astro + Tailwind static site. Routes live in `src/pages/`, shared layouts in `src/layouts/`, and static assets in `public/` (including generated images). Project docs and planning notes live in `docs/`; some content/reference docs also exist in `src/docs/`. Generated output (`dist/`) and Astro cache (`.astro/`) should not be edited directly.
 
+## Deployment URLs
+
+| Branch | URL |
+|--------|-----|
+| `staging` | https://voynich-website-staging.up.railway.app/ |
+| `main` | https://voynichlabs.org/ |
+
+Railway auto-deploys on push. Staging deploys from `staging` branch; production deploys from `main`. Always use the staging URL when testing staging branch work.
+
 ## Build, Test, and Development Commands
 - `npm install` - install project dependencies.
 - `npm run dev` (or `npm start`) - run the Astro dev server locally.
