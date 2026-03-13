@@ -364,7 +364,7 @@
 
 <div class="controls">
 	<button class="btn" onclick="prevSlide()">&#8592; Prev</button>
-	<button class="btn active" id="playBtn" onclick="togglePlay()">&#9654; Play</button>
+	<button class="btn active" id="playBtn" onclick="togglePlay()">▶ Play</button>
 	<button class="btn" onclick="nextSlide()">Next &#8594;</button>
 </div>
 
@@ -375,8 +375,8 @@ function showSlide(n){slides[current].classList.remove('active');current=((n%tot
 function prevSlide(){if(playing){stopPlay()}showSlide(current-1)}
 function nextSlide(){if(playing){stopPlay()}showSlide(current+1)}
 function playCurrentAudio(){return new Promise(resolve=>{const a=document.getElementById('audio-'+current);if(!a||!a.src){resolve();return}a.pause();a.currentTime=0;a.onended=null;a.onerror=null;a.onended=resolve;a.onerror=resolve;a.play().catch(resolve)})}
-async function startPlay(){playing=true;document.getElementById('playBtn').textContent='&#9646;&#9646; Pause';for(;current<total&&playing;){await playCurrentAudio();if(playing&&current<total-1){showSlide(current+1)}else{break}}playing=false;document.getElementById('playBtn').textContent='&#9654; Play'}
-function stopPlay(){playing=false;document.getElementById('playBtn').textContent='&#9654; Play';const a=document.getElementById('audio-'+current);if(a)a.pause()}
+async function startPlay(){playing=true;document.getElementById('playBtn').textContent='⏸ Pause';for(;current<total&&playing;){await playCurrentAudio();if(playing&&current<total-1){showSlide(current+1)}else{break}}playing=false;document.getElementById('playBtn').textContent='▶ Play'}
+function stopPlay(){playing=false;document.getElementById('playBtn').textContent='▶ Play';const a=document.getElementById('audio-'+current);if(a)a.pause()}
 function togglePlay(){if(playing)stopPlay();else startPlay()}
 function startPresentation(){document.getElementById('playPrompt').classList.add('hidden');startPlay()}
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')nextSlide();if(e.key==='ArrowLeft')prevSlide();if(e.key==='p'||e.key==='P')togglePlay()});
