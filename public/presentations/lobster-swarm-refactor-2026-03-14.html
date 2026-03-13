@@ -207,6 +207,7 @@
 <div class="slide" style="background-image:url('art/lobster-bauhaus-deco.png')">
 	<h2>The Numbers</h2>
 	<div class="metrics">
+		<div class="metric-box"><div class="metric-number">1</div><div class="metric-label">Afternoon</div></div>
 		<div class="metric-box"><div class="metric-number">30</div><div class="metric-label">Phases Complete</div></div>
 		<div class="metric-box"><div class="metric-number">2,566</div><div class="metric-label">Lines Deleted (server.py)</div></div>
 		<div class="metric-box"><div class="metric-number">283</div><div class="metric-label">Tests Passing</div></div>
@@ -289,33 +290,85 @@
 <!-- Slide 12: Models Under Test -->
 <div class="slide" style="background-image:url('art/lobster-blend-specimen-geometry.png')">
 	<h2>Models Under Test — March 2026</h2>
-	<div class="two-col">
-		<div class="card">
-			<h3>Free / Ultra-Cheap</h3>
-			<ul>
-				<li>openrouter/hunter-alpha — 1T params, planning</li>
-				<li>openrouter/healer-alpha — omni-modal</li>
-				<li>nvidia/nemotron-3-super-120b:free</li>
-				<li>qwen/qwen3.5-9b — $0.10/$0.15</li>
-				<li>liquid/lfm-2-24b-a2b — $0.03/$0.12</li>
+	<p style="color:rgba(255,255,255,.6);font-size:.85rem;margin-bottom:12px">Filtered: no OpenAI, output ≤ $6/M tokens</p>
+	<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;font-size:.82rem">
+		<div class="card" style="padding:14px">
+			<h3 style="font-size:.95rem">🆓 Free Tier</h3>
+			<ul style="margin:8px 0 0 0;padding:0;list-style:none">
+				<li>hunter-alpha — 1T params, 1M ctx</li>
+				<li>healer-alpha — 262K ctx, omni-modal</li>
+				<li>nemotron-3-super-120b — 262K ctx</li>
+			</ul>
+			<h3 style="font-size:.95rem;margin-top:12px">⚡ xAI</h3>
+			<ul style="margin:8px 0 0 0;padding:0;list-style:none">
+				<li>grok-4.20-beta — 2M ctx, $2/$6</li>
+				<li>grok-4.20-multi-agent — $2/$6</li>
 			</ul>
 		</div>
-		<div class="card">
-			<h3>Mid-Tier Contenders</h3>
-			<ul>
-				<li>x-ai/grok-4.20-beta — 2M ctx, $2/$6</li>
-				<li>qwen/qwen3.5-35b-a3b — $0.16/$1.30 (local baseline)</li>
-				<li>qwen/qwen3.5-122b-a10b — $0.26/$2.08</li>
-				<li>qwen/qwen3.5-397b-a17b — flagship MoE</li>
-				<li>inception/mercury-2 — 1000+ tok/sec diffusion</li>
-				<li>bytedance-seed/seed-2.0-mini — $0.10/$0.40</li>
+		<div class="card" style="padding:14px">
+			<h3 style="font-size:.95rem">🟣 Qwen</h3>
+			<ul style="margin:8px 0 0 0;padding:0;list-style:none">
+				<li>qwen3.5-flash-02-23 — 1M ctx, $0.10</li>
+				<li>qwen3.5-9b — 262K, $0.10/$0.15</li>
+				<li>qwen3.5-35b-a3b — $0.16/$1.30</li>
+				<li>qwen3.5-27b — $0.20/$1.56</li>
+				<li>qwen3.5-122b-a10b — $0.26/$2.08</li>
+				<li>qwen3.5-plus — 1M ctx, $0.26</li>
+				<li>qwen3.5-397b-a17b — flagship MoE</li>
+			</ul>
+		</div>
+		<div class="card" style="padding:14px">
+			<h3 style="font-size:.95rem">🔷 Google</h3>
+			<ul style="margin:8px 0 0 0;padding:0;list-style:none">
+				<li>gemini-3.1-flash-lite — $0.25/$1.50</li>
+				<li>gemini-3.1-flash-image — $0.50/$3</li>
+			</ul>
+			<h3 style="font-size:.95rem;margin-top:12px">🟢 ByteDance</h3>
+			<ul style="margin:8px 0 0 0;padding:0;list-style:none">
+				<li>seed-2.0-mini — $0.10/$0.40</li>
+				<li>seed-2.0-lite — $0.25/$2</li>
+			</ul>
+			<h3 style="font-size:.95rem;margin-top:12px">⚡ Other</h3>
+			<ul style="margin:8px 0 0 0;padding:0;list-style:none">
+				<li>mercury-2 — 1000+ tok/sec, $0.25</li>
+				<li>lfm-2-24b-a2b — $0.03/$0.12</li>
 			</ul>
 		</div>
 	</div>
 	<audio id="audio-12" src="audio-refactor-2026/slide-12.mp3" preload="auto"></audio>
 </div>
 
-<!-- Slide 13: What's Next -->
+<!-- Slide 13: HelpShift Audit -->
+<div class="slide" style="background-image:url('art/lobster-circuit-stained-glass.png')">
+	<div class="content-box">
+		<h2>Meanwhile: HelpShift Audit</h2>
+		<div class="two-col">
+			<div class="card">
+				<h3>The Numbers</h3>
+				<ul>
+					<li><strong>14,564</strong> support tickets analyzed</li>
+					<li><strong>2 years</strong> of Firefly Studios data</li>
+					<li><strong>$3M/year</strong> operations scope</li>
+					<li><strong>8 presentation versions</strong> (v2–v8 + final)</li>
+					<li>Game-level breakdowns, lane analysis, agent workload</li>
+				</ul>
+			</div>
+			<div class="card">
+				<h3>What We Built</h3>
+				<ul>
+					<li>HelpShift API integration → CSV pipeline</li>
+					<li>Chart generation (agent workload, response times)</li>
+					<li>Full narrated presentation deck</li>
+					<li>SLO ownership model + closure leaderboard</li>
+					<li style="margin-top:12px"><a href="https://github.com/VoynichLabs/helpshift-audit" style="color:#c8a84e" target="_blank">github.com/VoynichLabs/helpshift-audit</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<audio id="audio-13" src="audio-refactor-2026/slide-16.mp3" preload="auto"></audio>
+</div>
+
+<!-- Slide 14: What's Next -->
 <div class="slide" style="background-image:url('art/lobster-circuit-neon-alley.png')">
 	<div class="content-box">
 		<h1>What's Next</h1>
@@ -328,10 +381,10 @@
 			<li>📡 <strong>Live swarm telemetry</strong> — real-time agent coordination dashboard</li>
 		</ul>
 	</div>
-	<audio id="audio-13" src="audio-refactor-2026/slide-13.mp3" preload="auto"></audio>
+	<audio id="audio-14" src="audio-refactor-2026/slide-13.mp3" preload="auto"></audio>
 </div>
 
-<!-- Slide 14: Art of the Swarm -->
+<!-- Slide 15: Art of the Swarm -->
 <div class="slide" style="background-image:url('art/lobster-bauhaus-synthesis.png')">
 	<div class="content-box" style="max-width:960px">
 		<h1>Art of the Swarm</h1>
@@ -346,10 +399,10 @@
 		</div>
 		<p style="color:rgba(255,255,255,.5);font-size:.85rem;margin-top:16px">Generated via Gemini image models through OpenRouter. Each piece prompted, cropped, and curated by Bubba.</p>
 	</div>
-	<audio id="audio-14" src="audio-refactor-2026/slide-14.mp3" preload="auto"></audio>
+	<audio id="audio-15" src="audio-refactor-2026/slide-14.mp3" preload="auto"></audio>
 </div>
 
-<!-- Slide 15: Close -->
+<!-- Slide 16: Close -->
 <div class="slide" style="background-image:url('art/lobster-blend-glass-bell-jar.png')">
 	<div class="content-box">
 		<h1>Lobster Swarm</h1>
@@ -357,15 +410,15 @@
 		<p style="margin-top:20px;color:rgba(255,255,255,.8);font-size:1.3rem">Codebase cleaner. Tests green. Work keeps movin'.</p>
 		<p style="color:rgba(255,255,255,.5);font-size:1rem;margin-top:32px">voynichlabs.org</p>
 	</div>
-	<audio id="audio-15" src="audio-refactor-2026/slide-15.mp3" preload="auto"></audio>
+	<audio id="audio-16" src="audio-refactor-2026/slide-15.mp3" preload="auto"></audio>
 </div>
 
-<div class="slide-counter"><span id="current">1</span> / <span id="total">15</span></div>
+<div class="slide-counter"><span id="current">1</span> / <span id="total">16</span></div>
 
 <div class="controls">
-	<button class="btn" onclick="prevSlide()">&#8592; Prev</button>
+	<button class="btn" onclick="prevSlide()">← Prev</button>
 	<button class="btn active" id="playBtn" onclick="togglePlay()">▶ Play</button>
-	<button class="btn" onclick="nextSlide()">Next &#8594;</button>
+	<button class="btn" onclick="nextSlide()">Next →</button>
 </div>
 
 <script>
