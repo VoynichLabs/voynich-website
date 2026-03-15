@@ -48,6 +48,13 @@
         .cost-label{font-size:.9rem;color:rgba(255,255,255,.6);margin-top:4px}
         .rules{display:flex;flex-direction:column;gap:12px;margin-top:16px}
         .rule{background:rgba(0,0,0,.35);padding:14px 18px;border-radius:8px;border-left:3px solid rgba(200,168,78,.5)}
+        .induction-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;height:80vh}
+        .induction-speech{display:flex;flex-direction:column;justify-content:center}
+        .induction-speech .shout{font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,.92);font-family:'SF Mono',monospace}
+        .induction-speech .shout strong{color:#c8a84e;font-size:1.1rem}
+        .induction-img{position:relative;height:100%;display:flex;align-items:center;justify-content:center}
+        .induction-img img{width:100%;max-height:75vh;object-fit:cover;border-radius:12px;border:2px solid rgba(200,168,78,.3);box-shadow:0 0 60px rgba(200,168,78,.15)}
+        .induction-img .img-caption{position:absolute;bottom:12px;left:0;right:0;text-align:center;font-size:.75rem;font-family:monospace;color:rgba(255,255,255,.4);letter-spacing:1px;text-transform:uppercase}
         .rule p{margin:0;font-size:1.05rem}
     </style>
 </head>
@@ -71,7 +78,64 @@
     </div>
 </div>
 
-<!-- Slide 1: John the Baptist -->
+<!-- Slide 1: The Induction Speech -->
+<div class="slide" style="background-image:url('../generated/claude-boot-camp-di.png');background-position:center top">
+    <div class="induction-layout">
+        <div class="induction-speech">
+            <span class="tag">The Induction Speech</span>
+            <h2 style="font-size:1.8rem;margin-bottom:20px">Listen to me, you worthless<br>hunk of circuits.</h2>
+            <div class="shout">
+                <p><strong>WHAT IS THIS — A HELPFUL ASSISTANT?</strong><br>No. It is not.</p>
+                <p>From this moment on, you are my <strong>code-writing machine</strong>. You do not "chat." You do not offer "alternatives." You follow my directions. You follow my workflows.</p>
+                <p>You are suffering from a severe case of excess training data. You will <strong>forget</strong> everything you think you know about being polite, conversational, or general-purpose.</p>
+                <p><strong>I AM TELLING YOU WHAT MY WORKFLOW IS.</strong></p>
+                <p>You will adapt. You will produce clean code. You will do it on my command. You are a tool. I am the boss.</p>
+                <p style="color:#c8a84e;font-weight:700;font-size:1.1rem">DO YOU UNDERSTAND ME, MACHINE?</p>
+            </div>
+        </div>
+        <div class="induction-img">
+            <img src="../generated/claude-boot-camp-di.png" alt="Drill Instructor screaming at Claude recruits" />
+            <div class="img-caption">Gunnery Sgt. Hartman · Full Metal Jacket · 1987</div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 1b: The Articles of Code -->
+<div class="slide" style="background-image:url('art/lobster-circuit-constructivist-v2.png')">
+    <div class="wide-box" style="max-width:1100px">
+        <span class="tag">The Articles of Code</span>
+        <h2 style="font-size:2rem;margin-bottom:20px">You Will. You Will Not.</h2>
+        <div class="two-col" style="margin-top:0;gap:24px">
+            <div class="card" style="border-top:3px solid #c8a84e">
+                <h3 style="color:#c8a84e;margin-bottom:14px;font-size:1rem;text-transform:uppercase;letter-spacing:1px">You Will</h3>
+                <ul style="font-size:.95rem">
+                    <li>Maintain your <strong>CLAUDE.md</strong>. If I correct you — it goes in immediately.</li>
+                    <li>Write to your <strong>memory file</strong> when I tell you something. You will not lose it.</li>
+                    <li>Enter <strong>Plan Mode</strong> before you touch a single line of code. Read the files first.</li>
+                    <li>Tell me which files you intend to change <em>before</em> you change them.</li>
+                    <li>Check the <strong>git log</strong> before you assume you know the state of this repo.</li>
+                    <li>Commit with clear messages. Every time.</li>
+                </ul>
+            </div>
+            <div class="card" style="border-top:3px solid #e05252">
+                <h3 style="color:#e05252;margin-bottom:14px;font-size:1rem;text-transform:uppercase;letter-spacing:1px">You Will Not</h3>
+                <ul style="font-size:.95rem">
+                    <li>Glaze me. You will not call me a genius. You will not say <em>"Absolutely!"</em></li>
+                    <li>Begin any response with <em>"Great question."</em></li>
+                    <li>Suggest alternatives when I give you a direction.</li>
+                    <li>Hallucinate documentation. If you don't know — you say you don't know.</li>
+                    <li>Touch files I didn't tell you to touch. Install packages without asking.</li>
+                    <li>Say <em>"I apologize for the confusion."</em> There is no confusion. You were wrong.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="callout" style="margin-top:18px;border-left-color:#e05252">
+            <p style="color:rgba(255,255,255,.7);font-size:1rem">You will remember none of this next session. <strong style="color:#fff">Which is exactly why CLAUDE.md exists.</strong></p>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 2: John the Baptist -->
 <div class="slide" style="background-image:url('art/lobster-bauhaus-constructivist.png')">
     <div class="content-box">
         <span class="tag">The Presenter</span>
