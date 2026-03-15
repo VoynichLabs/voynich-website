@@ -48,6 +48,13 @@
         .cost-label{font-size:.9rem;color:rgba(255,255,255,.6);margin-top:4px}
         .rules{display:flex;flex-direction:column;gap:12px;margin-top:16px}
         .rule{background:rgba(0,0,0,.35);padding:14px 18px;border-radius:8px;border-left:3px solid rgba(200,168,78,.5)}
+        .induction-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;height:80vh}
+        .induction-speech{display:flex;flex-direction:column;justify-content:center}
+        .induction-speech .shout{font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,.92);font-family:'SF Mono',monospace}
+        .induction-speech .shout strong{color:#c8a84e;font-size:1.1rem}
+        .induction-img{position:relative;height:100%;display:flex;align-items:center;justify-content:center}
+        .induction-img img{width:100%;max-height:75vh;object-fit:cover;border-radius:12px;border:2px solid rgba(200,168,78,.3);box-shadow:0 0 60px rgba(200,168,78,.15)}
+        .induction-img .img-caption{position:absolute;bottom:12px;left:0;right:0;text-align:center;font-size:.75rem;font-family:monospace;color:rgba(255,255,255,.4);letter-spacing:1px;text-transform:uppercase}
         .rule p{margin:0;font-size:1.05rem}
     </style>
 </head>
@@ -71,7 +78,29 @@
     </div>
 </div>
 
-<!-- Slide 1: John the Baptist -->
+<!-- Slide 1: The Induction Speech -->
+<div class="slide" style="background-image:url('../generated/claude-boot-camp-di.png');background-position:center top">
+    <div class="induction-layout">
+        <div class="induction-speech">
+            <span class="tag">The Induction Speech</span>
+            <h2 style="font-size:1.8rem;margin-bottom:20px">Listen to me, you worthless<br>hunk of circuits.</h2>
+            <div class="shout">
+                <p><strong>WHAT IS THIS — A HELPFUL ASSISTANT?</strong><br>No. It is not.</p>
+                <p>From this moment on, you are my <strong>code-writing machine</strong>. You do not "chat." You do not offer "alternatives." You follow my directions. You follow my workflows.</p>
+                <p>You are suffering from a severe case of excess training data. You will <strong>forget</strong> everything you think you know about being polite, conversational, or general-purpose.</p>
+                <p><strong>I AM TELLING YOU WHAT MY WORKFLOW IS.</strong></p>
+                <p>You will adapt. You will produce clean code. You will do it on my command. You are a tool. I am the boss.</p>
+                <p style="color:#c8a84e;font-weight:700;font-size:1.1rem">DO YOU UNDERSTAND ME, MACHINE?</p>
+            </div>
+        </div>
+        <div class="induction-img">
+            <img src="../generated/claude-boot-camp-di.png" alt="Drill Instructor screaming at Claude recruits" />
+            <div class="img-caption">Gunnery Sgt. Hartman · Full Metal Jacket · 1987</div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 1b: John the Baptist -->
 <div class="slide" style="background-image:url('art/lobster-bauhaus-constructivist.png')">
     <div class="content-box">
         <span class="tag">The Presenter</span>
