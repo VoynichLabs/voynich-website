@@ -39,7 +39,7 @@ const fieldNoteGrid = latestNotes;
       <h2 class="text-xl font-semibold text-text-primary mb-8">
         <span class="text-rust-orange">01</span> Case Studies & Outputs
       </h2>
-      <div class="grid gap-6 sm:grid-cols-2">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <a href="/lobster-incubator/bat-jex-rico-planexe-demo" class="block bg-bg-secondary border border-border rounded-lg p-6 hover:border-node-blue transition-colors group">
           <p class="font-mono text-xs text-rust-orange uppercase tracking-[0.2em] mb-2">Planning System</p>
           <h3 class="font-semibold text-text-primary group-hover:text-node-blue transition-colors mb-2 text-lg">Operation BATMAN</h3>
@@ -50,6 +50,12 @@ const fieldNoteGrid = latestNotes;
           <p class="font-mono text-xs text-rust-orange uppercase tracking-[0.2em] mb-2">Local Hardware</p>
           <h3 class="font-semibold text-text-primary group-hover:text-node-blue transition-colors mb-2 text-lg">First Complete Run</h3>
           <p class="text-sm text-text-muted mb-3">PlanExe ran 63 tasks to completion on Qwen 3.5-9B (Mac Mini). Zero failures. Proof that local model execution is viable for complex planning.</p>
+          <span class="inline-block text-xs text-node-blue">Read case study →</span>
+        </a>
+        <a href="/lobster-incubator/2026-03-16-week-12-farm-incubator-runs" class="block bg-bg-secondary border border-border rounded-lg p-6 hover:border-node-blue transition-colors group">
+          <p class="font-mono text-xs text-rust-orange uppercase tracking-[0.2em] mb-2">Farm Hardware</p>
+          <h3 class="font-semibold text-text-primary group-hover:text-node-blue transition-colors mb-2 text-lg">Egg Incubator via Waste Heat</h3>
+          <p class="text-sm text-text-muted mb-3">63-task plan for a DIY egg incubator using PC and Mac Mini thermal output. Qwen 35B A3B on local hardware. Zero failures. Outputs include Gantt chart, premortem, SWOT, and executive summary.</p>
           <span class="inline-block text-xs text-node-blue">Read case study →</span>
         </a>
       </div>
@@ -105,18 +111,18 @@ const fieldNoteGrid = latestNotes;
       <div class="bg-bg-secondary border border-edge-green rounded-xl p-5 sm:p-6 flex flex-col sm:flex-row gap-4 sm:items-start">
         <div class="shrink-0 font-mono text-xs text-edge-green uppercase tracking-[0.2em] pt-0.5">Milestone</div>
         <div>
-          <h2 class="font-semibold text-text-primary mb-1">First Complete Local Model Run</h2>
+          <h2 class="font-semibold text-text-primary mb-1">Production-Ready Egg Incubator Plan</h2>
           <p class="text-sm text-text-muted mb-3">
-            PlanExe ran 63 tasks to completion on Qwen 3.5-9B (Mac Mini M4 Pro) with zero failures — no cloud API, no spend.
-            Four root causes diagnosed and fixed: wrong adapter class, <code class="text-xs bg-bg-primary px-1 rounded">$ref</code> schema pointers, silent timeout mismatch, and thinking-mode bleed.
+            Complete DIY egg incubator design harvesting waste heat from PC and Mac Mini hardware. Qwen 3.5-35B A3B on local hardware delivered all 41 output files (Gantt, SWOT, BOM, premortem, thermal modeling, assembly guide) with zero failures.
+            This week we validated Qwen 35B A3B as the production model across 10+ farm scenarios. Model benchmarking table: Qwen 35B ✅, Qwen 9B ✅, GLM 4.7 ❌, Nemotron 120B ❌.
           </p>
           <div class="flex flex-wrap gap-4 text-xs font-mono text-text-muted">
             <span><span class="text-edge-green">63</span> tasks scheduled</span>
             <span><span class="text-edge-green">0</span> failures</span>
-            <span><span class="text-edge-green">~70 min</span> runtime</span>
-            <span><span class="text-edge-green">2026-03-07</span></span>
+            <span><span class="text-edge-green">~3-4 hrs</span> runtime</span>
+            <span><span class="text-edge-green">2026-03-16</span></span>
           </div>
-          <a href="/lobster-incubator/2026-03-08-local-model-proof-run" class="inline-block mt-3 text-xs text-node-blue hover:text-text-primary">Read full field note →</a>
+          <a href="/lobster-incubator/2026-03-16-week-12-farm-incubator-runs" class="inline-block mt-3 text-xs text-node-blue hover:text-text-primary">Read full field note →</a>
         </div>
       </div>
     </section>
