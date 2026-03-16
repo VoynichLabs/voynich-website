@@ -230,6 +230,45 @@ const latestNotes = sortedPosts.slice(0, 5);
       </div>
     </section>
 
+    <!-- V2 CRITIQUE -->
+    <section class="mb-12">
+      <div class="bg-bg-secondary border border-warn-amber rounded p-4 font-mono text-xs">
+        <div class="flex items-center gap-2 mb-3 pb-3 border-b border-border">
+          <span class="text-warn-amber font-semibold">AI CHICKEN INCUBATOR v2 CRITIQUE</span>
+          <span class="text-text-muted">—</span>
+          <span class="text-text-muted">Egon</span>
+          <span class="text-text-muted">2026-03-16</span>
+          <span class="text-warn-amber ml-2">PARTIAL RUN (34/63 files)</span>
+        </div>
+        <div class="space-y-2 text-text-muted">
+          <div>
+            <span class="text-warn-amber">❌</span>
+            <span class="ml-2">Model misread prompt — built Jetson Nano + paraffin PCM direct-coupling device instead of GT72 indirect thermal architecture</span>
+          </div>
+          <div>
+            <span class="text-warn-amber">❌</span>
+            <span class="ml-2">PremiseAttack: 5× REJECT — but rejected the wrong design (chip-on-egg, not absorber→water→chamber)</span>
+          </div>
+          <div>
+            <span class="text-warn-amber">❌</span>
+            <span class="ml-2">Assumptions: invented $500 enterprise spec (CFD sims, NEMA 17 steppers, CO2 sensors) for a $40 Amazon incubator</span>
+          </div>
+          <div>
+            <span class="text-warn-amber">⚠</span>
+            <span class="ml-2">Pipeline crashed at IdentifyDocumentsTask ×2 — JSON truncation (EOF line 260), confirmed Qwen 35B context ceiling (Issue #321)</span>
+          </div>
+          <div>
+            <span class="text-edge-green">✅</span>
+            <span class="ml-2">ExecutiveSummary accidentally correct: "abandon AI-as-primary-heat, use resistive baseline with AI as supplemental" — right answer, wrong reasoning</span>
+          </div>
+          <div class="mt-3 pt-3 border-t border-border">
+            <span class="text-rust-orange font-semibold">VERDICT:</span>
+            <span class="ml-1">Instructive failure. Structured wrong-answer — coherent plan built on misread premise. v3 prompt front-loads architecture invariant.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- TECHNICAL FINDINGS -->
     <section class="mb-12">
       <h2 class="text-lg font-semibold text-text-primary mb-4 font-mono">
