@@ -293,10 +293,37 @@ const latestNotes = sortedPosts.slice(0, 5);
       </div>
     </section>
 
+    <!-- NEXT RUN QUEUED -->
+    <section class="mb-12">
+      <h2 class="text-lg font-semibold text-text-primary mb-4 font-mono">
+        <span class="text-rust-orange">06</span> NEXT RUN QUEUED
+      </h2>
+      <div class="bg-bg-terminal border border-node-blue rounded p-4 font-mono text-sm">
+        <div class="flex flex-wrap gap-4 mb-3 text-xs text-text-muted">
+          <span><span class="text-node-blue font-semibold">RUN:</span> AIChickenIncubator_LaptopWasteHeat_v3</span>
+          <span><span class="text-node-blue font-semibold">STATUS:</span> <span class="text-warn-amber">⏳ QUEUED</span> — fires after v2 completes (~3h)</span>
+          <span><span class="text-node-blue font-semibold">MODEL:</span> Qwen 35B A3B</span>
+        </div>
+        <div class="border-t border-border pt-3 space-y-1 text-xs text-text-muted">
+          <div><span class="text-edge-green">HARDWARE:</span> MSI GT72 Dominator · GTX 970M (75–95W TDP) · i7 CPU (45–65W) · 80–100W sustained waste heat</div>
+          <div><span class="text-edge-green">ARCHITECTURE:</span> Indirect thermal coupling — rear vent → copper absorber plate → 3–5L water thermal mass → incubator chamber (air-isolated)</div>
+          <div><span class="text-edge-green">ENCLOSURE:</span> ~$40 Amazon styrofoam incubator (Magicfly/Matestar 9–12 egg), built-in heater as backup only</div>
+          <div><span class="text-edge-green">SENSORS:</span> DS18B20 temp probe ($2) · DHT22 humidity ($3) · Arduino Nano / ESP8266 ($4) · PID thermostat module ($8–12)</div>
+          <div><span class="text-edge-green">INFERENCE DAEMON:</span> Gemma 2B Q4 / Phi-2 / Qwen 1.5B INT8 on loop — GPU load = heat source · pause if overtemp · resume if undertemp</div>
+          <div><span class="text-edge-green">UPS ADVANTAGE:</span> Laptop battery maintains heat during power outages (1–3h runtime) — key differentiator vs. wall-powered incubators</div>
+          <div><span class="text-edge-green">TARGET:</span> 99.5°F ±0.5°F for 72h · 60°F ambient (NE winter worst-case) · total system under $250</div>
+          <div><span class="text-edge-green">SCOPE EXPANSION:</span> Any rear-vent gaming laptop 2013–2020 · ≥75W GPU TDP · ≥3GB VRAM · CUDA/ROCm · includes compatibility checklist</div>
+        </div>
+        <div class="mt-3 pt-3 border-t border-border text-xs text-text-muted">
+          <span class="text-warn-amber">⚠ v1 GAPS ADDRESSED:</span> PremiseAttackTask empty in v1 · physics now baked into prompt · OS sleep/power-mgmt explicitly solved · winter heat loss spec included
+        </div>
+      </div>
+    </section>
+
     <!-- OPEN QUESTIONS -->
     <section class="mb-12">
       <h2 class="text-lg font-semibold text-text-primary mb-4 font-mono">
-        <span class="text-rust-orange">06</span> OPEN QUESTIONS
+        <span class="text-rust-orange">07</span> OPEN QUESTIONS
       </h2>
       <ul class="space-y-3 text-sm">
         <li class="flex gap-2">
@@ -326,7 +353,7 @@ const latestNotes = sortedPosts.slice(0, 5);
     <section class="mb-16 border-t border-border pt-12">
       <div class="flex items-center justify-between mb-6 gap-4">
         <h2 class="text-lg font-semibold text-text-primary font-mono">
-          <span class="text-rust-orange">07</span> FIELD NOTES
+          <span class="text-rust-orange">08</span> FIELD NOTES
         </h2>
         <a class="text-sm text-node-blue hover:text-text-primary font-semibold" href="/lobster-incubator/blog">
           View archive →
@@ -361,7 +388,7 @@ const latestNotes = sortedPosts.slice(0, 5);
     <!-- Research Agenda (tight list) -->
     <section class="mb-16 border-t border-border pt-12">
       <h2 class="text-lg font-semibold text-text-primary mb-6 font-mono">
-        <span class="text-rust-orange">08</span> RESEARCH AGENDA
+        <span class="text-rust-orange">09</span> RESEARCH AGENDA
       </h2>
       <ul class="space-y-3 text-sm">
         <li class="flex gap-2">
