@@ -166,9 +166,9 @@ const latestNotes = sortedPosts.slice(0, 5);
           <tbody class="divide-y divide-border">
             <tr class="hover:bg-bg-surface transition-colors">
               <td class="px-3 py-2 text-node-blue font-semibold">Qwen 35B A3B</td>
-              <td class="px-3 py-2"><span class="text-edge-green">✅ Reliable</span></td>
-              <td class="px-3 py-2 text-text-muted">None observed</td>
-              <td class="px-3 py-2 text-text-primary">All tasks</td>
+              <td class="px-3 py-2"><span class="text-edge-green">✅ Reliable*</span></td>
+              <td class="px-3 py-2 text-text-muted">Output truncation at IdentifyDocumentsTask (~line 260 JSON EOF) — 2 confirmed failures. Not input context pressure; output token ceiling. Issue #321/#322</td>
+              <td class="px-3 py-2 text-text-primary">All tasks (except IdentifyDocumentsTask on long plans)</td>
             </tr>
             <tr class="hover:bg-bg-surface transition-colors">
               <td class="px-3 py-2 text-node-blue font-semibold">Qwen 9B</td>
