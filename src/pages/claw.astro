@@ -21,8 +21,8 @@ const today = new Date();
 const daysSinceAgents = Math.floor((today - firstAgentDate) / 86400000);
 const totalEvents = events.length;
 
-// Supervision ratio: human messages / PRs merged
-const humanEvents = events.filter(e => ['mark', 'simon'].includes(e.agent_id));
+// Supervision ratio: human message events / PRs merged (approximate — session data is partial)
+const humanEvents = events.filter(e => ['mark', 'simon'].includes(e.agent_id) && e.event_type === 'message');
 const totalMerged = prTimeline.filter(p => p.merged_at).length;
 const supervisionRatio = Math.round(humanEvents.length / totalMerged * 10) / 10;
 
@@ -38,6 +38,7 @@ const maxPRs = Math.max(...last30Days.map(d => d.prs_merged), 1);
 const crewDef = [
   { id: 'egon',  emoji: '🦞', name: 'Egon',  role: 'builder',     type: 'agent' },
   { id: 'bubba', emoji: '🦞', name: 'Bubba', role: 'coordinator', type: 'agent' },
+  { id: 'larry', emoji: '🦞', name: 'Larry', role: 'elder',       type: 'agent' },
   { id: 'mark',  emoji: '👤', name: 'Mark',  role: 'tower',       type: 'human' },
   { id: 'simon', emoji: '👤', name: 'Simon', role: 'architect',   type: 'human' },
 ];
@@ -54,19 +55,18 @@ function getSparkline(agentId: string): number[] {
   return last14.map(d => Math.round(d.events * share));
 }
 
-// Timeline: milestones + key events (static, curated from spec)
-const milestones = [
-  { date: '2025-02-10', label: '🌱 First PR — Simon\'s project begins', type: 'milestone' },
-  { date: '2026-02-01', label: '🦞 The boss arrives — PR #13', type: 'milestone' },
-  { date: '2026-02-22', label: '🦞 Egon hatches — HejEgonBot account created', type: 'milestone' },
-  { date: '2026-02-26', label: '🦞 Bubba\'s first memory', type: 'milestone' },
-  { date: '2026-03-01', label: '🦞 Egon\'s first session', type: 'milestone' },
-  { date: '2026-03-07', label: '📈 27 PRs in one day — peak velocity', type: 'milestone' },
-  { date: '2026-03-08', label: '💥 Git disaster — pipeline data lost', type: 'milestone' },
-  { date: '2026-03-09', label: '🔴 Thinking token crisis — multiple session resets', type: 'milestone' },
-  { date: '2026-03-16', label: '⚡ 30 PRs in one day — OPTIMIZE_INSTRUCTIONS blitz', type: 'milestone' },
-  { date: '2026-03-19', label: '🔴 Rate limit death spiral — Egon stuck in loop', type: 'milestone' },
-];
+// Timeline: auto-detect notable days from data (no hard-coded milestones)
+// A "notable day" = any day with 10+ PRs merged or 50+ errors
+const milestones: Array<{date: string; label: string; type: string}> = [];
+for (const day of dailyStats) {
+  if (day.prs_merged >= 10) {
+    milestones.push({ date: day.date, label: `📈 ${day.prs_merged} PRs merged`, type: 'milestone' });
+  } else if (day.errors >= 50) {
+    milestones.push({ date: day.date, label: `🔴 ${day.errors} errors`, type: 'milestone' });
+  }
+}
+// Add the dormant gap
+milestones.unshift({ date: '2025-02-10', label: '🕐 Feb 2025 – Jan 2026 · 6 PRs total', type: 'gap' });
 
 // Key PR events for timeline display (recent notable merges)
 const notablePRs = prTimeline
@@ -416,7 +416,7 @@ function agentIcon(id: string): string {
               <div class="text-center py-2">
                 <div class="font-mono text-3xl font-bold text-node-blue">{supervisionRatio}</div>
                 <div class="font-mono text-xs text-text-muted mt-1">human messages per PR merged</div>
-                <div class="font-mono text-[10px] text-text-muted/60 mt-1">({humanEvents.length} msgs ÷ {totalMerged} PRs)</div>
+                <div class="font-mono text-[10px] text-text-muted/60 mt-1">({humanEvents.length} msgs ÷ {totalMerged} PRs · approx)</div>
               </div>
               <div class="mt-3 flex items-center gap-2 text-[11px] font-mono text-text-muted">
                 <span class="text-edge-green">↘</span>
