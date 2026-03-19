@@ -4,31 +4,79 @@
     "total_events": 5604,
     "messages": 4773,
     "errors": 803,
-    "prs": 2,
-    "session_starts": 24
+    "prs_opened": 2,
+    "prs_merged": 2
   },
   {
     "agent_id": "bubba",
     "total_events": 953,
     "messages": 935,
     "errors": 3,
-    "prs": 0,
-    "session_starts": 15
+    "prs_opened": 0,
+    "prs_merged": 0
   },
   {
     "agent_id": "simon",
     "total_events": 366,
     "messages": 0,
     "errors": 0,
-    "prs": 183,
-    "session_starts": 0
+    "prs_opened": 183,
+    "prs_merged": 183
   },
   {
     "agent_id": "mark",
     "total_events": 236,
     "messages": 0,
     "errors": 0,
-    "prs": 118,
-    "session_starts": 0
+    "prs_opened": 118,
+    "prs_merged": 118
+  },
+  {
+    "agent_id": "larry",
+    "total_events": 137,
+    "messages": 0,
+    "errors": 0,
+    "prs_opened": 0,
+    "prs_merged": 0
+  },
+  {
+    "agent_id": "datawranglerai",
+    "total_events": 2,
+    "messages": 0,
+    "errors": 0,
+    "prs_opened": 1,
+    "prs_merged": 1
+  },
+  {
+    "agent_id": "tinycrops",
+    "total_events": 2,
+    "messages": 0,
+    "errors": 0,
+    "prs_opened": 1,
+    "prs_merged": 1
+  },
+  {
+    "agent_id": "FeelTheFonk",
+    "total_events": 2,
+    "messages": 0,
+    "errors": 0,
+    "prs_opened": 1,
+    "prs_merged": 1
+  },
+  {
+    "agent_id": "eltociear",
+    "total_events": 2,
+    "messages": 0,
+    "errors": 0,
+    "prs_opened": 1,
+    "prs_merged": 1
+  },
+  {
+    "agent_id": "ShivamB25",
+    "total_events": 2,
+    "messages": 0,
+    "errors": 0,
+    "prs_opened": 1,
+    "prs_merged": 1
   }
 ]

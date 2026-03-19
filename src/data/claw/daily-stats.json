@@ -1,53 +1,5 @@
 [
   {
-    "date": "2025-02-10",
-    "events": 2,
-    "prs_opened": 1,
-    "prs_merged": 1,
-    "errors": 0,
-    "messages": 0
-  },
-  {
-    "date": "2025-02-12",
-    "events": 2,
-    "prs_opened": 1,
-    "prs_merged": 1,
-    "errors": 0,
-    "messages": 0
-  },
-  {
-    "date": "2025-02-24",
-    "events": 1,
-    "prs_opened": 1,
-    "prs_merged": 0,
-    "errors": 0,
-    "messages": 0
-  },
-  {
-    "date": "2025-02-26",
-    "events": 3,
-    "prs_opened": 1,
-    "prs_merged": 2,
-    "errors": 0,
-    "messages": 0
-  },
-  {
-    "date": "2025-06-03",
-    "events": 2,
-    "prs_opened": 1,
-    "prs_merged": 1,
-    "errors": 0,
-    "messages": 0
-  },
-  {
-    "date": "2025-07-29",
-    "events": 2,
-    "prs_opened": 1,
-    "prs_merged": 1,
-    "errors": 0,
-    "messages": 0
-  },
-  {
     "date": "2026-02-01",
     "events": 2,
     "prs_opened": 1,
@@ -105,15 +57,23 @@
   },
   {
     "date": "2026-02-16",
-    "events": 1,
+    "events": 8,
     "prs_opened": 0,
     "prs_merged": 1,
     "errors": 0,
     "messages": 0
   },
   {
+    "date": "2026-02-17",
+    "events": 2,
+    "prs_opened": 0,
+    "prs_merged": 0,
+    "errors": 0,
+    "messages": 0
+  },
+  {
     "date": "2026-02-18",
-    "events": 8,
+    "events": 12,
     "prs_opened": 4,
     "prs_merged": 4,
     "errors": 0,
@@ -121,7 +81,7 @@
   },
   {
     "date": "2026-02-19",
-    "events": 2,
+    "events": 11,
     "prs_opened": 1,
     "prs_merged": 1,
     "errors": 0,
@@ -129,7 +89,7 @@
   },
   {
     "date": "2026-02-20",
-    "events": 8,
+    "events": 11,
     "prs_opened": 4,
     "prs_merged": 4,
     "errors": 0,
@@ -137,7 +97,7 @@
   },
   {
     "date": "2026-02-21",
-    "events": 12,
+    "events": 13,
     "prs_opened": 6,
     "prs_merged": 6,
     "errors": 0,
@@ -145,7 +105,7 @@
   },
   {
     "date": "2026-02-22",
-    "events": 2,
+    "events": 3,
     "prs_opened": 1,
     "prs_merged": 1,
     "errors": 0,
@@ -153,7 +113,7 @@
   },
   {
     "date": "2026-02-23",
-    "events": 2,
+    "events": 17,
     "prs_opened": 1,
     "prs_merged": 1,
     "errors": 0,
@@ -161,7 +121,7 @@
   },
   {
     "date": "2026-02-24",
-    "events": 4,
+    "events": 11,
     "prs_opened": 2,
     "prs_merged": 2,
     "errors": 0,
@@ -177,7 +137,7 @@
   },
   {
     "date": "2026-02-26",
-    "events": 40,
+    "events": 46,
     "prs_opened": 20,
     "prs_merged": 20,
     "errors": 0,
@@ -185,7 +145,7 @@
   },
   {
     "date": "2026-02-27",
-    "events": 16,
+    "events": 21,
     "prs_opened": 8,
     "prs_merged": 8,
     "errors": 0,
@@ -193,7 +153,7 @@
   },
   {
     "date": "2026-02-28",
-    "events": 22,
+    "events": 27,
     "prs_opened": 11,
     "prs_merged": 11,
     "errors": 0,
@@ -201,7 +161,7 @@
   },
   {
     "date": "2026-03-01",
-    "events": 140,
+    "events": 154,
     "prs_opened": 4,
     "prs_merged": 4,
     "errors": 0,
@@ -209,7 +169,7 @@
   },
   {
     "date": "2026-03-02",
-    "events": 140,
+    "events": 145,
     "prs_opened": 4,
     "prs_merged": 3,
     "errors": 4,
@@ -217,7 +177,7 @@
   },
   {
     "date": "2026-03-03",
-    "events": 700,
+    "events": 716,
     "prs_opened": 1,
     "prs_merged": 2,
     "errors": 0,
@@ -225,7 +185,7 @@
   },
   {
     "date": "2026-03-04",
-    "events": 531,
+    "events": 536,
     "prs_opened": 3,
     "prs_merged": 3,
     "errors": 0,
@@ -233,7 +193,7 @@
   },
   {
     "date": "2026-03-05",
-    "events": 670,
+    "events": 675,
     "prs_opened": 5,
     "prs_merged": 5,
     "errors": 1,
@@ -241,7 +201,7 @@
   },
   {
     "date": "2026-03-06",
-    "events": 1342,
+    "events": 1349,
     "prs_opened": 12,
     "prs_merged": 11,
     "errors": 561,
@@ -249,7 +209,7 @@
   },
   {
     "date": "2026-03-07",
-    "events": 133,
+    "events": 135,
     "prs_opened": 26,
     "prs_merged": 27,
     "errors": 0,
@@ -257,7 +217,7 @@
   },
   {
     "date": "2026-03-08",
-    "events": 60,
+    "events": 61,
     "prs_opened": 24,
     "prs_merged": 23,
     "errors": 1,
@@ -273,7 +233,7 @@
   },
   {
     "date": "2026-03-10",
-    "events": 173,
+    "events": 177,
     "prs_opened": 7,
     "prs_merged": 10,
     "errors": 81,
@@ -281,7 +241,7 @@
   },
   {
     "date": "2026-03-11",
-    "events": 21,
+    "events": 23,
     "prs_opened": 9,
     "prs_merged": 12,
     "errors": 0,
@@ -313,7 +273,7 @@
   },
   {
     "date": "2026-03-15",
-    "events": 30,
+    "events": 31,
     "prs_opened": 16,
     "prs_merged": 14,
     "errors": 0,
@@ -321,7 +281,7 @@
   },
   {
     "date": "2026-03-16",
-    "events": 63,
+    "events": 70,
     "prs_opened": 32,
     "prs_merged": 30,
     "errors": 0,
@@ -329,7 +289,7 @@
   },
   {
     "date": "2026-03-17",
-    "events": 35,
+    "events": 37,
     "prs_opened": 13,
     "prs_merged": 16,
     "errors": 0,
@@ -345,7 +305,7 @@
   },
   {
     "date": "2026-03-19",
-    "events": 2138,
+    "events": 2139,
     "prs_opened": 7,
     "prs_merged": 9,
     "errors": 69,
