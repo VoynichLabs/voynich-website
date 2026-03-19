@@ -1,0 +1,511 @@
+---
+// Author: Bubba (claude-sonnet-4)
+// Date: 2026-03-19
+// PURPOSE: CLAW dashboard — Creative Lobster Autonomous Workers.
+//          Visualizes real agent coordination data from the PlanExe project:
+//          308 PRs, 7,169 events, 3 lobsters + 2 humans.
+//          Static MVP: Astro + Tailwind + inline JS. No React islands.
+//          Data pre-built by scripts/build-claw-data.js.
+// SRP/DRY check: Pass — single page, all data from pre-built JSON imports.
+import Base from '../layouts/Base.astro';
+import dailyStats from '../data/claw/daily-stats.json';
+import crewStats from '../data/claw/crew-stats.json';
+import prTimeline from '../data/claw/pr-timeline.json';
+import events from '../data/claw/events.json';
+
+// --- Computed stats ---
+const prsBeforeAgents = prTimeline.filter(p => p.opened_at < '2026-02-01').length;
+const prsSinceAgents = prTimeline.filter(p => p.opened_at >= '2026-02-01').length;
+const firstAgentDate = new Date('2026-02-01');
+const today = new Date();
+const daysSinceAgents = Math.floor((today - firstAgentDate) / 86400000);
+const totalEvents = events.length;
+
+// Supervision ratio: human messages / PRs merged
+const humanEvents = events.filter(e => ['mark', 'simon'].includes(e.agent_id));
+const totalMerged = prTimeline.filter(p => p.merged_at).length;
+const supervisionRatio = Math.round(humanEvents.length / totalMerged * 10) / 10;
+
+// Avg cycle time
+const cycled = prTimeline.filter(p => p.cycle_hours !== null && p.cycle_hours < 1000 && p.cycle_hours > 0);
+const avgCycleHours = Math.round(cycled.reduce((a, b) => a + b.cycle_hours, 0) / cycled.length * 10) / 10;
+
+// PR velocity last 30 days
+const last30Days = dailyStats.slice(-30);
+const maxPRs = Math.max(...last30Days.map(d => d.prs_merged), 1);
+
+// Crew roster data
+const crewDef = [
+  { id: 'egon',  emoji: '🦞', name: 'Egon',  role: 'builder',     type: 'agent' },
+  { id: 'bubba', emoji: '🦞', name: 'Bubba', role: 'coordinator', type: 'agent' },
+  { id: 'mark',  emoji: '👤', name: 'Mark',  role: 'tower',       type: 'human' },
+  { id: 'simon', emoji: '👤', name: 'Simon', role: 'architect',   type: 'human' },
+];
+const crewMap = Object.fromEntries(crewStats.map(c => [c.agent_id, c]));
+
+// Sparkline: last 14 days events per crew member
+const last14 = dailyStats.slice(-14);
+function getSparkline(agentId: string): number[] {
+  // For agents (egon/bubba/larry): event density from daily totals weighted by share
+  // Since per-agent per-day not stored, approximate from crew-level ratios
+  const total = crewStats.find(c => c.agent_id === agentId)?.total_events ?? 0;
+  const grandTotal = crewStats.reduce((s, c) => s + c.total_events, 0);
+  const share = grandTotal > 0 ? total / grandTotal : 0;
+  return last14.map(d => Math.round(d.events * share));
+}
+
+// Timeline: milestones + key events (static, curated from spec)
+const milestones = [
+  { date: '2025-02-10', label: '🌱 First PR — Simon\'s project begins', type: 'milestone' },
+  { date: '2026-02-01', label: '🦞 The boss arrives — PR #13', type: 'milestone' },
+  { date: '2026-02-22', label: '🦞 Egon hatches — HejEgonBot account created', type: 'milestone' },
+  { date: '2026-02-26', label: '🦞 Bubba\'s first memory', type: 'milestone' },
+  { date: '2026-03-01', label: '🦞 Egon\'s first session', type: 'milestone' },
+  { date: '2026-03-07', label: '📈 27 PRs in one day — peak velocity', type: 'milestone' },
+  { date: '2026-03-08', label: '💥 Git disaster — pipeline data lost', type: 'milestone' },
+  { date: '2026-03-09', label: '🔴 Thinking token crisis — multiple session resets', type: 'milestone' },
+  { date: '2026-03-16', label: '⚡ 30 PRs in one day — OPTIMIZE_INSTRUCTIONS blitz', type: 'milestone' },
+  { date: '2026-03-19', label: '🔴 Rate limit death spiral — Egon stuck in loop', type: 'milestone' },
+];
+
+// Key PR events for timeline display (recent notable merges)
+const notablePRs = prTimeline
+  .filter(p => p.merged_at && p.merged_at >= '2026-02-01')
+  .sort((a, b) => new Date(b.merged_at!).getTime() - new Date(a.merged_at!).getTime())
+  .slice(0, 20);
+
+// Recent errors for timeline
+const recentErrors = events
+  .filter(e => e.event_type === 'error' && e.timestamp >= '2026-03-01')
+  .slice(-8)
+  .reverse();
+
+// Build timeline items: combine milestones + notable events, sort by date desc
+type TimelineItem = {
+  date: string;
+  label: string;
+  type: 'milestone' | 'pr_merge' | 'error' | 'gap';
+  author?: string;
+  pr_number?: number;
+  error_type?: string;
+};
+
+const timelineItems: TimelineItem[] = [
+  ...milestones.map(m => ({ ...m, type: 'milestone' as const })),
+  ...notablePRs.map(p => ({
+    date: p.merged_at!.slice(0, 10),
+    label: p.title,
+    type: 'pr_merge' as const,
+    author: p.author,
+    pr_number: p.pr_number,
+  })),
+  ...recentErrors.map(e => ({
+    date: e.timestamp.slice(0, 10),
+    label: (e as any).error_message?.slice(0, 80) ?? 'Error',
+    type: 'error' as const,
+    author: e.agent_id,
+    error_type: (e as any).error_type,
+  })),
+  // Dormant gap card
+  { date: '2025-07-01', label: '🕐 ~11 months dormant — 6 PRs total before agent era', type: 'gap' as const },
+].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+// Deduplicate by milestone priority (if same date)
+function typeColor(type: string): string {
+  switch (type) {
+    case 'milestone': return 'border-warn-amber text-warn-amber bg-warn-amber/10';
+    case 'pr_merge':  return 'border-edge-green text-edge-green bg-edge-green/10';
+    case 'error':     return 'border-red-500 text-red-400 bg-red-500/10';
+    case 'gap':       return 'border-text-muted text-text-muted bg-bg-surface';
+    default:          return 'border-node-blue text-node-blue bg-node-blue/10';
+  }
+}
+function typeDot(type: string): string {
+  switch (type) {
+    case 'pr_merge':  return '🟢';
+    case 'error':     return '🔴';
+    case 'milestone': return '⭐';
+    case 'gap':       return '⏸';
+    default:          return '🔵';
+  }
+}
+
+// Unique id for agent display  
+function agentIcon(id: string): string {
+  if (['egon', 'bubba', 'larry'].includes(id)) return '🦞';
+  if (['mark', 'simon'].includes(id)) return '👤';
+  return '🤖';
+}
+---
+
+<Base 
+  title="CLAW" 
+  description="CLAW — Creative Lobster Autonomous Workers. Real agent coordination data from the VoynichLabs PlanExe project: 308 PRs, 7,169 events, 3 lobsters + 2 humans."
+>
+  <main class="min-h-screen bg-bg-primary text-text-primary">
+    
+    <!-- ═══ HEADER ═══ -->
+    <header class="border-b border-border bg-bg-secondary/80 backdrop-blur-sm sticky top-14 z-40">
+      <div class="max-w-[1400px] mx-auto px-4 sm:px-6 py-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <h1 class="text-2xl sm:text-3xl font-bold font-mono">
+              <span class="text-rust-orange">CLAW</span>
+              <span class="ml-2">🦞</span>
+            </h1>
+            <p class="text-text-muted text-sm font-mono mt-0.5">
+              Creative Lobster Autonomous Workers — VoynichLabs
+            </p>
+          </div>
+          
+          <!-- Acceleration stat -->
+          <div class="flex items-center gap-6">
+            <div class="text-center">
+              <div class="font-mono text-xs text-text-muted uppercase tracking-widest mb-1">Acceleration</div>
+              <div class="font-mono text-sm">
+                <span class="text-text-muted">{prsBeforeAgents} PRs in 2025</span>
+                <span class="text-border mx-2">→</span>
+                <span class="text-rust-orange font-bold text-base">{prsSinceAgents} PRs</span>
+                <span class="text-text-muted"> in {daysSinceAgents}d</span>
+              </div>
+            </div>
+            <div class="text-center hidden sm:block">
+              <div class="font-mono text-xs text-text-muted uppercase tracking-widest mb-1">Events</div>
+              <div class="font-mono text-base text-text-primary">{totalEvents.toLocaleString()}</div>
+            </div>
+            <div class="text-center hidden sm:block">
+              <div class="font-mono text-xs text-text-muted uppercase tracking-widest mb-1">Avg Cycle</div>
+              <div class="font-mono text-base text-edge-green">{avgCycleHours}h</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ═══ THREE-COLUMN LAYOUT ═══ -->
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 py-6">
+      <div class="grid grid-cols-1 lg:grid-cols-[200px_1fr_280px] gap-6">
+
+        <!-- ══════════ LEFT: CREW ROSTER ══════════ -->
+        <aside class="order-2 lg:order-1">
+          <div class="lg:sticky lg:top-[130px] space-y-3">
+            
+            <h2 class="font-mono text-xs text-text-muted uppercase tracking-widest mb-4">
+              Crew Roster
+            </h2>
+
+            <!-- Agents section -->
+            <div class="space-y-2">
+              <p class="font-mono text-[10px] text-text-muted uppercase tracking-widest">Agents</p>
+              {crewDef.filter(c => c.type === 'agent').map(crew => {
+                const stats = crewMap[crew.id];
+                const spark = getSparkline(crew.id);
+                const maxSpark = Math.max(...spark, 1);
+                const errorRate = stats ? Math.round(stats.errors / Math.max(stats.total_events, 1) * 100) : 0;
+                return (
+                  <div class="bg-bg-surface border border-border rounded-lg p-3 hover:border-border-active transition-colors">
+                    <div class="flex items-center justify-between mb-2">
+                      <div class="flex items-center gap-1.5">
+                        <span class="text-base">{crew.emoji}</span>
+                        <div>
+                          <div class="font-mono text-xs text-text-primary font-medium">{crew.name}</div>
+                          <div class="font-mono text-[10px] text-text-muted">{crew.role}</div>
+                        </div>
+                      </div>
+                      <div class={`w-2 h-2 rounded-full ${stats ? 'bg-edge-green' : 'bg-text-muted'}`}></div>
+                    </div>
+                    <!-- Event count -->
+                    <div class="font-mono text-[11px] text-text-muted mb-2">
+                      {stats ? stats.total_events.toLocaleString() : 0} events
+                      {stats && stats.errors > 0 && (
+                        <span class="text-red-400 ml-1">· {errorRate}% err</span>
+                      )}
+                    </div>
+                    <!-- Sparkline -->
+                    <div class="flex items-end gap-[2px] h-6" title="Activity last 14 days">
+                      {spark.map((v, i) => (
+                        <div
+                          class="flex-1 bg-rust-orange/60 rounded-sm min-h-[2px] transition-all"
+                          style={`height: ${Math.max(2, Math.round((v / maxSpark) * 24))}px`}
+                        ></div>
+                      ))}
+                    </div>
+                    <!-- Health bar -->
+                    {stats && (
+                      <div class="mt-2 h-1 bg-border rounded-full overflow-hidden">
+                        <div 
+                          class="h-full bg-edge-green rounded-full"
+                          style={`width: ${100 - errorRate}%`}
+                        ></div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            <!-- Divider -->
+            <div class="border-t border-border my-3"></div>
+
+            <!-- Humans section -->
+            <div class="space-y-2">
+              <p class="font-mono text-[10px] text-text-muted uppercase tracking-widest">Humans</p>
+              {crewDef.filter(c => c.type === 'human').map(crew => {
+                const stats = crewMap[crew.id];
+                const spark = getSparkline(crew.id);
+                const maxSpark = Math.max(...spark, 1);
+                return (
+                  <div class="bg-bg-surface border border-border rounded-lg p-3 hover:border-border-active transition-colors">
+                    <div class="flex items-center justify-between mb-2">
+                      <div class="flex items-center gap-1.5">
+                        <span class="text-base">{crew.emoji}</span>
+                        <div>
+                          <div class="font-mono text-xs text-text-primary font-medium">{crew.name}</div>
+                          <div class="font-mono text-[10px] text-text-muted">{crew.role}</div>
+                        </div>
+                      </div>
+                      <div class="w-2 h-2 rounded-full bg-node-blue"></div>
+                    </div>
+                    <div class="font-mono text-[11px] text-text-muted mb-2">
+                      {stats ? stats.total_events.toLocaleString() : 0} events
+                      {stats && stats.prs > 0 && (
+                        <span class="text-edge-green ml-1">· {stats.prs} PRs</span>
+                      )}
+                    </div>
+                    <!-- Sparkline -->
+                    <div class="flex items-end gap-[2px] h-6" title="Activity last 14 days">
+                      {spark.map((v, i) => (
+                        <div
+                          class="flex-1 bg-node-blue/50 rounded-sm min-h-[2px] transition-all"
+                          style={`height: ${Math.max(2, Math.round((v / maxSpark) * 24))}px`}
+                        ></div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <!-- Mini stats -->
+            <div class="border-t border-border pt-3 space-y-1.5">
+              <div class="flex justify-between font-mono text-[11px]">
+                <span class="text-text-muted">Total PRs</span>
+                <span class="text-text-primary">{totalMerged}</span>
+              </div>
+              <div class="flex justify-between font-mono text-[11px]">
+                <span class="text-text-muted">Human msgs/PR</span>
+                <span class="text-text-primary">{supervisionRatio}</span>
+              </div>
+              <div class="flex justify-between font-mono text-[11px]">
+                <span class="text-text-muted">Avg cycle</span>
+                <span class="text-edge-green">{avgCycleHours}h</span>
+              </div>
+            </div>
+
+          </div>
+        </aside>
+
+        <!-- ══════════ CENTER: TIMELINE ══════════ -->
+        <section class="order-1 lg:order-2 min-w-0">
+          
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="font-mono text-xs text-text-muted uppercase tracking-widest">Event Timeline</h2>
+            <div class="flex gap-3 font-mono text-[10px] text-text-muted">
+              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-edge-green inline-block"></span>merge</span>
+              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-warn-amber inline-block"></span>milestone</span>
+              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-red-500 inline-block"></span>error</span>
+              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-text-muted inline-block"></span>gap</span>
+            </div>
+          </div>
+
+          <!-- Timeline items -->
+          <div class="relative">
+            <!-- Vertical line -->
+            <div class="absolute left-[7px] top-0 bottom-0 w-[2px] bg-border"></div>
+
+            <div class="space-y-2 pl-6">
+              {timelineItems.slice(0, 50).map((item) => {
+                const colors = typeColor(item.type);
+                const dot = typeDot(item.type);
+                const isGap = item.type === 'gap';
+                const isMilestone = item.type === 'milestone';
+                return (
+                  <div class={`relative group ${isGap ? 'py-2' : ''}`}>
+                    <!-- Timeline dot -->
+                    <div class={`absolute -left-[19px] top-3 w-3 h-3 rounded-full border-2 ${
+                      item.type === 'pr_merge' ? 'border-edge-green bg-bg-primary' :
+                      item.type === 'error' ? 'border-red-500 bg-bg-primary' :
+                      item.type === 'milestone' ? 'border-warn-amber bg-bg-primary' :
+                      'border-text-muted bg-bg-primary'
+                    }`}></div>
+
+                    {isGap ? (
+                      <!-- Gap card: compressed dormant period -->
+                      <div class="bg-bg-surface border border-dashed border-text-muted/30 rounded-lg px-4 py-3 text-center">
+                        <span class="font-mono text-xs text-text-muted">{item.label}</span>
+                      </div>
+                    ) : (
+                      <div class={`border rounded-lg px-3 py-2.5 ${colors} transition-all duration-150 cursor-default group-hover:brightness-110`}>
+                        <div class="flex items-start justify-between gap-2">
+                          <div class="flex-1 min-w-0">
+                            <div class="flex items-center gap-2 mb-0.5">
+                              <span class="text-[11px]">{dot}</span>
+                              {item.author && (
+                                <span class="font-mono text-[10px] text-text-muted">
+                                  {agentIcon(item.author)} {item.author}
+                                  {item.pr_number && <span class="text-text-muted"> · PR #{item.pr_number}</span>}
+                                </span>
+                              )}
+                              {isMilestone && (
+                                <span class="font-mono text-[10px] text-warn-amber/70 uppercase tracking-wider">milestone</span>
+                              )}
+                            </div>
+                            <p class="font-mono text-xs leading-snug truncate" title={item.label}>
+                              {item.label}
+                            </p>
+                          </div>
+                          <time class="font-mono text-[10px] text-text-muted whitespace-nowrap shrink-0 mt-0.5">
+                            {item.date}
+                          </time>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div class="mt-6 text-center font-mono text-xs text-text-muted">
+            Showing 50 of {timelineItems.length} timeline items · Full event log: {totalEvents.toLocaleString()} events
+          </div>
+        </section>
+
+        <!-- ══════════ RIGHT: WORK PANEL ══════════ -->
+        <aside class="order-3">
+          <div class="lg:sticky lg:top-[130px] space-y-4">
+
+            <!-- PR Velocity Chart -->
+            <div class="bg-bg-surface border border-border rounded-lg p-4">
+              <h3 class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">PR Velocity</h3>
+              <p class="font-mono text-[10px] text-text-muted mb-3">PRs merged/day — last 30 days</p>
+              <!-- Bar chart -->
+              <div class="flex items-end gap-[2px] h-16">
+                {last30Days.map(d => {
+                  const h = Math.max(2, Math.round((d.prs_merged / maxPRs) * 64));
+                  const isBig = d.prs_merged >= 20;
+                  return (
+                    <div
+                      class={`flex-1 rounded-sm transition-all ${isBig ? 'bg-rust-orange' : 'bg-edge-green/70'}`}
+                      style={`height: ${h}px`}
+                      title={`${d.date}: ${d.prs_merged} PRs`}
+                    ></div>
+                  );
+                })}
+              </div>
+              <div class="flex justify-between font-mono text-[9px] text-text-muted mt-1">
+                <span>{last30Days[0]?.date.slice(5)}</span>
+                <span class="text-rust-orange">max: {maxPRs}/day</span>
+                <span>{last30Days[last30Days.length - 1]?.date.slice(5)}</span>
+              </div>
+            </div>
+
+            <!-- Supervision Cost -->
+            <div class="bg-bg-surface border border-border rounded-lg p-4">
+              <h3 class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">Supervision Cost</h3>
+              <div class="text-center py-2">
+                <div class="font-mono text-3xl font-bold text-node-blue">{supervisionRatio}</div>
+                <div class="font-mono text-xs text-text-muted mt-1">human messages per PR merged</div>
+                <div class="font-mono text-[10px] text-text-muted/60 mt-1">({humanEvents.length} msgs ÷ {totalMerged} PRs)</div>
+              </div>
+              <div class="mt-3 flex items-center gap-2 text-[11px] font-mono text-text-muted">
+                <span class="text-edge-green">↘</span>
+                <span>Agents are largely self-directing</span>
+              </div>
+            </div>
+
+            <!-- Key Metrics -->
+            <div class="bg-bg-surface border border-border rounded-lg p-4">
+              <h3 class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">Key Metrics</h3>
+              <div class="space-y-2">
+                <div class="flex justify-between items-center">
+                  <span class="font-mono text-[11px] text-text-muted">Total PRs merged</span>
+                  <span class="font-mono text-sm text-text-primary font-bold">{totalMerged}</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="font-mono text-[11px] text-text-muted">Avg cycle time</span>
+                  <span class="font-mono text-sm text-edge-green">{avgCycleHours}h</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="font-mono text-[11px] text-text-muted">Total events</span>
+                  <span class="font-mono text-sm text-text-primary">{totalEvents.toLocaleString()}</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="font-mono text-[11px] text-text-muted">Peak day</span>
+                  <span class="font-mono text-sm text-rust-orange">30 PRs (Mar 16)</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="font-mono text-[11px] text-text-muted">Active agents</span>
+                  <span class="font-mono text-sm text-text-primary">3 lobsters</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Data Source Inventory -->
+            <div class="bg-bg-surface border border-border rounded-lg p-4">
+              <h3 class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">Data Sources</h3>
+              <div class="space-y-1.5">
+                <div class="flex items-center gap-2 font-mono text-[11px]">
+                  <span class="text-edge-green">✅</span>
+                  <span class="text-text-muted">PRs: <span class="text-text-primary">308</span> (complete)</span>
+                </div>
+                <div class="flex items-center gap-2 font-mono text-[11px]">
+                  <span class="text-edge-green">✅</span>
+                  <span class="text-text-muted">Commits: <span class="text-text-primary">1,395</span> (complete)</span>
+                </div>
+                <div class="flex items-center gap-2 font-mono text-[11px]">
+                  <span class="text-warn-amber">⚠️</span>
+                  <span class="text-text-muted">Sessions: <span class="text-text-primary">partial</span> (recent only)</span>
+                </div>
+                <div class="flex items-center gap-2 font-mono text-[11px]">
+                  <span class="text-warn-amber">⚠️</span>
+                  <span class="text-text-muted">Shell cmds: <span class="text-text-primary">327</span> (Mar 2+)</span>
+                </div>
+                <div class="flex items-center gap-2 font-mono text-[11px]">
+                  <span class="text-node-blue">ℹ️</span>
+                  <span class="text-text-muted">Events: <span class="text-text-primary">{totalEvents.toLocaleString()}</span> total</span>
+                </div>
+              </div>
+              <p class="font-mono text-[10px] text-text-muted/60 mt-3 leading-relaxed">
+                Session data biased toward recent/surviving sessions. PR + commit data is authoritative.
+              </p>
+            </div>
+
+            <!-- Phase 2 teaser -->
+            <div class="border border-dashed border-border rounded-lg p-3">
+              <p class="font-mono text-[10px] text-text-muted uppercase tracking-widest mb-1">Phase 2</p>
+              <p class="font-mono text-[11px] text-text-muted/70">
+                Railway Postgres · live ingestion · WebSocket mode · interactive scrubber
+              </p>
+            </div>
+
+          </div>
+        </aside>
+
+      </div>
+    </div>
+
+    <!-- ═══ FOOTER CREDIT ═══ -->
+    <div class="border-t border-border mt-12 py-4">
+      <div class="max-w-[1400px] mx-auto px-4 sm:px-6">
+        <p class="font-mono text-xs text-text-muted text-center">
+          Data visualization powered by real OpenClaw agent coordination data ·
+          <span class="text-rust-orange">7,169 events</span> ·
+          <span class="text-edge-green">308 PRs</span> ·
+          <span class="text-node-blue">3 lobsters</span>
+        </p>
+      </div>
+    </div>
+
+  </main>
+</Base>

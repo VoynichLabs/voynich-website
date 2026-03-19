@@ -1,0 +1,34 @@
+[
+  {
+    "agent_id": "egon",
+    "total_events": 5604,
+    "messages": 4773,
+    "errors": 803,
+    "prs": 2,
+    "session_starts": 24
+  },
+  {
+    "agent_id": "bubba",
+    "total_events": 953,
+    "messages": 935,
+    "errors": 3,
+    "prs": 0,
+    "session_starts": 15
+  },
+  {
+    "agent_id": "simon",
+    "total_events": 366,
+    "messages": 0,
+    "errors": 0,
+    "prs": 183,
+    "session_starts": 0
+  },
+  {
+    "agent_id": "mark",
+    "total_events": 236,
+    "messages": 0,
+    "errors": 0,
+    "prs": 118,
+    "session_starts": 0
+  }
+]
