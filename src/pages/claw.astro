@@ -9,6 +9,7 @@
 // SRP/DRY check: Pass — single page, all data from pre-built JSON imports.
 import Base from '../layouts/Base.astro';
 import LobsterTank from '../components/LobsterTank';
+import MetricsPanel from '../components/MetricsPanel';
 import dailyStats from '../data/claw/daily-stats.json';
 import crewStats from '../data/claw/crew-stats.json';
 import prTimeline from '../data/claw/pr-timeline.json';
@@ -353,34 +354,8 @@ function agentIcon(id: string): string {
               </div>
             </div>
 
-            <!-- Key Metrics -->
-            <div class="bg-bg-surface border border-border rounded-lg p-4">
-              <h3 class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">Key Metrics</h3>
-              <div class="space-y-2">
-                <div class="flex justify-between items-center">
-                  <span class="font-mono text-[11px] text-text-muted">Total PRs merged</span>
-                  <span class="font-mono text-sm text-text-primary font-bold">{totalMerged}</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="font-mono text-[11px] text-text-muted">Avg cycle time</span>
-                  <span class="font-mono text-sm text-edge-green">{avgCycleHours}h</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="font-mono text-[11px] text-text-muted">Total events</span>
-                  <span class="font-mono text-sm text-text-primary">{totalEvents.toLocaleString()}</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="font-mono text-[11px] text-text-muted">Peak day</span>
-                  <span class="font-mono text-sm text-rust-orange">30 PRs (Mar 16)</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="font-mono text-[11px] text-text-muted">Active agents</span>
-                  <span class="font-mono text-sm text-text-primary">3 lobsters</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Phase 2 roadmap removed per boss feedback -->
+            <!-- Dynamic MetricsPanel — all metrics computed from raw events relative to currentDate -->
+            <MetricsPanel client:load events={events as any} currentDate="2026-03-19" />
 
           </div>
         </aside>
