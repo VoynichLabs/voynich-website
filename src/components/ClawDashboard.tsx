@@ -9,6 +9,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import LobsterTank from './LobsterTank';
 import MetricsPanel from './MetricsPanel';
+import CrewRoster from './CrewRoster';
 
 interface ClawDashboardProps {
   events: any[];
@@ -79,8 +80,20 @@ export default function ClawDashboard({ events, crewStats, dailyStats }: ClawDas
         ))}
       </div>
 
-      {/* ── Tank + Metrics side by side ── */}
+      {/* ── Crew Roster + Tank + Metrics side by side ── */}
       <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
+
+        {/* CrewRoster — left, fixed width, responds to scrubber */}
+        <div style={{ width: '180px', flexShrink: 0 }}>
+          <h2 style={{
+            fontFamily: 'monospace', fontSize: '10px', textTransform: 'uppercase',
+            letterSpacing: '0.1em', color: 'var(--color-text-muted, #6b7280)',
+            marginBottom: '12px',
+          }}>
+            Crew Roster
+          </h2>
+          <CrewRoster events={events} currentDate={currentDate} />
+        </div>
 
         {/* Visualization area — center, flex-grows to fill available space */}
         <div style={{ flex: '1 1 0', minWidth: 0 }}>

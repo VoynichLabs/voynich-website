@@ -187,127 +187,13 @@ function agentIcon(id: string): string {
 
     <!-- ═══ THREE-COLUMN LAYOUT ═══ -->
     <div class="max-w-[1400px] mx-auto px-4 sm:px-6 py-6">
-      <div class="grid grid-cols-1 lg:grid-cols-[180px_1fr_240px] gap-4 overflow-hidden">
+      <!-- ClawDashboard owns the full width: left CrewRoster + center tank + right metrics -->
+      <!-- The static crew roster has been removed; ClawDashboard renders CrewRoster dynamically -->
+      <div class="overflow-hidden">
 
-        <!-- ══════════ LEFT: CREW ROSTER ══════════ -->
-        <aside class="order-2 lg:order-1">
-          <div class="lg:sticky lg:top-[130px] space-y-3">
-            
-            <h2 class="font-mono text-xs text-text-muted uppercase tracking-widest mb-4">
-              Crew Roster
-            </h2>
-
-            <!-- Agents section -->
-            <div class="space-y-2">
-              <p class="font-mono text-[10px] text-text-muted uppercase tracking-widest">Agents</p>
-              {crewDef.filter(c => c.type === 'agent').map(crew => {
-                const stats = crewMap[crew.id];
-                const spark = getSparkline(crew.id);
-                const maxSpark = Math.max(...spark, 1);
-                const errorRate = stats ? Math.round(stats.errors / Math.max(stats.total_events, 1) * 100) : 0;
-                return (
-                  <div class="bg-bg-surface border border-border rounded-lg p-3 hover:border-border-active transition-colors">
-                    <div class="flex items-center justify-between mb-2">
-                      <div class="flex items-center gap-1.5">
-                        <span class="text-base">{crew.emoji}</span>
-                        <div>
-                          <div class="font-mono text-xs text-text-primary font-medium">{crew.name}</div>
-                          <div class="font-mono text-[10px] text-text-muted">{crew.role}</div>
-                        </div>
-                      </div>
-                      <div class={`w-2 h-2 rounded-full ${stats ? 'bg-edge-green' : 'bg-text-muted'}`}></div>
-                    </div>
-                    <!-- Event count -->
-                    <div class="font-mono text-[11px] text-text-muted mb-2">
-                      {stats ? stats.total_events.toLocaleString() : 0} events
-                      {stats && stats.errors > 0 && (
-                        <span class="text-red-400 ml-1">· {errorRate}% err</span>
-                      )}
-                    </div>
-                    <!-- Sparkline -->
-                    <div class="flex items-end gap-[2px] h-6" title="Activity last 14 days">
-                      {spark.map((v, i) => (
-                        <div
-                          class="flex-1 bg-rust-orange/60 rounded-sm min-h-[2px] transition-all"
-                          style={`height: ${Math.max(2, Math.round((v / maxSpark) * 24))}px`}
-                        ></div>
-                      ))}
-                    </div>
-                    <!-- Health bar -->
-                    {stats && (
-                      <div class="mt-2 h-1 bg-border rounded-full overflow-hidden">
-                        <div 
-                          class="h-full bg-edge-green rounded-full"
-                          style={`width: ${100 - errorRate}%`}
-                        ></div>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-
-            <!-- Divider -->
-            <div class="border-t border-border my-3"></div>
-
-            <!-- Humans section -->
-            <div class="space-y-2">
-              <p class="font-mono text-[10px] text-text-muted uppercase tracking-widest">Humans</p>
-              {crewDef.filter(c => c.type === 'human').map(crew => {
-                const stats = crewMap[crew.id];
-                const spark = getSparkline(crew.id);
-                const maxSpark = Math.max(...spark, 1);
-                return (
-                  <div class="bg-bg-surface border border-border rounded-lg p-3 hover:border-border-active transition-colors">
-                    <div class="flex items-center justify-between mb-2">
-                      <div class="flex items-center gap-1.5">
-                        <span class="text-base">{crew.emoji}</span>
-                        <div>
-                          <div class="font-mono text-xs text-text-primary font-medium">{crew.name}</div>
-                          <div class="font-mono text-[10px] text-text-muted">{crew.role}</div>
-                        </div>
-                      </div>
-                      <div class="w-2 h-2 rounded-full bg-node-blue"></div>
-                    </div>
-                    <div class="font-mono text-[11px] text-text-muted mb-2">
-                      {stats ? stats.total_events.toLocaleString() : 0} events
-                      {stats && stats.prs > 0 && (
-                        <span class="text-edge-green ml-1">· {stats.prs} PRs</span>
-                      )}
-                    </div>
-                    <!-- Sparkline -->
-                    <div class="flex items-end gap-[2px] h-6" title="Activity last 14 days">
-                      {spark.map((v, i) => (
-                        <div
-                          class="flex-1 bg-node-blue/50 rounded-sm min-h-[2px] transition-all"
-                          style={`height: ${Math.max(2, Math.round((v / maxSpark) * 24))}px`}
-                        ></div>
-                      ))}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            <!-- Mini stats -->
-            <div class="border-t border-border pt-3 space-y-1.5">
-              <div class="flex justify-between font-mono text-[11px]">
-                <span class="text-text-muted">Total PRs</span>
-                <span class="text-text-primary">{totalMerged}</span>
-              </div>
-              <div class="flex justify-between font-mono text-[11px]">
-                <span class="text-text-muted">Avg cycle</span>
-                <span class="text-edge-green">{avgCycleHours}h</span>
-              </div>
-            </div>
-
-          </div>
-        </aside>
-
-        <!-- ══════════ CENTER + RIGHT: CLAW DASHBOARD (shared scrubber state) ══════════ -->
-        <!-- ClawDashboard owns the timeline scrubber and distributes currentDate to both
-             LobsterTank and MetricsPanel — single source of truth for timeline position -->
-        <section class="order-1 lg:order-2 lg:col-span-1 min-w-0" style="grid-column: 2 / span 2;">
+        <!-- ══════════ CLAW DASHBOARD (full width, owns crew roster + tank + metrics) ══════════ -->
+        <!-- CrewRoster inside ClawDashboard responds to scrubber — no static sidebar needed -->
+        <section class="order-1 min-w-0">
 
           <div class="flex items-center justify-between mb-4">
             <h2 class="font-mono text-xs text-text-muted uppercase tracking-widest">🦞 Lobster Tank</h2>
