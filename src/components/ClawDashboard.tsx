@@ -3,6 +3,7 @@
 // PURPOSE: Parent container for CLAW dashboard. Owns timeline scrubber state
 //          and distributes currentDate to both LobsterTank and MetricsPanel.
 //          Ensures tank animation and metrics panel stay in sync.
+//          View switcher allows toggling between visualization variants.
 // SRP/DRY check: Pass — single source of truth for timeline position
 
 import { useState, useEffect, useCallback } from 'react';
@@ -15,10 +16,22 @@ interface ClawDashboardProps {
   dailyStats: any[];
 }
 
+type ViewMode = 'threejs' | 'canvas2d' | 'ascii' | 'gameboy' | 'css-svg' | 'lottie';
+
+const VIEW_OPTIONS: Array<{id: ViewMode; label: string; ready: boolean}> = [
+  { id: 'threejs',  label: '🌊 3D Tank',  ready: true  },
+  { id: 'canvas2d', label: '📡 Radar',    ready: false },
+  { id: 'css-svg',  label: '🎨 SVG',      ready: false },
+  { id: 'ascii',    label: '💀 Terminal', ready: false },
+  { id: 'gameboy',  label: '🎮 Game Boy', ready: false },
+  { id: 'lottie',   label: '🎬 Lottie',   ready: false },
+];
+
 export default function ClawDashboard({ events, crewStats, dailyStats }: ClawDashboardProps) {
   const [currentDayIndex, setCurrentDayIndex] = useState(0);
   const [isPlaying, setIsPlaying]             = useState(true);
   const [playbackSpeed, setPlaybackSpeed]     = useState(2); // days per second
+  const [viewMode, setViewMode]               = useState<ViewMode>('threejs');
 
   // Auto-advance timeline — loops when it reaches the end
   useEffect(() => {
@@ -42,17 +55,68 @@ export default function ClawDashboard({ events, crewStats, dailyStats }: ClawDas
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
 
+      {/* ── View Switcher Tab Bar ── */}
+      <div className="flex gap-1 mb-2 overflow-x-auto">
+        {VIEW_OPTIONS.map(v => (
+          <button
+            key={v.id}
+            onClick={() => v.ready && setViewMode(v.id)}
+            className={`
+              px-3 py-1 rounded font-mono text-xs whitespace-nowrap transition-colors
+              ${viewMode === v.id
+                ? 'bg-rust-orange text-black font-bold'
+                : v.ready
+                  ? 'bg-bg-surface text-text-muted hover:text-text-primary border border-border'
+                  : 'bg-bg-surface/50 text-text-muted/40 border border-border/30 cursor-not-allowed'
+              }
+            `}
+            disabled={!v.ready}
+            title={v.ready ? v.label : `${v.label} — coming soon`}
+          >
+            {v.label}
+            {!v.ready && <span className="ml-1 text-[9px] opacity-50">soon</span>}
+          </button>
+        ))}
+      </div>
+
       {/* ── Tank + Metrics side by side ── */}
       <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
 
-        {/* LobsterTank — center, flex-grows to fill available space */}
+        {/* Visualization area — center, flex-grows to fill available space */}
         <div style={{ flex: '1 1 0', minWidth: 0 }}>
-          <LobsterTank
-            crewStats={crewStats}
-            dailyStats={dailyStats}
-            events={events}
-            currentDayIndex={currentDayIndex}
-          />
+          {viewMode === 'threejs' && (
+            <LobsterTank
+              crewStats={crewStats}
+              dailyStats={dailyStats}
+              events={events}
+              currentDayIndex={currentDayIndex}
+            />
+          )}
+          {viewMode === 'canvas2d' && (
+            <div className="flex items-center justify-center h-full text-text-muted font-mono text-sm">
+              📡 Canvas 2D — coming soon
+            </div>
+          )}
+          {viewMode === 'ascii' && (
+            <div className="flex items-center justify-center h-full text-text-muted font-mono text-sm">
+              💀 ASCII Terminal — coming soon
+            </div>
+          )}
+          {viewMode === 'gameboy' && (
+            <div className="flex items-center justify-center h-full text-text-muted font-mono text-sm">
+              🎮 Game Boy — coming soon
+            </div>
+          )}
+          {viewMode === 'css-svg' && (
+            <div className="flex items-center justify-center h-full text-text-muted font-mono text-sm">
+              🎨 SVG — coming soon
+            </div>
+          )}
+          {viewMode === 'lottie' && (
+            <div className="flex items-center justify-center h-full text-text-muted font-mono text-sm">
+              🎬 Lottie — coming soon
+            </div>
+          )}
         </div>
 
         {/* MetricsPanel — right, fixed width, receives same currentDate */}
