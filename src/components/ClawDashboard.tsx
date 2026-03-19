@@ -8,6 +8,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import LobsterTank from './LobsterTank';
+import LobsterTankTerminal from './LobsterTankTerminal';
 import MetricsPanel from './MetricsPanel';
 import CrewRoster from './CrewRoster';
 
@@ -23,7 +24,7 @@ const VIEW_OPTIONS: Array<{id: ViewMode; label: string; ready: boolean}> = [
   { id: 'threejs',  label: '🌊 3D Tank',  ready: true  },
   { id: 'canvas2d', label: '📡 Radar',    ready: false },
   { id: 'css-svg',  label: '🎨 SVG',      ready: false },
-  { id: 'ascii',    label: '💀 Terminal', ready: false },
+  { id: 'ascii',    label: '💀 Terminal', ready: true  },
   { id: 'gameboy',  label: '🎮 Game Boy', ready: false },
   { id: 'lottie',   label: '🎬 Lottie',   ready: false },
 ];
@@ -111,9 +112,12 @@ export default function ClawDashboard({ events, crewStats, dailyStats }: ClawDas
             </div>
           )}
           {viewMode === 'ascii' && (
-            <div className="flex items-center justify-center h-full text-text-muted font-mono text-sm">
-              💀 ASCII Terminal — coming soon
-            </div>
+            <LobsterTankTerminal
+              events={events}
+              crewStats={crewStats}
+              dailyStats={dailyStats}
+              currentDayIndex={currentDayIndex}
+            />
           )}
           {viewMode === 'gameboy' && (
             <div className="flex items-center justify-center h-full text-text-muted font-mono text-sm">
