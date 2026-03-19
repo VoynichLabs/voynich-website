@@ -294,10 +294,6 @@ function agentIcon(id: string): string {
                 <span class="text-text-primary">{totalMerged}</span>
               </div>
               <div class="flex justify-between font-mono text-[11px]">
-                <span class="text-text-muted">Human msgs/PR</span>
-                <span class="text-text-primary">{supervisionRatio}</span>
-              </div>
-              <div class="flex justify-between font-mono text-[11px]">
                 <span class="text-text-muted">Avg cycle</span>
                 <span class="text-edge-green">{avgCycleHours}h</span>
               </div>
@@ -318,9 +314,9 @@ function agentIcon(id: string): string {
             </div>
           </div>
 
-          <!-- Three.js LobsterTank React island -->
+          <!-- Three.js LobsterTank React island — data-driven with timeline playback -->
           <div class="min-h-[500px] bg-bg-primary rounded border border-border relative overflow-hidden">
-            <LobsterTank client:load crewStats={crewStats} dailyStats={dailyStats} />
+            <LobsterTank client:load crewStats={crewStats} dailyStats={dailyStats} events={events.slice(0, 300) as any} />
           </div>
 
           <div class="mt-3 text-center font-mono text-xs text-text-muted">
@@ -382,36 +378,6 @@ function agentIcon(id: string): string {
                   <span class="font-mono text-sm text-text-primary">3 lobsters</span>
                 </div>
               </div>
-            </div>
-
-            <!-- Data Source Inventory -->
-            <div class="bg-bg-surface border border-border rounded-lg p-4">
-              <h3 class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">Data Sources</h3>
-              <div class="space-y-1.5">
-                <div class="flex items-center gap-2 font-mono text-[11px]">
-                  <span class="text-edge-green">✅</span>
-                  <span class="text-text-muted">PRs: <span class="text-text-primary">308</span> (complete)</span>
-                </div>
-                <div class="flex items-center gap-2 font-mono text-[11px]">
-                  <span class="text-edge-green">✅</span>
-                  <span class="text-text-muted">Commits: <span class="text-text-primary">1,395</span> (complete)</span>
-                </div>
-                <div class="flex items-center gap-2 font-mono text-[11px]">
-                  <span class="text-warn-amber">⚠️</span>
-                  <span class="text-text-muted">Sessions: <span class="text-text-primary">partial</span> (recent only)</span>
-                </div>
-                <div class="flex items-center gap-2 font-mono text-[11px]">
-                  <span class="text-warn-amber">⚠️</span>
-                  <span class="text-text-muted">Shell cmds: <span class="text-text-primary">327</span> (Mar 2+)</span>
-                </div>
-                <div class="flex items-center gap-2 font-mono text-[11px]">
-                  <span class="text-node-blue">ℹ️</span>
-                  <span class="text-text-muted">Events: <span class="text-text-primary">{totalEvents.toLocaleString()}</span> total</span>
-                </div>
-              </div>
-              <p class="font-mono text-[10px] text-text-muted/60 mt-3 leading-relaxed">
-                Session data biased toward recent/surviving sessions. PR + commit data is authoritative.
-              </p>
             </div>
 
             <!-- Phase 2 teaser -->
