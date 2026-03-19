@@ -40,6 +40,8 @@ interface LobsterTankProps {
   crewStats: CrewStat[];
   dailyStats: DayStat[];
   events?: Array<{ timestamp: string; agent_id: string; event_type: string; [key: string]: any }>;
+  /** When provided by a parent (e.g. ClawDashboard), overrides internal scrubber state. */
+  currentDayIndex?: number;
 }
 
 // ── Constants ─────────────────────────────────────────────────────────────────
@@ -390,31 +392,37 @@ function TankScene({ crewStats, currentDay }: TankSceneProps) {
 
 // ── Root Component ─────────────────────────────────────────────────────────────
 
-export default function LobsterTank({ crewStats, dailyStats, events: _events }: LobsterTankProps) {
+export default function LobsterTank({ crewStats, dailyStats, events: _events, currentDayIndex: controlledDayIndex }: LobsterTankProps) {
   const [mounted, setMounted] = useState(false);
-  const [currentDayIndex, setCurrentDayIndex] = useState(0);
-  const [isPlaying, setIsPlaying]             = useState(true);
-  const [playbackSpeed, setPlaybackSpeed]     = useState(2); // days per second
+
+  // Internal scrubber state — only used when not controlled by a parent
+  const [internalDayIndex, setInternalDayIndex] = useState(0);
+  const [isPlaying, setIsPlaying]               = useState(true);
+  const [playbackSpeed, setPlaybackSpeed]       = useState(2);
 
   useEffect(() => { setMounted(true); }, []);
 
-  // Auto-advance timeline — loops when it reaches the end
+  // Determine whether we're in controlled or uncontrolled mode
+  const isControlled   = controlledDayIndex !== undefined;
+  const currentDayIndex = isControlled ? controlledDayIndex : internalDayIndex;
+
+  // Auto-advance only when uncontrolled
   useEffect(() => {
-    if (!isPlaying || dailyStats.length === 0) return;
+    if (isControlled || !isPlaying || dailyStats.length === 0) return;
     const msPerDay = 1000 / playbackSpeed;
     const id = setInterval(() => {
-      setCurrentDayIndex(prev => (prev + 1) % dailyStats.length);
+      setInternalDayIndex(prev => (prev + 1) % dailyStats.length);
     }, msPerDay);
     return () => clearInterval(id);
-  }, [isPlaying, playbackSpeed, dailyStats.length]);
+  }, [isControlled, isPlaying, playbackSpeed, dailyStats.length]);
 
-  const currentDay  = dailyStats[currentDayIndex] ?? {
+  const currentDay = dailyStats[currentDayIndex] ?? {
     date: '', events: 0, prs_opened: 0, prs_merged: 0, errors: 0, messages: 0,
   };
   const currentDate = currentDay.date;
 
   const handleSliderChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setCurrentDayIndex(parseInt(e.target.value, 10));
+    setInternalDayIndex(parseInt(e.target.value, 10));
   }, []);
 
   if (!mounted) {
@@ -447,80 +455,104 @@ export default function LobsterTank({ crewStats, dailyStats, events: _events }: 
         <TankScene crewStats={crewStats} currentDay={currentDay} />
       </Canvas>
 
-      {/* Particle legend (top-left, above scrubber) */}
-      <div style={{
-        position: 'absolute', bottom: '58px', left: '10px',
-        display: 'flex', gap: '10px', fontFamily: 'monospace', fontSize: '9px',
-        zIndex: 2, pointerEvents: 'none',
-      }}>
-        {[
-          { color: '#4ade80', label: `PRs +${currentDay.prs_merged}` },
-          { color: '#ef4444', label: `Err +${currentDay.errors}` },
-          { color: '#3b82f6', label: `Msg +${currentDay.messages}` },
-        ].map(({ color, label }) => (
-          <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#9ca3af' }}>
-            <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: color }} />
-            {label}
-          </div>
-        ))}
-      </div>
-
-      {/* ── Timeline Scrubber ── */}
-      <div style={{
-        position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 3,
-        background: 'rgba(0,0,0,0.85)', padding: '8px 12px',
-        display: 'flex', alignItems: 'center', gap: '10px',
-        borderTop: '1px solid #1e3a5f',
-      }}>
-        {/* Play/pause */}
-        <button
-          onClick={() => setIsPlaying(p => !p)}
-          style={{
-            color: '#e5e7eb', fontFamily: 'monospace', fontSize: '14px',
-            background: 'none', border: 'none', cursor: 'pointer', padding: '0 4px',
-            lineHeight: 1,
-          }}
-          title={isPlaying ? 'Pause' : 'Play'}
-        >
-          {isPlaying ? '⏸' : '▶'}
-        </button>
-
-        {/* Scrubber */}
-        <input
-          type="range"
-          min={0}
-          max={Math.max(0, dailyStats.length - 1)}
-          value={currentDayIndex}
-          onChange={handleSliderChange}
-          style={{ flex: 1, accentColor: '#f97316', cursor: 'pointer' }}
-        />
-
-        {/* Date display */}
-        <span style={{
-          fontFamily: 'monospace', fontSize: '12px', color: '#f59e0b',
-          minWidth: '90px', textAlign: 'right', whiteSpace: 'nowrap',
+      {/* Particle legend (bottom-left, only shown in uncontrolled/standalone mode) */}
+      {!isControlled && (
+        <div style={{
+          position: 'absolute', bottom: '58px', left: '10px',
+          display: 'flex', gap: '10px', fontFamily: 'monospace', fontSize: '9px',
+          zIndex: 2, pointerEvents: 'none',
         }}>
-          {currentDate || '—'}
-        </span>
-
-        {/* Speed controls */}
-        <div style={{ display: 'flex', gap: '4px' }}>
-          {([1, 2, 5] as const).map(s => (
-            <button
-              key={s}
-              onClick={() => setPlaybackSpeed(s)}
-              style={{
-                fontFamily: 'monospace', fontSize: '10px',
-                padding: '2px 4px', background: 'none', border: 'none',
-                cursor: 'pointer',
-                color: playbackSpeed === s ? '#ffffff' : '#6b7280',
-              }}
-            >
-              {s}×
-            </button>
+          {[
+            { color: '#4ade80', label: `PRs +${currentDay.prs_merged}` },
+            { color: '#ef4444', label: `Err +${currentDay.errors}` },
+            { color: '#3b82f6', label: `Msg +${currentDay.messages}` },
+          ].map(({ color, label }) => (
+            <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#9ca3af' }}>
+              <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: color }} />
+              {label}
+            </div>
           ))}
         </div>
-      </div>
+      )}
+
+      {/* Particle legend for controlled mode — no bottom scrubber, so position at bottom-left */}
+      {isControlled && (
+        <div style={{
+          position: 'absolute', bottom: '10px', left: '10px',
+          display: 'flex', gap: '10px', fontFamily: 'monospace', fontSize: '9px',
+          zIndex: 2, pointerEvents: 'none',
+        }}>
+          {[
+            { color: '#4ade80', label: `PRs +${currentDay.prs_merged}` },
+            { color: '#ef4444', label: `Err +${currentDay.errors}` },
+            { color: '#3b82f6', label: `Msg +${currentDay.messages}` },
+          ].map(({ color, label }) => (
+            <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#9ca3af' }}>
+              <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: color }} />
+              {label}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* ── Timeline Scrubber — only rendered in standalone (uncontrolled) mode ── */}
+      {!isControlled && (
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 3,
+          background: 'rgba(0,0,0,0.85)', padding: '8px 12px',
+          display: 'flex', alignItems: 'center', gap: '10px',
+          borderTop: '1px solid #1e3a5f',
+        }}>
+          {/* Play/pause */}
+          <button
+            onClick={() => setIsPlaying(p => !p)}
+            style={{
+              color: '#e5e7eb', fontFamily: 'monospace', fontSize: '14px',
+              background: 'none', border: 'none', cursor: 'pointer', padding: '0 4px',
+              lineHeight: 1,
+            }}
+            title={isPlaying ? 'Pause' : 'Play'}
+          >
+            {isPlaying ? '⏸' : '▶'}
+          </button>
+
+          {/* Scrubber */}
+          <input
+            type="range"
+            min={0}
+            max={Math.max(0, dailyStats.length - 1)}
+            value={currentDayIndex}
+            onChange={handleSliderChange}
+            style={{ flex: 1, accentColor: '#f97316', cursor: 'pointer' }}
+          />
+
+          {/* Date display */}
+          <span style={{
+            fontFamily: 'monospace', fontSize: '12px', color: '#f59e0b',
+            minWidth: '90px', textAlign: 'right', whiteSpace: 'nowrap',
+          }}>
+            {currentDate || '—'}
+          </span>
+
+          {/* Speed controls */}
+          <div style={{ display: 'flex', gap: '4px' }}>
+            {([1, 2, 5] as const).map(s => (
+              <button
+                key={s}
+                onClick={() => setPlaybackSpeed(s)}
+                style={{
+                  fontFamily: 'monospace', fontSize: '10px',
+                  padding: '2px 4px', background: 'none', border: 'none',
+                  cursor: 'pointer',
+                  color: playbackSpeed === s ? '#ffffff' : '#6b7280',
+                }}
+              >
+                {s}×
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

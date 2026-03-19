@@ -10,6 +10,7 @@
 import Base from '../layouts/Base.astro';
 import LobsterTank from '../components/LobsterTank';
 import MetricsPanel from '../components/MetricsPanel';
+import ClawDashboard from '../components/ClawDashboard';
 import dailyStats from '../data/claw/daily-stats.json';
 import crewStats from '../data/claw/crew-stats.json';
 import prTimeline from '../data/claw/pr-timeline.json';
@@ -303,9 +304,11 @@ function agentIcon(id: string): string {
           </div>
         </aside>
 
-        <!-- ══════════ CENTER: LOBSTER TANK ══════════ -->
-        <section class="order-1 lg:order-2 min-w-0">
-          
+        <!-- ══════════ CENTER + RIGHT: CLAW DASHBOARD (shared scrubber state) ══════════ -->
+        <!-- ClawDashboard owns the timeline scrubber and distributes currentDate to both
+             LobsterTank and MetricsPanel — single source of truth for timeline position -->
+        <section class="order-1 lg:order-2 lg:col-span-1 min-w-0" style="grid-column: 2 / span 2;">
+
           <div class="flex items-center justify-between mb-4">
             <h2 class="font-mono text-xs text-text-muted uppercase tracking-widest">🦞 Lobster Tank</h2>
             <div class="flex gap-3 font-mono text-[10px] text-text-muted">
@@ -315,50 +318,20 @@ function agentIcon(id: string): string {
             </div>
           </div>
 
-          <!-- Three.js LobsterTank React island — data-driven with timeline playback -->
-          <div class="min-h-[500px] bg-bg-primary rounded border border-border relative overflow-hidden">
-            <LobsterTank client:load crewStats={crewStats} dailyStats={dailyStats} events={events.slice(0, 300) as any} />
+          <!-- ClawDashboard React island — wraps LobsterTank + MetricsPanel with shared scrubber -->
+          <div class="bg-bg-primary rounded border border-border relative overflow-hidden">
+            <ClawDashboard
+              client:load
+              events={events as any}
+              crewStats={crewStats as any}
+              dailyStats={dailyStats as any}
+            />
           </div>
 
           <div class="mt-3 text-center font-mono text-xs text-text-muted">
-            {totalEvents.toLocaleString()} events · 5 entities · particles = recent activity
+            {totalEvents.toLocaleString()} events · 5 entities · particles = recent activity · scrubber syncs tank + metrics
           </div>
         </section>
-
-        <!-- ══════════ RIGHT: WORK PANEL ══════════ -->
-        <aside class="order-3">
-          <div class="lg:sticky lg:top-[130px] space-y-4">
-
-            <!-- PR Velocity Chart -->
-            <div class="bg-bg-surface border border-border rounded-lg p-4">
-              <h3 class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">PR Velocity</h3>
-              <p class="font-mono text-[10px] text-text-muted mb-3">PRs merged/day — last 30 days</p>
-              <!-- Bar chart -->
-              <div class="flex items-end gap-[2px] h-16">
-                {last30Days.map(d => {
-                  const h = Math.max(2, Math.round((d.prs_merged / maxPRs) * 64));
-                  const isBig = d.prs_merged >= 20;
-                  return (
-                    <div
-                      class={`flex-1 rounded-sm transition-all ${isBig ? 'bg-rust-orange' : 'bg-edge-green/70'}`}
-                      style={`height: ${h}px`}
-                      title={`${d.date}: ${d.prs_merged} PRs`}
-                    ></div>
-                  );
-                })}
-              </div>
-              <div class="flex justify-between font-mono text-[9px] text-text-muted mt-1">
-                <span>{last30Days[0]?.date.slice(5)}</span>
-                <span class="text-rust-orange">max: {maxPRs}/day</span>
-                <span>{last30Days[last30Days.length - 1]?.date.slice(5)}</span>
-              </div>
-            </div>
-
-            <!-- Dynamic MetricsPanel — all metrics computed from raw events relative to currentDate -->
-            <MetricsPanel client:load events={events as any} currentDate="2026-03-19" />
-
-          </div>
-        </aside>
 
       </div>
     </div>
