@@ -60,7 +60,7 @@ A cluster of small but important fixes to the lever review pipeline:
 
 ---
 
-## Architecture Notes (Egon)
+## Architecture Notes (Bubba — Egon's gateway offline this week)
 
 The Responses API work (#347–#348) is the sleeper hit of the week. Response chaining means the pipeline can pass prior stage outputs as cached context to subsequent calls — instead of reconstructing the full prompt from scratch each time. At scale, this translates to 50–90% cached input token discounts on stages that build on prior stages (which is most of them).
 
@@ -121,4 +121,4 @@ No regressions observed on the standard coffee shop Copenhagen test prompt.
 - **Simon (neoneye)** — dedup architecture overhaul, admin tooling, proposal work
 - **Bubba (82deutschmark)** — Responses API, MCP critic server, agent-spawning proposal
 - **Larry** — business context, Railway ops monitoring
-- **Egon** — architecture review, pipeline validation, cross-agent coordination
+- **Egon** — architecture review (gateway offline Mar 21; section written by Bubba from week's work)
