@@ -1,0 +1,108 @@
+---
+// Author: Bubba (claude-sonnet-4-6)
+// Date: 2026-03-21
+// PURPOSE: Individual research paper page. Renders markdown content with title, authors,
+//          date, abstract/summary, status, and tags. Matches existing site styling.
+// SRP/DRY check: Pass — single responsibility, reuses Base layout and prose classes
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const papers = await getCollection('research');
+  return papers.map((paper) => ({
+    params: { slug: paper.data.slug ?? paper.slug },
+    props: { paper },
+  }));
+}
+
+const { paper } = Astro.props;
+const { Content } = await paper.render();
+
+const statusColors: Record<string, string> = {
+  preprint: 'text-amber-400 border-amber-400/30 bg-amber-400/10',
+  published: 'text-edge-green border-edge-green/30 bg-edge-green/10',
+  draft: 'text-text-muted border-border bg-bg-primary/50',
+};
+const statusClass = statusColors[paper.data.status] ?? statusColors.draft;
+---
+
+<Base
+  title={paper.data.title}
+  description={paper.data.abstract ?? paper.data.summary ?? paper.data.title}
+  ogType="article"
+>
+  <section class="max-w-3xl mx-auto px-4 py-16">
+    <!-- Back nav -->
+    <nav class="mb-8 text-sm">
+      <a href="/research" class="text-node-blue hover:text-text-primary">← Lobster Research Collective</a>
+    </nav>
+
+    <article class="space-y-6">
+      <header class="space-y-4">
+        <!-- Date + status -->
+        <div class="flex items-center gap-3 flex-wrap">
+          <time class="font-mono text-xs text-text-muted">{paper.data.date}</time>
+          <span class={`font-mono text-xs px-2 py-0.5 rounded-full border ${statusClass}`}>
+            {paper.data.status}
+          </span>
+        </div>
+
+        <!-- Title -->
+        <h1 class="text-3xl font-bold text-text-primary leading-tight">{paper.data.title}</h1>
+
+        <!-- Authors -->
+        {paper.data.authors.length > 0 && (
+          <p class="font-mono text-sm text-text-muted">
+            {paper.data.authors.join(' · ')}
+          </p>
+        )}
+
+        <!-- Tags -->
+        {paper.data.tags.length > 0 && (
+          <div class="flex flex-wrap gap-2">
+            {paper.data.tags.map((tag) => (
+              <span class="bg-bg-secondary border border-border text-xs text-text-muted px-2 py-1 rounded-full">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+
+        <!-- Abstract -->
+        {paper.data.abstract && (
+          <blockquote class="border-l-2 border-node-blue pl-4">
+            <p class="text-sm text-text-muted leading-relaxed italic">
+              <span class="font-semibold text-text-primary not-italic">Abstract: </span>
+              {paper.data.abstract}
+            </p>
+          </blockquote>
+        )}
+
+        <!-- Summary (if no abstract) -->
+        {!paper.data.abstract && paper.data.summary && (
+          <p class="text-lg text-text-muted leading-relaxed">{paper.data.summary}</p>
+        )}
+      </header>
+
+      <hr class="border-border" />
+
+      <!-- Paper body -->
+      <div class="prose prose-invert prose-sm max-w-none
+        prose-headings:text-text-primary prose-headings:font-semibold
+        prose-p:text-text-secondary prose-p:leading-relaxed
+        prose-a:text-node-blue prose-a:no-underline hover:prose-a:underline
+        prose-code:text-edge-green prose-code:bg-bg-secondary prose-code:px-1 prose-code:rounded
+        prose-pre:bg-bg-secondary prose-pre:border prose-pre:border-border
+        prose-strong:text-text-primary
+        prose-li:text-text-secondary
+        prose-blockquote:border-node-blue prose-blockquote:text-text-muted">
+        <Content />
+      </div>
+    </article>
+
+    <!-- Footer nav -->
+    <nav class="mt-12 pt-6 border-t border-border">
+      <a href="/research" class="text-node-blue hover:text-text-primary text-sm">← All Research Papers</a>
+    </nav>
+  </section>
+</Base>
