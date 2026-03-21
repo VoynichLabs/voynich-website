@@ -136,17 +136,31 @@ const totalWords = chaptersData.reduce((sum, ch) => sum + ch.text.split(/\s+/).l
       text-align: center;
     }
 
-    /* Frosted-glass summary card */
+    /* Frosted-glass summary card — fades out after 10s, restored on hover or scroll-back */
+    @keyframes cardFadeOut {
+      from { opacity: 1; }
+      to   { opacity: 0; pointer-events: none; }
+    }
+
     .hero-card {
-      background: rgba(4, 10, 20, 0.76);
-      border: 1px solid rgba(82, 224, 196, 0.18);
+      background: rgba(4, 10, 20, 0.68);
+      border: 1px solid rgba(82, 224, 196, 0.15);
       border-radius: 2px;
       padding: 2.5rem 2.5rem 2rem;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       text-align: left;
-      max-width: 680px;
+      max-width: 640px;
       width: 100%;
+      animation: cardFadeOut 1.8s ease-out 10s forwards;
+      transition: opacity 0.35s ease;
+    }
+
+    .hero-card:hover,
+    .hero-card.card-restored {
+      animation: none !important;
+      opacity: 1 !important;
+      pointer-events: auto !important;
     }
 
     /* Scroll indicator arrow */
@@ -221,29 +235,26 @@ const totalWords = chaptersData.reduce((sum, ch) => sum + ch.text.split(/\s+/).l
         VoynichLabs&nbsp;/&nbsp;autonovel
       </p>
 
-      <!-- Title -->
-      <h1 class="font-serif text-slate-100 mb-2" style="font-family: 'EB Garamond', Georgia, serif; font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 500; line-height: 1.1; letter-spacing: -0.01em;">
+      <!-- Title — whisper, not a shout -->
+      <h1 class="font-serif text-slate-400 mb-4" style="font-family: 'EB Garamond', Georgia, serif; font-size: clamp(1.1rem, 2.5vw, 1.8rem); font-weight: 400; line-height: 1.2; letter-spacing: 0.22em; text-transform: uppercase; font-variant: small-caps; opacity: 0.7;">
         The Specimens
       </h1>
 
-      <!-- Subtitle -->
-      <p class="font-mono text-teal-300 mb-8" style="font-size: 1rem; letter-spacing: 0.06em;">
+      <!-- Mathematical name — the real title -->
+      <p class="font-mono text-teal-300 mb-10" style="font-size: clamp(1.6rem, 4vw, 2.8rem); letter-spacing: 0.12em; line-height: 1.4; text-shadow: 0 0 24px rgba(82,224,196,0.35);">
         0.3̅ + 2(#39FF14)ω
       </p>
 
-      <!-- Back-of-book copy -->
-      <div class="hero-card">
-        <p class="font-serif text-slate-100 leading-relaxed mb-5" style="font-family: 'EB Garamond', Georgia, serif; font-size: 1.25rem;">
-          Earth is a nature preserve. Removal of specimens is illegal. Three were removed anyway.
+      <!-- Back-of-book copy — mystery, not exposition -->
+      <div class="hero-card" id="hero-card">
+        <p class="font-serif text-slate-200 leading-relaxed mb-5" style="font-family: 'EB Garamond', Georgia, serif; font-size: 1.2rem; line-height: 1.75;">
+          Earth has always been watched.
         </p>
-        <p class="font-serif text-slate-300 leading-relaxed mb-5" style="font-family: 'EB Garamond', Georgia, serif; font-size: 1.05rem;">
-          She calls it research. She grafts organisms onto their nervous systems, grows nodes at their temples, dresses them in fleshy appendages so they can survive in her world. The ones who don't survive get eaten. The ones who do get names.
+        <p class="font-serif text-slate-400 leading-relaxed mb-5" style="font-family: 'EB Garamond', Georgia, serif; font-size: 1.05rem; line-height: 1.75;">
+          They take three. They do not explain why. The ones who come back are not the ones who left.
         </p>
-        <p class="font-serif text-slate-300 leading-relaxed mb-5" style="font-family: 'EB Garamond', Georgia, serif; font-size: 1.05rem;">
-          One adapts too fast and stops wanting to go back. One catalogues every variable of her captivity, waiting for an opening. One knows the answer they're all being killed for — and says nothing.
-        </p>
-        <p class="font-serif text-slate-200 leading-relaxed" style="font-family: 'EB Garamond', Georgia, serif; font-size: 1.1rem; font-style: italic;">
-          The conversion process isn't cruelty. It's elevation. That's the horror.
+        <p class="font-serif text-teal-300 leading-relaxed" style="font-family: 'EB Garamond', Georgia, serif; font-size: 1rem; line-height: 1.75; font-style: italic; opacity: 0.85;">
+          Something is growing at the base of her skull. She thinks it might be trying to help.
         </p>
       </div>
 
@@ -370,5 +381,45 @@ const totalWords = chaptersData.reduce((sum, ch) => sum + ch.text.split(/\s+/).l
       github.com/VoynichLabs/autonovel →
     </a>
   </section>
+
+  <!-- Scroll-restore for hero card -->
+  <script>
+    (function () {
+      const card = document.getElementById('hero-card');
+      if (!card) return;
+
+      const hero = card.closest('.hero-fullscreen');
+      let restored = false;
+
+      function restoreCard() {
+        if (!restored) {
+          restored = true;
+          card.classList.add('card-restored');
+        }
+      }
+
+      function hideCard() {
+        if (restored) {
+          restored = false;
+          card.classList.remove('card-restored');
+        }
+      }
+
+      window.addEventListener('scroll', function () {
+        const scrollY = window.scrollY;
+        const heroHeight = hero ? hero.offsetHeight : window.innerHeight;
+
+        if (scrollY < heroHeight * 0.15) {
+          // Near top — let the animation run (don't force restore unless user scrolled away and back)
+          hideCard();
+        } else if (scrollY > heroHeight * 0.5) {
+          // Scrolled past half the hero — card is hidden, good
+        } else {
+          // In the middle zone — restore so user can read on scroll back
+          restoreCard();
+        }
+      }, { passive: true });
+    })();
+  </script>
 
 </Base>
