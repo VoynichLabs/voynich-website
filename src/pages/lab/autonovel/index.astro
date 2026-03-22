@@ -1,0 +1,54 @@
+---
+// Author: Bubba
+// Date: 2026-03-21
+// PURPOSE: Reader view for autonovel draft — squid sci-fi, 21 chapters
+import Layout from '../../../layouts/Base.astro';
+import chaptersRaw from '../../../data/autonovel-chapters.json';
+
+const chapters = chaptersRaw;
+const title = "Untitled Squid Novel — Draft v2";
+const scores = {
+  novel_score: 8.0,
+  arc_completion: 6,
+  pacing_curve: 7,
+  theme_coherence: 9,
+  foreshadowing_resolution: 7,
+  world_consistency: 7,
+  voice_consistency: 9,
+  overall_engagement: 8
+};
+---
+
+<Layout title={title}>
+  <div class="max-w-3xl mx-auto px-6 py-12">
+    <div class="mb-10">
+      <h1 class="text-3xl font-bold text-white mb-2">{title}</h1>
+      <p class="text-zinc-400 text-sm mb-6">21 chapters · Pipeline v2 · March 21, 2026</p>
+
+      <div class="bg-zinc-900 border border-zinc-700 rounded-lg p-5 mb-8">
+        <div class="text-zinc-300 text-sm font-mono mb-3">EVAL SCORES (full novel)</div>
+        <div class="grid grid-cols-2 gap-2 text-sm">
+          <div class="text-white font-bold">Overall: {scores.novel_score}/10</div>
+          <div class="text-zinc-400"></div>
+          {Object.entries(scores).filter(([k]) => k !== 'novel_score').map(([k, v]) => (
+            <div class="text-zinc-300">{k.replace(/_/g, ' ')}</div>
+            <div class={`font-mono ${Number(v) >= 8 ? 'text-green-400' : Number(v) >= 7 ? 'text-yellow-400' : 'text-red-400'}`}>{v}/10</div>
+          ))}
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-2 mb-10">
+        {chapters.map(ch => (
+          <a href={`#ch${ch.num}`} class="text-xs text-zinc-400 hover:text-white border border-zinc-700 rounded px-2 py-1">Ch {ch.num}</a>
+        ))}
+      </div>
+    </div>
+
+    {chapters.map(ch => (
+      <div id={`ch${ch.num}`} class="mb-16 scroll-mt-8">
+        <div class="prose prose-invert prose-zinc max-w-none" set:html={ch.text.replace(/\n/g, '<br>').replace(/^# (.+)/gm, '<h2 class="text-2xl font-bold text-white mt-0 mb-6">$1</h2>').replace(/^## (.+)/gm, '<h3 class="text-xl font-semibold text-zinc-200 mt-8 mb-4">$1</h3>').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>')} />
+        <div class="mt-8 border-t border-zinc-800"></div>
+      </div>
+    ))}
+  </div>
+</Layout>

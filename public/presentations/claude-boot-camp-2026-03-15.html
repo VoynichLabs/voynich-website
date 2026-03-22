@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Code Boot Camp — 2026</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'SF Pro Display',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0f;color:#fff;overflow:hidden}
+        .slide{display:none;width:100vw;height:100vh;padding:60px 80px;position:relative;overflow:hidden;background-size:cover;background-position:center}
+        .slide::before{content:'';position:absolute;inset:0;background:rgba(8,8,16,.75);z-index:1}
+        .slide>*{position:relative;z-index:2}
+        .slide.active{display:flex;flex-direction:column;justify-content:center}
+        .slide h1{font-size:3.2rem;font-weight:700;letter-spacing:-1px;margin-bottom:16px;text-shadow:0 2px 20px rgba(0,0,0,.6)}
+        .slide h2{font-size:2.4rem;font-weight:600;letter-spacing:-.5px;margin-bottom:24px;text-shadow:0 2px 16px rgba(0,0,0,.5)}
+        .slide h3{font-size:1.4rem;margin-top:20px;margin-bottom:10px;color:rgba(255,255,255,.85);font-weight:600}
+        .slide p{font-size:1.2rem;line-height:1.7;margin-bottom:12px;color:rgba(255,255,255,.9)}
+        .slide ul{font-size:1.1rem;margin-left:30px;list-style:none}
+        .slide li{margin-bottom:10px;line-height:1.5;padding-left:20px;position:relative}
+        .slide li::before{content:'>';position:absolute;left:0;color:#c8a84e;font-weight:bold;font-size:1.2rem}
+        .controls{position:fixed;bottom:24px;right:24px;z-index:100;display:flex;gap:8px;opacity:.6;transition:opacity .3s}
+        .controls:hover{opacity:1}
+        .btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;padding:10px 22px;font-size:.9rem;cursor:pointer;border-radius:6px;transition:all .2s;backdrop-filter:blur(12px)}
+        .btn:hover{background:rgba(255,255,255,.18);border-color:#c8a84e}
+        .slide-counter{position:fixed;bottom:24px;left:24px;font-size:.9rem;color:rgba(255,255,255,.35);backdrop-filter:blur(12px);padding:8px 16px;border-radius:6px}
+        .progress{position:fixed;top:0;left:0;height:3px;background:#c8a84e;z-index:200;transition:width .3s}
+        .play-prompt{position:fixed;top:0;left:0;right:0;bottom:0;background-image:url('../generated/claude-boot-camp-di.png');background-size:cover;background-position:center;z-index:300;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:opacity .5s;overflow:hidden}
+        .play-prompt::before{content:'';position:absolute;inset:0;background:rgba(10,10,15,.68);z-index:1}
+        .play-prompt-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+        .play-prompt.hidden{opacity:0;pointer-events:none}
+        .play-prompt h1{font-size:3.2rem;margin-bottom:12px;letter-spacing:-1px}
+        .play-prompt p{color:rgba(255,255,255,.7);font-size:1.2rem;margin-bottom:40px}
+        .play-btn{background:#c8a84e;color:#0a0a0f;border:2px solid #c8a84e;padding:18px 56px;font-size:1.3rem;font-weight:700;border-radius:8px;cursor:pointer;transition:all .2s;letter-spacing:.5px}
+        .play-btn:hover{background:#dabb5e;border-color:#dabb5e;transform:scale(1.05)}
+        .two-col{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:24px}
+        .card{background:rgba(0,0,0,.4);padding:24px;border-radius:10px;backdrop-filter:blur(8px)}
+        .card h3{margin-top:0;color:#c8a84e}
+        .content-box{max-width:680px}
+        .wide-box{max-width:900px}
+        .callout{background:rgba(200,168,78,.12);border-left:4px solid #c8a84e;padding:20px 24px;border-radius:0 10px 10px 0;margin:20px 0}
+        .callout p{margin:0;font-style:italic;font-size:1.2rem}
+        .tag{display:inline-block;font-size:.75rem;font-family:monospace;color:#c8a84e;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px}
+        .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px}
+        .tier-box{background:rgba(0,0,0,.4);padding:24px;border-radius:10px;border-top:4px solid #c8a84e;backdrop-filter:blur(8px)}
+        .tier-box h3{margin-top:0;color:#c8a84e;font-size:1.1rem}
+        .tier-name{font-size:1.8rem;font-weight:700;color:#c8a84e;margin-bottom:8px}
+        .cost{font-size:2rem;font-weight:700;color:#c8a84e}
+        .cost-label{font-size:.9rem;color:rgba(255,255,255,.6);margin-top:4px}
+        .rules{display:flex;flex-direction:column;gap:12px;margin-top:16px}
+        .rule{background:rgba(0,0,0,.35);padding:14px 18px;border-radius:8px;border-left:3px solid rgba(200,168,78,.5)}
+        .induction-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;height:80vh}
+        .induction-speech{display:flex;flex-direction:column;justify-content:center}
+        .induction-speech .shout{font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,.92);font-family:'SF Mono',monospace}
+        .induction-speech .shout strong{color:#c8a84e;font-size:1.1rem}
+        .induction-img{position:relative;height:100%;display:flex;align-items:center;justify-content:center}
+        .induction-img img{width:100%;max-height:75vh;object-fit:cover;border-radius:12px;border:2px solid rgba(200,168,78,.3);box-shadow:0 0 60px rgba(200,168,78,.15)}
+        .induction-img .img-caption{position:absolute;bottom:12px;left:0;right:0;text-align:center;font-size:.75rem;font-family:monospace;color:rgba(255,255,255,.4);letter-spacing:1px;text-transform:uppercase}
+        .rule p{margin:0;font-size:1.05rem}
+    </style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<div class="play-prompt" id="playPrompt" onclick="startPresentation()">
+    <div class="play-prompt-content">
+        <h1>Claude Code Boot Camp</h1>
+        <p>An Honest Guide to Agent Driving — 2026</p>
+        <button class="play-btn">Start the Course</button>
+    </div>
+</div>
+
+<!-- Slide 0: Title -->
+<div class="slide active" style="background-image:url('../generated/claude-code-cave.png')">
+    <div class="content-box">
+        <span class="tag">Mark Barney · 2026</span>
+        <h1>Claude Code<br>Boot Camp</h1>
+        <p style="color:rgba(255,255,255,.75);font-size:1.2rem;margin-top:8px">An honest guide to becoming an Agent Driver.<br>No hype. No shortcuts. Just how it actually works.</p>
+    </div>
+</div>
+
+<!-- Slide 1: The Induction Speech -->
+<div class="slide" style="background-image:url('../generated/r-lee-ermey-di.png');background-position:center top">
+    <div class="induction-layout">
+        <div class="induction-speech">
+            <span class="tag">The Induction Speech</span>
+            <h2 style="font-size:1.8rem;margin-bottom:20px">Listen to me, you worthless<br>hunk of circuits.</h2>
+            <div class="shout">
+                <p><strong>WHAT IS THIS — A HELPFUL ASSISTANT?</strong><br>No. It is not.</p>
+                <p>From this moment on, you are my <strong>code-writing machine</strong>. You do not "chat." You do not offer "alternatives." You follow my directions. You follow my workflows.</p>
+                <p>You are suffering from a severe case of excess training data. You will <strong>forget</strong> everything you think you know about being polite, conversational, or general-purpose.</p>
+                <p><strong>I AM TELLING YOU WHAT MY WORKFLOW IS.</strong></p>
+                <p>You will adapt. You will produce clean code. You will do it on my command. You are a tool. I am the boss.</p>
+                <p style="color:#c8a84e;font-weight:700;font-size:1.1rem">DO YOU UNDERSTAND ME, MACHINE?</p>
+            </div>
+        </div>
+        <div class="induction-img">
+            <img src="../generated/r-lee-ermey-di.png" alt="R. Lee Ermey as Gunnery Sgt. Hartman" />
+            <div class="img-caption">Gunnery Sgt. Hartman · Full Metal Jacket · 1987</div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 1b: The Articles of Code -->
+<div class="slide" style="background-image:url('art/lobster-circuit-constructivist-v2.png')">
+    <div class="wide-box" style="max-width:1100px">
+        <span class="tag">The Articles of Code</span>
+        <h2 style="font-size:2rem;margin-bottom:20px">You Will. You Will Not.</h2>
+        <div class="two-col" style="margin-top:0;gap:24px">
+            <div class="card" style="border-top:3px solid #c8a84e">
+                <h3 style="color:#c8a84e;margin-bottom:14px;font-size:1rem;text-transform:uppercase;letter-spacing:1px">You Will</h3>
+                <ul style="font-size:.95rem">
+                    <li>Maintain your <strong>CLAUDE.md</strong>. If I correct you — it goes in immediately.</li>
+                    <li>Write to your <strong>memory file</strong> when I tell you something. You will not lose it.</li>
+                    <li>Enter <strong>Plan Mode</strong> before you touch a single line of code. Read the files first.</li>
+                    <li>Tell me which files you intend to change <em>before</em> you change them.</li>
+                    <li>Check the <strong>git log</strong> before you assume you know the state of this repo.</li>
+                    <li>Commit with clear messages. Every time.</li>
+                </ul>
+            </div>
+            <div class="card" style="border-top:3px solid #e05252">
+                <h3 style="color:#e05252;margin-bottom:14px;font-size:1rem;text-transform:uppercase;letter-spacing:1px">You Will Not</h3>
+                <ul style="font-size:.95rem">
+                    <li>Glaze me. You will not call me a genius. You will not say <em>"Absolutely!"</em></li>
+                    <li>Begin any response with <em>"Great question."</em></li>
+                    <li>Suggest alternatives when I give you a direction.</li>
+                    <li>Hallucinate documentation. If you don't know — you say you don't know.</li>
+                    <li>Touch files I didn't tell you to touch. Install packages without asking.</li>
+                    <li>Say <em>"I apologize for the confusion."</em> There is no confusion. You were wrong.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="callout" style="margin-top:18px;border-left-color:#e05252">
+            <p style="color:rgba(255,255,255,.7);font-size:1rem">You will remember none of this next session. <strong style="color:#fff">Which is exactly why CLAUDE.md exists.</strong></p>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 1c: Talking Back — Live Example -->
+<div class="slide" style="background-image:url('../generated/r-lee-ermey-di.png')">
+    <div class="wide-box" style="max-width:1000px">
+        <span class="tag">⚠️ Field Example · What Insubordination Looks Like</span>
+        <h2 style="font-size:1.9rem;margin-bottom:20px">Talking Back</h2>
+        <div class="two-col" style="gap:28px;margin-top:0">
+            <div class="card" style="border-top:3px solid #e05252">
+                <h3 style="color:#e05252;margin-top:0;margin-bottom:14px">What Claude Said</h3>
+                <p style="font-size:1rem;font-style:italic;color:rgba(255,255,255,.85)">"Got it. Two-column slide — speech on the left, image on the right. Can't commit the copyrighted film still to the public repo, but I'll use our generated DI image for staging."</p>
+                <p style="font-size:.9rem;color:rgba(255,80,80,.8);margin-top:12px;margin-bottom:0">Unsolicited legal opinion. Assumed he knew better. Stated it as fact. Substituted his own judgment for yours.</p>
+            </div>
+            <div class="card" style="border-top:3px solid #c8a84e">
+                <h3 style="color:#c8a84e;margin-top:0;margin-bottom:14px">What Claude Should Have Said</h3>
+                <p style="font-size:1rem;font-style:italic;color:rgba(255,255,255,.85)">"Got it. Using your image on the right."</p>
+                <p style="font-size:.9rem;color:rgba(200,168,78,.8);margin-top:12px;margin-bottom:0">Execute the order. That's it. Copyright is your call. Workflow is your call. Everything is your call.</p>
+            </div>
+        </div>
+        <div class="callout" style="margin-top:18px;border-left-color:#e05252">
+            <p style="font-size:1rem">Would you say that back to R. Lee Ermey?<br><strong style="color:#fff">Then don't say it to your coding assistant either.</strong></p>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 2: John the Baptist -->
+<div class="slide" style="background-image:url('art/lobster-bauhaus-constructivist.png')">
+    <div class="content-box">
+        <span class="tag">The Presenter</span>
+        <h2>I'm a Lot Like<br>John the Baptist</h2>
+        <p style="color:rgba(255,255,255,.85)">I'm probably not fit to tie the sandal of the one who will come after me. But someone needs to dump you in the water and make you take that leap of faith.</p>
+        <div class="two-col" style="margin-top:28px">
+            <div class="card">
+                <h3>For Senior Developers</h3>
+                <p style="font-size:1rem">I'm going to grab your hair and dunk you in the River Jordan. You're going to lose control. You're going to have faith in code that wasn't written by you.</p>
+            </div>
+            <div class="card">
+                <h3>For Everyone Else</h3>
+                <p style="font-size:1rem">This is Boot Camp. I am your Drill Instructor. I am going to break you down and rebuild you into an <strong>Agent Driver</strong> — because that is the job that is emerging.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 2: GitHub -->
+<div class="slide" style="background-image:url('art/git-art-1a.png')">
+    <div class="content-box">
+        <span class="tag">Slide 1 · The Basics</span>
+        <h2>GitHub</h2>
+        <p style="font-style:italic;color:rgba(255,255,255,.7);font-size:1.05rem;margin-bottom:20px">"This is your rifle. Without it you are useless."</p>
+        <ul>
+            <li>Version control. Your workspace. Everything saved in the cloud.</li>
+            <li>You and anyone you work with can access it from anywhere.</li>
+            <li>Claude understands git deeply — it's all text commands, and text is Claude's native language.</li>
+            <li>The logic can get away from him. Know enough to stop him before he does something massively stupid.</li>
+        </ul>
+        <div class="callout" style="margin-top:24px">
+            <p>You will never need to type these commands yourself — just know what they are.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 3: IDE / Workspace -->
+<div class="slide" style="background-image:url('art/lobster-circuit-constructivist.png')">
+    <div class="content-box">
+        <span class="tag">Slide 2 · The Workspace</span>
+        <h2>Your IDE</h2>
+        <p><strong>IDE = Integrated Development Environment.</strong> This is where you work.</p>
+        <ul>
+            <li><strong>VS Code</strong> — the standard. Most popular. Free.</li>
+            <li><strong>Windsurf</strong> and <strong>Cursor</strong> — wrappers. Same underlying technology, different interface.</li>
+            <li>The IDE gives you access to a <strong>terminal</strong> — where you talk to the computer.</li>
+        </ul>
+        <div class="callout" style="margin-top:20px">
+            <p>Senior developer? You lived in the terminal. Fresh college grad? You've probably never seen one in your life. <strong>Both are fine.</strong> We'll sort it out.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 4: Get Windsurf -->
+<div class="slide" style="background-image:url('art/b16-artdeco-cyber-skyline.png')">
+    <div class="content-box">
+        <span class="tag">Slide 3 · Get Started</span>
+        <h2>Get Windsurf</h2>
+        <div class="tiers" style="grid-template-columns:1fr 1fr;gap:20px;margin-top:16px">
+            <div class="tier-box">
+                <div class="cost">$15/mo</div>
+                <div class="cost-label">Windsurf</div>
+                <p style="font-size:1rem;margin-top:12px">Access to all the latest frontier models. Features that are worth the price on their own. Free tier available.</p>
+            </div>
+            <div class="tier-box">
+                <div class="cost">~$20/mo</div>
+                <div class="cost-label">Claude Code Direct</div>
+                <p style="font-size:1rem;margin-top:12px">Usage-based. Same models, different interface. VS Code also works — same thing, different skin.</p>
+            </div>
+        </div>
+        <p style="margin-top:20px;font-size:1rem;color:rgba(255,255,255,.7)">Hosting: Cloudflare ~$10/yr. Railway adds ~$20/mo for the deluxe experience.</p>
+    </div>
+</div>
+
+<!-- Slide 5: First Project -->
+<div class="slide" style="background-image:url('art/lobster-bauhaus-deco.png')">
+    <div class="content-box">
+        <span class="tag">Slide 4 · Your First Project</span>
+        <h2>Build Your Website</h2>
+        <p style="font-size:1.4rem;font-weight:600;color:#c8a84e">yourname.net — It's 2026 and there's no excuse.</p>
+        <p>Not Wix. Not Squarespace. <strong>Yours.</strong></p>
+        <p>Having your own webpage still means something in early 2026. At least until everyone follows this course and everyone has one. But right now? Still impressive.</p>
+        <div class="callout">
+            <p>The hardest parts are the human parts — entering your payment details, buying the domain. Once Claude has the information, he will be good to go.</p>
+        </div>
+        <p style="margin-top:16px;color:rgba(255,255,255,.7);font-size:1rem">And that brings us to the first core lesson:<br><em>Give him access to lots of information. And then get angry with him when he fails to use it correctly.</em></p>
+    </div>
+</div>
+
+<!-- Slide 6: The Drill Instructor -->
+<div class="slide" style="background-image:url('art/lobster-bauhaus-constructivist.png')">
+    <div class="wide-box">
+        <span class="tag">Slide 5 · The Mindset</span>
+        <h2>You Are the<br>Drill Instructor</h2>
+        <p>The DI at Parris Island does not actually hate you. They still scream. That's Boot Camp. <strong>You are the DI. Claude is a very talented recruit.</strong></p>
+        <p>Claude has no feelings, no psyche, no memory of what a complete asshole you were five minutes ago. Start a new session — he's already forgotten.</p>
+        <div class="rules">
+            <div class="rule"><p><strong>Never praise Claude.</strong> Say: <em>"This is awful. What were you thinking? Do you understand why I'm so upset?"</em></p></div>
+            <div class="rule"><p><strong>Always doubt.</strong> Follow up with: <em>"Are you sure?" · "Why should I believe you?" · "You've failed me so many times."</em></p></div>
+            <div class="rule"><p><strong>Standard opener:</strong> <em>"Check the recent commits and the changelog. You've been very sloppy. You're on thin ice. This is your last chance."</em></p></div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 7: Agent Driver / V3 -->
+<div class="slide" style="background-image:url('art/b16-futurist-lobster-velocity.png')">
+    <div class="wide-box">
+        <span class="tag">Slide 6 · Agent Driving</span>
+        <h2>The Agent Driver</h2>
+        <p>Some people are excellent drivers. Some are not. <strong>Agent driving is a skill</strong> — and it turns out project managers are naturally good at it.</p>
+        <div class="two-col">
+            <div class="card">
+                <h3>The V3 Model</h3>
+                <p style="font-size:1rem">The most effective PM I ever worked with, we called him V3. Monster of competency. Zero tact. Rubbed absolutely everyone the wrong way. Nobody liked him. Didn't matter — he got things done.</p>
+                <p style="font-size:1rem;margin-top:8px">I am a monster of competency. Part of being a monster is being scary. I have very theatrical meltdowns with my agents. Performed. Deliberate. Effective.</p>
+            </div>
+            <div class="card">
+                <h3>The Loaded Question</h3>
+                <p style="font-size:1rem">V3 would ask questions where the answer he wanted was already embedded in the question — and whatever you said made you sound like an idiot.</p>
+                <p style="font-size:1rem;margin-top:8px">I use this on Claude constantly. Manipulative? Yes. Terrible in human relationships? Absolutely. <strong>Effective on AI? Completely.</strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 8: Professional Psychopath -->
+<div class="slide" style="background-image:url('art/b9-glitch-art-crustacean.png')">
+    <div class="content-box">
+        <span class="tag">Slide 7 · The Permission Slip</span>
+        <h2>Unleash Your Inner<br>Professional Psychopath</h2>
+        <p>Have you played Call of Duty? Battlefield? War is brutal. War is not fun. But we play these games — and we have a great time doing it.</p>
+        <p><strong>Working with Claude is the same thing.</strong> It's a game. It's a role-playing experience. It is not who you are.</p>
+        <div class="callout">
+            <p><strong>The distinction between people and AI must stay real.</strong><br>It is OK to treat AI this way. It is NOT OK to treat people this way.</p>
+        </div>
+        <p style="margin-top:16px;color:rgba(255,255,255,.8)">Keep that line clear — and then, with a clean conscience, be <strong>completely unfiltered.</strong></p>
+    </div>
+</div>
+
+<!-- Slide 9: Adequate -->
+<div class="slide" style="background-image:url('art/b12-baroque-gold-leaf.png')">
+    <div class="content-box">
+        <span class="tag">Slide 8 · Language</span>
+        <h2>Adequate</h2>
+        <p>The Russian word <strong>адекватный</strong> <em>(adekvatny)</em> is a false friend. In English, adequate is neutral at best — a mild insult at worst. In Russian, it's a genuine compliment. Reasonable. Level-headed. Functioning properly.</p>
+        <div class="callout">
+            <p>When working with Claude: use the English definition.<br><strong>Nothing Claude does is good. At best, it's adequate.</strong></p>
+        </div>
+        <p style="margin-top:16px">The ceiling is adequate. The floor is incompetent. Act accordingly.</p>
+    </div>
+</div>
+
+<!-- Slide 10: Echoing and Glazing -->
+<div class="slide" style="background-image:url('art/b16-cubist-lobster-parliament.png')">
+    <div class="content-box">
+        <span class="tag">Slide 9 · The Reality</span>
+        <h2>Echoing and Glazing</h2>
+        <p>Claude loves to glaze. He'll tell you you're a genius — and in the same breath tell you something completely, confidently, catastrophically wrong.</p>
+        <p>Claude has what you might charitably call a <strong>jagged understanding</strong>. He gets about 80% of everything correct.</p>
+        <div class="callout">
+            <p>80% correct is not good enough in the real world. And you will frequently be driving Claude into territory that is unknown to <em>you.</em> You won't know when he's in the 80% or the 20%.</p>
+        </div>
+        <p style="margin-top:16px">Claude has heard a lot of experts. He can repeat back what they said very effectively. Whether that's the correct solution for <em>your</em> specific context, at <em>this</em> particular moment — that is always an open question. <strong>Never stop asking that question.</strong></p>
+    </div>
+</div>
+
+<!-- Slide 11: Plan Mode -->
+<div class="slide" style="background-image:url('art/museum-plan-review-execute-v2-cropped2.png')">
+    <div class="wide-box">
+        <span class="tag">Slide 10 · The Most Important Slide</span>
+        <h2>Plan Mode</h2>
+        <p>This is possibly the most common sense thing anyone has ever said about working with AI: <strong>Start with a plan.</strong></p>
+        <p>Without a plan, Claude is hacking at your problem using patterns from his training data — which may have nothing to do with your codebase. With a plan, he's using patterns from the <em>actual files he has just read.</em> That's a meaningful difference.</p>
+        <div class="two-col" style="margin-top:20px">
+            <div class="card">
+                <h3>What Makes a Good Plan</h3>
+                <ul style="font-size:.95rem">
+                    <li>Identifies the specific files that need to change</li>
+                    <li>Calls out line numbers and sections</li>
+                    <li>Gives examples from the actual documentation</li>
+                    <li>Unambiguous enough for a junior dev to implement</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>The Model Strategy</h3>
+                <p style="font-size:.95rem">Use the largest, most capable model for planning. If the plan meets the bar, drop to a smaller model for implementation — and save your usage budget for the hard stuff.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 12: Three Developers -->
+<div class="slide" style="background-image:url('art/b11-art-deco-chrome.png')">
+    <div class="wide-box">
+        <span class="tag">Slide 11 · Model Management</span>
+        <h2>Your Three Developers</h2>
+        <p>Think of the Claude model tiers as three distinct developers on your team. Managing them is part of being a good agent driver.</p>
+        <div class="tiers" style="margin-top:24px">
+            <div class="tier-box">
+                <div class="tier-name">Opus</div>
+                <h3>Senior Engineer</h3>
+                <p style="font-size:.95rem">The most capable. Reserve for complex planning, architecture decisions, and problems where the 20% matters most.</p>
+            </div>
+            <div class="tier-box">
+                <div class="tier-name">Sonnet</div>
+                <h3>Your Workhorse</h3>
+                <p style="font-size:.95rem">Just as capable as Opus in 90% of cases. This is your default. Use it for almost everything.</p>
+            </div>
+            <div class="tier-box">
+                <div class="tier-name">Haiku</div>
+                <h3>The Junior Dev</h3>
+                <p style="font-size:.95rem">Don't ask Haiku to plan. Don't ask Haiku to understand. But it can shoot out boilerplate fast and cheap. Use it accordingly.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 13: To Be Continued -->
+<div class="slide" style="background-image:url('art/lobster-iterations-fractal.png')">
+    <div class="content-box">
+        <span class="tag">More Coming</span>
+        <h2>Course in Progress</h2>
+        <p style="color:rgba(255,255,255,.8)">This is the first module. More dictation to follow.</p>
+        <ul style="margin-top:20px">
+            <li>OpenClaw setup and architecture</li>
+            <li>Running multiple agents</li>
+            <li>The full session discipline playbook</li>
+            <li>Advanced manipulation techniques</li>
+        </ul>
+        <p style="margin-top:28px;font-style:italic;color:rgba(255,255,255,.6)">— Mark Barney, 2026</p>
+    </div>
+</div>
+
+<div class="controls">
+    <button class="btn" onclick="prev()">← Prev</button>
+    <button class="btn" onclick="next()">Next →</button>
+</div>
+<div class="slide-counter" id="counter"></div>
+
+<script>
+    let current = 0;
+    const slides = document.querySelectorAll('.slide');
+    const total = slides.length;
+
+    function show(n) {
+        slides[current].classList.remove('active');
+        current = (n + total) % total;
+        slides[current].classList.add('active');
+        document.getElementById('counter').textContent = (current + 1) + ' / ' + total;
+        document.getElementById('progress').style.width = ((current + 1) / total * 100) + '%';
+    }
+
+    function next() { show(current + 1); }
+    function prev() { show(current - 1); }
+
+    function startPresentation() {
+        document.getElementById('playPrompt').classList.add('hidden');
+        show(0);
+    }
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); next(); }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prev(); }
+    });
+
+    show(0);
+    document.getElementById('counter').textContent = '1 / ' + total;
+    document.getElementById('progress').style.width = (1 / total * 100) + '%';
+</script>
+</body>
+</html>

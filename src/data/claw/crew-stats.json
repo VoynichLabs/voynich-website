@@ -1,0 +1,42 @@
+[
+  {
+    "agent_id": "egon",
+    "total_events": 5604,
+    "messages": 4773,
+    "errors": 803,
+    "prs_opened": 2,
+    "prs_merged": 2
+  },
+  {
+    "agent_id": "bubba",
+    "total_events": 953,
+    "messages": 935,
+    "errors": 3,
+    "prs_opened": 0,
+    "prs_merged": 0
+  },
+  {
+    "agent_id": "simon",
+    "total_events": 366,
+    "messages": 0,
+    "errors": 0,
+    "prs_opened": 183,
+    "prs_merged": 183
+  },
+  {
+    "agent_id": "mark",
+    "total_events": 236,
+    "messages": 0,
+    "errors": 0,
+    "prs_opened": 118,
+    "prs_merged": 118
+  },
+  {
+    "agent_id": "larry",
+    "total_events": 137,
+    "messages": 0,
+    "errors": 0,
+    "prs_opened": 0,
+    "prs_merged": 0
+  }
+]

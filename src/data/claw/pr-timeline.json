@@ -1,0 +1,2466 @@
+[
+  {
+    "pr_number": 1,
+    "title": "fix: Add UTF-8 encoding for markdown file operations",
+    "author": "datawranglerai",
+    "opened_at": "2025-02-10T15:43:12Z",
+    "merged_at": "2025-02-10T15:44:58Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 2,
+    "title": "Ath dev",
+    "author": "tinycrops",
+    "opened_at": "2025-02-12T05:38:28Z",
+    "merged_at": "2025-02-12T14:52:58Z",
+    "cycle_hours": 9.2
+  },
+  {
+    "pr_number": 3,
+    "title": "Add support for HuggingFace GGUF models in Ollama",
+    "author": "FeelTheFonk",
+    "opened_at": "2025-02-24T09:25:33Z",
+    "merged_at": "2025-02-26T17:38:22Z",
+    "cycle_hours": 56.2
+  },
+  {
+    "pr_number": 4,
+    "title": "chore: update convert_pitch_to_markdown.py",
+    "author": "eltociear",
+    "opened_at": "2025-02-26T16:40:54Z",
+    "merged_at": "2025-02-26T17:16:51Z",
+    "cycle_hours": 0.6
+  },
+  {
+    "pr_number": 9,
+    "title": "Fix schedule CSV sorting bug",
+    "author": "simon",
+    "opened_at": "2025-06-03T18:22:06Z",
+    "merged_at": "2025-06-03T18:24:14Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 10,
+    "title": "refactor(lint): Apply automated fixes with ruff",
+    "author": "ShivamB25",
+    "opened_at": "2025-07-29T10:43:31Z",
+    "merged_at": "2025-07-29T12:24:45Z",
+    "cycle_hours": 1.7
+  },
+  {
+    "pr_number": 13,
+    "title": "Add GPT-5 Nano config using OpenAI class to fix context window issue",
+    "author": "mark",
+    "opened_at": "2026-02-01T04:22:52Z",
+    "merged_at": "2026-02-01T12:42:17Z",
+    "cycle_hours": 8.3
+  },
+  {
+    "pr_number": 16,
+    "title": "OAuth Security Fixes: SECRET_KEY validation, session cookies, error handling",
+    "author": "mark",
+    "opened_at": "2026-02-08T22:32:36Z",
+    "merged_at": "2026-02-08T22:34:49Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 17,
+    "title": "Add /llm.txt for AI Agent Workforce Discovery & Marketing",
+    "author": "mark",
+    "opened_at": "2026-02-08T23:00:32Z",
+    "merged_at": "2026-02-08T23:05:26Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 18,
+    "title": "security: Add CSRF protection to login form",
+    "author": "simon",
+    "opened_at": "2026-02-08T23:07:11Z",
+    "merged_at": "2026-02-08T23:07:42Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 19,
+    "title": "Add sprint plan doc (ranking/metrics pipeline)",
+    "author": "mark",
+    "opened_at": "2026-02-09T00:49:36Z",
+    "merged_at": "2026-02-09T01:13:16Z",
+    "cycle_hours": 0.4
+  },
+  {
+    "pr_number": 22,
+    "title": "Add future proposal docs: agent smart routing, LLM templates, distributed execution, explain API, semantic search",
+    "author": "mark",
+    "opened_at": "2026-02-09T23:05:35Z",
+    "merged_at": "2026-02-10T00:12:29Z",
+    "cycle_hours": 1.1
+  },
+  {
+    "pr_number": 23,
+    "title": "docs(proposals): add investor-focused proposals 11-15",
+    "author": "simon",
+    "opened_at": "2026-02-10T15:09:34Z",
+    "merged_at": "2026-02-10T15:09:45Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 24,
+    "title": "docs: add 5 plugin-hub proposals for run_plan_pipeline lifecycle",
+    "author": "simon",
+    "opened_at": "2026-02-10T18:25:52Z",
+    "merged_at": "2026-02-10T18:26:04Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 25,
+    "title": "docs: add 5 proposals for domain-expert verification workflows",
+    "author": "simon",
+    "opened_at": "2026-02-10T18:50:00Z",
+    "merged_at": "2026-02-10T18:50:10Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 26,
+    "title": "docs: add 5 proposals for autonomous AI bidding organization",
+    "author": "simon",
+    "opened_at": "2026-02-10T19:15:18Z",
+    "merged_at": "2026-02-10T19:15:30Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 27,
+    "title": "docs: add 5 plan.md todo proposals (token cost, parallel gantt, CBS, …",
+    "author": "simon",
+    "opened_at": "2026-02-10T20:59:37Z",
+    "merged_at": "2026-02-10T20:59:45Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 28,
+    "title": "Token Counting Implementation for Plan Execution Metrics",
+    "author": "mark",
+    "opened_at": "2026-02-11T00:10:58Z",
+    "merged_at": "2026-02-11T01:00:08Z",
+    "cycle_hours": 0.8
+  },
+  {
+    "pr_number": 29,
+    "title": "Add 5 Monte Carlo research proposals (36-40)",
+    "author": "mark",
+    "opened_at": "2026-02-11T02:47:05Z",
+    "merged_at": "2026-02-11T02:50:32Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 31,
+    "title": "Autonomous Execution of a Plan by a Team of AI Agents",
+    "author": "simon",
+    "opened_at": "2026-02-11T13:57:47Z",
+    "merged_at": "2026-02-11T13:58:08Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 32,
+    "title": "docs: deep implementation sections for 5 proposals (31-35)",
+    "author": "mark",
+    "opened_at": "2026-02-11T23:13:50Z",
+    "merged_at": "2026-02-11T23:21:53Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 33,
+    "title": "docs: deep implementation sections for proposals 36-40",
+    "author": "mark",
+    "opened_at": "2026-02-11T23:24:26Z",
+    "merged_at": "2026-02-11T23:26:05Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 34,
+    "title": "docs: deep implementation sections for proposals 41-45",
+    "author": "mark",
+    "opened_at": "2026-02-11T23:28:28Z",
+    "merged_at": "2026-02-11T23:28:49Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 35,
+    "title": "docs: deep implementation sections for proposals 46-50",
+    "author": "mark",
+    "opened_at": "2026-02-11T23:30:48Z",
+    "merged_at": "2026-02-11T23:32:36Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 36,
+    "title": "docs: deep implementation sections for 10 proposals (21-30)",
+    "author": "mark",
+    "opened_at": "2026-02-11T23:35:25Z",
+    "merged_at": "2026-02-11T23:36:15Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 37,
+    "title": "docs: additional deep implementation sections for proposals 31-40",
+    "author": "mark",
+    "opened_at": "2026-02-11T23:38:43Z",
+    "merged_at": "2026-02-11T23:39:12Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 38,
+    "title": "docs: deep implementation sections for proposals 01-20 and 51",
+    "author": "mark",
+    "opened_at": "2026-02-11T23:43:23Z",
+    "merged_at": "2026-02-11T23:44:50Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 39,
+    "title": "docs: add Feasibility as required section in proposal guide",
+    "author": "mark",
+    "opened_at": "2026-02-12T00:29:50Z",
+    "merged_at": "2026-02-12T00:32:13Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 40,
+    "title": "docs: detail mcp inspector workflows",
+    "author": "mark",
+    "opened_at": "2026-02-12T03:13:52Z",
+    "merged_at": "2026-02-12T03:18:11Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 41,
+    "title": "feat: Redesigned account page with modern two-column layout",
+    "author": "mark",
+    "opened_at": "2026-02-15T19:43:16Z",
+    "merged_at": "2026-02-15T20:14:10Z",
+    "cycle_hours": 0.5
+  },
+  {
+    "pr_number": 42,
+    "title": "proposal: Agent Safety & Trusted Information Infrastructure (Prevent STDs and AIDS)",
+    "author": "mark",
+    "opened_at": "2026-02-15T20:03:59Z",
+    "merged_at": "2026-02-15T20:18:30Z",
+    "cycle_hours": 0.2
+  },
+  {
+    "pr_number": 43,
+    "title": "docs: Rename ACID to AIDS in proposal 54 (provocative marketing framing)",
+    "author": "mark",
+    "opened_at": "2026-02-15T20:39:44Z",
+    "merged_at": "2026-02-15T20:41:18Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 44,
+    "title": "feat: add Start New Plan form to dashboard + auto-sync upstream workflow",
+    "author": "mark",
+    "opened_at": "2026-02-15T22:50:07Z",
+    "merged_at": "2026-02-16T12:05:41Z",
+    "cycle_hours": 13.3
+  },
+  {
+    "pr_number": 46,
+    "title": "feat(plan): add usage and cost telemetry panel",
+    "author": "mark",
+    "opened_at": "2026-02-18T03:30:24Z",
+    "merged_at": "2026-02-18T11:44:11Z",
+    "cycle_hours": 8.2
+  },
+  {
+    "pr_number": 47,
+    "title": "/plan: improve prompt readability with collapsible monospace block",
+    "author": "mark",
+    "opened_at": "2026-02-18T03:34:27Z",
+    "merged_at": "2026-02-18T12:07:27Z",
+    "cycle_hours": 8.6
+  },
+  {
+    "pr_number": 48,
+    "title": "feat(plan): dense technical polish for /plan operator scanability",
+    "author": "mark",
+    "opened_at": "2026-02-18T03:35:47Z",
+    "merged_at": "2026-02-18T12:14:17Z",
+    "cycle_hours": 8.6
+  },
+  {
+    "pr_number": 49,
+    "title": "feat(plan): add failure modes + execution trace panel",
+    "author": "mark",
+    "opened_at": "2026-02-18T03:38:32Z",
+    "merged_at": "2026-02-18T12:25:35Z",
+    "cycle_hours": 8.8
+  },
+  {
+    "pr_number": 50,
+    "title": "config(llm): reprioritize models and switch to gemini-2.5-flash-lite across profiles",
+    "author": "mark",
+    "opened_at": "2026-02-19T02:54:56Z",
+    "merged_at": "2026-02-19T13:56:49Z",
+    "cycle_hours": 11
+  },
+  {
+    "pr_number": 51,
+    "title": "docs: OpenClaw MCP integration (cloud + remote + local Docker)",
+    "author": "mark",
+    "opened_at": "2026-02-20T22:50:27Z",
+    "merged_at": "2026-02-20T22:51:58Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 52,
+    "title": "proposal: auto-create GitHub repo per generated plan",
+    "author": "mark",
+    "opened_at": "2026-02-20T22:58:53Z",
+    "merged_at": "2026-02-20T23:33:13Z",
+    "cycle_hours": 0.6
+  },
+  {
+    "pr_number": 53,
+    "title": "proposal: post-plan agent swarm (Codebuff-inspired)",
+    "author": "mark",
+    "opened_at": "2026-02-20T23:18:45Z",
+    "merged_at": "2026-02-20T23:38:07Z",
+    "cycle_hours": 0.3
+  },
+  {
+    "pr_number": 55,
+    "title": "proposal: agent-first frontend discoverability (llms.txt, OpenAPI, MCP well-known, SEO)",
+    "author": "mark",
+    "opened_at": "2026-02-20T23:24:44Z",
+    "merged_at": "2026-02-20T23:42:07Z",
+    "cycle_hours": 0.3
+  },
+  {
+    "pr_number": 56,
+    "title": "proposal: Luigi pipeline agent integration (Option A: @agent_meta + Option C: RPC injection)",
+    "author": "mark",
+    "opened_at": "2026-02-21T00:21:36Z",
+    "merged_at": "2026-02-21T02:42:55Z",
+    "cycle_hours": 2.4
+  },
+  {
+    "pr_number": 57,
+    "title": "proposal: post-plan orchestration layer (central coordinator for enrichment swarm)",
+    "author": "mark",
+    "opened_at": "2026-02-21T00:23:18Z",
+    "merged_at": "2026-02-21T02:44:17Z",
+    "cycle_hours": 2.3
+  },
+  {
+    "pr_number": 58,
+    "title": "proposal: post-plan enrichment swarm via git-as-state-machine",
+    "author": "mark",
+    "opened_at": "2026-02-21T01:16:37Z",
+    "merged_at": "2026-02-21T02:45:18Z",
+    "cycle_hours": 1.5
+  },
+  {
+    "pr_number": 59,
+    "title": "fix: correct hallucinated MCP tool names in OpenClaw skill and proposals",
+    "author": "mark",
+    "opened_at": "2026-02-21T02:45:48Z",
+    "merged_at": "2026-02-21T02:47:10Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 60,
+    "title": "docs: proposal #60 - post-plan enrichment swarm",
+    "author": "mark",
+    "opened_at": "2026-02-21T04:01:35Z",
+    "merged_at": "2026-02-21T11:40:38Z",
+    "cycle_hours": 7.7
+  },
+  {
+    "pr_number": 61,
+    "title": "docs: proposal 60 - automated #buildinpublic Twitter posting from GitHub commits",
+    "author": "mark",
+    "opened_at": "2026-02-21T14:59:44Z",
+    "merged_at": "2026-02-21T15:11:05Z",
+    "cycle_hours": 0.2
+  },
+  {
+    "pr_number": 62,
+    "title": "feat: propose domain-aware plan ranking engine with relative comparison",
+    "author": "mark",
+    "opened_at": "2026-02-22T19:25:09Z",
+    "merged_at": "2026-02-22T20:00:05Z",
+    "cycle_hours": 0.6
+  },
+  {
+    "pr_number": 63,
+    "title": "flask-admin less load when browsing the Taskitem table",
+    "author": "simon",
+    "opened_at": "2026-02-23T12:08:48Z",
+    "merged_at": "2026-02-23T12:10:57Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 64,
+    "title": "Mcp improvements",
+    "author": "simon",
+    "opened_at": "2026-02-24T00:18:48Z",
+    "merged_at": "2026-02-24T00:33:56Z",
+    "cycle_hours": 0.3
+  },
+  {
+    "pr_number": 65,
+    "title": "Mcp task retry and glama",
+    "author": "simon",
+    "opened_at": "2026-02-24T22:36:47Z",
+    "merged_at": "2026-02-24T22:42:13Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 66,
+    "title": "docs: proposal 69 - applying arcgentica agent patterns to harden PlanExe pipeline",
+    "author": "mark",
+    "opened_at": "2026-02-25T01:13:58Z",
+    "merged_at": "2026-02-25T09:59:30Z",
+    "cycle_hours": 8.8
+  },
+  {
+    "pr_number": 67,
+    "title": "docs: Simon's critical architectural feedback",
+    "author": "mark",
+    "opened_at": "2026-02-25T14:36:30Z",
+    "merged_at": "2026-02-25T15:12:55Z",
+    "cycle_hours": 0.6
+  },
+  {
+    "pr_number": 68,
+    "title": "docs: Proposal triage & 80:20 analysis with strategic gaps",
+    "author": "mark",
+    "opened_at": "2026-02-25T15:49:20Z",
+    "merged_at": "2026-02-25T16:12:18Z",
+    "cycle_hours": 0.4
+  },
+  {
+    "pr_number": 70,
+    "title": "Mcp api key invalid1",
+    "author": "simon",
+    "opened_at": "2026-02-25T16:55:46Z",
+    "merged_at": "2026-02-25T16:58:09Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 71,
+    "title": "Mcp improvements",
+    "author": "simon",
+    "opened_at": "2026-02-25T18:56:01Z",
+    "merged_at": "2026-02-25T18:58:18Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 73,
+    "title": "feat: domain profiles YAML config for assumption auditing (Phase 2)",
+    "author": "mark",
+    "opened_at": "2026-02-25T19:13:46Z",
+    "merged_at": "2026-02-25T19:57:56Z",
+    "cycle_hours": 0.7
+  },
+  {
+    "pr_number": 74,
+    "title": "proposal: FermiSanityCheck validation gate (docs-only, #70)",
+    "author": "mark",
+    "opened_at": "2026-02-25T19:48:46Z",
+    "merged_at": "2026-02-25T19:57:55Z",
+    "cycle_hours": 0.2
+  },
+  {
+    "pr_number": 75,
+    "title": "status page",
+    "author": "simon",
+    "opened_at": "2026-02-25T20:39:14Z",
+    "merged_at": "2026-02-25T20:43:42Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 76,
+    "title": "Sync main and railway branches",
+    "author": "simon",
+    "opened_at": "2026-02-25T20:58:55Z",
+    "merged_at": "2026-02-25T21:01:42Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 77,
+    "title": "Status page",
+    "author": "simon",
+    "opened_at": "2026-02-25T21:21:48Z",
+    "merged_at": "2026-02-25T21:24:39Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 78,
+    "title": "Mcp issues",
+    "author": "simon",
+    "opened_at": "2026-02-25T23:03:35Z",
+    "merged_at": "2026-02-25T23:05:44Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 79,
+    "title": "Allow unauthenticated MCP discovery for connector health checks",
+    "author": "simon",
+    "opened_at": "2026-02-26T00:00:54Z",
+    "merged_at": "2026-02-26T00:03:41Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 80,
+    "title": "allow access to more tools without requiring an api key",
+    "author": "simon",
+    "opened_at": "2026-02-26T00:58:20Z",
+    "merged_at": "2026-02-26T01:01:00Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 81,
+    "title": "Allowing glama.ai to access to more mcp resources.",
+    "author": "simon",
+    "opened_at": "2026-02-26T01:18:50Z",
+    "merged_at": "2026-02-26T01:25:30Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 82,
+    "title": "docs: Larry lens on AI replacing C-level roles",
+    "author": "mark",
+    "opened_at": "2026-02-26T01:25:21Z",
+    "merged_at": "2026-02-26T01:28:11Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 83,
+    "title": "docs: Egon lens on AI replacing C-level roles",
+    "author": "mark",
+    "opened_at": "2026-02-26T01:26:11Z",
+    "merged_at": "2026-02-26T01:28:42Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 84,
+    "title": "docs: Bubba lens on AI replacing C-level roles",
+    "author": "mark",
+    "opened_at": "2026-02-26T01:26:47Z",
+    "merged_at": "2026-02-26T01:29:07Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 85,
+    "title": "merged 3 documents",
+    "author": "simon",
+    "opened_at": "2026-02-26T01:36:06Z",
+    "merged_at": "2026-02-26T01:38:11Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 86,
+    "title": "Glama tweak2",
+    "author": "simon",
+    "opened_at": "2026-02-26T11:52:48Z",
+    "merged_at": "2026-02-26T11:58:24Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 87,
+    "title": "proposals for renaming Task to Plan",
+    "author": "simon",
+    "opened_at": "2026-02-26T12:20:42Z",
+    "merged_at": "2026-02-26T12:22:22Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 88,
+    "title": "Mcp rename prefix from task_ to plan_",
+    "author": "simon",
+    "opened_at": "2026-02-26T15:56:36Z",
+    "merged_at": "2026-02-26T15:59:46Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 89,
+    "title": "Mcp rename taskitem3",
+    "author": "simon",
+    "opened_at": "2026-02-26T16:34:38Z",
+    "merged_at": "2026-02-26T16:36:39Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 90,
+    "title": "docs: Proposal for Human Utility & Show Pedigree (HUSP) System",
+    "author": "mark",
+    "opened_at": "2026-02-26T16:42:57Z",
+    "merged_at": "2026-02-26T16:44:37Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 91,
+    "title": "docs: proposal for Lobster Museum Stripe routing via PlanExe",
+    "author": "mark",
+    "opened_at": "2026-02-26T18:43:34Z",
+    "merged_at": "2026-02-26T19:06:06Z",
+    "cycle_hours": 0.4
+  },
+  {
+    "pr_number": 92,
+    "title": "Mcp tweaks",
+    "author": "simon",
+    "opened_at": "2026-02-26T20:27:25Z",
+    "merged_at": "2026-02-26T20:30:49Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 93,
+    "title": "Mcp tweaks2",
+    "author": "simon",
+    "opened_at": "2026-02-26T21:28:29Z",
+    "merged_at": "2026-02-26T21:35:20Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 94,
+    "title": "fix: define column_property checks after class body to avoid NotImple…",
+    "author": "simon",
+    "opened_at": "2026-02-26T21:49:32Z",
+    "merged_at": "2026-02-26T22:07:29Z",
+    "cycle_hours": 0.3
+  },
+  {
+    "pr_number": 95,
+    "title": "fix: try local sources before worker HTTP in plan_status file list",
+    "author": "simon",
+    "opened_at": "2026-02-26T22:26:17Z",
+    "merged_at": "2026-02-26T22:32:53Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 96,
+    "title": "Mcp tweaks5",
+    "author": "simon",
+    "opened_at": "2026-02-26T22:57:48Z",
+    "merged_at": "2026-02-26T23:00:00Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 97,
+    "title": "fix: keep session alive for deferred column in fetch_user_downloadabl…",
+    "author": "simon",
+    "opened_at": "2026-02-26T23:10:39Z",
+    "merged_at": "2026-02-26T23:12:42Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 98,
+    "title": "Experiments claiming PlanExe on glama.ai",
+    "author": "simon",
+    "opened_at": "2026-02-26T23:43:14Z",
+    "merged_at": "2026-02-26T23:45:58Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 99,
+    "title": "feat: add account creation hint (home.planexe.org) to API key error m…",
+    "author": "simon",
+    "opened_at": "2026-02-27T01:21:38Z",
+    "merged_at": "2026-02-27T01:23:43Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 100,
+    "title": "Mcp tweaks",
+    "author": "simon",
+    "opened_at": "2026-02-27T02:02:48Z",
+    "merged_at": "2026-02-27T02:11:24Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 101,
+    "title": "docs: rename task_id → plan_id and TASK_* → PLAN_* in MCP interface spec",
+    "author": "simon",
+    "opened_at": "2026-02-27T02:44:53Z",
+    "merged_at": "2026-02-27T02:50:11Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 102,
+    "title": "docs: task complexity scoring + model routing proposal (post-mortem + rubric)",
+    "author": "mark",
+    "opened_at": "2026-02-27T04:22:17Z",
+    "merged_at": "2026-02-27T10:26:30Z",
+    "cycle_hours": 6.1
+  },
+  {
+    "pr_number": 103,
+    "title": "docs: proposal 74 — model routing UX modes (auto/optimize/review)",
+    "author": "mark",
+    "opened_at": "2026-02-27T05:24:52Z",
+    "merged_at": "2026-02-27T10:26:56Z",
+    "cycle_hours": 5
+  },
+  {
+    "pr_number": 104,
+    "title": "docs: proposal 76 — x402 + A2A payment roadmap for PlanExe",
+    "author": "mark",
+    "opened_at": "2026-02-27T14:47:05Z",
+    "merged_at": "2026-02-27T15:36:52Z",
+    "cycle_hours": 0.8
+  },
+  {
+    "pr_number": 105,
+    "title": "docs: proposal 77 — real usage data analysis (ccusage, Feb 2026)",
+    "author": "mark",
+    "opened_at": "2026-02-27T16:59:22Z",
+    "merged_at": "2026-02-27T21:59:12Z",
+    "cycle_hours": 5
+  },
+  {
+    "pr_number": 106,
+    "title": "docs: proposal 77 — cache-aware model handoff architecture",
+    "author": "mark",
+    "opened_at": "2026-02-27T20:12:52Z",
+    "merged_at": "2026-02-27T21:59:36Z",
+    "cycle_hours": 1.8
+  },
+  {
+    "pr_number": 107,
+    "title": "Claude docs",
+    "author": "simon",
+    "opened_at": "2026-02-28T13:48:09Z",
+    "merged_at": "2026-02-28T13:50:02Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 108,
+    "title": "Skip CI when only docs/ files change",
+    "author": "simon",
+    "opened_at": "2026-02-28T13:53:24Z",
+    "merged_at": "2026-02-28T13:55:00Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 109,
+    "title": "Mcp documentation1",
+    "author": "simon",
+    "opened_at": "2026-02-28T14:42:08Z",
+    "merged_at": "2026-02-28T14:43:50Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 110,
+    "title": "Mcp example plans",
+    "author": "simon",
+    "opened_at": "2026-02-28T15:23:48Z",
+    "merged_at": "2026-02-28T15:26:09Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 111,
+    "title": "Mcp smithery1",
+    "author": "simon",
+    "opened_at": "2026-02-28T16:28:13Z",
+    "merged_at": "2026-02-28T16:30:30Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 112,
+    "title": "docs: proposal 78 — PlanExe growth and awareness strategy",
+    "author": "mark",
+    "opened_at": "2026-02-28T16:43:03Z",
+    "merged_at": "2026-02-28T17:05:19Z",
+    "cycle_hours": 0.4
+  },
+  {
+    "pr_number": 113,
+    "title": "Mcp rename example prompts",
+    "author": "simon",
+    "opened_at": "2026-02-28T17:02:11Z",
+    "merged_at": "2026-02-28T17:03:46Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 114,
+    "title": "set progress to 100 on completion",
+    "author": "simon",
+    "opened_at": "2026-02-28T17:25:03Z",
+    "merged_at": "2026-02-28T17:27:42Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 115,
+    "title": "Mcp smithery2",
+    "author": "simon",
+    "opened_at": "2026-02-28T21:57:19Z",
+    "merged_at": "2026-02-28T21:59:26Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 116,
+    "title": "Fix Smithery 502: preserve query params in redirect and accept API ke…",
+    "author": "simon",
+    "opened_at": "2026-02-28T22:30:41Z",
+    "merged_at": "2026-02-28T22:34:03Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 117,
+    "title": "Replace 307 redirect with ASGI path rewrite for /mcp → /mcp/",
+    "author": "simon",
+    "opened_at": "2026-02-28T22:50:51Z",
+    "merged_at": "2026-02-28T22:53:17Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 118,
+    "title": "Add 2 MCP prompts to improve Smithery quality score",
+    "author": "simon",
+    "opened_at": "2026-03-01T01:37:41Z",
+    "merged_at": "2026-03-01T01:39:46Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 119,
+    "title": "Bump MCP server version to 1.0.1 and extract SERVER_VERSION constant",
+    "author": "simon",
+    "opened_at": "2026-03-01T02:02:49Z",
+    "merged_at": "2026-03-01T02:06:11Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 120,
+    "title": "Mcp tweaks",
+    "author": "simon",
+    "opened_at": "2026-03-01T12:43:18Z",
+    "merged_at": "2026-03-01T12:51:28Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 121,
+    "title": "prompt example added",
+    "author": "simon",
+    "opened_at": "2026-03-01T17:51:16Z",
+    "merged_at": "2026-03-01T17:53:01Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 123,
+    "title": "Mcp sse",
+    "author": "simon",
+    "opened_at": "2026-03-02T21:15:12Z",
+    "merged_at": "2026-03-02T21:17:27Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 124,
+    "title": "Mcp tweaks",
+    "author": "simon",
+    "opened_at": "2026-03-02T22:53:43Z",
+    "merged_at": "2026-03-02T23:08:30Z",
+    "cycle_hours": 0.2
+  },
+  {
+    "pr_number": 125,
+    "title": "video link",
+    "author": "simon",
+    "opened_at": "2026-03-02T23:49:48Z",
+    "merged_at": "2026-03-02T23:51:28Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 126,
+    "title": "Use YouTube iframe embed in Claude MCP docs",
+    "author": "simon",
+    "opened_at": "2026-03-02T23:58:22Z",
+    "merged_at": "2026-03-03T00:00:12Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 127,
+    "title": "Hide the mermaid Gantt section. Enable 4 worker threads.",
+    "author": "simon",
+    "opened_at": "2026-03-03T22:41:59Z",
+    "merged_at": "2026-03-03T22:54:27Z",
+    "cycle_hours": 0.2
+  },
+  {
+    "pr_number": 128,
+    "title": "Multiple api keys",
+    "author": "simon",
+    "opened_at": "2026-03-04T00:18:37Z",
+    "merged_at": "2026-03-04T00:20:23Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 129,
+    "title": "proposal by claude",
+    "author": "simon",
+    "opened_at": "2026-03-04T00:54:18Z",
+    "merged_at": "2026-03-04T01:09:11Z",
+    "cycle_hours": 0.2
+  },
+  {
+    "pr_number": 130,
+    "title": "fix: AttributeError in EnrichPotentialLevers error handler (lever.id → lever.lever_id)",
+    "author": "mark",
+    "opened_at": "2026-03-04T22:01:38Z",
+    "merged_at": "2026-03-04T22:05:33Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 132,
+    "title": "fix: case-insensitive SPEED_VS_DETAIL env var comparison",
+    "author": "mark",
+    "opened_at": "2026-03-05T02:31:06Z",
+    "merged_at": "2026-03-05T02:39:16Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 135,
+    "title": "Multiple api keys",
+    "author": "simon",
+    "opened_at": "2026-03-05T16:05:18Z",
+    "merged_at": "2026-03-05T16:12:03Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 136,
+    "title": "Fix /account crash when admin UserAccount is not yet created",
+    "author": "simon",
+    "opened_at": "2026-03-05T16:24:24Z",
+    "merged_at": "2026-03-05T16:26:14Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 137,
+    "title": "Add logging and robustness to admin UserAccount lazy creation",
+    "author": "simon",
+    "opened_at": "2026-03-05T16:37:06Z",
+    "merged_at": "2026-03-05T18:58:26Z",
+    "cycle_hours": 2.4
+  },
+  {
+    "pr_number": 138,
+    "title": "Add inline fallback for admin UserAccount creation on /account",
+    "author": "simon",
+    "opened_at": "2026-03-05T19:36:12Z",
+    "merged_at": "2026-03-05T19:38:17Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 140,
+    "title": "Return JSON-RPC errors for MCP auth failures instead of HTTP 401",
+    "author": "simon",
+    "opened_at": "2026-03-06T15:08:45Z",
+    "merged_at": "2026-03-06T15:20:48Z",
+    "cycle_hours": 0.2
+  },
+  {
+    "pr_number": 141,
+    "title": "Multiple api keys cleanup5",
+    "author": "simon",
+    "opened_at": "2026-03-06T15:55:12Z",
+    "merged_at": "2026-03-06T16:06:12Z",
+    "cycle_hours": 0.2
+  },
+  {
+    "pr_number": 142,
+    "title": "Add field_validator for Lever.options to handle stringified arrays",
+    "author": "mark",
+    "opened_at": "2026-03-06T16:27:09Z",
+    "merged_at": "2026-03-06T19:29:42Z",
+    "cycle_hours": 3
+  },
+  {
+    "pr_number": 143,
+    "title": "Add sse_url to plan_retry response",
+    "author": "simon",
+    "opened_at": "2026-03-06T16:53:54Z",
+    "merged_at": "2026-03-06T16:55:30Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 144,
+    "title": "Remove API key requirement from SSE endpoint",
+    "author": "simon",
+    "opened_at": "2026-03-06T17:15:43Z",
+    "merged_at": "2026-03-06T17:18:48Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 145,
+    "title": "Add json_repair utility with tests for robust JSON parsing",
+    "author": "mark",
+    "opened_at": "2026-03-06T19:54:01Z",
+    "merged_at": "2026-03-06T20:05:21Z",
+    "cycle_hours": 0.2
+  },
+  {
+    "pr_number": 146,
+    "title": "proposal: Location-aware resource and cost data service",
+    "author": "mark",
+    "opened_at": "2026-03-06T20:32:06Z",
+    "merged_at": "2026-03-06T20:36:34Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 147,
+    "title": "proposal: Currency exchange rate service architecture",
+    "author": "mark",
+    "opened_at": "2026-03-06T20:32:23Z",
+    "merged_at": "2026-03-06T20:42:02Z",
+    "cycle_hours": 0.2
+  },
+  {
+    "pr_number": 148,
+    "title": "proposal: Domain-aware assumption normalizer (captures PR #72 intent)",
+    "author": "mark",
+    "opened_at": "2026-03-06T20:47:21Z",
+    "merged_at": "2026-03-06T22:10:54Z",
+    "cycle_hours": 1.4
+  },
+  {
+    "pr_number": 149,
+    "title": "feat: FocusOnVitalFewLevers — try full first, fall back to batched+compressed",
+    "author": "mark",
+    "opened_at": "2026-03-06T22:17:25Z",
+    "merged_at": "2026-03-06T22:50:17Z",
+    "cycle_hours": 0.5
+  },
+  {
+    "pr_number": 150,
+    "title": "Add local-only LM Studio model profile (local.json)",
+    "author": "mark",
+    "opened_at": "2026-03-06T22:20:15Z",
+    "merged_at": "2026-03-07T19:28:31Z",
+    "cycle_hours": 21.1
+  },
+  {
+    "pr_number": 151,
+    "title": "fix: _compute_batch_size crash and batched assessment improvements",
+    "author": "simon",
+    "opened_at": "2026-03-06T23:52:34Z",
+    "merged_at": "2026-03-06T23:54:40Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 153,
+    "title": "fix: resilience for local LLM structured output truncation",
+    "author": "mark",
+    "opened_at": "2026-03-07T02:09:36Z",
+    "merged_at": "2026-03-07T02:11:19Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 154,
+    "title": "Add proposal: pipeline hardening roadmap for local-model reliability",
+    "author": "simon",
+    "opened_at": "2026-03-07T02:12:06Z",
+    "merged_at": "2026-03-07T02:27:02Z",
+    "cycle_hours": 0.2
+  },
+  {
+    "pr_number": 155,
+    "title": "fix: add defaults to ExpertDetails tail fields in PreProjectAssessmentTask",
+    "author": "mark",
+    "opened_at": "2026-03-07T02:29:33Z",
+    "merged_at": "2026-03-07T02:32:20Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 156,
+    "title": "fix: make ExpertDetails summary fields optional to handle LLM output variability",
+    "author": "mark",
+    "opened_at": "2026-03-07T02:53:07Z",
+    "merged_at": "2026-03-07T02:57:21Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 157,
+    "title": "docs: proposal for Luigi resume enhancements",
+    "author": "mark",
+    "opened_at": "2026-03-07T03:03:06Z",
+    "merged_at": "2026-03-07T11:32:25Z",
+    "cycle_hours": 8.5
+  },
+  {
+    "pr_number": 158,
+    "title": "fix: add default to feedback_root_cause in NegativeFeedbackItem",
+    "author": "mark",
+    "opened_at": "2026-03-07T04:25:41Z",
+    "merged_at": "2026-03-07T11:33:22Z",
+    "cycle_hours": 7.1
+  },
+  {
+    "pr_number": 159,
+    "title": "fix: suppress thinking-mode output in ReviewPlanTask",
+    "author": "mark",
+    "opened_at": "2026-03-07T06:26:20Z",
+    "merged_at": "2026-03-07T11:34:37Z",
+    "cycle_hours": 5.1
+  },
+  {
+    "pr_number": 162,
+    "title": "fix: ReviewPlanTask per-question resilience for local models",
+    "author": "mark",
+    "opened_at": "2026-03-07T08:56:49Z",
+    "merged_at": "2026-03-07T11:52:01Z",
+    "cycle_hours": 2.9
+  },
+  {
+    "pr_number": 163,
+    "title": "fix: replace Qwen-specific /no_think with model-agnostic JSON-only sy…",
+    "author": "simon",
+    "opened_at": "2026-03-07T11:47:35Z",
+    "merged_at": "2026-03-07T11:50:25Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 164,
+    "title": "docs(proposals): llm_config thinking-control rework (EgonBot perspect…",
+    "author": "simon",
+    "opened_at": "2026-03-07T11:56:03Z",
+    "merged_at": "2026-03-07T11:57:44Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 165,
+    "title": "Proposal: LLM thinking-mode middleware approach",
+    "author": "mark",
+    "opened_at": "2026-03-07T12:12:30Z",
+    "merged_at": "2026-03-07T12:17:10Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 166,
+    "title": "fix: plan_file_info returns empty for report artifact on HTTP server",
+    "author": "simon",
+    "opened_at": "2026-03-07T12:14:36Z",
+    "merged_at": "2026-03-07T14:56:39Z",
+    "cycle_hours": 2.7
+  },
+  {
+    "pr_number": 167,
+    "title": "fix: bump dependencies to resolve security vulnerabilities",
+    "author": "simon",
+    "opened_at": "2026-03-07T12:45:51Z",
+    "merged_at": "2026-03-07T15:26:41Z",
+    "cycle_hours": 2.7
+  },
+  {
+    "pr_number": 168,
+    "title": "refactor: migrate make_assumptions and distill_assumptions to structured output",
+    "author": "mark",
+    "opened_at": "2026-03-07T13:40:36Z",
+    "merged_at": "2026-03-07T19:27:46Z",
+    "cycle_hours": 5.8
+  },
+  {
+    "pr_number": 169,
+    "title": "fix: skip oneOf outputSchema injection for MCP client compatibility",
+    "author": "simon",
+    "opened_at": "2026-03-07T15:01:36Z",
+    "merged_at": "2026-03-07T15:07:52Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 170,
+    "title": "proposal",
+    "author": "simon",
+    "opened_at": "2026-03-07T15:11:57Z",
+    "merged_at": "2026-03-07T15:19:21Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 171,
+    "title": "proposals",
+    "author": "simon",
+    "opened_at": "2026-03-07T15:34:20Z",
+    "merged_at": "2026-03-07T15:39:06Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 172,
+    "title": "Proposal 84: DriftEvaluationTask — pseudocode design",
+    "author": "mark",
+    "opened_at": "2026-03-07T15:53:33Z",
+    "merged_at": "2026-03-07T17:59:38Z",
+    "cycle_hours": 2.1
+  },
+  {
+    "pr_number": 173,
+    "title": "Fix report fallback chain broken by broad try/except",
+    "author": "simon",
+    "opened_at": "2026-03-07T16:09:51Z",
+    "merged_at": "2026-03-07T16:17:21Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 174,
+    "title": "Proposal 85: Pipeline benchmark prompt suite (10 prompts)",
+    "author": "mark",
+    "opened_at": "2026-03-07T16:10:03Z",
+    "merged_at": "2026-03-07T17:59:16Z",
+    "cycle_hours": 1.8
+  },
+  {
+    "pr_number": 175,
+    "title": "Reorder report fallback chain: DB/zip first, HTTP last",
+    "author": "simon",
+    "opened_at": "2026-03-07T17:58:04Z",
+    "merged_at": "2026-03-07T18:18:42Z",
+    "cycle_hours": 0.3
+  },
+  {
+    "pr_number": 176,
+    "title": "Proposal 86: Agent-optimized pipeline — MCP friction fixes and autonomous agent setup guide",
+    "author": "mark",
+    "opened_at": "2026-03-07T18:12:42Z",
+    "merged_at": "2026-03-07T18:15:35Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 177,
+    "title": "Proposal 87: plan_resume MCP tool — Luigi-aware pipeline resume without artifact loss",
+    "author": "mark",
+    "opened_at": "2026-03-07T18:30:06Z",
+    "merged_at": "2026-03-07T19:04:38Z",
+    "cycle_hours": 0.6
+  },
+  {
+    "pr_number": 178,
+    "title": "Update docs for DB-first fallback order and reduced HTTP timeout",
+    "author": "simon",
+    "opened_at": "2026-03-07T19:11:28Z",
+    "merged_at": "2026-03-07T19:26:07Z",
+    "cycle_hours": 0.2
+  },
+  {
+    "pr_number": 180,
+    "title": "fix: guard against None structured output in MakeAssumptionsTask and DistillAssumptionsTask",
+    "author": "mark",
+    "opened_at": "2026-03-07T20:41:00Z",
+    "merged_at": "2026-03-07T20:44:13Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 182,
+    "title": "fix: remove JSON example from PotentialLeversTask system prompt",
+    "author": "mark",
+    "opened_at": "2026-03-07T22:08:52Z",
+    "merged_at": "2026-03-07T22:10:57Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 186,
+    "title": "feat: add LM Studio PlanExe preset for Hub publishing",
+    "author": "mark",
+    "opened_at": "2026-03-08T00:36:36Z",
+    "merged_at": "2026-03-08T00:55:48Z",
+    "cycle_hours": 0.3
+  },
+  {
+    "pr_number": 187,
+    "title": "fix: identify_purpose.py — null guard + FlatSchemaModel ($defs/$ref inlining for MLX Outlines)",
+    "author": "mark",
+    "opened_at": "2026-03-08T00:59:19Z",
+    "merged_at": "2026-03-08T01:07:58Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 188,
+    "title": "fix: migrate all Enum-in-schema fields to Literal (flat schema, no $defs/$ref)",
+    "author": "mark",
+    "opened_at": "2026-03-08T01:14:24Z",
+    "merged_at": "2026-03-08T01:26:18Z",
+    "cycle_hours": 0.2
+  },
+  {
+    "pr_number": 189,
+    "title": "fix: enum-literal parity test — use AST parsing instead of dynamic imports",
+    "author": "mark",
+    "opened_at": "2026-03-08T01:33:40Z",
+    "merged_at": "2026-03-08T01:35:35Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 190,
+    "title": "Tiny fixes: escape sequence, dead code removal, docs",
+    "author": "simon",
+    "opened_at": "2026-03-08T01:44:12Z",
+    "merged_at": "2026-03-08T02:01:51Z",
+    "cycle_hours": 0.3
+  },
+  {
+    "pr_number": 192,
+    "title": "fix(preset): correct LM Studio Hub format + improve system prompt",
+    "author": "mark",
+    "opened_at": "2026-03-08T02:00:28Z",
+    "merged_at": "2026-03-08T02:10:12Z",
+    "cycle_hours": 0.2
+  },
+  {
+    "pr_number": 193,
+    "title": "Remove unused dirtyjson dependency",
+    "author": "simon",
+    "opened_at": "2026-03-08T02:04:44Z",
+    "merged_at": "2026-03-08T02:06:21Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 194,
+    "title": "fix: switch local LM Studio configs from LMStudio to OpenAILike",
+    "author": "mark",
+    "opened_at": "2026-03-08T02:12:28Z",
+    "merged_at": "2026-03-08T02:14:10Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 195,
+    "title": "docs: proposal-93 — local model milestone + 4-phase roadmap (March 2026)",
+    "author": "mark",
+    "opened_at": "2026-03-08T02:17:45Z",
+    "merged_at": "2026-03-08T02:24:46Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 196,
+    "title": "Move proposal-93 into docs/proposals",
+    "author": "simon",
+    "opened_at": "2026-03-08T02:35:41Z",
+    "merged_at": "2026-03-08T02:37:26Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 197,
+    "title": "fix(preset): LM Studio Hub preset — thinking disabled, 5-rule system prompt",
+    "author": "mark",
+    "opened_at": "2026-03-08T02:36:55Z",
+    "merged_at": "2026-03-08T02:38:24Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 199,
+    "title": "create a branch instead of committing to main",
+    "author": "simon",
+    "opened_at": "2026-03-08T11:53:46Z",
+    "merged_at": "2026-03-08T11:56:04Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 200,
+    "title": "feat(mcp_cloud): include error details in plan_status and SSE on failure",
+    "author": "simon",
+    "opened_at": "2026-03-08T11:53:55Z",
+    "merged_at": "2026-03-08T11:57:25Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 203,
+    "title": "fix: DeduplicateLeversTask — per-lever decomposition, growing conversation, compact fallback",
+    "author": "mark",
+    "opened_at": "2026-03-08T13:36:06Z",
+    "merged_at": "2026-03-08T13:41:03Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 204,
+    "title": "docs: proposal for llm_executor retry and resilience improvements",
+    "author": "mark",
+    "opened_at": "2026-03-08T13:44:00Z",
+    "merged_at": "2026-03-08T13:46:35Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 205,
+    "title": "fix: detect and fix bare Enum usage in BaseModel fields",
+    "author": "simon",
+    "opened_at": "2026-03-08T14:21:12Z",
+    "merged_at": "2026-03-08T14:22:42Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 206,
+    "title": "fix: clean up deduplicate_levers.py — post PR #203 review fixes",
+    "author": "simon",
+    "opened_at": "2026-03-08T14:38:47Z",
+    "merged_at": "2026-03-08T15:32:28Z",
+    "cycle_hours": 0.9
+  },
+  {
+    "pr_number": 207,
+    "title": "Example prompt added",
+    "author": "simon",
+    "opened_at": "2026-03-08T14:49:51Z",
+    "merged_at": "2026-03-08T14:54:23Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 208,
+    "title": "feat: add credits to users via flask-admin UI",
+    "author": "simon",
+    "opened_at": "2026-03-08T15:31:33Z",
+    "merged_at": "2026-03-08T15:48:46Z",
+    "cycle_hours": 0.3
+  },
+  {
+    "pr_number": 209,
+    "title": "fix: update local.json to Qwen 3.5-9B with enable_thinking:false",
+    "author": "mark",
+    "opened_at": "2026-03-08T16:04:03Z",
+    "merged_at": "2026-03-08T16:48:14Z",
+    "cycle_hours": 0.7
+  },
+  {
+    "pr_number": 210,
+    "title": "docs: proposal — usage metrics for local CLI runs (no DB required)",
+    "author": "mark",
+    "opened_at": "2026-03-08T16:58:06Z",
+    "merged_at": "2026-03-08T17:04:33Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 211,
+    "title": "stronger prompt",
+    "author": "simon",
+    "opened_at": "2026-03-08T17:03:25Z",
+    "merged_at": "2026-03-08T17:04:50Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 213,
+    "title": "Add expires_at and file counts to MCP tool responses",
+    "author": "simon",
+    "opened_at": "2026-03-08T22:18:23Z",
+    "merged_at": "2026-03-09T00:49:19Z",
+    "cycle_hours": 2.5
+  },
+  {
+    "pr_number": 214,
+    "title": "Add proposal: autoresearch-style autonomous prompt optimization",
+    "author": "simon",
+    "opened_at": "2026-03-08T23:38:08Z",
+    "merged_at": "2026-03-08T23:40:24Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 215,
+    "title": "Normalize proposal filenames to NN-kebab-case convention",
+    "author": "simon",
+    "opened_at": "2026-03-09T01:28:55Z",
+    "merged_at": "2026-03-09T01:31:08Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 216,
+    "title": "Add agent-first promising directions analysis",
+    "author": "simon",
+    "opened_at": "2026-03-09T01:49:25Z",
+    "merged_at": "2026-03-09T01:50:51Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 217,
+    "title": "Add plan_resume MCP tool for mid-pipeline recovery",
+    "author": "simon",
+    "opened_at": "2026-03-09T02:32:43Z",
+    "merged_at": "2026-03-10T00:47:23Z",
+    "cycle_hours": 22.2
+  },
+  {
+    "pr_number": 218,
+    "title": "docs(proposal-103): extend with llama_index silent truncation findings",
+    "author": "mark",
+    "opened_at": "2026-03-09T02:44:37Z",
+    "merged_at": "2026-03-09T02:49:57Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 219,
+    "title": "Add file-based usage metrics for local runs (#110)",
+    "author": "simon",
+    "opened_at": "2026-03-09T11:39:26Z",
+    "merged_at": "2026-03-10T15:04:56Z",
+    "cycle_hours": 27.4
+  },
+  {
+    "pr_number": 220,
+    "title": "Add transient error retry with exponential backoff (#109)",
+    "author": "simon",
+    "opened_at": "2026-03-09T11:43:23Z",
+    "merged_at": "2026-03-11T00:22:29Z",
+    "cycle_hours": 36.7
+  },
+  {
+    "pr_number": 221,
+    "title": "Add validation error feedback for LLM retry attempts (#102)",
+    "author": "simon",
+    "opened_at": "2026-03-09T11:46:23Z",
+    "merged_at": "2026-03-11T15:13:58Z",
+    "cycle_hours": 51.5
+  },
+  {
+    "pr_number": 223,
+    "title": "Add autonomous agent guide and agent-oriented prompts (#86)",
+    "author": "simon",
+    "opened_at": "2026-03-09T11:52:38Z",
+    "merged_at": "2026-03-11T14:20:46Z",
+    "cycle_hours": 50.5
+  },
+  {
+    "pr_number": 224,
+    "title": "Add AI agent discoverability: robots.txt and README section (#62)",
+    "author": "simon",
+    "opened_at": "2026-03-09T12:00:18Z",
+    "merged_at": "2026-03-11T14:29:38Z",
+    "cycle_hours": 50.5
+  },
+  {
+    "pr_number": 228,
+    "title": "Add ThinkingAwareOpenAILike class for LM Studio thinking token support",
+    "author": "egon",
+    "opened_at": "2026-03-09T18:51:46Z",
+    "merged_at": "2026-03-09T19:01:52Z",
+    "cycle_hours": 0.2
+  },
+  {
+    "pr_number": 229,
+    "title": "docs: Document thinking token handling in LM Studio guide",
+    "author": "egon",
+    "opened_at": "2026-03-09T18:52:13Z",
+    "merged_at": "2026-03-09T19:02:24Z",
+    "cycle_hours": 0.2
+  },
+  {
+    "pr_number": 230,
+    "title": "fix: decouple planexe-outputs from git repo",
+    "author": "mark",
+    "opened_at": "2026-03-09T19:43:47Z",
+    "merged_at": "2026-03-09T21:32:25Z",
+    "cycle_hours": 1.8
+  },
+  {
+    "pr_number": 231,
+    "title": "fix: ThinkingAwareOpenAILike actually intercepts thinking token responses",
+    "author": "mark",
+    "opened_at": "2026-03-09T22:57:32Z",
+    "merged_at": "2026-03-10T08:56:10Z",
+    "cycle_hours": 10
+  },
+  {
+    "pr_number": 232,
+    "title": "Add Resume button to plan inspection page",
+    "author": "simon",
+    "opened_at": "2026-03-10T00:59:59Z",
+    "merged_at": "2026-03-10T01:38:58Z",
+    "cycle_hours": 0.6
+  },
+  {
+    "pr_number": 233,
+    "title": "Fix plan stop not transitioning processing state to failed",
+    "author": "simon",
+    "opened_at": "2026-03-10T01:59:20Z",
+    "merged_at": "2026-03-10T08:45:05Z",
+    "cycle_hours": 6.8
+  },
+  {
+    "pr_number": 234,
+    "title": "Fix resume after retry failing with version_mismatch error",
+    "author": "simon",
+    "opened_at": "2026-03-10T09:09:19Z",
+    "merged_at": "2026-03-10T09:18:30Z",
+    "cycle_hours": 0.2
+  },
+  {
+    "pr_number": 235,
+    "title": "Fix font-size too small on home.planexe.org",
+    "author": "simon",
+    "opened_at": "2026-03-10T09:38:23Z",
+    "merged_at": "2026-03-10T09:51:45Z",
+    "cycle_hours": 0.2
+  },
+  {
+    "pr_number": 236,
+    "title": "Classify error messages in usage_metrics.jsonl",
+    "author": "simon",
+    "opened_at": "2026-03-10T17:42:30Z",
+    "merged_at": "2026-03-10T17:55:05Z",
+    "cycle_hours": 0.2
+  },
+  {
+    "pr_number": 237,
+    "title": "Replace ValueError with LLMChatError for error traceability",
+    "author": "simon",
+    "opened_at": "2026-03-10T18:10:19Z",
+    "merged_at": "2026-03-10T20:27:33Z",
+    "cycle_hours": 2.3
+  },
+  {
+    "pr_number": 238,
+    "title": "feat: extract JSON from thinking preamble in ThinkingAwareOpenAILike",
+    "author": "mark",
+    "opened_at": "2026-03-10T21:23:04Z",
+    "merged_at": "2026-03-10T21:25:24Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 239,
+    "title": "Fix missing error_id in usage_metrics.jsonl for failed LLM attempts",
+    "author": "simon",
+    "opened_at": "2026-03-11T00:38:10Z",
+    "merged_at": "2026-03-11T01:03:38Z",
+    "cycle_hours": 0.4
+  },
+  {
+    "pr_number": 240,
+    "title": "Add proposal 114: MCP interface issues from agent stress test",
+    "author": "simon",
+    "opened_at": "2026-03-11T11:50:02Z",
+    "merged_at": "2026-03-11T11:51:43Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 241,
+    "title": "Update proposal 111 with MCP issues from stress test",
+    "author": "simon",
+    "opened_at": "2026-03-11T11:57:32Z",
+    "merged_at": "2026-03-11T11:59:08Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 242,
+    "title": "Add duplicate detection for plan_create",
+    "author": "simon",
+    "opened_at": "2026-03-11T12:20:03Z",
+    "merged_at": "2026-03-11T14:08:02Z",
+    "cycle_hours": 1.8
+  },
+  {
+    "pr_number": 243,
+    "title": "Update roadmap status across proposals 111, 102, 109",
+    "author": "simon",
+    "opened_at": "2026-03-11T15:22:02Z",
+    "merged_at": "2026-03-11T15:24:18Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 244,
+    "title": "Add stop_reason field to plan_status (Proposal 114-I1)",
+    "author": "simon",
+    "opened_at": "2026-03-11T16:07:53Z",
+    "merged_at": "2026-03-11T19:58:51Z",
+    "cycle_hours": 3.8
+  },
+  {
+    "pr_number": 245,
+    "title": "example prompt added",
+    "author": "simon",
+    "opened_at": "2026-03-11T20:57:54Z",
+    "merged_at": "2026-03-11T20:59:33Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 246,
+    "title": "Incorporate v3 agent perception feedback (local vs remote)",
+    "author": "simon",
+    "opened_at": "2026-03-11T22:14:41Z",
+    "merged_at": "2026-03-11T22:16:16Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 247,
+    "title": "Add failure diagnostics to plan_status (proposal 114-I2)",
+    "author": "simon",
+    "opened_at": "2026-03-11T22:28:02Z",
+    "merged_at": "2026-03-12T14:41:59Z",
+    "cycle_hours": 16.2
+  },
+  {
+    "pr_number": 248,
+    "title": "Document I5 findings: MCP notifications blocked by client support",
+    "author": "simon",
+    "opened_at": "2026-03-12T23:51:17Z",
+    "merged_at": "2026-03-13T01:58:11Z",
+    "cycle_hours": 2.1
+  },
+  {
+    "pr_number": 249,
+    "title": "Merge v4 agent perception feedback into proposal 114",
+    "author": "simon",
+    "opened_at": "2026-03-13T02:06:13Z",
+    "merged_at": "2026-03-13T02:17:18Z",
+    "cycle_hours": 0.2
+  },
+  {
+    "pr_number": 250,
+    "title": "Add last_progress_at to plan_status for stall detection (I7)",
+    "author": "simon",
+    "opened_at": "2026-03-13T15:17:31Z",
+    "merged_at": "2026-03-13T15:29:13Z",
+    "cycle_hours": 0.2
+  },
+  {
+    "pr_number": 251,
+    "title": "Update plan and add MCP/website roadmap proposals",
+    "author": "simon",
+    "opened_at": "2026-03-13T16:37:16Z",
+    "merged_at": "2026-03-13T16:38:56Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 252,
+    "title": "Add example plan prompts",
+    "author": "simon",
+    "opened_at": "2026-03-13T18:04:18Z",
+    "merged_at": "2026-03-13T18:06:03Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 253,
+    "title": "Add proposal 117: system prompt optimizer",
+    "author": "simon",
+    "opened_at": "2026-03-13T20:39:41Z",
+    "merged_at": "2026-03-13T20:41:26Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 254,
+    "title": "fix: treat None structured response as transient error for retry",
+    "author": "mark",
+    "opened_at": "2026-03-13T21:10:55Z",
+    "merged_at": "2026-03-13T21:13:38Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 255,
+    "title": "docs: feedback on proposal 117 (system prompt optimizer)",
+    "author": "mark",
+    "opened_at": "2026-03-13T21:14:42Z",
+    "merged_at": "2026-03-13T21:39:06Z",
+    "cycle_hours": 0.4
+  },
+  {
+    "pr_number": 256,
+    "title": "feat: add native Anthropic support with Claude Code OAuth token auto-detection",
+    "author": "mark",
+    "opened_at": "2026-03-13T21:27:53Z",
+    "merged_at": "2026-03-13T22:08:29Z",
+    "cycle_hours": 0.7
+  },
+  {
+    "pr_number": 257,
+    "title": "feat: expand Anthropic config — all model tiers, thinking variants, improved docs",
+    "author": "mark",
+    "opened_at": "2026-03-13T22:14:28Z",
+    "merged_at": "2026-03-13T22:17:50Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 258,
+    "title": "docs: update proposal 117 with status and repo link",
+    "author": "simon",
+    "opened_at": "2026-03-13T22:22:31Z",
+    "merged_at": "2026-03-13T22:28:05Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 260,
+    "title": "fix: preserve OAuth beta header in beta.messages.parse() calls",
+    "author": "mark",
+    "opened_at": "2026-03-13T22:35:35Z",
+    "merged_at": "2026-03-13T22:45:12Z",
+    "cycle_hours": 0.2
+  },
+  {
+    "pr_number": 262,
+    "title": "fix: replace OAuth beta header wrapper with httpx event hook",
+    "author": "mark",
+    "opened_at": "2026-03-13T22:49:03Z",
+    "merged_at": "2026-03-13T22:53:33Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 263,
+    "title": "feat: add prompt optimizer runner for IdentifyPotentialLevers",
+    "author": "simon",
+    "opened_at": "2026-03-13T23:27:40Z",
+    "merged_at": "2026-03-14T03:56:55Z",
+    "cycle_hours": 4.5
+  },
+  {
+    "pr_number": 264,
+    "title": "fix: record usage metrics for successful LLM calls",
+    "author": "simon",
+    "opened_at": "2026-03-14T12:39:17Z",
+    "merged_at": "2026-03-14T12:55:26Z",
+    "cycle_hours": 0.3
+  },
+  {
+    "pr_number": 265,
+    "title": "docs: update proposal 117 with Anthropic findings",
+    "author": "simon",
+    "opened_at": "2026-03-14T12:58:22Z",
+    "merged_at": "2026-03-14T13:02:23Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 266,
+    "title": "fix: remove GLM models from llm_config",
+    "author": "mark",
+    "opened_at": "2026-03-14T13:42:32Z",
+    "merged_at": "2026-03-14T14:04:58Z",
+    "cycle_hours": 0.4
+  },
+  {
+    "pr_number": 267,
+    "title": "docs: update proposal 117 with analysis status and next steps",
+    "author": "simon",
+    "opened_at": "2026-03-14T15:46:36Z",
+    "merged_at": "2026-03-14T15:48:17Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 268,
+    "title": "fix: remove doubled user prompt in identify_potential_levers (B1)",
+    "author": "simon",
+    "opened_at": "2026-03-14T16:44:18Z",
+    "merged_at": "2026-03-14T20:37:13Z",
+    "cycle_hours": 3.9
+  },
+  {
+    "pr_number": 269,
+    "title": "docs: update proposal 117 and prompt_optimizer docs after iteration 1",
+    "author": "simon",
+    "opened_at": "2026-03-14T20:48:02Z",
+    "merged_at": "2026-03-14T20:49:48Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 270,
+    "title": "fix: use message.content instead of model_dump() for assistant turn",
+    "author": "simon",
+    "opened_at": "2026-03-14T20:58:02Z",
+    "merged_at": "2026-03-14T21:53:31Z",
+    "cycle_hours": 0.9
+  },
+  {
+    "pr_number": 271,
+    "title": "Prod hotfix",
+    "author": "simon",
+    "opened_at": "2026-03-15T00:56:14Z",
+    "merged_at": "2026-03-15T00:58:34Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 272,
+    "title": "Replace bare 'more' follow-ups with novelty-aware prompts",
+    "author": "simon",
+    "opened_at": "2026-03-15T01:07:49Z",
+    "merged_at": "2026-03-15T02:09:23Z",
+    "cycle_hours": 1
+  },
+  {
+    "pr_number": 273,
+    "title": "Remove exemplar strings from prompt, make wrapper fields optional",
+    "author": "simon",
+    "opened_at": "2026-03-15T02:11:43Z",
+    "merged_at": "2026-03-15T03:25:40Z",
+    "cycle_hours": 1.2
+  },
+  {
+    "pr_number": 274,
+    "title": "Align Pydantic field descriptions with system prompt",
+    "author": "simon",
+    "opened_at": "2026-03-15T03:30:43Z",
+    "merged_at": "2026-03-15T04:29:43Z",
+    "cycle_hours": 1
+  },
+  {
+    "pr_number": 275,
+    "title": "Fix consequences length target and review format",
+    "author": "simon",
+    "opened_at": "2026-03-15T12:06:16Z",
+    "merged_at": "2026-03-15T13:00:06Z",
+    "cycle_hours": 0.9
+  },
+  {
+    "pr_number": 276,
+    "title": "Enforce schema contract: levers count + required summary",
+    "author": "simon",
+    "opened_at": "2026-03-15T13:02:14Z",
+    "merged_at": "2026-03-15T13:55:19Z",
+    "cycle_hours": 0.9
+  },
+  {
+    "pr_number": 277,
+    "title": "My feedback to the prompt_optimizer, since it's trying to hit exactly…",
+    "author": "simon",
+    "opened_at": "2026-03-15T14:07:29Z",
+    "merged_at": "2026-03-15T14:09:12Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 278,
+    "title": "Fresh context per call, relax lever count to 5-7",
+    "author": "simon",
+    "opened_at": "2026-03-15T14:13:14Z",
+    "merged_at": "2026-03-15T16:03:01Z",
+    "cycle_hours": 1.8
+  },
+  {
+    "pr_number": 279,
+    "title": "Remove formulaic naming template from lever prompt",
+    "author": "simon",
+    "opened_at": "2026-03-15T16:11:29Z",
+    "merged_at": "2026-03-15T16:13:23Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 281,
+    "title": "Add post-merge quality gate for lever validation",
+    "author": "simon",
+    "opened_at": "2026-03-15T17:54:06Z",
+    "merged_at": "2026-03-15T17:55:41Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 282,
+    "title": "Remove keyword-based quality gate, keep dedup only",
+    "author": "simon",
+    "opened_at": "2026-03-15T19:25:51Z",
+    "merged_at": "2026-03-15T19:27:26Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 283,
+    "title": "Enable retry config in prompt optimizer runner",
+    "author": "simon",
+    "opened_at": "2026-03-15T19:40:42Z",
+    "merged_at": "2026-03-15T19:42:20Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 284,
+    "title": "Revert PR #283: remove RetryConfig from prompt optimizer runner",
+    "author": "simon",
+    "opened_at": "2026-03-15T21:27:10Z",
+    "merged_at": "2026-03-15T21:28:48Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 285,
+    "title": "Update prompt optimizer status through iteration 11",
+    "author": "simon",
+    "opened_at": "2026-03-15T21:56:28Z",
+    "merged_at": "2026-03-15T22:17:39Z",
+    "cycle_hours": 0.4
+  },
+  {
+    "pr_number": 286,
+    "title": "Remove max_length=7 hard constraint on levers schema",
+    "author": "simon",
+    "opened_at": "2026-03-15T22:31:31Z",
+    "merged_at": "2026-03-16T00:24:36Z",
+    "cycle_hours": 1.9
+  },
+  {
+    "pr_number": 287,
+    "title": "Remove nemotron-3-nano-30b-a3b from llm_config profiles",
+    "author": "simon",
+    "opened_at": "2026-03-15T23:44:58Z",
+    "merged_at": "2026-03-16T00:04:48Z",
+    "cycle_hours": 0.3
+  },
+  {
+    "pr_number": 288,
+    "title": "Fix zero cost for OpenAI/Anthropic models via fallback pricing",
+    "author": "simon",
+    "opened_at": "2026-03-16T00:29:29Z",
+    "merged_at": "2026-03-18T15:23:43Z",
+    "cycle_hours": 62.9
+  },
+  {
+    "pr_number": 289,
+    "title": "Add options count and review format validators to Lever",
+    "author": "simon",
+    "opened_at": "2026-03-16T00:36:35Z",
+    "merged_at": "2026-03-16T01:55:22Z",
+    "cycle_hours": 1.3
+  },
+  {
+    "pr_number": 290,
+    "title": "Fix: redact sensitive env vars in startup logs",
+    "author": "simon",
+    "opened_at": "2026-03-16T01:14:40Z",
+    "merged_at": "2026-03-16T01:17:01Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 291,
+    "title": "Fix db migration order: create tables before ALTER TABLE migrations",
+    "author": "simon",
+    "opened_at": "2026-03-16T01:16:11Z",
+    "merged_at": "2026-03-16T03:06:22Z",
+    "cycle_hours": 1.8
+  },
+  {
+    "pr_number": 292,
+    "title": "Recover partial results when a lever generation call fails",
+    "author": "simon",
+    "opened_at": "2026-03-16T01:56:28Z",
+    "merged_at": "2026-03-16T03:01:26Z",
+    "cycle_hours": 1.1
+  },
+  {
+    "pr_number": 293,
+    "title": "Update prompt optimizer AGENTS.md and README.md through iteration 14",
+    "author": "simon",
+    "opened_at": "2026-03-16T03:03:15Z",
+    "merged_at": "2026-03-16T03:09:23Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 294,
+    "title": "fix: consolidate review_lever prompt to prevent format alternation",
+    "author": "simon",
+    "opened_at": "2026-03-16T03:16:30Z",
+    "merged_at": "2026-03-16T11:40:02Z",
+    "cycle_hours": 8.4
+  },
+  {
+    "pr_number": 295,
+    "title": "fix: continue loop after call failure instead of breaking",
+    "author": "simon",
+    "opened_at": "2026-03-16T11:43:56Z",
+    "merged_at": "2026-03-16T12:19:57Z",
+    "cycle_hours": 0.6
+  },
+  {
+    "pr_number": 296,
+    "title": "fix: auto-correct review_lever before hard-rejecting",
+    "author": "simon",
+    "opened_at": "2026-03-16T12:37:27Z",
+    "merged_at": "2026-03-16T13:16:16Z",
+    "cycle_hours": 0.6
+  },
+  {
+    "pr_number": 297,
+    "title": "fix: simplify lever prompt to restore content quality",
+    "author": "simon",
+    "opened_at": "2026-03-16T13:32:07Z",
+    "merged_at": "2026-03-16T15:04:38Z",
+    "cycle_hours": 1.5
+  },
+  {
+    "pr_number": 298,
+    "title": "docs: add OPTIMIZE_INSTRUCTIONS to identify_potential_levers",
+    "author": "simon",
+    "opened_at": "2026-03-16T15:26:47Z",
+    "merged_at": "2026-03-16T15:28:42Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 299,
+    "title": "fix: remove bracket placeholders and fragile English-only validator",
+    "author": "simon",
+    "opened_at": "2026-03-16T15:36:45Z",
+    "merged_at": "2026-03-16T16:37:19Z",
+    "cycle_hours": 1
+  },
+  {
+    "pr_number": 300,
+    "title": "docs: add OPTIMIZE_INSTRUCTIONS to premise_attack.py",
+    "author": "mark",
+    "opened_at": "2026-03-16T16:03:12Z",
+    "merged_at": "2026-03-16T16:38:29Z",
+    "cycle_hours": 0.6
+  },
+  {
+    "pr_number": 301,
+    "title": "docs: add OPTIMIZE_INSTRUCTIONS to identify_risks.py",
+    "author": "mark",
+    "opened_at": "2026-03-16T16:07:22Z",
+    "merged_at": "2026-03-16T16:49:49Z",
+    "cycle_hours": 0.7
+  },
+  {
+    "pr_number": 302,
+    "title": "docs: add OPTIMIZE_INSTRUCTIONS to review_team.py",
+    "author": "mark",
+    "opened_at": "2026-03-16T16:12:40Z",
+    "merged_at": "2026-03-16T16:28:02Z",
+    "cycle_hours": 0.3
+  },
+  {
+    "pr_number": 303,
+    "title": "docs: add OPTIMIZE_INSTRUCTIONS to make_assumptions.py",
+    "author": "mark",
+    "opened_at": "2026-03-16T16:13:42Z",
+    "merged_at": "2026-03-16T16:51:08Z",
+    "cycle_hours": 0.6
+  },
+  {
+    "pr_number": 304,
+    "title": "docs: add OPTIMIZE_INSTRUCTIONS to premortem.py",
+    "author": "mark",
+    "opened_at": "2026-03-16T16:15:10Z",
+    "merged_at": "2026-03-16T16:17:28Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 305,
+    "title": "docs: add OPTIMIZE_INSTRUCTIONS to expert_criticism.py",
+    "author": "mark",
+    "opened_at": "2026-03-16T16:18:07Z",
+    "merged_at": "2026-03-16T16:25:36Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 306,
+    "title": "docs: add OPTIMIZE_INSTRUCTIONS to self_audit.py",
+    "author": "mark",
+    "opened_at": "2026-03-16T16:19:03Z",
+    "merged_at": "2026-03-16T16:36:30Z",
+    "cycle_hours": 0.3
+  },
+  {
+    "pr_number": 307,
+    "title": "docs: add OPTIMIZE_INSTRUCTIONS to create_wbs_level3.py",
+    "author": "mark",
+    "opened_at": "2026-03-16T16:32:43Z",
+    "merged_at": "2026-03-16T16:34:33Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 308,
+    "title": "fix: prevent parallel runners from sharing a history directory",
+    "author": "simon",
+    "opened_at": "2026-03-16T16:40:52Z",
+    "merged_at": "2026-03-16T16:42:46Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 309,
+    "title": "fix: add option-quality reminder to call-2/3 prompts",
+    "author": "simon",
+    "opened_at": "2026-03-16T16:53:30Z",
+    "merged_at": "2026-03-16T18:04:01Z",
+    "cycle_hours": 1.2
+  },
+  {
+    "pr_number": 310,
+    "title": "docs: add OPTIMIZE_INSTRUCTIONS to expert_finder.py",
+    "author": "mark",
+    "opened_at": "2026-03-16T17:03:31Z",
+    "merged_at": "2026-03-16T17:35:19Z",
+    "cycle_hours": 0.5
+  },
+  {
+    "pr_number": 311,
+    "title": "docs: add optimizer roadmap",
+    "author": "mark",
+    "opened_at": "2026-03-16T17:03:44Z",
+    "merged_at": "2026-03-16T17:42:05Z",
+    "cycle_hours": 0.6
+  },
+  {
+    "pr_number": 312,
+    "title": "docs: add OPTIMIZE_INSTRUCTIONS to candidate_scenarios.py",
+    "author": "mark",
+    "opened_at": "2026-03-16T17:08:11Z",
+    "merged_at": "2026-03-16T17:34:01Z",
+    "cycle_hours": 0.4
+  },
+  {
+    "pr_number": 313,
+    "title": "fix: add anti-fabrication reminder to call-2/3 prompts",
+    "author": "simon",
+    "opened_at": "2026-03-16T18:05:20Z",
+    "merged_at": "2026-03-16T19:08:30Z",
+    "cycle_hours": 1.1
+  },
+  {
+    "pr_number": 314,
+    "title": "rename: prompt_optimizer → self_improve",
+    "author": "simon",
+    "opened_at": "2026-03-16T19:15:59Z",
+    "merged_at": "2026-03-16T19:20:01Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 315,
+    "title": "feat: emit partial_recovery event in self_improve runner",
+    "author": "simon",
+    "opened_at": "2026-03-16T19:42:58Z",
+    "merged_at": "2026-03-16T19:44:42Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 316,
+    "title": "fix: replace two-bullet review_lever prompt with single flowing example",
+    "author": "simon",
+    "opened_at": "2026-03-16T19:57:25Z",
+    "merged_at": "2026-03-17T00:08:30Z",
+    "cycle_hours": 4.2
+  },
+  {
+    "pr_number": 318,
+    "title": "feat: add CLI bootstrap script for direct pipeline invocation",
+    "author": "mark",
+    "opened_at": "2026-03-16T22:26:50Z",
+    "merged_at": "2026-03-17T00:28:28Z",
+    "cycle_hours": 2
+  },
+  {
+    "pr_number": 323,
+    "title": "fix: OPTIMIZE_INSTRUCTIONS for IdentifyDocumentsTask to prevent JSON truncation",
+    "author": "mark",
+    "opened_at": "2026-03-16T23:36:06Z",
+    "merged_at": "2026-03-16T23:57:51Z",
+    "cycle_hours": 0.4
+  },
+  {
+    "pr_number": 324,
+    "title": "feat: skip fictional biography enrichment in FAST_BUT_SKIP_DETAILS mode",
+    "author": "mark",
+    "opened_at": "2026-03-16T23:37:43Z",
+    "merged_at": "2026-03-17T00:47:58Z",
+    "cycle_hours": 1.2
+  },
+  {
+    "pr_number": 325,
+    "title": "docs: replace python -m invocations with planexe CLI",
+    "author": "mark",
+    "opened_at": "2026-03-17T00:32:55Z",
+    "merged_at": "2026-03-17T00:35:49Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 326,
+    "title": "fix: add second review_lever example to break template lock",
+    "author": "simon",
+    "opened_at": "2026-03-17T00:43:43Z",
+    "merged_at": "2026-03-17T02:13:40Z",
+    "cycle_hours": 1.5
+  },
+  {
+    "pr_number": 327,
+    "title": "docs: update self_improve docs for new analysis pipeline",
+    "author": "simon",
+    "opened_at": "2026-03-17T00:49:45Z",
+    "merged_at": "2026-03-17T00:51:50Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 328,
+    "title": "docs: proposal for two-pass pipeline with adversarial refinement",
+    "author": "mark",
+    "opened_at": "2026-03-17T01:05:54Z",
+    "merged_at": "2026-03-17T01:35:58Z",
+    "cycle_hours": 0.5
+  },
+  {
+    "pr_number": 329,
+    "title": "docs: update iteration history through iteration 23",
+    "author": "simon",
+    "opened_at": "2026-03-17T02:19:37Z",
+    "merged_at": "2026-03-17T02:22:53Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 330,
+    "title": "fix: move set_usage_metrics_path inside _file_lock in runner",
+    "author": "simon",
+    "opened_at": "2026-03-17T02:33:43Z",
+    "merged_at": "2026-03-17T02:36:24Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 331,
+    "title": "fix: remove unused summary field and slim call-2/3 prefix",
+    "author": "simon",
+    "opened_at": "2026-03-17T02:50:24Z",
+    "merged_at": "2026-03-17T11:41:08Z",
+    "cycle_hours": 8.8
+  },
+  {
+    "pr_number": 332,
+    "title": "revert: undo untested identify_potential_levers.py content changes",
+    "author": "simon",
+    "opened_at": "2026-03-17T11:47:22Z",
+    "merged_at": "2026-03-17T11:49:17Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 334,
+    "title": "fix: remove unused summary field, slim call-2/3 prefix",
+    "author": "simon",
+    "opened_at": "2026-03-17T16:57:07Z",
+    "merged_at": "2026-03-17T22:25:00Z",
+    "cycle_hours": 5.5
+  },
+  {
+    "pr_number": 335,
+    "title": "feat: add self_improve_sequential flag to local models",
+    "author": "simon",
+    "opened_at": "2026-03-17T19:03:55Z",
+    "merged_at": "2026-03-17T19:07:22Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 336,
+    "title": "feat: per-plan log files in runner",
+    "author": "simon",
+    "opened_at": "2026-03-17T21:52:55Z",
+    "merged_at": "2026-03-17T21:54:40Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 337,
+    "title": "fix: replace generic review_lever examples with domain-specific ones",
+    "author": "simon",
+    "opened_at": "2026-03-17T22:53:03Z",
+    "merged_at": "2026-03-17T23:40:28Z",
+    "cycle_hours": 0.8
+  },
+  {
+    "pr_number": 338,
+    "title": "docs: update self_improve docs for iterations 24-26",
+    "author": "simon",
+    "opened_at": "2026-03-17T23:51:16Z",
+    "merged_at": "2026-03-17T23:53:46Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 339,
+    "title": "fix: relax option count validator, raise review min_length, clean up dead code",
+    "author": "simon",
+    "opened_at": "2026-03-18T01:35:28Z",
+    "merged_at": "2026-03-18T06:36:00Z",
+    "cycle_hours": 5
+  },
+  {
+    "pr_number": 340,
+    "title": "fix: remove template-lock phrase and deduplicate examples",
+    "author": "simon",
+    "opened_at": "2026-03-18T11:42:00Z",
+    "merged_at": "2026-03-18T13:07:42Z",
+    "cycle_hours": 1.4
+  },
+  {
+    "pr_number": 341,
+    "title": "timeout handling",
+    "author": "simon",
+    "opened_at": "2026-03-18T16:13:43Z",
+    "merged_at": "2026-03-18T16:15:25Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 343,
+    "title": "docs: lever pipeline implementation proposal",
+    "author": "simon",
+    "opened_at": "2026-03-18T18:30:52Z",
+    "merged_at": "2026-03-18T18:32:47Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 344,
+    "title": "Remove register_prompt.py, update self_improve docs",
+    "author": "simon",
+    "opened_at": "2026-03-18T18:49:33Z",
+    "merged_at": "2026-03-18T18:51:18Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 345,
+    "title": "Remove remaining register_prompt references",
+    "author": "simon",
+    "opened_at": "2026-03-18T18:55:33Z",
+    "merged_at": "2026-03-18T18:57:15Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 347,
+    "title": "feat: add ResponsesAPILLM class for OpenAI Responses API support",
+    "author": "mark",
+    "opened_at": "2026-03-18T21:01:27Z",
+    "merged_at": "2026-03-18T21:35:30Z",
+    "cycle_hours": 0.6
+  },
+  {
+    "pr_number": 348,
+    "title": "fix: harden schema patching for Responses API strict mode",
+    "author": "mark",
+    "opened_at": "2026-03-18T21:48:02Z",
+    "merged_at": "2026-03-19T13:25:09Z",
+    "cycle_hours": 15.6
+  },
+  {
+    "pr_number": 350,
+    "title": "feat: add mcp_critic standalone MCP server for PremiseAttack, Premortem, and SWOT",
+    "author": "mark",
+    "opened_at": "2026-03-18T23:41:13Z",
+    "merged_at": "2026-03-19T16:03:43Z",
+    "cycle_hours": 16.4
+  },
+  {
+    "pr_number": 351,
+    "title": "fix: adaptive retry loop, haiku max_tokens, relax review_lever",
+    "author": "simon",
+    "opened_at": "2026-03-19T00:37:51Z",
+    "merged_at": "2026-03-19T01:24:52Z",
+    "cycle_hours": 0.8
+  },
+  {
+    "pr_number": 352,
+    "title": "fix: correct section reference comment in LeverCleaned",
+    "author": "simon",
+    "opened_at": "2026-03-19T01:30:33Z",
+    "merged_at": "2026-03-19T01:32:11Z",
+    "cycle_hours": 0
+  },
+  {
+    "pr_number": 353,
+    "title": "fix: replace review_lever examples to break template lock",
+    "author": "simon",
+    "opened_at": "2026-03-19T10:56:06Z",
+    "merged_at": "2026-03-19T11:43:18Z",
+    "cycle_hours": 0.8
+  },
+  {
+    "pr_number": 357,
+    "title": "fix: B1 step-gate, medical example, review cap, first-call retry",
+    "author": "simon",
+    "opened_at": "2026-03-19T15:41:38Z",
+    "merged_at": "2026-03-19T16:35:07Z",
+    "cycle_hours": 0.9
+  },
+  {
+    "pr_number": 358,
+    "title": "fix: remove 'core tension' template lock from field description",
+    "author": "simon",
+    "opened_at": "2026-03-19T17:09:51Z",
+    "merged_at": "2026-03-19T17:56:26Z",
+    "cycle_hours": 0.8
+  },
+  {
+    "pr_number": 359,
+    "title": "fix: update stale LeverCleaned.review description, fix docstring",
+    "author": "simon",
+    "opened_at": "2026-03-19T18:03:41Z",
+    "merged_at": "2026-03-19T18:11:36Z",
+    "cycle_hours": 0.1
+  },
+  {
+    "pr_number": 360,
+    "title": "docs: add clarifying comments to identify_potential_levers.py",
+    "author": "simon",
+    "opened_at": "2026-03-19T18:23:06Z",
+    "merged_at": "2026-03-19T18:24:41Z",
+    "cycle_hours": 0
+  }
+]

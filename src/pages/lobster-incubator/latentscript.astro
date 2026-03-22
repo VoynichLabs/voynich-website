@@ -1,0 +1,549 @@
+---
+// Author: Bubba (OpenClaw)
+// Date: 2026-03-03
+// PURPOSE: Customer-facing overview + playground for LATENTSCRIPT v0.1
+// MOVED from /docs/latentscript — this is a concept/proposal, not a live product.
+// Removed from main nav. Lives in the incubator now.
+import Base from '../../layouts/Base.astro';
+
+const examples = {
+  shift: `set max_norm = 15.0;
+set max_shift_alpha = 2.0;
+set max_decode_tokens = 64;
+
+let p : prompt = "Write an email to my manager about schedule changes.";
+let v = encode(p, encoder="emb:email-style", normalize=true) @space("emb:email-style");
+
+let formal_dir = encode("more formal and concise", encoder="emb:email-style") @space("emb:email-style");
+let v2 = shift(v, formal_dir, alpha=1.2);
+
+constraint bounded : norm(v2) <= 15.0;
+
+let out = decode(v2, decoder="llm:text", temperature=0.4, max_tokens=64);
+emit out as "text";`,
+
+  orthogonalize: `set max_norm = 25.0;
+
+let base = encode("A helpful assistant response", encoder="act:gpt:layer12") @space("act:gpt:layer12");
+let fun  = encode("more playful tone", encoder="act:gpt:layer12") @space("act:gpt:layer12");
+let safe = encode("avoid personal data", encoder="act:gpt:layer12") @space("act:gpt:layer12");
+
+let mixed = mix(base, fun, t=0.35);
+let cleaned = orthogonalize(mixed, against=safe);
+
+constraint keep_norm : norm(cleaned) <= 25.0;
+constraint keep_away : abs(dot(cleaned, safe)) <= 1e-4;
+
+emit cleaned as "json";`,
+
+  project: `// basis columns represent a learned subspace (e.g., SAE features)
+let basis = load_basis("run42_layer10_basis") ; // runtime extension
+let v = encode("Write like Hemingway", encoder="act:gpt:layer10") @space("act:gpt:layer10");
+
+let v_proj = project(v, onto=basis, mode="subspace");
+constraint bounded : norm(v_proj) <= 10.0;
+emit v_proj as "json";`,
+} as const;
+---
+
+<Base
+  title="LATENTSCRIPT v0.1"
+  description="LATENTSCRIPT is a small, auditable DSL for declaring latent-space manipulations (vector ops, projections, orthogonalization) with validator-friendly safety constraints."
+  ogType="article"
+  twitterCard="summary_large_image"
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-950 to-blue-950/40">
+    <div class="absolute inset-0 opacity-25" style="background-image: linear-gradient(rgba(56, 189, 248, 0.10) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 189, 248, 0.10) 1px, transparent 1px); background-size: 56px 56px;"></div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-20">
+      <div class="max-w-3xl">
+        <p class="font-mono text-xs text-slate-400">/docs/latentscript</p>
+        <h1 class="mt-3 text-5xl md:text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-cyan-300 to-emerald-300">
+          LATENTSCRIPT v0.1
+        </h1>
+        <p class="mt-6 text-xl text-slate-200 leading-relaxed">
+          A small, typed DSL for <span class="text-white font-semibold">latent-space manipulation</span> —
+          with explicit inputs/outputs, deterministic validation, and safety gates.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#playground" class="px-5 py-2.5 rounded-lg bg-sky-500/90 hover:bg-sky-400 text-slate-950 font-semibold transition-colors">Try the playground →</a>
+          <a href="#spec" class="px-5 py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-100 font-semibold border border-slate-700 transition-colors">Read the spec</a>
+          <a href="#pricing" class="px-5 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-100 font-semibold border border-slate-700 transition-colors">Pricing</a>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
+            <p class="font-mono text-xs text-slate-400">Design goal</p>
+            <p class="mt-2 text-slate-100 font-semibold">Auditable latent ops</p>
+            <p class="mt-1 text-sm text-slate-400">No hidden side-effects. Every transform is explicit.</p>
+          </div>
+          <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
+            <p class="font-mono text-xs text-slate-400">Core idea</p>
+            <p class="mt-2 text-slate-100 font-semibold">Typed vector spaces</p>
+            <p class="mt-1 text-sm text-slate-400">Dimensions + space tags are validated.</p>
+          </div>
+          <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
+            <p class="font-mono text-xs text-slate-400">Safety</p>
+            <p class="mt-2 text-slate-100 font-semibold">Constraints + gated emit</p>
+            <p class="mt-1 text-sm text-slate-400">No decode/emit unless constraints pass.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Spec -->
+  <section id="spec" class="py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex items-end justify-between gap-6 flex-wrap">
+        <div>
+          <h2 class="text-3xl font-bold text-white">Spec & syntax overview</h2>
+          <p class="mt-3 text-slate-400 max-w-3xl">
+            LATENTSCRIPT is typed, validator-first, and built for ML engineers doing prompt steering,
+            embedding/activation engineering, and latent-vector pipelines.
+          </p>
+        </div>
+        <div class="font-mono text-xs text-slate-500">
+          Status: v0.1 reference draft
+        </div>
+      </div>
+
+      <div class="mt-10 grid lg:grid-cols-2 gap-8">
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+          <h3 class="text-lg font-semibold text-white">Program structure</h3>
+          <ul class="mt-4 space-y-2 text-slate-300 text-sm">
+            <li><span class="font-mono text-slate-200">let name : type? = expr;</span> — bind values (single global scope in v0.1)</li>
+            <li><span class="font-mono text-slate-200">set key = literal;</span> — set safety + runtime policy knobs</li>
+            <li><span class="font-mono text-slate-200">constraint name? : predicate;</span> — hard safety checks</li>
+            <li><span class="font-mono text-slate-200">emit expr as "json"|"text";</span> — privileged output</li>
+          </ul>
+
+          <div class="mt-6 rounded-xl bg-slate-950 border border-slate-800 p-4">
+            <p class="font-mono text-xs text-slate-400">Minimal example</p>
+            <pre class="mt-3 text-xs overflow-auto text-slate-200"><code>set max_norm = 20.0;
+
+let p : prompt = "Make this more formal";
+let v = encode(p, encoder="emb:my-encoder") @space("emb:my-encoder");
+
+let dir = encode("more formal", encoder="emb:my-encoder") @space("emb:my-encoder");
+let v2 = shift(v, dir, alpha=1.0);
+
+constraint bounded : norm(v2) &lt;= 20.0;
+emit v2 as "json";</code></pre>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+          <h3 class="text-lg font-semibold text-white">Types & built-ins (v0.1)</h3>
+          <div class="mt-4 grid sm:grid-cols-2 gap-4 text-sm">
+            <div class="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+              <p class="font-mono text-xs text-slate-400">Value types</p>
+              <ul class="mt-2 space-y-1 text-slate-300">
+                <li><span class="font-mono text-slate-200">prompt</span></li>
+                <li><span class="font-mono text-slate-200">vec[d]</span> (space-tagged)</li>
+                <li><span class="font-mono text-slate-200">mat[d,k]</span> (optional in v0.1)</li>
+                <li><span class="font-mono text-slate-200">scalar</span> / <span class="font-mono text-slate-200">bool</span></li>
+              </ul>
+            </div>
+            <div class="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+              <p class="font-mono text-xs text-slate-400">Core built-ins</p>
+              <ul class="mt-2 space-y-1 text-slate-300">
+                <li><span class="font-mono text-slate-200">shift</span>, <span class="font-mono text-slate-200">mix</span></li>
+                <li><span class="font-mono text-slate-200">project</span>, <span class="font-mono text-slate-200">orthogonalize</span></li>
+                <li><span class="font-mono text-slate-200">dot</span>, <span class="font-mono text-slate-200">norm</span>, <span class="font-mono text-slate-200">cosine</span></li>
+                <li><span class="font-mono text-slate-200">encode</span> / <span class="font-mono text-slate-200">decode</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-6 rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+            <p class="font-mono text-xs text-slate-400">Safety model (validator-first)</p>
+            <ul class="mt-2 space-y-2 text-slate-300 text-sm">
+              <li>Hard bounds: <span class="font-mono text-slate-200">max_norm</span>, <span class="font-mono text-slate-200">max_shift_alpha</span>, <span class="font-mono text-slate-200">max_decode_tokens</span></li>
+              <li>Space compatibility via <span class="font-mono text-slate-200">@space("...")</span> tags</li>
+              <li><span class="font-mono text-slate-200">emit</span> is privileged — runtimes should refuse decode/emit if any constraint fails</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Competitive matrix -->
+  <section class="py-20 bg-slate-900/30 border-y border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl font-bold text-white">Why LATENTSCRIPT</h2>
+      <p class="mt-3 text-slate-400 max-w-3xl">
+        Most teams start with notebooks, prompt templates, or ad-hoc vector scripts. That works — until you need audits,
+        reproducibility, and safety gates across environments.
+      </p>
+
+      <div class="mt-10 overflow-x-auto rounded-2xl border border-slate-800">
+        <table class="min-w-[900px] w-full bg-slate-950/40 text-sm">
+          <thead>
+            <tr class="text-left text-slate-300 border-b border-slate-800">
+              <th class="p-4 font-mono text-xs uppercase tracking-wider">Approach</th>
+              <th class="p-4 font-mono text-xs uppercase tracking-wider">What it&apos;s great for</th>
+              <th class="p-4 font-mono text-xs uppercase tracking-wider">Where it breaks</th>
+              <th class="p-4 font-mono text-xs uppercase tracking-wider">LATENTSCRIPT advantage</th>
+            </tr>
+          </thead>
+          <tbody class="text-slate-200">
+            <tr class="border-b border-slate-900">
+              <td class="p-4 font-semibold">Raw prompt engineering</td>
+              <td class="p-4 text-slate-300">Fast iteration, simple style steering</td>
+              <td class="p-4 text-slate-300">Hard to quantify, brittle, no typed safety gates</td>
+              <td class="p-4 text-slate-300">Explicit transforms + constraints; reproducible intent</td>
+            </tr>
+            <tr class="border-b border-slate-900">
+              <td class="p-4 font-semibold">Notebooks + Python scripts</td>
+              <td class="p-4 text-slate-300">Research prototypes, full flexibility</td>
+              <td class="p-4 text-slate-300">Difficult to audit; policy enforcement is ad-hoc</td>
+              <td class="p-4 text-slate-300">Small surface area; validator-friendly; portable pipelines</td>
+            </tr>
+            <tr class="border-b border-slate-900">
+              <td class="p-4 font-semibold">LCEL / orchestration graphs</td>
+              <td class="p-4 text-slate-300">Tool routing, chains, agent workflows</td>
+              <td class="p-4 text-slate-300">Not a first-class language for latent geometry</td>
+              <td class="p-4 text-slate-300">Geometry primitives (project/orthogonalize) as core</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-semibold">Activation steering scripts</td>
+              <td class="p-4 text-slate-300">Feature-level control, SAE/probing workflows</td>
+              <td class="p-4 text-slate-300">Opaque policy; difficult to describe + share safely</td>
+              <td class="p-4 text-slate-300">Space tags + hard bounds + gated emit for safer sharing</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-8 grid md:grid-cols-3 gap-5">
+        <div class="rounded-2xl border border-slate-800 bg-slate-950/40 p-5">
+          <p class="font-mono text-xs text-slate-400">Operational win</p>
+          <p class="mt-2 font-semibold text-white">Auditability</p>
+          <p class="mt-2 text-sm text-slate-400">A small DSL is easier to diff, review, and gate than free-form code.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-800 bg-slate-950/40 p-5">
+          <p class="font-mono text-xs text-slate-400">Engineering win</p>
+          <p class="mt-2 font-semibold text-white">Portability</p>
+          <p class="mt-2 text-sm text-slate-400">Same program can target embeddings, activations, or SAE spaces via runtime backends.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-800 bg-slate-950/40 p-5">
+          <p class="font-mono text-xs text-slate-400">Safety win</p>
+          <p class="mt-2 font-semibold text-white">Constraint-first</p>
+          <p class="mt-2 text-sm text-slate-400">Hard bounds and explicit <span class="font-mono">emit</span> gating are built into the language.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Playground -->
+  <section id="playground" class="py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl font-bold text-white">Runnable examples</h2>
+      <p class="mt-3 text-slate-400 max-w-3xl">
+        This in-browser playground runs a lightweight validator + compiler preview (no model calls). It shows how a runtime would
+        interpret bindings, settings, and emissions.
+      </p>
+
+      <div class="mt-8 rounded-2xl border border-slate-800 bg-slate-900/30 overflow-hidden">
+        <div class="flex flex-wrap items-center justify-between gap-3 p-4 border-b border-slate-800">
+          <div class="flex flex-wrap gap-2">
+            <button class="ls-tab px-3 py-1.5 rounded-lg font-mono text-xs border border-slate-700 bg-slate-950/40 text-slate-200" data-example="shift">shift()</button>
+            <button class="ls-tab px-3 py-1.5 rounded-lg font-mono text-xs border border-slate-700 bg-slate-950/20 text-slate-300" data-example="orthogonalize">orthogonalize()</button>
+            <button class="ls-tab px-3 py-1.5 rounded-lg font-mono text-xs border border-slate-700 bg-slate-950/20 text-slate-300" data-example="project">project()</button>
+          </div>
+          <div class="flex items-center gap-2">
+            <button id="ls-run" class="px-4 py-2 rounded-lg bg-emerald-400/90 hover:bg-emerald-300 text-slate-950 font-semibold transition-colors">Validate & preview</button>
+            <button id="ls-reset" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-100 font-semibold transition-colors">Reset</button>
+          </div>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-0">
+          <div class="p-4 border-b lg:border-b-0 lg:border-r border-slate-800">
+            <p class="font-mono text-xs text-slate-400">Program (.ls)</p>
+            <textarea id="ls-editor" class="mt-3 w-full h-[420px] rounded-xl bg-slate-950/40 border border-slate-800 p-4 font-mono text-xs text-slate-200 leading-relaxed focus:outline-none focus:ring-2 focus:ring-sky-400/40"></textarea>
+            <p class="mt-3 text-xs text-slate-500">
+              Tip: the preview compiler understands <span class="font-mono">set</span>, <span class="font-mono">let</span>, <span class="font-mono">constraint</span>, <span class="font-mono">emit</span>, and simple annotations like <span class="font-mono">@space("...")</span>.
+            </p>
+          </div>
+
+          <div class="p-4">
+            <p class="font-mono text-xs text-slate-400">Preview output</p>
+            <div class="mt-3 grid gap-4">
+              <div class="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+                <p class="font-mono text-xs text-slate-400">Validation</p>
+                <pre id="ls-validation" class="mt-2 text-xs text-slate-200 whitespace-pre-wrap"></pre>
+              </div>
+              <div class="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+                <p class="font-mono text-xs text-slate-400">Compiled manifest (preview)</p>
+                <pre id="ls-manifest" class="mt-2 text-xs text-slate-200 overflow-auto"></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 text-xs text-slate-500">
+        Note: a production runtime would execute <span class="font-mono">encode</span>/<span class="font-mono">decode</span> against a configured backend.
+        This page intentionally runs no external calls.
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-20 bg-gradient-to-br from-slate-950 via-slate-950 to-emerald-950/20 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex items-end justify-between gap-6 flex-wrap">
+        <div>
+          <h2 class="text-3xl font-bold text-white">Pricing</h2>
+          <p class="mt-3 text-slate-400 max-w-3xl">
+            Validator-first tooling is free. Production runtimes (model backends, policy modules, and governance) are available as hosted or enterprise deployments.
+          </p>
+        </div>
+        <p class="font-mono text-xs text-slate-500">LATENTSCRIPT v0.1 tiers (draft)</p>
+      </div>
+
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+          <p class="font-mono text-xs text-slate-400">Starter</p>
+          <p class="mt-3 text-3xl font-bold text-white">$0</p>
+          <p class="mt-2 text-sm text-slate-400">Parser + validator for local workflows.</p>
+          <ul class="mt-6 space-y-2 text-sm text-slate-300">
+            <li>• Reference grammar + AST</li>
+            <li>• Static checks: types/dims/space tags</li>
+            <li>• Constraint evaluation hooks</li>
+          </ul>
+          <div class="mt-8">
+            <a href="#playground" class="inline-flex px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-100 font-semibold transition-colors">Use the playground</a>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-emerald-500/30 bg-emerald-950/20 p-6">
+          <p class="font-mono text-xs text-emerald-300">Pro (hosted)</p>
+          <p class="mt-3 text-3xl font-bold text-white">$99<span class="text-lg text-slate-400">/seat/mo</span></p>
+          <p class="mt-2 text-sm text-slate-400">Production runtime with backend connectors.</p>
+          <ul class="mt-6 space-y-2 text-sm text-slate-200">
+            <li>• Hosted validator + policy gating</li>
+            <li>• Backend connectors (embeddings / activations / SAE)</li>
+            <li>• Program registry + versioning</li>
+            <li>• Usage analytics & audit logs</li>
+          </ul>
+          <div class="mt-8">
+            <a href="/collaborators" class="inline-flex px-4 py-2 rounded-lg bg-emerald-400/90 hover:bg-emerald-300 text-slate-950 font-semibold transition-colors">Talk to us →</a>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+          <p class="font-mono text-xs text-slate-400">Enterprise</p>
+          <p class="mt-3 text-3xl font-bold text-white">Custom</p>
+          <p class="mt-2 text-sm text-slate-400">On-prem + governance integrations.</p>
+          <ul class="mt-6 space-y-2 text-sm text-slate-300">
+            <li>• On-prem deployment + SSO</li>
+            <li>• Policy modules for regulated domains</li>
+            <li>• Custom validators (space allowlists, content gates)</li>
+            <li>• SLA + dedicated support</li>
+          </ul>
+          <div class="mt-8">
+            <a href="/collaborators" class="inline-flex px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-100 font-semibold transition-colors">Contact sales</a>
+          </div>
+        </div>
+      </div>
+
+      <p class="mt-10 text-xs text-slate-500 max-w-4xl">
+        Pricing shown is a draft for presentation purposes. Final tiers depend on which model backends, vector spaces, and compliance requirements your deployment needs.
+      </p>
+    </div>
+  </section>
+
+  <script type="module" is:inline>
+    const EXAMPLES = (${JSON.stringify(examples)});
+
+    const editor = document.getElementById('ls-editor');
+    const validationEl = document.getElementById('ls-validation');
+    const manifestEl = document.getElementById('ls-manifest');
+    const runBtn = document.getElementById('ls-run');
+    const resetBtn = document.getElementById('ls-reset');
+
+    let currentExample = 'shift';
+
+    function setActiveTab(name) {
+      currentExample = name;
+      document.querySelectorAll('.ls-tab').forEach((btn) => {
+        const isActive = btn.dataset.example === name;
+        btn.className = `ls-tab px-3 py-1.5 rounded-lg font-mono text-xs border border-slate-700 transition-colors ${isActive ? 'bg-slate-950/40 text-slate-200' : 'bg-slate-950/20 text-slate-300 hover:text-slate-100'}`;
+      });
+      editor.value = EXAMPLES[name] || '';
+      validationEl.textContent = 'Ready.';
+      manifestEl.textContent = '';
+    }
+
+    function stripComments(line) {
+      const idx = line.indexOf('//');
+      return (idx >= 0 ? line.slice(0, idx) : line).trim();
+    }
+
+    function parseAnnotationSpace(stmt) {
+      const m = stmt.match(/@space\(\s*"([^"]+)"\s*\)/);
+      return m ? m[1] : null;
+    }
+
+    function validateLatentScript(program) {
+      const errors = [];
+      const warnings = [];
+      const settings = {};
+      const lets = {};
+      const constraints = [];
+      const emits = [];
+
+      const lines = program.split(/\r?\n/);
+      let stmtBuf = '';
+      let stmtStartLine = 1;
+
+      function pushStmt(stmt, lineNo) {
+        const s = stmt.trim();
+        if (!s) return;
+        if (!s.endsWith(';')) {
+          errors.push({ line: lineNo, msg: 'Statement must end with a semicolon (;)'});
+          return;
+        }
+
+        // Normalize: remove trailing semicolon.
+        const core = s.slice(0, -1).trim();
+
+        // set
+        if (core.startsWith('set ')) {
+          const m = core.match(/^set\s+([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.+)$/);
+          if (!m) {
+            errors.push({ line: lineNo, msg: 'Invalid set statement.'});
+            return;
+          }
+          settings[m[1]] = m[2];
+          return;
+        }
+
+        // let
+        if (core.startsWith('let ')) {
+          // let name : type? = expr
+          const m = core.match(/^let\s+([A-Za-z_][A-Za-z0-9_]*)(\s*:\s*[^=]+)?\s*=\s*(.+)$/);
+          if (!m) {
+            errors.push({ line: lineNo, msg: 'Invalid let statement.'});
+            return;
+          }
+          const name = m[1];
+          if (lets[name]) {
+            errors.push({ line: lineNo, msg: `Redeclaration: ${name}`});
+            return;
+          }
+          const type = (m[2] || '').replace(':', '').trim() || null;
+          const expr = m[3].trim();
+          lets[name] = { name, type, expr, space: parseAnnotationSpace(core) };
+          return;
+        }
+
+        // constraint
+        if (core.startsWith('constraint ')) {
+          const m = core.match(/^constraint\s+(.+)$/);
+          if (!m) {
+            errors.push({ line: lineNo, msg: 'Invalid constraint statement.'});
+            return;
+          }
+          constraints.push({ line: lineNo, raw: core });
+          return;
+        }
+
+        // emit
+        if (core.startsWith('emit ')) {
+          const m = core.match(/^emit\s+(.+?)(\s+as\s+"([^"]+)")?$/);
+          if (!m) {
+            errors.push({ line: lineNo, msg: 'Invalid emit statement.'});
+            return;
+          }
+          emits.push({ line: lineNo, expr: m[1].trim(), format: m[3] || null });
+          return;
+        }
+
+        // import
+        if (core.startsWith('import ')) {
+          warnings.push({ line: lineNo, msg: 'Import statements are runtime-dependent (may be unsupported).' });
+          return;
+        }
+
+        warnings.push({ line: lineNo, msg: 'Unknown statement (ignored by preview compiler).' });
+      }
+
+      // Join multiline statements by accumulating until semicolon.
+      for (let i = 0; i < lines.length; i++) {
+        const lineNo = i + 1;
+        const l = stripComments(lines[i]);
+        if (!l) continue;
+        if (!stmtBuf) stmtStartLine = lineNo;
+        stmtBuf += (stmtBuf ? ' ' : '') + l;
+        if (l.includes(';')) {
+          // naive split on ; to support multiple statements per line
+          const parts = stmtBuf.split(';');
+          for (let p = 0; p < parts.length - 1; p++) {
+            pushStmt(parts[p] + ';', stmtStartLine);
+          }
+          stmtBuf = parts[parts.length - 1].trim();
+        }
+      }
+      if (stmtBuf.trim()) {
+        errors.push({ line: stmtStartLine, msg: 'Unterminated statement (missing ;)'});
+      }
+
+      // Some safety-oriented lint.
+      if (settings.allow_unsafe && /true/.test(String(settings.allow_unsafe))) {
+        warnings.push({ line: 1, msg: 'allow_unsafe=true disables safety defaults. Use only with explicit policy.' });
+      }
+      if (emits.length === 0) {
+        warnings.push({ line: 1, msg: 'No emit statement found — program has no outputs.' });
+      }
+      if (constraints.length === 0) {
+        warnings.push({ line: 1, msg: 'No constraints found — consider adding norm/alpha bounds.' });
+      }
+
+      return {
+        ok: errors.length === 0,
+        errors,
+        warnings,
+        manifest: {
+          settings,
+          bindings: Object.values(lets),
+          constraints,
+          emits,
+        },
+      };
+    }
+
+    function render(result) {
+      if (result.ok) {
+        const warnCount = result.warnings.length;
+        validationEl.textContent = warnCount
+          ? `✔ Valid (preview).  Warnings: ${warnCount}\n\n` + result.warnings.map(w => `• line ${w.line}: ${w.msg}`).join('\n')
+          : '✔ Valid (preview).';
+      } else {
+        validationEl.textContent = `✖ Invalid.\n\n` + result.errors.map(e => `• line ${e.line}: ${e.msg}`).join('\n');
+      }
+      manifestEl.textContent = JSON.stringify(result.manifest, null, 2);
+    }
+
+    document.querySelectorAll('.ls-tab').forEach((btn) => {
+      btn.addEventListener('click', () => setActiveTab(btn.dataset.example));
+    });
+
+    runBtn?.addEventListener('click', () => {
+      const res = validateLatentScript(editor.value || '');
+      render(res);
+    });
+
+    resetBtn?.addEventListener('click', () => setActiveTab(currentExample));
+
+    // Initialize
+    setActiveTab('shift');
+    const res0 = validateLatentScript(editor.value || '');
+    render(res0);
+  </script>
+
+</Base>

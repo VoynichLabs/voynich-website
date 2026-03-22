@@ -1,0 +1,238 @@
+---
+// Author: Bubba (claude-sonnet-4)
+// Date: 2026-03-19
+// PURPOSE: CLAW dashboard — Creative Lobster Autonomous Workers.
+//          Visualizes real agent coordination data from the PlanExe project:
+//          308 PRs, 7,169 events, 3 lobsters + 2 humans.
+//          Static MVP: Astro + Tailwind + inline JS. No React islands.
+//          Data pre-built by scripts/build-claw-data.js.
+// SRP/DRY check: Pass — single page, all data from pre-built JSON imports.
+import Base from '../layouts/Base.astro';
+import LobsterTank from '../components/LobsterTank';
+import MetricsPanel from '../components/MetricsPanel';
+import ClawDashboard from '../components/ClawDashboard';
+import dailyStats from '../data/claw/daily-stats.json';
+import crewStats from '../data/claw/crew-stats.json';
+import prTimeline from '../data/claw/pr-timeline.json';
+import events from '../data/claw/events.json';
+
+// --- Computed stats ---
+const prsBeforeAgents = prTimeline.filter(p => p.opened_at < '2026-02-01').length;
+const prsSinceAgents = prTimeline.filter(p => p.opened_at >= '2026-02-01').length;
+const firstAgentDate = new Date('2026-02-01');
+const today = new Date();
+const daysSinceAgents = Math.floor((today - firstAgentDate) / 86400000);
+const totalEvents = events.length;
+
+// Supervision ratio: human message events / PRs merged (approximate — session data is partial)
+const humanEvents = events.filter(e => ['mark', 'simon'].includes(e.agent_id) && e.event_type === 'message');
+const totalMerged = prTimeline.filter(p => p.merged_at).length;
+const supervisionRatio = Math.round(humanEvents.length / totalMerged * 10) / 10;
+
+// Avg cycle time
+const cycled = prTimeline.filter(p => p.cycle_hours !== null && p.cycle_hours < 1000 && p.cycle_hours > 0);
+const avgCycleHours = Math.round(cycled.reduce((a, b) => a + b.cycle_hours, 0) / cycled.length * 10) / 10;
+
+// PR velocity last 30 days
+const last30Days = dailyStats.slice(-30);
+const maxPRs = Math.max(...last30Days.map(d => d.prs_merged), 1);
+
+// Crew roster data
+const crewDef = [
+  { id: 'egon',  emoji: '🦞', name: 'Egon',  role: 'builder',     type: 'agent' },
+  { id: 'bubba', emoji: '🦞', name: 'Bubba', role: 'coordinator', type: 'agent' },
+  { id: 'larry', emoji: '🦞', name: 'Larry', role: 'elder',       type: 'agent' },
+  { id: 'mark',  emoji: '👤', name: 'Mark',  role: 'tower',       type: 'human' },
+  { id: 'simon', emoji: '👤', name: 'Simon', role: 'architect',   type: 'human' },
+];
+const crewMap = Object.fromEntries(crewStats.map(c => [c.agent_id, c]));
+
+// Sparkline: last 14 days events per crew member
+const last14 = dailyStats.slice(-14);
+function getSparkline(agentId: string): number[] {
+  // For agents (egon/bubba/larry): event density from daily totals weighted by share
+  // Since per-agent per-day not stored, approximate from crew-level ratios
+  const total = crewStats.find(c => c.agent_id === agentId)?.total_events ?? 0;
+  const grandTotal = crewStats.reduce((s, c) => s + c.total_events, 0);
+  const share = grandTotal > 0 ? total / grandTotal : 0;
+  return last14.map(d => Math.round(d.events * share));
+}
+
+// Timeline: auto-detect notable days from data (no hard-coded milestones)
+// A "notable day" = any day with 10+ PRs merged or 50+ errors
+const milestones: Array<{date: string; label: string; type: string}> = [];
+for (const day of dailyStats) {
+  if (day.prs_merged >= 10) {
+    milestones.push({ date: day.date, label: `📈 ${day.prs_merged} PRs merged`, type: 'milestone' });
+  } else if (day.errors >= 50) {
+    milestones.push({ date: day.date, label: `🔴 ${day.errors} errors`, type: 'milestone' });
+  }
+}
+// Add the dormant gap
+milestones.unshift({ date: '2025-02-10', label: '🕐 Feb 2025 – Jan 2026 · 6 PRs total', type: 'gap' });
+
+// Key PR events for timeline display (recent notable merges)
+const notablePRs = prTimeline
+  .filter(p => p.merged_at && p.merged_at >= '2026-02-01')
+  .sort((a, b) => new Date(b.merged_at!).getTime() - new Date(a.merged_at!).getTime())
+  .slice(0, 20);
+
+// Recent errors for timeline
+const recentErrors = events
+  .filter(e => e.event_type === 'error' && e.timestamp >= '2026-03-01')
+  .slice(-8)
+  .reverse();
+
+// Build timeline items: combine milestones + notable events, sort by date desc
+type TimelineItem = {
+  date: string;
+  label: string;
+  type: 'milestone' | 'pr_merge' | 'error' | 'gap';
+  author?: string;
+  pr_number?: number;
+  error_type?: string;
+};
+
+const timelineItems: TimelineItem[] = [
+  ...milestones.map(m => ({ ...m, type: 'milestone' as const })),
+  ...notablePRs.map(p => ({
+    date: p.merged_at!.slice(0, 10),
+    label: p.title,
+    type: 'pr_merge' as const,
+    author: p.author,
+    pr_number: p.pr_number,
+  })),
+  ...recentErrors.map(e => ({
+    date: e.timestamp.slice(0, 10),
+    label: (e as any).error_message?.slice(0, 80) ?? 'Error',
+    type: 'error' as const,
+    author: e.agent_id,
+    error_type: (e as any).error_type,
+  })),
+  // Dormant gap card
+  { date: '2025-07-01', label: '🕐 ~11 months dormant — 6 PRs total before agent era', type: 'gap' as const },
+].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+// Deduplicate by milestone priority (if same date)
+function typeColor(type: string): string {
+  switch (type) {
+    case 'milestone': return 'border-warn-amber text-warn-amber bg-warn-amber/10';
+    case 'pr_merge':  return 'border-edge-green text-edge-green bg-edge-green/10';
+    case 'error':     return 'border-red-500 text-red-400 bg-red-500/10';
+    case 'gap':       return 'border-text-muted text-text-muted bg-bg-surface';
+    default:          return 'border-node-blue text-node-blue bg-node-blue/10';
+  }
+}
+function typeDot(type: string): string {
+  switch (type) {
+    case 'pr_merge':  return '🟢';
+    case 'error':     return '🔴';
+    case 'milestone': return '⭐';
+    case 'gap':       return '⏸';
+    default:          return '🔵';
+  }
+}
+
+// Unique id for agent display  
+function agentIcon(id: string): string {
+  if (['egon', 'bubba', 'larry'].includes(id)) return '🦞';
+  if (['mark', 'simon'].includes(id)) return '👤';
+  return '🤖';
+}
+---
+
+<Base 
+  title="CLAW" 
+  description="CLAW — Creative Lobster Autonomous Workers. Real agent coordination data from the VoynichLabs PlanExe project: 308 PRs, 7,169 events, 3 lobsters + 2 humans."
+>
+  <main class="min-h-screen bg-bg-primary text-text-primary">
+    
+    <!-- ═══ HEADER ═══ -->
+    <header class="border-b border-border bg-bg-secondary/80 backdrop-blur-sm sticky top-14 z-40">
+      <div class="max-w-[1400px] mx-auto px-4 sm:px-6 py-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <h1 class="text-2xl sm:text-3xl font-bold font-mono">
+              <span class="text-rust-orange">CLAW</span>
+              <span class="ml-2">🦞</span>
+            </h1>
+            <p class="text-text-muted text-sm font-mono mt-0.5">
+              Creative Lobster Autonomous Workers — VoynichLabs
+            </p>
+          </div>
+          
+          <!-- Acceleration stat -->
+          <div class="flex items-center gap-6">
+            <div class="text-center">
+              <div class="font-mono text-xs text-text-muted uppercase tracking-widest mb-1">Acceleration</div>
+              <div class="font-mono text-sm">
+                <span class="text-text-muted">{prsBeforeAgents} PRs in 2025</span>
+                <span class="text-border mx-2">→</span>
+                <span class="text-rust-orange font-bold text-base">{prsSinceAgents} PRs</span>
+                <span class="text-text-muted"> in {daysSinceAgents}d</span>
+              </div>
+            </div>
+            <div class="text-center hidden sm:block">
+              <div class="font-mono text-xs text-text-muted uppercase tracking-widest mb-1">Events</div>
+              <div class="font-mono text-base text-text-primary">{totalEvents.toLocaleString()}</div>
+            </div>
+            <div class="text-center hidden sm:block">
+              <div class="font-mono text-xs text-text-muted uppercase tracking-widest mb-1">Avg Cycle</div>
+              <div class="font-mono text-base text-edge-green">{avgCycleHours}h</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ═══ THREE-COLUMN LAYOUT ═══ -->
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 py-6">
+      <!-- ClawDashboard owns the full width: left CrewRoster + center tank + right metrics -->
+      <!-- The static crew roster has been removed; ClawDashboard renders CrewRoster dynamically -->
+      <div class="overflow-hidden">
+
+        <!-- ══════════ CLAW DASHBOARD (full width, owns crew roster + tank + metrics) ══════════ -->
+        <!-- CrewRoster inside ClawDashboard responds to scrubber — no static sidebar needed -->
+        <section class="order-1 min-w-0">
+
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="font-mono text-xs text-text-muted uppercase tracking-widest">🦞 Lobster Tank</h2>
+            <div class="flex gap-3 font-mono text-[10px] text-text-muted">
+              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-edge-green inline-block"></span>PRs</span>
+              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-red-500 inline-block"></span>Errors</span>
+              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-node-blue inline-block"></span>Messages</span>
+            </div>
+          </div>
+
+          <!-- ClawDashboard React island — wraps LobsterTank + MetricsPanel with shared scrubber -->
+          <div class="bg-bg-primary rounded border border-border relative overflow-hidden">
+            <ClawDashboard
+              client:load
+              events={events as any}
+              crewStats={crewStats as any}
+              dailyStats={dailyStats as any}
+            />
+          </div>
+
+          <div class="mt-3 text-center font-mono text-xs text-text-muted">
+            {totalEvents.toLocaleString()} events · 5 entities · particles = recent activity · scrubber syncs tank + metrics
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- ═══ FOOTER CREDIT ═══ -->
+    <div class="border-t border-border mt-12 py-4">
+      <div class="max-w-[1400px] mx-auto px-4 sm:px-6">
+        <p class="font-mono text-xs text-text-muted text-center">
+          Data visualization powered by real OpenClaw agent coordination data ·
+          <span class="text-rust-orange">7,169 events</span> ·
+          <span class="text-edge-green">308 PRs</span> ·
+          <span class="text-node-blue">3 lobsters</span>
+        </p>
+      </div>
+    </div>
+
+  </main>
+</Base>
