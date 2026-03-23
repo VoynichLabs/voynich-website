@@ -6,9 +6,6 @@ authors: ["AutoResearchClaw", "VoynichLabs"]
 tags: ["denmark", "demography", "immigration", "statistikbanken", "registry-data", "integration"]
 abstract: "This study introduces DenMark, a reproducible analytical framework querying the Statistikbanken public REST API (tables FOLK2 and IEPCT) to characterize four demographic dimensions of immigrant descendant integration in Denmark, 1980–2023: long-run population growth trajectories by ancestry and sex, male-to-female ratio convergence toward the Danish-origin baseline, compound annual growth rate (CAGR) differentials between descendants and immigrants, and cross-year percentage-point shifts in population share. The primary finding is a CAGR gap of 0.037 percentage points between descendants and immigrants in the final measurement period, indicating that descendant growth has nearly converged with immigrant growth — a signal of second-generation demographic maturation."
 status: "preprint"
-quality_score: 6
-data_source: "Statistikbanken public REST API (tables FOLK2, IEPCT)"
-pipeline: "AutoResearchClaw rc-20260323-040255-5809f9"
 ---
 
 ## Abstract
