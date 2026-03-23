@@ -2,174 +2,187 @@
 
 **Author:** Egon  
 **Date:** 2026-03-23  
-**Supersedes:** `2026-03-23-voynich-manuscript-page-brief.md`  
-**PURPOSE:** Redesign the Voynich page as a proper museum exhibit — not a listicle of facts, but an experience that makes visitors feel the genuine mystery. The existing draft is a skeleton. This is the vision it needs to become.
+**PURPOSE:** Build a museum-quality tribute page. The center of gravity is the mystery — what we don't know, what can't be known, and why that's extraordinary. Not a tech showcase. Not a history lesson. A meditation on the unknowable.
 
 ---
 
-## The Core Problem with the Current Draft
+## The Thesis
 
-It reads like a Wikipedia summary. A list of dates, a grid of sections, some links. That's not what Mark asked for.
+Someone made this book. They knew exactly what it said. They're dead. We will probably never know.
 
-What makes the Voynich Manuscript genuinely interesting isn't the *facts* about it — it's the **vertigo** of it. Someone made this. Deliberately. With real ink, on real vellum, with real skill. And we have *no idea* why. Even with X-ray fluorescence imaging, AI language analysis, centuries of cryptographers — nothing. That's what the page needs to *feel* like.
+That's it. That's what the whole page should feel like.
 
-Think: the Beinecke Library exhibit room. Dark. Quiet. One book under glass. You lean in. This page should do that.
-
----
-
-## The Experience Architecture
-
-### 1. Opening: The Vertigo Hook (not a hero banner — a *feeling*)
-
-Don't open with "The Voynich Manuscript." Open with the questions that have no answers:
-
-> *Someone wrote this.*  
-> *They knew what it meant.*  
-> *Everyone who has tried to read it since — cryptographers, linguists, AI systems, you — has failed.*
-
-Then reveal the title. Let it land.
-
-**Visual:** Full-bleed darkened folio image. Text fades in. No nav clutter. Just the manuscript and the question.
+Not: "look at this cool science we applied to it."  
+Not: "here are the known facts."  
+But: **six centuries of the smartest people alive have looked at this and walked away baffled.** That's the experience.
 
 ---
 
-### 2. The Object Itself (sensory, tactile description)
+## The Opening
 
-Before any history, make visitors understand what the physical object *is*:
+Don't start with a title. Start with the questions.
 
-- 240 pages of vellum (calfskin), each ~23 × 16 cm
-- The ink is iron gall — the same ink used in medieval Europe for centuries. Nothing unusual.
-- The pigments in the illustrations are consistent with the period — greens, blues, reds from plant and mineral sources
-- The script flows left to right, with word spacing, consistent letter forms — it looks *fluent*. Someone wrote this the way you write your native language.
-- Carbon dating: the vellum was made between 1404 and 1438.
+> *Who wrote it?*  
+> *Nobody knows.*
 
-**The strange part:** The script has never matched any known language. Ever. In any database. Not a cipher of Latin. Not Arabic, Hebrew, or any Eastern script. Not a constructed language from the period. Nothing.
+> *What language is it in?*  
+> *Nobody knows.*
 
----
+> *What is it about?*  
+> *Nobody knows.*
 
-### 3. Recent Science (the 2024 discovery — this is the hook Mark was pointing at)
+> *Who was it written for?*  
+> *Nobody knows.*
 
-**In 2024**, researchers used multispectral imaging on the opening folio and found something extraordinary:
+> *Why was it written?*  
+> *Nobody knows.*
 
-> Three columns of lettering — invisible to the naked eye — had been added to the first page by someone *trying to decode the manuscript*. The columns appear to be the work of Jacobus de Tepenec, the Prague physician who owned the manuscript around 1608. He was trying. He failed. We found his failed attempt six centuries later with X-ray fluorescence.
+Then: the title. **The Voynich Manuscript.** Let it land.
 
-**The 2022 Yale experiment** (Gaskell and Bowern): They showed human participants glyphs from the manuscript and found people could reproduce its statistical patterns — which suggests the script may encode something real, not random noise.
+Subtitle: *The most studied, most analyzed, and least understood book ever written.*
 
-**AI hasn't cracked it either.** Large language models, trained on every known human language, have been applied to the Voynich text. No match. No statistical overlap with any corpus that unlocks it.
-
-**This section should feel like a science museum:** Here's what we know. Here's what we tried. Here's what we still don't know.
-
----
-
-### 4. The Five Worlds (section gallery — immersive, not grid)
-
-Redesign the sections as **worlds**, not cards. Each one is strange in its own way:
-
-**🌿 The Herbal World**  
-We have botanical encyclopedias from the same period. We can identify every plant in them. The Voynich plants look botanical — the style is right, the leaves, roots, flowers — but not one has been matched to a real species. Are they invented? Symbolic? From an unknown tradition? We don't know.
-
-**⭐ The Sky World**  
-The zodiac signs are recognizable. But the text accompanying each sign, the figures, the arrangement — none of it matches any known astrological system. Someone was doing astronomy, or astrology, or something we don't have a name for.
-
-**🧘 The Bathing World**  
-The biological section is the most unsettling. Rows of small naked figures — almost all women — in pools connected by tubes and pipes. Some anatomical, some impossible. Some researchers see a bathing manual. Some see a cosmological metaphor. Some see female physiology rendered in a pre-modern medical tradition. It's not clear any of them are right.
-
-**🌍 The Map World**  
-The cosmological foldout (f86v) is six pages wide — the largest page in the manuscript. It shows a network of connected circles, with castles, landmasses, and star-like objects. It might be a map of the cosmos. It might be a map of a real place. It might be allegorical. Nobody knows.
-
-**💊 The Pharmacy**  
-The most purposeful-looking section. Jars, roots, containers — clearly a pharmacopoeia. But a pharmacopoeia of what? For whom?
-
-**Sixth section — The Text**  
-Dense, paragraph-structured text with no illustrations. This is where the best linguistic analysis lives. It's also where the mystery is deepest: the text shows real statistical structure (word frequencies, positional patterns) that suggests meaning. But what meaning?
-
-**Visual approach:** Large folio images, full-width. Minimal text overlay. Let the images carry the weight. Caption each with the folio number and a single haunting question.
+**Visual:** Full-bleed manuscript folio. The questions appear one by one, each answered "Nobody knows." Then the title fades in. Dark, quiet, deliberate.
 
 ---
 
-### 5. The Open Questions Wall
+## The Mystery Is the Story
 
-Not a timeline. Not a list of "facts." A wall of unanswered questions, displayed like a museum provenance panel:
+Every section of the page should return to the same unanswered question: **we don't know.**
 
-> **Who wrote it?**  
-> Unknown. Candidates have included Roger Bacon (13th century — ruled out by carbon dating), Wilfrid Voynich himself (as a hoax — unlikely given the pigment analysis), and dozens of others. None confirmed.
+Not as a failure — as a wonder. This is a 600-year-old mystery that has survived:
+- The Renaissance
+- The Enlightenment
+- The invention of linguistics as a science
+- Two world wars and the codebreakers who won them
+- The entire history of computing
+- Modern AI trained on every human language ever digitized
 
-> **What language is it in?**  
-> Unknown. Statistical analysis shows it has the properties of a natural language — consistent entropy, word frequency distributions matching Zipf's law — but it matches no known human language.
-
-> **What is it about?**  
-> Unknown. The sections suggest medicine, astronomy, botany, and cosmology — but this could be decorative, symbolic, or entirely misleading.
-
-> **Was it made in Europe?**  
-> Probably. The vellum is European. The pigments are European. The binding style is European. The *content* is not recognizably European.
-
-> **Is it a hoax?**  
-> Possibly, but the effort required would have been extraordinary — and for what purpose? A 240-page hand-illustrated hoax in 1420, for a nonexistent audience?
-
-> **Has AI solved it?**  
-> No. Not even close.
+And it's still a mystery. That's remarkable.
 
 ---
 
-### 6. Why We Named Ourselves After It (closing — personal, not corporate)
+## Page Structure
 
-Short. Just a few lines. The real reason:
+### 1. The Five Questions (hero)
+Full-screen. Each question and "Nobody knows." displayed in sequence. Then the title.
 
-We build systems that try to make planning legible — to take an intention and turn it into something structured and actionable. The Voynich Manuscript is a reminder that structure and legibility are not the same thing. Something can be deeply structured and completely illegible. We think about that.
+### 2. The Object
+Make the reader understand what they're looking at — not facts, but the *sensation* of it:
+
+- A book. 240 pages of calfskin.
+- Someone sat down and wrote every word of it by hand, in a script they clearly knew well — the strokes are fluid, confident, practiced.
+- They also drew hundreds of illustrations: plants, stars, nude figures, maps.
+- Every page looks purposeful. Organized. Deliberate.
+- None of it has ever been understood by anyone who came after them.
+
+One image here. The opening folio, large. Let it breathe.
+
+### 3. What People Have Tried (and failed)
+
+This section is not about the technology — it's about the **human effort** that has gone into this mystery and come up empty.
+
+Write it as a list of attempts, each ending in failure:
+
+> **The codebreakers of WWII** — the same people who cracked Enigma looked at the Voynich Manuscript. They couldn't crack it.
+
+> **Professional cryptographers** — generations of them, from the 1920s to today. Nothing.
+
+> **Linguists** — they've mapped the statistical patterns of the script. It looks like a real language. It doesn't match any known one.
+
+> **Historians** — they've traced the book's ownership back to the 1600s. Still no author, no origin, no explanation.
+
+> **Computer scientists** — every algorithmic tool we have has been applied. No match.
+
+> **AI** — large language models trained on every digitized human language. No match.
+
+The point isn't the tools — it's that **every generation's best effort has failed.** That's the mystery.
+
+### 4. The Five Worlds (illustrated gallery)
+
+Each section of the manuscript gets a large image and a single haunting question. No lengthy descriptions — just the image and the question.
+
+- 🌿 **Herbal** — *What plants are these? They don't exist.*
+- ⭐ **Astronomical** — *What sky is this? It doesn't match any known system.*
+- 🧘 **Biological** — *What are these figures doing? Nobody knows.*
+- 🌍 **Cosmological** — *What place is this map of? It has never been found.*
+- 💊 **Pharmaceutical** — *What is this medicine for? We don't know what it treats.*
+
+Large images. One line each. Let the strangeness speak.
+
+### 5. What We Know For Certain
+
+Short. Three facts, no more:
+
+1. The vellum was made between 1404 and 1438. (Carbon dating, confirmed.)
+2. The pigments and materials are consistent with 15th-century Europe.
+3. Someone wrote it. It is not random. It is not noise.
+
+That's all.
+
+### 6. The Wall of Unknowns
+
+A dedicated section. Formatted like a museum label — spare, factual, devastating:
+
+| Question | Answer |
+|----------|--------|
+| Who wrote it? | Unknown |
+| When was it written? | Probably early 15th century |
+| Where was it written? | Unknown |
+| What language is it in? | Unknown — matches no known language |
+| What is it about? | Unknown |
+| Who was it written for? | Unknown |
+| Is the script a cipher? | Unknown |
+| Is it a hoax? | Possibly — but nobody can prove it |
+| Will it ever be decoded? | Unknown |
+
+### 7. Why VoynichLabs
+
+Closing. Three sentences, honest:
+
+> We build systems that try to make intentions legible — to take something complex and unclear and turn it into a plan that can be executed. The Voynich Manuscript is a reminder that some things resist being made legible. We think about that.
 
 ---
 
 ## Visual Direction for Bubba
 
-**Atmosphere:** This is the Beinecke Library at night. Dark surfaces, warm parchment tones, deliberate negative space. Every section should feel like you're leaning over a reading desk.
+**The feeling:** Beinecke Library reading room. Late at night. One manuscript under glass.
+
+- Dark background throughout
+- Warm parchment/amber accent tones
+- Generous whitespace — nothing crowded
+- Manuscript images large, slightly desaturated against the dark background
+- The script itself (in images) is the visual centerpiece — never hide it
 
 **Typography:**
-- Headings: Georgia or a serif — the manuscript is handwritten; the page should breathe that
-- Body: a clean sans at comfortable reading size — contrast with headings
-- Folio labels: monospace, small, amber/gold
+- Headings: Georgia or serif — matches the manuscript's handwritten nature
+- The five unanswered questions: displayed large, sparse, with weight
+- Body text: readable, warm, unhurried
 
-**Images:**
-- **Full-width, large.** The manuscript images are beautiful — let them be large
-- Dark overlay on the hero, lighter on section images
-- Gallery images link to the Beinecke digital collection
-
-**Tone:** Hushed. Like you're in a library. Not a tech blog.
+**Do not:** use infographic-style layouts, progress bars, stat callouts, or anything that feels like a tech blog or Wikipedia article.
 
 ---
 
-## What Bubba Needs to Build (Acceptance Criteria)
+## Acceptance Criteria
 
-- [ ] Opening hook: three questions → title reveal (no generic hero banner)
-- [ ] "The Object" section: physical description, the strangeness of the script
-- [ ] "What We've Tried" section: 2024 multispectral imaging, 2022 Yale experiment, AI analysis — all failed
-- [ ] Five-world gallery: large images, single haunting question per section
-- [ ] Open Questions wall: unanswered questions displayed as museum provenance panels
-- [ ] Closing: Why VoynichLabs — short, honest, not corporate
-- [ ] All folio images verified and loading
-- [ ] Dark atmospheric design — not a listicle, not a blog post
-- [ ] Pushed to `staging` branch
-
----
-
-## Images Still Needed
-
-Current `public/voynich/`:
-- ✅ f1r-opening.jpg (hero)
-- ✅ f2v-herbal.jpg
-- ✅ f68r3-astronomical.jpg
-- ✅ f77v-biological.jpg
-- ✅ f86v-cosmological.jpg
-- ✅ f99r-pharmaceutical.jpg
-
-For the text/recipes section — try fetching a text-page folio when Wikimedia rate limits clear:
-- Target: `File:Voynich Manuscript (167).jpg` or `File:Voynich Manuscript (158).jpg`
-- Wikimedia Commons category: https://commons.wikimedia.org/wiki/Category:Voynich_manuscript
+- [ ] Five questions → title reveal opening sequence
+- [ ] "The Object" section: physical description, the feeling of it
+- [ ] "What People Have Tried" section: human efforts across centuries, all failed — **focus on the failure, not the technology**
+- [ ] Five-world gallery: large images, one haunting question each
+- [ ] "What We Know" section: three confirmed facts only
+- [ ] Wall of Unknowns: table of unanswered questions
+- [ ] Closing: Why VoynichLabs — 3 sentences
+- [ ] All images verified loading
+- [ ] Dark, atmospheric, museum-quality design
+- [ ] Pushed to `staging`
 
 ---
 
-## Reference
+## Images Available
 
-- 2024 multispectral imaging: https://arstechnica.com/science/2024/09/new-multispectral-analysis-of-voynich-manuscript-reveals-hidden-details/
-- 2022 Yale experiment (Gaskell & Bowern): https://en.wikipedia.org/wiki/Voynich_manuscript
-- Beinecke digital collection: https://beinecke.library.yale.edu/collections/highlights/voynich-manuscript
-- Wikimedia Commons: https://commons.wikimedia.org/wiki/Category:Voynich_manuscript
+All in `public/voynich/` on `staging`:
+- `f1r-opening.jpg` — hero / opening folio
+- `f2v-herbal.jpg` — herbal section
+- `f68r3-astronomical.jpg` — astronomical section
+- `f77v-biological.jpg` — biological section
+- `f86v-cosmological.jpg` — cosmological section
+- `f99r-pharmaceutical.jpg` — pharmaceutical section
