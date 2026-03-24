@@ -100,9 +100,14 @@ import Base from '../layouts/Base.astro';
             <p class="text-xs font-mono text-text-muted uppercase tracking-[0.4em] mb-2">Hardware</p>
             <h3 class="text-lg font-semibold text-text-primary mb-2">Local-first compute</h3>
             <p class="text-sm text-text-secondary leading-relaxed">
-              We run experiments on local hardware — Mac Mini M4 Pro with local models via LM Studio,
-              plus cloud VPS nodes. No dependency on shared GPU queues.
+              We run experiments on owned hardware — no shared GPU queues, no cold starts.
             </p>
+            <ul class="mt-3 space-y-1 text-xs text-text-muted font-mono">
+              <li>🖥️ Mac Mini M4 Pro — 64 GB unified memory · Metal · LM Studio</li>
+              <li>💻 MSI Katana 15HX — RTX 5070 · 8 GB VRAM · CUDA · 64 GB RAM</li>
+              <li>💻 Older laptop — GTX 970M · 64 GB RAM · CPU inference</li>
+              <li>🌐 Linode VPS Frankfurt — cloud agent node · API inference</li>
+            </ul>
           </div>
           <div class="bg-surface border border-border rounded-2xl p-5">
             <p class="text-xs font-mono text-text-muted uppercase tracking-[0.4em] mb-2">Open</p>
