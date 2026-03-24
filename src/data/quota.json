@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-03-24T01:08:00Z",
+  "updated_utc": "2026-03-24T01:21:55.700301+00:00",
   "agents": {
     "egon": {
       "label": "Egon (Linode VPS)",
@@ -16,12 +16,12 @@
     "bubba": {
       "label": "Bubba (Mac Mini)",
       "profile": "anthropic:firefly",
-      "window_5h_pct": 5,
-      "window_7d_pct": 52,
+      "window_5h_pct": 7,
+      "window_7d_pct": 53,
       "window_7d_sonnet_pct": 33,
-      "reset_5h_utc": "2026-03-24T05:00:00Z",
-      "reset_7d_utc": "2026-03-27T23:00:00Z",
-      "reset_7d_sonnet_utc": "2026-03-27T23:00:00Z",
+      "reset_5h_utc": "2026-03-24T05:00:00+00:00",
+      "reset_7d_utc": "2026-03-27T03:00:00+00:00",
+      "reset_7d_sonnet_utc": "2026-03-27T03:00:00+00:00",
       "status": "allowed",
       "rate_limited": false
     }
