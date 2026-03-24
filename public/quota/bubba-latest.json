@@ -1,0 +1,15 @@
+{
+  "agent": "bubba",
+  "profile": "anthropic:firefly",
+  "timestamp_utc": "2026-03-24T04:11:42.458401+00:00",
+  "timestamp_edt": "2026-03-24 00:11 EDT",
+  "status": "allowed",
+  "5h_utilization": 0.17,
+  "5h_reset_epoch": "1774328400",
+  "7d_utilization": 0.54,
+  "7d_reset_epoch": "1774580400",
+  "7d_sonnet_utilization": 0.36,
+  "7d_sonnet_reset_epoch": "1774580400",
+  "rate_limited": false,
+  "retry_after_seconds": null
+}
