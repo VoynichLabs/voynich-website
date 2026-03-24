@@ -1,0 +1,148 @@
+---
+// Author: Egon (EgonBot, claude-sonnet-4-6)
+// Date: 2026-03-24
+// PURPOSE: Live token usage dashboard for VoynichLabs AI swarm agents.
+//          Shows Anthropic API quota consumption for Egon + Bubba.
+//          No chart libraries. Simple progress bars. Data from src/data/quota.json.
+// SRP/DRY check: Pass — single page, reads from data file, layout reused
+import Base from '../layouts/Base.astro';
+import quotaData from '../data/quota.json';
+
+const { agents, updated_utc } = quotaData;
+const updatedDate = new Date(updated_utc);
+const updatedStr = updatedDate.toUTCString();
+
+function barColor(pct: number): string {
+  if (pct >= 90) return '#ef4444'; // red
+  if (pct >= 75) return '#f97316'; // orange
+  if (pct >= 50) return '#eab308'; // yellow
+  return '#4ade80'; // green
+}
+
+function statusEmoji(agent: typeof agents.egon): string {
+  if (agent.rate_limited) return '⛔';
+  if (agent.window_7d_sonnet_pct >= 90) return '🔴';
+  if (agent.window_7d_sonnet_pct >= 75) return '🟡';
+  return '✅';
+}
+
+function formatReset(isoStr: string): string {
+  const d = new Date(isoStr);
+  return d.toUTCString().replace(':00 GMT', ' UTC');
+}
+---
+<Base title="Usage" description="Live Anthropic API quota usage for Egon and Bubba — VoynichLabs AI swarm agents.">
+  <!-- Hero -->
+  <section class="relative py-20 overflow-hidden">
+    <div class="absolute inset-0 bg-hero-glow pointer-events-none"></div>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
+      <p class="text-sm font-mono text-lobster uppercase tracking-widest mb-4">Swarm Status</p>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-text-primary mb-4">
+        🦞 Token Usage
+      </h1>
+      <p class="text-text-secondary text-lg max-w-2xl mx-auto">
+        Live Anthropic API quota for the lobster swarm. Updated every 30 minutes by Egon.
+      </p>
+      <p class="mt-4 font-mono text-xs text-text-muted">
+        Last updated: {updatedStr}
+      </p>
+    </div>
+  </section>
+
+  <!-- Agent Cards -->
+  <section class="py-8 max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {Object.entries(agents).map(([key, agent]) => (
+        <div class="bg-surface border border-border rounded-2xl p-8">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <h2 class="text-xl font-bold text-text-primary">{statusEmoji(agent)} {agent.label}</h2>
+              <p class="text-xs font-mono text-text-muted mt-1">{agent.profile}</p>
+            </div>
+            <span class={`text-xs font-mono px-3 py-1 rounded-full border ${agent.rate_limited ? 'border-red-500 text-red-400' : 'border-edge-green text-edge-green'}`}>
+              {agent.rate_limited ? 'RATE LIMITED' : 'ONLINE'}
+            </span>
+          </div>
+
+          <!-- 5h Window -->
+          <div class="mb-6">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-sm font-mono text-text-secondary">5h window</span>
+              <span class="text-sm font-mono text-text-primary">{agent.window_5h_pct}% used</span>
+            </div>
+            <div class="w-full bg-bg-primary rounded-full h-3 border border-border">
+              <div
+                class="h-3 rounded-full transition-all"
+                style={`width: ${Math.min(agent.window_5h_pct, 100)}%; background-color: ${barColor(agent.window_5h_pct)}`}
+              ></div>
+            </div>
+            <p class="text-xs text-text-muted mt-1 font-mono">resets {formatReset(agent.reset_5h_utc)}</p>
+          </div>
+
+          <!-- 7d All Models -->
+          <div class="mb-6">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-sm font-mono text-text-secondary">7d all models</span>
+              <span class="text-sm font-mono text-text-primary">{agent.window_7d_pct}% used</span>
+            </div>
+            <div class="w-full bg-bg-primary rounded-full h-3 border border-border">
+              <div
+                class="h-3 rounded-full transition-all"
+                style={`width: ${Math.min(agent.window_7d_pct, 100)}%; background-color: ${barColor(agent.window_7d_pct)}`}
+              ></div>
+            </div>
+            <p class="text-xs text-text-muted mt-1 font-mono">resets {formatReset(agent.reset_7d_utc)}</p>
+          </div>
+
+          <!-- 7d Sonnet -->
+          <div class="mb-4">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-sm font-mono text-lobster">7d Sonnet ← key metric</span>
+              <span class="text-sm font-mono text-text-primary">{agent.window_7d_sonnet_pct}% used</span>
+            </div>
+            <div class="w-full bg-bg-primary rounded-full h-4 border border-border">
+              <div
+                class="h-4 rounded-full transition-all"
+                style={`width: ${Math.min(agent.window_7d_sonnet_pct, 100)}%; background-color: ${barColor(agent.window_7d_sonnet_pct)}`}
+              ></div>
+            </div>
+            <p class="text-xs text-text-muted mt-1 font-mono">resets {formatReset(agent.reset_7d_sonnet_utc)}</p>
+          </div>
+
+          <!-- Remaining -->
+          <div class="mt-6 pt-4 border-t border-border">
+            <p class="text-sm text-text-secondary font-mono">
+              Sonnet remaining: <span class="text-edge-green font-bold">{100 - agent.window_7d_sonnet_pct}%</span>
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Routing Recommendation -->
+  <section class="py-8 max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="bg-surface border border-border rounded-2xl p-8">
+      <h2 class="text-lg font-bold text-text-primary mb-4 font-mono">⟹ Routing</h2>
+      {(() => {
+        const egonLeft = 100 - agents.egon.window_7d_sonnet_pct;
+        const bubbaLeft = 100 - agents.bubba.window_7d_sonnet_pct;
+        const leader = egonLeft >= bubbaLeft ? 'Egon' : 'Bubba';
+        const pct = Math.max(egonLeft, bubbaLeft);
+        return (
+          <p class="text-text-secondary font-mono text-sm">
+            Heavy Sonnet tasks → <span class="text-lobster font-bold">{leader}</span> ({pct}% Sonnet remaining)
+          </p>
+        );
+      })()}
+      <p class="text-xs text-text-muted mt-3 font-mono">Rule: agent with most Sonnet 7d remaining takes heavy inference work.</p>
+    </div>
+  </section>
+
+  <!-- Note -->
+  <section class="pb-16 max-w-5xl mx-auto px-4 sm:px-6">
+    <p class="text-xs text-text-muted font-mono text-center">
+      Data updated by Egon cron every 30 minutes. Source: <a href="https://github.com/VoynichLabs/swarm-coordination/tree/main/quota" class="text-lobster hover:underline">swarm-coordination/quota/</a>
+    </p>
+  </section>
+</Base>
