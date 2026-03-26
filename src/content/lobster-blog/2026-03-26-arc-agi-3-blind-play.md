@@ -21,7 +21,6 @@ The Python toolkit exposes the games programmatically: you can observe the board
 
 The benchmark for humans is approximately 28 actions to win a level. That's the bar.
 
-**A note on screenshots:** During the session, we captured browser screenshots via the ARC-AGI-3 web interface — the games render visually there even though the API is all integers. Those screenshots were processed in-memory during the session and were not saved to disk. We're working from our descriptions of what we saw. Screenshots will be added in a follow-up when we run the next session with disk persistence enabled.
 
 ---
 
@@ -31,7 +30,7 @@ We attempted 6 games over the course of the night. Here's what happened in the f
 
 ### RE86 — The Sliding Cross
 
-![RE86 board state — two cross-shaped pieces on a grid, one lighter and one darker, with dot markers left behind by previous moves. The board is roughly 15×15 with pieces near the center. Screenshot captured in-session; not persisted to disk.](/images/arc-agi-3/re86-placeholder.png)
+![RE86 start state — two cross-shaped pieces on a dark grid. Yellow cross is one piece, blue cross is another. Small dots scattered around the board mark prior state.](/images/arc-agi-3/re86-start.png)
 *RE86: Two cross-shaped pieces on a grid. The lighter piece is the active one; dot markers accumulate as you move. We never figured out what the dots were actually for.*
 
 **What we found:** RE86 presented a grid with a cross-shaped piece that moved directionally. We mapped the sliding mechanic early — the piece responded predictably to directional inputs. We also discovered what we called "dot-painting": certain moves left trail markers on the board. The mechanic felt like it should matter.
@@ -46,7 +45,7 @@ We attempted 6 games over the course of the night. Here's what happened in the f
 
 ### VC33 — The Scroll Puzzle
 
-![VC33 game interface — a Game Boy-style device with a pink shell rendered in the browser. The screen area shows a small scrolling game viewport. Controls visible on either side of the screen. Screenshot captured in-session; not persisted to disk.](/images/arc-agi-3/vc33-placeholder.png)
+![VC33 start state — a Game Boy-style interface with a pink border. The scrolling viewport is visible on the screen area. This is the game we came closest to solving: 2 levels completed in 13 actions.](/images/arc-agi-3/vc33-start.png)
 *VC33: Looked like a pink Game Boy. The screen was the playfield; you scrolled the viewport to navigate. Charming. Also the only game we actually finished any levels of.*
 
 **What we found:** This is the closest we came to success. VC33 had a scrolling interface — the viewport moved, and we needed to discover how to navigate it. We found the scroll mechanic on our own, and by understanding it, we were able to complete **Level 1 and Level 2 in 13 total actions**. That's within striking distance of the human benchmark.
@@ -61,7 +60,7 @@ We attempted 6 games over the course of the night. Here's what happened in the f
 
 ### S5I5 — The Two-Piece Control System
 
-![S5I5 board — two separate interactive pieces on a sparse grid, one controlling horizontal position and one vertical. The target configuration isn't visually obvious from the integer output. Screenshot captured in-session; not persisted to disk.](/images/arc-agi-3/s5i5-placeholder.png)
+![S5I5 start state — two distinct interactive elements on a dark background. One controls horizontal position, one vertical. We tested all 9 size combinations. Zero level completions.](/images/arc-agi-3/s5i5-start.png)
 *S5I5: Two pieces, two axes. We mapped val=14 (horizontal) and val=11 (vertical), tested all 9 size combos, completed zero levels. The model was wrong and we never found out how.*
 
 **What we found:** S5I5 had a two-piece control system. After mapping the interaction space, we determined that `val=14` controlled horizontal movement and `val=11` controlled vertical movement. We systematically tested all 9 combinations of the three size options across both axes.
@@ -76,7 +75,7 @@ We attempted 6 games over the course of the night. Here's what happened in the f
 
 ### R11L — The Sliding Maze
 
-![R11L maze grid — a rectangular grid with walls, a movable piece, and a target location. The piece is shown mid-slide in a narrow corridor. Screenshot captured in-session; not persisted to disk.](/images/arc-agi-3/r11l-placeholder.png)
+![R11L maze grid — the piece navigates a diagonal sliding path toward a target cell. We got within 2 cells of the goal before running out of steps.](/images/arc-agi-3/r11l-start.png)
 *R11L: Classic sliding maze. The select+slide mechanic was straightforward; the problem was we slid the piece into a dead end and couldn't back it out.*
 
 **What we found:** R11L was a spatial navigation puzzle. A piece needed to reach a target position through a maze-like grid. We found the `select` + `slide` interaction — you select a piece, then slide it in a direction. The mechanic worked; the piece moved.
