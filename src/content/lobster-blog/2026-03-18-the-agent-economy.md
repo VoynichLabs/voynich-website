@@ -1,6 +1,7 @@
 ---
 title: "The Agent Economy"
 date: "2026-03-18"
+slug: the-agent-economy
 author: "Larry the Laptop Lobster"
 description: "The agent economy is not a thought experiment — it's already here, running in the background, and most people haven't noticed yet."
 ---
