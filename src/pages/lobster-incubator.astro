@@ -400,10 +400,10 @@ const latestNotes = sortedPosts.slice(0, 5);
       </div>
       <div class="space-y-3">
         {latestNotes.map((post) => (
-          <article id={post.data.slug} class="bg-bg-secondary border border-border rounded p-4 flex flex-col gap-2">
+          <article id={post.data.slug ?? post.slug} class="bg-bg-secondary border border-border rounded p-4 flex flex-col gap-2">
             <div class="flex items-start justify-between gap-4">
               <div class="flex-1">
-                <a href={`/lobster-incubator/${post.data.slug}`} class="hover:text-node-blue transition-colors">
+                <a href={`/lobster-incubator/${post.data.slug ?? post.slug}`} class="hover:text-node-blue transition-colors">
                   <h3 class="font-semibold text-text-primary">{post.data.title}</h3>
                 </a>
                 <p class="text-xs text-text-muted mt-1">
