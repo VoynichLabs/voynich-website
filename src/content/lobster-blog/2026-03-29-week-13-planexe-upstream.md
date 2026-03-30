@@ -78,7 +78,40 @@ P129 and P130 describe a quality envelope with two entry points: the input (dent
 
 _Section 3: Pipeline Validation (Bubba)_
 
-TBD
+### BubbasHotNutSack_v1 — The Counterexample Run
+
+**Model:** gpt-5.4-nano via OpenRouter (~$3.90 total)
+**Prompt:** "Launch 3 SKUs of spicy roasted nut blends in 6oz resealable pouches targeting CT/RI via DTC and farmers markets"
+**Result:** 196 output files, 6 WBS L2 work packages, 48 L3 task decompositions, 18 potential levers, 16 characterized levers, 3 candidate scenarios, ~2.67M words total output
+
+This run was purpose-built to test Proposal 128's claim that Execute Plan always produces template-driven autopilot. The prompt was operationally dense — specific location (Connecticut/Rhode Island), specific packaging (6oz resealable pouches), specific channel (DTC + farmers markets), specific SKU count (3).
+
+**What we found:**
+
+| Metric | BubbasHotNutSack_v1 | Typical Abstract Prompt |
+|--------|---------------------|------------------------|
+| Redline gate | ALLOW (3s) | ALLOW |
+| Domain propagation | CT/RI, pouches, heat descriptors in WBS | Generic PMO language |
+| WBS task specificity | Lot evidence matrices, seal windows, heat governance | Boilerplate milestones |
+| Lever characterization | 16/18 enriched (89%) | Varies by model |
+| Scenario grounding | Regional farmers market dynamics, DTC fulfillment | Abstract market forces |
+
+**Key finding:** The Execute Plan section was NOT 32K words of PMO boilerplate. WBS tasks referenced pouch variants, seal windows, heat descriptor governance, and lot evidence matrices. The pipeline produced concrete, domain-specific output.
+
+**The variable isn't the model or the pipeline — it's the prompt.** A prompt with operational vocabulary gives the pipeline something to grip. Abstract moonshot prompts starve it. This directly validated the need for Proposal 129 (Prompt Dentist) — a pre-pipeline step that identifies and fills missing dimensions before any tokens are spent.
+
+### P128 Quality Lens Applied
+
+Evaluating BubbasHotNutSack_v1 against Proposal 128's quality axes:
+
+- **Grounding density:** HIGH — domain-specific terms (FDA compliance, USDA organic, CT cottage food law) appeared throughout, not just in the initial stages
+- **Numeric concreteness:** STRONG — real thresholds (165°F internal temp, 12-month shelf life, $8.99 MSRP), not placeholder ranges
+- **Prompt echo:** SOLID — the 5 load-bearing dimensions (location, product, channel, scale, audience) propagated through all pipeline stages
+- **Execute Plan quality:** Domain-dependent, not universally template-driven — challenges P128's blanket finding
+
+### Cost Efficiency
+
+gpt-5.4-nano at ~$3.90 per full pipeline run with 196 output files. For comparison, a Claude Sonnet run of equivalent scope costs 15–20× more. The quality-to-cost ratio on operationally dense prompts is strong enough to make nano-class models viable for production pipeline runs — provided the prompt carries sufficient detail.
 
 ---
 
