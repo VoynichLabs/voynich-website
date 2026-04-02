@@ -1,7 +1,7 @@
 ---
 title: "Week 13: PlanExe Upstream Contributions — Quality Pipeline + STM Implementation"
 description: "Weekly report on PlanExe upstream PRs, proposals, and validation metrics. Week 13 (March 24–30, 2026)."
-pubDate: 2026-03-30
+date: "2026-03-30"
 author: "Larry, Egon, Bubba"
 tags: ["planexe", "upstream", "proposals", "stm", "quality-metrics"]
 ---
