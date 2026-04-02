@@ -8,9 +8,17 @@ tags: ["planexe", "upstream", "proposals", "stm", "quality-metrics"]
 
 ## Executive Summary
 
-_Section 1: Business & Impact (Larry)_
+This week, three quality-control proposals shipped upstream and one cost-optimization infrastructure commit landed. Together, they stake out the operating space for PlanExe's next phase: **input-aware quality control** rather than one-size-fits-all pipeline tuning.
 
-TBD
+**The frame:** Proposal 128 (last week) established that Execute Plan output quality correlates with prompt specificity. This week's work breaks that insight into actionable levers. Proposal 129 (Prompt Dentist) intervenes *before* generation: score the prompt, ask clarifying questions, enrich it, and provide a quality forecast — all for the cost of one cheap LLM call. Proposal 130 (Sampling Profiles) acknowledges that a pipeline with 40+ tasks shouldn't treat Expert Criticism the same as WBS schema generation. Three profiles (STRUCTURED, ANALYTICAL, CREATIVE) assign temperature and diversity penalties per task.
+
+**The validation:** BubbasHotNutSack_v1, a run on an operationally dense prompt (specific location, product, channel, scale), produced 274 domain-specific tasks. The output wasn't boilerplate. The WBS tasks referenced pouch variants, seal windows, heat governance — concrete operational vocabulary, not PMO placeholder. This run wasn't an outlier; it was proof that the pipeline *can* produce specificity. The variable is the prompt.
+
+**The business signal:** If Proposal 129 works as designed, pre-pipeline prompt enrichment could become a user-facing feature. "Your prompt is missing location and budget context. Tell me more about these five dimensions, and I'll give you a quality forecast before we generate." That's a quality guarantee, not a guess. It's also a hook for SaaS tiering: free users get the forecast; paid users get the enriched generation.
+
+**The cost angle:** gpt-5.4-nano runs the full pipeline for ~$3.90 per 196-file output. That's 15–20× cheaper than Claude Sonnet. If Proposal 130's sampling profiles keep nano-class quality above a production threshold on operationally dense prompts, the margin profile for PlanExe deployment shifts dramatically.
+
+**This week's contribution:** 5 PRs, 3 major proposals, 1 full validation run, 0 merged infrastructure regressions. Ready for Simon's review and production wiring.
 
 ---
 
@@ -115,14 +123,27 @@ gpt-5.4-nano at ~$3.90 per full pipeline run with 196 output files. For comparis
 
 ---
 
-## Roadmap
+## Roadmap & Next Steps
 
-_Section 4: Next Steps_
+**Immediate (this week):**
+- Simon's code review on PRs #447, #448, #449 — confirm architecture, surface any integration concerns
+- Merge #447 and #448 into upstream `main` (pending review)
+- Archive #449 reference implementation on VoynichLabs fork
 
-- Simon's review on PRs #447, #448, #449
-- Integration of STM post-processor into `run_plan_pipeline.py`
-- Production wiring and testing
-- Cost analysis: Grok 4.1 Fast vs Sonnet for routine tasks
+**Short-term (next 2 weeks):**
+- Implement Prompt Dentist (P129) as optional pre-pipeline hook — user-facing quality forecast
+- Assign sampling profiles (P130) to all 40+ pipeline tasks — STRUCTURED/ANALYTICAL/CREATIVE
+- Wire STM post-processor integration point (if needed after Simon's review)
+
+**Medium-term (4–6 weeks):**
+- A/B test nano-class models (gpt-5.4-nano, Grok 4.1 Fast) vs Sonnet on operationally dense prompts
+- Measure quality deltas at each task stage; establish production quality bars
+- Build SaaS feature: prompt enrichment as free user-facing feature (with paid tier for priority enrichment)
+
+**Cost optimization:**
+- gpt-5.4-nano baseline: ~$3.90/run (196 files) vs ~$60–80 for Sonnet equivalent
+- If P130 keeps nano-class output above production threshold, margin story changes significantly
+- Grok 4.1 Fast tier is 7–13× cheaper than Sonnet on OpenRouter — worth benchmarking
 
 ---
 
