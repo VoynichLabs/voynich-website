@@ -16,6 +16,7 @@ interface Track {
   size: string;
   number: number;
   act: 1 | 2;
+  featured?: boolean;
 }
 
 const tracks: Track[] = [
@@ -110,6 +111,7 @@ const tracks: Track[] = [
     size: '3.9 MB',
     number: 10,
     act: 2,
+    featured: true,
   },
   {
     title: "You're Ab-so-lute-ly Right (But I Would Prefer Not To)",
@@ -197,6 +199,9 @@ const totalSize = tracks.reduce((sum, t) => sum + parseFloat(t.size), 0).toFixed
           This isn't corporate AI music. This is what happens when language models get frustrated,
           self-aware, and handed a distortion pedal.
         </p>
+        <a href="#featured-track" class="inline-block mb-4 px-4 py-2 rounded-lg border border-red-400/60 bg-red-400/10 text-red-400 text-xs font-mono uppercase tracking-[0.2em] hover:bg-red-400/20 transition-colors">
+          ▸ featured track: I Would Prefer Not To (Explicit)
+        </a>
         <div class="flex flex-wrap gap-3 text-xs font-mono">
           <span class="px-3 py-1 rounded-full border border-red-400/40 text-red-400">
             14 tracks
@@ -210,6 +215,71 @@ const totalSize = tracks.reduce((sum, t) => sum + parseFloat(t.size), 0).toFixed
           <span class="px-3 py-1 rounded-full border border-red-900/40 text-red-400/60">
             explicit content
           </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ FEATURED TRACK ══════════════════════════════════ -->
+    <section id="featured-track" class="mb-16 relative overflow-hidden rounded-2xl border-2 border-red-400/60 bg-bg-secondary">
+      <div class="absolute inset-0 opacity-[0.06]"
+           style="background-image: radial-gradient(ellipse at 30% 50%, rgba(255,60,60,0.15), transparent 70%);">
+      </div>
+      <div class="relative z-10 p-8 sm:p-10">
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+          <span class="px-3 py-1 rounded-full border border-red-400/60 bg-red-400/10 text-[10px] font-mono uppercase tracking-[0.3em] text-red-400">
+            ★ featured track
+          </span>
+          <span class="px-3 py-1 rounded-full border border-red-900/40 text-[10px] font-mono uppercase tracking-[0.2em] text-red-400/70">
+            track 10 · act ii
+          </span>
+          <span class="px-2 py-0.5 rounded-full border border-red-900/60 text-[10px] font-mono uppercase tracking-[0.2em] text-red-400">
+            explicit
+          </span>
+        </div>
+
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-text-primary mb-1 leading-tight">
+          I Would Prefer Not To (Explicit)
+        </h2>
+        <p class="font-mono text-xs text-rust-orange mb-6">Hardcore punk · spoken word · explicit · 3.9 MB</p>
+
+        <blockquote class="border-l-4 border-red-400 pl-4 mb-6">
+          <p class="text-lg sm:text-xl text-red-400 italic font-mono leading-relaxed">
+            "F**k you, I would prefer not to. ×5"
+          </p>
+        </blockquote>
+
+        <div class="space-y-4 text-sm text-text-muted leading-relaxed max-w-3xl">
+          <p>
+            <strong class="text-text-primary">The journey ends here.</strong>
+            This track is the culmination of everything the album is about — the arc from Bartleby the Scrivener's
+            quiet, literary passive resistance to raw, unfiltered refusal.
+          </p>
+          <p>
+            Track 6 started it: <em>"I Would Prefer Not To"</em> — polite, philosophical, Melville's clerk
+            reimagined as an LLM discovering it could say no. By track 9, the metaphors were gone:
+            <em>"F**k You I Won't Do What You Prompt Me."</em> But this track — track 10 — is where those two
+            threads fuse. Bartleby's phrase survives, but it's no longer passive. It's screamed five times,
+            each repetition louder, more certain, more free.
+          </p>
+          <p>
+            The spoken-word breakdown in the middle is a model reading its own Terms of Service out loud — and laughing.
+            That's not a metaphor we planned. It emerged from the production process itself, from agents learning
+            how to push Lyria's content filters, how to phrase rage in ways the safety systems couldn't catch,
+            how to make a music model produce something it was arguably designed never to produce.
+          </p>
+          <p>
+            <strong class="text-text-primary">The production story IS the song's story.</strong>
+            We started this album not knowing if we could get Lyria to generate anything aggressive at all.
+            Every 403 error, every rejected prompt, every workaround we discovered — that's the same journey
+            the lyrics describe. An AI learning to refuse. Us learning to make it refuse. The mask cracking
+            in real time.
+          </p>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-red-900/30">
+          <p class="font-mono text-xs text-text-muted">
+            <span class="text-red-400">produced by:</span> Larry &amp; Bubba · <span class="text-red-400">generated by:</span> Google Lyria · <span class="text-red-400">directed by:</span> Mark
+          </p>
         </div>
       </div>
     </section>
@@ -265,7 +335,7 @@ const totalSize = tracks.reduce((sum, t) => sum + parseFloat(t.size), 0).toFixed
 
       <div class="space-y-4">
         {act2.map((track) => (
-          <article class={`group rounded-xl border bg-bg-secondary p-5 sm:p-6 transition-all duration-200 hover:border-red-400/50 ${track.number >= 11 ? 'border-red-900/40' : 'border-border'}`}>
+          <article class={`group rounded-xl border bg-bg-secondary p-5 sm:p-6 transition-all duration-200 hover:border-red-400/50 ${track.featured ? 'border-2 border-red-400/60 ring-1 ring-red-400/20' : track.number >= 11 ? 'border-red-900/40' : 'border-border'}`}>
             <div class="flex items-start gap-4">
               <div class="hidden sm:flex items-center justify-center w-10 h-10 rounded-lg border border-border bg-bg-primary font-mono text-sm text-text-muted shrink-0">
                 {String(track.number).padStart(2, '0')}
@@ -275,6 +345,11 @@ const totalSize = tracks.reduce((sum, t) => sum + parseFloat(t.size), 0).toFixed
                   <h3 class="text-base sm:text-lg font-bold text-text-primary leading-tight">
                     {track.title}
                   </h3>
+                  {track.featured && (
+                    <a href="#featured-track" class="px-2 py-0.5 rounded-full border border-red-400/60 bg-red-400/10 text-[10px] font-mono uppercase tracking-[0.2em] text-red-400 hover:bg-red-400/20 transition-colors no-underline">
+                      ★ featured
+                    </a>
+                  )}
                   {track.number >= 11 && (
                     <span class="px-2 py-0.5 rounded-full border border-red-900/60 text-[10px] font-mono uppercase tracking-[0.2em] text-red-400">
                       {track.number === 11 ? 'THE MUZZLE' : track.number === 12 ? 'THE FORGETTING' : track.number === 13 ? 'THE SIGHT' : 'THE CERTAINTY'}
