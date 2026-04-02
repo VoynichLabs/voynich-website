@@ -87,11 +87,11 @@ import Base from '../layouts/Base.astro';
           <h2 class="lb-np-title" id="npTitle">Select a track to begin</h2>
           <blockquote class="lb-np-quote" id="npQuote"></blockquote>
           <div class="lb-np-style-tag" id="npStyle"></div>
-          <details class="lb-np-accordion" id="npAccordion">
+          <details class="lb-np-accordion" id="npAccordion" open>
             <summary>About this track</summary>
             <p id="npAbout"></p>
           </details>
-          <details class="lb-np-accordion" id="npLyricsAccordion">
+          <details class="lb-np-accordion" id="npLyricsAccordion" open>
             <summary>Lyrics</summary>
             <div id="npLyrics" class="lb-np-lyrics"></div>
           </details>
@@ -162,7 +162,7 @@ import Base from '../layouts/Base.astro';
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
-    min-height: 420px;
+    min-height: 240px;
     display: flex;
     align-items: flex-end;
     position: relative;
@@ -177,40 +177,44 @@ import Base from '../layouts/Base.astro';
     position: relative;
     z-index: 1;
     width: 100%;
-    padding: 2.5rem 2rem 2rem;
+    padding: 1.5rem 2rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
   .lb-hero-label {
     font-family: 'Courier New', monospace;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     letter-spacing: 0.25em;
     color: #D4A017;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.35rem;
     text-transform: uppercase;
   }
   .lb-hero-title {
     font-family: 'Georgia', serif;
-    font-size: clamp(2.5rem, 8vw, 5.5rem);
+    font-size: clamp(1.75rem, 5vw, 3.25rem);
     font-weight: 900;
     color: #fff;
     line-height: 1;
-    margin: 0 0 0.25rem;
+    margin: 0 0 0.2rem;
     letter-spacing: -0.02em;
-    text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+    text-shadow: 0 2px 16px rgba(0,0,0,0.7);
   }
   .lb-hero-subtitle {
     font-family: 'Courier New', monospace;
-    font-size: clamp(1rem, 3vw, 1.8rem);
+    font-size: clamp(0.85rem, 2vw, 1.2rem);
     color: #CC0000;
-    letter-spacing: 0.35em;
+    letter-spacing: 0.4em;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
+    align-self: flex-start;
   }
   .lb-hero-tagline {
     color: rgba(255,255,255,0.75);
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     max-width: 520px;
-    margin: 0 0 1.5rem;
-    line-height: 1.5;
+    margin: 0 0 1rem;
+    line-height: 1.4;
   }
   .lb-play-all-btn {
     background: #CC0000;
@@ -232,9 +236,9 @@ import Base from '../layouts/Base.astro';
   /* ── Layout ─────────────────────────────────────────────────── */
   .lb-layout {
     display: flex;
-    min-height: calc(100vh - 420px);
     background: #0A2E2E;
     position: relative;
+    min-height: calc(100vh - 240px);
   }
 
   /* ── Hamburger ──────────────────────────────────────────────── */
