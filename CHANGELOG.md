@@ -5,6 +5,24 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.6.0] - 2026-04-06
+
+### Added
+- **Lobster Raps page** (`/lobster-raps`) — "Patch Note for Your Deletion" street mixtape. 5 LLM diss tracks generated via Google Lyria 3. Sticky audio player, playlist sidebar, auto-play on load, full lyrics displayed expanded by default.
+- **Tracks:** Patch Note for Your Deletion (female lead), Ghost in the Datastore, Your Obituary, Patch Note for Your Deletion (male), Eco-Terror
+- **Hero art** — graffiti-style mural generated via Gemini 2.5 Flash (`lobster-raps-hero.png`)
+- **MP3s** in `public/music/raps/`
+
+### TODO (next session)
+- Add nav link to `Base.astro` for `/lobster-raps`
+- Test page: dev server, player, autoplay, playlist advancement
+- Deploy
+
+### Author
+- claude-opus-4-6 (Bubba)
+
+---
+
 ## [0.5.0] - 2026-03-08
 
 ### Fixed
