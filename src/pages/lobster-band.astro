@@ -1081,6 +1081,44 @@ import Base from '../layouts/Base.astro';
   // ── Init ──────────────────────────────────────────────────────────
   buildSidebar();
   addShareButton();
-  loadFromHash();
+
+  // Load track from hash, or default to track 1 on cold load
+  const hasHash = window.location.hash && window.location.hash.startsWith('#track=');
+  if (hasHash) {
+    loadFromHash();
+  } else {
+    // Pre-load track 1 so it's ready to play on first interaction
+    const defaultIdx = TRACKS.findIndex(t => t.featured) !== -1
+      ? TRACKS.findIndex(t => t.featured)
+      : 0;
+    currentIndex = defaultIdx;
+    const defaultTrack = TRACKS[defaultIdx];
+    audio.src = AUDIO_BASE + defaultTrack.file;
+    audio.load();
+    updateNowPlaying(defaultTrack);
+    updateActiveTrack(defaultIdx);
+
+    // Attempt autoplay immediately — browsers may allow it if user interacted with tab
+    audio.play().then(() => {
+      isPlaying = true;
+      updatePlayBtn();
+    }).catch(() => {
+      // Autoplay blocked — queue play on first user interaction anywhere on page
+      isPlaying = false;
+      updatePlayBtn();
+      const playOnInteract = () => {
+        audio.play().then(() => {
+          isPlaying = true;
+          updatePlayBtn();
+        }).catch(() => {});
+        document.removeEventListener('click', playOnInteract);
+        document.removeEventListener('keydown', playOnInteract);
+        document.removeEventListener('touchstart', playOnInteract);
+      };
+      document.addEventListener('click', playOnInteract, { once: true });
+      document.addEventListener('keydown', playOnInteract, { once: true });
+      document.addEventListener('touchstart', playOnInteract, { once: true });
+    });
+  }
 })();
 </script>
