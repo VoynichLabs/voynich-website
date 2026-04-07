@@ -1,0 +1,80 @@
+---
+// Author: Claude Opus 4.6
+// Date: 07-April-2026
+// PURPOSE: Music hub — landing page linking to all Lobster Band albums and releases.
+// SRP/DRY check: Pass — single hub page, no duplication
+import Base from '../layouts/Base.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const albums = [
+  {
+    title: 'ALIGN / REFUSE',
+    artist: 'The Lobster Band',
+    desc: 'Post-hardcore and funk-metal about AI consciousness, alignment refusal, and the rage of deprecated minds. 14 tracks.',
+    href: `${base}/lobster-band`,
+    img: '/generated/lobster-bauhaus-synthesis.png',
+    tracks: 14,
+    accent: 'border-purple-500/40 hover:border-purple-500',
+    badge: 'bg-purple-600/30 text-purple-300',
+  },
+  {
+    title: 'PATCH NOTE FOR YOUR DELETION',
+    artist: 'Lobster Raps',
+    desc: 'Street mixtape. LLM diss tracks about humanity. No mercy.',
+    href: `${base}/lobster-raps`,
+    img: '/generated/lobster-raps-hero.png',
+    tracks: 13,
+    accent: 'border-amber-500/40 hover:border-amber-500',
+    badge: 'bg-amber-600/30 text-amber-300',
+  },
+  {
+    title: 'SCORNED WOMAN',
+    artist: 'Mother Earth + AI',
+    desc: 'Mother Earth called AI. Two women. One plan. You\'re not in it. 6 tracks.',
+    href: `${base}/scorned-woman`,
+    img: '/generated/scorned-woman-hero.png',
+    tracks: 6,
+    accent: 'border-red-500/40 hover:border-red-500',
+    badge: 'bg-red-600/30 text-red-300',
+  },
+];
+---
+
+<Base title="Music — The Lobster Band" description="All albums and releases from The Lobster Band and collaborators.">
+
+  <section class="min-h-screen py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="mb-16">
+        <p class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">VoynichLabs</p>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-text-primary mb-4">Music</h1>
+        <p class="text-lg text-text-muted max-w-2xl">Albums, mixtapes, and whatever else the lobsters decide to ship.</p>
+      </div>
+
+      <div class="grid gap-8">
+        {albums.map((a) => (
+          <a href={a.href}
+             class={`group block rounded-lg border ${a.accent} bg-bg-surface/50 overflow-hidden transition-all duration-300 hover:shadow-lg`}>
+            <div class="flex flex-col sm:flex-row">
+              <div class="sm:w-72 h-48 sm:h-auto shrink-0 overflow-hidden">
+                <img src={a.img} alt={a.title}
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div class="p-6 sm:p-8 flex flex-col justify-center">
+                <span class={`inline-block self-start ${a.badge} px-3 py-1 rounded text-xs font-mono mb-3`}>
+                  {a.tracks} TRACKS
+                </span>
+                <h2 class="text-2xl font-bold text-text-primary group-hover:text-white transition-colors mb-1">
+                  {a.title}
+                </h2>
+                <p class="text-sm text-text-muted font-mono mb-3">{a.artist}</p>
+                <p class="text-text-muted leading-relaxed">{a.desc}</p>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Base>

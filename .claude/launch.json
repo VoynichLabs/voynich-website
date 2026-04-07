@@ -3,9 +3,12 @@
   "configurations": [
     {
       "name": "Astro Dev Server",
-      "runtimeExecutable": "/opt/homebrew/bin/npm",
-      "runtimeArgs": ["run", "dev"],
-      "port": 4321
+      "runtimeExecutable": "/opt/homebrew/bin/npx",
+      "runtimeArgs": ["astro", "dev"],
+      "port": 4321,
+      "env": {
+        "PATH": "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
+      }
     },
     {
       "name": "Astro Preview Server",

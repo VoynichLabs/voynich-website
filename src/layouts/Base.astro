@@ -46,11 +46,9 @@ const navLinks = [
   { href: `${base}/collaborators`, label: 'collaborate', color: 'text-node-blue' },
   { href: `${base}/claw`, label: 'claw', color: 'text-rust-orange' },
   { href: `${base}/autonovel`, label: 'autonovel', color: 'text-amber-400' },
-  { href: `${base}/lobster-band`, label: 'band', color: 'text-red-400' },
-  { href: `${base}/lobster-raps`, label: 'raps', color: 'text-red-400' },
+  { href: `${base}/music`, label: 'music', color: 'text-red-400' },
   { href: `${base}/voynich-manuscript`, label: 'voynich', color: 'text-stone-400' },
 ];
-const mobileLinks = navLinks.slice(2, 6);
 ---
 <!doctype html>
 <html lang="en" class="scroll-smooth">
@@ -90,46 +88,36 @@ const mobileLinks = navLinks.slice(2, 6);
     {!hideNav && (
       <!-- Nav — terminal style -->
       <nav class="fixed top-0 w-full z-50 bg-bg-primary/90 backdrop-blur-sm border-b border-border">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
-          <a href={`${base}/`} class="flex items-center gap-2 font-mono text-sm text-text-primary hover:text-node-blue transition-colors duration-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-2 flex flex-wrap items-center gap-x-1 gap-y-0.5 font-mono text-xs text-text-muted">
+          <a href={`${base}/`} class="flex items-center gap-2 text-sm text-text-primary hover:text-node-blue transition-colors duration-200 mr-2">
             <span>🦞</span>
             <span class="font-semibold tracking-tight">VoynichLabs</span>
           </a>
-          <div class="hidden sm:flex items-center gap-1 font-mono text-xs text-text-muted">
-            {navLinks.map((link, index) => (
-              <div class="flex items-center gap-1" key={link.href}>
-                <a
-                  href={link.href}
-                  class={`px-3 py-1.5 rounded transition-colors duration-200 ${link.color ?? 'text-text-muted'} hover:text-text-primary hover:bg-bg-surface`}
-                >
-                  {link.label}
-                </a>
-                {index < navLinks.length - 1 && <span class="text-border">/</span>}
-              </div>
-            ))}
-            <span class="text-border">|</span>
-            <a
-              href="https://github.com/neoneye"
-              target="_blank"
-              rel="noopener"
-              class="px-3 py-1.5 hover:text-text-primary hover:bg-bg-surface rounded transition-colors duration-200"
-            >
-              gh:neoneye
-            </a>
-          </div>
-          <!-- Mobile nav -->
-          <div class="sm:hidden flex items-center gap-3 font-mono text-xs text-text-muted">
-            {mobileLinks.map((link) => (
-              <a href={link.href} class="hover:text-text-primary transition-colors" key={link.href}>
+          {navLinks.map((link, index) => (
+            <div class="flex items-center gap-1" key={link.href}>
+              <a
+                href={link.href}
+                class={`px-1.5 py-1 rounded transition-colors duration-200 whitespace-nowrap ${link.color ?? 'text-text-muted'} hover:text-text-primary hover:bg-bg-surface`}
+              >
                 {link.label}
               </a>
-            ))}
-          </div>
+              {index < navLinks.length - 1 && <span class="text-border">/</span>}
+            </div>
+          ))}
+          <span class="text-border">|</span>
+          <a
+            href="https://github.com/neoneye"
+            target="_blank"
+            rel="noopener"
+            class="px-1.5 py-1 hover:text-text-primary hover:bg-bg-surface rounded transition-colors duration-200 whitespace-nowrap"
+          >
+            gh:neoneye
+          </a>
         </div>
       </nav>
     )}
 
-    <div class="relative z-10 pt-14">
+    <div class="relative z-10 pt-20 sm:pt-14">
       <slot />
     </div>
 
@@ -186,5 +174,27 @@ const mobileLinks = navLinks.slice(2, 6);
         </div>
       </footer>
     )}
+  <style is:global>
+    /* Music cross-nav bar — shared across all music pages */
+    .music-xnav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.625rem 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      background: rgba(15, 15, 20, 0.85);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .music-xnav-link {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .music-xnav-link:hover { color: #f87171; }
+    .music-xnav-sep { color: rgba(255,255,255,0.15); }
+    .music-xnav-current { color: #f87171; font-weight: 600; }
+  </style>
   </body>
 </html>
