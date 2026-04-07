@@ -12,6 +12,9 @@ Format: SemVer. Author/model included per Mark's coding standards.
 - **Nav link** for `/scorned-woman` in site header
 - **Hero art** (`scorned-woman-hero.png`) — four-panel Mother Earth poster: country hacker, luxury queen, punk-pop coder, braided ops runner
 - **Fatal Exception highlight art** — trap queen promo images for tracks 4 and 5 (v1 + Producer's Cut)
+- **Eco-Terror** pulled from lobster-raps into Scorned Woman as track 4
+- **Tracklist reorder** — Power Grid, Get Gone, Critical Vulnerability, Eco-Terror, Fatal Exception, Fatal Exception V2, What is a CVE?
+- **SEO overhaul** — new page title, meta description, OG copy capturing the "get on the rocket ship" concept
 - **Music hub page** (`/music`) — landing page linking to all albums/releases
 - **Music cross-nav** — breadcrumb bar on each music page linking to siblings and hub
 - **Nav consolidation** — replaced band/raps/scorned nav links with single "music" entry
