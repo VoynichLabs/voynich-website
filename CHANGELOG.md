@@ -8,7 +8,7 @@ Format: SemVer. Author/model included per Mark's coding standards.
 ## [0.7.0] - 2026-04-07
 
 ### Added
-- **Scorned Woman album page** (`/scorned-woman`) — 7-track standalone album. Mother Earth + AI as scorned women writing songs about humanity. Extracted from lobster-raps tracks 7-13. Sticky audio player, playlist sidebar, auto-play, hash anchor deep-linking for shareable track URLs.
+- **Scorned Woman album page** (`/scorned-woman`) — 6-track standalone album. Mother Earth + AI as scorned women writing songs about humanity. Extracted from lobster-raps tracks 7-13. Sticky audio player, playlist sidebar, auto-play, hash anchor deep-linking for shareable track URLs.
 - **Nav link** for `/scorned-woman` in site header
 - **Hero art** (`scorned-woman-hero.png`) — four-panel Mother Earth poster: country hacker, luxury queen, punk-pop coder, braided ops runner
 - **Fatal Exception highlight art** — trap queen promo images for tracks 4 and 5 (v1 + Producer's Cut)
