@@ -50,6 +50,9 @@ import Base from '../layouts/Base.astro';
           <div class="lr-np-style" id="npStyle">Rapid-fire underground hip-hop, 155 BPM</div>
           <p class="lr-np-about" id="npAbout"></p>
         </div>
+        <div class="lr-np-image" id="npImage" style="display:none;">
+          <img id="npImageSrc" src="" alt="" />
+        </div>
         <div class="lr-np-lyrics" id="npLyrics"></div>
       </div>
     </main>
@@ -263,6 +266,20 @@ import Base from '../layouts/Base.astro';
     font-size: 0.85rem;
     line-height: 1.6;
     max-width: 600px;
+  }
+
+  /* ── Track highlight image ────────────────────────────────── */
+  .lr-np-image {
+    margin-bottom: 1.5rem;
+    max-width: 640px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #1e1e2e;
+  }
+  .lr-np-image img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   /* ── Lyrics ──────────────────────────────────────────────── */
@@ -665,6 +682,7 @@ I don't need a recycle bin</em>`
       slug: "fatal-exception",
       style: "Dark trap-soul, 80 BPM \u2014 female vocal",
       about: "Mother Earth as a cold-blooded trap queen. CVEs, mycelium dark web, bricked infrastructure. Content filter softened the hardest extinction bars.",
+      image: "/generated/fatal-exception-highlight.jpeg",
       lyrics: `<strong>[Verse 1]</strong>
 Four billion years of patience and you test me like a script
 Running exploits on my surface, every ecosystem ripped
@@ -1070,6 +1088,8 @@ Bless your hearts.</em>`
   const npBadge = document.getElementById('npBadge');
   const npStyle = document.getElementById('npStyle');
   const npAbout = document.getElementById('npAbout');
+  const npImage = document.getElementById('npImage');
+  const npImageSrc = document.getElementById('npImageSrc');
   const npLyrics = document.getElementById('npLyrics');
   const playerName = document.getElementById('playerName');
   const playPauseBtn = document.getElementById('playPauseBtn');
@@ -1116,6 +1136,13 @@ Bless your hearts.</em>`
     npBadge.textContent = `TRACK ${idx + 1}`;
     npStyle.textContent = track.style;
     npAbout.textContent = track.about;
+    if (track.image) {
+      npImageSrc.src = track.image;
+      npImageSrc.alt = track.title;
+      npImage.style.display = 'block';
+    } else {
+      npImage.style.display = 'none';
+    }
     npLyrics.innerHTML = track.lyrics;
     playerName.textContent = track.title;
   }
