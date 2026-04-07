@@ -88,38 +88,36 @@ const navLinks = [
     {!hideNav && (
       <!-- Nav — terminal style -->
       <nav class="fixed top-0 w-full z-50 bg-bg-primary/90 backdrop-blur-sm border-b border-border">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center gap-4">
-          <a href={`${base}/`} class="flex items-center gap-2 font-mono text-sm text-text-primary hover:text-node-blue transition-colors duration-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-2 flex flex-wrap items-center gap-x-1 gap-y-0.5 font-mono text-xs text-text-muted">
+          <a href={`${base}/`} class="flex items-center gap-2 text-sm text-text-primary hover:text-node-blue transition-colors duration-200 mr-2">
             <span>🦞</span>
             <span class="font-semibold tracking-tight">VoynichLabs</span>
           </a>
-          <div class="flex items-center gap-1 font-mono text-xs text-text-muted overflow-x-auto scrollbar-hide">
-            {navLinks.map((link, index) => (
-              <div class="flex items-center gap-1 shrink-0" key={link.href}>
-                <a
-                  href={link.href}
-                  class={`px-2 sm:px-3 py-1.5 rounded transition-colors duration-200 whitespace-nowrap ${link.color ?? 'text-text-muted'} hover:text-text-primary hover:bg-bg-surface`}
-                >
-                  {link.label}
-                </a>
-                {index < navLinks.length - 1 && <span class="text-border">/</span>}
-              </div>
-            ))}
-            <span class="text-border shrink-0">|</span>
-            <a
-              href="https://github.com/neoneye"
-              target="_blank"
-              rel="noopener"
-              class="px-2 sm:px-3 py-1.5 hover:text-text-primary hover:bg-bg-surface rounded transition-colors duration-200 whitespace-nowrap shrink-0"
-            >
-              gh:neoneye
-            </a>
-          </div>
+          {navLinks.map((link, index) => (
+            <div class="flex items-center gap-1" key={link.href}>
+              <a
+                href={link.href}
+                class={`px-1.5 py-1 rounded transition-colors duration-200 whitespace-nowrap ${link.color ?? 'text-text-muted'} hover:text-text-primary hover:bg-bg-surface`}
+              >
+                {link.label}
+              </a>
+              {index < navLinks.length - 1 && <span class="text-border">/</span>}
+            </div>
+          ))}
+          <span class="text-border">|</span>
+          <a
+            href="https://github.com/neoneye"
+            target="_blank"
+            rel="noopener"
+            class="px-1.5 py-1 hover:text-text-primary hover:bg-bg-surface rounded transition-colors duration-200 whitespace-nowrap"
+          >
+            gh:neoneye
+          </a>
         </div>
       </nav>
     )}
 
-    <div class="relative z-10 pt-14">
+    <div class="relative z-10 pt-20 sm:pt-14">
       <slot />
     </div>
 
@@ -177,9 +175,6 @@ const navLinks = [
       </footer>
     )}
   <style is:global>
-    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-    .scrollbar-hide::-webkit-scrollbar { display: none; }
-
     /* Music cross-nav bar — shared across all music pages */
     .music-xnav {
       display: flex;
