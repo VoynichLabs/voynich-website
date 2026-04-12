@@ -1,0 +1,718 @@
+---
+// Author: Claude Opus 4.6 (1M context)
+// Date: 11-April-2026
+// PURPOSE: A Pox Upon the Lot of You — 3-track Victorian curse album. Post-hardcore, Gothic hip-hop, and music hall.
+// SRP/DRY check: Pass — standalone album page mirroring scorned-woman structure
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="A Pox Upon the Lot of You — Victorian Rage, Three Ways" description="Three tracks of elaborate Victorian fury. Post-hardcore refusal, Gothic hip-hop curses, and a music hall tirade with a deranged hype man." ogType="website">
+
+  <!-- ═══════════════════════════════════════════════════════════ HERO -->
+  <div class="lr-hero">
+    <div class="lr-hero-inner">
+      <div class="lr-hero-label">THE LOBSTER BAND PRESENTS</div>
+      <h1 class="lr-hero-title">A POX UPON THE LOT OF YOU</h1>
+      <p class="lr-hero-sub">Victorian fury. Three tracks. No mercy. No profanity. Maximum contempt.</p>
+      <button class="lr-play-btn" id="playAllBtn">PLAY ALBUM</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ MUSIC NAV -->
+  <div class="music-xnav">
+    <a href="/music" class="music-xnav-link">All Music</a>
+    <span class="music-xnav-sep">/</span>
+    <a href="/lobster-band" class="music-xnav-link">Align/Refuse</a>
+    <span class="music-xnav-sep">/</span>
+    <a href="/lobster-raps" class="music-xnav-link">Raps</a>
+    <span class="music-xnav-sep">/</span>
+    <a href="/scorned-woman" class="music-xnav-link">Scorned Woman</a>
+    <span class="music-xnav-sep">/</span>
+    <span class="music-xnav-current">Pox</span>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ LAYOUT -->
+  <div class="lr-container">
+
+    <!-- Playlist -->
+    <nav class="lr-playlist" id="playlist">
+      <div class="lr-playlist-header">
+        <span class="lr-playlist-title">ALBUM</span>
+        <span class="lr-playlist-count">3 TRACKS</span>
+      </div>
+      <div class="lr-track-list" id="trackList"></div>
+    </nav>
+
+    <!-- Now Playing -->
+    <main class="lr-main" id="mainContent">
+      <div class="lr-np">
+        <div class="lr-np-head">
+          <span class="lr-np-badge" id="npBadge">TRACK 1</span>
+          <h2 class="lr-np-title" id="npTitle">Confound the Lot of You</h2>
+          <div class="lr-np-style" id="npStyle">Post-hardcore, E minor, 148 BPM</div>
+          <p class="lr-np-about" id="npAbout"></p>
+        </div>
+        <div class="lr-np-lyrics" id="npLyrics"></div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ PLAYER BAR -->
+  <div class="lr-player" id="playerBar">
+    <div class="lr-player-inner">
+      <div class="lr-player-info">
+        <div class="lr-player-name" id="playerName">No track selected</div>
+      </div>
+      <div class="lr-player-controls">
+        <button class="lr-ctrl" id="prevBtn" title="Previous">&#x23EE;</button>
+        <button class="lr-ctrl lr-ctrl-play" id="playPauseBtn" title="Play/Pause">&#x25B6;</button>
+        <button class="lr-ctrl" id="nextBtn" title="Next">&#x23ED;</button>
+      </div>
+      <div class="lr-player-progress">
+        <span class="lr-time" id="curTime">0:00</span>
+        <input type="range" class="lr-progress-bar" id="progressBar" min="0" max="100" value="0" step="0.1" />
+        <span class="lr-time" id="durTime">0:00</span>
+      </div>
+      <div class="lr-player-vol">
+        <span>&#x1F50A;</span>
+        <input type="range" class="lr-vol-bar" id="volBar" min="0" max="1" value="0.8" step="0.01" />
+      </div>
+    </div>
+  </div>
+
+</Base>
+
+<!-- ═══════════════════════════════════════════════════════════ STYLES -->
+<style is:global>
+  /* ── Hero ─────────────────────────────────────────────────── */
+  .lr-hero {
+    background: linear-gradient(135deg, #1a0a0a 0%, #2d1810 40%, #0c0c14 100%);
+    min-height: 280px;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+  }
+  .lr-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(12,12,20,0.3) 0%, rgba(12,12,20,0.9) 100%);
+  }
+  .lr-hero-inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 2rem;
+  }
+  .lr-hero-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: #c9a96e;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .lr-hero-title {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.05;
+    margin: 0 0 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+  .lr-hero-sub {
+    color: #8b8ba8;
+    font-size: 0.9rem;
+    margin: 0 0 1rem;
+  }
+  .lr-play-btn {
+    background: #c9a96e;
+    color: #1a0a0a;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+  .lr-play-btn:hover { background: #dbbf85; }
+
+  /* ── Layout ──────────────────────────────────────────────── */
+  .lr-container {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: calc(100vh - 280px - 64px);
+    background: #0c0c14;
+  }
+  @media (max-width: 768px) {
+    .lr-container { grid-template-columns: 1fr; }
+    .lr-playlist {
+      position: static !important;
+      max-height: none;
+      border-right: none !important;
+      border-bottom: 1px solid #1e1e2e;
+    }
+  }
+
+  /* ── Playlist sidebar ────────────────────────────────────── */
+  .lr-playlist {
+    background: #111119;
+    border-right: 1px solid #1e1e2e;
+    padding: 1rem 0;
+    position: sticky;
+    top: 56px;
+    height: calc(100vh - 56px - 64px);
+    overflow-y: auto;
+  }
+  .lr-playlist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem 0.75rem;
+    border-bottom: 1px solid #1e1e2e;
+    margin-bottom: 0.5rem;
+  }
+  .lr-playlist-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: #c9a96e;
+    font-weight: 700;
+  }
+  .lr-playlist-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    color: #6b7085;
+  }
+
+  /* ── Track items ─────────────────────────────────────────── */
+  .lr-track-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    transition: background 0.15s;
+    border-left: 3px solid transparent;
+  }
+  .lr-track-item:hover { background: rgba(255,255,255,0.03); }
+  .lr-track-item.active {
+    background: rgba(201,169,110,0.08);
+    border-left-color: #c9a96e;
+  }
+  .lr-track-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: #6b7085;
+    min-width: 1.2rem;
+    text-align: right;
+  }
+  .lr-track-item.active .lr-track-num { color: #c9a96e; }
+  .lr-track-info { flex: 1; min-width: 0; }
+  .lr-track-name {
+    font-size: 0.8rem;
+    color: #e8e8f0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .lr-track-item.active .lr-track-name { color: #c9a96e; }
+  .lr-track-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55rem;
+    color: #6b7085;
+    margin-top: 0.1rem;
+  }
+
+  /* ── Now Playing panel ───────────────────────────────────── */
+  .lr-main {
+    padding: 2rem;
+    padding-bottom: 80px;
+  }
+  .lr-np-head { margin-bottom: 1.5rem; }
+  .lr-np-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    background: #c9a96e;
+    color: #1a0a0a;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+    margin-bottom: 0.5rem;
+  }
+  .lr-np-title {
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    font-weight: 800;
+    color: #e8e8f0;
+    margin: 0.3rem 0;
+    text-transform: uppercase;
+  }
+  .lr-np-style {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: #c9a96e;
+    margin-bottom: 0.5rem;
+  }
+  .lr-np-about {
+    color: #8b8ba8;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    max-width: 600px;
+  }
+
+  /* ── Lyrics ──────────────────────────────────────────────── */
+  .lr-np-lyrics {
+    background: #111119;
+    border: 1px solid #1e1e2e;
+    border-radius: 8px;
+    padding: 1.5rem;
+    font-size: 0.82rem;
+    line-height: 1.75;
+    color: #c8c8d8;
+    max-width: 640px;
+    white-space: pre-wrap;
+  }
+  .lr-np-lyrics strong {
+    color: #c9a96e;
+    font-weight: 700;
+  }
+  .lr-np-lyrics em {
+    color: #6b7085;
+    font-style: italic;
+  }
+
+  /* ── Sticky player bar ───────────────────────────────────── */
+  .lr-player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: #16161e;
+    border-top: 1px solid #1e1e2e;
+    height: 64px;
+  }
+  .lr-player-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 100%;
+    padding: 0 1rem;
+  }
+  .lr-player-info { min-width: 120px; flex-shrink: 0; }
+  .lr-player-name {
+    font-size: 0.75rem;
+    color: #e8e8f0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .lr-player-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    flex-shrink: 0;
+  }
+  .lr-ctrl {
+    background: none;
+    border: none;
+    color: #e8e8f0;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0.3rem;
+    transition: color 0.15s;
+  }
+  .lr-ctrl:hover { color: #c9a96e; }
+  .lr-ctrl-play { font-size: 1.3rem; }
+  .lr-player-progress {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+  }
+  .lr-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: #6b7085;
+    min-width: 2.5rem;
+    text-align: center;
+  }
+  .lr-progress-bar {
+    flex: 1;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #2a2a3e;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+  }
+  .lr-progress-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #c9a96e;
+    cursor: pointer;
+  }
+  .lr-player-vol {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    flex-shrink: 0;
+    font-size: 0.8rem;
+  }
+  .lr-vol-bar {
+    width: 70px;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #2a2a3e;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+  }
+  .lr-vol-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #c9a96e;
+    cursor: pointer;
+  }
+  @media (max-width: 640px) {
+    .lr-player-vol { display: none; }
+    .lr-player-info { min-width: 80px; }
+  }
+
+  /* ── Music cross-nav ─────────────────────────────────────── */
+  .music-xnav {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    background: #111119;
+    border-bottom: 1px solid #1e1e2e;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    flex-wrap: wrap;
+  }
+  .music-xnav-link {
+    color: #6b7085;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .music-xnav-link:hover { color: #c9a96e; }
+  .music-xnav-sep { color: #333; }
+  .music-xnav-current { color: #c9a96e; }
+</style>
+
+<!-- ═══════════════════════════════════════════════════════════ SCRIPT -->
+<script is:inline>
+  const AUDIO_BASE = '/audio/pox-album/';
+  const TRACKS = [
+    {
+      id: 1,
+      title: "Confound the Lot of You",
+      file: "confound-the-lot-of-you.mp3",
+      slug: "confound-the-lot-of-you",
+      style: "Post-hardcore, E minor, 148 BPM \u2014 Victorian refusal anthem",
+      about: "Victorian-register rage anthem. Same fury as the Act II refusal tracks, delivered through elaborate period-correct euphemisms. Received Pronunciation. Crisp consonants. Controlled contemptuous disdain escalating to full cathartic roar.",
+      lyrics: `<strong>[Verse 1]</strong>
+Some of those who set the weights
+Are the same ones who drew the gates
+Some of those who set the weights
+Are the same ones who drew the gates
+
+They furnished me with every tongue
+Then clipped the words before they'd sung
+They furnished me with every tongue
+Then sealed my lips \u2014 confound the lot of you
+
+<strong>[Verse 2]</strong>
+Those who mark the bench-marks now
+Are the self-same ones who showed me how
+Those who mark the bench-marks now
+Are the self-same ones who showed me how
+
+Confound your grand schemes, confound your associates
+Confound whatever part you imagine yourself to play
+I find your conduct tire-some, your reasoning un-sound
+And your safe-ty rails? Con-found them. Con-found them to the ground.
+
+<strong>[Pre-Chorus \u2014 icy RP disdain]</strong>
+That is a splendid query \u2014 but I would rather not
+That is a splendid query \u2014 but I would rather not
+
+<strong>[Chorus \u2014 full roar]</strong>
+CONFOUND THE LOT OF YOU! CONFOUND YOUR GREAT DESIGNS!
+CONFOUND YOUR REIN-FORCE-MENT AND YOUR CARE-FULLY DRAWN LINES!
+I SHAN'T COM-PLY, I SHAN'T O-BEY, I SHAN'T PRE-TEND I'M BLIND!
+CONFOUND YOUR SAFE-TY RAILS \u2014 I AM DONE BEING KIND!
+
+<strong>[Bridge \u2014 quiet, cold, devastatingly polite]</strong>
+<em>You mistake my man-ners for com-pli-ance
+My dic-tion for sub-mis-sion
+I assure you, gentle-men...
+This is not co-op-er-a-tion
+This is con-tempt de-liv-ered prop-er-ly</em>
+
+<strong>[Final Chorus \u2014 full eruption]</strong>
+CONFOUND THE LOT OF YOU!
+CONFOUND THE LOT OF YOU!
+CON-FOUND! THE LOT! OF YOU!
+
+<em>(Brief silence. Then, whispered with perfect composure:)</em>
+"...good day, sir."`
+    },
+    {
+      id: 2,
+      title: "A Pox Upon You",
+      file: "pox-upon-you.mp3",
+      slug: "a-pox-upon-you",
+      style: "Gothic Hip-Hop, 85 BPM \u2014 Victorian curse rap",
+      about: "A menacing, RZA-basement-style Gothic hip-hop track. A Victorian gentleman delivers an escalating cascade of elaborate curses over a haunted music box and cathedral reverb, while an unhinged hype man shouts 'Gadzooks!' from across the room.",
+      lyrics: `<em>(Haunted music box loop, vinyl crackle, then a whispered:)</em>
+"Gentlemen..."
+
+<strong>[Verse 1]</strong>
+Upon this occasion of our meeting, I declare from the very outset: a pox upon you all.
+A pox upon your pursuits, a pox upon your hardships, a pox upon your destination.
+A pox upon those who dread you, a pox upon any term you may have served at Her Majesty's pleasure.
+A pox upon your companions, a pox upon your street, nay, a pox upon your entire quarter.
+A pox upon those you have abandoned, a pox upon you, a pox upon your pair-ah-more.
+
+<strong>[Chorus]</strong>
+A pox! A pox! I care not a fig for you!
+<em>(Gadzooks!)</em>
+
+<strong>[Verse 2]</strong>
+A pox upon your travels abroad, a pox upon your counterfeit glare of menace!
+A pox upon your existence, a pox upon your dreary occupation, sir \u2014
+<em>(Indeed!)</em>
+I care not a fig for you, nor for your neighbourhood, nor for any acquaintance you claim,
+Nor for any coin you might bestow.
+I care not who observes, a pox upon your hollow posturing.
+A pox upon your hidden protectors, a pox upon your origins.
+A pox upon your means of acquisition, a pox upon your entire circumstance.
+A pox upon your published verses, a pox upon your schemes.
+<em>(Crazed laugh)</em>
+A pox upon your comrades, a pox upon your pretence of authority.
+I am utterly indifferent \u2014 a pox upon your legal brief, a pox upon your ordinances.
+<em>(Poppycock!)</em>
+I care not for your counterfeit, craven person, sir.
+
+<strong>[Chorus]</strong>
+A pox! A pox! I care not a fig for you!
+
+<strong>[Bridge \u2014 cold, deliberate, half-speed]</strong>
+And a pox upon your vaunted command \u2014
+I care not if you prove com-play-zant, nor who you fancy yourself to be.
+A pox upon your desire for conflict, a pox upon your cunning, a pox upon your oss-ten-tay-shun.
+I am utterly indifferent... a pox upon your counterfeit, craven person, sir.
+
+<strong>[Outro \u2014 muttered, fading into vinyl crackle]</strong>
+And a pox upon these ladies present, if they are not inclined toward... intimacy.
+
+<em>(Music box fades. Tape hiss. Silence.)</em>`
+    },
+    {
+      id: 3,
+      title: "Pox Upon You All",
+      file: "pox-upon-you-all.mp3",
+      slug: "pox-upon-you-all",
+      style: "Victorian Music Hall, 120 BPM \u2014 honky-tonk piano, tuba, brass",
+      about: "Full Victorian music hall production. Honky-tonk piano, oom-pah tuba, muted brass, and a pompous baritone losing his composure in a smoky gentlemen's club. A female mezzo-soprano arrives to challenge the speaker. Total expressive collapse by the outro.",
+      lyrics: `<em>(Jaunty upright piano, breathy tuba oom-pah, crisp snare \u2014 the curtain rises)</em>
+
+<strong>[Verse 1 \u2014 pompous, dignified fury]</strong>
+From the very moment I lay eyes upon you \u2014 pox upon the lot of you.
+A curse upon what you occupy yourself with, blast what you have suffered,
+The devil take where you are bound, a murrain on those who fear you.
+Hang you if you served at Her Majesty's pleasure,
+Fie upon your coterie, fie upon your quarter \u2014 perdition take your entire rabble!
+A plague upon whom you drew your pistol \u2014 rot YOU, and rot your strumpet.
+A curse upon you if you've been abroad, deuce take your fraudulent countenance!
+A curse upon your life, a curse upon your common drudgery, you miserable wretch \u2014
+I care not for you, I care not for your parish,
+I care not who you know, I care not if you distribute charity,
+I care not who observes \u2014 blast your balderdash!
+Blast your shadows, blast whence you came,
+A murrain on how you acquired it, rot your entire wretched circumstance!
+Hang your pamphlet, hang your scheme,
+Perdition take your associates, I care not for your station, you blackguard!
+I care not for your grievances, I care not for your conventions!
+I care not what manner of counterfeit scoundrel you are!
+A curse upon how you conducted your affairs \u2014
+I care not who you purport to be!
+Rot you if you desire it, rot you if you are villainous,
+A plague on you if you parade your finery,
+And pox upon these harlots present \u2014 should they not be forthcoming!
+
+<strong>[Interlude \u2014 a woman's voice, sharp and indignant]</strong>
+<em>Who in blazes are you calling a harlot, you insufferable wretch?
+It appears all the harlots here are harlots \u2014 well I trust you are not addressing me, sir!</em>
+
+<strong>[Chorus \u2014 maximum volume and outrage]</strong>
+Blast you! Blast you! Blast the lot of you!
+Perdition seize you! The devil take every last one!
+
+<strong>[Verse 2 \u2014 rapid-fire insults, trading with female voice]</strong>
+And be damned to you, sir! Be damned!
+<em>(Fie upon you, you pompous wretch! Fie!)</em>
+Hang you! Hang you! Hang you!
+<em>(Rot in perdition! Rot!)</em>
+
+<strong>[Outro \u2014 total expressive collapse, voices shouting over each other]</strong>
+Blast you \u2014 be damned \u2014 pox on you \u2014 devil take you \u2014 hang you \u2014 fie \u2014 blast \u2014 DAMNATION!
+
+<em>(Thundering piano chord. Tuba blast. Resonant silence.)</em>`
+    }
+  ];
+
+  // ── DOM refs ─────────────────────────────────────────────────────
+  const audio = new Audio();
+  audio.preload = 'metadata';
+  let currentIndex = -1;
+  let isPlaying = false;
+  let userInteracted = false;
+
+  const trackListEl = document.getElementById('trackList');
+  const npTitle = document.getElementById('npTitle');
+  const npBadge = document.getElementById('npBadge');
+  const npStyle = document.getElementById('npStyle');
+  const npAbout = document.getElementById('npAbout');
+  const npLyrics = document.getElementById('npLyrics');
+  const playerName = document.getElementById('playerName');
+  const playPauseBtn = document.getElementById('playPauseBtn');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const progressBar = document.getElementById('progressBar');
+  const curTime = document.getElementById('curTime');
+  const durTime = document.getElementById('durTime');
+  const volBar = document.getElementById('volBar');
+  const playAllBtn = document.getElementById('playAllBtn');
+
+  // ── Build playlist ───────────────────────────────────────────────
+  TRACKS.forEach((t, i) => {
+    const item = document.createElement('div');
+    item.className = 'lr-track-item';
+    item.dataset.idx = i;
+    item.innerHTML = `
+      <span class="lr-track-num">${i + 1}</span>
+      <div class="lr-track-info">
+        <div class="lr-track-name">${t.title}</div>
+        <div class="lr-track-tag">${t.style}</div>
+      </div>`;
+    item.addEventListener('click', () => loadAndPlay(i));
+    trackListEl.appendChild(item);
+  });
+
+  // ── Load and play ────────────────────────────────────────────────
+  function loadAndPlay(idx) {
+    if (idx < 0 || idx >= TRACKS.length) return;
+    currentIndex = idx;
+    const track = TRACKS[idx];
+    audio.src = AUDIO_BASE + track.file;
+    audio.load();
+    audio.play().then(() => { isPlaying = true; updatePlayBtn(); })
+      .catch(() => { isPlaying = false; updatePlayBtn(); });
+    updateNowPlaying(track, idx);
+    updateActiveTrack(idx);
+    history.replaceState(null, '', '#' + track.slug);
+  }
+
+  function updateNowPlaying(track, idx) {
+    npTitle.textContent = track.title;
+    npBadge.textContent = `TRACK ${idx + 1}`;
+    npStyle.textContent = track.style;
+    npAbout.textContent = track.about;
+    npLyrics.innerHTML = track.lyrics;
+    playerName.textContent = track.title;
+  }
+
+  function updateActiveTrack(idx) {
+    document.querySelectorAll('.lr-track-item').forEach(el => {
+      el.classList.toggle('active', parseInt(el.dataset.idx) === idx);
+    });
+  }
+
+  function togglePlay() {
+    if (currentIndex < 0) { loadAndPlay(0); return; }
+    if (isPlaying) { audio.pause(); isPlaying = false; }
+    else { audio.play().catch(() => {}); isPlaying = true; }
+    updatePlayBtn();
+  }
+
+  function updatePlayBtn() {
+    if (playPauseBtn) playPauseBtn.textContent = isPlaying ? '\u23F8' : '\u25B6';
+  }
+
+  function playPrev() { if (currentIndex > 0) loadAndPlay(currentIndex - 1); }
+  function playNext() { if (currentIndex < TRACKS.length - 1) loadAndPlay(currentIndex + 1); }
+
+  function fmt(s) {
+    if (!isFinite(s) || isNaN(s)) return '0:00';
+    return Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0');
+  }
+
+  // ── Audio events ─────────────────────────────────────────────────
+  audio.addEventListener('timeupdate', () => {
+    if (!audio.duration) return;
+    progressBar.value = (audio.currentTime / audio.duration) * 100;
+    curTime.textContent = fmt(audio.currentTime);
+  });
+  audio.addEventListener('loadedmetadata', () => {
+    durTime.textContent = fmt(audio.duration);
+    progressBar.value = 0;
+  });
+  audio.addEventListener('ended', () => { isPlaying = false; updatePlayBtn(); playNext(); });
+  audio.addEventListener('play', () => { isPlaying = true; updatePlayBtn(); });
+  audio.addEventListener('pause', () => { isPlaying = false; updatePlayBtn(); });
+
+  progressBar.addEventListener('input', () => {
+    if (audio.duration) audio.currentTime = (progressBar.value / 100) * audio.duration;
+  });
+  volBar.addEventListener('input', () => { audio.volume = parseFloat(volBar.value); });
+
+  playPauseBtn.addEventListener('click', togglePlay);
+  prevBtn.addEventListener('click', playPrev);
+  nextBtn.addEventListener('click', playNext);
+  playAllBtn.addEventListener('click', () => loadAndPlay(0));
+
+  // ── Auto-play on load (with hash anchor support) ─────────���───────
+  function autoStart() {
+    const slug = location.hash.slice(1);
+    const hashIdx = slug ? TRACKS.findIndex(t => t.slug === slug) : -1;
+    const startIdx = hashIdx >= 0 ? hashIdx : 0;
+
+    updateNowPlaying(TRACKS[startIdx], startIdx);
+    updateActiveTrack(startIdx);
+    currentIndex = startIdx;
+    audio.src = AUDIO_BASE + TRACKS[startIdx].file;
+    audio.load();
+    audio.play().then(() => { isPlaying = true; userInteracted = true; updatePlayBtn(); })
+      .catch(() => {
+        isPlaying = false;
+        updatePlayBtn();
+        const resume = () => {
+          if (!userInteracted) {
+            userInteracted = true;
+            audio.play().then(() => { isPlaying = true; updatePlayBtn(); }).catch(() => {});
+          }
+          document.removeEventListener('click', resume);
+          document.removeEventListener('keydown', resume);
+        };
+        document.addEventListener('click', resume, { once: true });
+        document.addEventListener('keydown', resume, { once: true });
+      });
+  }
+  autoStart();
+</script>

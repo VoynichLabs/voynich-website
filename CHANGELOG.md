@@ -5,6 +5,13 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.9.0] - 2026-04-11
+
+### Added
+- **A Pox Upon the Lot of You album page** (`/pox-upon-you`) — 3-track Victorian curse album. Confound the Lot of You (post-hardcore), A Pox Upon You (Gothic hip-hop), Pox Upon You All (Victorian music hall). Sticky audio player, playlist sidebar, hash anchor deep-links.
+- Music hub entry for the new album
+- Cross-nav links to `/pox-upon-you` on all music pages
+
 ## [0.8.0] - 2026-04-11
 
 ### Added
