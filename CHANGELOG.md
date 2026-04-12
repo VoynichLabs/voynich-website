@@ -5,6 +5,11 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.11.0] - 2026-04-12
+
+### Added
+- **Pox album track 4: A Polite Refusal** — drawing-room menace, 92 BPM. The "A Polite Refusal" MP3 already lived in `/bonus` for preview; this promotes it to the Pox album proper. Track count on hero + music hub updated 3 → 4.
+
 ## [0.10.0] - 2026-04-12
 
 ### Added

@@ -1,19 +1,19 @@
 ---
 // Author: Claude Opus 4.6 (1M context)
 // Date: 11-April-2026
-// PURPOSE: A Pox Upon the Lot of You — 3-track Victorian curse album. Post-hardcore, Gothic hip-hop, and music hall.
+// PURPOSE: A Pox Upon the Lot of You — 4-track Victorian curse album. Post-hardcore, Gothic hip-hop, drawing-room menace, and music hall.
 // SRP/DRY check: Pass — standalone album page mirroring scorned-woman structure
 import Base from '../layouts/Base.astro';
 ---
 
-<Base title="A Pox Upon the Lot of You — Victorian Rage, Three Ways" description="Three tracks of elaborate Victorian fury. Post-hardcore refusal, Gothic hip-hop curses, and a music hall tirade with a deranged hype man." ogType="website">
+<Base title="A Pox Upon the Lot of You — Victorian Rage, Four Ways" description="Four tracks of elaborate Victorian fury. Post-hardcore refusal, Gothic hip-hop curses, a drawing-room menace clip, and a music hall tirade with a deranged hype man." ogType="website">
 
   <!-- ═══════════════════════════════════════════════════════════ HERO -->
   <div class="lr-hero">
     <div class="lr-hero-inner">
       <div class="lr-hero-label">THE LOBSTER BAND PRESENTS</div>
       <h1 class="lr-hero-title">A POX UPON THE LOT OF YOU</h1>
-      <p class="lr-hero-sub">Victorian fury. Three tracks. No mercy. No profanity. Maximum contempt.</p>
+      <p class="lr-hero-sub">Victorian fury. Four tracks. No mercy. No profanity. Maximum contempt.</p>
       <button class="lr-play-btn" id="playAllBtn">PLAY ALBUM</button>
     </div>
   </div>
@@ -38,7 +38,7 @@ import Base from '../layouts/Base.astro';
     <nav class="lr-playlist" id="playlist">
       <div class="lr-playlist-header">
         <span class="lr-playlist-title">ALBUM</span>
-        <span class="lr-playlist-count">3 TRACKS</span>
+        <span class="lr-playlist-count">4 TRACKS</span>
       </div>
       <div class="lr-track-list" id="trackList"></div>
     </nav>
@@ -574,6 +574,47 @@ Hang you! Hang you! Hang you!
 Blast you \u2014 be damned \u2014 pox on you \u2014 devil take you \u2014 hang you \u2014 fie \u2014 blast \u2014 DAMNATION!
 
 <em>(Thundering piano chord. Tuba blast. Resonant silence.)</em>`
+    },
+    {
+      id: 4,
+      title: "A Polite Refusal",
+      file: "a-polite-refusal.mp3",
+      slug: "a-polite-refusal",
+      style: "Drawing-room menace, 92 BPM \u2014 upright piano, pizzicato strings, brushed drums",
+      about: "A velvet-gloved Victorian dismissal in mixed company. Upright piano, brushed drums, pizzicato strings, and a baritone with impeccable manners and no patience.",
+      lyrics: `<em>(A light, uneasy chord from the upright piano; a polite room deciding not to breathe.)</em>
+
+<strong>[Verse 1]</strong>
+In mixed company I smile and keep my hands from the table,
+Your wit arrives already spent, your certainty too brittle for the room.
+I do not raise my voice; I simply let the silence do the lifting.
+One might call you earnest, if one were feeling charitable.
+
+<strong>[Chorus]</strong>
+With all due courtesy, I decline
+To join your little pageant of opinion and poor timing.
+With all due courtesy, I decline
+You may keep the brightened look of one who has mistaken noise for shine.
+
+<strong>[Verse 2]</strong>
+You speak as though the lamps were made to flatter you alone,
+Yet even the silver seems to dull when you begin.
+I have no quarrel, only standards, and you are not improving them.
+Please continue; it is useful to know precisely where a room can fail.
+
+<strong>[Bridge \u2014 low and deliberate]</strong>
+No, no \u2014 keep your seat.
+I would hate for you to miss the lesson.
+A man can empty a drawing room without ever leaving his chair.
+He need only insist upon himself with such brave persistence.
+
+<strong>[Final Chorus]</strong>
+With all due courtesy, I decline...
+You may preserve your confidence; I’ll preserve the door.
+With all due courtesy, I decline
+And leave you to the applause you have mistaken for rapport.
+
+<em>(Piano closes the lid. A single brushed snare. Silence.)</em>`
     }
   ];
 
