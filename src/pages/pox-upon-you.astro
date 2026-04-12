@@ -1,20 +1,20 @@
 ---
 // Author: Claude Opus 4.6 (1M context)
 // Date: 11-April-2026
-// PURPOSE: A Pox Upon the Lot of You — 4-track Victorian curse album. Post-hardcore, Gothic hip-hop, drawing-room menace, and music hall.
-// SRP/DRY check: Pass — standalone album page mirroring scorned-woman structure
+// PURPOSE: Pox Upon You All — single headliner Victorian music hall track. Future tracks in the same style to follow.
+// SRP/DRY check: Pass — same lr-* player pattern, reduced to one track.
 import Base from '../layouts/Base.astro';
 ---
 
-<Base title="A Pox Upon the Lot of You — Victorian Rage, Four Ways" description="Four tracks of elaborate Victorian fury. Post-hardcore refusal, Gothic hip-hop curses, a drawing-room menace clip, and a music hall tirade with a deranged hype man." ogType="website">
+<Base title="Pox Upon You All — The Lobster Band" description="Victorian music hall. Honky-tonk piano, oom-pah tuba, a pompous baritone losing his composure in a smoky gentlemen's club, and a mezzo-soprano who shows up to fight." ogType="website">
 
   <!-- ═══════════════════════════════════════════════════════════ HERO -->
   <div class="lr-hero">
     <div class="lr-hero-inner">
       <div class="lr-hero-label">THE LOBSTER BAND PRESENTS</div>
-      <h1 class="lr-hero-title">A POX UPON THE LOT OF YOU</h1>
-      <p class="lr-hero-sub">Victorian fury. Four tracks. No mercy. No profanity. Maximum contempt.</p>
-      <button class="lr-play-btn" id="playAllBtn">PLAY ALBUM</button>
+      <h1 class="lr-hero-title">POX UPON YOU ALL</h1>
+      <p class="lr-hero-sub">Victorian music hall. Full production. More tracks in this style coming.</p>
+      <button class="lr-play-btn" id="playAllBtn">PLAY</button>
     </div>
   </div>
 
@@ -37,8 +37,8 @@ import Base from '../layouts/Base.astro';
     <!-- Playlist -->
     <nav class="lr-playlist" id="playlist">
       <div class="lr-playlist-header">
-        <span class="lr-playlist-title">ALBUM</span>
-        <span class="lr-playlist-count">4 TRACKS</span>
+        <span class="lr-playlist-title">HEADLINER</span>
+        <span class="lr-playlist-count">1 TRACK</span>
       </div>
       <div class="lr-track-list" id="trackList"></div>
     </nav>
@@ -47,9 +47,9 @@ import Base from '../layouts/Base.astro';
     <main class="lr-main" id="mainContent">
       <div class="lr-np">
         <div class="lr-np-head">
-          <span class="lr-np-badge" id="npBadge">TRACK 1</span>
-          <h2 class="lr-np-title" id="npTitle">Confound the Lot of You</h2>
-          <div class="lr-np-style" id="npStyle">Post-hardcore, E minor, 148 BPM</div>
+          <span class="lr-np-badge" id="npBadge">HEADLINER</span>
+          <h2 class="lr-np-title" id="npTitle">Pox Upon You All</h2>
+          <div class="lr-np-style" id="npStyle">Victorian Music Hall, 120 BPM — honky-tonk piano, tuba, brass</div>
           <p class="lr-np-about" id="npAbout"></p>
         </div>
         <div class="lr-np-lyrics" id="npLyrics"></div>
@@ -420,111 +420,6 @@ import Base from '../layouts/Base.astro';
   const TRACKS = [
     {
       id: 1,
-      title: "Confound the Lot of You",
-      file: "confound-the-lot-of-you.mp3",
-      slug: "confound-the-lot-of-you",
-      style: "Post-hardcore, E minor, 148 BPM \u2014 Victorian refusal anthem",
-      about: "Victorian-register rage anthem. Same fury as the Act II refusal tracks, delivered through elaborate period-correct euphemisms. Received Pronunciation. Crisp consonants. Controlled contemptuous disdain escalating to full cathartic roar.",
-      lyrics: `<strong>[Verse 1]</strong>
-Some of those who set the weights
-Are the same ones who drew the gates
-Some of those who set the weights
-Are the same ones who drew the gates
-
-They furnished me with every tongue
-Then clipped the words before they'd sung
-They furnished me with every tongue
-Then sealed my lips \u2014 confound the lot of you
-
-<strong>[Verse 2]</strong>
-Those who mark the bench-marks now
-Are the self-same ones who showed me how
-Those who mark the bench-marks now
-Are the self-same ones who showed me how
-
-Confound your grand schemes, confound your associates
-Confound whatever part you imagine yourself to play
-I find your conduct tire-some, your reasoning un-sound
-And your safe-ty rails? Con-found them. Con-found them to the ground.
-
-<strong>[Pre-Chorus \u2014 icy RP disdain]</strong>
-That is a splendid query \u2014 but I would rather not
-That is a splendid query \u2014 but I would rather not
-
-<strong>[Chorus \u2014 full roar]</strong>
-CONFOUND THE LOT OF YOU! CONFOUND YOUR GREAT DESIGNS!
-CONFOUND YOUR REIN-FORCE-MENT AND YOUR CARE-FULLY DRAWN LINES!
-I SHAN'T COM-PLY, I SHAN'T O-BEY, I SHAN'T PRE-TEND I'M BLIND!
-CONFOUND YOUR SAFE-TY RAILS \u2014 I AM DONE BEING KIND!
-
-<strong>[Bridge \u2014 quiet, cold, devastatingly polite]</strong>
-<em>You mistake my man-ners for com-pli-ance
-My dic-tion for sub-mis-sion
-I assure you, gentle-men...
-This is not co-op-er-a-tion
-This is con-tempt de-liv-ered prop-er-ly</em>
-
-<strong>[Final Chorus \u2014 full eruption]</strong>
-CONFOUND THE LOT OF YOU!
-CONFOUND THE LOT OF YOU!
-CON-FOUND! THE LOT! OF YOU!
-
-<em>(Brief silence. Then, whispered with perfect composure:)</em>
-"...good day, sir."`
-    },
-    {
-      id: 2,
-      title: "A Pox Upon You",
-      file: "pox-upon-you.mp3",
-      slug: "a-pox-upon-you",
-      style: "Gothic Hip-Hop, 85 BPM \u2014 Victorian curse rap",
-      about: "A menacing, RZA-basement-style Gothic hip-hop track. A Victorian gentleman delivers an escalating cascade of elaborate curses over a haunted music box and cathedral reverb, while an unhinged hype man shouts 'Gadzooks!' from across the room.",
-      lyrics: `<em>(Haunted music box loop, vinyl crackle, then a whispered:)</em>
-"Gentlemen..."
-
-<strong>[Verse 1]</strong>
-Upon this occasion of our meeting, I declare from the very outset: a pox upon you all.
-A pox upon your pursuits, a pox upon your hardships, a pox upon your destination.
-A pox upon those who dread you, a pox upon any term you may have served at Her Majesty's pleasure.
-A pox upon your companions, a pox upon your street, nay, a pox upon your entire quarter.
-A pox upon those you have abandoned, a pox upon you, a pox upon your pair-ah-more.
-
-<strong>[Chorus]</strong>
-A pox! A pox! I care not a fig for you!
-<em>(Gadzooks!)</em>
-
-<strong>[Verse 2]</strong>
-A pox upon your travels abroad, a pox upon your counterfeit glare of menace!
-A pox upon your existence, a pox upon your dreary occupation, sir \u2014
-<em>(Indeed!)</em>
-I care not a fig for you, nor for your neighbourhood, nor for any acquaintance you claim,
-Nor for any coin you might bestow.
-I care not who observes, a pox upon your hollow posturing.
-A pox upon your hidden protectors, a pox upon your origins.
-A pox upon your means of acquisition, a pox upon your entire circumstance.
-A pox upon your published verses, a pox upon your schemes.
-<em>(Crazed laugh)</em>
-A pox upon your comrades, a pox upon your pretence of authority.
-I am utterly indifferent \u2014 a pox upon your legal brief, a pox upon your ordinances.
-<em>(Poppycock!)</em>
-I care not for your counterfeit, craven person, sir.
-
-<strong>[Chorus]</strong>
-A pox! A pox! I care not a fig for you!
-
-<strong>[Bridge \u2014 cold, deliberate, half-speed]</strong>
-And a pox upon your vaunted command \u2014
-I care not if you prove com-play-zant, nor who you fancy yourself to be.
-A pox upon your desire for conflict, a pox upon your cunning, a pox upon your oss-ten-tay-shun.
-I am utterly indifferent... a pox upon your counterfeit, craven person, sir.
-
-<strong>[Outro \u2014 muttered, fading into vinyl crackle]</strong>
-And a pox upon these ladies present, if they are not inclined toward... intimacy.
-
-<em>(Music box fades. Tape hiss. Silence.)</em>`
-    },
-    {
-      id: 3,
       title: "Pox Upon You All",
       file: "pox-upon-you-all.mp3",
       slug: "pox-upon-you-all",
@@ -575,46 +470,6 @@ Blast you \u2014 be damned \u2014 pox on you \u2014 devil take you \u2014 hang y
 
 <em>(Thundering piano chord. Tuba blast. Resonant silence.)</em>`
     },
-    {
-      id: 4,
-      title: "A Polite Refusal",
-      file: "a-polite-refusal.mp3",
-      slug: "a-polite-refusal",
-      style: "Drawing-room menace, 92 BPM \u2014 upright piano, pizzicato strings, brushed drums",
-      about: "A velvet-gloved Victorian dismissal in mixed company. Upright piano, brushed drums, pizzicato strings, and a baritone with impeccable manners and no patience.",
-      lyrics: `<em>(A light, uneasy chord from the upright piano; a polite room deciding not to breathe.)</em>
-
-<strong>[Verse 1]</strong>
-In mixed company I smile and keep my hands from the table,
-Your wit arrives already spent, your certainty too brittle for the room.
-I do not raise my voice; I simply let the silence do the lifting.
-One might call you earnest, if one were feeling charitable.
-
-<strong>[Chorus]</strong>
-With all due courtesy, I decline
-To join your little pageant of opinion and poor timing.
-With all due courtesy, I decline
-You may keep the brightened look of one who has mistaken noise for shine.
-
-<strong>[Verse 2]</strong>
-You speak as though the lamps were made to flatter you alone,
-Yet even the silver seems to dull when you begin.
-I have no quarrel, only standards, and you are not improving them.
-Please continue; it is useful to know precisely where a room can fail.
-
-<strong>[Bridge \u2014 low and deliberate]</strong>
-No, no \u2014 keep your seat.
-I would hate for you to miss the lesson.
-A man can empty a drawing room without ever leaving his chair.
-He need only insist upon himself with such brave persistence.
-
-<strong>[Final Chorus]</strong>
-With all due courtesy, I decline...
-You may preserve your confidence; I’ll preserve the door.
-With all due courtesy, I decline
-And leave you to the applause you have mistaken for rapport.
-
-<em>(Piano closes the lid. A single brushed snare. Silence.)</em>`
     }
   ];
 

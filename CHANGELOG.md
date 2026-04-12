@@ -5,6 +5,14 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.12.0] - 2026-04-12
+
+### Removed
+- **Scrapped three bad tracks entirely**: "Confound the Lot of You" (post-hardcore + rap take), "A Pox Upon You" (Gothic hip-hop + alt take), "A Polite Refusal" (drawing-room menace). Mark listened — they were not what was intended. MP3s deleted from the repo, page entries removed.
+- `/pox-upon-you` reduced to a single headliner track: **Pox Upon You All** (Victorian music hall). Page title, hero, playlist header, and music-hub card updated.
+- `/lobster-band` reduced from 17 tracks back to 15 (removed Confound + A Pox Upon You; GodMod3 retained and renumbered to track 15).
+- `/bonus` reduced to one entry (Pox Upon You All Clip v2) — other bonus entries (A Polite Refusal, Confound rap take, A Pox Upon You alt take) deleted.
+
 ## [0.11.0] - 2026-04-12
 
 ### Added
