@@ -1,0 +1,52 @@
+[[A0]]
+[[B1]]
+[16.0:] From the very moment I lay eyes upon you — pox upon the lot of you.
+[:] A curse upon what you occupy yourself with, blast what you have suffered,
+[:] The devil take where you are bound, a murrain on those who fear you.
+[:] Hang you if you served at Her Majesty's pleasure,
+[:] Fie upon your coterie, fie upon your quarter — perdition take your entire rabble!
+[:] A plague upon whom you drew your pistol — rot YOU, and rot your strumpet.
+[:] A curse upon you if you've been abroad, deuce take your fraudulent countenance!
+[:] A curse upon your life, a curse upon your common drudgery, you miserable wretch —
+[:] I care not for you, I care not for your parish,
+[:] I care not who you know, I care not if you distribute charity,
+[:] I care not who observes — blast your balderdash!
+[:] Blast your shadows, blast whence you came,
+[:] A murrain on how you acquired it, rot your entire wretched circumstance!
+[:] Hang your pamphlet, hang your scheme,
+[:] Perdition take your associates, I care not for your station, you blackguard!
+[:] I care not for your grievances, I care not for your conventions!
+[:] I care not what manner of counterfeit scoundrel you are!
+[:] A curse upon how you conducted your affairs —
+[:] I care not who you purport to be!
+[:] Rot you if you desire it, rot you if you are villainous,
+[:] A plague on you if you parade your finery,
+[:] And pox upon these harlots present — should they not be forthcoming!
+[[C2]]
+[92.0:] Who in blazes are you calling a harlot, you insufferable wretch?
+[:] It appears all the harlots here are harlots — well I trust you are not addressing me, sir!
+[[D3]]
+[116.0:] Blast you! Blast you! Blast the lot of you!
+[:] Perdition seize you! The devil take every last one!
+[[B4]]
+[140.0:] And be damned to you, sir! Be damned!
+[:] (Fie upon you, you pompous wretch! Fie!)
+[:] Hang you! Hang you! Hang you!
+[:] (Rot in perdition! Rot!)
+[[E5]]
+[164.0:] Blast you — be damned — pox on you — devil take you — hang you — fie — blast — damnation!mosic: 4.5
+bpm: 120.0
+duration_secs: 184.0
+good_crop: 1.0
+[[A0]]
+[0.0:] A spirited Victorian Music Hall introduction defined by a jaunty, bouncey rhythm. The segment is anchored by an upright piano playing lively honky-tonk chords with a bright, slightly out-of-tune character, executing a rhythmic four-bar theme of pounding eighth notes. The rhythm is driven by a deep, breathy tuba providing a booming 'oom-pah' bass line on the downbeats. A crisp snare drum with a mechanical, martial snapping quality adds a steady percussion layer. Sharp brass stabs from a muted trumpet and trombone accent the transition into the verse. There are no vocals in this segment. The interaction between the circus-like brass and the persistent piano creates a bustling, theatrical atmosphere reminiscent of a 19th-century London music hall.
+[[B1]]
+[16.0:] A theatrical and rhythmic Victorian song segment defined by a pompous vocal delivery. The segment is anchored by a persistent upright honky-tonk piano playing jaunty chords in a walking rhythm. The rhythm is reinforced by a thumping tuba oom-pah line and a steady snare drum. The vocal performance features a deep, resonant male baritone with polished Received Pronunciation and theatrical over-enunciation, delivering a furious tirade with self-serious dignity. His vibrato is wide and operatic, and he uses his voice to punch every curse word with crisp, percussive force. The melodic structure is simple and declamatory, emphasizing the lyrics over melody. The interaction between the man's booming voice and the bouncy, upbeat music creates a comedic juxtaposition. The atmosphere is that of a tense, smoky gentlemen's club where a speaker is rapidly losing his composure.
+[[C2]]
+[92.0:] A sharp and indignant Victorian music hall bridge defined by the entry of a second voice. The segment is anchored by the same bouncy, honky-tonk upright piano, but the rhythm section of the tuba and snare drum becomes more syncopated and restless. The instrumentation features more frequent brass stabs from the muted trumpet, creating a sense of growing discord. The vocal performance features two voices: a deep, resentful male baritone and a sharp, haughty female mezzo-soprano representing the harlots. The female voice interjects with a high-pitched, indignant upper-class English accent. Her delivery is rapid and sharp, mirroring the gentleman's aggressive over-enunciation. The atmosphere is conversational and confrontational, evoking a heated argument on a public stage in 1885.
+[[D3]]
+[116.0:] An explosive and rhythmic Victorian chorus defined by maximum volume and outrage. The segment is anchored by the upright honky-tonk piano playing at its most frantic, with thick rhythmic eighth notes. The tuba and snare drum provide constant, thumping support, while the brass instruments (muted trumpet and trombone) play sustaining, loud chords. The vocal performance features the male baritone in his upper register, shouting the lyrics with operatic power and a wide vibrato. His delivery is relentlessly rhythmic, emphasizing the sheer cathartic release of his fury. The interaction between the loud, unpolished instruments and the booming, theatrical voice creates a peak of absurd energy. The atmosphere is bombastic and chaotic, typical of a high-stakes music hall finale.
+[[B4]]
+[140.0:] A frantic, insulting Victorian song segment defined by rapid-fire vocal trading. The segment is anchored by a thumping tuba oom-pah line and a steady snare drum, keeping a strictly martial time. The instrumentation features the upright honky-tonk piano playing aggressive, discordant clusters in between vocal lines. The vocal performance features both the male baritone and the female mezzo-soprano yelling insults back and forth. The male voice is deep and resonant, the female voice is sharp and haughty, both maintaining impeccable received pronunciation while losing all decorum. Their voices overlap and interrupt one another, creating a dense, rowdy texture. The interaction is one of pure verbal warfare. The atmosphere is scandalous and high-energy, reminiscent of a public brawl over a pint.
+[[E5]]
+[164.0:] A chaotic, climatic Victorian outro defined by total expressive collapse. The segment is anchored by a thundering upright piano playing rapid, ascending scales and heavy low-end chords. The rhythm section of the tuba and snare drum reaches a fever pitch of noise. The instrumentation is thick and messy, with the brass stabs becoming more frequent and dissonant. The vocal performance consists of the male and female voices shouting over each other using every curse word from the lyrics, their voices descending into raw, unpolished yells. The segment concludes with a final, crashing chord on the piano, tuba, and brass, followed by a resonant silence. There is a palpable sense of natural room reverb, making it feel like a live performance in a smoky hall. The atmosphere is one of complete, hilarious fury.
