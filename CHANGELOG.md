@@ -5,6 +5,17 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.10.0] - 2026-04-12
+
+### Added
+- **Bonus / Unreleased page** (`/bonus`) — minimal rescue page for orphan song files. 4 tracks with native `<audio controls>`: A Polite Refusal, Pox Upon You All (Clip v2), A Pox Upon You (Alt Take), Confound the Lot of You (Rap Take). Not yet evaluated.
+- Text link on `/music` hub pointing to `/bonus`.
+- `docs/2026-04-12-bonus-page-plan.md` — the rescue plan.
+
+### Moved
+- `public/music/pox-clip-v2.mp3` → `public/audio/bonus/pox-upon-you-all-clip.mp3`
+- `public/music/pox-clip-v2-lyrics.txt` → `public/audio/bonus/pox-upon-you-all-clip-lyrics.txt`
+
 ## [0.9.0] - 2026-04-11
 
 ### Added
