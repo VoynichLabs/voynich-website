@@ -5,6 +5,11 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.13.1] - 2026-04-12
+
+### Changed
+- **Confound — full-length regen (v2)**: first clip-preview attempt landed vocal-only and lost the mezzo entry. Regenerated with `lyria-3-pro-preview` (~2:48) using an expanded five-layer prompt: jaunty parlour overture that darkens abruptly on vocal entry, a recurring soaring violin "dun — dun" motif, continuous rhythm bed throughout, mezzo dialogue exchange restored, and a chaotic music-hall-brawl collapse outro. Bonus-page description updated.
+
 ## [0.13.0] - 2026-04-12
 
 ### Added

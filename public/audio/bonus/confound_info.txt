@@ -1,15 +1,60 @@
-[0.0:3.3] This time I encounter you, I shall make my sentiments known:
-[3.4:5.2] confound the whole lot of you.
-[5.3:8.4] Confound your pursuits, confound the hardships you claim,
-[8.5:11.4] confound whatever destination you imagine.
-[11.5:13.0] Confound your circle, confound your faction,
-[13.1:15.0] confound your travels, confound your counterfeit glower,
-[15.1:16.8] confound your dreary employment, sir!
-[16.9:18.4] Confound your airs, confound your shadows,
-[18.5:20.1] confound your preening vanity!
-[20.8:22.4] And as for the hussies assembled here —
-[22.5:24.9] should they prove unwilling, confound them as well.
-[25.0:27.8] Who, precisely, are you calling a hussy, you insufferable wretch?
-[27.9:29.5] All the hussies here, madam.Caption: A boisterous, theatrical Victorian Music Hall production capturing the atmosphere of a live performance on a wooden stage. The piece follows a dramatic arc. It opens with sparse instrumentation: a deep, breathy tuba provides a foundational oom-pah bass line, while a crisp mechanical snare drum keeps martial time with a steady, unadorned pulse. Over this, a deep, resonant male baritone enters with slow, dignified contempt, his polished Received Pronunciation and wide operatic vibrato emphasizing every word. As he progresses, an upright honky-tonk piano—bright-toned and slightly out-of-tune—enters with restrained, jaunty rhythmic chords. The energy then builds as the tempo accelerates: the piano thickens its chords, sharp muted-trumpet and trombone stabs punctuate the transitions with increasing frequency and dissonance, and the snare pattern tightens. The baritone's delivery grows more frantic and indignant, his pomposity cracking. At the final passage, the tempo abruptly pulls back to a slow, deliberate pace. The full instrumentation drops away, replaced by a dry, oom-pah pulse from the tuba and single, punctuating piano chords, giving full room to the voices. The baritone delivers a venomous tirade before being interrupted by a sharp, haughty female mezzo-soprano with an indignant, upper-class English accent, to which he replies with cold, flat finality, followed by a clipped instrumental stab to end the piece. The overall production has a warm, slightly lo-fi feel with natural room reverb, evoking a smoky nineteenth-century London hall.
-Mosic: 4.5
-BPM: 140.0
+[[A0]]
+[[B1]]
+[16.0:] The next time I clap eyes upon you, I shall say it from the very start:
+[:] confound the lot of you.
+[:] Confound what you are in pursuit of. Confound what you have endured.
+[:] Confound where you are bound.
+[:] Confound whoever is frightened of you.
+[:] Confound any time you have served in gaol.
+[[B2]]
+[48.0:] Confound your clique. Confound your quarter.
+[:] Indeed, confound your whole set.
+[:] Confound the person you drew your pistol upon.
+[:] Confound you. Confound your mistress.
+[:] Confound your being out of town.
+[:] Confound that counterfeit icy glower upon your face.
+[:] Confound your life. Confound your wretched daily drudgery, sir.
+[[B3]]
+[72.0:] I care not one farthing for you. I care not one farthing for your quarter.
+[:] I care not whom you know. I care not whether you scatter charity.
+[:] I care not who is watching. Confound your balderdash.
+[:] Confound your shadows. Confound the place from which you came.
+[:] Confound how you obtained it. Confound your entire situation.
+[[B4]]
+[92.0:] Confound your album. Confound your scheme.
+[:] Confound your fellows. Confound your part, sir.
+[:] I care not one farthing. Confound your brief. Confound your rules.
+[:] I care not what manner of false, craven rascal you pretend to be.
+[:] Confound the manner in which you ran matters.
+[:] I care not whether you call yourself easy.
+[:] I care not who you are.
+[:] Confound you if you want it.
+[:] Confound you if you are sordid.
+[:] Confound you if you flaunt your finery.
+[[C5]]
+[124.0:] And confound these women here as well, if they are not forthcoming.
+[[D6]]
+[136.0:] "Who, precisely, are you calling a hussy, you insufferable wretch?"
+[:] All the hussies here, madam.
+[:] "Surely you cannot mean me, sir."
+[:] I assure you, madam, I mean the lot.
+[[E7]]mosic: 4.5
+bpm: 120.0
+duration_secs: 184.0
+good_crop: 1.0
+[[A0]]
+[0.0:] A jaunty, innocent Victorian parlour overture defined by a cheerful music-hall bounce. The segment is anchored by a bright, percussive honky-tonk upright piano playing a rhythmic oom-pah pattern. The rhythm is driven by a steady tuba bassline on the downbeats and light, crisp snare drum tapping on the upbeats, typical of an 1880s saloon sound. The instrumentation features a subtle layer of tuned bells that adds a festive, melodic shimmer. Into this cheery texture, a solo violin enters with an ominous, downward two-note motif, played with a heavy, serious bow-stroke that cuts across the rhythm. There are no vocals in this segment. The melodic structure is simple and repetitive, characteristic of popular music-hall fare. The interaction between the playful piano and the brooding violin creates a sense of impending dread within a cozy theatrical room. The atmosphere is initially inviting but quickly feels unsettled and tense.
+[[B1]]
+[16.0:] A dark, theatrical Victorian music-hall segment defined by its sudden shift to a heavy, minor-key groove. The segment is anchored by percussive, minor-key piano stabs and a slow, deep tuba bass that mirrors the baritone's stately delivery. The rhythm is funereal and measured, with a dry, muffled snare drum keeping a slow march-like pace. The instrumentation includes a low, resonant cello that provides a haunting harmonic layer, and the solo violin which repeats its downward two-note motif between vocal phrases. The vocal performance features a deep, resonant male baritone with polished Received Pronunciation and wide operatic vibrato, delivering the lines with cold, dignified contempt and extreme over-enunciation. The melodic structure is restricted and heavy. The interaction between the sparse, dark instruments and the booming male voice creates a sense of immense weight and theatrical gravity. The atmosphere is cold and judgmental, echoing a melodramatic stage accusation in a smoky London hall.
+[[B2]]
+[48.0:] A building, dramatic Victorian music-hall section defined by increasing momentum and vocal intensity. The segment is anchored by the rhythmic oom-pah of the upright piano and a thick, sustaining tuba bassline. The rhythm steps up slightly in tempo, becoming more driving with the addition of sharp, metallic brass stabs that punch through the frequency spectrum. The instrumentation features a high-pitched solo violin that plays a more active, nervous counter-melody. The vocal performance features the deep male baritone with polished RP, his timbre growing harder and more clipped as his composure cracks and his volume increases. The melodic structure is urgent and repetitive. The interaction between the staccato brass bursts and the rhythmic consonants of the voice creates a sense of high-stakes pressure. The atmosphere is tense and confrontational, evoking the midpoint of a theatrical argument.
+[[B3]]
+[72.0:] A fast-paced, indignant Victorian music-hall verse defined by a sense of accelerating chaos. The segment is anchored by the upright piano, which now plays thick, rapid-fire chords that fill the sonic space. The rhythm is frantic and percussive, with the tuba and snare drum pushing the tempo forward at a noticeable clip, characteristic of a 'patter song' or a building theatrical climax. The instrumentation includes the brass section, which provides more frequent and aggressive stabs. The vocal performance features the deep male baritone with polished Received Pronunciation and wide vibrato, delivering the lines faster with high indignation and biting, over-enunciated consonants across his range. The melodic structure is a rapid ascent, reaching for the upper notes of his bari-tenor range. The interaction is dense and noisy, simulating a stage performer losing control of his audience. The atmosphere is one of mounting fury and frantic energy.
+[[B4]]
+[92.0:] A peak-intensity Victorian music-hall verse defined by maximum volume and theatrical force. The segment is anchored by a full-band arrangement with thunderous upright piano and a massive, driving tuba-led rhythm section. The rhythm is fast, heavy, and unrelenting, featuring resonant orchestral snare hits on the off-beats. The instrumentation is at its thickest, with brass instruments blatting discordantly and the solo violin playing rapid, screeching double-stops. The vocal performance features the male baritone in his upper register, shouting with maximum operatic power and a piercing, resonant quality. The melodic structure is peak frantic, characterized by a rapid 'piling on' of lyrical targets. The interaction between the loud, brassy band and the soaring vocal is chaotic and overwhelming. The atmosphere is one of total emotional explosion and operatic rage, representing the height of the theatrical plot.
+[[C5]]
+[124.0:] A sudden, venomous Victorian music-hall bridge defined by a sharp pull-back in tempo and volume. The segment is anchored by a solo violin playing the two-bar downward motif twice, creating a somber, threatening space. The rhythm drops to a sparse, dry pulse with no continuous drum pattern, leaving only the breathing of the tuba and the ringing decay of a single piano note. The instrumentation is hollowed out to create a sense of direct, venomous confrontation. The vocal performance features the deep male baritone pulling back to a slow, deliberate, and breathy delivery, emphasizing every syllable with quiet intensity. The melodic structure is static and tension-filled. The interaction between the solitary voice and the eerie violin creates a chilling, psychological pause before a final strike. The atmosphere is dark and intimate, like a whispered threat across a dimly lit stage.
+[[D6]]
+[136.0:] A theatrical Victorian dialogue segment defined by contrasting voices and stage-play timing. The segment is anchored by a sparse, dry oom-pah rhythm with the piano playing sharp, dramatic stabs between vocal lines. The rhythm is mechanical and deliberate, designed to highlight the lyrical interplay. The instrumentation remains minimal, focusing on the tuba and occasional piano accents to keep time. The vocal performance features two voices: a sharp, haughty female mezzo-soprano with a high, indignant upper-class accent alternating with the deep male baritone who responds with cold, flat finality. The melodic structure is functional, mimicking the rising and falling cadences of natural speech. The interaction is a fast-paced, rhythmic trade-off that escalates tension. The atmosphere is confrontational and haughty, typical of an English saloon drama where verbal insults lead to physical action.
+[[E7]]
+[156.0:] A chaotic Victorian music-hall outro defined by a controlled structural collapse. The segment is anchored by the full band initially playing at peak volume before the rhythm dissolves into total anarchy. The rhythm becomes arrhythmic, with instruments striking off-time and a tuba sliding flat in pitch. The instrumentation features a piano striking a jarring cluster of dissonant notes, brass instruments blatting random, wrong-note frequencies, and a violin playing a wild, screeching scrape. Physically present foley sounds of a bar fight overwhelm the music: chairs scraping, crockery smashing, and the final crash of furniture tumbling over. There are no vocals in this segment. The structure is one of decay and destruction. The interaction is a sonic representation of a brawl, moving from musical performance to literal noise. The atmosphere is violent, chaotic, and messy, ending with a single dissonant violinist's note that cuts off abruptly into silence.
