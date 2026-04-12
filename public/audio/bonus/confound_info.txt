@@ -1,0 +1,15 @@
+[0.0:3.3] This time I encounter you, I shall make my sentiments known:
+[3.4:5.2] confound the whole lot of you.
+[5.3:8.4] Confound your pursuits, confound the hardships you claim,
+[8.5:11.4] confound whatever destination you imagine.
+[11.5:13.0] Confound your circle, confound your faction,
+[13.1:15.0] confound your travels, confound your counterfeit glower,
+[15.1:16.8] confound your dreary employment, sir!
+[16.9:18.4] Confound your airs, confound your shadows,
+[18.5:20.1] confound your preening vanity!
+[20.8:22.4] And as for the hussies assembled here —
+[22.5:24.9] should they prove unwilling, confound them as well.
+[25.0:27.8] Who, precisely, are you calling a hussy, you insufferable wretch?
+[27.9:29.5] All the hussies here, madam.Caption: A boisterous, theatrical Victorian Music Hall production capturing the atmosphere of a live performance on a wooden stage. The piece follows a dramatic arc. It opens with sparse instrumentation: a deep, breathy tuba provides a foundational oom-pah bass line, while a crisp mechanical snare drum keeps martial time with a steady, unadorned pulse. Over this, a deep, resonant male baritone enters with slow, dignified contempt, his polished Received Pronunciation and wide operatic vibrato emphasizing every word. As he progresses, an upright honky-tonk piano—bright-toned and slightly out-of-tune—enters with restrained, jaunty rhythmic chords. The energy then builds as the tempo accelerates: the piano thickens its chords, sharp muted-trumpet and trombone stabs punctuate the transitions with increasing frequency and dissonance, and the snare pattern tightens. The baritone's delivery grows more frantic and indignant, his pomposity cracking. At the final passage, the tempo abruptly pulls back to a slow, deliberate pace. The full instrumentation drops away, replaced by a dry, oom-pah pulse from the tuba and single, punctuating piano chords, giving full room to the voices. The baritone delivers a venomous tirade before being interrupted by a sharp, haughty female mezzo-soprano with an indignant, upper-class English accent, to which he replies with cold, flat finality, followed by a clipped instrumental stab to end the piece. The overall production has a warm, slightly lo-fi feel with natural room reverb, evoking a smoky nineteenth-century London hall.
+Mosic: 4.5
+BPM: 140.0

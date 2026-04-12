@@ -5,6 +5,11 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.13.0] - 2026-04-12
+
+### Added
+- **Bonus clip: Confound** — 30s Victorian-tirade clip generated via Lyria 3 clip-preview from `public/music/confound.md` lyrics. Arc: slow-burn → accelerating pile-on → slowed final exchange with the assembled hussies. Added as a second entry on `/bonus`. Files at `public/audio/bonus/confound.mp3` and `confound-lyrics.txt`.
+
 ## [0.12.0] - 2026-04-12
 
 ### Removed
