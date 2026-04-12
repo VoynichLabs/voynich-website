@@ -5,6 +5,11 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.14.0] - 2026-04-12
+
+### Added
+- Bonus track: **I Care Not For You**. Added as a new entry on `/bonus`. Files at `public/audio/bonus/i-care-not-for-you.mp3` and `i-care-not-for-you-lyrics.txt`.
+
 ## [0.13.1] - 2026-04-12
 
 ### Changed

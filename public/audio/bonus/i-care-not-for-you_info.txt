@@ -1,0 +1,53 @@
+[[A0]]
+[[B1]]
+[17.1:] Upon our reacquaintance, sir, I shall be plain:
+[:] I care not for you. I care not for you.
+[:] Not for your enthusiasms, not your trials sustained,
+[:] Not the harbour where you mean to remain.
+[:] The gentleman who trembles at your tread — I care not.
+[:] Your turn at Her Majesty's pleasure — I care not.
+[:] Your fellowship, your parish, the confederacy you've got,
+[:] The men upon whom you have drawn — I care not.
+[[B2]]
+[62.8:] Your person and your lady — I care not for you.
+[:] The Continent you travelled — I care not for you.
+[:] That counterfeit cold scowl, the gilt between your teeth —
+[:] I care not for you. I care not for you.
+[:] Hang your existence, hang your honest trade.
+[:] Hang the parish and the acquaintance you have made.
+[:] Hang the alms you scatter. Hang the eyes upon your back.
+[:] Hang the forked lies on your tongue — I care not.
+[[C3]]
+[108.5:] Your shadowy confederates, the soil from which you came,
+[:] The manner of your fortune, the whole wretched frame,
+[:] Your forthcoming publication, your designs, your crew,
+[:] The part you fancy you play, the house rules you hold true,
+[:] I'll not be acquainted, sir, with you,
+[:] You fraudulent dandified wretch — damn it, damn it, damn it!
+[[B4]]
+[145.2:] And a pox upon these harlots here present —
+[:] if they are not, at this very moment,
+[:] engaged in the act of fornication.
+[:] (You wretch! Who are you, sir, to call us harlots?)
+[:] I address every harlot in the room, you hussy.
+[:] (Whom do you name a hussy?)
+[:] Every hussy. Every harlot. The lot of you, here, now —
+[[D5]]
+[171.9:] Scoundrel! The constables! Scoundrel!
+[:] (A chair topples. Glass. A final violin shriek.)
+[:] Curtain.mosic: 4.5
+bpm: 70.0
+duration_secs: 184.0
+good_crop: 1.0
+[[A0]]
+[0.0:] A refined, crystalline Victorian chamber introduction defined by a graceful, mocking minuet. The segment is anchored by a string quartet: two violins tracing high, ornate lines, a viola providing mid-range harmony, and a cello establishing a stately bass pulse. A light harpsichord continuo provides a metallic, plucking texture that adds a rhythmic sparkle to the background. The music is polite and formal, lacking any modern reverb, capturing the dry atmosphere of a candlelit parlour. The interaction between the violins is playfully antagonistic, setting a tone of sharp-witted intellectual conflict.
+[[B1]]
+[17.1:] A prim and proper Victorian Art Song verse defined by refined vocal delivery. The segment is anchored by a string quartet playing a polite, slightly mocking minuet figure. The rhythm is steady and patient, with a light harpsichord continuo providing a metallic, plucking texture. The vocal performance features a crisp male baritone with refined English diction, delivering the lyrics in a near-spoken, theatrical style. The instrumentation remains restrained and classically proportionate, evoking a sense of high social decorum. The atmosphere is quiet, warm, and domestic, reminiscent of a historical wax cylinder recording.
+[[B2]]
+[62.8:] A tense, escalating chamber section defined by tightening rhythmic focus. The segment is anchored by a string quartet where the bows begin to dig harder into the strings, creating a grittier, more urgent texture. The cello shifts from a polite pulse to sharp, percussive downbeats. The rhythm accelerates internally through the phrasing, though the BPM remains the same. The harpsichord rattles more prominently, while the male baritone voice becomes faster and more clipped, his tone growing dismissive and edgy. The atmosphere shifts from polite to pressing and uncomfortable.
+[[C3]]
+[108.5:] An intense, frantic Baroque-inspired bridge defined by maximum instrumental tension. The segment is anchored by sawing violin lines in frantic sixteenth notes, creating a shimmering, high-frequency wall of sound. The cello stabs the rhythm with violent intensity, while the harpsichord becomes a chaotic, rattling undercurrent. The vocal performance features the male baritone, now near-breathless, delivering rapid-fire, tumbling words with a color rising in his voice. The interaction is one of extreme agitation, typical of a dramatic operatic climax during a breakdown in sanity. The atmosphere is claustrophobic and high-stakes.
+[[B4]]
+[145.2:] A dramatic, shifting chamber sequence defined by a sudden break in continuity. The segment begins with a single, held dissonant chord from the quartet and harpsichord, followed by a sudden, jarring silence. This is followed by a slow, low instrumental drone, a sustained dissonance. Against this, the male baritone delivers a slow, grave, and purely legato line in his deep range. Suddenly, two female mezzo-soprano voices interject in sharp, operatic recitative, their delivery clipped and offended. The baritone snaps back, and the voices begin to overlap in a chaotic, multi-tracked argument. The atmosphere is shocking and socially destructive, like ice breaking on a pond.
+[[D5]]
+[171.9:] A chaotic, explosive parlour riot defined by the complete abandonment of musical structure. The segment is anchored by the quartet fracturing into atonal scrapes, featuring high-pitched violin shrieks and heavy, wood-slapping sounds. A crashing harpsichord cluster resonates as if being physically struck. Overlaid are non-musical foley elements: the sound of glass breaking, a chair toppling, and loud, scattered shouts of alarm. The vocal performance features the mezzo-sopranos and baritones shouting in a communal, chaotic wash of voices. The segment is short and violent, ending on one final, piercing violin shriek before cutting abruptly to silence, evocative of a 19th-century riot behind a curtain.
