@@ -13,7 +13,7 @@ import Base from '../layouts/Base.astro';
     <div class="lr-hero-inner">
       <div class="lr-hero-label">THE LOBSTER BAND PRESENTS</div>
       <h1 class="lr-hero-title">POX UPON YOU ALL</h1>
-      <p class="lr-hero-sub">Victorian music hall. Full production. More tracks in this style coming.</p>
+      <p class="lr-hero-sub">Victorian music hall and chamber pieces. Three tracks.</p>
       <button class="lr-play-btn" id="playAllBtn">PLAY</button>
     </div>
   </div>
@@ -37,8 +37,8 @@ import Base from '../layouts/Base.astro';
     <!-- Playlist -->
     <nav class="lr-playlist" id="playlist">
       <div class="lr-playlist-header">
-        <span class="lr-playlist-title">HEADLINER</span>
-        <span class="lr-playlist-count">1 TRACK</span>
+        <span class="lr-playlist-title">TRACKS</span>
+        <span class="lr-playlist-count">3 TRACKS</span>
       </div>
       <div class="lr-track-list" id="trackList"></div>
     </nav>
@@ -416,12 +416,11 @@ import Base from '../layouts/Base.astro';
 
 <!-- ═══════════════════════════════════════════════════════════ SCRIPT -->
 <script is:inline>
-  const AUDIO_BASE = '/audio/pox-album/';
   const TRACKS = [
     {
       id: 1,
       title: "Pox Upon You All",
-      file: "pox-upon-you-all.mp3",
+      file: "/audio/pox-album/pox-upon-you-all.mp3",
       slug: "pox-upon-you-all",
       style: "Victorian Music Hall, 120 BPM \u2014 honky-tonk piano, tuba, brass",
       about: "Full Victorian music hall production. Honky-tonk piano, oom-pah tuba, muted brass, and a pompous baritone losing his composure in a smoky gentlemen's club. A female mezzo-soprano arrives to challenge the speaker. Total expressive collapse by the outro.",
@@ -470,6 +469,121 @@ Blast you \u2014 be damned \u2014 pox on you \u2014 devil take you \u2014 hang y
 
 <em>(Thundering piano chord. Tuba blast. Resonant silence.)</em>`
     },
+    {
+      id: 2,
+      title: "Confound",
+      file: "/audio/bonus/confound.mp3",
+      slug: "confound",
+      style: "Victorian parlour overture, 88 BPM \u2014 string quartet, harpsichord, mezzo interjection",
+      about: "Jaunty parlour overture that darkens the instant the speaker opens his mouth. Accelerates through a piled-on tirade, drops to a sparse oom-pah for a dialogue exchange with an outraged mezzo, then collapses into a music-hall brawl.",
+      lyrics: `<em>(A jaunty parlour overture. Bows poised. The Gentleman clears his throat.)</em>
+
+<strong>[Verse 1 \u2014 dignified, darkening]</strong>
+The next time I clap eyes upon you, I shall say it from the very start:
+confound the lot of you.
+Confound what you are in pursuit of.
+Confound what you have endured.
+Confound where you are bound.
+Confound whoever is frightened of you.
+Confound any time you have served in gaol.
+
+<strong>[Verse 2 \u2014 accelerating]</strong>
+Confound your clique. Confound your quarter.
+Indeed, confound your whole set.
+Confound the person you drew your pistol upon.
+Confound you. Confound your mistress.
+Confound your being out of town.
+Confound that counterfeit icy glower upon your face.
+
+<strong>[Verse 3 \u2014 faster, pressing]</strong>
+Confound your life.
+Confound your wretched daily drudgery, sir.
+I care not one farthing for you.
+I care not one farthing for your quarter.
+I care not whom you know.
+I care not whether you scatter charity.
+I care not who is watching.
+Confound your balderdash.
+Confound your shadows. Confound the place from which you came.
+Confound how you obtained it.
+Confound your entire situation.
+
+<strong>[Bridge \u2014 rapid-fire]</strong>
+Confound your album. Confound your scheme.
+Confound your fellows. Confound your part, sir.
+I care not one farthing. Confound your brief. Confound your rules.
+I care not what manner of false, craven rascal you pretend to be.
+Confound the manner in which you ran matters.
+I care not whether you call yourself easy.
+I care not who you are.
+Confound you if you want it.
+Confound you if you are sordid.
+Confound you if you flaunt your finery.
+
+<strong>[Outro \u2014 deliberate, then dialogue and collapse]</strong>
+And confound these women here as well,
+if they are not forthcoming.
+
+<em>(A mezzo-soprano interrupts. Voices rise. The quartet scatters into brawl.)</em>`
+    },
+    {
+      id: 3,
+      title: "I Care Not For You",
+      file: "/audio/bonus/i-care-not-for-you.mp3",
+      slug: "i-care-not-for-you",
+      style: "Victorian chamber piece, 70 BPM \u2014 string quartet, harpsichord, baritone, two mezzo-sopranos",
+      about: "Polite recitative over a mocking minuet, tightening through the first two minutes into breathless agitato. A full stop on one dissonant chord, then a slow grave insult. Two mezzos object, voices overlap, the quartet fractures, glass breaks, one final violin shriek. Curtain.",
+      lyrics: `<em>(A mocking minuet. The Gentleman speaks, measured.)</em>
+
+<strong>[Verse 1 \u2014 measured, spoken]</strong>
+Upon our reacquaintance, sir, I shall be plain:
+I care not for you. I care not for you.
+Not for your enthusiasms, not your trials sustained,
+Not the harbour where you mean to remain.
+
+<strong>[Verse 2 \u2014 a shade quicker]</strong>
+The gentleman who trembles at your tread \u2014 I care not.
+Your turn at Her Majesty's pleasure \u2014 I care not.
+Your fellowship, your parish, the confederacy you've got,
+The men upon whom you have drawn \u2014 I care not.
+
+<strong>[Verse 3 \u2014 quicker, pressing]</strong>
+Your person and your lady \u2014 I care not for you.
+The Continent you travelled \u2014 I care not for you.
+That counterfeit cold scowl, the gilt between your teeth \u2014
+I care not for you. I care not for you.
+
+<strong>[Verse 4 \u2014 faster, colour rising]</strong>
+Hang your existence, hang your honest trade.
+Hang the parish and the acquaintance you have made.
+Hang the alms you scatter. Hang the eyes upon your back.
+Hang the forked lies on your tongue \u2014 I care not.
+
+<strong>[Bridge \u2014 rapid-fire, breathless]</strong>
+Your shadowy confederates, the soil from which you came,
+The manner of your fortune, the whole wretched frame,
+Your forthcoming publication, your designs, your crew,
+The part you fancy you play, the house rules you hold true,
+I'll not be acquainted, sir, with you,
+You fraudulent dandified wretch \u2014 damn it, damn it, damn it \u2014
+
+<strong>[Break \u2014 one held dissonant chord, then silence]</strong>
+
+<strong>[Verse 5 \u2014 slowly, gravely, deliberate]</strong>
+And a pox upon these harlots here present \u2014
+if they are not, at this very moment,
+engaged in the act of fornication.
+
+<strong>[Exchange \u2014 mezzo-soprano interjects, offended]</strong>
+<em>You wretch! Who are you, sir, to call us harlots?</em>
+I address every harlot in the room, you hussy.
+<em>Whom do you name a hussy?</em>
+Every hussy. Every harlot. The lot of you, here, now \u2014
+
+<strong>[Outro \u2014 riot, strings scrape to chaos]</strong>
+Scoundrel! The constables! Scoundrel!
+<em>(A chair topples. Glass. A final violin shriek.)</em>
+Curtain.`
     }
   ];
 
@@ -516,7 +630,7 @@ Blast you \u2014 be damned \u2014 pox on you \u2014 devil take you \u2014 hang y
     if (idx < 0 || idx >= TRACKS.length) return;
     currentIndex = idx;
     const track = TRACKS[idx];
-    audio.src = AUDIO_BASE + track.file;
+    audio.src = track.file;
     audio.load();
     audio.play().then(() => { isPlaying = true; updatePlayBtn(); })
       .catch(() => { isPlaying = false; updatePlayBtn(); });
@@ -592,7 +706,7 @@ Blast you \u2014 be damned \u2014 pox on you \u2014 devil take you \u2014 hang y
     updateNowPlaying(TRACKS[startIdx], startIdx);
     updateActiveTrack(startIdx);
     currentIndex = startIdx;
-    audio.src = AUDIO_BASE + TRACKS[startIdx].file;
+    audio.src = TRACKS[startIdx].file;
     audio.load();
     audio.play().then(() => { isPlaying = true; userInteracted = true; updatePlayBtn(); })
       .catch(() => {

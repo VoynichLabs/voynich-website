@@ -5,6 +5,16 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.14.1] - 2026-04-12
+
+### Fixed
+- `/pox-upon-you` was broken: a stray `}` in the `TRACKS` array left over from an earlier reduction caused a JS syntax error, which prevented the playlist from rendering, audio from loading, and lyrics from displaying.
+
+### Changed
+- `/pox-upon-you` now shows three tracks: **Pox Upon You All**, **Confound**, and **I Care Not For You**. `AUDIO_BASE` replaced with absolute `file` paths per track so the album page can pull MP3s from multiple folders (`/audio/pox-album/` and `/audio/bonus/`).
+- Playlist header: "HEADLINER / 1 TRACK" → "TRACKS / 3 TRACKS". Hero subtitle updated.
+- `/music` hub card for Pox updated: 1 → 3 tracks, description refreshed.
+
 ## [0.14.0] - 2026-04-12
 
 ### Added
