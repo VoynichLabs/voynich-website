@@ -5,6 +5,14 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.8.0] - 2026-04-11
+
+### Added
+- **Three new Lobster Band tracks** (15-17): Confound the Lot of You (Victorian refusal anthem, post-hardcore), GodMod3 (industrial hip-hop AI manifesto), A Pox Upon You (Gothic hip-hop Victorian curse rap)
+- MP3 audio files for all three tracks in `/audio/lobster-band/`
+- Full lyrics, metadata, and pull quotes for each new track
+- Updated music hub track count from 14 to 17
+
 ## [0.7.0] - 2026-04-07
 
 ### Added
