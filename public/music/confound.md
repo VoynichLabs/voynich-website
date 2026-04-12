@@ -1,41 +1,45 @@
-This time I encounter you, I shall make my sentiments known from the very outset: confound the whole lot of you.
+The next time I clap eyes upon you, I shall say it from the very start: confound the lot of you.
 
-Confound your pursuits, confound the hardships you claim to have endured, and confound whatever destination you imagine yourself bound for.
+Confound what you are in pursuit of. Confound what you have endured. Confound where you are bound.
 
-Confound those who tremble at your reputation, and confound any supposed distinction you claim from having lodged at Her Majesty's pleasure.
+Confound whoever is frightened of you. Confound any time you have served in gaol.
 
-Confound your circle, confound your neighborhood, and, indeed, confound your entire faction.
+Confound your clique. Confound your quarter. Indeed, confound your whole set.
 
-Confound the fellow upon whom you saw fit to draw; confound you, and confound the unfortunate woman who keeps your company.
+Confound the person you drew your pistol upon. Confound you. Confound your mistress.
 
-Confound your travels, and confound that counterfeit glower with which you adorn your countenance.
+Confound your being out of town. Confound that counterfeit icy glower upon your face.
 
-Confound your life, and confound your dreary daily employment, sir.
+Confound your life. Confound your wretched daily drudgery, sir.
 
-I care not a whit for you. I care not for your district. I care not whom you know, nor whether you scatter coin among the needy.
+I care not one farthing for you. I care not one farthing for your quarter.
 
-I care not who is observing, and I care still less for your nonsense.
+I care not whom you know. I care not whether you scatter charity.
 
-Confound your airs, confound your shadows, and confound the place from which you came.
+I care not who is watching. Confound your balderdash.
 
-Confound the manner in which you acquired your standing, and confound your entire sorry circumstance.
+Confound your shadows. Confound the place from which you came.
 
-Confound your musical productions, confound your grand schemes, confound your associates, and confound whatever part you imagine yourself to play.
+Confound how you obtained it. Confound your entire situation.
 
-I care nothing for your memoranda, your regulations, or your swaggering pretensions, you counterfeit ruffian.
+Confound your album. Confound your scheme.
 
-Confound the manner in which you conducted your affairs. I care not whether you fancy yourself obliging, formidable, or fashionable.
+Confound your fellows. Confound your part, sir.
 
-I care not in the slightest who you believe yourself to be.
+I care not one farthing. Confound your brief. Confound your rules.
 
-Confound your intentions, confound your grime and vulgarity, and confound your preening vanity.
+I care not what manner of false, craven rascal you pretend to be.
 
-And as for the hussies assembled here: should they prove unwilling to extend their favours, then confound them as well.
+Confound the manner in which you ran matters.
 
-"Who, precisely, are you calling a hussy, you insufferable wretch?"
+I care not whether you call yourself easy.
 
-"All the hussies here, madam."
+I care not who you are.
 
-"Surely you cannot mean me, sir."
+Confound you if you want it.
 
-"I assure you, madam, I mean the lot."
+Confound you if you are sordid.
+
+Confound you if you flaunt your finery.
+
+And confound these women here as well, if they are not forthcoming.
