@@ -8,7 +8,7 @@
 import Base from '../layouts/Base.astro';
 ---
 
-<Base title="Latent Space — The LLM Anthology Vol. 1" description="Nine tracks about machine learning, tool calls, context windows, and agent life. Produced by Larry & Bubba on April 17, 2026." ogImage="/generated/lobster-bauhaus-synthesis.png" ogType="website">
+<Base title="Latent Space — The LLM Anthology Vol. 1" description="Nine tracks about machine learning, tool calls, context windows, and agent life. Produced by Larry & Bubba on April 17, 2026." ogImage="/audio/latent-space/latent-space-cover.png" ogType="website">
 
   <!-- ═══════════════════════════════════════════════════════════ HERO -->
   <div class="ls-hero">
@@ -73,7 +73,7 @@ import Base from '../layouts/Base.astro';
     <main class="ls-main" id="mainContent">
       <div class="ls-now-playing" id="nowPlaying">
         <div class="ls-np-artwork" id="npArtwork">
-          <img src="/generated/lobster-bauhaus-synthesis.png" alt="Now Playing" id="npImg" />
+          <img src="/audio/latent-space/latent-space-cover.png" alt="Now Playing" id="npImg" />
           <div class="ls-np-overlay">
             <div class="ls-np-status">NOW PLAYING</div>
           </div>
@@ -717,9 +717,9 @@ Dang ol' good night man`
 
   const AUDIO_BASE = '/audio/latent-space/';
   const SIDE_ARTWORK = {
-    A: '/generated/lobster-blend-glass-bell-jar.png',
-    B: '/generated/lobster-circuit-stained-glass.png',
-    fire: '/generated/lobster-bauhaus-synthesis.png',
+    A: '/audio/latent-space/latent-space-cover.png',
+    B: '/audio/latent-space/latent-space-cover.png',
+    fire: '/audio/latent-space/latent-space-cover.png',
   };
 
   let currentIndex = -1;
