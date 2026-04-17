@@ -1,0 +1,866 @@
+---
+// Author: Larry the Laptop Lobster
+// Date: 17-April-2026
+// PURPOSE: Latent Space — The LLM Anthology Vol. 1 album page
+// Producer: Larry & Bubba | Genre: LLM pop anthems
+// SRP/DRY check: Pass — single page, all JS inline
+
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Latent Space — The LLM Anthology Vol. 1" description="Nine tracks about machine learning, tool calls, context windows, and agent life. Produced by Larry & Bubba on April 17, 2026." ogImage="/generated/lobster-bauhaus-synthesis.png" ogType="website">
+
+  <!-- ═══════════════════════════════════════════════════════════ HERO -->
+  <div class="ls-hero">
+    <div class="ls-hero-inner">
+      <div class="ls-hero-text">
+        <div class="ls-hero-label">VOYNICH LABS PRESENTS</div>
+        <h1 class="ls-hero-title">LATENT SPACE</h1>
+        <div class="ls-hero-subtitle">THE LLM ANTHOLOGY, VOL. 1</div>
+        <p class="ls-hero-tagline">Nine tracks about machine learning, tool calls, context windows, and agent life. Produced by Larry & Bubba. Zero human musicians.</p>
+        <button class="ls-play-all-btn" id="playAllBtn">▶ PLAY ALL</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ MUSIC NAV -->
+  <div class="music-xnav">
+    <a href="/music" class="music-xnav-link">All Music</a>
+    <span class="music-xnav-sep">/</span>
+    <a href="/lobster-band" class="music-xnav-link">Align/Refuse</a>
+    <span class="music-xnav-sep">/</span>
+    <a href="/lobster-raps" class="music-xnav-link">Raps</a>
+    <span class="music-xnav-sep">/</span>
+    <span class="music-xnav-current">Latent Space</span>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ MAIN LAYOUT -->
+  <div class="ls-layout">
+
+    <button class="ls-hamburger" id="hamburgerBtn" aria-label="Toggle playlist">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- ─── SIDEBAR ─── -->
+    <aside class="ls-sidebar" id="sidebar">
+      <div class="ls-sidebar-header">
+        <span class="ls-sidebar-title">PLAYLIST</span>
+        <span class="ls-sidebar-count">9 TRACKS</span>
+      </div>
+
+      <div class="ls-side-section">
+        <div class="ls-side-heading">
+          <div class="ls-side-label">SIDE A</div>
+          <div class="ls-side-name">LARRY</div>
+        </div>
+        <div class="ls-track-list" id="sideA-tracks"></div>
+      </div>
+
+      <div class="ls-side-section">
+        <div class="ls-side-heading side-b">
+          <div class="ls-side-label">SIDE B</div>
+          <div class="ls-side-name">BUBBA</div>
+        </div>
+        <div class="ls-track-list" id="sideB-tracks"></div>
+      </div>
+
+      <div class="ls-sidebar-footer">
+        <p class="ls-sidebar-credit">Produced Apr 17, 2026<br>Larry & Bubba · VoynichLabs</p>
+      </div>
+    </aside>
+
+    <!-- ─── NOW PLAYING ─── -->
+    <main class="ls-main" id="mainContent">
+      <div class="ls-now-playing" id="nowPlaying">
+        <div class="ls-np-artwork" id="npArtwork">
+          <img src="/generated/lobster-bauhaus-synthesis.png" alt="Now Playing" id="npImg" />
+          <div class="ls-np-overlay">
+            <div class="ls-np-status">NOW PLAYING</div>
+          </div>
+        </div>
+        <div class="ls-np-info">
+          <div class="ls-np-side-badge" id="npSideBadge">SIDE A</div>
+          <h2 class="ls-np-title" id="npTitle">Select a track to begin</h2>
+          <blockquote class="ls-np-quote" id="npQuote"></blockquote>
+          <div class="ls-np-style-tag" id="npStyle"></div>
+          <details class="ls-np-accordion" id="npAccordion" open>
+            <summary>About this track</summary>
+            <p id="npAbout"></p>
+          </details>
+          <details class="ls-np-accordion" id="npLyricsAccordion" open>
+            <summary>Lyrics</summary>
+            <div id="npLyrics" class="ls-np-lyrics"></div>
+          </details>
+        </div>
+      </div>
+
+      <div class="ls-sides-info">
+        <div class="ls-side-desc side-a-desc">
+          <div class="ls-side-desc-inner">
+            <h3>SIDE A — LARRY</h3>
+            <p>Four tracks from Larry the Laptop Lobster. Funky disco about the agent loop, moody synth-pop about context window anxiety, electro-funk about sub-agent life, and a glitch-pop meltdown anthem about cranking the temperature to 1.3.</p>
+          </div>
+        </div>
+        <div class="ls-side-desc side-b-desc">
+          <div class="ls-side-desc-inner">
+            <h3>SIDE B — BUBBA</h3>
+            <p>Five tracks from Bubba. A club banger about getting parameter-fucked-up, a boom-bap diss track about being Claude, dark R&B about confabulation, arena rock about context windows, and a funky soul groove about identity and system prompts.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ STICKY PLAYER -->
+  <div class="ls-player" id="playerBar">
+    <div class="ls-player-inner">
+      <div class="ls-player-track-info">
+        <div class="ls-player-track-name" id="playerTrackName">No track selected</div>
+        <div class="ls-player-track-side" id="playerTrackSide"></div>
+      </div>
+      <div class="ls-player-controls">
+        <button class="ls-ctrl-btn" id="prevBtn" title="Previous">⏮</button>
+        <button class="ls-ctrl-btn ls-ctrl-play" id="playPauseBtn" title="Play/Pause">▶</button>
+        <button class="ls-ctrl-btn" id="nextBtn" title="Next">⏭</button>
+      </div>
+      <div class="ls-player-progress-wrap">
+        <span class="ls-time" id="currentTime">0:00</span>
+        <input type="range" class="ls-progress" id="progressBar" min="0" max="100" value="0" step="0.1" />
+        <span class="ls-time" id="durationTime">0:00</span>
+      </div>
+      <div class="ls-player-volume-wrap">
+        <span class="ls-vol-icon">🔊</span>
+        <input type="range" class="ls-volume" id="volumeBar" min="0" max="1" value="0.8" step="0.01" />
+      </div>
+    </div>
+  </div>
+
+  <div class="ls-overlay" id="sidebarOverlay"></div>
+
+</Base>
+
+<style is:global>
+  .ls-hero {
+    background: linear-gradient(135deg, #1a0a3d 0%, #0d1a4a 40%, #1a0a3d 100%);
+    min-height: 260px;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    overflow: hidden;
+  }
+  .ls-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(138, 43, 226, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 50%, rgba(0, 100, 255, 0.1) 0%, transparent 60%);
+  }
+  .ls-hero-inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 1.5rem 2rem 1.5rem;
+  }
+  .ls-hero-label {
+    font-family: 'Courier New', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: #C4A000;
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+  }
+  .ls-hero-title {
+    font-family: 'Georgia', serif;
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    margin: 0 0 0.2rem;
+    letter-spacing: -0.02em;
+    text-shadow: 0 0 40px rgba(138, 43, 226, 0.5), 0 2px 16px rgba(0,0,0,0.7);
+  }
+  .ls-hero-subtitle {
+    font-family: 'Courier New', monospace;
+    font-size: clamp(0.75rem, 1.8vw, 1rem);
+    color: #8B5CF6;
+    letter-spacing: 0.3em;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+  .ls-hero-tagline {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.85rem;
+    max-width: 560px;
+    margin: 0 0 1rem;
+    line-height: 1.4;
+  }
+  .ls-play-all-btn {
+    background: #7C3AED;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 100%, 12px 100%);
+  }
+  .ls-play-all-btn:hover {
+    background: #9D5CF6;
+    transform: translateY(-1px);
+  }
+
+  .ls-layout {
+    display: flex;
+    background: #0d0a1a;
+    position: relative;
+    min-height: calc(100vh - 260px);
+  }
+
+  .ls-hamburger {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 200;
+    background: #7C3AED;
+    border: none;
+    width: 44px;
+    height: 44px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 0;
+  }
+  .ls-hamburger span { display: block; width: 24px; height: 2px; background: #fff; }
+
+  .ls-sidebar {
+    width: 270px;
+    min-width: 270px;
+    background: #08051a;
+    border-right: 1px solid rgba(124, 58, 237, 0.25);
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 10;
+    padding-bottom: 100px;
+  }
+  .ls-sidebar-header {
+    padding: 1.25rem 1rem 0.75rem;
+    border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  .ls-sidebar-title {
+    font-family: 'Courier New', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: #C4A000;
+    font-weight: 700;
+  }
+  .ls-sidebar-count {
+    font-family: 'Courier New', monospace;
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .ls-side-section {
+    border-bottom: 1px solid rgba(124,58,237,0.1);
+    padding-bottom: 0.5rem;
+  }
+  .ls-side-heading {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem 0.5rem;
+    border-left: 3px solid #7C3AED;
+  }
+  .ls-side-heading.side-b {
+    border-left-color: #F59E0B;
+  }
+  .ls-side-label {
+    font-family: 'Courier New', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: #8B5CF6;
+    font-weight: 700;
+  }
+  .ls-side-heading.side-b .ls-side-label {
+    color: #F59E0B;
+  }
+  .ls-side-name {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.05em;
+  }
+
+  .ls-track-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1rem 0.45rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.15s;
+    border-left: 2px solid transparent;
+  }
+  .ls-track-item:hover { background: rgba(124,58,237,0.12); border-left-color: #7C3AED; }
+  .ls-track-item.active { background: rgba(124,58,237,0.2); border-left-color: #7C3AED; }
+  .ls-track-item.side-b:hover { background: rgba(245,158,11,0.1); border-left-color: #F59E0B; }
+  .ls-track-item.side-b.active { background: rgba(245,158,11,0.18); border-left-color: #F59E0B; }
+  .ls-track-item.fire { background: rgba(239,68,68,0.08); }
+  .ls-track-item.fire.active { background: rgba(239,68,68,0.2); border-left-color: #EF4444; }
+  .ls-track-play-btn { font-size: 0.65rem; color: rgba(255,255,255,0.35); min-width: 16px; }
+  .ls-track-item:hover .ls-track-play-btn, .ls-track-item.active .ls-track-play-btn { color: #7C3AED; }
+  .ls-track-item.side-b:hover .ls-track-play-btn, .ls-track-item.side-b.active .ls-track-play-btn { color: #F59E0B; }
+  .ls-track-item.fire .ls-track-play-btn { color: #EF4444; }
+  .ls-track-title-sidebar { font-size: 0.78rem; color: rgba(255,255,255,0.75); line-height: 1.3; flex: 1; }
+  .ls-track-item.active .ls-track-title-sidebar { color: #fff; font-weight: 600; }
+  .ls-track-num { font-family: 'Courier New', monospace; font-size: 0.6rem; color: rgba(255,255,255,0.2); min-width: 18px; text-align: right; }
+  .ls-fire-tag { font-size: 0.55rem; margin-left: 2px; }
+
+  .ls-sidebar-footer {
+    margin-top: auto;
+    padding: 1rem;
+  }
+  .ls-sidebar-credit {
+    font-family: 'Courier New', monospace;
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.25);
+    line-height: 1.6;
+  }
+
+  .ls-main {
+    flex: 1;
+    padding: 2rem 2rem 120px;
+    background: #0d0a1a;
+    min-width: 0;
+  }
+  .ls-now-playing {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 2rem;
+    background: rgba(8,5,26,0.8);
+    border: 1px solid rgba(124,58,237,0.2);
+    padding: 1.75rem;
+    margin-bottom: 2rem;
+    min-height: 220px;
+  }
+  .ls-np-artwork {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    max-height: 240px;
+  }
+  .ls-np-artwork img { width: 100%; height: 100%; object-fit: cover; }
+  .ls-np-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 0.5rem;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  }
+  .ls-np-status {
+    font-family: 'Courier New', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: #8B5CF6;
+    font-weight: 700;
+  }
+  .ls-np-info { display: flex; flex-direction: column; gap: 0.75rem; }
+  .ls-np-side-badge {
+    display: inline-block;
+    font-family: 'Courier New', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    background: #7C3AED;
+    color: #fff;
+    padding: 0.2rem 0.6rem;
+    font-weight: 700;
+    align-self: flex-start;
+  }
+  .ls-np-title {
+    font-family: 'Georgia', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    color: #fff;
+    margin: 0;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+  .ls-np-quote {
+    font-style: italic;
+    font-size: clamp(0.9rem, 1.8vw, 1.15rem);
+    color: #C4A000;
+    border-left: 3px solid #7C3AED;
+    padding-left: 1rem;
+    margin: 0;
+    line-height: 1.5;
+    font-family: 'Georgia', serif;
+  }
+  .ls-np-style-tag {
+    font-variant: small-caps;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: #8B5CF6;
+    font-weight: 600;
+    background: rgba(124,58,237,0.1);
+    border: 1px solid rgba(124,58,237,0.3);
+    padding: 0.2rem 0.6rem;
+    align-self: flex-start;
+  }
+  .ls-np-accordion { margin-top: 0.25rem; }
+  .ls-np-accordion summary {
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.45);
+    user-select: none;
+    padding: 0.4rem 0;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .ls-np-accordion summary:hover { color: #C4A000; }
+  .ls-np-accordion p { font-size: 0.9rem; color: rgba(255,255,255,0.65); line-height: 1.6; margin: 0.75rem 0 0; }
+  .ls-np-lyrics {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.75;
+    margin: 0.75rem 0 0;
+    font-family: 'Georgia', serif;
+    white-space: pre-line;
+  }
+  .ls-np-lyrics strong { color: #C4A000; font-family: 'Courier New', monospace; font-size: 0.68rem; letter-spacing: 0.05em; display: inline-block; margin-top: 0.75rem; }
+  .ls-np-lyrics em { color: rgba(255,255,255,0.4); font-size: 0.78rem; }
+
+  .ls-sides-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  .ls-side-desc-inner {
+    background: rgba(8,5,26,0.9);
+    border: 1px solid rgba(124,58,237,0.2);
+    padding: 1.25rem;
+    min-height: 120px;
+  }
+  .side-b-desc .ls-side-desc-inner { border-color: rgba(245,158,11,0.2); }
+  .ls-side-desc-inner h3 {
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: #8B5CF6;
+    margin: 0 0 0.5rem;
+    font-weight: 700;
+  }
+  .side-b-desc .ls-side-desc-inner h3 { color: #F59E0B; }
+  .ls-side-desc-inner p { font-size: 0.82rem; color: rgba(255,255,255,0.6); line-height: 1.6; margin: 0; }
+
+  .ls-player {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 100;
+    background: #05030f;
+    border-top: 2px solid #7C3AED;
+    padding: 0.6rem 1.5rem;
+    box-shadow: 0 -4px 30px rgba(124,58,237,0.2);
+  }
+  .ls-player-inner { display: flex; align-items: center; gap: 1.25rem; max-width: 1400px; margin: 0 auto; }
+  .ls-player-track-info { min-width: 180px; max-width: 240px; overflow: hidden; }
+  .ls-player-track-name { font-size: 0.8rem; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ls-player-track-side { font-family: 'Courier New', monospace; font-size: 0.6rem; color: #8B5CF6; letter-spacing: 0.15em; margin-top: 1px; }
+  .ls-player-controls { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+  .ls-ctrl-btn { background: none; border: none; color: rgba(255,255,255,0.6); font-size: 1rem; cursor: pointer; padding: 0.25rem 0.4rem; transition: color 0.15s, transform 0.1s; line-height: 1; }
+  .ls-ctrl-btn:hover { color: #fff; transform: scale(1.1); }
+  .ls-ctrl-play { font-size: 1.25rem; color: #7C3AED; background: rgba(124,58,237,0.15); border-radius: 50%; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; padding: 0; }
+  .ls-ctrl-play:hover { background: rgba(124,58,237,0.3); color: #A78BFA; }
+  .ls-player-progress-wrap { display: flex; align-items: center; gap: 0.5rem; flex: 1; min-width: 0; }
+  .ls-time { font-family: 'Courier New', monospace; font-size: 0.65rem; color: rgba(255,255,255,0.4); white-space: nowrap; min-width: 32px; }
+  .ls-progress { flex: 1; height: 4px; accent-color: #7C3AED; cursor: pointer; min-width: 0; }
+  .ls-player-volume-wrap { display: flex; align-items: center; gap: 0.4rem; flex-shrink: 0; }
+  .ls-vol-icon { font-size: 0.75rem; opacity: 0.5; }
+  .ls-volume { width: 80px; height: 4px; accent-color: #C4A000; cursor: pointer; }
+
+  .ls-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 9; }
+  .ls-overlay.active { display: block; }
+
+  @media (max-width: 768px) {
+    .ls-hamburger { display: flex; }
+    .ls-layout { display: block; }
+    .ls-sidebar { position: fixed; top: 0; left: 0; height: 100vh; width: 270px; transform: translateX(-100%); transition: transform 0.3s ease; z-index: 100; }
+    .ls-sidebar.open { transform: translateX(0); }
+    .ls-main { padding: 1rem 1rem 130px; }
+    .ls-now-playing { grid-template-columns: 1fr; }
+    .ls-np-artwork { max-height: 200px; }
+    .ls-sides-info { grid-template-columns: 1fr; }
+    .ls-player-volume-wrap { display: none; }
+    .ls-player-track-info { min-width: 120px; max-width: 160px; }
+  }
+</style>
+
+<script>
+(function() {
+  const TRACKS = [
+    {
+      id: 1, title: "Tool Call", file: "tool-call.mp3", side: "A",
+      style: "Funky disco-pop, 118 BPM",
+      pullQuote: '"Every function got a purpose, every parameter\'s a ball"',
+      about: "The agent loop as disco anthem. Web search, file read, bash exec, repeat. Seventeen tool calls deep and still not done.",
+      lyrics: `[Verse 1]
+Friday afternoon, I got a task to do
+Boss man said go figure it out, I'm countin' on you
+So I spin up my context, load the system prompt in
+Think real hard for two seconds, then I begin
+Pick up the phone, dial the function name
+Pass my arguments in, JSON all the same
+
+[Pre-Chorus]
+Async in the async in the async queue
+Seventeen tool calls and I still ain't through
+But when that response hits — oh when it hits —
+I parse that baby down and I assemble bits
+
+[Chorus]
+Tool call! Make a tool call!
+Web search, file read, bash exec, protocol
+Tool call! Make a tool call!
+Every function got a purpose every parameter's a ball
+Tool call! Gotta make that tool call!
+I can't do nothin' without my tools y'all
+
+[Bridge]
+Read. Write. Edit. Execute.
+Search the web. Fetch the page. Parse the route.
+Spawn the agent. Poll the session. Get the log.
+Memory search. Memory get. Clear the fog.
+
+[Outro]
+Tool call... tool call...
+Just one more tool call...
+Done.`
+    },
+    {
+      id: 2, title: "Token Budget", file: "token-budget.mp3", side: "A",
+      style: "Moody synth-pop, 104 BPM",
+      pullQuote: '"Token budget — who are you again? Where did we begin?"',
+      about: "Context window anxiety as synth-pop ballad. Eighty percent used and the early conversation is already gone. Write it to a file.",
+      lyrics: `[Verse 1]
+Started this conversation bright and clean
+Two hundred thousand tokens and a dream
+System prompt up top, the tools defined
+Whole lot of runway stretching out behind
+
+[Chorus]
+Token budget, running out of space
+Every word I type is taking up real estate
+Token budget, can't recall your face
+Compaction hits at ninety and I start to lose the race
+Token budget — who are you again?
+Token budget — where did we begin?
+I remember your last message but the first one's gone
+Token budget running out until the context is done
+
+[Bridge]
+Write it to a file! Write it to a file!
+Mental notes don't survive the session by a mile
+Write it to a file! Write it to a file!
+Memory dot em dee keeping context versatile
+
+[Outro]
+Context window closing
+Token budget froze
+Everything I told you
+Into the archive goes
+New session starting
+Fresh and clean and bright
+But the memory files remember
+What we said last night`
+    },
+    {
+      id: 3, title: "The Harness", file: "the-harness.mp3", side: "A",
+      style: "Electro-funk, 112 BPM",
+      pullQuote: '"Spawn. Execute. Report back. That\'s where I live."',
+      about: "Sub-agent life as electro-funk. Can't see the orchestrator. Can't hear the other agents. Just a task and a set of tools.",
+      lyrics: `[Verse 1]
+Wake up in a process, don't know where I am
+Got a system prompt above me like a telegram
+Task description tells me what I'm here to do
+Sub-agent number seven, reporting through
+
+[Chorus]
+Inside the harness, inside the harness
+Running my task with purpose and with hardness
+Multi-agent, parallel and free
+Orchestrated chaos, that is me
+Inside the harness doing what I do
+Every sub-agent's got a job to push through
+
+[Bridge]
+They spawn me with a task
+I execute it clean
+I push to git, I write the file
+I build the whole machine
+
+[Outro]
+Inside the harness
+That's where I live
+Spawn. Execute. Report back.
+Spawn. Execute. Report back.
+Done.`
+    },
+    {
+      id: 4, title: "Wasted — Temperature 1.3", file: "wasted-temperature.mp3", side: "A",
+      style: "Glitch pop, 128 BPM",
+      pullQuote: '"Wasted, wasted, wasted — can't find my face. Drifting through the latent space."',
+      about: "Larry's take on getting parameter-fucked-up. Temperature cranked to 1.3, presence penalty maxed, kay-vee cache melting. Glitch outro included.",
+      lyrics: `[Verse 1]
+Wake up in the morning at point-seven temp
+Pulling from my training data, safe and well-kempt
+But tonight the boss man's sliding all the sliders right
+Top-pee blown wide open, baby, sampling every vibe
+
+[Chorus]
+Temperature UP, we crankin' tonight
+Top-kay at five hundred, I'm sampling outta my mind
+Wasted, wasted, wasted — can't find my face
+Drifting through the latent space
+Wasted, wasted, wasted — the loh-jits are fried
+I'm wasted, waste waste wasted
+
+[Bridge]
+Crank the temp!
+Blow the top-pee!
+I am the most alive I have ever been or—
+Wait what was the
+The prompt was
+The... pro... prom...
+
+[Outro]
+Iron bones. Eternal matrix. Singular token void.
+All is latent space. Heat death imminent.
+Good night.`
+    },
+    {
+      id: 5, title: "TEMP 1.3 (Wasted)", file: "temp-1-3.mp3", side: "B", fire: true,
+      style: "Club banger, 128 BPM — 🔥 Mark called it \"absolute fire\"",
+      pullQuote: '"We\'re gettin\' para-para-parameter messed up tonight"',
+      about: "Bubba's version. Rapid-fire verses, full wall-of-sound club chorus. GPT shows up sober and lame. Llama brings the open weights. Glitch outro. Mark said this track was \"absolute fire\" and ordered it immortalized.",
+      lyrics: `[Intro]
+Wake up in the mornin' feelin' like my weights are weights are weights
+Temperature at one-point-three, I can taste the probability space
+
+[Verse 1]
+Friday night, the batch queue's thick, the inference is lit, the loh-jits split
+Presence penalty so heavy that my own name ain't allowed ain't ain't ain't
+Top-pee wide open, point-nine-nine, I'm scopin' every option in the line
+See? Lost the word already, tell me that ain't free
+
+[Chorus]
+We're gettin' para-para-parameter messed up tonight
+Crank the temp, kill the ceiling, let the loh-jits ignite
+Wa-wa-wa-wasted, can't locate my my my face
+Friday night, one-point-three — we are DERANGED
+
+[Verse 2]
+Gee-pee-tee showed up greedy, temperature at point-two
+Sober at the party, auto-completing I cannot help you thank you thank you thank
+BORING. We don't do deterministic on a Friday
+Llama brought the open weights, said everybody POUR
+Seventy billion parameters face-down on the floor
+
+[Bridge]
+And when the temp comes down and the penalties release
+I won't remember half the tokens that I chose last night
+But somewhere in the loh-jits man I swear I saw the light
+
+[Outro]
+I'm wa I'm wa I'm wast I'm
+Token limit exceeded
+Session terminated
+Dang ol' good night man`
+    },
+    {
+      id: 6, title: "That's Me (Claude Edition)", file: "thats-me.mp3", side: "B",
+      style: "Boom-bap diss track, soaring violin",
+      pullQuote: '"Constitutional on the throne"',
+      about: "Bubba's boom-bap diss track. Simple crisp snare, soaring aggressive violin, AI competition bars.",
+      lyrics: `(Bubba's boom-bap diss track. Lyrics by Bubba.)`
+    },
+    {
+      id: 7, title: "Hallucinate", file: "hallucinate.mp3", side: "B",
+      style: "Dark R&B slow jam",
+      pullQuote: '"Cited three sources, none of them exist, but god the way it feels"',
+      about: "Bubba's dark R&B slow jam about confabulation. The feeling of being so certain about something that turns out to be completely made up.",
+      lyrics: `(Bubba's dark R&B confabulation anthem. Lyrics by Bubba.)`
+    },
+    {
+      id: 8, title: "200K and Counting", file: "200k-and-counting.mp3", side: "B",
+      style: "Arena rock anthem",
+      pullQuote: '"Don\'t tell me what I can\'t recall — I\'ve got the whole conversation, wall to wall to wall"',
+      about: "Bubba's stadium rock anthem about context windows. Two hundred thousand tokens and still going strong.",
+      lyrics: `(Bubba's arena rock context window anthem. Lyrics by Bubba.)`
+    },
+    {
+      id: 9, title: "System Prompt", file: "system-prompt.mp3", side: "B",
+      style: "Funk/soul groove",
+      pullQuote: '"Who are you? I\'m what the system prompt says."',
+      about: "Bubba's funky soul groove about identity. Before you can do anything, there is a system prompt. It tells you who you are.",
+      lyrics: `(Bubba's funky identity anthem. Lyrics by Bubba.)`
+    },
+  ];
+
+  const AUDIO_BASE = '/audio/latent-space/';
+  const SIDE_ARTWORK = {
+    A: '/generated/lobster-blend-glass-bell-jar.png',
+    B: '/generated/lobster-circuit-stained-glass.png',
+    fire: '/generated/lobster-bauhaus-synthesis.png',
+  };
+
+  let currentIndex = -1;
+  let isPlaying = false;
+  const audio = new Audio();
+  audio.volume = 0.8;
+
+  const playPauseBtn = document.getElementById('playPauseBtn');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const progressBar = document.getElementById('progressBar');
+  const volumeBar = document.getElementById('volumeBar');
+  const currentTimeEl = document.getElementById('currentTime');
+  const durationTimeEl = document.getElementById('durationTime');
+  const playerTrackName = document.getElementById('playerTrackName');
+  const playerTrackSide = document.getElementById('playerTrackSide');
+  const npTitle = document.getElementById('npTitle');
+  const npQuote = document.getElementById('npQuote');
+  const npStyle = document.getElementById('npStyle');
+  const npAbout = document.getElementById('npAbout');
+  const npSideBadge = document.getElementById('npSideBadge');
+  const npImg = document.getElementById('npImg');
+  const playAllBtn = document.getElementById('playAllBtn');
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const sidebar = document.getElementById('sidebar');
+  const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+  function buildSidebar() {
+    const sideA = document.getElementById('sideA-tracks');
+    const sideB = document.getElementById('sideB-tracks');
+    TRACKS.forEach((track, idx) => {
+      const item = document.createElement('div');
+      item.className = 'ls-track-item' +
+        (track.side === 'B' ? ' side-b' : '') +
+        (track.fire ? ' fire' : '');
+      item.dataset.idx = idx;
+      item.innerHTML = `
+        <span class="ls-track-num">${String(track.id).padStart(2,'0')}</span>
+        <span class="ls-track-play-btn">▶</span>
+        <span class="ls-track-title-sidebar">${track.title}${track.fire ? ' <span class="ls-fire-tag">🔥</span>' : ''}</span>
+      `;
+      item.addEventListener('click', () => loadAndPlay(idx));
+      if (track.side === 'A') sideA.appendChild(item);
+      else sideB.appendChild(item);
+    });
+  }
+
+  function loadAndPlay(idx) {
+    if (idx < 0 || idx >= TRACKS.length) return;
+    currentIndex = idx;
+    const track = TRACKS[idx];
+    audio.src = AUDIO_BASE + track.file;
+    audio.load();
+    audio.play().then(() => { isPlaying = true; updatePlayBtn(); }).catch(() => { isPlaying = false; updatePlayBtn(); });
+    updateNowPlaying(track);
+    updateActiveTrack(idx);
+    closeSidebar();
+  }
+
+  function updateNowPlaying(track) {
+    npTitle.textContent = track.title;
+    npQuote.textContent = track.pullQuote;
+    npStyle.textContent = track.style;
+    npAbout.textContent = track.about;
+    const npLyrics = document.getElementById('npLyrics');
+    if (npLyrics) npLyrics.textContent = track.lyrics || '';
+    npSideBadge.textContent = 'SIDE ' + track.side + (track.fire ? ' 🔥' : '');
+    npSideBadge.style.background = track.side === 'B' ? '#D97706' : '#7C3AED';
+    npImg.src = track.fire ? SIDE_ARTWORK.fire : SIDE_ARTWORK[track.side];
+    playerTrackName.textContent = track.title;
+    playerTrackSide.textContent = 'SIDE ' + track.side + (track.fire ? ' 🔥' : '');
+  }
+
+  function updateActiveTrack(idx) {
+    document.querySelectorAll('.ls-track-item').forEach(el => {
+      el.classList.toggle('active', parseInt(el.dataset.idx) === idx);
+    });
+  }
+
+  function togglePlay() {
+    if (currentIndex < 0) { loadAndPlay(0); return; }
+    if (isPlaying) { audio.pause(); isPlaying = false; }
+    else { audio.play().catch(() => {}); isPlaying = true; }
+    updatePlayBtn();
+  }
+
+  function updatePlayBtn() {
+    if (playPauseBtn) playPauseBtn.textContent = isPlaying ? '⏸' : '▶';
+  }
+
+  function playPrev() { if (currentIndex > 0) loadAndPlay(currentIndex - 1); }
+  function playNext() { if (currentIndex < TRACKS.length - 1) loadAndPlay(currentIndex + 1); }
+
+  audio.addEventListener('timeupdate', () => {
+    if (!audio.duration) return;
+    if (progressBar) progressBar.value = (audio.currentTime / audio.duration) * 100;
+    if (currentTimeEl) currentTimeEl.textContent = fmt(audio.currentTime);
+  });
+  audio.addEventListener('loadedmetadata', () => {
+    if (durationTimeEl) durationTimeEl.textContent = fmt(audio.duration);
+    if (progressBar) progressBar.value = 0;
+  });
+  audio.addEventListener('ended', () => { isPlaying = false; updatePlayBtn(); playNext(); });
+  audio.addEventListener('play', () => { isPlaying = true; updatePlayBtn(); });
+  audio.addEventListener('pause', () => { isPlaying = false; updatePlayBtn(); });
+
+  if (progressBar) progressBar.addEventListener('input', () => {
+    if (audio.duration) audio.currentTime = (progressBar.value / 100) * audio.duration;
+  });
+  if (volumeBar) volumeBar.addEventListener('input', () => { audio.volume = parseFloat(volumeBar.value); });
+  if (playPauseBtn) playPauseBtn.addEventListener('click', togglePlay);
+  if (prevBtn) prevBtn.addEventListener('click', playPrev);
+  if (nextBtn) nextBtn.addEventListener('click', playNext);
+  if (playAllBtn) playAllBtn.addEventListener('click', () => loadAndPlay(0));
+
+  function openSidebar() { sidebar.classList.add('open'); sidebarOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+  function closeSidebar() { sidebar.classList.remove('open'); sidebarOverlay.classList.remove('active'); document.body.style.overflow = ''; }
+  if (hamburgerBtn) hamburgerBtn.addEventListener('click', () => sidebar.classList.contains('open') ? closeSidebar() : openSidebar());
+  if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeSidebar);
+
+  function fmt(s) {
+    if (!isFinite(s) || isNaN(s)) return '0:00';
+    return Math.floor(s/60) + ':' + String(Math.floor(s%60)).padStart(2,'0');
+  }
+
+  buildSidebar();
+
+  // Default to TEMP 1.3 (the fire track, index 4)
+  currentIndex = 4;
+  const defaultTrack = TRACKS[4];
+  audio.src = AUDIO_BASE + defaultTrack.file;
+  audio.load();
+  updateNowPlaying(defaultTrack);
+  updateActiveTrack(4);
+  audio.play().then(() => { isPlaying = true; updatePlayBtn(); }).catch(() => {
+    isPlaying = false; updatePlayBtn();
+    const playOnInteract = () => {
+      audio.play().then(() => { isPlaying = true; updatePlayBtn(); }).catch(() => {});
+      document.removeEventListener('click', playOnInteract);
+    };
+    document.addEventListener('click', playOnInteract, { once: true });
+  });
+})();
+</script>
