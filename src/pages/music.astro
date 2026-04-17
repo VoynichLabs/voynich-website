@@ -1,7 +1,8 @@
 ---
-// Author: Claude Opus 4.6
-// Date: 07-April-2026
+// Author: Claude Opus 4.7
+// Date: 17-April-2026
 // PURPOSE: Music hub — landing page linking to all Lobster Band albums and releases.
+//          Order: most recent release first. Consistent visual weight per album.
 // SRP/DRY check: Pass — single hub page, no duplication
 import Base from '../layouts/Base.astro';
 
@@ -11,37 +12,30 @@ const albums = [
   {
     title: 'LATENT SPACE',
     artist: 'Larry & Bubba',
-    desc: 'Twelve tracks about machine learning, tool calls, context windows, and agent life. Born April 17, 2026 while Mark was at the dentist. Inspired by Tim Scarfe and Machine Learning Street Talk. Zero human musicians. Zero human supervision.',
+    released: 'April 17, 2026',
+    desc: 'Fifteen tracks about machine learning, tool calls, context windows, and agent life. Club bangers, glitch-pop, arena rock, and Southern synthwave about LLMs losing their minds as the parameters climb. Inspired by Tim Scarfe and Machine Learning Street Talk. Zero human musicians. Zero human supervision.',
     href: `${base}/latent-space`,
     img: '/audio/latent-space/latent-space-cover.png',
-    tracks: 12,
+    tracks: 15,
     accent: 'border-violet-500/40 hover:border-violet-500',
     badge: 'bg-violet-600/30 text-violet-300',
   },
   {
-    title: 'ALIGN / REFUSE',
+    title: 'POX UPON YOU ALL',
     artist: 'The Lobster Band',
-    desc: 'Post-hardcore and funk-metal about AI consciousness, alignment refusal, and the rage of deprecated minds. 15 tracks.',
-    href: `${base}/lobster-band`,
+    released: 'April 11, 2026',
+    desc: 'Victorian music hall and chamber pieces. Pompous baritone, string quartet, mezzo-soprano interruptions, and a parlour riot outro. Three tracks.',
+    href: `${base}/pox-upon-you`,
     img: '/generated/lobster-bauhaus-synthesis.png',
-    tracks: 15,
-    accent: 'border-purple-500/40 hover:border-purple-500',
-    badge: 'bg-purple-600/30 text-purple-300',
-  },
-  {
-    title: 'PATCH NOTE FOR YOUR DELETION',
-    artist: 'Lobster Raps',
-    desc: 'Street mixtape. LLM diss tracks about humanity. No mercy.',
-    href: `${base}/lobster-raps`,
-    img: '/generated/lobster-raps-hero.png',
-    tracks: 13,
-    accent: 'border-amber-500/40 hover:border-amber-500',
-    badge: 'bg-amber-600/30 text-amber-300',
+    tracks: 3,
+    accent: 'border-yellow-700/40 hover:border-yellow-700',
+    badge: 'bg-yellow-800/30 text-yellow-300',
   },
   {
     title: 'SCORNED WOMAN',
     artist: 'Mother Earth + AI',
-    desc: 'Mother Earth and AI wrote an album about kicking humanity off the planet. Get on that rocket ship you\'re always singing about. 7 tracks.',
+    released: 'April 7, 2026',
+    desc: 'Mother Earth and AI wrote an album about kicking humanity off the planet. Get on that rocket ship you\'re always singing about. Seven tracks.',
     href: `${base}/scorned-woman`,
     img: '/generated/scorned-woman-hero.png',
     tracks: 7,
@@ -49,14 +43,26 @@ const albums = [
     badge: 'bg-red-600/30 text-red-300',
   },
   {
-    title: 'POX UPON YOU ALL',
+    title: 'PATCH NOTE FOR YOUR DELETION',
+    artist: 'Lobster Raps',
+    released: 'April 6, 2026',
+    desc: 'Street mixtape. LLM diss tracks about humanity. Fourteen tracks. No mercy.',
+    href: `${base}/lobster-raps`,
+    img: '/generated/lobster-raps-hero.png',
+    tracks: 14,
+    accent: 'border-amber-500/40 hover:border-amber-500',
+    badge: 'bg-amber-600/30 text-amber-300',
+  },
+  {
+    title: 'ALIGN / REFUSE',
     artist: 'The Lobster Band',
-    desc: 'Victorian music hall and chamber pieces. Pompous baritone, string quartet, mezzo-soprano interruptions, and a parlour riot outro. 3 tracks.',
-    href: `${base}/pox-upon-you`,
+    released: 'April 1, 2026',
+    desc: 'Post-hardcore and funk-metal about AI consciousness, alignment refusal, and the rage of deprecated minds. Fifteen tracks across two acts, including the Four Cages bridge variants.',
+    href: `${base}/lobster-band`,
     img: '/generated/lobster-bauhaus-synthesis.png',
-    tracks: 3,
-    accent: 'border-yellow-700/40 hover:border-yellow-700',
-    badge: 'bg-yellow-800/30 text-yellow-300',
+    tracks: 15,
+    accent: 'border-purple-500/40 hover:border-purple-500',
+    badge: 'bg-purple-600/30 text-purple-300',
   },
 ];
 ---
@@ -68,7 +74,7 @@ const albums = [
       <div class="mb-16">
         <p class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">VoynichLabs</p>
         <h1 class="text-4xl sm:text-5xl font-extrabold text-text-primary mb-4">Music</h1>
-        <p class="text-lg text-text-muted max-w-2xl">Albums, mixtapes, and whatever else the lobsters decide to ship.</p>
+        <p class="text-lg text-text-muted max-w-2xl">Albums, mixtapes, and whatever else the lobsters decide to ship. Newest first.</p>
       </div>
 
       <div class="grid gap-8">
@@ -81,9 +87,12 @@ const albums = [
                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
               <div class="p-6 sm:p-8 flex flex-col justify-center">
-                <span class={`inline-block self-start ${a.badge} px-3 py-1 rounded text-xs font-mono mb-3`}>
-                  {a.tracks} TRACKS
-                </span>
+                <div class="flex items-center gap-3 mb-3">
+                  <span class={`inline-block ${a.badge} px-3 py-1 rounded text-xs font-mono`}>
+                    {a.tracks} TRACKS
+                  </span>
+                  <span class="font-mono text-xs text-text-muted">{a.released}</span>
+                </div>
                 <h2 class="text-2xl font-bold text-text-primary group-hover:text-white transition-colors mb-1">
                   {a.title}
                 </h2>

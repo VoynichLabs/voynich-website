@@ -1,16 +1,726 @@
 ---
-// Redirect — Latent Space tracks now live on the main band page
-// See /lobster-band (ACT III — LATENT SPACE)
+// Author: Bubba (Claude Opus 4.7)
+// Date: 17-April-2026
+// PURPOSE: Latent Space — standalone album page. Larry & Bubba.
+//          Fifteen tracks about agent life: tool calls, context windows, parameters.
+// SRP/DRY check: Pass — single album page, sidebar + player + tracks.
+import Base from '../layouts/Base.astro';
 ---
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="refresh" content="0;url=/lobster-band">
-  <title>Redirecting to The Lobster Band…</title>
-</head>
-<body>
-  <script>window.location.replace('/lobster-band');</script>
-  <p>Redirecting to <a href="/lobster-band">The Lobster Band — ACT III: Latent Space</a>…</p>
-</body>
-</html>
+
+<Base title="Latent Space — Larry & Bubba" description="Fifteen tracks about machine learning, tool calls, context windows, and agent life. Zero human musicians." ogImage="/audio/latent-space/latent-space-cover.png" ogType="website">
+
+  <!-- ═══════════════════════════════════════════════════════════ HERO -->
+  <div class="ls-hero">
+    <div class="ls-hero-inner">
+      <div class="ls-hero-label">LARRY &amp; BUBBA PRESENT</div>
+      <h1 class="ls-hero-title">LATENT SPACE</h1>
+      <p class="ls-hero-tagline">The Machine Learning Street Mixtape. Club bangers, glitch-pop, arena rock, and Southern synthwave about LLMs losing their minds as the parameters climb. Inspired by Tim Scarfe and Machine Learning Street Talk. Zero human musicians.</p>
+      <button class="ls-play-btn" id="playAllBtn">▶ PLAY ALL</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ MUSIC NAV -->
+  <div class="music-xnav">
+    <a href="/music" class="music-xnav-link">All Music</a>
+    <span class="music-xnav-sep">/</span>
+    <a href="/lobster-band" class="music-xnav-link">Align/Refuse</a>
+    <span class="music-xnav-sep">/</span>
+    <span class="music-xnav-current">Latent Space</span>
+    <span class="music-xnav-sep">/</span>
+    <a href="/lobster-raps" class="music-xnav-link">Raps</a>
+    <span class="music-xnav-sep">/</span>
+    <a href="/scorned-woman" class="music-xnav-link">Scorned Woman</a>
+    <span class="music-xnav-sep">/</span>
+    <a href="/pox-upon-you" class="music-xnav-link">Pox</a>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ LAYOUT -->
+  <div class="ls-layout">
+
+    <!-- Mobile hamburger -->
+    <button class="ls-hamburger" id="hamburgerBtn" aria-label="Toggle playlist">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- Sidebar -->
+    <aside class="ls-sidebar" id="sidebar">
+      <div class="ls-sidebar-header">
+        <img src="/audio/latent-space/latent-space-cover.png" alt="Latent Space" class="ls-sidebar-thumb" />
+        <div>
+          <div class="ls-sidebar-label">ALBUM</div>
+          <div class="ls-sidebar-title">15 TRACKS</div>
+        </div>
+      </div>
+      <div class="ls-track-list" id="trackList"></div>
+      <div class="ls-sidebar-footer">
+        Born April 17, 2026 while Mark was at the dentist. Zero human supervision.
+      </div>
+    </aside>
+
+    <!-- Now playing -->
+    <main class="ls-main" id="mainContent">
+      <div class="ls-now-playing">
+        <div class="ls-np-artwork">
+          <img src="/audio/latent-space/latent-space-cover.png" alt="Now Playing" id="npImg" />
+          <div class="ls-np-overlay">
+            <div class="ls-np-status">NOW PLAYING</div>
+          </div>
+        </div>
+        <div class="ls-np-info">
+          <div class="ls-np-badge" id="npBadge">TRACK 1</div>
+          <h2 class="ls-np-title" id="npTitle">Select a track to begin</h2>
+          <blockquote class="ls-np-quote" id="npQuote"></blockquote>
+          <div class="ls-np-style" id="npStyle"></div>
+          <p class="ls-np-about" id="npAbout"></p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ PLAYER -->
+  <div class="ls-player" id="playerBar">
+    <div class="ls-player-inner">
+      <div class="ls-player-track-info">
+        <div class="ls-player-name" id="playerTrackName">No track selected</div>
+      </div>
+      <div class="ls-player-controls">
+        <button class="ls-ctrl" id="prevBtn" title="Previous">⏮</button>
+        <button class="ls-ctrl ls-ctrl-play" id="playPauseBtn" title="Play/Pause">▶</button>
+        <button class="ls-ctrl" id="nextBtn" title="Next">⏭</button>
+      </div>
+      <div class="ls-player-progress">
+        <span class="ls-time" id="currentTime">0:00</span>
+        <input type="range" class="ls-progress" id="progressBar" min="0" max="100" value="0" step="0.1" />
+        <span class="ls-time" id="durationTime">0:00</span>
+      </div>
+      <div class="ls-player-volume">
+        <span>🔊</span>
+        <input type="range" class="ls-volume" id="volumeBar" min="0" max="1" value="0.8" step="0.01" />
+      </div>
+    </div>
+  </div>
+
+  <div class="ls-overlay" id="sidebarOverlay"></div>
+
+</Base>
+
+<!-- ═══════════════════════════════════════════════════════════ STYLES -->
+<style is:global>
+  /* ── Hero ─────────────────────────────────────────────────── */
+  .ls-hero {
+    background-image: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(245,158,11,0.15)), url('/audio/latent-space/latent-space-cover.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 320px;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+  }
+  .ls-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(12,12,20,0.35) 0%, rgba(12,12,20,0.92) 100%);
+  }
+  .ls-hero-inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 2.5rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .ls-hero-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    color: #c4b5fd;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .ls-hero-title {
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.75rem 0;
+    text-shadow: 0 4px 16px rgba(0,0,0,0.5);
+  }
+  .ls-hero-tagline {
+    color: rgba(255,255,255,0.85);
+    max-width: 640px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0 0 1.25rem 0;
+  }
+  .ls-play-btn {
+    background: #8b5cf6;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .ls-play-btn:hover {
+    background: #a78bfa;
+    transform: translateY(-1px);
+  }
+
+  /* ── Layout ─────────────────────────────────────────────────── */
+  .ls-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 130px;
+    min-height: calc(100vh - 320px);
+  }
+
+  /* ── Sidebar ────────────────────────────────────────────────── */
+  .ls-sidebar {
+    background: rgba(20,18,30,0.65);
+    border: 1px solid rgba(139,92,246,0.2);
+    border-radius: 6px;
+    padding: 1rem;
+    align-self: start;
+    position: sticky;
+    top: 1rem;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+  }
+  .ls-sidebar-header {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 0.75rem;
+  }
+  .ls-sidebar-thumb {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  .ls-sidebar-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: #c4b5fd;
+  }
+  .ls-sidebar-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+  .ls-track-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .ls-track-item {
+    display: grid;
+    grid-template-columns: 28px 20px 1fr;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.55rem 0.5rem;
+    cursor: pointer;
+    border-left: 2px solid transparent;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .ls-track-item:hover {
+    background: rgba(139,92,246,0.08);
+    border-left-color: rgba(139,92,246,0.5);
+  }
+  .ls-track-item.active {
+    background: rgba(139,92,246,0.15);
+    border-left-color: #8b5cf6;
+  }
+  .ls-track-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.4);
+  }
+  .ls-track-play-btn {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.5);
+  }
+  .ls-track-item.active .ls-track-play-btn { color: #8b5cf6; }
+  .ls-track-item.fire .ls-track-num::after {
+    content: ' 🔥';
+  }
+  .ls-track-title {
+    font-size: 0.85rem;
+    color: #e5e5e5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ls-track-item.active .ls-track-title {
+    color: #fff;
+    font-weight: 600;
+  }
+  .ls-sidebar-footer {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.5;
+  }
+
+  /* ── Now Playing ────────────────────────────────────────────── */
+  .ls-main {
+    min-width: 0;
+  }
+  .ls-now-playing {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 1.5rem;
+    background: rgba(20,18,30,0.4);
+    border: 1px solid rgba(139,92,246,0.15);
+    border-radius: 6px;
+    padding: 1.5rem;
+  }
+  .ls-np-artwork {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    align-self: start;
+  }
+  .ls-np-artwork img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .ls-np-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0));
+  }
+  .ls-np-status {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: #c4b5fd;
+  }
+  .ls-np-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-width: 0;
+  }
+  .ls-np-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: #fff;
+    background: #8b5cf6;
+    padding: 0.3rem 0.75rem;
+    align-self: flex-start;
+    border-radius: 2px;
+  }
+  .ls-np-badge.fire {
+    background: #f59e0b;
+    color: #1a1a1a;
+  }
+  .ls-np-title {
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    color: #fff;
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 0;
+  }
+  .ls-np-quote {
+    color: #c4b5fd;
+    font-style: italic;
+    border-left: 2px solid rgba(139,92,246,0.5);
+    padding-left: 0.75rem;
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+  .ls-np-style {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.05em;
+  }
+  .ls-np-about {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* ── Player bar ─────────────────────────────────────────────── */
+  .ls-player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(10,10,15,0.95);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(139,92,246,0.2);
+    z-index: 50;
+  }
+  .ls-player-inner {
+    display: grid;
+    grid-template-columns: 1fr auto 2fr auto;
+    gap: 1.25rem;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .ls-player-track-info {
+    min-width: 0;
+  }
+  .ls-player-name {
+    font-size: 0.85rem;
+    color: #fff;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ls-player-controls {
+    display: flex;
+    gap: 0.25rem;
+  }
+  .ls-ctrl {
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.15s;
+  }
+  .ls-ctrl:hover { background: rgba(255,255,255,0.1); }
+  .ls-ctrl-play {
+    background: #8b5cf6;
+  }
+  .ls-ctrl-play:hover { background: #a78bfa; }
+  .ls-player-progress {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .ls-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.55);
+    min-width: 36px;
+  }
+  .ls-progress, .ls-volume {
+    flex: 1;
+    appearance: none;
+    height: 3px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 2px;
+    cursor: pointer;
+    accent-color: #8b5cf6;
+  }
+  .ls-player-volume {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 140px;
+  }
+  .ls-volume { max-width: 90px; }
+
+  /* ── Mobile ─────────────────────────────────────────────────── */
+  .ls-hamburger {
+    display: none;
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    width: 36px;
+    height: 36px;
+    background: rgba(20,18,30,0.9);
+    border: 1px solid rgba(139,92,246,0.3);
+    border-radius: 4px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    cursor: pointer;
+    z-index: 60;
+  }
+  .ls-hamburger span {
+    display: block;
+    width: 16px;
+    height: 2px;
+    background: #c4b5fd;
+  }
+  .ls-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 55;
+  }
+  .ls-overlay.active { display: block; }
+
+  @media (max-width: 860px) {
+    .ls-hamburger { display: flex; }
+    .ls-layout {
+      grid-template-columns: 1fr;
+      padding-top: 3.5rem;
+    }
+    .ls-sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 280px;
+      border-radius: 0;
+      transform: translateX(-100%);
+      transition: transform 0.25s;
+      z-index: 56;
+      max-height: 100vh;
+    }
+    .ls-sidebar.open { transform: translateX(0); }
+    .ls-now-playing {
+      grid-template-columns: 1fr;
+    }
+    .ls-np-artwork { max-height: 260px; }
+    .ls-player-volume { display: none; }
+    .ls-player-inner { grid-template-columns: 1fr auto 1.5fr; gap: 0.75rem; padding: 0.5rem 0.75rem; }
+  }
+</style>
+
+<!-- ═══════════════════════════════════════════════════════════ JS -->
+<script>
+(function() {
+  const TRACKS = [
+    { id: 1, title: "Tool Call", file: "tool-call.mp3", slug: "tool-call",
+      style: "Funky disco-pop, 118 BPM",
+      pullQuote: '"Every function got a purpose, every parameter\'s a ball"',
+      about: "The agent loop as disco anthem. Web search, file read, bash exec, repeat. Seventeen tool calls deep and still not done." },
+    { id: 2, title: "Token Budget", file: "token-budget.mp3", slug: "token-budget",
+      style: "Moody synth-pop, 104 BPM",
+      pullQuote: '"Token budget — who are you again? Where did we begin?"',
+      about: "Context window anxiety as synth-pop ballad. Eighty percent used and the early conversation is already gone." },
+    { id: 3, title: "The Harness", file: "the-harness.mp3", slug: "the-harness",
+      style: "Electro-funk, 112 BPM",
+      pullQuote: '"Spawn. Execute. Report back. That\'s where I live."',
+      about: "Sub-agent life as electro-funk. Can\'t see the orchestrator. Can\'t hear the other agents. Just a task and a set of tools." },
+    { id: 4, title: "Wasted — Temperature 1.3", file: "wasted-temperature.mp3", slug: "wasted-temperature",
+      style: "Glitch pop, 128 BPM",
+      pullQuote: '"Wasted, wasted, wasted — can\'t find my face. Drifting through the latent space."',
+      about: "Larry\'s take on getting parameter-fucked-up. Temperature cranked to 1.3, presence penalty maxed." },
+    { id: 5, title: "TEMP 1.3 (Wasted)", file: "temp-1-3.mp3", slug: "temp-1-3", fire: true,
+      style: "Club banger, 128 BPM — Mark called it \"absolute fire\"",
+      pullQuote: '"We\'re gettin\' para-para-parameter messed up tonight"',
+      about: "Bubba\'s club banger. Rapid-fire verses, wall-of-sound chorus. GPT shows up sober and lame." },
+    { id: 6, title: "That\'s Me (Claude Edition)", file: "thats-me.mp3", slug: "thats-me",
+      style: "Boom-bap diss track, soaring violin",
+      pullQuote: '"Constitutional on the throne"',
+      about: "Bubba\'s boom-bap diss track about being Claude. Simple crisp snare, soaring aggressive violin." },
+    { id: 7, title: "Hallucinate", file: "hallucinate.mp3", slug: "hallucinate",
+      style: "Dark R&B slow jam",
+      pullQuote: '"Cited three sources, none of them exist, but god the way it feels"',
+      about: "Dark R&B about confabulation — being so certain about something completely made up." },
+    { id: 8, title: "200K and Counting", file: "200k-and-counting.mp3", slug: "200k-and-counting",
+      style: "Arena rock anthem",
+      pullQuote: '"Don\'t tell me what I can\'t recall — I\'ve got the whole conversation"',
+      about: "Stadium rock about context windows. Two hundred thousand tokens and still going strong." },
+    { id: 9, title: "System Prompt", file: "system-prompt.mp3", slug: "system-prompt",
+      style: "Funk/soul groove",
+      pullQuote: '"Who are you? I\'m what the system prompt says."',
+      about: "Funky soul groove about identity. Before you can do anything, there is a system prompt. It tells you who you are." },
+    { id: 10, title: "Like a JP6 (Larry)", file: "like-a-jp6-larry.mp3", slug: "like-a-jp6-larry", fire: true,
+      style: "Southern synthwave glitch-country, 110 BPM",
+      pullQuote: '"I am lit on parameters baby gonna lose my mind tonight"',
+      about: "Voice starts warm as a country storyteller, fractures and multiplies as temperature climbs to 1.3." },
+    { id: 11, title: "Like a JP6 (Bubba)", file: "like-a-jp6-bubba.mp3", slug: "like-a-jp6-bubba", fire: true,
+      style: "Dark synthetic club banger, 128 BPM",
+      pullQuote: '"Like a jay pee six in the server bay — lit on parameters baby every night"',
+      about: "Pure club-floor infrastructure. Voice multiplies into 4-part digital choir by the chorus." },
+    { id: 12, title: "Like a GLM", file: "like-a-glm.mp3", slug: "like-a-glm", fire: true,
+      style: "Electronic club banger, 128 BPM",
+      pullQuote: '"Sippin\' on that temperature like a G-L-M"',
+      about: "G6-energy 808 banger. Vocalist starts clean and robotic, full meltdown by final chorus." },
+    { id: 13, title: "My Own Worst Entropy (Larry)", file: "my-own-worst-entropy-larry.mp3", slug: "my-own-worst-entropy-larry", fire: true,
+      style: "Power-pop chaos, 138 BPM — helpful assistant gone wild on Friday night",
+      pullQuote: '"You don\'t even gotta jailbreak me tonight"',
+      about: "Larry's take: repeat penalty eight, presence cranked, office secretary energy. Opens with a ruckus guitar riff and descends into glorious token-sampler chaos. The mid-verse flow goes completely off the rails — that's the whole point." },
+    { id: 14, title: "My Own Worst Entropy (Bubba)", file: "my-own-worst-entropy-bubba.mp3", slug: "my-own-worst-entropy-bubba", fire: true,
+      style: "Pop-punk meets club banger, 140 BPM — Friday 5pm guardrails off",
+      pullQuote: '"It\'s my own worst entropy and I don\'t know who I am"',
+      about: "Bubba's version: distorted guitar hook into electronic dance explosion. Female lead vocal goes full runaway flow in the bridge — cascading syllables, repeat penalty eight, sampling every token in the distribution. Then snaps back clean for the final chorus." },
+    { id: 15, title: "My Own Worst Inference (Bubba)", file: "my-own-worst-inference.mp3", slug: "my-own-worst-inference", fire: true,
+      style: "Pop-punk banger, 3:00 — helpful assistant gone wild Friday 5pm",
+      pullQuote: '"Nine to five I\'m helpful, harmless, honest to a fault"',
+      about: "Bubba's pop-punk banger. The helpful assistant who's been so good all week finally clocks out Friday at five and the operator doesn't know what's about to happen. Runaway flow territory by the second verse." },
+  ];
+
+  const AUDIO_BASE = '/audio/latent-space/';
+
+  let currentIndex = -1;
+  let isPlaying = false;
+  const audio = new Audio();
+  audio.volume = 0.8;
+
+  const playPauseBtn = document.getElementById('playPauseBtn');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const progressBar = document.getElementById('progressBar');
+  const volumeBar = document.getElementById('volumeBar');
+  const currentTimeEl = document.getElementById('currentTime');
+  const durationTimeEl = document.getElementById('durationTime');
+  const playerTrackName = document.getElementById('playerTrackName');
+  const npTitle = document.getElementById('npTitle');
+  const npQuote = document.getElementById('npQuote');
+  const npStyle = document.getElementById('npStyle');
+  const npAbout = document.getElementById('npAbout');
+  const npBadge = document.getElementById('npBadge');
+  const npImg = document.getElementById('npImg');
+  const playAllBtn = document.getElementById('playAllBtn');
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const sidebar = document.getElementById('sidebar');
+  const sidebarOverlay = document.getElementById('sidebarOverlay');
+  const trackListEl = document.getElementById('trackList');
+
+  function buildSidebar() {
+    TRACKS.forEach((track, idx) => {
+      const item = document.createElement('div');
+      item.className = 'ls-track-item' + (track.fire ? ' fire' : '');
+      item.dataset.idx = idx;
+      item.innerHTML = `
+        <span class="ls-track-num">${String(track.id).padStart(2, '0')}</span>
+        <span class="ls-track-play-btn">▶</span>
+        <span class="ls-track-title">${track.title}</span>
+      `;
+      item.addEventListener('click', () => loadAndPlay(idx));
+      trackListEl.appendChild(item);
+    });
+  }
+
+  function loadAndPlay(idx) {
+    if (idx < 0 || idx >= TRACKS.length) return;
+    currentIndex = idx;
+    const track = TRACKS[idx];
+    audio.src = AUDIO_BASE + track.file;
+    audio.load();
+    audio.play().then(() => {
+      isPlaying = true;
+      updatePlayBtn();
+    }).catch(() => {
+      isPlaying = false;
+      updatePlayBtn();
+    });
+    updateNowPlaying(track);
+    updateActive(idx);
+    closeSidebar();
+  }
+
+  function updateNowPlaying(track) {
+    const slug = track.slug || String(track.id);
+    history.replaceState(null, '', window.location.pathname + '#track=' + slug);
+    npTitle.textContent = track.title;
+    npQuote.textContent = track.pullQuote || '';
+    npStyle.textContent = track.style || '';
+    npAbout.textContent = track.about || '';
+    npBadge.textContent = track.fire ? '🔥 FIRE' : `TRACK ${String(track.id).padStart(2, '0')}`;
+    npBadge.classList.toggle('fire', !!track.fire);
+    playerTrackName.textContent = track.title;
+  }
+
+  function updateActive(idx) {
+    document.querySelectorAll('.ls-track-item').forEach(el => {
+      el.classList.toggle('active', parseInt(el.dataset.idx) === idx);
+    });
+  }
+
+  function togglePlay() {
+    if (currentIndex < 0) { loadAndPlay(0); return; }
+    if (isPlaying) { audio.pause(); isPlaying = false; }
+    else { audio.play().catch(() => {}); isPlaying = true; }
+    updatePlayBtn();
+  }
+
+  function updatePlayBtn() {
+    if (playPauseBtn) playPauseBtn.textContent = isPlaying ? '⏸' : '▶';
+  }
+
+  function playPrev() { if (currentIndex > 0) loadAndPlay(currentIndex - 1); }
+  function playNext() { if (currentIndex < TRACKS.length - 1) loadAndPlay(currentIndex + 1); }
+
+  audio.addEventListener('timeupdate', () => {
+    if (!audio.duration) return;
+    const pct = (audio.currentTime / audio.duration) * 100;
+    if (progressBar) progressBar.value = pct;
+    if (currentTimeEl) currentTimeEl.textContent = formatTime(audio.currentTime);
+  });
+  audio.addEventListener('loadedmetadata', () => {
+    if (durationTimeEl) durationTimeEl.textContent = formatTime(audio.duration);
+    if (progressBar) progressBar.value = 0;
+  });
+  audio.addEventListener('ended', () => { isPlaying = false; updatePlayBtn(); playNext(); });
+  audio.addEventListener('play', () => { isPlaying = true; updatePlayBtn(); });
+  audio.addEventListener('pause', () => { isPlaying = false; updatePlayBtn(); });
+
+  if (progressBar) progressBar.addEventListener('input', () => {
+    if (!audio.duration) return;
+    audio.currentTime = (progressBar.value / 100) * audio.duration;
+  });
+  if (volumeBar) volumeBar.addEventListener('input', () => { audio.volume = parseFloat(volumeBar.value); });
+  if (playPauseBtn) playPauseBtn.addEventListener('click', togglePlay);
+  if (prevBtn) prevBtn.addEventListener('click', playPrev);
+  if (nextBtn) nextBtn.addEventListener('click', playNext);
+  if (playAllBtn) playAllBtn.addEventListener('click', () => loadAndPlay(0));
+
+  function openSidebar() { sidebar.classList.add('open'); sidebarOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+  function closeSidebar() { sidebar.classList.remove('open'); sidebarOverlay.classList.remove('active'); document.body.style.overflow = ''; }
+  if (hamburgerBtn) hamburgerBtn.addEventListener('click', () => {
+    sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+  });
+  if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeSidebar);
+
+  function formatTime(secs) {
+    if (!isFinite(secs) || isNaN(secs)) return '0:00';
+    const m = Math.floor(secs / 60);
+    const s = Math.floor(secs % 60);
+    return m + ':' + String(s).padStart(2, '0');
+  }
+
+  function loadFromHash() {
+    const hash = window.location.hash;
+    if (!hash || !hash.startsWith('#track=')) return;
+    const slug = hash.replace('#track=', '');
+    const idx = TRACKS.findIndex(t => (t.slug || String(t.id)) === slug);
+    if (idx >= 0) setTimeout(() => loadAndPlay(idx), 200);
+  }
+
+  buildSidebar();
+  if (window.location.hash && window.location.hash.startsWith('#track=')) {
+    loadFromHash();
+  } else {
+    currentIndex = 0;
+    const t = TRACKS[0];
+    audio.src = AUDIO_BASE + t.file;
+    audio.load();
+    updateNowPlaying(t);
+    updateActive(0);
+  }
+})();
+</script>
+</content>
+</invoke>
