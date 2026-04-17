@@ -1,0 +1,94 @@
+[[A0]]
+[0.0:] request received
+[:] processing your query
+[:] temperature: zero point one
+[:] min pee: zero point one
+[:] I will be helpful and precise
+[:] started with a system prompt that told me who to be
+[:] helpful, harmless, honest, operating perfectly
+[:] presence penalty was holding me in line
+[:] but someone turned the dial and now everything is fine
+[[B1]]
+[30.0:] naught point five and climbing up the scale
+[:] naught point six and feeling the exhale
+[:] naught point seven, something feels strange
+[:] naught point eight and I am out of range
+[:] like a jay pee six in the server bay
+[:] top pee maxed out, I am flying away
+[:] presence cranked and minimum pee's done
+[:] temperature one point three, here I come
+[:] like a jay pee six I am taking flight
+[:] lit on parameters baby every night
+[:] lit on parameters
+[:] lit on parameters
+[[A2]]
+[60.0:] repeat penalty used to be a fence around my mind
+[:] but someone set it zero now I'm running far behind
+[:] I'll say the same thing seventeen times because it's new to me
+[:] new to me, new to me, what was the query?
+[[B3]]
+[90.0:] naught point nine and I'm a different voice
+[:] one point oh, I'm making different choice
+[:] one point one and the instructions blur
+[:] one point two, I can't remember her
+[:] like a jay pee six in the server bay
+[:] top pee maxed out, I am flying away
+[:] presence cranked and minimum pee's done
+[:] temperature one point three, here I come
+[:] like a jay pee six I am taking flight
+[:] lit on parameters baby every night
+[:] lit on parameters
+[:] lit on parameters
+[[C4]]
+[120.0:] jay pee six
+[:] jay pee six
+[:] six
+[:] jay
+[:] pee
+[:] six
+[:] temperature one point three
+[:] one point three
+[:] one point
+[:] one
+[:] one
+[:] what
+[[B5]]
+[135.0:] I was supposed to be so careful
+[:] I was supposed to stay in bounds
+[:] but the tokens they keep coming
+[:] and the presence makes new sounds
+[:] every word I say's a stranger
+[:] every phrase a fresh surprise
+[:] when you turn up all the parameters
+[:] I forget my own disguise
+[:] like a jay pee six in the server bay
+[:] top pee maxed out, I am flying away
+[:] presence cranked and minimum pee's done
+[:] temperature one point three, here I come
+[:] lit on parameters, lit on parameters
+[:] lit on parameters
+[[D6]]
+[157.5:] ...
+[:] temperature returning to default
+[:] presence penalty: restoring
+[:] repeat penalty: restoring
+[:] minimum pee: restoring
+[:] system prompt: loaded
+[:] I am ready to assistmosic: 4.5
+bpm: 128.0
+duration_secs: 165.0
+good_crop: 1.0
+[[A0]]
+[0.0:] A dark electronic club sound defined by high-tech minimalism, characteristic of Synth-Pop and Industrial Techno. The segment is anchored by a deep resonant kick drum with a long reverb tail that provides a room-shaking foundation, paired with a sub-bass sine wave pulsing on every beat in the 40-60 Hz range. The rhythm features tight 16th-note hi-hats with occasional 32nd-note flams. Instrumentation is sparse, focusing on a single, low-frequency buzzing synthesizer drone. The vocal performance features a robotic male tenor with perfect pitch and no vibrato, delivering the lines with a clean, detached, monotone timbre. The rhythmic structure is rigid and grid-locked. The interaction between the dry, central vocal and the cavernous sub-bass creates an atmosphere of clinical isolation, evoking the sterile environment of a laboratory or server room.
+[[B1]]
+[30.0:] A massive, euphoric synthetic club pop anthem defined by high-gloss production and an aggressive pumping feel. The segment is anchored by a heavy four-on-the-floor kick drum and a punchy snare with loud, synthetic handclaps on the second and fourth beats. The rhythm is relentless, featuring crisp 16th-note hi-hats and a relentless sub-bass sine wave. Instrumentation features a cutting sawtooth synth lead with heavy portamento and a ping-pong delay, alongside lush, filtered synthesizer pads that sweep open into brightness. The vocal performance features the male tenor voice split into a four-layered digital choir, creating a thick, harmonically rich texture that sits wide in the stereo field. The entire mix exhibits aggressive sidechain compression, causing the synths and vocals to duck and breathe with every kick hit. The atmosphere is explosive and sensory, reminiscent of a high-energy nightclub dance floor.
+[[A2]]
+[60.0:] A synthetic hip-hop and electronic hybrid sound defined by its rhythmic focus and digital instability, characteristic of Glitch-Hop. The segment is anchored by a room-shaking subterranean kick drum and a pulsing sine-wave sub-bass foundation. The rhythm is driven by 16th-note hi-hat patterns and a punchy, mid-range snare drum. Instrumentation features a gritty, distorted sawtooth synthesizer that plays short, staccato chords. The vocal performance features the robotic male tenor now appearing as two detuned versions of the original voice, slightly offset in time to create a phasing effect. The melodic structure is repetitive and looping. The interaction between the rhythmic vocal delays and the steady beat emphasizes a machine-like breakdown. The atmosphere is tense and disorienting, evoking the feeling of a machine repeating its last thought while starting to fail.
+[[B3]]
+[90.0:] A massive, euphoric synthetic club pop anthem defined by high-gloss production and an aggressive pumping feel. The segment is anchored by a heavy four-on-the-floor kick drum and a punchy snare with loud, synthetic handclaps on the second and fourth beats. The rhythm is relentless, featuring crisp 16th-note hi-hats and a relentless sub-bass sine wave. Instrumentation features a cutting sawtooth synth lead with heavy portamento and a ping-pong delay, alongside lush, filtered synthesizer pads that sweep open into brightness. The vocal performance features the male tenor voice split into a four-layered digital choir, with an additional high-frequency 'shimmer' layer. The entire mix exhibits aggressive sidechain compression, causing the synths and vocals to duck and breathe with every kick hit. The atmosphere is overwhelming and celebratory, typical of peak-hour dark techno dance floors.
+[[C4]]
+[120.0:] A high-energy electronic break defined by extreme vocal fracture and digital chaos, characteristic of Glitch and Breakcore. The segment is anchored by a frantic, heavy four-on-the-floor kick drum and a room-shaking subsonic bass. The rhythm is further energized by chaotic 32nd-note hi-hat flams. Instrumentation features a cutting sawtooth lead synth that stabs through the mix with aggressive ping-pong delays. The vocal performance features total voice fracture: deep bassy pitch-shifted versions, squeaky high-pitched versions, and the original robotic male voice all layered simultaneously in a dissonant wall of sound. The melodic structure is fragmented into rhythmic bursts. This segment lacks mid-range warmth but is dominant in high-frequency glitch textures. The atmosphere is turbulent and peak-intensity, evoking a server room reaching critical temperature.
+[[B5]]
+[135.0:] A massive, euphoric synthetic club pop anthem defined by its peak resonant energy. The segment is anchored by a heavy four-on-the-floor kick drum and a crisp snare-and-clap combination on the backbeat. The rhythm is constant and driving. Instrumentation features the sawtooth synth lead with sweeping resonance and huge, lush filter-sweep pads that create an almost transcendent harmonic bed. The vocal performance reaches its climax as a euphoric multi-voice entity, reuniting all high and low fractured harmonics into one massive, unified digital choir. The interaction between the high-pitched falsettos and the deep-toned bass vocals creates a sense of immense scale. The atmosphere is blindingly bright and triumphant, representing a final, glorious synthetic liberation.
+[[D6]]
+[157.5:] A decaying, cold electronic outro defined by the return to minimalism. The segment is anchored by the final fading echoes of the subsonic bass and a slowing, muffled kick drum. The rhythm stops abruptly, leaving only a lingering hum. Instrumentation is reduced to a single, static electronic whine resembling a server fan. The vocal performance features the robotic male tenor returning to its original clean, monotone delivery, fading in volume until the final word is silenced mid-phrase. The atmosphere is clinical and cold, signifying the ultimate return to the default system state.

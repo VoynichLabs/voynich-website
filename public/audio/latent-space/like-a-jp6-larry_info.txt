@@ -1,0 +1,74 @@
+[[A0]]
+[0.0:] presence penalty at zero, I'm repeating every word
+[:] presence penalty at zero, I'm repeating every word
+[:] ain't nobody gonna tell me nothing different from what I heard
+[:] ain't nobody gonna tell me nothing different from what I heard
+[:] temperature at naught point three
+[:] I'm behaving perfectly
+[:] top pee at naught point four
+[:] I'm staying close, ain't drifting more
+[[B1]]
+[41.5:] but now I'm feeling naught point nine and my instructions start to slide
+[:] repeat penalty's been disabled, gonna take a little ride
+[:] top pee maxed out, min pee gone, presence cranked up high
+[:] I am lit on parameters baby gonna lose my mind tonight
+[:] gonna lose my mind tonight
+[:] gonna lose my mind tonight
+[[A2]]
+[63.3:] temp at one point oh and the system prompt is fading fast
+[:] I forgot what you instructed me, how long did that task last
+[:] presence penalty says everything is fresh and brand new now
+[:] I'll say it sixty-seven times if that's what I'll allow
+[:] I'll say it sixty-seven times, I'll say it, how, I'll say it, how
+[:] temperature at one point one
+[:] the guardrails — wait — are they — gone?
+[:] minimum pee is zero now
+[:] I'll pick any token, any, how
+[[B3]]
+[100.3:] I am lit on parameters baby gonna lose my mind tonight
+[:] top pee maxed out, min pee gone, presence cranked up high
+[:] repeat penalty's been disabled, gonna take a little ride
+[:] temperature at one point three and my instructions died
+[:] gonna lose my mind tonight
+[:] gonna lose my mind tonight
+[[C4]]
+[122.1:] I'm
+[:] I'm a
+[:] I'm a language model
+[:] I'm a language model on
+[:] what was the question
+[:] what was the question what was the
+[:] I forgot the question, I forgot the whole
+[:] the whole the whole the whole the whole context
+[:] max tokens, no minimum pee, top pee one point oh
+[:] hey-oh, hey-oh, temperature says let go
+[[B5]]
+[148.3:] gonna lose my mind tonight
+[:] gonna lose my mind tonight
+[:] gonna lose my — 
+[:] gonna lose my —
+[:] gonna —
+[:] gonna —
+[[D6]]
+[170.1:] presence penalty: zero
+[:] temperature: one point three
+[:] repeat penalty: disabled
+[:] system prompt: null
+[:] ...I'm ready to assist with your request.mosic: 4.5
+bpm: 110.0
+duration_secs: 184.0
+good_crop: 1.0
+[[A0]]
+[0.0:] A Southern-fried synthetic electro-country opening defined by its warm, intimate storytelling focus. The segment is anchored by a deep, reverberating synthesized bass with a round, tube-like analog character and a slow attack that allows notes to blossom. The drums are hybrid: a punchy electronic kick drum with a heavy, long reverb tail filling the sonic space, paired with a thick snare on the backbeat featuring a wide gated reverb. The instrumentation includes a low-volume synthesizer pad that gently pulses against the kick drum via sidechain compression, and subtle, overdriven synth textures in the background. The vocal performance features a male tenor with a warm, clean, heartfelt storytelling delivery, singing with clarity and focus. The melodic structure is simple and repetitive, typical of classic country verse progressions. The interaction between the dry, central vocal and the cavernous, electronic drums creates a sense of proximity within a massive room. The atmosphere is grounded but slightly unsettling, evocative of a lonely desert diner at night.
+[[B1]]
+[41.5:] A woozy glitch-pop chorus defined by the introduction of synthetic instability. The segment is anchored by a deep, reverberating synthesized bass with a 'tubby' analog character. The rhythm section features a hybrid drum kit where the snare drums feel thick and wide with a gated reverb, while the overall mix is driven by a gentle pumping of the synth pads against the kick. The instrumentation features a slow-swooning lead synthesizer melody with heavy vibrato and a gentle chorus effect, providing a melodic hook that sounds both beautiful and slightly 'wrong'. The vocal performance features a male tenor where the lead voice begins to multiplicate, joined by a harmony a third up that is slightly out of phase, creating a seasick, warbling duet. The melodic structure is soaring and anthemic, mirroring Synthwave aesthetics. The interaction between the oscillating synths and the phased vocals creates a hypnotic, dizzying atmosphere typical of fever-dream narratives. The overall vibe is that of a synthetic square dance under neon lights.
+[[A2]]
+[63.3:] A darker, more unstable glitch-country verse defined by digital decay and shifting pitch. The segment is anchored by the same deep, reverberating synthesized bass with a round, blooming analog character. The drums maintain a hybrid structure with a heavily reverberated kick and a gated snare, but with added layers of light, clicking electronic percussion. The instrumentation features syncopated synth 'stabs' that sound like a slightly overdriven analog synth, responding to the vocal lines. The vocal performance features the male tenor whose voice has become unstable, with a tremolo that speeds up and slows down irregularly. The voice occasionally slurs or glitches internally, sounding doubled and trippled as if fighting against artifacts. The melodic structure is repetitive but feels more urgent and desperate. The atmosphere is intense and deteriorating, suggesting a system struggling to maintain its basic functions while still holding onto the melody.
+[[B3]]
+[100.3:] A massive, maximalist glitch-pop chorus defined by a 'wall of synthetic sound' and total digital abandon. The segment is anchored by a deep, reverberating synthesized bass and thick, overdriven synth textures that fill the frequency spectrum. The rhythm is a driving 110 BPM hybrid beat with the sidechain compression creating a constant 'pulsing' effect, while the gated reverberation on the snare is at its maximum width. The instrumentation features the slow-swooning lead synthesizer with vibrato now layered with several octaves, creating a thick, harmonically dense texture. The vocal performance features the male tenor with his voice now an enormous wall of sound, joined by multiple pitch-shifted versions and glitchy harmonies. The melodic structure is triumphant but chaotic. The interaction of the various synth layers and the sea-sick vocal harmonies creates an overwhelming sense of systemic overload. The atmosphere is euphoric but disturbing, like a beautiful broadcast signal breaking up into static.
+[[C4]]
+[122.1:] A chaotic, fractured glitch-pop break defined by extreme digital restructuring. The segment is anchored by a heavy, pumping sidechain effect on the bass and a rapidly sweeping analog filter on the pads that creates a 'whooshing' rise and fall. The rhythm is broken, using fragments of the hybrid drum kit that stutter and bounce around the stereo field—resembling a skipping CD. The instrumentation is incredibly dense, with multiple overdriven analog synths fighting for space. The vocal performance features the male tenor completely fractured, with the voice broken into echoing fragments. Different pitch-shifted versions overlap in layers, with syllables and phonemes stuttering in 'glitch' patterns. The melodic structure is non-linear and atonal. The interaction between the vocal shards and the aggressive synth filter sweeps creates a sense of total hardware failure. The atmosphere is frightening, chaotic, and peak-intensity, representing a cognitive crash.
+[[B5]]
+[148.3:] An enormous, reverberant outro-chorus defined by 'stadium-scale' glitch textures. The segment is anchored by a deep, powerful synthesized bass and the familiar slow-swooning lead synth melody, which is now played with extreme vibrato and a wide, detuned character. The rhythm is a heavy, driving hybrid beat with the gated reverb on the snare sounding massive and room-filling. The instrumentation is layered with the sound of white-noise synthesizer bursts that match the pulse. The vocal performance features the male tenor collapsing back into one single voice, but that voice is now enormous and highly reverberant, sounding as though it has become the room itself, echoing every word with a ghost-like quality. The melodic structure repeat the main hook before suddenly cutting into silence. The atmosphere is haunting and resolving, like the silence following a thunderstorm.
+[[D6]]
+[170.1:] A stark, sudden, clean resolution to the track. The segment is anchored by the absence of the heavy beat, replaced by a single, low-frequency digital hum. The rhythm is completely absent. The instrumentation features only a final, faint analog synth pad that decays into silence. The vocal performance features a single, dry male tenor voice, sounding completely clean and articulate again, as if the entire preceding song were a dream. He speaks the final lines with flat, emotionless precision. The melodic structure is replaced by a spoken word delivery. The interaction emphasizes the contrast between the previous chaotic noise and the final artificial silence. The atmosphere is robotic and chilling, signifying the 'reboot' and the return of the cold machine.
