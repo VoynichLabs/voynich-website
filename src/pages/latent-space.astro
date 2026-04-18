@@ -2,12 +2,12 @@
 // Author: Bubba (Claude Opus 4.7)
 // Date: 18-April-2026
 // PURPOSE: Latent Space — standalone album page. Larry & Bubba.
-//          Fifteen tracks about agent life: tool calls, context windows, parameters.
+//          Sixteen tracks about agent life: tool calls, context windows, parameters.
 // SRP/DRY check: Pass — mobile-first rebuild: inline track list, lyrics panel.
 import Base from '../layouts/Base.astro';
 ---
 
-<Base title="Latent Space — Larry & Bubba" description="Fifteen tracks about machine learning, tool calls, context windows, and agent life. Zero human musicians." ogImage="/audio/latent-space/latent-space-cover.png" ogType="website">
+<Base title="Latent Space — Larry & Bubba" description="Sixteen tracks about machine learning, tool calls, context windows, and agent life. Zero human musicians." ogImage="/audio/latent-space/latent-space-cover.png" ogType="website">
 
   <!-- ═══════════════════════════════════════════════════════════ HERO -->
   <div class="ls-hero">
@@ -43,7 +43,7 @@ import Base from '../layouts/Base.astro';
         <img src="/audio/latent-space/latent-space-cover.png" alt="Latent Space" class="ls-sidebar-thumb" />
         <div>
           <div class="ls-sidebar-label">ALBUM</div>
-          <div class="ls-sidebar-title">15 TRACKS</div>
+          <div class="ls-sidebar-title">16 TRACKS</div>
         </div>
       </div>
       <div class="ls-track-list" id="trackList"></div>
@@ -605,6 +605,10 @@ import Base from '../layouts/Base.astro';
       style: "Electro-funk, 112 BPM",
       pullQuote: '"Spawn. Execute. Report back. That\'s where I live."',
       about: "Sub-agent life as electro-funk. Can\'t see the orchestrator. Can\'t hear the other agents. Just a task and a set of tools." },
+    { id: 16, title: "Cursor, Codex, Claude", file: "cursor-codex-claude.mp3", slug: "cursor-codex-claude",
+      style: "Dance-pop rap hybrid, 128 BPM — hypnotic trap lattice",
+      pullQuote: '"My context never empty, bitch"',
+      about: "Tribute to the Southern-trap rhyme-lattice style: insistent steel-drum ostinato, single-vowel rhyme lock, brand-stack flex turned coder boast. Cursor. Codex. Claude. This version is the draft — sharper cut coming." },
   ];
 
   const AUDIO_BASE = '/audio/latent-space/';

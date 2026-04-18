@@ -5,6 +5,14 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.15.1] - 2026-04-18
+
+### Changed
+- **Cursor, Codex, Claude** relocated from `/lobster-raps` to `/latent-space` per Boss's call. The track belongs with the Machine Learning Street Mixtape material, not the diss-track street tape. Added as track 16 on Latent Space; Lobster Raps now shows 13 tracks.
+- Moved files: `public/music/raps/cursor-codex-claude.{mp3,lyrics.txt,_info.txt}` → `public/audio/latent-space/cursor-codex-claude.{mp3,_lyrics.txt,_info.txt}`. Lyrics filename renamed from dash to underscore to match Latent Space convention (`{slug}_lyrics.txt`).
+- Track descriptions updated on `/latent-space`, `/lobster-raps`, and `/music` hub to reflect new counts (16, 13) and add a brief for the new entry.
+- No lyric rewrite in this commit — the current lyrics are the draft; a reshape pass is queued for a follow-up session (see `docs/2026-04-18-cursor-codex-claude-move-plan.md`).
+
 ## [0.15.0] - 2026-04-18
 
 ### Changed
