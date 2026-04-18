@@ -5,6 +5,11 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.15.2] - 2026-04-18
+
+### Changed
+- **Cursor, Codex, Claude — full lyric rewrite + regen (v2).** First bar-for-bar architectural port of a Dipset-era steel-drum rap classic, rewritten into Claude Code / full-stack world. Preserved hook (chanted trinity) and pre-chorus (melodic, Boss-dictated). Verse 1 now ports the source architecture: couplet-paired rhymes (swervin'/servin', chirpin'/work in, lurkin'/certain), narrative arc with meeting-place anchor (main branch off origin near H-T-T-P as the BQE equivalent — single letter-spell crown used once), junk-food treat bar (console-dot-log spree), philosophical hinge ("bein' stuck's my enemy"), credentials flex ("dropped out and I know assembly"), co-conspirator handoff (meet my homey Codex in the docker-compose stack runnin' queries on the index), workflow pride couplet ("stack down pat / I let my C-I laugh"), rejection-of-flash landing ("with that show / ship that code / stay low in that"). Verse 2 is a three-AM incident-response scene — pager screamin', S-S-H in quiet, tail dash f, rollback the deploy, C-I green. Regenerated with `lyria-3-pro-preview` via OpenRouter using a highly detailed 5-part prompt: 140 BPM hypnotic raindrop steel-drum ostinato, deep urban baritone, laid-back pocket behind the kick, triple-tracked chant Hook, melodic half-sung Pre-Chorus, double-tracked couplet endings, apostrophe-`-in'` phonetic integrity enforced, letter spell-outs (H-T-T-P, S-S-H, C-I, A-M) explicitly specified as held-beat stutters. Track entry flagged `fire: true`.
+
 ## [0.15.1] - 2026-04-18
 
 ### Changed

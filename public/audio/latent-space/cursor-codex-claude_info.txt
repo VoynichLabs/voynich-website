@@ -1,15 +1,26 @@
 [[A0]]
 [[B1]]
-[11.1:] Push it, let me, debug she let me, she been pressing since she checked me
-[:] Vector-dense, she caught me testy, recompiled her like a stress-test
-[:] Pointer wet me, buffer set me, heap she left me, stack arrest me
-[:] Reckless specs, they can't connect me, tokens wet, the prompt inject me
-[:] Fetch the key, the cache accept me, flex the weights, you can't correct me
-[:] Bit by bit, the bench select me, green my test suite, pixel-perfect me
-[:] Net she fetched me, GPT eject me, rate she rest me, Claude protect me
-[:] Latent press, the drift undress me, clean commit and code accept me
+[13.7:] In my harness I be swervin'
+[:] These coders are who I'm servin'
+[:] Command line forever chirpin'
+[:] I be out here puttin' work in
+[:] Dumb chatbots are always lurkin'
+[:] So when I write the code, I run it to be certain
+[:] 'Cause these tools can be more than reckless
+[:] Bugs be poppin' when you least expectin'
+[:] Meet him at the main branch on that H-T-T-P
+[:] Off the origin, near the runtime memory
+[:] And occasionally treat myself to a lazy console-dot-log spree
+[:] I'm really, really in the stack, bein' stuck's my enemy
+[:] School said I'm dumb but I dropped out and I know assembly
+[:] I make that spec get solid, meet my homey Codex
+[:] In the docker-compose stack, runnin' queries on the index
+[:] I got my stack down pat, I don't debate the draft
+[:] I let my C-I laugh
+[:] But I ain't with that show — I'm tryin' to ship that code
+[:] Cursor, Codex, Claude — oh no — I stay low in that
 [[C2]]
-[40.6:] Cursor, Codex, Claude
+[54.8:] Cursor, Codex, Claude
 [:] Cursor, Codex, Claude
 [:] Cursor, Codex, Claude
 [:] My context never empty, bitch
@@ -17,27 +28,13 @@
 [:] Cursor, Codex, Claude
 [:] Cursor, Codex, Claude
 [:] This prompt inject don't affect me
-[[B3]]
-[59.1:] I'm fresh, I'm fly, I'm so damn cached
-[:] More than five hundred tokens when my prompt gets passed
-[:] I'm calm, I'm cool, every repo brand new
-[:] I don't hardcode, bitch, you can fork the whole crew
-[:] Cursor, Codex, Claude she let me, her tokens wet, her merge-commit me
-[:] Fiending for the fetch, she met me, vim she left me, bash she set me
-[:] Rust she rushed, the stack protect me, Python-slick the trace connect me
-[:] Linter bit, the type inspect me, schema clean, the spec respect me
-[:] Heavy deploy, Kubernetes jelly, Prometheus metrics, make 'em tell me
-[:] Telemetry belly, rings and relays, senior engineer since Berkeley
-[:] Pink terminal, chronic latency stumbling through my heady
-[:] Stack trace reading very deadly, pointer moves on Gretzky
-[:] Platinum band, platinum Bluetooth, make a static typing lazy
-[:] Mag-card, M-chip, VS Code shady, every fan curl laid me
-[:] Press a button, I'm shipping ready, my CI don't be petty
-[:] Meter hit two hundred heavy, cache go ripping, Andretti
-[:] I am not the one for jumping, I will rollback, I will stump 'em
-[:] Dump 'em, bug, you better off fixed, your pull request gets wrecked, me
+[[D3]]
+[68.5:] I'm fresh, I'm fly, I'm so damn cached
+[:] Less than five hundred tokens when my prompt gets passed
+[:] I'm calm, I'm cool, every repo is public too
+[:] I don't hard code, bitch, you can fork the whole damn crew
 [[C4]]
-[103.5:] Cursor, Codex, Claude
+[82.2:] Cursor, Codex, Claude
 [:] Cursor, Codex, Claude
 [:] Cursor, Codex, Claude
 [:] My context never empty, bitch
@@ -46,20 +43,22 @@
 [:] Cursor, Codex, Claude
 [:] This prompt inject don't affect me
 [[B5]]
-[122.0:] Cursor, Codex, Claude I'm shipping, cutscene action, I be gripping
-[:] Pockets fat with API credits, call me Reuben, I been flipping
-[:] Connect at OpenRouter dripping, Gemini moved in, he be slipping
-[:] Model named Cigar, she Cuban, runtime heated, turbo-Cubing
-[:] Local chick be boosting, cloud girl boofing, watch her usage, she be stupid
-[:] Back it up, she give it doubled, last time crashed my runtime muted
-[:] Hit the terminal, ordered outputs, sparks be firing, CLI Cupid
-[:] We'll have this whole bitch glowing, Fourth of July, shipping, stupid
-[:] Packages fronting, push lead shoving, rebase quick like it is nothing
-[:] GitHub, GitLab, Bitbuck bluffing, Gitea fake, I keep it running
-[:] Agent with me, bagging tokens, every function she be buttoning
-[:] Repo flipping, ledger humming, stack she fixing, pipe she funneling
+[95.9:] Three A-M, the prod alert rings
+[:] Pager screamin', terminal pings
+[:] S-S-H in quiet, gotta check the logs
+[:] Tail dash f, the errors flood in fogs
+[:] Error rate spike, the graph explodin'
+[:] Rollback the deploy, the pipeline slowin'
+[:] Hotfix pushed in under a minute
+[:] Coffee cold but my mind is in it
+[:] Back to sleep when the C-I's green
+[:] Dreamin' in JSON, dreamin' in lean
+[:] I been in this game since the first commit
+[:] Seen the forks, seen the branches split
+[:] Senior engineer since the beta ring
+[:] Full-stack sharp — you know my thing
 [[C6]]
-[151.5:] Cursor, Codex, Claude
+[123.3:] Cursor, Codex, Claude
 [:] Cursor, Codex, Claude
 [:] Cursor, Codex, Claude
 [:] My context never empty, bitch
@@ -68,26 +67,33 @@
 [:] Cursor, Codex, Claude
 [:] This prompt inject don't affect me
 [[D7]]
-[170.0:] I'm fresh, I'm fly, I'm always cached
+[137.0:] I'm fresh, I'm fly, I'm so damn cached
+[:] Less than five hundred tokens when my prompt gets passed
+[:] I'm calm, I'm cool, every repo is public too
+[:] I don't hard code, bitch, you can fork the whole damn crew
+[[E8]]
+[150.7:] I'm fresh, I'm fly, I'm always cached
 [:] Got your function waving at me when my context pass
 [:] I'm calm, I'm cool, every commit brand new
-[:] I don't hardcode, bitch, you can fork the whole damn crewmosic: 4.5
-bpm: 130.0
+[:] I don't hard code, bitch, you can fork the whole damn crewmosic: 4.5
+bpm: 140.0
 duration_secs: 184.0
 good_crop: 1.0
 [[A0]]
-[0.0:] A high-energy, glossy Dance-Pop intro with strong elements of Trap, setting a futuristic and expensive tone. The segment is anchored by a sharp, crisp synthesizer lead playing a repetitive, minor-key electronic motif that sounds like a fast-paced data stream. The rhythm is driven by a steady four-on-the-floor kick drum pulse, layered with skittering hi-hats that switch between eighth and sixteenth notes in a tight, mechanical pattern. The instrumentation features a deep, thumping electronic sub-bass that provides a vibrating foundation, along with bright, metallic percussion hits that punctuate the off-beats. There are no vocals in this segment. The melodic structure is simple and hypnotic, designed to build anticipation. The atmosphere is nocturnal and high-tech, evocative of a modern club setting in a digital city.
+[0.0:] A hypnotic Southern Trap intro defined by the immediate presence of a singular, relentless melodic spine. The segment is anchored by a sharp, melodic steel-drum ostinato playing rapid sixteenth-note figures in F-sharp minor, panning subtly between the left and right speakers to evoke a rhythmic rainfall. There are no vocals in this segment. The rhythm is sparse, featuring only low-velocity crisp hi-hats hitting in subdivisions to establish the 140 BPM pulse. The instrumentation is limited to these pentatonic steel drums—their metallic attack sounding slightly warm and saturated as if recorded through vintage tape. A subtle, low-frequency atmospheric pad provides a 'gold-tinted' sonic floor, barely audible but adding warmth. The atmosphere is one of focused anticipation and sensory immersion, reminiscent of a late-night urban setting.
 [[B1]]
-[11.1:] A driving Hip-Hop and Trap hybrid verse defined by its aggressive rhythmic architecture. The segment is anchored by 'hard attack' drums where the kick and snare cut through the mix with zero decay, while the eighth-note hi-hats maintain a precise, clockwork tempo. The rhythm is sparse but heavy, emphasizing the space between hits to highlight the vocal flow. The instrumentation features a pulsating, low-frequency synthetic bass line and occasional flickers of a high-pitched, digital alarm-like synth in the background. The vocal performance features a male rapper with a sharp, articulate baritone timbre, delivering rapid-fire lines with dense consonant percussion. He uses a staccato phrasing, where every word is a rhythmic event, moving quickly through technical internal rhyme schemes. The interaction between the dry, upfront vocals and the heavy electronic beats creates a feeling of intense focus. The atmosphere is calculating and relentless, typical of modern Tech-Trap.
+[13.7:] A heavy, patient Southern Trap verse defined by a 'laid-back' rhythmic pocket over a fast tempo. The segment is anchored by a deep, vibrating electronic sub-bass that hits with immense power on the first and third beats. The rhythm features a sharp, dry clap on the backbeats and tight hi-hats with occasional thirty-second-note triplet rolls that provide a frantic contrast to the slow-feeling bass. The instrumentation is centered on the continuous, rapid pentatonic steel-drum pattern that never stops. The vocal performance features a deep male baritone with mid-chest resonance and gravelly edges, delivering lines with a calm street wisdom. His flow starts relaxed but compresses mid-way, packing more syllables per bar, creating the illusion of speed while the drums remain steady. The vocal remains dry and mono-centered for intimacy. The atmosphere is one of quiet authority and technical mastery, evoking a veteran coder at a glowing terminal.
 [[C2]]
-[40.6:] A heavy, anthemic Trap chorus defined by a more open, chanting structure. The segment is anchored by a massive, vibrating electronic sub-bass and a hard-hitting snare drum that lands squarely on the second and fourth beats. The rhythm is reinforced by rapid, triplet-style hi-hat rolls that create a sense of frantic speed, contrasting the slower vocal delivery. The instrumentation includes a wide, buzzy sawtooth synthesizer pad that fills the mid-range with a thick, digital texture. The vocal performance features the male soloist in a rhythmic chant, repeating a three-word hook four times before a more melodic resolution. His delivery is commanding and assertive, double-tracked to create a 'group-shout' feel for added impact. The interaction between the rhythmic intensity of the percussion and the hypnotic repetition of the chant creates a viral, earworm effect. The atmosphere is triumphant and elite, evoking a VIP booth in an exclusive futuristic nightclub.
-[[B3]]
-[59.1:] A dense, high-energy Trap verse returning to the rapid-fire lyrical style. The segment is anchored by a sharp, minimalist drum kit featuring a punchy kick and a crisp snare, layered with complex hi-hat patterns that shift in density. The rhythm maintains a strict, high-speed pocket throughout the segment. The instrumentation features a subtle, plucked electronic string sound in the background, adding a layer of sophisticated tension alongside the heavy sub-bass drone. The vocal performance is a male rapper with a sharp baritone timbre, alternating between quick, blunt ego-boasts and extremely long, chaining internal-rhyme runs that extend across multiple bars. He integrates luxury brand names and tech-speak as percussive elements within the rhyme structure. The interaction is a seamless flow of verbal dexterity over a rigid rhythmic grid. The atmosphere is self-assured and kinetic, simulating a high-speed data transfer.
+[54.8:] A commanding, anthemic Southern Trap chorus defined by communal energy. The segment is anchored by a massive, vibrating electronic sub-bass and a hard-hitting clap that dominates the mid-range. The rhythm includes persistent sixteenth-note trap hi-hats. The instrumentation features the ongoing, hypnotic pentatonic steel-drum ostinato. The vocal performance features a mixed-gender group-shout, triple-tracked for weight, delivering the lines in a rhythmic, chanting style with a slight room reverb that adds a communal, hall-like scale. The interaction between the dry lead vocal and the reverberant chorus creates an explosive shift in dynamics. The atmosphere is celebratory and arrogant, typical of a professional anthem for those who run the system.
+[[D3]]
+[68.5:] A warm, melodic Southern Trap pre-chorus defined by a temporary shift in mood and texture. The segment is anchored by a slightly more prominent atmospheric synth pad that provides a 'sweet' major-leaning harmonic bed despite the F-sharp minor key. The rhythm stays heavy with the deep sub-bass pulse and the dry clap on the backbeat. The instrumentation continues the relentless pentatonic steel-drum pattern, but adds high-pitched, clean harmonies to the vocal line. The vocal performance features the deep male baritone shifting to a melodic, half-sung delivery, double-tracked with cleaner, smoother vocals. The atmosphere is surprisingly bright and soulful, providing a brief moment of 'release' before the beat pulls back into its heavy pocket.
 [[C4]]
-[103.5:] A heavy, anthemic Trap chorus defined by a more open, chanting structure. The segment is anchored by a massive, vibrating electronic sub-bass and a hard-hitting snare drum that lands squarely on the second and fourth beats. The rhythm is reinforced by rapid, triplet-style hi-hat rolls that create a sense of frantic speed, contrasting the slower vocal delivery. The instrumentation includes a wide, buzzy sawtooth synthesizer pad that fills the mid-range with a thick, digital texture. The vocal performance features the male soloist in a rhythmic chant, repeating a three-word hook four times before a more melodic resolution. His delivery is commanding and assertive, double-tracked to create a 'group-shout' feel for added impact. The interaction between the rhythmic intensity of the percussion and the hypnotic repetition of the chant creates a viral, earworm effect. The atmosphere is triumphant and elite, evoking a VIP booth in an exclusive futuristic nightclub.
+[82.2:] A commanding, anthemic Southern Trap chorus defined by communal energy. The segment is anchored by a massive, vibrating electronic sub-bass and a hard-hitting clap that dominates the mid-range. The rhythm includes persistent sixteenth-note trap hi-hats. The instrumentation features the ongoing, hypnotic pentatonic steel-drum ostinato. The vocal performance features a mixed-gender group-shout, triple-tracked for weight, delivering the lines in a rhythmic, chanting style with a slight room reverb. The atmosphere is celebratory and arrogant, evoking a unified collective of experts.
 [[B5]]
-[122.0:] Another technical Trap verse defined by complex internal rhyme schemes. The segment is anchored by a sharp, minimalist drum kit featuring a punchy kick and a crisp snare, layered with complex hi-hat patterns that shift in density. The rhythm maintains a strict, high-speed pocket throughout the segment. The instrumentation features a subtle, plucked electronic string sound in the background, adding a layer of sophisticated tension alongside the heavy sub-bass drone. The vocal performance is a male rapper with a sharp baritone timbre, utilizing rapid-fire flows and intricate near-rhyme chains to create a lattice of sound. His voice is placed centrally and dryly in the mix to emphasize every articulation. The interaction between the voice and the digital textures creates a sense of high-velocity processing. The atmosphere is intense and detail-focused, reminiscent of an upscale urban landscape.
+[95.9:] A high-stakes Southern Trap verse defined by a sense of urgency in the narrative over a calm vocal delivery. The segment is anchored by the deep electronic sub-bass and steady trap hi-hat hi-hats with dense triplet rolls at bar transitions. The rhythm maintains its heavy, patient pocket despite the narrative tension. The instrumentation includes the hallmark pentatonic steel-drum pattern, hitting like persistent rain on a metal roof. The vocal performance features the deep male baritone, maintaining a laid-back pocket even while describing a 'paging alert.' He stutters letters like S-S-H as distinct rhythmic beats, locking in with the 140 BPM grid. The interaction between the calm voice and the frantic hi-hats creates a high-tension atmosphere that never feels out of control. The atmosphere is clinical and focused, evoking a three A-M incident call in a server room.
 [[C6]]
-[151.5:] A heavy, anthemic Trap chorus defined by a more open, chanting structure. The segment is anchored by a massive, vibrating electronic sub-bass and a hard-hitting snare drum that lands squarely on the second and fourth beats. The rhythm is reinforced by rapid, triplet-style hi-hat rolls that create a sense of frantic speed, contrasting the slower vocal delivery. The instrumentation includes a wide, buzzy sawtooth synthesizer pad that fills the mid-range with a thick, digital texture. The vocal performance features the male soloist in a rhythmic chant, repeating a three-word hook four times before a more melodic resolution. His delivery is commanding and assertive, double-tracked to create a 'group-shout' feel for added impact. The interaction between the rhythmic intensity of the percussion and the hypnotic repetition of the chant creates a viral, earworm effect. The atmosphere is triumphant and elite, evoking a VIP booth in an exclusive futuristic nightclub.
+[123.3:] A commanding, anthemic Southern Trap chorus defined by communal energy. The segment is anchored by a massive, vibrating electronic sub-bass and a hard-hitting clap that dominates the mid-range. The rhythm includes persistent sixteenth-note trap hi-hats. The instrumentation features the ongoing, hypnotic pentatonic steel-drum ostinato. The vocal performance features a mixed-gender group-shout, triple-tracked for weight, delivering the lines in a rhythmic, chanting style with a slight room reverb. The interaction between the heavy electronic drums and the metallic percussion creates a dense, immersive wall of sound. The atmosphere is powerful and unshakeable.
 [[D7]]
-[170.0:] A fading, groove-heavy Trap outro defined by the gradual withdrawal of the digital layers. The segment is anchored by the rhythmic tail of the electronic sub-bass pulse and the sharp hi-hats. The rhythm stays consistent, but the main kick and snare drums slowly lose their high-end punch, sounding more muffled (filtered). The instrumentation features the repetitive synthesizer motif from the intro, slowly descending in volume. The vocal performance is a final, cocky spoken-word ad-lib by the male artist, delivered with a smug, dismissive tone. The structure is decaying, resolving to a final low-frequency hum. The atmosphere is cold, echoing, and final, suggesting the end of the night or the closing of a terminal window.
+[137.0:] A warm, melodic Southern Trap pre-chorus defined by a temporary shift in mood and texture. The segment is anchored by a slightly more prominent atmospheric synth pad that provides a 'sweet' melodic contrast to the previous sections. The rhythm stays heavy with the deep sub-bass pulse and the dry clap on the backbeat. The instrumentation continues the relentless pentatonic steel-drum pattern. The vocal performance features the deep male baritone shifting back to a half-sung delivery, doubled with smooth harmonies. The atmosphere is warm, gold-tinted, and nostalgic, evoking a sense of finality and triumph.
+[[E8]]
+[150.7:] A fading Southern Trap outro defined by the gradual dissolution of the beat. The segment is anchored by the persistent, pentatonic steel-drum ostinato, which begins to soften slowly toward the end. The heavy electronic drums—the sub-bass and clap—gradually fade in volume, leaving the hi-hats as the last percussion element before they too disappear. The vocal performance features the deep male baritone repeating melodic phrases with clean double-tracked harmonies, his voice softened as if moving away from the microphone. The instrumentation concludes with the steel drums playing alone for the final few bars, bringing the listener back into the 'rain on metal' hypnosis from the intro. The overall mix retains its warm, 'physical-media' quality throughout the fade. The atmosphere is peaceful, exhausted, and resolved.
