@@ -7,6 +7,9 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ## [0.15.0] - 2026-04-18
 
+### Changed
+- `/latent-space` track order re-sequenced to frontload the strongest tracks per Boss's taste call: **My Own Worst Inference → Entropy (Bubba) → Entropy (Larry) → TEMP 1.3 → Wasted — Temperature 1.3** now open the album. Like-a-GLM / Like-a-JP6 / That's Me / Hallucinate / 200K / System Prompt follow. Tool Call / Token Budget / The Harness moved to the tail (13–15).
+
 ### Fixed
 - `/latent-space` mobile was unusable: tracks were hidden behind a tiny hamburger, the now-playing artwork pushed text off-screen, and the fixed player bar ate the visible area.
 - Removed hamburger + slide-over sidebar on mobile. Track list now sits inline below the now-playing panel in a single scrolling column so all 15 tracks are visible with normal page scroll.
