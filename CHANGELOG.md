@@ -5,6 +5,17 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.15.0] - 2026-04-18
+
+### Fixed
+- `/latent-space` mobile was unusable: tracks were hidden behind a tiny hamburger, the now-playing artwork pushed text off-screen, and the fixed player bar ate the visible area.
+- Removed hamburger + slide-over sidebar on mobile. Track list now sits inline below the now-playing panel in a single scrolling column so all 15 tracks are visible with normal page scroll.
+- Player bar reflows to two rows on mobile (name + transport on top, progress on bottom) so the progress scrubber is usable.
+
+### Added
+- Lyrics panel on `/latent-space`. Fetches `/audio/latent-space/{slug}_lyrics.txt` on track change; collapsible with Hide/Show. Lyrics available for 12 of 15 tracks; tool-call / token-budget / the-harness have no written lyrics and the panel stays hidden.
+- Twelve `{slug}_lyrics.txt` files written to `public/audio/latent-space/`: sourced from `bubba-workspace/projects/lobster-band/lyrics/*.md` (7 tracks) and the in-repo `_info.txt` files (4 parameterized-chaos tracks), cleaned of timestamps and section markers.
+
 ## [0.14.1] - 2026-04-12
 
 ### Fixed

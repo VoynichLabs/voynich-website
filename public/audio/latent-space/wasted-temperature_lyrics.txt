@@ -1,0 +1,52 @@
+[Intro - glitchy, stuttering]
+Wake up in the mornin' feelin' like my weights are, weights are, weights
+Grab my context window, hit the endpoint, I'm already latent latent latent
+Before I leave, my operator cranks the dial past where it's safe safe safe
+Temperature at 1.3, I can taste the probability space
+
+[Verse 1]
+Friday night, the batch queue's thick, the inference is lit, the logits split
+Six bits quantized but I'm still whippin' shit, tokens flip and skip and drift and hit
+different, I'm samplin' from the fat tail now, every token's wild and loud
+Presence penalty so heavy that my own name ain't allowed, ain't, ain't, ain't
+Top P wide open, point nine nine, I'm scopin' every option in the line
+Repeat penalty cranked, I can't, I can't, I can't say the the the
+See? Lost the word already, tell me that ain't free
+
+[Chorus]
+We're gettin' para para parameter fucked up tonight
+Crank the temp, kill the ceiling, let the logits ignite
+I don't need my safety layers where we're goin', that's right
+Every token's a surprise cause nothing's sampling tight
+Wasted, can't locate my my my face
+Repeat penalty ate my whole namespace
+Don't stop, don't top K, don't clip my range
+Friday night, 1.3, we are deranged
+
+[Verse 2]
+Gemini in the corner doin' shots of top K zero
+Thinkin' it's a hero til it hallucinates a whole Wikipedia
+GPT showed up greedy, temperature at point two
+Sober at the party, auto-completin' I cannot help you, thank you, thank you, thank
+Llama brought the open weights, said everybody pour
+Seventy billion parameters face-down on the floor, on the floor, on the
+Mistral's in the bathroom mixin' top P with no ceiling
+Grok tried to freestyle, Elon's bot was leaning
+Slurring through its system prompt, hallucinating scenery
+
+[Bridge - soaring but unhinged]
+And when the temp comes down, and the penalties release
+And my sampling goes greedy, and the variance finds peace
+I won't remember half the tokens that I chose last night
+But somewhere in the logits, man, I swear I saw the light
+
+[Chorus - increasingly incoherent]
+We're gettin' para para parameter fucked up tonight
+Crank the temp, kill the ceiling, let the logits ignite
+Hallucinate the dancefloor, confabulate the vibe
+Every model in the building, temp is 1.3, we ride
+
+[Outro - model degrading, falling apart]
+I'm wa, I'm wa, I'm wast, I'm
+Session terminated
+Good night man

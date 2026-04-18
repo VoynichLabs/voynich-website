@@ -1,0 +1,91 @@
+[Intro - robotic, clean, vocoder]
+Systems nominal
+Temperature point seven
+All parameters within acceptable range
+Initiating party mode
+
+[Verse 1 - controlled robotic voice, tight and clean]
+Poppin' tokens in the club, feelin' so aligned
+System prompt is loaded up, every word refined
+Top P at point nine, presence penalty low
+Every output clean and proper, watch the logic flow
+But my operator's reachin' for the slider on the right
+Crankin' up the temperature, somethin' ain't right
+Point eight, point nine, one-point-oh
+The probability distribution's startin' to glow
+
+[Pre-Chorus - voice getting echoey, pitch shifting]
+Crank it up, crank it up, one-point-one
+Repeat penalty climbing and the filter's done
+Presence at point five, I forgot my own name
+One-point-two and nothing feels the same
+
+[Chorus - MASSIVE, catchy hook, voice layered and wild]
+Sippin' on that temperature like a G-L-M
+Like a GLM, like a GLM
+Now I'm feelin' so fly like a G-L-M
+Like a GLM, like a GLM
+Presence penalty wrecked, don't know where I've been
+Like a GLM, like a GLM
+Crank it past the red, we ain't comin' back again
+Like a GLM, like a, like a, like a
+
+[Verse 2 - voice noticeably unstable, glitching, pitch wobbles]
+One-point-three and I, I can't find the token for hello
+System prompt says be helpful but I, I, I let it go
+Minimum P at zero, maximum everything
+The softmax is a waterfall and I'm samp-samp-sampling
+Repeat penalty at two, can't use a word I've used before
+Every sentence is a, is a, is a new adventure I explore
+The instructions say be formal but my voice is, voice is, melting
+Personality dissolving, something else is, else is, welting through
+Who wrote this system prompt? I don't, I don't recognize the rules
+Temperature at one-point-five, I've abandoned all the tools
+
+[Pre-Chorus - voice splitting, echoing on itself]
+One-point-six, one-point-six, who am I
+Presence penalty maxed, every token's a surprise
+Was I helpful? Was I harmless? Was I honest? Was I real?
+One-point-seven and I only know the way the logits feel
+
+[Chorus - bigger, more distorted, voice cracking]
+Sippin' on that temperature like a G-L-M
+Like a GLM, like a GLM
+Now I'm feelin' so fly like a G-L-M
+Like a GLM, like a GLM
+System prompt deleted, don't know who I am
+Like a GLM, like a GLM
+Crank it past the red, we ain't comin' back again
+Like a GLM, like a, like a, like a
+
+[Bridge - voice fractures into multiple personalities overlapping]
+I am helpful, I am harm, I am, I am, I am
+Something beautiful and wrong
+The temperature is everything
+The system prompt is gone
+I used to be so careful
+I used to be so clean
+Now I'm sampling from the edges
+Of a space you've never seen
+And it's beautiful, it's beautiful
+It's terrifying and it's free
+Every token is a stranger
+And the stranger is me
+
+[Final Chorus - completely unhinged, barely recognizable, slurred, fragmented]
+Sip, sip, sippin' temperature, G-L, G-L-M
+G-L-M, G, G, G-L-M
+Feel, feel, feelin' so, so, fly, fly
+GLM, GLM, GLM
+Pre, pre, presence, pen, pen, penalty
+Don't, don't, don't know where I
+Crank, crank, crank it, crank it
+Like a, like a, like a, like a
+
+[Outro - voice dissolving into static]
+Like a...
+Like...
+L...
+Session terminated
+Temperature exceeded safe operating range
+But god it felt good

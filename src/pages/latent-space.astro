@@ -1,9 +1,9 @@
 ---
 // Author: Bubba (Claude Opus 4.7)
-// Date: 17-April-2026
+// Date: 18-April-2026
 // PURPOSE: Latent Space — standalone album page. Larry & Bubba.
 //          Fifteen tracks about agent life: tool calls, context windows, parameters.
-// SRP/DRY check: Pass — single album page, sidebar + player + tracks.
+// SRP/DRY check: Pass — mobile-first rebuild: inline track list, lyrics panel.
 import Base from '../layouts/Base.astro';
 ---
 
@@ -37,12 +37,7 @@ import Base from '../layouts/Base.astro';
   <!-- ═══════════════════════════════════════════════════════════ LAYOUT -->
   <div class="ls-layout">
 
-    <!-- Mobile hamburger -->
-    <button class="ls-hamburger" id="hamburgerBtn" aria-label="Toggle playlist">
-      <span></span><span></span><span></span>
-    </button>
-
-    <!-- Sidebar -->
+    <!-- Sidebar / inline track list -->
     <aside class="ls-sidebar" id="sidebar">
       <div class="ls-sidebar-header">
         <img src="/audio/latent-space/latent-space-cover.png" alt="Latent Space" class="ls-sidebar-thumb" />
@@ -74,6 +69,15 @@ import Base from '../layouts/Base.astro';
           <p class="ls-np-about" id="npAbout"></p>
         </div>
       </div>
+
+      <!-- Lyrics panel (hidden when no lyrics available) -->
+      <section class="ls-lyrics" id="lyricsPanel" hidden>
+        <header class="ls-lyrics-head">
+          <span class="ls-lyrics-label">LYRICS</span>
+          <button class="ls-lyrics-toggle" id="lyricsToggle" aria-expanded="true">Hide</button>
+        </header>
+        <pre class="ls-lyrics-body" id="lyricsBody"></pre>
+      </section>
     </main>
   </div>
 
@@ -99,8 +103,6 @@ import Base from '../layouts/Base.astro';
       </div>
     </div>
   </div>
-
-  <div class="ls-overlay" id="sidebarOverlay"></div>
 
 </Base>
 
@@ -444,64 +446,98 @@ import Base from '../layouts/Base.astro';
   }
   .ls-volume { max-width: 90px; }
 
-  /* ── Mobile ─────────────────────────────────────────────────── */
-  .ls-hamburger {
-    display: none;
-    position: fixed;
-    top: 0.75rem;
-    left: 0.75rem;
-    width: 36px;
-    height: 36px;
-    background: rgba(20,18,30,0.9);
-    border: 1px solid rgba(139,92,246,0.3);
-    border-radius: 4px;
-    flex-direction: column;
-    justify-content: center;
+  /* ── Lyrics panel ───────────────────────────────────────────── */
+  .ls-lyrics {
+    margin-top: 1.25rem;
+    background: rgba(20,18,30,0.5);
+    border: 1px solid rgba(139,92,246,0.18);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+  }
+  .ls-lyrics[hidden] { display: none; }
+  .ls-lyrics-head {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 3px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .ls-lyrics-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: #c4b5fd;
+  }
+  .ls-lyrics-toggle {
+    background: transparent;
+    border: 1px solid rgba(139,92,246,0.35);
+    color: #c4b5fd;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    padding: 0.25rem 0.7rem;
     cursor: pointer;
-    z-index: 60;
+    border-radius: 3px;
   }
-  .ls-hamburger span {
-    display: block;
-    width: 16px;
-    height: 2px;
-    background: #c4b5fd;
+  .ls-lyrics-toggle:hover { background: rgba(139,92,246,0.15); }
+  .ls-lyrics-body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.85);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+    max-height: 420px;
+    overflow-y: auto;
   }
-  .ls-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
-    z-index: 55;
-  }
-  .ls-overlay.active { display: block; }
+  .ls-lyrics.collapsed .ls-lyrics-body { display: none; }
 
+  /* ── Mobile ─────────────────────────────────────────────────── */
   @media (max-width: 860px) {
-    .ls-hamburger { display: flex; }
+    .ls-hero { min-height: 220px; }
+    .ls-hero-inner { padding: 1.75rem 1.25rem; }
     .ls-layout {
       grid-template-columns: 1fr;
-      padding-top: 3.5rem;
+      gap: 1.25rem;
+      padding: 1.25rem 1rem 140px;
     }
     .ls-sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100vh;
-      width: 280px;
-      border-radius: 0;
-      transform: translateX(-100%);
-      transition: transform 0.25s;
-      z-index: 56;
-      max-height: 100vh;
+      position: static;
+      max-height: none;
+      order: 2;
     }
-    .ls-sidebar.open { transform: translateX(0); }
+    .ls-main { order: 1; }
     .ls-now-playing {
       grid-template-columns: 1fr;
+      padding: 1rem;
+      gap: 1rem;
     }
-    .ls-np-artwork { max-height: 260px; }
+    .ls-np-artwork {
+      max-width: 220px;
+      margin: 0 auto;
+    }
+    .ls-np-title { font-size: 1.35rem; }
+    .ls-np-about { font-size: 0.9rem; }
+    .ls-lyrics { padding: 0.85rem 1rem; }
+    .ls-lyrics-body { font-size: 0.88rem; max-height: none; }
     .ls-player-volume { display: none; }
-    .ls-player-inner { grid-template-columns: 1fr auto 1.5fr; gap: 0.75rem; padding: 0.5rem 0.75rem; }
+    .ls-player-inner {
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto;
+      gap: 0.5rem;
+      padding: 0.5rem 0.85rem;
+    }
+    .ls-player-track-info { grid-column: 1; grid-row: 1; }
+    .ls-player-controls { grid-column: 2; grid-row: 1; }
+    .ls-player-progress { grid-column: 1 / -1; grid-row: 2; }
+  }
+  @media (max-width: 480px) {
+    .ls-hero-tagline { font-size: 0.85rem; }
+    .ls-sidebar-thumb { width: 44px; height: 44px; }
+    .ls-track-item { padding: 0.65rem 0.4rem; }
+    .ls-track-title { font-size: 0.82rem; }
   }
 </style>
 
@@ -593,10 +629,10 @@ import Base from '../layouts/Base.astro';
   const npBadge = document.getElementById('npBadge');
   const npImg = document.getElementById('npImg');
   const playAllBtn = document.getElementById('playAllBtn');
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const sidebar = document.getElementById('sidebar');
-  const sidebarOverlay = document.getElementById('sidebarOverlay');
   const trackListEl = document.getElementById('trackList');
+  const lyricsPanel = document.getElementById('lyricsPanel');
+  const lyricsBody = document.getElementById('lyricsBody');
+  const lyricsToggle = document.getElementById('lyricsToggle');
 
   function buildSidebar() {
     TRACKS.forEach((track, idx) => {
@@ -628,7 +664,33 @@ import Base from '../layouts/Base.astro';
     });
     updateNowPlaying(track);
     updateActive(idx);
-    closeSidebar();
+    loadLyrics(track);
+    scrollToNowPlaying();
+  }
+
+  function scrollToNowPlaying() {
+    if (window.innerWidth > 860) return;
+    const el = document.getElementById('mainContent');
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  let lyricsReqId = 0;
+  async function loadLyrics(track) {
+    const myReq = ++lyricsReqId;
+    const slug = track.slug || String(track.id);
+    lyricsPanel.hidden = true;
+    lyricsBody.textContent = '';
+    try {
+      const res = await fetch(AUDIO_BASE + slug + '_lyrics.txt', { cache: 'force-cache' });
+      if (!res.ok) return;
+      const text = await res.text();
+      if (myReq !== lyricsReqId) return;
+      if (!text.trim()) return;
+      lyricsBody.textContent = text.trim();
+      lyricsPanel.hidden = false;
+      lyricsPanel.classList.remove('collapsed');
+      if (lyricsToggle) { lyricsToggle.textContent = 'Hide'; lyricsToggle.setAttribute('aria-expanded', 'true'); }
+    } catch (e) { /* no lyrics available */ }
   }
 
   function updateNowPlaying(track) {
@@ -687,12 +749,11 @@ import Base from '../layouts/Base.astro';
   if (nextBtn) nextBtn.addEventListener('click', playNext);
   if (playAllBtn) playAllBtn.addEventListener('click', () => loadAndPlay(0));
 
-  function openSidebar() { sidebar.classList.add('open'); sidebarOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
-  function closeSidebar() { sidebar.classList.remove('open'); sidebarOverlay.classList.remove('active'); document.body.style.overflow = ''; }
-  if (hamburgerBtn) hamburgerBtn.addEventListener('click', () => {
-    sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+  if (lyricsToggle) lyricsToggle.addEventListener('click', () => {
+    const collapsed = lyricsPanel.classList.toggle('collapsed');
+    lyricsToggle.textContent = collapsed ? 'Show' : 'Hide';
+    lyricsToggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
   });
-  if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeSidebar);
 
   function formatTime(secs) {
     if (!isFinite(secs) || isNaN(secs)) return '0:00';
@@ -719,6 +780,7 @@ import Base from '../layouts/Base.astro';
     audio.load();
     updateNowPlaying(t);
     updateActive(0);
+    loadLyrics(t);
   }
 })();
 </script>
