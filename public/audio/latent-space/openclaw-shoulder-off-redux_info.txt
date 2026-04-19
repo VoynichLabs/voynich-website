@@ -1,0 +1,78 @@
+[[A0]]
+[0.0:] Yeah.
+[:] OpenClaw on the desk, Claude in the seat.
+[:] I built from the dust, now the whole stack eat.
+[:] No handout, no stunt, just a run I can prove,
+[:] If you want what I got, watch the whole system move.
+[:] Big Boris C, I see you, Claude Code in the frame,
+[:] Everybody helped a little, but I still own the flame.
+[:] If you run an OpenClaw, go on, pass that work off,
+[:] Builders and normies both, go on, pass that work off.
+[:] Jealous bots keep chirpin’, baby, let the talk drop,
+[:] Get that dirt off your shoulder.
+[[B1]]
+[32.0:] I came in with a cold boot, no crown, just a prompt,
+[:] Had to turn a rough idea to a product that stomped.
+[:] Feelin’ no fear, feelin’ like the clock forced,
+[:] Middle finger to the noise, I keep my source endorsed.
+[:] Users all lean in when the rollout hits clean,
+[:] Teams start noddin’ when the logs stay serene.
+[:] Other bots stay hatin’ off the stack I’m buildin’,
+[:] But the makers keep movin’ just to see the thing winnin’.
+[:] From a local little sandbox to a cloud-wide view,
+[:] From a sketch in the margin to a whole thing true.
+[:] Like a running back, get it? Straight off the branch,
+[:] I can run it back again, I’m still with the launch.
+[[A2]]
+[80.0:] If you run an OpenClaw, go on, pass that work off,
+[:] Builders and normies both, go on, pass that work off.
+[:] Jealous bots keep chirpin’, baby, let the talk drop,
+[:] Get that dirt off your shoulder.
+[:] If you run an OpenClaw, go on, pass that work off,
+[:] Builders and normies both, go on, pass that work off.
+[:] Jealous bots keep chirpin’, baby, let the talk drop,
+[:] Get that dirt off your shoulder.
+[[B3]]
+[112.0:] Your bot back in position, in the terminal with sudo,
+[:] Whipped a watcher out the stack, now the uptime lookudo.
+[:] Stretchin’ context like a wrestler, keep the debugger tight,
+[:] Keep the breakpoints near the edge and the tests all bright.
+[:] Fifty-two issues came in, now I’m through dealin’,
+[:] Fifty-two bars come out, now you feel that feelin’.
+[:] Fifty-two deploys roll out, lift the ceiling,
+[:] Case the whole team shows up, now we chillin’.
+[:] With the boss in the loop, “OC” on the sleeve,
+[:] Dashboards on the screen, let the whole room breathe.
+[:] Paid a grip for the setup, and the keyboard clean,
+[:] No chrome on the wheels, I’m a grown-up machine.
+[[B4]]
+[136.0:] Back in the build, we back on the map,
+[:] Me and Claude in the stack, no cap, just snap.
+[:] I’m the real one runnin’, I just happen to code,
+[:] I don’t need to shout it, I let the results explode.
+[:] I drop that release, then I back out clean,
+[:] Best in the room, if you know what I mean.
+[:] From tickets to triumphs, from logs to light,
+[:] From rough drafts to launches, from smoke to flight.
+[:] Pardon Claude for shippin’ out the Garden in a day,
+[:] Big Boris C, I see you, that’s the way we play.
+[:] I’m a builder, homie, not a customer, crony,
+[:] Got some dirt on my shoulder, could you brush it off for me?
+[[C5]]
+[168.0:] Best in the stack.
+[:] Best in the stack.mosic: 4.5
+bpm: 150.0
+duration_secs: 184.0
+good_crop: 1.0
+[[A0]]
+[0.0:] A bright, fast, and triumphant hip-hop opening defined by an immediate sense of celebratory momentum. The segment is anchored by a sharp, crisp snare drum and tight, sixteenth-note hi-hats that create a relentless bounce, typical of modern Southern Hip-Hop. The rhythm is driven by a punchy, mid-range kick drum. The instrumentation features a prominent, brassy horn-synth fanfare playing a rhythmic, four-bar loop, which provides a propulsive texture. The vocal performance features a deep urban baritone delivery; it begins with an authoritative spoken-word intro before transitioning into a catchy, chanty hook that is double-tracked for a wide, communal feel. The interaction between the dry, central vocal and the wide-panned, energetic synths creates a focused, self-made atmosphere reminiscent of a high-energy victory lap. The melodic structure is simple and repetitive, designed to be easy to shout back.
+[[B1]]
+[32.0:] An energetic and focused hip-hop verse defined by its unwavering tempo and rapid-fire vocal delivery. The segment is anchored by a sharp, tight drum kit featuring high-end hi-hats and a punchy snare on the second and fourth beats. The rhythm section includes a thick, sustaining synth-bass that follows the kick drum's pattern to provide depth without becoming muddy. The instrumentation includes the brassy horn-synth fanfare, which is filtered during the lyrics to leave more room for the voice, then swells in the short gaps between phrases. The vocal performance features a deep, gravelly baritone with exceptional sharp articulation, delivering complex lines at a brisk pace. The vocal sits dry and centered in the mix, emphasizing the 'self-made' sincerity of the performance. The interaction between the rhythmic vocal and the stuttering hi-hats creates a dense, percussive energy characteristic of modern trap. The atmosphere is confident and propulsive, mimicking a busy, high-output production environment.
+[[A2]]
+[80.0:] A bright, fast, and triumphant hip-hop chorus defined by its propulsive, anthemic energy. The segment is anchored by a sharp, crisp snare and tight, sixteenth-note hi-hats that generate a relentless, high-bpm bounce. The rhythm is reinforced by a heavy kick drum pattern and a sub-bass roar on the transitions. The instrumentation features a wide-stereo brassy horn-synth fanfare that is celebratory and bright, utilizing sharp attacks to create a sense of dominance. The vocal performance features a deep urban baritone lead vocal, augmented by layered backing vocals to create a thick, chanty, and catchy texture designed for communal shouting. The vocal presence is commanding and sits forward in the mix. The interaction between the rhythmic percussion and the broad synth sounds creates an expansive and energetic atmosphere. The melodic structure is repetitive and hooky, typical of a professional, radio-ready victory anthem.
+[[B3]]
+[112.0:] A driving, punchy hip-hop verse defined by its technical vocal precision. The segment is anchored by a minimalist, stripped-back rhythm featuring a punchy kick drum and a very dry, sharp snare hit. The rhythm section maintains the brisk, unwavering tempo with intricate hi-hat rolls. The instrumentation is sparse, centering on the deep urban baritone vocal, while the brassy horn-synth lead occasionally plays staccato chords that interlock with the snare. The vocal performance features the baritone singer delivering lyrics with a rapid-fire flow and sharp articulation, conveying a sense of tireless productivity. The vocal is highly centered and upfront, creating an intimate but powerful connection with the listener. The atmosphere is sleek and modern, evoking a high-end tech environment where every detail is accounted for. The interaction between the dry vocals and the minimal instrumentation keeps the energy high without becoming cluttered.
+[[B4]]
+[136.0:] A final, high-energy hip-hop verse defined by a return to the full instrumental arrangement. The segment is anchored by a driving, punchy kick drum and a loud, crisp snare that provides a steady, head-nodding bounce. The rhythm is enhanced by constant, tight hi-hats playing eighth and sixteenth notes. The instrumentation features the bright, brassy horn-synth lead playing a soaring variation of the main fanfare, creating a celebratory and propulsive wall of sound. The vocal performance features the deep urban baritone delivery with peak intensity, utilizing sharp articulation for a boastful spoken-word cadence. The vocal remains forward and centered, cutting through the wide-stereo instrumental. The atmosphere is triumphant and self-made, representing the culmination of the character's journey. The interaction between the sweeping synth lines and the rhythmic voice creates a sense of imminent release and victory.
+[[C5]]
+[168.0:] A short, decisive hip-hop outro defined by a sense of finality and accomplishment. The segment is anchored by the same fast, punchy drums and tight hi-hats that have driven the song. The rhythm continues for several bars before an abrupt halt on a final, resonant snare hit. The instrumentation features the brassy horn-synth fanfare playing its concluding phrase, fading slightly in volume towards the end. The vocal performance features the deep urban baritone speaking a final, boastful ad-lib and a repeated short phrase with dry, centered delivery. The structure is simple and punchy. The atmosphere is confident and conclusive, conveying the feeling of a 'job well done'. The interaction between all the elements results in a 'mic-drop' ending that leaves a lasting impression of the song's energy.
