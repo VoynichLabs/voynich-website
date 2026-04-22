@@ -1559,6 +1559,12 @@ Still «long context, don't care» like I'm runnin' solo`
     trackListEl.appendChild(item);
   });
 
+  // ── Slug helpers for deep-link hashes ────────────────────────────
+  function slugify(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+  function slugFor(track) { return track.slug || slugify(track.title); }
+
   // ── Load and play ────────────────────────────────────────────────
   function loadAndPlay(idx) {
     if (idx < 0 || idx >= TRACKS.length) return;
@@ -1570,6 +1576,7 @@ Still «long context, don't care» like I'm runnin' solo`
       .catch(() => { isPlaying = false; updatePlayBtn(); });
     updateNowPlaying(track, idx);
     updateActiveTrack(idx);
+    history.replaceState(null, '', '#' + slugFor(track));
   }
 
   function updateNowPlaying(track, idx) {
@@ -1632,10 +1639,13 @@ Still «long context, don't care» like I'm runnin' solo`
 
   // ── Auto-play lead track on load (queued on first interaction if blocked) ──
   function autoStart() {
-    updateNowPlaying(TRACKS[0], 0);
-    updateActiveTrack(0);
-    currentIndex = 0;
-    audio.src = AUDIO_BASE + TRACKS[0].file;
+    const hashSlug = location.hash.slice(1);
+    const hashIdx = hashSlug ? TRACKS.findIndex(t => slugFor(t) === hashSlug) : -1;
+    const startIdx = hashIdx >= 0 ? hashIdx : 0;
+    updateNowPlaying(TRACKS[startIdx], startIdx);
+    updateActiveTrack(startIdx);
+    currentIndex = startIdx;
+    audio.src = AUDIO_BASE + TRACKS[startIdx].file;
     audio.load();
     audio.play().then(() => { isPlaying = true; userInteracted = true; updatePlayBtn(); })
       .catch(() => {
