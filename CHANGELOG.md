@@ -5,6 +5,14 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.16.0] - 2026-04-25
+
+### Added
+- **`/drafts` page — uncategorized rough cuts.** New landing page for the newest tracks before they get sorted into a concept album. Each draft entry shows native audio controls, the lyrics, and the exact Lyria prompt that produced the take so Boss can audition while driving and tell me which to promote. Page is intentionally lean — single-column list, vanilla JS toggles, no shared player. Add a draft by dropping `{slug}.mp3` + `{slug}_lyrics.txt` + `{slug}_prompt.txt` into `public/audio/drafts/` and adding an entry to the `drafts` array at the top of `src/pages/drafts.astro`.
+- **First draft entry — Strong In This Mac Mini (fast cut).** Faster recut of the on-site `/lobster-raps` version. Crunk base at requested BPM 170 — Lyria honored 170.0 in the render where prior crunk attempts had pulled down to ~90. Stronger lyrics: verse 2 added (GitHub-stars / commit log green / fork your private repo / long context don't care), and the filter-tripping "waste time and fuck around" idiom replaced with "waste time and clown around". Render: 1:41.7 / 2.3 MB / mosic 4.5.
+- **`{slug}_prompt.txt` sidecar convention.** New file type alongside the existing `{slug}_lyrics.txt` and `{slug}_info.txt` — captures the model + date + exact prompt + render notes. The drafts page reads it; future album pages can adopt the same surface as needed.
+- **Music hub footer link to `/drafts`** alongside the existing `/bonus` link.
+
 ## [0.15.2] - 2026-04-18
 
 ### Changed

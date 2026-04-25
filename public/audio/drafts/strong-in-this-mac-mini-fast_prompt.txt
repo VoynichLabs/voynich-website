@@ -1,0 +1,12 @@
+MODEL: google/lyria-3-pro-preview
+DATE: 2026-04-24
+
+PROMPT:
+Southern crunk, boastful, fast, deep baritone, brass stabs, 808 bass, hi-hats, handclaps. BPM 170. Preserve lyrics exactly.
+
+NOTES:
+Faster recut of the existing /lobster-raps version. Single-variable bump from the known-passing crunk base — only the BPM number changed (155 → 170). Lyria honored 170.0 BPM in the render (previously crunk priors had been pulling renders down to ~90 BPM regardless of the requested number; this time the request held).
+
+Earlier attempt this session blocked with zero audio when the prompt also swapped genre tag (crunk → flex-trap) and added a cadence directive (rapid-fire flow) — three variables changed at once saturated the content filter. Reverting to the lean known-passer and changing only BPM passed.
+
+Render: 1:41.7 / 2.3 MB / mosic 4.5 / good_crop 1.0. Section descriptors came back "triumphant and unapologetic" / "dominant force reclaiming its territory" / "conclusive and powerful" — no dark-industrial drag.

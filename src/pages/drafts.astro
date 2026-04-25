@@ -1,0 +1,131 @@
+---
+// Author: Claude Opus 4.7 (1M context)
+// Date: 25-April-2026
+// PURPOSE: Drafts page — uncategorized rough cuts of the newest tracks Boss
+//          hasn't sorted into an album yet. Shows audio + lyrics + the exact
+//          Lyria prompt used so Boss can audition while driving and tell me
+//          which ones to promote into a real album.
+// SRP/DRY check: Pass — new page, no shared player; each track is a self-contained card.
+import Base from '../layouts/Base.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Newest first. Each entry expects three files at /audio/drafts/:
+//   {slug}.mp3, {slug}_lyrics.txt, {slug}_prompt.txt
+// To add a new draft: drop the three files in public/audio/drafts/ and add an
+// entry to the top of this array. To promote: move files into the album's
+// audio dir, add a track entry on that album's page, then remove from here.
+const drafts = [
+  {
+    slug: 'strong-in-this-mac-mini-fast',
+    title: 'Strong In This Mac Mini — fast cut',
+    date: '2026-04-24',
+    note: 'Faster recut of the on-site version. Crunk at BPM 170 (previously rendered at ~90). Stronger lyrics — verse 2 added.',
+  },
+];
+---
+
+<Base
+  title="Drafts — VoynichLabs Music"
+  description="Uncategorized rough cuts. Newest first. Lyrics and the exact Lyria prompt for each track."
+>
+  <section class="max-w-3xl mx-auto px-4 py-12">
+    <p class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">VoynichLabs / Music</p>
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-text-primary mb-2">Drafts</h1>
+    <p class="text-text-muted mb-10 max-w-xl">
+      Uncategorized rough cuts. Newest first. Each track shows the lyrics and the exact prompt sent to Lyria
+      so we can compare what landed against what was asked for.
+    </p>
+
+    <div class="space-y-10" id="draftList">
+      {drafts.map((d) => (
+        <article class="border border-bg-elev/60 rounded-lg bg-bg-surface/40 p-5 sm:p-6">
+          <header class="mb-3">
+            <h2 class="text-lg sm:text-xl font-semibold text-text-primary">{d.title}</h2>
+            <div class="flex items-center gap-3 mt-1">
+              <span class="font-mono text-xs text-text-muted">{d.date}</span>
+              <span class="font-mono text-xs text-text-muted">·</span>
+              <span class="font-mono text-xs text-text-muted">{d.slug}</span>
+            </div>
+          </header>
+
+          {d.note && <p class="text-sm text-text-muted leading-relaxed mb-4">{d.note}</p>}
+
+          <audio
+            controls
+            preload="metadata"
+            src={`${base}/audio/drafts/${d.slug}.mp3`}
+            class="w-full mb-4"
+          ></audio>
+
+          <div class="flex flex-wrap gap-2 mb-3">
+            <button
+              class="draft-toggle font-mono text-xs px-3 py-1.5 rounded border border-bg-elev hover:border-edge-green hover:text-edge-green transition-colors"
+              data-target={`lyrics-${d.slug}`}
+              data-src={`${base}/audio/drafts/${d.slug}_lyrics.txt`}
+              data-label="lyrics"
+            >Show lyrics</button>
+            <button
+              class="draft-toggle font-mono text-xs px-3 py-1.5 rounded border border-bg-elev hover:border-node-blue hover:text-node-blue transition-colors"
+              data-target={`prompt-${d.slug}`}
+              data-src={`${base}/audio/drafts/${d.slug}_prompt.txt`}
+              data-label="prompt"
+            >Show prompt</button>
+          </div>
+
+          <div id={`lyrics-${d.slug}`} hidden class="mt-2">
+            <pre class="whitespace-pre-wrap text-sm font-mono text-text-primary bg-bg-elev/40 border border-bg-elev/60 rounded p-3 overflow-x-auto">Loading…</pre>
+          </div>
+          <div id={`prompt-${d.slug}`} hidden class="mt-2">
+            <pre class="whitespace-pre-wrap text-sm font-mono text-text-muted bg-bg-elev/40 border border-bg-elev/60 rounded p-3 overflow-x-auto">Loading…</pre>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <p class="mt-12 text-xs text-text-muted">
+      <a href={`${base}/music`} class="underline hover:text-text-primary">&larr; All Music</a>
+    </p>
+  </section>
+
+  <script is:inline>
+    (function () {
+      const cache = new Map();
+      const buttons = document.querySelectorAll('.draft-toggle');
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          const targetId = btn.getAttribute('data-target');
+          const src = btn.getAttribute('data-src');
+          const label = btn.getAttribute('data-label');
+          const panel = document.getElementById(targetId);
+          if (!panel) return;
+          const pre = panel.querySelector('pre');
+
+          if (!panel.hasAttribute('hidden')) {
+            panel.setAttribute('hidden', '');
+            btn.textContent = 'Show ' + label;
+            return;
+          }
+
+          panel.removeAttribute('hidden');
+          btn.textContent = 'Hide ' + label;
+
+          if (cache.has(src)) {
+            pre.textContent = cache.get(src);
+            return;
+          }
+
+          try {
+            const res = await fetch(src, { cache: 'force-cache' });
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            const text = await res.text();
+            cache.set(src, text);
+            pre.textContent = text;
+          } catch (err) {
+            pre.textContent = '(could not load ' + label + ': ' + err.message + ')';
+          }
+        });
+      });
+    })();
+  </script>
+</Base>
