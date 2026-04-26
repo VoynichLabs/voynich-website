@@ -5,6 +5,11 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.16.1] - 2026-04-26
+
+### Changed
+- **`/drafts` rebuilt as a mobile-first player.** Per-row `<audio>` elements replaced with a single sticky bottom player bar (title + transport + scrubber) that follows you down the page. Tapping any row plays it; ended tracks auto-advance to the next; previous/next/play/pause work from the bar. MediaSession API metadata wired up so the title and "Drafts / VoynichLabs" show on the iOS lock screen and CarPlay tile when listening from the truck. Lyrics and prompt toggles unchanged — still per-row, still tucked behind buttons. Big touch targets, safe-area-inset on the bottom bar so it doesn't sit under the iOS home indicator.
+
 ## [0.16.0] - 2026-04-25
 
 ### Added
