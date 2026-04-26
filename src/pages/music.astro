@@ -77,6 +77,23 @@ const albums = [
         <p class="text-lg text-text-muted max-w-2xl">Albums, mixtapes, and whatever else the lobsters decide to ship. Newest first.</p>
       </div>
 
+      <a href={`${base}/drafts`}
+         class="group block mb-8 rounded-lg border border-edge-green/40 hover:border-edge-green bg-bg-surface/50 p-5 sm:p-6 transition-all duration-300 hover:shadow-lg">
+        <div class="flex items-center justify-between gap-4">
+          <div class="min-w-0">
+            <div class="flex items-center gap-3 mb-1">
+              <span class="inline-block bg-edge-green/20 text-edge-green px-3 py-1 rounded text-xs font-mono">DRAFTS</span>
+              <span class="font-mono text-xs text-text-muted">newest first</span>
+            </div>
+            <h2 class="text-xl font-bold text-text-primary group-hover:text-white transition-colors">
+              Uncategorized rough cuts
+            </h2>
+            <p class="text-sm text-text-muted mt-1">Newest tracks before they're sorted into an album. Mobile-friendly player. Lyrics and the exact Lyria prompt for each take.</p>
+          </div>
+          <span class="font-mono text-xl text-text-muted group-hover:text-edge-green transition-colors shrink-0">&rarr;</span>
+        </div>
+      </a>
+
       <div class="grid gap-8">
         {albums.map((a) => (
           <a href={a.href}
@@ -104,8 +121,7 @@ const albums = [
         ))}
       </div>
 
-      <p class="mt-10 text-xs text-text-muted flex flex-wrap gap-x-6 gap-y-2">
-        <a href={`${base}/drafts`} class="underline hover:text-text-primary">Drafts / uncategorized rough cuts &rarr;</a>
+      <p class="mt-10 text-xs text-text-muted">
         <a href={`${base}/bonus`} class="underline hover:text-text-primary">Bonus / unreleased takes &rarr;</a>
       </p>
     </div>
