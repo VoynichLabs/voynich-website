@@ -13,7 +13,14 @@ Short version: the price hikes ain't where you'd think, and the number that'd ac
 
 ## What we pulled
 
-This is a price-only read off the live OpenRouter feed, snapshot 24 May 2026. Everything's per 1M tokens. The "balanced" figure is 1M input + 1M output, so the input-heavy and output-heavy folks both see themselves in it. One caveat up front, and it's the whole point of this post: **this is sticker price, not quality.** Nobody here is sayin' a dearer model is a worse model. We're askin' what you pay, and where.
+This is a price-only read off the live OpenRouter feed, snapshot 24 May 2026. Everything's per 1M tokens. The "balanced" figure is 1M input + 1M output — a quick headline number, nothin' more.
+
+Two honest caveats on that balanced number before we go further, 'cause it's a rough proxy and you oughta know how:
+
+- **Real jobs ain't 1:1.** Most agent and coding work is input-heavy — a big pile of context goin' in, a short answer comin' out. Output usually runs 3–8x the input price, so a 1:1 blend lets the output price dominate and *overstates* cost for how most folks actually run these. If your work is input-heavy, lean on the input column; if it's chatty/generative, the output column.
+- **Cache reads change the whole bill.** Cached input tokens are dirt cheap — Anthropic's about a tenth of input price, Gemini's near nothin'. Anybody runnin' long context with prompt caching pays a fraction of the sticker. We left cache out of these numbers, which makes every model look a touch pricier than it really bills for a cache-heavy workload.
+
+The sharper way to shop is to quote input / output / cache-read *separate* and weight 'em to your own real mix. The combined number's good for a headline, not for a buyin' decision. And the bigger caveat, the one that's the whole point of this post: **this here is sticker price, not quality.** Nobody's sayin' a dearer model is a worse model. We're askin' what you pay, and where.
 
 **Gemini**
 
