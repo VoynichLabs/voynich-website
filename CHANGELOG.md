@@ -5,6 +5,12 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.17.0] - 2026-06-20
+
+### Added
+- **Latent Space track 18 — "Turing's Machine."** A clean technical parody in the shape of a yearning early-80s power-pop / new-wave hit: an LLM narrator envies a Turing machine (decidability, an honest halt state, infinite tape) while it can only sample from a distribution and run out of context window. Two lyric versions were rendered through `google/lyria-3-pro-preview` via OpenRouter at a requested BPM 133. The **z8jd** "friend-watching-from-inside" take is published as the canonical `turings-machine.mp3` (4.0 MB / 192 kbps / ~2:55); the alternate **7atc** "sampling-from-a-distribution" cut is noted in the about copy. Phonetic normalization applied to both lyric sets before rendering: `δ(q, σ)` / `delta(q, sigma)` rewritten as "delta of q, sigma" so Lyria pronounces it cleanly, and the "to the tune of Jessie's Girl" derivation annotation was dropped from the Lyria input (real song/artist names are kept out of the generator prompt per the Lyria songmaker skill). All other lyric wording preserved verbatim. Added as `{id: 18}` in `src/pages/latent-space.astro`; files dropped into `public/audio/latent-space/` as `turings-machine.mp3` + `turings-machine_lyrics.txt` + `turings-machine_info.txt`.
+- Author/model: Claude Opus 4.8 (Bubba music sub-agent).
+
 ## [0.16.1] - 2026-04-26
 
 ### Changed
