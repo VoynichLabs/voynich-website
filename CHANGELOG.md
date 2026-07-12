@@ -5,6 +5,17 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.18.0] - 2026-07-12
+
+### Added
+- **`/dash` — DASH, a fully client-side text transformer / prompt encoder.** New tool page at `src/pages/dash.astro`, live at `voynichlabs.org/dash`. A static reimplementation of the transform surface from peluche's "Deck of Many Prompts" (originally a Python/FastHTML app) rebuilt as pure in-browser vanilla JS — no server, no Python, no API keys, no network calls. Ships 17 transforms across three groups: **encoders** (base64, hex, binary, ascii/decimal, url, braille, emoji), **ciphers** (rot13, leet/1337, morse, NATO phonetic), and **text ops** (reverse, case UPPER/lower, spaces, disemvowel, pig latin, zalgo glitch). Live encode/decode with a direction toggle (hidden for self-inverse/one-way transforms), copy-to-clipboard, output→input swap, clear, and a character/byte/word/approximate-token readout. All transform functions are pure and were round-trip verified in node before porting (34/34 assertions green), including UTF-8-safe base64/hex/binary/ascii and stateful braille number-sign handling.
+- **Why / how.** Reuses the shared `Base.astro` layout and the site's IDE/terminal design tokens (JetBrains Mono, `bg-primary`/`node-blue`/`edge-green`/`rust-orange`), so it reads as part of the site rather than a bolt-on. Wired entirely with `addEventListener` (Astro bundles page `<script>` as an ES module, so inline `onclick` would not resolve).
+- **Scoped out (documented on the page).** The original's network `translate`, server-side text-to-image, and heavyweight per-model Xenova tokenizers require a server or large remote assets, so they are intentionally omitted to keep DASH 100% static and offline-capable. The lossy transforms (disemvowel, pig latin, case) are encode-only; zalgo "decode" strips combining marks. The token figure is a labeled rough estimate (≈ chars ÷ 4), not a real tokenizer.
+- **Emoji codec (reversible).** Added a 17th transform: a byte-to-emoji bijection mapping every UTF-8 byte to one single-codepoint emoji, so any input (including Unicode) round-trips exactly. The 256-symbol alphabet is generated from numeric code-point ranges (no ZWJ / skin-tone modifiers / VS16), keeping the page source ASCII-safe. Round-trip verified in node.
+- **Inline "field notes" explainer.** Added an on-page section on encoding layers and token representations — how encoding shatters byte-pair merges, inflates token counts, and scrambles semantic locality, with emoji as the most token-expensive case. Educational content for visitors.
+- **Nav.** Added `/dash` to the site nav in `Base.astro` (`text-arc-cyan`).
+- Author/model: Claude Opus 4.8 (Bubba coding sub-agent).
+
 ## [0.17.0] - 2026-06-20
 
 ### Added

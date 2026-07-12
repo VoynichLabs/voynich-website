@@ -5,9 +5,10 @@
 //          voynichlabs.org/dash. A static reimplementation of the transform surface from
 //          peluche's "Deck of Many Prompts" (a Python/FastHTML app), rebuilt as pure
 //          in-browser vanilla JS: no server, no Python, no API keys, no network calls.
-//          Ships 16 transforms (base64, hex, binary, ascii, url, braille, rot13, leet,
-//          morse, nato, reverse, case, spaces, disemvowel, pig latin, zalgo) with live
-//          encode/decode, copy, swap and a rough token/character estimate. Server-dependent
+//          Ships 17 transforms (base64, hex, binary, ascii, url, braille, emoji, rot13,
+//          leet, morse, nato, reverse, case, spaces, disemvowel, pig latin, zalgo) with live
+//          encode/decode, copy, swap and a rough token/character estimate, plus an inline
+//          "field notes" explainer on encoding layers & token representations. Server-dependent
 //          features of the original (network "translate", server-side text-to-image, and
 //          the heavyweight per-model Xenova tokenizers) are intentionally scoped out — see
 //          the "scoped out" note at the foot of the page.
@@ -86,13 +87,57 @@ import Base from '../layouts/Base.astro';
       token count is a rough estimate (≈ characters ÷ 4), not a real per-model tokenizer.
     </p>
 
+    <!-- Field notes: encoding layers & token representations -->
+    <div class="mt-14 border-t border-border pt-8">
+      <p class="font-mono text-xs uppercase tracking-widest text-text-muted mb-4">field notes — encoding layers &amp; tokens</p>
+      <div class="space-y-4 text-sm text-text-secondary leading-relaxed max-w-2xl">
+        <p>
+          The interesting part of stacking these transforms isn't the bytes — it's what happens to the
+          <span class="text-text-primary">tokens</span> a language model actually sees. Models don't read
+          characters, they read tokens, and how your text splits into tokens changes completely the moment you encode it.
+        </p>
+        <p>
+          <span class="text-node-blue">Natural text is cheap.</span> A byte-pair tokenizer carries <em>learned
+          merges</em>: <span class="font-mono text-xs">"Hello, world!"</span> is only ~4 tokens because those
+          character runs co-occur constantly in training. Encoding destroys those merges —
+          <span class="font-mono text-xs">base64("Hello, world!")</span> =
+          <span class="font-mono text-xs">SGVsbG8sIHdvcmxkIQ==</span> becomes roughly
+          <span class="text-text-primary">8–11 tokens</span>, none of them meaningful, because the base64 alphabet
+          doesn't line up with anything the tokenizer learned. Hex is worse; binary and morse are the least
+          token-dense representations there are.
+        </p>
+        <p>
+          So every encoding layer does two things at once: it <span class="text-text-primary">inflates the token
+          count</span> and it <span class="text-text-primary">scrambles semantic locality</span> — the local
+          structure a model leans on to recover meaning. Stack two or three layers
+          (<span class="font-mono text-xs">base64 → rot13 → emoji</span>) and the token stream drifts ever further
+          from anything the model was trained to read.
+        </p>
+        <p>
+          <span class="text-node-blue">Emoji is the extreme case.</span> A plain emoji is often a single token, but
+          a composed one — a family built from a zero-width-joined man + woman + girl + boy — can be
+          <span class="text-text-primary">6–10 tokens</span>, because it is literally that many code points glued
+          together. That makes the emoji codec here the flashiest <em>and</em> the most token-expensive transform on
+          the page: it maps every single byte to one emoji, so the token count balloons.
+        </p>
+        <p>
+          Why care? Encoded, layered text is a standard way to probe how a model
+          <span class="text-text-primary">represents</span> input and how robustly it
+          <span class="text-text-primary">decodes</span> it. There's a narrow band where a model can still round-trip
+          an encoding that a naive plaintext filter can't read — and exactly where that band sits differs by tokenizer
+          (cl100k, o200k, Claude's, Llama's all fragment differently). That's why a real per-model token count tells
+          you more than the rough <span class="font-mono text-xs">chars ÷ 4</span> estimate above.
+        </p>
+      </div>
+    </div>
+
     <!-- Reference / scope note -->
     <div class="mt-14 border-t border-border pt-8">
       <p class="font-mono text-xs uppercase tracking-widest text-text-muted mb-4">notes</p>
       <div class="space-y-3 text-sm text-text-secondary leading-relaxed max-w-2xl">
         <p>
           <span class="text-text-primary">Reversibility.</span> Most transforms round-trip exactly (base64,
-          hex, binary, ascii, url, morse, nato, leet, braille, spaces, rot13, reverse). A few are lossy by
+          hex, binary, ascii, url, morse, nato, leet, braille, emoji, spaces, rot13, reverse). A few are lossy by
           nature and are encode-only here: <span class="font-mono text-xs">disemvowel</span> (drops vowels),
           <span class="font-mono text-xs">pig latin</span> (not reversible), and
           <span class="font-mono text-xs">case</span> (UPPER/lower). <span class="font-mono text-xs">zalgo</span>
@@ -368,6 +413,28 @@ import Base from '../layouts/Base.astro';
       return out;
     }
 
+    // emoji codec -- a byte<->emoji bijection. Every UTF-8 byte maps to one single-codepoint
+    // emoji, so any input (including Unicode) round-trips exactly. The 256-symbol alphabet is
+    // built from numeric code-point ranges (no ZWJ / skin-tone modifiers / VS16), which keeps
+    // this source file ASCII-safe and guarantees every symbol is exactly one code point, so
+    // Array.from() splits the encoded string back into bytes cleanly.
+    const EMOJI_ALPHABET = (() => {
+      const ranges = [[0x1f600, 0x1f64f], [0x1f400, 0x1f4fd]]; // emoticons + animals/objects
+      const out = [];
+      for (const [lo, hi] of ranges) {
+        for (let cp = lo; cp <= hi && out.length < 256; cp++) out.push(String.fromCodePoint(cp));
+      }
+      return out; // exactly 256 distinct single-codepoint symbols
+    })();
+    const EMOJI_REV = new Map(EMOJI_ALPHABET.map((e, i) => [e, i]));
+    function emojiEncode(s) {
+      return Array.from(enc.encode(s), (b) => EMOJI_ALPHABET[b]).join('');
+    }
+    function emojiDecode(s) {
+      const bytes = Array.from(s).filter((c) => EMOJI_REV.has(c)).map((c) => EMOJI_REV.get(c));
+      return dec.decode(Uint8Array.from(bytes));
+    }
+
     // --- transform registry ---
     // dir: 'both' shows encode/decode toggle; 'one' is single direction.
     const TRANSFORMS = [
@@ -377,6 +444,7 @@ import Base from '../layouts/Base.astro';
       { id: 'ascii', label: 'ascii', group: 'encoders', enc: asciiEncode, dec: asciiDecode },
       { id: 'url', label: 'url', group: 'encoders', enc: urlEncode, dec: urlDecode },
       { id: 'braille', label: 'braille', group: 'encoders', enc: brailleEncode, dec: brailleDecode },
+      { id: 'emoji', label: 'emoji', group: 'encoders', enc: emojiEncode, dec: emojiDecode },
 
       { id: 'rot13', label: 'rot13', group: 'ciphers', enc: rot13, dec: null, note: 'rot13 is its own inverse — run it again to decode.' },
       { id: 'leet', label: 'leet', group: 'ciphers', enc: leetEncode, dec: leetDecode },
