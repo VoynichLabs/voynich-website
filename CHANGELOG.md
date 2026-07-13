@@ -5,6 +5,13 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.19.0] - 2026-07-13
+
+### Added
+- **`/hallucinate` — single release page for "Hallucinate" (v7).** New page at `src/pages/hallucinate.astro` using the proven single-page treatment from `/pox-upon-you` (hero, music cross-nav, playlist sidebar, now-playing panel with full inline lyrics, sticky player bar), restyled with a rose/plum smooth-R&B palette. Headliner track is v7 (`/audio/drafts/hallucinate-smooth-take-2.mp3`); take 1 (v6) is included as a clearly labeled alternate cut. Full lyrics rendered verbatim from the shipped lyric file; Lyria style summary shown per track. Audio is reused from `public/audio/drafts/` — no duplicated assets; both takes also remain on `/drafts`.
+- **Music hub card.** Added the Hallucinate single to the top of `/music` (newest first). Cover art temporarily reuses the Latent Space cover (same artwork the drafts player uses for these tracks) until dedicated single art exists.
+- Author/model: Claude Fable 5.
+
 ## [0.18.0] - 2026-07-12
 
 ### Added
