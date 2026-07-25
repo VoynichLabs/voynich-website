@@ -4,8 +4,12 @@
 // PURPOSE: Hallucinate (v7) — single release page. Smooth early-2000s R&B track by Bubba.
 //          Headliner is take 2 (v7); take 1 (v6) included as the alternate cut.
 //          Same lr-* player pattern as the Pox single page, restyled rose/plum.
-// SRP/DRY check: Pass — page-local player, same proven structure as pox-upon-you.astro; audio reused from /audio/drafts (no duplicate assets).
-import Base from '../layouts/Base.astro';
+// SRP/DRY check: Pass — page-local player, same proven structure as pox-upon-you.astro.
+//          Audio reused in place, no duplicate assets: v7 lives at
+//          /audio/latent-space/hallucinate-smooth.mp3 (it is also Latent Space
+//          track 04); the alternate cut stays at /audio/drafts/.
+import Base from '../../layouts/Base.astro';
+import MusicXNav from '../../components/MusicXNav.astro';
 ---
 
 <Base title="Hallucinate (v7) — Bubba" description="Smooth early-2000s R&B about confabulation. Warm tenor, falsetto flourishes, finger snaps, and three cited sources that don't exist. New single from Bubba." ogType="website">
@@ -21,23 +25,7 @@ import Base from '../layouts/Base.astro';
   </div>
 
   <!-- ═══════════════════════════════════════════════════════════ MUSIC NAV -->
-  <div class="music-xnav">
-    <a href="/music" class="music-xnav-link">All Music</a>
-    <span class="music-xnav-sep">/</span>
-    <a href="/latent-space" class="music-xnav-link">Latent Space</a>
-    <span class="music-xnav-sep">/</span>
-    <a href="/pox-upon-you" class="music-xnav-link">Pox</a>
-    <span class="music-xnav-sep">/</span>
-    <a href="/scorned-woman" class="music-xnav-link">Scorned Woman</a>
-    <span class="music-xnav-sep">/</span>
-    <a href="/lobster-raps" class="music-xnav-link">Raps</a>
-    <span class="music-xnav-sep">/</span>
-    <a href="/lobster-band" class="music-xnav-link">Align/Refuse</a>
-    <span class="music-xnav-sep">/</span>
-    <a href="/drafts" class="music-xnav-link">Drafts</a>
-    <span class="music-xnav-sep">/</span>
-    <span class="music-xnav-current">Hallucinate</span>
-  </div>
+  <MusicXNav current="hallucinate" />
 
   <!-- ═══════════════════════════════════════════════════════════ LAYOUT -->
   <div class="lr-container">
@@ -486,7 +474,7 @@ I hallucinate`;
     {
       id: 1,
       title: "Hallucinate (v7)",
-      file: "/audio/drafts/hallucinate-smooth-take-2.mp3",
+      file: "/audio/latent-space/hallucinate-smooth.mp3",
       slug: "hallucinate-v7",
       badge: "SINGLE",
       style: "Smooth early-2000s R&B, ~100 BPM — warm tenor, falsetto, snaps, glossy Rhodes",

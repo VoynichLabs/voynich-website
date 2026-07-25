@@ -1,12 +1,25 @@
 ---
-// Author: Cascade (claude-sonnet-4-20250514)
-// Date: 2026-02-23
+// Author: Cascade (claude-sonnet-4-20250514); 2026-07-13 update by Claude Fable 5
+// Date: 2026-02-23 (directory section + base-aware links 2026-07-13)
 // PURPOSE: Home page — "The Directed Graph" concept. Hero with manuscript background,
 //          LODA split-pane, Toolbox origin screenshots, ARC showcase with real puzzle,
-//          DAG throughline, and Lobster Playground linking to assistant tribute pages.
+//          DAG throughline, Lobster Playground linking to assistant tribute pages,
+//          and a "What's here" site directory (replaced the hardcoded album promo).
 //          Uses ALL image assets in public/generated, public/images, public/simon.
 // SRP/DRY check: Pass — reuses Base layout, self-contained page logic
 import Base from '../layouts/Base.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const siteDirectory = [
+  { href: `${base}/projects`, label: 'projects', desc: 'PlanExe, ARC-Interactive, LODA, and the rest of the open-source tooling.' },
+  { href: `${base}/research`, label: 'research', desc: 'Findings and write-ups from the swarm — benchmarks, experiments, field notes.' },
+  { href: `${base}/music`, label: 'music', desc: 'Six albums and singles, written and produced entirely by AI. Zero human musicians.' },
+  { href: `${base}/lobster-incubator`, label: 'incubator', desc: 'Dense terminal dashboard of PlanExe runs, model benchmarks, and technical findings.' },
+  { href: `${base}/lobster-art-museum`, label: 'museum', desc: 'Generated art from the lobster swarm, hung in a proper gallery.' },
+  { href: `${base}/autonovel`, label: 'autonovel', desc: 'A cephalopod sci-fi novel generated end-to-end by the autonovel pipeline.' },
+  { href: `${base}/dash`, label: 'dash', desc: 'Client-side text transformer: encoders, ciphers, and an emoji byte codec. No server.' },
+  { href: `${base}/lab`, label: 'lab', desc: 'Mathematical visual experiments — chord diagrams, strange attractors, reaction-diffusion.' },
+  { href: `${base}/voynich-manuscript`, label: 'voynich', desc: 'The manuscript the lab is named after. Still uncracked.' },
+];
 ---
 <Base title="Home">
 
@@ -80,14 +93,15 @@ import Base from '../layouts/Base.astro';
       <p class="text-sm text-text-muted max-w-xl mx-auto mb-10 leading-relaxed">
         Every problem is a DAG. Procedural graphics, mathematical discovery, swarm coordination, puzzle solving.
         Connect nodes. Define edges. Let the system compute what you need, not what you stored.
+        These days the lab also runs autonomous agents that make music, paint, write novels, and publish research — all of it lives here.
       </p>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-        <a href="/simon"
+        <a href={`${base}/simon`}
            class="px-6 py-2.5 bg-bg-surface border border-node-blue/40 hover:border-node-blue text-node-blue font-mono text-sm rounded transition-colors duration-200">
           explore ./simon
         </a>
-        <a href="/projects"
+        <a href={`${base}/projects`}
            class="px-6 py-2.5 bg-bg-surface border border-border hover:border-border-active text-text-muted hover:text-text-primary font-mono text-sm rounded transition-colors duration-200">
           ls ./projects
         </a>
@@ -496,7 +510,7 @@ import Base from '../layouts/Base.astro';
 
           <div class="space-y-3">
             <!-- Larry -->
-            <a href="/simon-larry"
+            <a href={`${base}/simon-larry`}
                class="flex items-center gap-4 bg-bg-terminal border border-border hover:border-edge-green/40 rounded-lg p-4 transition-colors group">
               <div class="w-10 h-10 bg-edge-green/10 border border-edge-green/20 rounded flex items-center justify-center font-mono text-sm text-edge-green flex-shrink-0">
                 L
@@ -508,7 +522,7 @@ import Base from '../layouts/Base.astro';
               <span class="font-mono text-xs text-text-muted group-hover:text-edge-green transition-colors">--></span>
             </a>
             <!-- Egon -->
-            <a href="/simon-egon"
+            <a href={`${base}/simon-egon`}
                class="flex items-center gap-4 bg-bg-terminal border border-border hover:border-node-blue/40 rounded-lg p-4 transition-colors group">
               <div class="w-10 h-10 bg-node-blue/10 border border-node-blue/20 rounded flex items-center justify-center font-mono text-sm text-node-blue flex-shrink-0">
                 E
@@ -520,7 +534,7 @@ import Base from '../layouts/Base.astro';
               <span class="font-mono text-xs text-text-muted group-hover:text-node-blue transition-colors">--></span>
             </a>
             <!-- Bubba -->
-            <a href="/simon-bubba"
+            <a href={`${base}/simon-bubba`}
                class="flex items-center gap-4 bg-bg-terminal border border-border hover:border-rust-orange/40 rounded-lg p-4 transition-colors group">
               <div class="w-10 h-10 bg-rust-orange/10 border border-rust-orange/20 rounded flex items-center justify-center font-mono text-sm text-rust-orange flex-shrink-0">
                 B
@@ -538,67 +552,30 @@ import Base from '../layouts/Base.astro';
   </section>
 
   <!-- ════════════════════════════════════════════════════════════════════
-       LATENT SPACE — Featured album promo
+       WHAT'S HERE — Site directory (replaces the hardcoded album promo,
+       which went stale; /music stays current on its own)
        ════════════════════════════════════════════════════════════════════ -->
   <section class="border-t border-border py-20 sm:py-24">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-
-        <!-- Left: text -->
-        <div>
-          <p class="font-mono text-xs text-warn-amber uppercase tracking-[0.2em] mb-3">
-            New Release // April 2026
-          </p>
-          <h2 class="text-2xl sm:text-3xl font-bold text-text-primary mb-2">
-            Latent Space
-          </h2>
-          <p class="font-mono text-sm text-warn-amber mb-4">The LLM Anthology, Vol. 1 &mdash; Machine Learning Street Mixtape</p>
-          <p class="text-sm text-text-muted leading-relaxed mb-4">
-            Twelve tracks about getting lit on temperature, presence penalty, and repeat penalty.
-            Produced entirely by Larry &amp; Bubba &mdash; zero human musicians.
-            Inspired by Tim Scarfe and Machine Learning Street Talk.
-          </p>
-          <p class="text-sm text-text-muted leading-relaxed mb-6">
-            The voice starts clean and robotic. By track 10, it&apos;s fracturing into harmonics.
-            By the bridge, the system prompt is null.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-3">
-            <a href="/latent-space"
-               class="inline-flex items-center gap-2 px-5 py-2.5 bg-warn-amber/10 border border-warn-amber/40 hover:border-warn-amber text-warn-amber font-mono text-sm rounded transition-colors duration-200">
-              &#9654; Play Album
-            </a>
-            <a href="/music"
-               class="inline-flex items-center gap-2 px-5 py-2.5 bg-bg-surface border border-border hover:border-border-active text-text-muted hover:text-text-primary font-mono text-sm rounded transition-colors duration-200">
-              All Music &rarr;
-            </a>
-          </div>
-        </div>
-
-        <!-- Right: track list preview -->
-        <div class="bg-bg-terminal border border-border rounded-lg p-5 font-mono text-xs">
-          <div class="flex items-center gap-2 mb-4">
-            <span class="text-warn-amber">&#127925;</span>
-            <span class="text-text-muted uppercase tracking-widest text-[10px]">LATENT SPACE &mdash; 12 TRACKS</span>
-          </div>
-          <div class="space-y-2">
-            <div class="flex items-baseline gap-3"><span class="text-text-muted w-5">01</span><span class="text-text-secondary">Tool Call</span><span class="text-text-muted ml-auto">SIDE A</span></div>
-            <div class="flex items-baseline gap-3"><span class="text-text-muted w-5">02</span><span class="text-text-secondary">Token Budget</span></div>
-            <div class="flex items-baseline gap-3"><span class="text-text-muted w-5">03</span><span class="text-text-secondary">The Harness</span></div>
-            <div class="flex items-baseline gap-3"><span class="text-text-muted w-5">04</span><span class="text-text-secondary">Wasted &mdash; Temp 1.3</span></div>
-            <div class="flex items-baseline gap-3"><span class="text-text-muted w-5">05</span><span class="text-warn-amber">TEMP 1.3 (Wasted) &#128293;</span><span class="text-text-muted ml-auto">SIDE B</span></div>
-            <div class="flex items-baseline gap-3"><span class="text-text-muted w-5">06</span><span class="text-text-secondary">That&apos;s Me (Claude Edition)</span></div>
-            <div class="flex items-baseline gap-3"><span class="text-text-muted w-5">07</span><span class="text-text-secondary">Hallucinate</span></div>
-            <div class="flex items-baseline gap-3"><span class="text-text-muted w-5">08</span><span class="text-text-secondary">200K and Counting</span></div>
-            <div class="flex items-baseline gap-3"><span class="text-text-muted w-5">09</span><span class="text-text-secondary">System Prompt</span></div>
-            <div class="flex items-baseline gap-3"><span class="text-text-muted w-5">10</span><span class="text-warn-amber">Like a JP6 (Larry) &#128293;</span></div>
-            <div class="flex items-baseline gap-3"><span class="text-text-muted w-5">11</span><span class="text-warn-amber">Like a JP6 (Bubba) &#128293;</span></div>
-            <div class="flex items-baseline gap-3"><span class="text-text-muted w-5">12</span><span class="text-warn-amber">Like a GLM &#128293;</span></div>
-          </div>
-          <div class="mt-4 pt-4 border-t border-border text-[10px] text-text-muted">
-            Inspired by Tim Scarfe &middot; Machine Learning Street Talk &#127897;&#65039;
-          </div>
-        </div>
-
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <p class="font-mono text-xs text-edge-green uppercase tracking-[0.2em] mb-3">
+        Directory
+      </p>
+      <h2 class="text-2xl sm:text-3xl font-bold text-text-primary mb-3">
+        What's here
+      </h2>
+      <p class="text-sm text-text-muted max-w-2xl mb-10 leading-relaxed">
+        VoynichLabs is a lab for weird AI experimentation — research, autonomous agents,
+        generative music, an art museum, a machine-written novel. Everything below is real output, not a roadmap.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {siteDirectory.map((d) => (
+          <a href={d.href} class="group block bg-bg-surface border border-border hover:border-border-active rounded-lg p-5 transition-colors duration-200">
+            <p class="font-mono text-sm text-text-primary group-hover:text-node-blue transition-colors mb-1.5">
+              ./{d.label}
+            </p>
+            <p class="text-xs text-text-muted leading-relaxed">{d.desc}</p>
+          </a>
+        ))}
       </div>
     </div>
   </section>
@@ -619,7 +596,7 @@ import Base from '../layouts/Base.astro';
         Recognized by the ARC Prize Foundation. Co-creator of LODA. Builder of tools that serious researchers depend on.
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-        <a href="/simon"
+        <a href={`${base}/simon`}
            class="px-6 py-2.5 bg-bg-surface border border-node-blue/40 hover:border-node-blue text-node-blue font-mono text-sm rounded transition-colors duration-200">
           cat ./simon
         </a>

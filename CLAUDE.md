@@ -58,5 +58,4 @@ Always link to staging when working on the staging branch. Do NOT give out the v
 - Do not celebrate completion — nothing is done until the user tests it.
 - Keep responses tight; skip chain-of-thought dumps.
 - End completed tasks with "done" (or "next" if awaiting further instructions).
-- Windows 11 environment; use Unix shell syntax in bash commands.
-- Do not use the "X" or checkmark glyphs (including emoji variants) — keep output UTF-8 safe.
+- macOS environment; use Unix shell syntax in bash commands.

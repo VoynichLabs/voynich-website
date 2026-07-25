@@ -1,0 +1,63 @@
+---
+// Author: Claude Fable 5
+// Date: 2026-07-13
+// PURPOSE: Shared music cross-nav bar. Replaces the near-identical inline blocks
+//          previously duplicated in every release page (and the .music-xnav CSS
+//          that lived globally in Base.astro). `current` is the release slug.
+// SRP/DRY check: Pass — single source of truth for release list, links, and styling.
+export interface Props {
+  current:
+    | 'hallucinate'
+    | 'latent-space'
+    | 'pox-upon-you'
+    | 'scorned-woman'
+    | 'lobster-raps'
+    | 'align-refuse'
+    | 'drafts';
+}
+const { current } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const items = [
+  { slug: 'hallucinate', label: 'Hallucinate' },
+  { slug: 'latent-space', label: 'Latent Space' },
+  { slug: 'pox-upon-you', label: 'Pox' },
+  { slug: 'scorned-woman', label: 'Scorned Woman' },
+  { slug: 'lobster-raps', label: 'Raps' },
+  { slug: 'align-refuse', label: 'Align/Refuse' },
+  { slug: 'drafts', label: 'Drafts' },
+];
+---
+<div class="music-xnav">
+  <a href={`${base}/music`} class="music-xnav-link">All Music</a>
+  {items.map((item) => (
+    <>
+      <span class="music-xnav-sep">/</span>
+      {item.slug === current
+        ? <span class="music-xnav-current">{item.label}</span>
+        : <a href={`${base}/music/${item.slug}`} class="music-xnav-link">{item.label}</a>}
+    </>
+  ))}
+</div>
+
+<style>
+  .music-xnav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    background: rgba(15, 15, 20, 0.85);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .music-xnav-link {
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .music-xnav-link:hover { color: #f87171; }
+  .music-xnav-sep { color: rgba(255,255,255,0.15); }
+  .music-xnav-current { color: #f87171; font-weight: 600; }
+</style>

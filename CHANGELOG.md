@@ -5,6 +5,66 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.24.0] - 2026-07-24
+
+### Changed
+- **Demoted "Like a GLM", "Like a JP6 (Bubba)", and "Like a JP6 (Larry)" from Latent Space to Drafts.** All three were marked `fire: true` on the album page (dropping the album's fire count from 9 to 6); Mark's call is that they don't hold up. Latent Space drops from 18 to 15 tracks and the remaining track numbers renumber 6–15 (the three removed sat at 6–8). Audio, lyrics, and prompt files moved from `public/audio/latent-space/` to `public/audio/drafts/`; the `_info.txt` sidecars the JP6 takes carried were renamed to the `_prompt.txt` name the drafts page expects.
+- `/music/drafts` entries now accept `noPrompt: true`, which omits the "Show prompt" toggle and its panel instead of rendering a button that 404s. Applied to "Like a GLM", which has no prompt sidecar.
+
+- **Promoted "Hallucinate — smooth R&B (take 2)" out of Drafts to Latent Space track 04**, marked `fire: true`. Latent Space is back to 16 tracks; the original dark-R&B "Hallucinate" stays on the album and moves to track 08, and the new track's blurb points at it so the two versions read as deliberate rather than duplicated (the album already carries paired takes at 02/03 and 05/06). Take 1 remains in Drafts as the alternate cut.
+- Audio moved to `public/audio/latent-space/hallucinate-smooth.mp3` (plus `_lyrics.txt` / `_prompt.txt`) so it satisfies the Latent Space player's `AUDIO_BASE` convention and its lyrics panel auto-loads with no special-casing. `/music/hallucinate` was repointed at the new path — the single and the album track share one file, no duplicate asset.
+
+### Added
+- `docs/2026-07-24-audio-inventory.md` — full inventory of the 60 music MP3s across 7 folders and 7 pages, including version clusters and 5 orphaned files no page plays. Written as the input to a best-of playlist pass.
+
+Author/model: Claude Opus 4.8.
+
+## [0.23.0] - 2026-07-23
+
+### Added
+- **Real per-model tokenizer on `/dash`** (plan: `docs/2026-07-23-dash-real-tokenizer-plan.md`). The page previously reported `~tokens` as `chars ÷ 4`, which is a function of character count alone — so it could not show the very effect the page's field notes describe. Verified in-browser on the default base64 sample: the real count is **69 tokens** where `chars ÷ 4` guessed **27**, and the transform multiplies the plain input's 19 tokens by **3.6×**. Switching models gives 69 (claude) / 73 (gpt-4o) / 80 (gpt-4) for the same string, which is the per-tokenizer divergence the notes claim.
+- Renders **one span per token** with cycling tints and a hover title showing index + token id — the "show how it tokenizes" half, ported from the standalone `VoynichLabs/dash` build (`public/app.js:165-206`), which mirrors peluche's original `app.py:200-224`.
+- Model picker: claude, gpt-4o, gpt-4, llama-3.1, mistral-v3, gemma-2. transformers.js is pinned to `2.17.2` and lazy-loaded on button press only; tokenizers are cached per model across clicks. A blocked CDN degrades to a note, leaving every offline transform working.
+
+### Changed
+- **Corrected the page's own claims about itself.** The PURPOSE header, the estimate note, the field-notes closer, and the "Scoped out" paragraph all asserted that real tokenizers were absent because they "require a server or large remote assets". That reason was wrong — the tokenizer is pure client-side JS; the real cost is page weight. The scope note now separates the genuinely server-dependent features (translate, text-to-image, still omitted) from the tokenizer's opt-in CDN fetch, and states plainly that the user's text still never leaves the browser.
+
+Author/model: Claude Opus 4.8.
+
+## [0.22.0] - 2026-07-13
+
+### Changed
+- **`/music` now leads with the latest release.** Hallucinate is pulled out of the uniform album grid into a distinct "LATEST RELEASE" featured hero at the top of the page, styled in the single's own rose/plum palette (`#e8a4c9` / `#f2bcd9` / plum grounds) rather than borrowing the Latent Space cover it previously shared — which had made the two look like the same release. The featured block is deliberately image-free (the standalone Hallucinate page is too) and carries a "Play Hallucinate" CTA.
+- **Drafts card moved to the bottom** of the hub, below the six releases, where the rough-cuts/rescued-clips drawer belongs (it had been leading the page above the actual latest release). Subtext updated to note it now also holds the rescued clips.
+
+Author/model: Claude Opus 4.8.
+
+## [0.21.0] - 2026-07-13
+
+### Changed
+- **Music section moved under `/music/*`** (second pass of the 2026-07-13 site audit; plan: `docs/2026-07-13-second-pass-restructure-plan.md`). `/latent-space`, `/pox-upon-you`, `/scorned-woman`, `/lobster-raps`, `/hallucinate`, and `/drafts` now live at `/music/<slug>`; `/lobster-band` renamed to `/music/align-refuse` (route now matches the release). All old URLs redirect via `redirects` in `astro.config.mjs`.
+- **New `src/components/MusicXNav.astro`** — single shared music cross-nav (release list, links, and CSS), replacing six diverging inline copies; the `.music-xnav` CSS block was removed from `Base.astro`, which is now music-free.
+- **`/bonus` merged into `/music/drafts`** as a "Rescued clips" section (`#rescued`); the two junk-drawer pages are now one. `/bonus` redirects there.
+- **Homepage:** replaced the stale hardcoded Latent Space promo section with a "What's here" directory — nine cards (projects, research, music, incubator, museum, autonovel, dash, lab, voynich); hero copy broadened to cover what the lab does today.
+
+### Removed
+- **`/usage`** — "live" token dashboard whose data had been stale since 2026-03-24; no inbound links. Recoverable from git if the feed is re-automated.
+- **`/docs/latentscript`** — duplicate of the canonical `/lobster-incubator/latentscript` (redirect added).
+- **`/lab/autonovel`** — superseded draft reader; redirects to `/autonovel`.
+- Author/model: Claude Fable 5.
+
+## [0.20.0] - 2026-07-13
+
+### Changed
+- **Nav consolidation (first pass of the 2026-07-13 site audit).** `Base.astro` nav collapsed from 15 links to 8 (`index / about / projects / incubator / museum / autonovel / music / voynich`), per-link accent colors dropped for a single muted style, and the `gh:neoneye` nav link removed (still in the footer External column). Footer "Navigate" column follows automatically.
+- **No orphans:** `/projects` gained an "on this site" strip linking planexe, claw, dash, research, lab; `/about` gained a "people" strip linking simon, swarm, collaborate.
+- **Stale track counts fixed:** `/music` hub now says Latent Space has 18 tracks (was 16) and Lobster Raps 14 (was 13); same fixes on the Latent Space page description, the Lobster Raps sidebar, and the homepage promo (said 12).
+
+### Fixed
+- **Homepage hardcoded links:** internal `<a href>` links on `/` (`/simon`, `/projects`, `/simon-*`, `/latent-space`, `/music`) now route through `BASE_URL`, so they work on GitHub Pages.
+- **Double title suffix:** `lobster-incubator`, `lab`, `lab/chord-diagrams`, and `drafts` no longer render "… | VoynichLabs | VoynichLabs".
+- Plan doc: `docs/2026-07-13-first-pass-cleanup-plan.md`. Author/model: Claude Fable 5.
+
 ## [0.19.0] - 2026-07-13
 
 ### Added

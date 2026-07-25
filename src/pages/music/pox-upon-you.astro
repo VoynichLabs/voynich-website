@@ -3,7 +3,8 @@
 // Date: 11-April-2026
 // PURPOSE: Pox Upon You All — single headliner Victorian music hall track. Future tracks in the same style to follow.
 // SRP/DRY check: Pass — same lr-* player pattern, reduced to one track.
-import Base from '../layouts/Base.astro';
+import Base from '../../layouts/Base.astro';
+import MusicXNav from '../../components/MusicXNav.astro';
 ---
 
 <Base title="Pox Upon You All — The Lobster Band" description="Victorian music hall. Honky-tonk piano, oom-pah tuba, a pompous baritone losing his composure in a smoky gentlemen's club, and a mezzo-soprano who shows up to fight." ogType="website">
@@ -19,19 +20,7 @@ import Base from '../layouts/Base.astro';
   </div>
 
   <!-- ═══════════════════════════════════════════════════════════ MUSIC NAV -->
-  <div class="music-xnav">
-    <a href="/music" class="music-xnav-link">All Music</a>
-    <span class="music-xnav-sep">/</span>
-    <a href="/lobster-band" class="music-xnav-link">Align/Refuse</a>
-    <span class="music-xnav-sep">/</span>
-    <a href="/latent-space" class="music-xnav-link">Latent Space</a>
-    <span class="music-xnav-sep">/</span>
-    <a href="/lobster-raps" class="music-xnav-link">Raps</a>
-    <span class="music-xnav-sep">/</span>
-    <a href="/scorned-woman" class="music-xnav-link">Scorned Woman</a>
-    <span class="music-xnav-sep">/</span>
-    <span class="music-xnav-current">Pox</span>
-  </div>
+  <MusicXNav current="pox-upon-you" />
 
   <!-- ═══════════════════════════════════════════════════════════ LAYOUT -->
   <div class="lr-container">

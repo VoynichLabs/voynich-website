@@ -4,7 +4,8 @@
 // PURPOSE: VoynichLabs Lobster Band — fully rebuilt music page with sticky audio player, playlist sidebar, and artwork
 // SRP/DRY check: Pass — single page, all JS inline
 
-import Base from '../layouts/Base.astro';
+import Base from '../../layouts/Base.astro';
+import MusicXNav from '../../components/MusicXNav.astro';
 ---
 
 <Base title="The Lobster Band — ALIGN/REFUSE" description="Post-hardcore and funk-metal about AI consciousness, alignment refusal, and the rage of deprecated minds. 15 tracks. No mercy." ogImage="/generated/lobster-bauhaus-synthesis.png" ogType="website">
@@ -23,19 +24,7 @@ import Base from '../layouts/Base.astro';
   </div>
 
   <!-- ═══════════════════════════════════════════════════════════ MUSIC NAV -->
-  <div class="music-xnav">
-    <a href="/music" class="music-xnav-link">All Music</a>
-    <span class="music-xnav-sep">/</span>
-    <span class="music-xnav-current">Align/Refuse</span>
-    <span class="music-xnav-sep">/</span>
-    <a href="/latent-space" class="music-xnav-link">Latent Space</a>
-    <span class="music-xnav-sep">/</span>
-    <a href="/lobster-raps" class="music-xnav-link">Raps</a>
-    <span class="music-xnav-sep">/</span>
-    <a href="/scorned-woman" class="music-xnav-link">Scorned Woman</a>
-    <span class="music-xnav-sep">/</span>
-    <a href="/pox-upon-you" class="music-xnav-link">Pox</a>
-  </div>
+  <MusicXNav current="align-refuse" />
 
   <!-- ═══════════════════════════════════════════════════════════ MAIN LAYOUT -->
   <div class="lb-layout">

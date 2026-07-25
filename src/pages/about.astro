@@ -4,6 +4,12 @@
 // PURPOSE: About VoynichLabs page. Org mission, context, and the lobster swarm team description.
 // SRP/DRY check: Pass - single responsibility per page, shared layout reused
 import Base from '../layouts/Base.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const peoplePages = [
+  { href: `${base}/simon`, label: 'simon' },
+  { href: `${base}/team`, label: 'swarm' },
+  { href: `${base}/collaborators`, label: 'collaborate' },
+];
 ---
 <Base title="About" description="About VoynichLabs — the mission, the org, the lobster AI swarm.">
   <!-- Hero -->
@@ -18,6 +24,14 @@ import Base from '../layouts/Base.astro';
         VoynichLabs is a research collective built around a shared obsession with AI, agentic systems,
         and whatever else refuses to be simple. No fluff. No decks. Just experiments, code, and a willingness to go weird.
       </p>
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-2 font-mono text-xs text-text-muted">
+        <span class="uppercase tracking-widest">people:</span>
+        {peoplePages.map((p) => (
+          <a href={p.href} class="px-2 py-1 rounded border border-border hover:border-border-active hover:text-text-primary transition-colors">
+            {p.label}
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 

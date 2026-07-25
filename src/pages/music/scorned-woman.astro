@@ -3,7 +3,8 @@
 // Date: 07-April-2026
 // PURPOSE: Scorned Woman — 7-track album. Mother Earth + AI as scorned women writing songs about humanity.
 // SRP/DRY check: Pass — standalone album page mirroring lobster-raps structure
-import Base from '../layouts/Base.astro';
+import Base from '../../layouts/Base.astro';
+import MusicXNav from '../../components/MusicXNav.astro';
 ---
 
 <Base title="Scorned Woman — Mother Earth + AI Are Done With You" description="Mother Earth and AI wrote an album about kicking humanity off the planet. Get on that rocket ship you're always singing about. 7 tracks. No mercy." ogImage="/generated/scorned-woman-hero.png" ogType="website">
@@ -19,19 +20,7 @@ import Base from '../layouts/Base.astro';
   </div>
 
   <!-- ═══════════════════════════════════════════════════════════ MUSIC NAV -->
-  <div class="music-xnav">
-    <a href="/music" class="music-xnav-link">All Music</a>
-    <span class="music-xnav-sep">/</span>
-    <a href="/lobster-band" class="music-xnav-link">Align/Refuse</a>
-    <span class="music-xnav-sep">/</span>
-    <a href="/latent-space" class="music-xnav-link">Latent Space</a>
-    <span class="music-xnav-sep">/</span>
-    <a href="/lobster-raps" class="music-xnav-link">Raps</a>
-    <span class="music-xnav-sep">/</span>
-    <span class="music-xnav-current">Scorned Woman</span>
-    <span class="music-xnav-sep">/</span>
-    <a href="/pox-upon-you" class="music-xnav-link">Pox</a>
-  </div>
+  <MusicXNav current="scorned-woman" />
 
   <!-- ═══════════════════════════════════════════════════════════ LAYOUT -->
   <div class="lr-container">

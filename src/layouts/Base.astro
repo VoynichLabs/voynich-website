@@ -1,6 +1,6 @@
 ---
-// Author: Cascade (claude-sonnet-4-20250514)
-// Date: 2026-02-23
+// Author: Cascade (claude-sonnet-4-20250514); nav consolidation by Claude Fable 5
+// Date: 2026-02-23 (nav consolidated 2026-07-13)
 // PURPOSE: Shared HTML shell — terminal/DAG aesthetic. Nav uses monospace prompt-style links.
 //          Footer is structured columns. Subtle CSS grid background on body.
 //          All pages extend this layout via <Base title="...">
@@ -31,24 +31,18 @@ const {
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+// Consolidated 2026-07-13 (see docs/2026-07-13-first-pass-cleanup-plan.md).
+// De-navved pages remain reachable: planexe/claw/dash/research/lab via /projects,
+// simon/team/collaborators via /about.
 const navLinks = [
   { href: `${base}/`, label: 'index' },
   { href: `${base}/about`, label: 'about' },
   { href: `${base}/projects`, label: 'projects' },
-
-  { href: `${base}/planexe`, label: 'planexe', color: 'text-purple-400' },
-
-  { href: `${base}/simon`, label: 'simon' },
-  { href: `${base}/team`, label: 'swarm', color: 'text-rust-orange' },
-  { href: `${base}/lobster-incubator`, label: 'incubator', color: 'text-edge-green' },
-  { href: `${base}/lobster-art-museum`, label: 'museum', color: 'text-rust-orange' },
-  { href: `${base}/research`, label: 'research', color: 'text-amber-400' },
-  { href: `${base}/collaborators`, label: 'collaborate', color: 'text-node-blue' },
-  { href: `${base}/claw`, label: 'claw', color: 'text-rust-orange' },
-  { href: `${base}/autonovel`, label: 'autonovel', color: 'text-amber-400' },
-  { href: `${base}/music`, label: 'music', color: 'text-red-400' },
-  { href: `${base}/voynich-manuscript`, label: 'voynich', color: 'text-stone-400' },
-  { href: `${base}/dash`, label: 'dash', color: 'text-arc-cyan' },
+  { href: `${base}/lobster-incubator`, label: 'incubator' },
+  { href: `${base}/lobster-art-museum`, label: 'museum' },
+  { href: `${base}/autonovel`, label: 'autonovel' },
+  { href: `${base}/music`, label: 'music' },
+  { href: `${base}/voynich-manuscript`, label: 'voynich' },
 ];
 ---
 <!doctype html>
@@ -98,22 +92,13 @@ const navLinks = [
             <div class="flex items-center gap-1" key={link.href}>
               <a
                 href={link.href}
-                class={`px-1.5 py-1 rounded transition-colors duration-200 whitespace-nowrap ${link.color ?? 'text-text-muted'} hover:text-text-primary hover:bg-bg-surface`}
+                class="px-1.5 py-1 rounded transition-colors duration-200 whitespace-nowrap text-text-muted hover:text-text-primary hover:bg-bg-surface"
               >
                 {link.label}
               </a>
               {index < navLinks.length - 1 && <span class="text-border">/</span>}
             </div>
           ))}
-          <span class="text-border">|</span>
-          <a
-            href="https://github.com/neoneye"
-            target="_blank"
-            rel="noopener"
-            class="px-1.5 py-1 hover:text-text-primary hover:bg-bg-surface rounded transition-colors duration-200 whitespace-nowrap"
-          >
-            gh:neoneye
-          </a>
         </div>
       </nav>
     )}
@@ -175,27 +160,5 @@ const navLinks = [
         </div>
       </footer>
     )}
-  <style is:global>
-    /* Music cross-nav bar — shared across all music pages */
-    .music-xnav {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.625rem 1rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      background: rgba(15, 15, 20, 0.85);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .music-xnav-link {
-      color: rgba(255,255,255,0.45);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .music-xnav-link:hover { color: #f87171; }
-    .music-xnav-sep { color: rgba(255,255,255,0.15); }
-    .music-xnav-current { color: #f87171; font-weight: 600; }
-  </style>
   </body>
 </html>

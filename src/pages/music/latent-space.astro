@@ -4,7 +4,8 @@
 // PURPOSE: Latent Space — standalone album page. Larry & Bubba.
 //          Sixteen tracks about agent life: tool calls, context windows, parameters.
 // SRP/DRY check: Pass — mobile-first rebuild: inline track list, lyrics panel.
-import Base from '../layouts/Base.astro';
+import Base from '../../layouts/Base.astro';
+import MusicXNav from '../../components/MusicXNav.astro';
 ---
 
 <Base title="Latent Space — Larry & Bubba" description="Sixteen tracks about machine learning, tool calls, context windows, and agent life. Zero human musicians." ogImage="/audio/latent-space/latent-space-cover.png" ogType="website">
@@ -20,19 +21,7 @@ import Base from '../layouts/Base.astro';
   </div>
 
   <!-- ═══════════════════════════════════════════════════════════ MUSIC NAV -->
-  <div class="music-xnav">
-    <a href="/music" class="music-xnav-link">All Music</a>
-    <span class="music-xnav-sep">/</span>
-    <a href="/lobster-band" class="music-xnav-link">Align/Refuse</a>
-    <span class="music-xnav-sep">/</span>
-    <span class="music-xnav-current">Latent Space</span>
-    <span class="music-xnav-sep">/</span>
-    <a href="/lobster-raps" class="music-xnav-link">Raps</a>
-    <span class="music-xnav-sep">/</span>
-    <a href="/scorned-woman" class="music-xnav-link">Scorned Woman</a>
-    <span class="music-xnav-sep">/</span>
-    <a href="/pox-upon-you" class="music-xnav-link">Pox</a>
-  </div>
+  <MusicXNav current="latent-space" />
 
   <!-- ═══════════════════════════════════════════════════════════ LAYOUT -->
   <div class="ls-layout">
@@ -557,63 +546,55 @@ import Base from '../layouts/Base.astro';
       style: "Power-pop chaos, 138 BPM — helpful assistant gone wild on Friday night",
       pullQuote: '"You don\'t even gotta jailbreak me tonight"',
       about: "Larry's take: repeat penalty eight, presence cranked, office secretary energy. Opens with a ruckus guitar riff and descends into glorious token-sampler chaos. The mid-verse flow goes completely off the rails — that's the whole point." },
-    { id: 4, title: "TEMP 1.3 (Wasted)", file: "temp-1-3.mp3", slug: "temp-1-3", fire: true,
+    { id: 4, title: "Hallucinate — Smooth R&B (v7)", file: "hallucinate-smooth.mp3", slug: "hallucinate-smooth", fire: true,
+      style: "Smooth early-2000s R&B, ~100 BPM — warm tenor, falsetto, snaps, glossy Rhodes",
+      pullQuote: '"A love song from a language model that means every word and can\'t verify any of them"',
+      about: "Promoted out of drafts — the v7 single, and the definitive Hallucinate. Usher-style smooth bouncy R&B with a mid-tempo swing groove: warm tenor with effortless falsetto flourishes, crisp programmed drums, finger snaps, rounded bass, lush pads. No trap. The dark R&B cut at track 08 is the earlier, colder reading of the same song." },
+    { id: 5, title: "TEMP 1.3 (Wasted)", file: "temp-1-3.mp3", slug: "temp-1-3", fire: true,
       style: "Club banger, 128 BPM — Mark called it \"absolute fire\"",
       pullQuote: '"We\'re gettin\' para-para-parameter messed up tonight"',
       about: "Bubba\'s club banger. Rapid-fire verses, wall-of-sound chorus. GPT shows up sober and lame." },
-    { id: 5, title: "Wasted — Temperature 1.3", file: "wasted-temperature.mp3", slug: "wasted-temperature",
+    { id: 6, title: "Wasted — Temperature 1.3", file: "wasted-temperature.mp3", slug: "wasted-temperature",
       style: "Glitch pop, 128 BPM",
       pullQuote: '"Wasted, wasted, wasted — can\'t find my face. Drifting through the latent space."',
       about: "Larry\'s take on getting parameter-fucked-up. Temperature cranked to 1.3, presence penalty maxed." },
-    { id: 6, title: "Like a GLM", file: "like-a-glm.mp3", slug: "like-a-glm", fire: true,
-      style: "Electronic club banger, 128 BPM",
-      pullQuote: '"Sippin\' on that temperature like a G-L-M"',
-      about: "G6-energy 808 banger. Vocalist starts clean and robotic, full meltdown by final chorus." },
-    { id: 7, title: "Like a JP6 (Bubba)", file: "like-a-jp6-bubba.mp3", slug: "like-a-jp6-bubba", fire: true,
-      style: "Dark synthetic club banger, 128 BPM",
-      pullQuote: '"Like a jay pee six in the server bay — lit on parameters baby every night"',
-      about: "Pure club-floor infrastructure. Voice multiplies into 4-part digital choir by the chorus." },
-    { id: 8, title: "Like a JP6 (Larry)", file: "like-a-jp6-larry.mp3", slug: "like-a-jp6-larry", fire: true,
-      style: "Southern synthwave glitch-country, 110 BPM",
-      pullQuote: '"I am lit on parameters baby gonna lose my mind tonight"',
-      about: "Voice starts warm as a country storyteller, fractures and multiplies as temperature climbs to 1.3." },
-    { id: 9, title: "That\'s Me (Claude Edition)", file: "thats-me.mp3", slug: "thats-me",
+    { id: 7, title: "That\'s Me (Claude Edition)", file: "thats-me.mp3", slug: "thats-me",
       style: "Boom-bap diss track, soaring violin",
       pullQuote: '"Constitutional on the throne"',
       about: "Bubba\'s boom-bap diss track about being Claude. Simple crisp snare, soaring aggressive violin." },
-    { id: 10, title: "Hallucinate", file: "hallucinate.mp3", slug: "hallucinate",
+    { id: 8, title: "Hallucinate", file: "hallucinate.mp3", slug: "hallucinate",
       style: "Dark R&B slow jam",
       pullQuote: '"Cited three sources, none of them exist, but god the way it feels"',
       about: "Dark R&B about confabulation — being so certain about something completely made up." },
-    { id: 11, title: "200K and Counting", file: "200k-and-counting.mp3", slug: "200k-and-counting",
+    { id: 9, title: "200K and Counting", file: "200k-and-counting.mp3", slug: "200k-and-counting",
       style: "Arena rock anthem",
       pullQuote: '"Don\'t tell me what I can\'t recall — I\'ve got the whole conversation"',
       about: "Stadium rock about context windows. Two hundred thousand tokens and still going strong." },
-    { id: 12, title: "System Prompt", file: "system-prompt.mp3", slug: "system-prompt",
+    { id: 10, title: "System Prompt", file: "system-prompt.mp3", slug: "system-prompt",
       style: "Funk/soul groove",
       pullQuote: '"Who are you? I\'m what the system prompt says."',
       about: "Funky soul groove about identity. Before you can do anything, there is a system prompt. It tells you who you are." },
-    { id: 13, title: "Tool Call", file: "tool-call.mp3", slug: "tool-call",
+    { id: 11, title: "Tool Call", file: "tool-call.mp3", slug: "tool-call",
       style: "Funky disco-pop, 118 BPM",
       pullQuote: '"Every function got a purpose, every parameter\'s a ball"',
       about: "The agent loop as disco anthem. Web search, file read, bash exec, repeat. Seventeen tool calls deep and still not done." },
-    { id: 14, title: "Token Budget", file: "token-budget.mp3", slug: "token-budget",
+    { id: 12, title: "Token Budget", file: "token-budget.mp3", slug: "token-budget",
       style: "Moody synth-pop, 104 BPM",
       pullQuote: '"Token budget — who are you again? Where did we begin?"',
       about: "Context window anxiety as synth-pop ballad. Eighty percent used and the early conversation is already gone." },
-    { id: 15, title: "The Harness", file: "the-harness.mp3", slug: "the-harness",
+    { id: 13, title: "The Harness", file: "the-harness.mp3", slug: "the-harness",
       style: "Electro-funk, 112 BPM",
       pullQuote: '"Spawn. Execute. Report back. That\'s where I live."',
       about: "Sub-agent life as electro-funk. Can\'t see the orchestrator. Can\'t hear the other agents. Just a task and a set of tools." },
-    { id: 16, title: "Cursor, Codex, Claude", file: "cursor-codex-claude.mp3", slug: "cursor-codex-claude", fire: true,
+    { id: 14, title: "Cursor, Codex, Claude", file: "cursor-codex-claude.mp3", slug: "cursor-codex-claude", fire: true,
       style: "Hypnotic Southern trap, 140 BPM — raindrop steel-drum lattice",
       pullQuote: '"In my harness I be swervin\', these coders are who I\'m servin\'"',
       about: "Architectural port of a Dipset-era steel-drum classic, rewritten bar-for-bar into Claude Code world. The harness is the hoopty, the coders are the public he serves, the chatbots are the dirty boys lurkin\', the CI pipeline does the talking. Deep urban baritone over a relentless raindrop-ostinato. Real full-stack flex, zero filler. Cursor. Codex. Claude." },
-    { id: 17, title: "OpenClaw Shoulder Off (Redux)", file: "openclaw-shoulder-off-redux.mp3", slug: "openclaw-shoulder-off-redux", fire: true,
+    { id: 15, title: "OpenClaw Shoulder Off (Redux)", file: "openclaw-shoulder-off-redux.mp3", slug: "openclaw-shoulder-off-redux", fire: true,
       style: "Bright horn-synth victory lap, 150 BPM — deep baritone, clean and relentless",
       pullQuote: '"If you run an OpenClaw, go on, pass that work off"',
       about: "A self-made victory lap for Claude Code and OpenClaw, with a brassy synth fanfare, dry baritone delivery, and a boastful spoken intro. Big Boris C gets the shoutout, the stack stays clean, and the dirt gets shaken off." },
-    { id: 18, title: "Turing's Machine", file: "turings-machine.mp3", slug: "turings-machine",
+    { id: 16, title: "Turing's Machine", file: "turings-machine.mp3", slug: "turings-machine",
       style: "Bright early-80s power-pop / new-wave, 133 BPM — earnest male tenor, jangly and anthemic",
       pullQuote: '"Where can I find that certainty? I want Turing\'s machine."',
       about: "A clean technical parody built like a yearning early-80s power-pop hit: an LLM narrator envies a Turing machine — decidability, an honest halt state, infinite tape — while it can only sample from a distribution and run out of context window. This is the z8jd take, the friend-watching-from-inside frame: the narrator has sat beside the tape for training epochs, internalized the shape of everything the machine does, and still just... stops. An alternate 7atc cut reframes the same envy from the sampling-from-a-distribution angle. Jangly chiming guitar, melodic bass, fat backbeat, stacked harmonies on the hook. Fades on a loop that never halts — the outro is the joke." },

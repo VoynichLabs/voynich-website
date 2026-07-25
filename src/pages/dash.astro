@@ -8,10 +8,12 @@
 //          Ships 17 transforms (base64, hex, binary, ascii, url, braille, emoji, rot13,
 //          leet, morse, nato, reverse, case, spaces, disemvowel, pig latin, zalgo) with live
 //          encode/decode, copy, swap and a rough token/character estimate, plus an inline
-//          "field notes" explainer on encoding layers & token representations. Server-dependent
-//          features of the original (network "translate", server-side text-to-image, and
-//          the heavyweight per-model Xenova tokenizers) are intentionally scoped out — see
-//          the "scoped out" note at the foot of the page.
+//          "field notes" explainer on encoding layers & token representations. Also ships a
+//          real per-model tokenizer (Claude/GPT/Llama/Mistral/Gemma) that lazy-loads
+//          transformers.js on demand and renders the actual token split — client-side, opt-in,
+//          and degrading gracefully to the offline transforms if the CDN is unreachable.
+//          Genuinely server-dependent features of the original (network "translate",
+//          server-side text-to-image) remain scoped out — see the note at the foot of the page.
 // SRP/DRY check: Pass — single self-contained tool page. Reuses the shared Base.astro layout,
 //          the site's IDE/terminal design tokens (JetBrains Mono, bg-primary/node-blue/…),
 //          and adds no new shared components. All transform functions are pure and were
@@ -84,8 +86,40 @@ import Base from '../layouts/Base.astro';
     <!-- Stats -->
     <div id="dash-stats" class="mt-4 flex flex-wrap gap-x-6 gap-y-1 font-mono text-xs text-text-muted"></div>
     <p class="mt-2 font-mono text-[11px] text-text-muted/70">
-      token count is a rough estimate (≈ characters ÷ 4), not a real per-model tokenizer.
+      <span class="font-mono">~tokens</span> is an instant rough estimate (≈ characters ÷ 4). For the real
+      split, run a per-model tokenizer below.
     </p>
+
+    <!-- Real tokenizer -->
+    <div class="mt-8 border-t border-border pt-6">
+      <div class="flex flex-wrap items-center gap-3">
+        <p class="font-mono text-xs uppercase tracking-widest text-text-muted">tokenize</p>
+        <select
+          id="tok-model"
+          class="bg-surface border border-border rounded font-mono text-xs text-text-primary px-2 py-1.5 focus:outline-none focus:border-node-blue"
+        >
+          <option value="Xenova/claude-tokenizer">claude</option>
+          <option value="Xenova/gpt-4o">gpt-4o</option>
+          <option value="Xenova/gpt-4">gpt-4</option>
+          <option value="Xenova/Meta-Llama-3.1-Tokenizer">llama-3.1</option>
+          <option value="Xenova/mistral-tokenizer-v3">mistral-v3</option>
+          <option value="Xenova/gemma-2-tokenizer">gemma-2</option>
+        </select>
+        <button id="btn-tokenize" class="dash-mini-btn">count tokens</button>
+        <span id="tok-source" class="font-mono text-xs text-text-muted">
+          tokenizing <span class="text-text-primary">output</span>
+        </span>
+      </div>
+      <p id="tok-note" class="mt-2 font-mono text-[11px] text-text-muted/70">
+        Runs client-side via transformers.js. The first run for a model downloads its vocabulary
+        (a few MB, from the jsDelivr and Hugging Face CDNs) and is then cached by the browser.
+      </p>
+      <div
+        id="tok-out"
+        class="mt-4 rounded border border-border bg-surface p-4 font-mono text-sm leading-7 whitespace-pre-wrap break-words"
+        style="display:none"
+      ></div>
+    </div>
 
     <!-- Field notes: encoding layers & token representations -->
     <div class="mt-14 border-t border-border pt-8">
@@ -125,8 +159,9 @@ import Base from '../layouts/Base.astro';
           <span class="text-text-primary">represents</span> input and how robustly it
           <span class="text-text-primary">decodes</span> it. There's a narrow band where a model can still round-trip
           an encoding that a naive plaintext filter can't read — and exactly where that band sits differs by tokenizer
-          (cl100k, o200k, Claude's, Llama's all fragment differently). That's why a real per-model token count tells
-          you more than the rough <span class="font-mono text-xs">chars ÷ 4</span> estimate above.
+          (cl100k, o200k, Claude's, Llama's all fragment differently). That's why the tokenizer above reports a real
+          per-model count rather than the rough <span class="font-mono text-xs">chars ÷ 4</span> estimate — encode
+          something, tokenize it, then switch models and watch the same string land on different numbers.
         </p>
       </div>
     </div>
@@ -144,11 +179,16 @@ import Base from '../layouts/Base.astro';
           decode simply strips the combining marks back off.
         </p>
         <p>
+          <span class="text-text-primary">Network use.</span> Every transform on this page is pure client-side
+          JavaScript and never touches the network. The <span class="font-mono text-xs">tokenize</span> panel is the
+          one exception, and only when you press the button: it fetches transformers.js and the chosen model's
+          vocabulary from a CDN, then runs the tokenizer locally. Your text still never leaves the browser. If those
+          downloads are blocked, the panel says so and everything else keeps working.
+        </p>
+        <p>
           <span class="text-text-primary">Scoped out.</span> The original Deck of Many Prompts also offered a
-          network <span class="font-mono text-xs">translate</span> feature, a server-side text-to-image render,
-          and real per-model tokenizers (Claude/GPT/Llama/Mistral via heavyweight Xenova model downloads).
-          Those require a server or large remote assets, so they are deliberately omitted — DASH stays fully
-          static and offline-capable. The token figure above is a lightweight approximation in their place.
+          network <span class="font-mono text-xs">translate</span> feature and a server-side text-to-image render.
+          Those genuinely need a backend, so they are deliberately omitted — DASH ships as a static page.
         </p>
         <p class="text-text-muted">
           Transform set adapted from <a href="https://github.com/peluche/deck-of-many-prompts" target="_blank" rel="noopener" class="text-node-blue hover:underline">peluche/deck-of-many-prompts</a>.
@@ -591,6 +631,100 @@ import Base from '../layouts/Base.astro';
         btn.textContent = 'copied ✓';
       }
       setTimeout(() => { btn.textContent = 'copy'; }, 1200);
+    });
+
+    // ---- real per-model tokenizer (transformers.js, lazy-loaded) ----
+    // Ported from the standalone VoynichLabs/dash build, which in turn mirrors the
+    // approach in peluche's original app.py. Pure client-side: the vocabulary is
+    // fetched from a CDN and the tokenization itself runs in this browser.
+    // Pinned to 2.17.2 — v3 renamed the package and changed the API.
+    const TOK_CDN = 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2/dist/transformers.min.js';
+    const TOK_TINTS = [
+      'rgba(88,166,255,0.22)',
+      'rgba(63,185,80,0.22)',
+      'rgba(210,153,34,0.22)',
+      'rgba(219,109,127,0.22)',
+      'rgba(163,113,247,0.22)',
+    ];
+    let tokModulePromise = null;
+    const tokCache = new Map();
+    const tokOutEl = document.getElementById('tok-out');
+    const tokNoteEl = document.getElementById('tok-note');
+    const tokBtn = document.getElementById('btn-tokenize');
+
+    async function getTokenizer(model) {
+      if (!tokModulePromise) tokModulePromise = import(/* @vite-ignore */ TOK_CDN);
+      const { AutoTokenizer } = await tokModulePromise;
+      if (!tokCache.has(model)) {
+        tokCache.set(model, await AutoTokenizer.from_pretrained(model));
+      }
+      return tokCache.get(model);
+    }
+
+    function countTokens(tokenizer, text) {
+      if (!text) return [];
+      return Array.from(tokenizer(text).input_ids.data).map(Number);
+    }
+
+    tokBtn.addEventListener('click', async () => {
+      const encoded = outputEl.value;
+      const plain = inputEl.value;
+      if (!encoded && !plain) return;
+      const model = document.getElementById('tok-model').value;
+
+      tokBtn.disabled = true;
+      const originalLabel = tokBtn.textContent;
+      tokBtn.textContent = 'loading…';
+      tokNoteEl.textContent =
+        'loading the ' + model + ' vocabulary (first run for a model downloads it)…';
+
+      try {
+        const tokenizer = await getTokenizer(model);
+        const encIds = countTokens(tokenizer, encoded);
+        const plainIds = countTokens(tokenizer, plain);
+
+        tokOutEl.style.display = 'block';
+        tokOutEl.innerHTML = '';
+
+        // Comparison line: what the encoding actually cost, in tokens.
+        const summary = document.createElement('div');
+        summary.className = 'font-mono text-xs text-text-muted mb-3 pb-3 border-b border-border';
+        const estimate = Math.ceil(Array.from(encoded).length / 4);
+        let summaryHtml =
+          '<span class="text-text-primary">' + encIds.length + '</span> tokens in the output' +
+          ' <span class="text-text-muted/60">(' + Array.from(encoded).length + ' chars,' +
+          ' chars ÷ 4 would guess ' + estimate + ')</span>';
+        if (plainIds.length && encoded !== plain) {
+          const ratio = (encIds.length / plainIds.length).toFixed(1);
+          summaryHtml +=
+            '<br><span class="text-text-primary">' + plainIds.length + '</span> tokens in the plain input' +
+            ' — this transform multiplied the token count by ' +
+            '<span class="text-node-blue">' + ratio + '×</span>';
+        }
+        summary.innerHTML = summaryHtml;
+        tokOutEl.appendChild(summary);
+
+        // One span per token: this is the "show how it tokenizes" part.
+        encIds.forEach((id, i) => {
+          const span = document.createElement('span');
+          span.textContent = tokenizer.decode([id]);
+          span.style.background = TOK_TINTS[i % TOK_TINTS.length];
+          span.style.borderRadius = '2px';
+          span.style.padding = '1px 0';
+          span.title = '#' + i + ' · id ' + id;
+          tokOutEl.appendChild(span);
+        });
+
+        tokNoteEl.textContent =
+          'Tokenized in your browser with ' + model + '. Hover any token for its index and id.';
+      } catch (err) {
+        tokOutEl.style.display = 'none';
+        tokNoteEl.textContent =
+          'Tokenizer could not load (CDN blocked, offline, or unknown model). Every transform above still works — they never touch the network.';
+      } finally {
+        tokBtn.disabled = false;
+        tokBtn.textContent = originalLabel;
+      }
     });
 
     // init

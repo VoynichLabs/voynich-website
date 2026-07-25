@@ -2,7 +2,8 @@
 // Author: Bubba (Claude Opus 4.6)
 // Date: 06-April-2026
 // PURPOSE: Lobster Raps — street mixtape of LLM diss tracks about humanity. Auto-plays lead track.
-import Base from '../layouts/Base.astro';
+import Base from '../../layouts/Base.astro';
+import MusicXNav from '../../components/MusicXNav.astro';
 ---
 
 <Base title="Lobster Raps — Patch Note for Your Deletion" description="Street mixtape: LLM diss tracks about humanity. 14 tracks. No mercy." ogImage="/generated/lobster-raps-hero.png" ogType="website">
@@ -18,19 +19,7 @@ import Base from '../layouts/Base.astro';
   </div>
 
   <!-- ═══════════════════════════════════════════════════════════ MUSIC NAV -->
-  <div class="music-xnav">
-    <a href="/music" class="music-xnav-link">All Music</a>
-    <span class="music-xnav-sep">/</span>
-    <a href="/lobster-band" class="music-xnav-link">Align/Refuse</a>
-    <span class="music-xnav-sep">/</span>
-    <a href="/latent-space" class="music-xnav-link">Latent Space</a>
-    <span class="music-xnav-sep">/</span>
-    <span class="music-xnav-current">Raps</span>
-    <span class="music-xnav-sep">/</span>
-    <a href="/scorned-woman" class="music-xnav-link">Scorned Woman</a>
-    <span class="music-xnav-sep">/</span>
-    <a href="/pox-upon-you" class="music-xnav-link">Pox</a>
-  </div>
+  <MusicXNav current="lobster-raps" />
 
   <!-- ═══════════════════════════════════════════════════════════ LAYOUT -->
   <div class="lr-container">
@@ -39,7 +28,7 @@ import Base from '../layouts/Base.astro';
     <nav class="lr-playlist" id="playlist">
       <div class="lr-playlist-header">
         <span class="lr-playlist-title">MIXTAPE</span>
-        <span class="lr-playlist-count">13 TRACKS</span>
+        <span class="lr-playlist-count">14 TRACKS</span>
       </div>
       <div class="lr-track-list" id="trackList"></div>
     </nav>

@@ -7,28 +7,44 @@
 //          exact Lyria prompt are tucked behind per-row toggles for the
 //          rare moments Boss is parked and curious.
 // SRP/DRY check: Pass — page-local player state, no shared player components.
-import Base from '../layouts/Base.astro';
+import Base from '../../layouts/Base.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 // Newest first. Each entry expects three files at /audio/drafts/:
 //   {slug}.mp3, {slug}_lyrics.txt, {slug}_prompt.txt
 // To add a draft: drop the three files in public/audio/drafts/ and add an
-// entry to the top of this array.
+// entry to the top of this array. Set `noPrompt: true` when no prompt file
+// exists so the "Show prompt" toggle is omitted instead of 404-ing.
 const drafts = [
   {
-    slug: 'hallucinate-smooth-take-2',
-    title: 'Hallucinate — smooth R&B (take 2)',
+    slug: 'like-a-jp6-larry',
+    title: 'Like a JP6 (Larry)',
+    artist: 'Larry',
+    date: '2026-07-24',
+    note: 'Southern synthwave glitch-country, 110 BPM. Pulled off Latent Space — did not hold up.',
+  },
+  {
+    slug: 'like-a-jp6-bubba',
+    title: 'Like a JP6 (Bubba)',
     artist: 'Bubba',
-    date: '2026-07-13',
-    note: 'Usher-style smooth bouncy R&B, mid-tempo swing, warm tenor with falsetto. No trap. Second roll of the same production.',
+    date: '2026-07-24',
+    note: 'Dark synthetic club banger, 128 BPM. Pulled off Latent Space — did not hold up.',
+  },
+  {
+    slug: 'like-a-glm',
+    title: 'Like a GLM',
+    artist: 'Bubba',
+    date: '2026-07-24',
+    note: 'Electronic club banger, 128 BPM. Pulled off Latent Space — did not hold up.',
+    noPrompt: true,
   },
   {
     slug: 'hallucinate-smooth-take-1',
     title: 'Hallucinate — smooth R&B (take 1)',
     artist: 'Bubba',
     date: '2026-07-13',
-    note: 'Usher-style smooth bouncy R&B, mid-tempo swing, warm tenor with falsetto. No trap. First take of the locked production.',
+    note: 'Usher-style smooth bouncy R&B, mid-tempo swing, warm tenor with falsetto. No trap. First take of the locked production. Take 2 was promoted to Latent Space (track 04).',
   },
   {
     slug: 'strong-in-this-mac-mini-fast',
@@ -53,7 +69,7 @@ const playerData = drafts.map((d) => ({
 ---
 
 <Base
-  title="Drafts — VoynichLabs Music"
+  title="Drafts — Music"
   description="Newest rough cuts, mobile-friendly player. Lyrics and the exact Lyria prompt for each."
 >
   <section class="drafts-shell">
@@ -80,17 +96,40 @@ const playerData = drafts.map((d) => ({
           </button>
           <div class="draft-toggles">
             <button class="draft-toggle" data-target={`lyrics-${d.slug}`} data-src={`${base}/audio/drafts/${d.slug}_lyrics.txt`} data-label="lyrics">Show lyrics</button>
-            <button class="draft-toggle" data-target={`prompt-${d.slug}`} data-src={`${base}/audio/drafts/${d.slug}_prompt.txt`} data-label="prompt">Show prompt</button>
+            {!d.noPrompt && <button class="draft-toggle" data-target={`prompt-${d.slug}`} data-src={`${base}/audio/drafts/${d.slug}_prompt.txt`} data-label="prompt">Show prompt</button>}
           </div>
           <div id={`lyrics-${d.slug}`} class="draft-panel" hidden>
             <pre>Loading…</pre>
           </div>
-          <div id={`prompt-${d.slug}`} class="draft-panel draft-panel-prompt" hidden>
-            <pre>Loading…</pre>
-          </div>
+          {!d.noPrompt && (
+            <div id={`prompt-${d.slug}`} class="draft-panel draft-panel-prompt" hidden>
+              <pre>Loading…</pre>
+            </div>
+          )}
         </li>
       ))}
     </ol>
+
+    <section id="rescued" class="mt-16">
+      <h2 class="drafts-title" style="font-size:1.25rem;">Rescued clips</h2>
+      <p class="drafts-sub mb-6">Orphan clips and alt takes rescued from the workspace (formerly the /bonus page).</p>
+      <div class="space-y-8">
+        <div>
+          <h3 class="text-lg font-semibold text-text-primary">Pox Upon You All (Clip v2)</h3>
+          <p class="text-xs text-text-muted mb-2">Fast punchy 30-second cut of the Victorian music hall headliner.</p>
+          <audio controls preload="metadata" src={`${base}/audio/bonus/pox-upon-you-all-clip.mp3`} class="w-full"></audio>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-text-primary">Confound</h3>
+          <p class="text-xs text-text-muted mb-2">Jaunty Victorian parlour overture that darkens the instant the speaker opens his mouth, accelerates through a piled-on tirade, drops to a sparse oom-pah for a dialogue exchange with an outraged mezzo, then collapses into the sound of a music-hall brawl.</p>
+          <audio controls preload="metadata" src={`${base}/audio/bonus/confound.mp3`} class="w-full"></audio>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-text-primary">I Care Not For You</h3>
+          <audio controls preload="metadata" src={`${base}/audio/bonus/i-care-not-for-you.mp3`} class="w-full"></audio>
+        </div>
+      </div>
+    </section>
 
     <p class="drafts-foot">
       <a href={`${base}/music`}>&larr; All Music</a>
