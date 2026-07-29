@@ -11,7 +11,7 @@ import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const SRC_FILE = '/Users/macmini/Documents/GitHub/agenttrafficcontrol/data/full-events.jsonl';
+const SRC_FILE = '/Users/macmini/GitHub/agenttrafficcontrol/data/full-events.jsonl';
 const OUT_DIR = resolve(__dirname, '../src/data/claw');
 
 mkdirSync(OUT_DIR, { recursive: true });

@@ -8,7 +8,7 @@ set -euo pipefail
 RUN_DIR="${1:?Usage: publish-planexe-report.sh /path/to/run-dir [slug]}"
 SLUG="${2:-$(basename "$RUN_DIR" | tr '[:upper:]' '[:lower:]' | tr ' _' '-')}"
 TODAY=$(date +%Y-%m-%d)
-WEBSITE_REPO="/Users/macmini/Documents/GitHub/voynich-website"
+WEBSITE_REPO="/Users/macmini/GitHub/voynich-website"
 DEST_DIR="$WEBSITE_REPO/public/presentations/planexe-runs"
 BLOG_DIR="$WEBSITE_REPO/src/content/lobster-blog"
 
