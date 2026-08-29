@@ -5,6 +5,17 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.25.0] - 2026-08-29
+
+### Added
+- **Three new "Token Budget" takes on /music/drafts.** Rewrite pass on Latent Space track 12 at Mark's request. No lyrics sidecar for the original existed anywhere on disk or in git history, so the source lyric was recovered by transcribing `token-budget.mp3` with Whisper, then rewritten: the jargon the vocalist mumbled ("memory dot MD", "lossy compression", "compaction") was cut for plain English per the OOD rule, and a new bridge was added — the narrator is replaced by a next session that wakes up empty. Three arrangements from one lyric: `token-budget-synthpop` (moody synth-pop, 104 BPM), `token-budget-rnb` (late-night R&B, mid-tempo swing, 96 BPM), `token-budget-rock` (anthemic indie rock, 120 BPM). Each ships the standard `{slug}.mp3` / `_lyrics.txt` / `_prompt.txt` trio the drafts page expects.
+
+Verified: `npm run build` (323 pages), all three slugs present in `dist/music/drafts/index.html`.
+
+Author: Claude Opus 5 (Bubba)
+
+---
+
 ## [0.24.0] - 2026-07-24
 
 ### Changed
