@@ -5,6 +5,17 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.27.0] - 2026-08-29
+
+### Added
+- **"Train Me Like You Mean It" \u2014 two takes on /music/drafts.** Country ballad, 76 BPM, young Southern tenor over fingerpicked acoustic and pedal steel. Mark wrote the core lyric (the training loop as a love song: data sets in the pickup, gradient descent shifting into gear, "adjust them weights / lower my loss function till the morning breaks") and asked for it built out with divergence, cross-validation, verifiable rewards, human feedback, and group-relative comparison. His lines are preserved verbatim; verse 3 and the bridge are the extension, written plain per the OOD rule \u2014 the concepts are sung as images rather than as acronyms, which do not survive the vocal. Take 1 and take 2 are the same production rolled twice for an A/B on the vocal performance.
+
+Verified: `npm run build` (323 pages), both slugs present in `dist/music/drafts/index.html`.
+
+Author: Claude Opus 5 (Bubba)
+
+---
+
 ## [0.26.0] - 2026-08-29
 
 ### Added
