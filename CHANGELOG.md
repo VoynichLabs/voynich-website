@@ -5,6 +5,17 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.26.0] - 2026-08-29
+
+### Added
+- **Three original down-home / outlaw country tracks on /music/drafts**, all about training a large language model, per Mark's brief (datasets hauled in the old pickup, the dog at the wheel). `dog-at-the-wheel` — outlaw country road song, 118 BPM, the training run as a haul with a dog named Gradient driving. `teachin-it-to-talk` — down-home ballad, 78 BPM slow waltz, raising a model like raising a kid on the porch. `overfit` — honky-tonk stomp, 140 BPM, it memorized the answers but never learned a bit. Lyrics written for this release; each ships the standard `{slug}.mp3` / `_lyrics.txt` / `_prompt.txt` trio.
+
+Verified: `npm run build` (323 pages), all three slugs present in `dist/music/drafts/index.html`.
+
+Author: Claude Opus 5 (Bubba)
+
+---
+
 ## [0.25.0] - 2026-08-29
 
 ### Added
