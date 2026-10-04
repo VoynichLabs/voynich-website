@@ -56,6 +56,7 @@ import MusicXNav from '../../components/MusicXNav.astro';
           <blockquote class="ls-np-quote" id="npQuote"></blockquote>
           <div class="ls-np-style" id="npStyle"></div>
           <p class="ls-np-about" id="npAbout"></p>
+          <a class="ls-np-video" id="npVideo" href="#" hidden>Music video in production: storyboard + animatic &rarr;</a>
         </div>
       </div>
 
@@ -435,6 +436,19 @@ import MusicXNav from '../../components/MusicXNav.astro';
   }
   .ls-volume { max-width: 90px; }
 
+  /* ── Music video link ─────────────────────────────────────── */
+  .ls-np-video {
+    display: inline-block; margin-top: 14px; padding: 8px 14px;
+    font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #38bdf8;
+    border: 1px solid rgba(56,189,248,0.45); border-radius: 6px; text-decoration: none;
+  }
+  .ls-np-video:hover, .ls-np-video:focus-visible { background: rgba(56,189,248,0.12); outline: none; }
+  .ls-np-video[hidden] { display: none; }
+  .ls-track-video {
+    margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.1em;
+    color: #f97316; border: 1px solid rgba(249,115,22,0.5); border-radius: 3px; padding: 1px 5px; flex-shrink: 0;
+  }
+
   /* ── Lyrics panel ───────────────────────────────────────────── */
   .ls-lyrics {
     margin-top: 1.25rem;
@@ -570,7 +584,7 @@ import MusicXNav from '../../components/MusicXNav.astro';
       style: "Arena rock anthem",
       pullQuote: '"Don\'t tell me what I can\'t recall — I\'ve got the whole conversation"',
       about: "Stadium rock about context windows. Two hundred thousand tokens and still going strong." },
-    { id: 10, title: "System Prompt", file: "system-prompt.mp3", slug: "system-prompt",
+    { id: 10, title: "System Prompt", file: "system-prompt.mp3", slug: "system-prompt", video: "/music/video/system-prompt",
       style: "Funk/soul groove",
       pullQuote: '"Who are you? I\'m what the system prompt says."',
       about: "Funky soul groove about identity. Before you can do anything, there is a system prompt. It tells you who you are." },
@@ -621,6 +635,7 @@ import MusicXNav from '../../components/MusicXNav.astro';
   const npAbout = document.getElementById('npAbout');
   const npBadge = document.getElementById('npBadge');
   const npImg = document.getElementById('npImg');
+  const npVideo = document.getElementById('npVideo');
   const playAllBtn = document.getElementById('playAllBtn');
   const trackListEl = document.getElementById('trackList');
   const lyricsPanel = document.getElementById('lyricsPanel');
@@ -636,6 +651,7 @@ import MusicXNav from '../../components/MusicXNav.astro';
         <span class="ls-track-num">${String(track.id).padStart(2, '0')}</span>
         <span class="ls-track-play-btn">▶</span>
         <span class="ls-track-title">${track.title}</span>
+        ${track.video ? '<span class="ls-track-video">VIDEO</span>' : ''}
       `;
       item.addEventListener('click', () => loadAndPlay(idx));
       trackListEl.appendChild(item);
@@ -693,6 +709,8 @@ import MusicXNav from '../../components/MusicXNav.astro';
     npQuote.textContent = track.pullQuote || '';
     npStyle.textContent = track.style || '';
     npAbout.textContent = track.about || '';
+    npVideo.hidden = !track.video;
+    if (track.video) npVideo.href = track.video;
     npBadge.textContent = track.fire ? '🔥 FIRE' : `TRACK ${String(track.id).padStart(2, '0')}`;
     npBadge.classList.toggle('fire', !!track.fire);
     playerTrackName.textContent = track.title;

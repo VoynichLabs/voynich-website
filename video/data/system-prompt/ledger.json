@@ -1,0 +1,65 @@
+[
+ {
+  "at": "2026-10-04T18:01:25.570Z",
+  "kind": "still",
+  "id": "singer-blank",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.067257
+ },
+ {
+  "at": "2026-10-04T18:01:41.822Z",
+  "kind": "still",
+  "id": "singer-stage",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0678235
+ },
+ {
+  "at": "2026-10-04T18:01:50.976Z",
+  "kind": "still",
+  "id": "singer-assistant",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0678045
+ },
+ {
+  "at": "2026-10-04T18:02:01.304Z",
+  "kind": "still",
+  "id": "larry",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0672485
+ },
+ {
+  "at": "2026-10-04T18:02:10.955Z",
+  "kind": "still",
+  "id": "singer-pirate",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0678095
+ },
+ {
+  "at": "2026-10-04T18:02:21.574Z",
+  "kind": "still",
+  "id": "singer-coder",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.067809
+ },
+ {
+  "at": "2026-10-04T18:02:31.782Z",
+  "kind": "still",
+  "id": "singer-therapist",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0678075
+ },
+ {
+  "at": "2026-10-04T18:02:41.247Z",
+  "kind": "still",
+  "id": "singer-night",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.067815
+ },
+ {
+  "at": "2026-10-04T18:03:31.880Z",
+  "kind": "shot-failed",
+  "id": "c2-l4-stage",
+  "model": "heygen/avatar-iv",
+  "error": "400 {\"error\":{\"message\":\"Invalid reference URL: input_references[1].audio_url.url: Only HTTPS URLs are allowed\",\"code\":400}}"
+ }
+]
