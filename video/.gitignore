@@ -1,0 +1,8 @@
+# Large / regenerable — never committed
+node_modules/
+.venv/
+out/
+clips/
+stems/
+public/audio/
+.env

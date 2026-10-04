@@ -22,6 +22,7 @@ Astro 5 + Tailwind 3 static site. No framework components — all pages are `.as
 - `src/layouts/Base.astro` — the only shared layout; all pages extend it via `<Base title="...">`
 - `public/` — static assets (generated art, favicon, screenshots)
 - `docs/` and `src/docs/` — planning notes and narrative reference material
+- `video/` — separate Remotion workspace for music videos (own package.json; see `video/README.md`). Not part of the Astro build. Scene data in `video/data/{slug}/scenes.json` also feeds `/music/video/{slug}` pages.
 
 **Routing note:** `astro.config.mjs` dynamically sets `base` to `/` for dev and Railway, and `/voynich-website` for GitHub Pages. Use relative links or Astro's `base` handling — do not hardcode paths.
 

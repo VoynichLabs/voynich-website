@@ -5,6 +5,22 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.28.0] - 2026-10-04
+
+### Added
+- **Music video pipeline (`video/`).** A separate Remotion workspace for turning tracks into music videos. Code owns the timeline (audio, beat grid, karaoke lyrics, Terminal motion graphics) and AI video models will supply the Stage shots. `scripts/analyze.py` aligns the vocal word by word against the lyrics file (faster-whisper, 89% direct match on System Prompt) and builds a 99.4 BPM beat grid (librosa). Plan: `docs/2026-10-04-music-video-pipeline-plan.md`.
+- **"System Prompt" storyboard page at `/music/video/system-prompt`.** Concept, visual rules, cast, a timeline strip synced to the real track (click a scene to hear it), 14 timecoded scene cards, open decisions, and the first animatic. Scene data comes from `video/data/system-prompt/scenes.json`, the same file the Remotion composition renders from.
+- **Animatic v0** (`public/video/system-prompt/animatic-v0.mp4`, 720p, 9.9 MB). Full-length code render. Terminal scenes are close to final; AI shots appear as labelled scene-card frames until the Singer is cast and clips are generated.
+
+### Changed
+- Root `tsconfig.json` excludes `video/` so `astro check` does not type-check the Remotion workspace.
+
+Verified: `npm run build`, page loads at `/music/video/system-prompt` with 14 scene cards, animatic and audio both serve 200, no console errors, no horizontal overflow.
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.27.0] - 2026-08-29
 
 ### Added

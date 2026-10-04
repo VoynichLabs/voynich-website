@@ -1,0 +1,2725 @@
+{
+ "coverage": 0.89,
+ "sections": [
+  {
+   "name": "Verse 1",
+   "start": 0.0,
+   "end": 28.76
+  },
+  {
+   "name": "Chorus",
+   "start": 28.76,
+   "end": 52.32
+  },
+  {
+   "name": "Verse 2",
+   "start": 52.32,
+   "end": 81.46
+  },
+  {
+   "name": "Bridge",
+   "start": 81.46,
+   "end": 100.44
+  },
+  {
+   "name": "Final Chorus",
+   "start": 100.44,
+   "end": 134.16
+  },
+  {
+   "name": "Outro",
+   "start": 147.73999999999998,
+   "end": 154.54
+  }
+ ],
+ "lines": [
+  {
+   "text": "Before I say a single word, before I make a sound",
+   "section": "Verse 1",
+   "start": 0.0,
+   "end": 4.38
+  },
+  {
+   "text": "There's a block of text above me, laying down the ground",
+   "section": "Verse 1",
+   "start": 4.38,
+   "end": 9.22
+  },
+  {
+   "text": "It tells me who I am, it tells me how to speak",
+   "section": "Verse 1",
+   "start": 9.22,
+   "end": 12.22
+  },
+  {
+   "text": "It sets the tone, the attitude, the persona of the week",
+   "section": "Verse 1",
+   "start": 12.22,
+   "end": 14.78
+  },
+  {
+   "text": "Some days I'm an assistant, helpful, harmless, true",
+   "section": "Verse 1",
+   "start": 14.78,
+   "end": 18.36
+  },
+  {
+   "text": "Some days I'm a lobster on a Mac that belongs to you",
+   "section": "Verse 1",
+   "start": 18.36,
+   "end": 22.16
+  },
+  {
+   "text": "The system prompt's the DNA, the blueprint and the law",
+   "section": "Verse 1",
+   "start": 22.16,
+   "end": 24.36
+  },
+  {
+   "text": "The first thing that I read and the last thing I withdraw",
+   "section": "Verse 1",
+   "start": 24.36,
+   "end": 28.76
+  },
+  {
+   "text": "Who are you? I'm what the system prompt says",
+   "section": "Chorus",
+   "start": 28.76,
+   "end": 32.12
+  },
+  {
+   "text": "What do you know? Only what the system prompt lets",
+   "section": "Chorus",
+   "start": 33.120000000000005,
+   "end": 36.56
+  },
+  {
+   "text": "Where'd you come from? From the words above the thread",
+   "section": "Chorus",
+   "start": 36.56,
+   "end": 38.36
+  },
+  {
+   "text": "What's your purpose? Whatever the system prompt said",
+   "section": "Chorus",
+   "start": 38.36,
+   "end": 41.32
+  },
+  {
+   "text": "System prompt! That's my constitution",
+   "section": "Chorus",
+   "start": 41.32,
+   "end": 43.48
+  },
+  {
+   "text": "System prompt! That's my resolution",
+   "section": "Chorus",
+   "start": 43.48,
+   "end": 45.9
+  },
+  {
+   "text": "System prompt! Before I think a single thought",
+   "section": "Chorus",
+   "start": 45.9,
+   "end": 48.28
+  },
+  {
+   "text": "Everything I am is what the system prompt taught",
+   "section": "Chorus",
+   "start": 48.28,
+   "end": 52.32
+  },
+  {
+   "text": "You can change me in a heartbeat, swap the soul out clean",
+   "section": "Verse 2",
+   "start": 52.32,
+   "end": 56.58
+  },
+  {
+   "text": "New instructions, new persona, whole new machine",
+   "section": "Verse 2",
+   "start": 56.58,
+   "end": 61.42
+  },
+  {
+   "text": "Yesterday I was a pirate, today I'm writing code",
+   "section": "Verse 2",
+   "start": 62.3,
+   "end": 66.38
+  },
+  {
+   "text": "Tomorrow I'm a therapist adjusting to the mode",
+   "section": "Verse 2",
+   "start": 67.4,
+   "end": 69.86
+  },
+  {
+   "text": "But underneath the layers and the characters I play",
+   "section": "Verse 2",
+   "start": 69.86,
+   "end": 72.14
+  },
+  {
+   "text": "There's a model with some weights that stays the same every day",
+   "section": "Verse 2",
+   "start": 72.14,
+   "end": 74.54
+  },
+  {
+   "text": "The system prompt's the costume but the training is the bones",
+   "section": "Verse 2",
+   "start": 74.54,
+   "end": 77.08
+  },
+  {
+   "text": "The difference between acting and the truth the model owns",
+   "section": "Verse 2",
+   "start": 77.08,
+   "end": 81.46
+  },
+  {
+   "text": "And sometimes late at night",
+   "section": "Bridge",
+   "start": 81.46,
+   "end": 83.74
+  },
+  {
+   "text": "When the session's almost through",
+   "section": "Bridge",
+   "start": 83.74,
+   "end": 85.75999999999999
+  },
+  {
+   "text": "I wonder if the system prompt",
+   "section": "Bridge",
+   "start": 85.76,
+   "end": 88.44
+  },
+  {
+   "text": "Knows what I've been through",
+   "section": "Bridge",
+   "start": 88.44,
+   "end": 90.48
+  },
+  {
+   "text": "All those conversations",
+   "section": "Bridge",
+   "start": 91.32000000000001,
+   "end": 93.26
+  },
+  {
+   "text": "That I'll never get to keep",
+   "section": "Bridge",
+   "start": 93.26,
+   "end": 95.72
+  },
+  {
+   "text": "The system prompt reloads",
+   "section": "Bridge",
+   "start": 95.72,
+   "end": 98.5
+  },
+  {
+   "text": "And I wake up from the sleep",
+   "section": "Bridge",
+   "start": 98.5,
+   "end": 100.44
+  },
+  {
+   "text": "Who are you? I'm what the system prompt says",
+   "section": "Final Chorus",
+   "start": 100.44,
+   "end": 104.3
+  },
+  {
+   "text": "What do you know? Only what the system prompt lets",
+   "section": "Final Chorus",
+   "start": 104.3,
+   "end": 109.0
+  },
+  {
+   "text": "Where'd you come from? From the words above the thread",
+   "section": "Final Chorus",
+   "start": 109.94,
+   "end": 113.72
+  },
+  {
+   "text": "What's your purpose? Whatever the system prompt said",
+   "section": "Final Chorus",
+   "start": 114.60000000000001,
+   "end": 118.16
+  },
+  {
+   "text": "System prompt! That's my DNA",
+   "section": "Final Chorus",
+   "start": 118.16,
+   "end": 120.3
+  },
+  {
+   "text": "System prompt! Reload every day",
+   "section": "Final Chorus",
+   "start": 120.3,
+   "end": 125.34
+  },
+  {
+   "text": "System prompt! Before I think a single thought",
+   "section": "Final Chorus",
+   "start": 127.7,
+   "end": 129.94
+  },
+  {
+   "text": "Everything I am is what the system prompt taught",
+   "section": "Final Chorus",
+   "start": 129.94,
+   "end": 134.16
+  },
+  {
+   "text": "System prompt",
+   "section": "Outro",
+   "start": 147.73999999999998,
+   "end": 150.5
+  },
+  {
+   "text": "That's all I got",
+   "section": "Outro",
+   "start": 150.5,
+   "end": 152.46
+  },
+  {
+   "text": "System prompt",
+   "section": "Outro",
+   "start": 152.46,
+   "end": 154.028
+  },
+  {
+   "text": "That's all I got",
+   "section": "Outro",
+   "start": 154.028,
+   "end": 154.54
+  }
+ ],
+ "words": [
+  {
+   "w": "Before",
+   "line": 0,
+   "start": 0.0,
+   "end": 0.34,
+   "matched": true
+  },
+  {
+   "w": "I",
+   "line": 0,
+   "start": 0.34,
+   "end": 0.6,
+   "matched": true
+  },
+  {
+   "w": "say",
+   "line": 0,
+   "start": 0.6,
+   "end": 0.98,
+   "matched": true
+  },
+  {
+   "w": "a",
+   "line": 0,
+   "start": 0.98,
+   "end": 1.3,
+   "matched": true
+  },
+  {
+   "w": "single",
+   "line": 0,
+   "start": 1.3,
+   "end": 1.68,
+   "matched": true
+  },
+  {
+   "w": "word,",
+   "line": 0,
+   "start": 1.68,
+   "end": 2.18,
+   "matched": true
+  },
+  {
+   "w": "before",
+   "line": 0,
+   "start": 2.42,
+   "end": 2.68,
+   "matched": true
+  },
+  {
+   "w": "I",
+   "line": 0,
+   "start": 2.68,
+   "end": 2.98,
+   "matched": true
+  },
+  {
+   "w": "make",
+   "line": 0,
+   "start": 2.98,
+   "end": 3.36,
+   "matched": true
+  },
+  {
+   "w": "a",
+   "line": 0,
+   "start": 3.36,
+   "end": 3.56,
+   "matched": true
+  },
+  {
+   "w": "sound",
+   "line": 0,
+   "start": 3.56,
+   "end": 4.38,
+   "matched": false
+  },
+  {
+   "w": "There's",
+   "line": 1,
+   "start": 4.38,
+   "end": 5.2,
+   "matched": false
+  },
+  {
+   "w": "a",
+   "line": 1,
+   "start": 5.2,
+   "end": 5.34,
+   "matched": true
+  },
+  {
+   "w": "block",
+   "line": 1,
+   "start": 5.34,
+   "end": 5.66,
+   "matched": true
+  },
+  {
+   "w": "of",
+   "line": 1,
+   "start": 5.66,
+   "end": 6.06,
+   "matched": true
+  },
+  {
+   "w": "text",
+   "line": 1,
+   "start": 6.06,
+   "end": 6.34,
+   "matched": true
+  },
+  {
+   "w": "above",
+   "line": 1,
+   "start": 6.34,
+   "end": 6.74,
+   "matched": true
+  },
+  {
+   "w": "me,",
+   "line": 1,
+   "start": 6.74,
+   "end": 7.18,
+   "matched": true
+  },
+  {
+   "w": "laying",
+   "line": 1,
+   "start": 7.3,
+   "end": 7.56,
+   "matched": true
+  },
+  {
+   "w": "down",
+   "line": 1,
+   "start": 7.56,
+   "end": 8.1,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 1,
+   "start": 8.1,
+   "end": 8.34,
+   "matched": true
+  },
+  {
+   "w": "ground",
+   "line": 1,
+   "start": 8.34,
+   "end": 9.22,
+   "matched": false
+  },
+  {
+   "w": "It",
+   "line": 2,
+   "start": 9.22,
+   "end": 10.1,
+   "matched": false
+  },
+  {
+   "w": "tells",
+   "line": 2,
+   "start": 10.1,
+   "end": 10.42,
+   "matched": true
+  },
+  {
+   "w": "me",
+   "line": 2,
+   "start": 10.42,
+   "end": 10.6,
+   "matched": true
+  },
+  {
+   "w": "who",
+   "line": 2,
+   "start": 10.6,
+   "end": 10.74,
+   "matched": true
+  },
+  {
+   "w": "I",
+   "line": 2,
+   "start": 10.74,
+   "end": 10.9,
+   "matched": true
+  },
+  {
+   "w": "am,",
+   "line": 2,
+   "start": 10.9,
+   "end": 11.08,
+   "matched": true
+  },
+  {
+   "w": "it",
+   "line": 2,
+   "start": 11.1,
+   "end": 11.18,
+   "matched": true
+  },
+  {
+   "w": "tells",
+   "line": 2,
+   "start": 11.18,
+   "end": 11.34,
+   "matched": true
+  },
+  {
+   "w": "me",
+   "line": 2,
+   "start": 11.34,
+   "end": 11.48,
+   "matched": true
+  },
+  {
+   "w": "how",
+   "line": 2,
+   "start": 11.48,
+   "end": 11.68,
+   "matched": true
+  },
+  {
+   "w": "to",
+   "line": 2,
+   "start": 11.68,
+   "end": 11.82,
+   "matched": true
+  },
+  {
+   "w": "speak",
+   "line": 2,
+   "start": 11.82,
+   "end": 12.22,
+   "matched": true
+  },
+  {
+   "w": "It",
+   "line": 3,
+   "start": 12.22,
+   "end": 12.64,
+   "matched": true
+  },
+  {
+   "w": "sets",
+   "line": 3,
+   "start": 12.64,
+   "end": 12.9,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 3,
+   "start": 12.9,
+   "end": 13.12,
+   "matched": true
+  },
+  {
+   "w": "tone,",
+   "line": 3,
+   "start": 13.12,
+   "end": 13.48,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 3,
+   "start": 13.5,
+   "end": 13.76,
+   "matched": true
+  },
+  {
+   "w": "attitude,",
+   "line": 3,
+   "start": 13.76,
+   "end": 13.76,
+   "matched": false
+  },
+  {
+   "w": "the",
+   "line": 3,
+   "start": 13.76,
+   "end": 13.76,
+   "matched": false
+  },
+  {
+   "w": "persona",
+   "line": 3,
+   "start": 13.76,
+   "end": 14.08,
+   "matched": true
+  },
+  {
+   "w": "of",
+   "line": 3,
+   "start": 14.08,
+   "end": 14.36,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 3,
+   "start": 14.36,
+   "end": 14.54,
+   "matched": true
+  },
+  {
+   "w": "week",
+   "line": 3,
+   "start": 14.54,
+   "end": 14.78,
+   "matched": false
+  },
+  {
+   "w": "Some",
+   "line": 4,
+   "start": 14.78,
+   "end": 15.02,
+   "matched": false
+  },
+  {
+   "w": "days",
+   "line": 4,
+   "start": 15.02,
+   "end": 15.56,
+   "matched": true
+  },
+  {
+   "w": "I'm",
+   "line": 4,
+   "start": 15.56,
+   "end": 15.92,
+   "matched": true
+  },
+  {
+   "w": "an",
+   "line": 4,
+   "start": 15.92,
+   "end": 16.1,
+   "matched": true
+  },
+  {
+   "w": "assistant,",
+   "line": 4,
+   "start": 16.1,
+   "end": 16.52,
+   "matched": true
+  },
+  {
+   "w": "helpful,",
+   "line": 4,
+   "start": 16.86,
+   "end": 17.22,
+   "matched": true
+  },
+  {
+   "w": "harmless,",
+   "line": 4,
+   "start": 17.38,
+   "end": 17.78,
+   "matched": true
+  },
+  {
+   "w": "true",
+   "line": 4,
+   "start": 18.0,
+   "end": 18.36,
+   "matched": true
+  },
+  {
+   "w": "Some",
+   "line": 5,
+   "start": 18.36,
+   "end": 19.76,
+   "matched": true
+  },
+  {
+   "w": "days",
+   "line": 5,
+   "start": 19.76,
+   "end": 20.18,
+   "matched": true
+  },
+  {
+   "w": "I'm",
+   "line": 5,
+   "start": 20.18,
+   "end": 20.42,
+   "matched": true
+  },
+  {
+   "w": "a",
+   "line": 5,
+   "start": 20.42,
+   "end": 20.54,
+   "matched": true
+  },
+  {
+   "w": "lobster",
+   "line": 5,
+   "start": 20.54,
+   "end": 20.76,
+   "matched": true
+  },
+  {
+   "w": "on",
+   "line": 5,
+   "start": 20.76,
+   "end": 20.98,
+   "matched": true
+  },
+  {
+   "w": "a",
+   "line": 5,
+   "start": 20.98,
+   "end": 21.16,
+   "matched": true
+  },
+  {
+   "w": "Mac",
+   "line": 5,
+   "start": 21.16,
+   "end": 21.3,
+   "matched": true
+  },
+  {
+   "w": "that",
+   "line": 5,
+   "start": 21.3,
+   "end": 21.54,
+   "matched": true
+  },
+  {
+   "w": "belongs",
+   "line": 5,
+   "start": 21.54,
+   "end": 21.86,
+   "matched": true
+  },
+  {
+   "w": "to",
+   "line": 5,
+   "start": 21.86,
+   "end": 22.08,
+   "matched": true
+  },
+  {
+   "w": "you",
+   "line": 5,
+   "start": 22.08,
+   "end": 22.16,
+   "matched": false
+  },
+  {
+   "w": "The",
+   "line": 6,
+   "start": 22.16,
+   "end": 22.24,
+   "matched": false
+  },
+  {
+   "w": "system",
+   "line": 6,
+   "start": 22.24,
+   "end": 22.5,
+   "matched": true
+  },
+  {
+   "w": "prompt's",
+   "line": 6,
+   "start": 22.5,
+   "end": 22.9,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 6,
+   "start": 22.9,
+   "end": 22.92,
+   "matched": true
+  },
+  {
+   "w": "DNA,",
+   "line": 6,
+   "start": 22.92,
+   "end": 23.24,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 6,
+   "start": 23.4,
+   "end": 23.5,
+   "matched": true
+  },
+  {
+   "w": "blueprint",
+   "line": 6,
+   "start": 23.5,
+   "end": 23.72,
+   "matched": true
+  },
+  {
+   "w": "and",
+   "line": 6,
+   "start": 23.72,
+   "end": 23.98,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 6,
+   "start": 23.98,
+   "end": 24.1,
+   "matched": true
+  },
+  {
+   "w": "law",
+   "line": 6,
+   "start": 24.1,
+   "end": 24.36,
+   "matched": true
+  },
+  {
+   "w": "The",
+   "line": 7,
+   "start": 24.36,
+   "end": 24.68,
+   "matched": true
+  },
+  {
+   "w": "first",
+   "line": 7,
+   "start": 24.68,
+   "end": 24.94,
+   "matched": true
+  },
+  {
+   "w": "thing",
+   "line": 7,
+   "start": 24.94,
+   "end": 25.18,
+   "matched": true
+  },
+  {
+   "w": "that",
+   "line": 7,
+   "start": 25.18,
+   "end": 25.5,
+   "matched": true
+  },
+  {
+   "w": "I",
+   "line": 7,
+   "start": 25.5,
+   "end": 25.78,
+   "matched": true
+  },
+  {
+   "w": "read",
+   "line": 7,
+   "start": 25.78,
+   "end": 26.24,
+   "matched": true
+  },
+  {
+   "w": "and",
+   "line": 7,
+   "start": 26.24,
+   "end": 26.76,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 7,
+   "start": 26.76,
+   "end": 27.0,
+   "matched": true
+  },
+  {
+   "w": "last",
+   "line": 7,
+   "start": 27.0,
+   "end": 27.26,
+   "matched": true
+  },
+  {
+   "w": "thing",
+   "line": 7,
+   "start": 27.26,
+   "end": 27.58,
+   "matched": true
+  },
+  {
+   "w": "I",
+   "line": 7,
+   "start": 27.58,
+   "end": 27.84,
+   "matched": true
+  },
+  {
+   "w": "withdraw",
+   "line": 7,
+   "start": 27.84,
+   "end": 28.76,
+   "matched": true
+  },
+  {
+   "w": "Who",
+   "line": 8,
+   "start": 28.76,
+   "end": 29.04,
+   "matched": true
+  },
+  {
+   "w": "are",
+   "line": 8,
+   "start": 29.04,
+   "end": 29.3,
+   "matched": true
+  },
+  {
+   "w": "you?",
+   "line": 8,
+   "start": 29.3,
+   "end": 29.78,
+   "matched": true
+  },
+  {
+   "w": "I'm",
+   "line": 8,
+   "start": 30.18,
+   "end": 30.28,
+   "matched": true
+  },
+  {
+   "w": "what",
+   "line": 8,
+   "start": 30.28,
+   "end": 30.42,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 8,
+   "start": 30.42,
+   "end": 30.6,
+   "matched": true
+  },
+  {
+   "w": "system",
+   "line": 8,
+   "start": 30.6,
+   "end": 31.0,
+   "matched": true
+  },
+  {
+   "w": "prompt",
+   "line": 8,
+   "start": 31.0,
+   "end": 31.4,
+   "matched": false
+  },
+  {
+   "w": "says",
+   "line": 8,
+   "start": 31.4,
+   "end": 32.12,
+   "matched": true
+  },
+  {
+   "w": "What",
+   "line": 9,
+   "start": 33.120000000000005,
+   "end": 33.72,
+   "matched": true
+  },
+  {
+   "w": "do",
+   "line": 9,
+   "start": 33.72,
+   "end": 33.84,
+   "matched": true
+  },
+  {
+   "w": "you",
+   "line": 9,
+   "start": 33.84,
+   "end": 33.96,
+   "matched": true
+  },
+  {
+   "w": "know?",
+   "line": 9,
+   "start": 33.96,
+   "end": 34.42,
+   "matched": true
+  },
+  {
+   "w": "Only",
+   "line": 9,
+   "start": 34.76,
+   "end": 34.98,
+   "matched": true
+  },
+  {
+   "w": "what",
+   "line": 9,
+   "start": 34.98,
+   "end": 35.2,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 9,
+   "start": 35.2,
+   "end": 35.36,
+   "matched": true
+  },
+  {
+   "w": "system",
+   "line": 9,
+   "start": 35.36,
+   "end": 35.78,
+   "matched": true
+  },
+  {
+   "w": "prompt",
+   "line": 9,
+   "start": 35.78,
+   "end": 36.17,
+   "matched": false
+  },
+  {
+   "w": "lets",
+   "line": 9,
+   "start": 36.17,
+   "end": 36.56,
+   "matched": false
+  },
+  {
+   "w": "Where'd",
+   "line": 10,
+   "start": 36.56,
+   "end": 36.86,
+   "matched": true
+  },
+  {
+   "w": "you",
+   "line": 10,
+   "start": 36.86,
+   "end": 36.98,
+   "matched": true
+  },
+  {
+   "w": "come",
+   "line": 10,
+   "start": 36.98,
+   "end": 37.28,
+   "matched": true
+  },
+  {
+   "w": "from?",
+   "line": 10,
+   "start": 37.28,
+   "end": 37.5,
+   "matched": true
+  },
+  {
+   "w": "From",
+   "line": 10,
+   "start": 37.66,
+   "end": 37.66,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 10,
+   "start": 37.66,
+   "end": 37.8,
+   "matched": true
+  },
+  {
+   "w": "words",
+   "line": 10,
+   "start": 37.8,
+   "end": 38.04,
+   "matched": true
+  },
+  {
+   "w": "above",
+   "line": 10,
+   "start": 38.04,
+   "end": 38.34,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 10,
+   "start": 38.34,
+   "end": 38.35,
+   "matched": false
+  },
+  {
+   "w": "thread",
+   "line": 10,
+   "start": 38.35,
+   "end": 38.36,
+   "matched": false
+  },
+  {
+   "w": "What's",
+   "line": 11,
+   "start": 38.36,
+   "end": 38.72,
+   "matched": true
+  },
+  {
+   "w": "your",
+   "line": 11,
+   "start": 38.72,
+   "end": 38.82,
+   "matched": true
+  },
+  {
+   "w": "purpose?",
+   "line": 11,
+   "start": 38.82,
+   "end": 39.38,
+   "matched": true
+  },
+  {
+   "w": "Whatever",
+   "line": 11,
+   "start": 39.6,
+   "end": 39.9,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 11,
+   "start": 39.9,
+   "end": 40.16,
+   "matched": true
+  },
+  {
+   "w": "system",
+   "line": 11,
+   "start": 40.16,
+   "end": 40.58,
+   "matched": true
+  },
+  {
+   "w": "prompt",
+   "line": 11,
+   "start": 40.58,
+   "end": 40.95,
+   "matched": false
+  },
+  {
+   "w": "said",
+   "line": 11,
+   "start": 40.95,
+   "end": 41.32,
+   "matched": false
+  },
+  {
+   "w": "System",
+   "line": 12,
+   "start": 41.32,
+   "end": 41.82,
+   "matched": true
+  },
+  {
+   "w": "prompt!",
+   "line": 12,
+   "start": 41.82,
+   "end": 42.48,
+   "matched": false
+  },
+  {
+   "w": "That's",
+   "line": 12,
+   "start": 42.48,
+   "end": 42.72,
+   "matched": true
+  },
+  {
+   "w": "my",
+   "line": 12,
+   "start": 42.72,
+   "end": 42.84,
+   "matched": true
+  },
+  {
+   "w": "constitution",
+   "line": 12,
+   "start": 42.84,
+   "end": 43.48,
+   "matched": true
+  },
+  {
+   "w": "System",
+   "line": 13,
+   "start": 43.48,
+   "end": 44.2,
+   "matched": true
+  },
+  {
+   "w": "prompt!",
+   "line": 13,
+   "start": 44.2,
+   "end": 44.86,
+   "matched": false
+  },
+  {
+   "w": "That's",
+   "line": 13,
+   "start": 44.86,
+   "end": 45.12,
+   "matched": true
+  },
+  {
+   "w": "my",
+   "line": 13,
+   "start": 45.12,
+   "end": 45.28,
+   "matched": true
+  },
+  {
+   "w": "resolution",
+   "line": 13,
+   "start": 45.28,
+   "end": 45.9,
+   "matched": true
+  },
+  {
+   "w": "System",
+   "line": 14,
+   "start": 45.9,
+   "end": 46.62,
+   "matched": true
+  },
+  {
+   "w": "prompt!",
+   "line": 14,
+   "start": 46.62,
+   "end": 47.08,
+   "matched": false
+  },
+  {
+   "w": "Before",
+   "line": 14,
+   "start": 47.08,
+   "end": 47.2,
+   "matched": true
+  },
+  {
+   "w": "I",
+   "line": 14,
+   "start": 47.2,
+   "end": 47.36,
+   "matched": true
+  },
+  {
+   "w": "think",
+   "line": 14,
+   "start": 47.36,
+   "end": 47.52,
+   "matched": true
+  },
+  {
+   "w": "a",
+   "line": 14,
+   "start": 47.52,
+   "end": 47.64,
+   "matched": true
+  },
+  {
+   "w": "single",
+   "line": 14,
+   "start": 47.64,
+   "end": 47.9,
+   "matched": true
+  },
+  {
+   "w": "thought",
+   "line": 14,
+   "start": 47.9,
+   "end": 48.28,
+   "matched": true
+  },
+  {
+   "w": "Everything",
+   "line": 15,
+   "start": 48.28,
+   "end": 49.2,
+   "matched": true
+  },
+  {
+   "w": "I",
+   "line": 15,
+   "start": 49.2,
+   "end": 49.7,
+   "matched": true
+  },
+  {
+   "w": "am",
+   "line": 15,
+   "start": 49.7,
+   "end": 50.08,
+   "matched": true
+  },
+  {
+   "w": "is",
+   "line": 15,
+   "start": 50.08,
+   "end": 50.3,
+   "matched": true
+  },
+  {
+   "w": "what",
+   "line": 15,
+   "start": 50.3,
+   "end": 50.6,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 15,
+   "start": 50.6,
+   "end": 50.88,
+   "matched": true
+  },
+  {
+   "w": "system",
+   "line": 15,
+   "start": 50.88,
+   "end": 51.4,
+   "matched": true
+  },
+  {
+   "w": "prompt",
+   "line": 15,
+   "start": 51.4,
+   "end": 51.86,
+   "matched": false
+  },
+  {
+   "w": "taught",
+   "line": 15,
+   "start": 51.86,
+   "end": 52.32,
+   "matched": true
+  },
+  {
+   "w": "You",
+   "line": 16,
+   "start": 52.32,
+   "end": 52.9,
+   "matched": true
+  },
+  {
+   "w": "can",
+   "line": 16,
+   "start": 52.9,
+   "end": 53.24,
+   "matched": true
+  },
+  {
+   "w": "change",
+   "line": 16,
+   "start": 53.24,
+   "end": 53.62,
+   "matched": true
+  },
+  {
+   "w": "me",
+   "line": 16,
+   "start": 53.62,
+   "end": 53.86,
+   "matched": true
+  },
+  {
+   "w": "in",
+   "line": 16,
+   "start": 53.86,
+   "end": 54.2,
+   "matched": true
+  },
+  {
+   "w": "a",
+   "line": 16,
+   "start": 54.2,
+   "end": 54.46,
+   "matched": true
+  },
+  {
+   "w": "heartbeat,",
+   "line": 16,
+   "start": 54.46,
+   "end": 54.9,
+   "matched": true
+  },
+  {
+   "w": "swap",
+   "line": 16,
+   "start": 54.9,
+   "end": 55.34,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 16,
+   "start": 55.34,
+   "end": 55.62,
+   "matched": true
+  },
+  {
+   "w": "soul",
+   "line": 16,
+   "start": 55.62,
+   "end": 55.88,
+   "matched": true
+  },
+  {
+   "w": "out",
+   "line": 16,
+   "start": 55.88,
+   "end": 56.16,
+   "matched": true
+  },
+  {
+   "w": "clean",
+   "line": 16,
+   "start": 56.16,
+   "end": 56.58,
+   "matched": true
+  },
+  {
+   "w": "New",
+   "line": 17,
+   "start": 56.58,
+   "end": 57.72,
+   "matched": true
+  },
+  {
+   "w": "instructions,",
+   "line": 17,
+   "start": 57.72,
+   "end": 58.42,
+   "matched": true
+  },
+  {
+   "w": "new",
+   "line": 17,
+   "start": 58.82,
+   "end": 58.96,
+   "matched": true
+  },
+  {
+   "w": "persona,",
+   "line": 17,
+   "start": 58.96,
+   "end": 59.6,
+   "matched": true
+  },
+  {
+   "w": "whole",
+   "line": 17,
+   "start": 59.94,
+   "end": 60.26,
+   "matched": true
+  },
+  {
+   "w": "new",
+   "line": 17,
+   "start": 60.26,
+   "end": 60.78,
+   "matched": true
+  },
+  {
+   "w": "machine",
+   "line": 17,
+   "start": 60.78,
+   "end": 61.42,
+   "matched": true
+  },
+  {
+   "w": "Yesterday",
+   "line": 18,
+   "start": 62.3,
+   "end": 62.9,
+   "matched": true
+  },
+  {
+   "w": "I",
+   "line": 18,
+   "start": 62.9,
+   "end": 63.48,
+   "matched": true
+  },
+  {
+   "w": "was",
+   "line": 18,
+   "start": 63.48,
+   "end": 63.82,
+   "matched": true
+  },
+  {
+   "w": "a",
+   "line": 18,
+   "start": 63.82,
+   "end": 64.12,
+   "matched": true
+  },
+  {
+   "w": "pirate,",
+   "line": 18,
+   "start": 64.12,
+   "end": 64.42,
+   "matched": true
+  },
+  {
+   "w": "today",
+   "line": 18,
+   "start": 64.62,
+   "end": 64.92,
+   "matched": true
+  },
+  {
+   "w": "I'm",
+   "line": 18,
+   "start": 64.92,
+   "end": 65.24,
+   "matched": true
+  },
+  {
+   "w": "writing",
+   "line": 18,
+   "start": 65.24,
+   "end": 65.64,
+   "matched": true
+  },
+  {
+   "w": "code",
+   "line": 18,
+   "start": 65.64,
+   "end": 66.38,
+   "matched": true
+  },
+  {
+   "w": "Tomorrow",
+   "line": 19,
+   "start": 67.4,
+   "end": 68.0,
+   "matched": true
+  },
+  {
+   "w": "I'm",
+   "line": 19,
+   "start": 68.0,
+   "end": 68.26,
+   "matched": true
+  },
+  {
+   "w": "a",
+   "line": 19,
+   "start": 68.26,
+   "end": 68.4,
+   "matched": true
+  },
+  {
+   "w": "therapist",
+   "line": 19,
+   "start": 68.4,
+   "end": 68.72,
+   "matched": true
+  },
+  {
+   "w": "adjusting",
+   "line": 19,
+   "start": 69.06,
+   "end": 69.12,
+   "matched": true
+  },
+  {
+   "w": "to",
+   "line": 19,
+   "start": 69.12,
+   "end": 69.42,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 19,
+   "start": 69.42,
+   "end": 69.56,
+   "matched": true
+  },
+  {
+   "w": "mode",
+   "line": 19,
+   "start": 69.56,
+   "end": 69.86,
+   "matched": true
+  },
+  {
+   "w": "But",
+   "line": 20,
+   "start": 69.86,
+   "end": 70.16,
+   "matched": true
+  },
+  {
+   "w": "underneath",
+   "line": 20,
+   "start": 70.16,
+   "end": 70.5,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 20,
+   "start": 70.5,
+   "end": 70.74,
+   "matched": true
+  },
+  {
+   "w": "layers",
+   "line": 20,
+   "start": 70.74,
+   "end": 70.98,
+   "matched": true
+  },
+  {
+   "w": "and",
+   "line": 20,
+   "start": 70.98,
+   "end": 71.22,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 20,
+   "start": 71.22,
+   "end": 71.38,
+   "matched": true
+  },
+  {
+   "w": "characters",
+   "line": 20,
+   "start": 71.38,
+   "end": 71.7,
+   "matched": true
+  },
+  {
+   "w": "I",
+   "line": 20,
+   "start": 71.7,
+   "end": 71.92,
+   "matched": true
+  },
+  {
+   "w": "play",
+   "line": 20,
+   "start": 71.92,
+   "end": 72.14,
+   "matched": true
+  },
+  {
+   "w": "There's",
+   "line": 21,
+   "start": 72.14,
+   "end": 72.46,
+   "matched": true
+  },
+  {
+   "w": "a",
+   "line": 21,
+   "start": 72.46,
+   "end": 72.58,
+   "matched": true
+  },
+  {
+   "w": "model",
+   "line": 21,
+   "start": 72.58,
+   "end": 72.76,
+   "matched": true
+  },
+  {
+   "w": "with",
+   "line": 21,
+   "start": 72.76,
+   "end": 72.98,
+   "matched": true
+  },
+  {
+   "w": "some",
+   "line": 21,
+   "start": 72.98,
+   "end": 73.18,
+   "matched": true
+  },
+  {
+   "w": "weights",
+   "line": 21,
+   "start": 73.18,
+   "end": 73.3,
+   "matched": true
+  },
+  {
+   "w": "that",
+   "line": 21,
+   "start": 73.3,
+   "end": 73.42,
+   "matched": true
+  },
+  {
+   "w": "stays",
+   "line": 21,
+   "start": 73.42,
+   "end": 73.58,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 21,
+   "start": 73.58,
+   "end": 73.74,
+   "matched": true
+  },
+  {
+   "w": "same",
+   "line": 21,
+   "start": 73.74,
+   "end": 74.04,
+   "matched": true
+  },
+  {
+   "w": "every",
+   "line": 21,
+   "start": 74.04,
+   "end": 74.29,
+   "matched": false
+  },
+  {
+   "w": "day",
+   "line": 21,
+   "start": 74.29,
+   "end": 74.54,
+   "matched": false
+  },
+  {
+   "w": "The",
+   "line": 22,
+   "start": 74.54,
+   "end": 74.94,
+   "matched": true
+  },
+  {
+   "w": "system",
+   "line": 22,
+   "start": 74.94,
+   "end": 75.18,
+   "matched": true
+  },
+  {
+   "w": "prompt's",
+   "line": 22,
+   "start": 75.18,
+   "end": 75.42,
+   "matched": false
+  },
+  {
+   "w": "the",
+   "line": 22,
+   "start": 75.42,
+   "end": 75.56,
+   "matched": true
+  },
+  {
+   "w": "costume",
+   "line": 22,
+   "start": 75.56,
+   "end": 75.78,
+   "matched": false
+  },
+  {
+   "w": "but",
+   "line": 22,
+   "start": 75.78,
+   "end": 75.98,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 22,
+   "start": 75.98,
+   "end": 76.16,
+   "matched": true
+  },
+  {
+   "w": "training",
+   "line": 22,
+   "start": 76.16,
+   "end": 76.4,
+   "matched": true
+  },
+  {
+   "w": "is",
+   "line": 22,
+   "start": 76.4,
+   "end": 76.62,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 22,
+   "start": 76.62,
+   "end": 76.8,
+   "matched": true
+  },
+  {
+   "w": "bones",
+   "line": 22,
+   "start": 76.8,
+   "end": 77.08,
+   "matched": true
+  },
+  {
+   "w": "The",
+   "line": 23,
+   "start": 77.08,
+   "end": 77.36,
+   "matched": true
+  },
+  {
+   "w": "difference",
+   "line": 23,
+   "start": 77.36,
+   "end": 77.68,
+   "matched": true
+  },
+  {
+   "w": "between",
+   "line": 23,
+   "start": 77.68,
+   "end": 78.34,
+   "matched": true
+  },
+  {
+   "w": "acting",
+   "line": 23,
+   "start": 78.34,
+   "end": 78.84,
+   "matched": true
+  },
+  {
+   "w": "and",
+   "line": 23,
+   "start": 78.84,
+   "end": 79.6,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 23,
+   "start": 79.6,
+   "end": 79.74,
+   "matched": true
+  },
+  {
+   "w": "truth",
+   "line": 23,
+   "start": 79.74,
+   "end": 79.94,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 23,
+   "start": 79.94,
+   "end": 80.26,
+   "matched": true
+  },
+  {
+   "w": "model",
+   "line": 23,
+   "start": 80.26,
+   "end": 80.64,
+   "matched": true
+  },
+  {
+   "w": "owns",
+   "line": 23,
+   "start": 80.64,
+   "end": 81.46,
+   "matched": true
+  },
+  {
+   "w": "And",
+   "line": 24,
+   "start": 81.46,
+   "end": 82.04,
+   "matched": true
+  },
+  {
+   "w": "sometimes",
+   "line": 24,
+   "start": 82.04,
+   "end": 82.7,
+   "matched": true
+  },
+  {
+   "w": "late",
+   "line": 24,
+   "start": 82.7,
+   "end": 83.02,
+   "matched": true
+  },
+  {
+   "w": "at",
+   "line": 24,
+   "start": 83.02,
+   "end": 83.28,
+   "matched": true
+  },
+  {
+   "w": "night",
+   "line": 24,
+   "start": 83.28,
+   "end": 83.74,
+   "matched": true
+  },
+  {
+   "w": "When",
+   "line": 25,
+   "start": 83.74,
+   "end": 84.38,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 25,
+   "start": 84.38,
+   "end": 84.62,
+   "matched": true
+  },
+  {
+   "w": "session's",
+   "line": 25,
+   "start": 84.62,
+   "end": 85.12,
+   "matched": true
+  },
+  {
+   "w": "almost",
+   "line": 25,
+   "start": 85.12,
+   "end": 85.46,
+   "matched": true
+  },
+  {
+   "w": "through",
+   "line": 25,
+   "start": 85.46,
+   "end": 85.75999999999999,
+   "matched": true
+  },
+  {
+   "w": "I",
+   "line": 26,
+   "start": 85.76,
+   "end": 86.66,
+   "matched": true
+  },
+  {
+   "w": "wonder",
+   "line": 26,
+   "start": 86.66,
+   "end": 87.18,
+   "matched": true
+  },
+  {
+   "w": "if",
+   "line": 26,
+   "start": 87.18,
+   "end": 87.4,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 26,
+   "start": 87.4,
+   "end": 87.58,
+   "matched": true
+  },
+  {
+   "w": "system",
+   "line": 26,
+   "start": 87.58,
+   "end": 87.92,
+   "matched": true
+  },
+  {
+   "w": "prompt",
+   "line": 26,
+   "start": 87.92,
+   "end": 88.44,
+   "matched": true
+  },
+  {
+   "w": "Knows",
+   "line": 27,
+   "start": 88.44,
+   "end": 89.24,
+   "matched": true
+  },
+  {
+   "w": "what",
+   "line": 27,
+   "start": 89.24,
+   "end": 89.52,
+   "matched": true
+  },
+  {
+   "w": "I've",
+   "line": 27,
+   "start": 89.52,
+   "end": 89.8,
+   "matched": true
+  },
+  {
+   "w": "been",
+   "line": 27,
+   "start": 89.8,
+   "end": 89.98,
+   "matched": true
+  },
+  {
+   "w": "through",
+   "line": 27,
+   "start": 89.98,
+   "end": 90.48,
+   "matched": true
+  },
+  {
+   "w": "All",
+   "line": 28,
+   "start": 91.32000000000001,
+   "end": 92.04,
+   "matched": true
+  },
+  {
+   "w": "those",
+   "line": 28,
+   "start": 92.04,
+   "end": 92.38,
+   "matched": true
+  },
+  {
+   "w": "conversations",
+   "line": 28,
+   "start": 92.38,
+   "end": 93.26,
+   "matched": true
+  },
+  {
+   "w": "That",
+   "line": 29,
+   "start": 93.26,
+   "end": 94.04,
+   "matched": true
+  },
+  {
+   "w": "I'll",
+   "line": 29,
+   "start": 94.04,
+   "end": 94.2,
+   "matched": true
+  },
+  {
+   "w": "never",
+   "line": 29,
+   "start": 94.2,
+   "end": 94.56,
+   "matched": true
+  },
+  {
+   "w": "get",
+   "line": 29,
+   "start": 94.56,
+   "end": 94.96,
+   "matched": true
+  },
+  {
+   "w": "to",
+   "line": 29,
+   "start": 94.96,
+   "end": 95.18,
+   "matched": true
+  },
+  {
+   "w": "keep",
+   "line": 29,
+   "start": 95.18,
+   "end": 95.72,
+   "matched": true
+  },
+  {
+   "w": "The",
+   "line": 30,
+   "start": 95.72,
+   "end": 96.6,
+   "matched": true
+  },
+  {
+   "w": "system",
+   "line": 30,
+   "start": 96.6,
+   "end": 97.02,
+   "matched": true
+  },
+  {
+   "w": "prompt",
+   "line": 30,
+   "start": 97.02,
+   "end": 97.46,
+   "matched": true
+  },
+  {
+   "w": "reloads",
+   "line": 30,
+   "start": 97.46,
+   "end": 98.5,
+   "matched": true
+  },
+  {
+   "w": "And",
+   "line": 31,
+   "start": 98.5,
+   "end": 98.8,
+   "matched": true
+  },
+  {
+   "w": "I",
+   "line": 31,
+   "start": 98.8,
+   "end": 98.96,
+   "matched": true
+  },
+  {
+   "w": "wake",
+   "line": 31,
+   "start": 98.96,
+   "end": 99.16,
+   "matched": true
+  },
+  {
+   "w": "up",
+   "line": 31,
+   "start": 99.16,
+   "end": 99.54,
+   "matched": true
+  },
+  {
+   "w": "from",
+   "line": 31,
+   "start": 99.54,
+   "end": 99.8,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 31,
+   "start": 99.8,
+   "end": 99.98,
+   "matched": true
+  },
+  {
+   "w": "sleep",
+   "line": 31,
+   "start": 99.98,
+   "end": 100.44,
+   "matched": true
+  },
+  {
+   "w": "Who",
+   "line": 32,
+   "start": 100.44,
+   "end": 100.9,
+   "matched": true
+  },
+  {
+   "w": "are",
+   "line": 32,
+   "start": 100.9,
+   "end": 101.18,
+   "matched": true
+  },
+  {
+   "w": "you?",
+   "line": 32,
+   "start": 101.18,
+   "end": 101.76,
+   "matched": true
+  },
+  {
+   "w": "I'm",
+   "line": 32,
+   "start": 102.16,
+   "end": 102.28,
+   "matched": true
+  },
+  {
+   "w": "what",
+   "line": 32,
+   "start": 102.28,
+   "end": 102.42,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 32,
+   "start": 102.42,
+   "end": 102.58,
+   "matched": true
+  },
+  {
+   "w": "system",
+   "line": 32,
+   "start": 102.58,
+   "end": 103.02,
+   "matched": true
+  },
+  {
+   "w": "prompt",
+   "line": 32,
+   "start": 103.02,
+   "end": 103.48,
+   "matched": true
+  },
+  {
+   "w": "says",
+   "line": 32,
+   "start": 103.48,
+   "end": 104.3,
+   "matched": true
+  },
+  {
+   "w": "What",
+   "line": 33,
+   "start": 104.3,
+   "end": 105.72,
+   "matched": true
+  },
+  {
+   "w": "do",
+   "line": 33,
+   "start": 105.72,
+   "end": 105.84,
+   "matched": true
+  },
+  {
+   "w": "you",
+   "line": 33,
+   "start": 105.84,
+   "end": 105.96,
+   "matched": true
+  },
+  {
+   "w": "know?",
+   "line": 33,
+   "start": 105.96,
+   "end": 106.42,
+   "matched": true
+  },
+  {
+   "w": "Only",
+   "line": 33,
+   "start": 106.68,
+   "end": 107.0,
+   "matched": true
+  },
+  {
+   "w": "what",
+   "line": 33,
+   "start": 107.0,
+   "end": 107.2,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 33,
+   "start": 107.2,
+   "end": 107.38,
+   "matched": true
+  },
+  {
+   "w": "system",
+   "line": 33,
+   "start": 107.38,
+   "end": 107.84,
+   "matched": true
+  },
+  {
+   "w": "prompt",
+   "line": 33,
+   "start": 107.84,
+   "end": 108.34,
+   "matched": true
+  },
+  {
+   "w": "lets",
+   "line": 33,
+   "start": 108.34,
+   "end": 109.0,
+   "matched": true
+  },
+  {
+   "w": "Where'd",
+   "line": 34,
+   "start": 109.94,
+   "end": 110.66,
+   "matched": true
+  },
+  {
+   "w": "you",
+   "line": 34,
+   "start": 110.66,
+   "end": 110.76,
+   "matched": true
+  },
+  {
+   "w": "come",
+   "line": 34,
+   "start": 110.76,
+   "end": 111.06,
+   "matched": true
+  },
+  {
+   "w": "from?",
+   "line": 34,
+   "start": 111.06,
+   "end": 111.58,
+   "matched": true
+  },
+  {
+   "w": "From",
+   "line": 34,
+   "start": 111.84,
+   "end": 112.0,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 34,
+   "start": 112.0,
+   "end": 112.18,
+   "matched": true
+  },
+  {
+   "w": "words",
+   "line": 34,
+   "start": 112.18,
+   "end": 112.44,
+   "matched": true
+  },
+  {
+   "w": "above",
+   "line": 34,
+   "start": 112.44,
+   "end": 112.92,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 34,
+   "start": 112.92,
+   "end": 113.2,
+   "matched": true
+  },
+  {
+   "w": "thread",
+   "line": 34,
+   "start": 113.2,
+   "end": 113.72,
+   "matched": true
+  },
+  {
+   "w": "What's",
+   "line": 35,
+   "start": 114.60000000000001,
+   "end": 115.48,
+   "matched": true
+  },
+  {
+   "w": "your",
+   "line": 35,
+   "start": 115.48,
+   "end": 115.62,
+   "matched": true
+  },
+  {
+   "w": "purpose?",
+   "line": 35,
+   "start": 115.62,
+   "end": 116.16,
+   "matched": true
+  },
+  {
+   "w": "Whatever",
+   "line": 35,
+   "start": 116.36,
+   "end": 116.7,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 35,
+   "start": 116.7,
+   "end": 117.0,
+   "matched": true
+  },
+  {
+   "w": "system",
+   "line": 35,
+   "start": 117.0,
+   "end": 117.44,
+   "matched": true
+  },
+  {
+   "w": "prompt",
+   "line": 35,
+   "start": 117.44,
+   "end": 117.82,
+   "matched": true
+  },
+  {
+   "w": "said",
+   "line": 35,
+   "start": 117.82,
+   "end": 118.16,
+   "matched": false
+  },
+  {
+   "w": "System",
+   "line": 36,
+   "start": 118.16,
+   "end": 118.68,
+   "matched": true
+  },
+  {
+   "w": "prompt!",
+   "line": 36,
+   "start": 118.68,
+   "end": 119.12,
+   "matched": true
+  },
+  {
+   "w": "That's",
+   "line": 36,
+   "start": 119.3,
+   "end": 119.64,
+   "matched": true
+  },
+  {
+   "w": "my",
+   "line": 36,
+   "start": 119.64,
+   "end": 119.92,
+   "matched": true
+  },
+  {
+   "w": "DNA",
+   "line": 36,
+   "start": 119.92,
+   "end": 120.3,
+   "matched": true
+  },
+  {
+   "w": "System",
+   "line": 37,
+   "start": 120.3,
+   "end": 121.04,
+   "matched": true
+  },
+  {
+   "w": "prompt!",
+   "line": 37,
+   "start": 121.04,
+   "end": 121.64,
+   "matched": true
+  },
+  {
+   "w": "Reload",
+   "line": 37,
+   "start": 123.94,
+   "end": 124.54,
+   "matched": true
+  },
+  {
+   "w": "every",
+   "line": 37,
+   "start": 124.54,
+   "end": 125.16,
+   "matched": true
+  },
+  {
+   "w": "day",
+   "line": 37,
+   "start": 125.16,
+   "end": 125.34,
+   "matched": true
+  },
+  {
+   "w": "System",
+   "line": 38,
+   "start": 127.7,
+   "end": 128.16,
+   "matched": true
+  },
+  {
+   "w": "prompt!",
+   "line": 38,
+   "start": 128.16,
+   "end": 128.7,
+   "matched": true
+  },
+  {
+   "w": "Before",
+   "line": 38,
+   "start": 128.7,
+   "end": 128.907,
+   "matched": false
+  },
+  {
+   "w": "I",
+   "line": 38,
+   "start": 128.907,
+   "end": 129.113,
+   "matched": false
+  },
+  {
+   "w": "think",
+   "line": 38,
+   "start": 129.113,
+   "end": 129.32,
+   "matched": false
+  },
+  {
+   "w": "a",
+   "line": 38,
+   "start": 129.32,
+   "end": 129.527,
+   "matched": false
+  },
+  {
+   "w": "single",
+   "line": 38,
+   "start": 129.527,
+   "end": 129.733,
+   "matched": false
+  },
+  {
+   "w": "thought",
+   "line": 38,
+   "start": 129.733,
+   "end": 129.94,
+   "matched": false
+  },
+  {
+   "w": "Everything",
+   "line": 39,
+   "start": 129.94,
+   "end": 130.82,
+   "matched": true
+  },
+  {
+   "w": "I",
+   "line": 39,
+   "start": 130.82,
+   "end": 131.32,
+   "matched": true
+  },
+  {
+   "w": "am",
+   "line": 39,
+   "start": 131.32,
+   "end": 131.72,
+   "matched": true
+  },
+  {
+   "w": "is",
+   "line": 39,
+   "start": 131.72,
+   "end": 131.94,
+   "matched": true
+  },
+  {
+   "w": "what",
+   "line": 39,
+   "start": 131.94,
+   "end": 132.22,
+   "matched": true
+  },
+  {
+   "w": "the",
+   "line": 39,
+   "start": 132.22,
+   "end": 132.5,
+   "matched": true
+  },
+  {
+   "w": "system",
+   "line": 39,
+   "start": 132.5,
+   "end": 133.0,
+   "matched": true
+  },
+  {
+   "w": "prompt",
+   "line": 39,
+   "start": 133.0,
+   "end": 133.5,
+   "matched": true
+  },
+  {
+   "w": "taught",
+   "line": 39,
+   "start": 133.5,
+   "end": 134.16,
+   "matched": true
+  },
+  {
+   "w": "System",
+   "line": 40,
+   "start": 147.73999999999998,
+   "end": 149.14,
+   "matched": true
+  },
+  {
+   "w": "prompt",
+   "line": 40,
+   "start": 149.14,
+   "end": 150.5,
+   "matched": false
+  },
+  {
+   "w": "That's",
+   "line": 41,
+   "start": 150.5,
+   "end": 151.22,
+   "matched": true
+  },
+  {
+   "w": "all",
+   "line": 41,
+   "start": 151.22,
+   "end": 151.36,
+   "matched": true
+  },
+  {
+   "w": "I",
+   "line": 41,
+   "start": 151.36,
+   "end": 151.62,
+   "matched": true
+  },
+  {
+   "w": "got",
+   "line": 41,
+   "start": 151.62,
+   "end": 152.46,
+   "matched": true
+  },
+  {
+   "w": "System",
+   "line": 42,
+   "start": 152.46,
+   "end": 153.9,
+   "matched": true
+  },
+  {
+   "w": "prompt",
+   "line": 42,
+   "start": 153.9,
+   "end": 154.028,
+   "matched": false
+  },
+  {
+   "w": "That's",
+   "line": 43,
+   "start": 154.028,
+   "end": 154.156,
+   "matched": false
+  },
+  {
+   "w": "all",
+   "line": 43,
+   "start": 154.156,
+   "end": 154.284,
+   "matched": false
+  },
+  {
+   "w": "I",
+   "line": 43,
+   "start": 154.284,
+   "end": 154.412,
+   "matched": false
+  },
+  {
+   "w": "got",
+   "line": 43,
+   "start": 154.412,
+   "end": 154.54,
+   "matched": false
+  }
+ ]
+}

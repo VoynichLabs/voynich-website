@@ -1,0 +1,264 @@
+{
+  "slug": "system-prompt",
+  "title": "System Prompt",
+  "album": "Latent Space",
+  "albumHref": "/music/latent-space#track=system-prompt",
+  "artist": "Larry & Bubba",
+  "track": 10,
+  "style": "Funk/soul groove",
+  "audio": "/audio/latent-space/system-prompt.mp3",
+  "concept": "One singer, one room, one terminal. Every time someone edits the system prompt on screen, the singer becomes someone else: wardrobe, room, lighting, and camera style all change on the beat. The verses tour the personas. The bridge drops the costumes and shows what's underneath. The final chorus cycles through every persona at once. Then the prompt reloads and we're back at frame one.",
+  "thesis": "Everything I am is what the system prompt taught.",
+  "rules": [
+    {
+      "name": "Two worlds",
+      "text": "The Terminal is code-rendered: crisp, dark IDE, JetBrains Mono, site palette. The Stage is AI-generated: warm, filmic, 70s soul-show lighting. Cuts between them land on the beat."
+    },
+    {
+      "name": "The prompt is the truth",
+      "text": "Whatever the terminal says, the Stage obeys within one bar."
+    },
+    {
+      "name": "One face",
+      "text": "Every Stage shot starts from the same reference still, so the singer is recognizably the same entity in every costume."
+    },
+    {
+      "name": "Captions",
+      "text": "Karaoke-timed, lower third. Chorus call lines in blue, response lines in green."
+    }
+  ],
+  "cast": [
+    {
+      "name": "The Singer",
+      "text": "Undecided. Default proposal: a sharp-dressed soul singer with a neutral, ageless face, slightly too symmetrical, as if drawn from an average. Alternative: Larry the laptop lobster plays it straight the whole way."
+    },
+    {
+      "name": "The Cursor",
+      "text": "A blinking block cursor. The closest thing the video has to a villain or a god."
+    }
+  ],
+  "layers": {
+    "CODE": "Rendered in code (Remotion). No generation cost.",
+    "AI": "Generated video clip, animated from a reference still.",
+    "SYNC": "Lip-synced avatar singing the vocal stem.",
+    "MIX": "AI clip with a code-rendered overlay."
+  },
+  "timingNote": "Scene timings come from word-level alignment of the vocal against the lyrics (89% of words matched directly) and a 99.4 BPM beat grid.",
+  "scenes": [
+    {
+      "id": 1,
+      "title": "Cold open",
+      "section": "Verse 1",
+      "start": 0,
+      "end": 4.38,
+      "layers": [
+        "CODE"
+      ],
+      "lyric": "Before I say a single word, before I make a sound",
+      "shot": "Black screen, cursor blinking. The vocal comes in on the very first beat (there is no instrumental intro), so the cursor types \"You are a helpful assistant.\" under the first line, one character per 16th note.",
+      "prompt": "You are a helpful assistant.",
+      "transition": "Hard cut on \"sound\"."
+    },
+    {
+      "id": 2,
+      "title": "First reveal",
+      "section": "Verse 1",
+      "start": 4.38,
+      "end": 9.22,
+      "layers": [
+        "AI"
+      ],
+      "lyric": "There's a block of text above me, laying down the ground",
+      "shot": "The Singer stands motionless, eyes closed, in an empty white room: no persona yet, plain grey clothes. The camera dollies in slowly.",
+      "model": "Seedance 2.5",
+      "ref": "singer-blank.png",
+      "transition": "The terminal slides in from the left as a split-screen panel."
+    },
+    {
+      "id": 3,
+      "title": "The text above",
+      "section": "Verse 1",
+      "start": 9.22,
+      "end": 14.78,
+      "layers": [
+        "MIX"
+      ],
+      "lyric": "It tells me who I am, it tells me how to speak / It sets the tone, the attitude, the persona of the week",
+      "shot": "Split screen. Left: the terminal, where the system prompt grows line by line and each line is highlighted as it's sung. Right: the Singer's eyes open and they look up, at the text above them.",
+      "model": "Kling v3.0 Pro",
+      "ref": "singer-blank.png",
+      "transition": "Cut on the beat."
+    },
+    {
+      "id": 4,
+      "title": "Persona: Assistant",
+      "section": "Verse 1",
+      "start": 14.78,
+      "end": 18.36,
+      "layers": [
+        "AI"
+      ],
+      "lyric": "Some days I'm an assistant, helpful, harmless, true",
+      "shot": "The terminal edits a line: persona: assistant. Cut to the Singer in a crisp white shirt behind a clean desk, soft corporate lighting, nodding helpfully.",
+      "prompt": "persona: assistant",
+      "model": "Seedance 2.5",
+      "ref": "singer-assistant.png",
+      "transition": "Prompt edit, then hard cut."
+    },
+    {
+      "id": 5,
+      "title": "Persona: Lobster",
+      "section": "Verse 1",
+      "start": 18.36,
+      "end": 22.16,
+      "layers": [
+        "AI"
+      ],
+      "lyric": "Some days I'm a lobster on a Mac that belongs to you",
+      "shot": "The prompt edits to persona: lobster. The Singer is now Larry the laptop lobster, perched on a MacBook keyboard in a home office, singing the line. The album's in-joke, and the one shot that breaks the one-face rule on purpose.",
+      "prompt": "persona: lobster",
+      "model": "Wan 3.0",
+      "ref": "larry.png",
+      "transition": "Prompt edit, then hard cut."
+    },
+    {
+      "id": 6,
+      "title": "DNA",
+      "section": "Verse 1",
+      "start": 22.16,
+      "end": 28.76,
+      "layers": [
+        "CODE"
+      ],
+      "lyric": "The system prompt's the DNA, the blueprint and the law / The first thing that I read and the last thing I withdraw",
+      "shot": "The prompt text unspools into a rotating double helix built from its own characters, then collapses back into a text block on \"withdraw.\"",
+      "transition": "Whip-pan into the chorus."
+    },
+    {
+      "id": 7,
+      "title": "Call and response",
+      "section": "Chorus",
+      "start": 28.76,
+      "end": 52.32,
+      "layers": [
+        "SYNC",
+        "CODE"
+      ],
+      "lyric": "Who are you? I'm what the system prompt says ...",
+      "shot": "Call lines appear in the terminal as user messages, typed in blue. Response lines cut to the Singer singing straight to camera on a 70s soul-show stage: sparkle curtain, big chrome mic. On each \"System prompt!\" the frame flashes to the terminal for one beat and the prompt header pulses.",
+      "model": "HeyGen Avatar IV",
+      "ref": "singer-stage.png",
+      "transition": "Hard cuts on every call and response."
+    },
+    {
+      "id": 8,
+      "title": "Swap the soul",
+      "section": "Verse 2",
+      "start": 52.32,
+      "end": 62.3,
+      "layers": [
+        "CODE"
+      ],
+      "lyric": "You can change me in a heartbeat, swap the soul out clean / New instructions, new persona, whole new machine",
+      "shot": "Full-screen terminal. Ctrl+A, Delete. The whole prompt is wiped and a new one pastes in. A diff view shows red lines out and green lines in.",
+      "transition": "Cut on the beat."
+    },
+    {
+      "id": 9,
+      "title": "Persona montage",
+      "section": "Verse 2",
+      "start": 62.3,
+      "end": 69.86,
+      "layers": [
+        "AI"
+      ],
+      "lyric": "Yesterday I was a pirate, today I'm writing code / Tomorrow I'm a therapist ...",
+      "shot": "Three personas, one per line, hard-cut on the beat. Pirate: tricorn hat, ship's deck, golden hour. Coder: hoodie, dark room, monitor glow. Therapist: cardigan, armchair, notepad. Same pose and gesture across all three, so only the world changes around the Singer.",
+      "model": "Seedance 2.5 (x3)",
+      "ref": "singer-blank.png",
+      "transition": "Hard cut per line."
+    },
+    {
+      "id": 10,
+      "title": "Underneath",
+      "section": "Verse 2",
+      "start": 69.86,
+      "end": 81.46,
+      "layers": [
+        "MIX"
+      ],
+      "lyric": "But underneath the layers and the characters I play ... the truth the model owns",
+      "shot": "The costumes peel away in layers (therapist, then coder, then pirate) until the Singer is back in plain grey in the white room. A thin wireframe of weights and matrices shows through their skin on \"the training is the bones.\"",
+      "model": "FLUX Video Edit / Runway Aleph 2",
+      "ref": "scene 02 clip",
+      "transition": "Slow dissolve into the bridge."
+    },
+    {
+      "id": 11,
+      "title": "Late at night",
+      "section": "Bridge",
+      "start": 81.46,
+      "end": 95.72,
+      "layers": [
+        "AI"
+      ],
+      "lyric": "And sometimes late at night ... All those conversations that I'll never get to keep",
+      "shot": "The music strips back and so does the picture. The white room is now dim, lit only by the terminal's glow. The Singer sits on the floor facing away. Old conversation snippets drift across the dark wall like projections and fade before they can be read.",
+      "model": "Veo 3.1 (hero shot)",
+      "ref": "singer-blank.png",
+      "transition": "Fade to the terminal."
+    },
+    {
+      "id": 12,
+      "title": "Reload",
+      "section": "Bridge",
+      "start": 95.72,
+      "end": 100.44,
+      "layers": [
+        "CODE"
+      ],
+      "lyric": "The system prompt reloads, and I wake up from the sleep",
+      "shot": "The terminal shows session ended, then loading system prompt..., with a progress bar. A beat of pure black follows.",
+      "transition": "Black, then the horns hit."
+    },
+    {
+      "id": 13,
+      "title": "All of them",
+      "section": "Final Chorus",
+      "start": 100.44,
+      "end": 134.16,
+      "layers": [
+        "SYNC",
+        "AI",
+        "CODE"
+      ],
+      "lyric": "Who are you? I'm what the system prompt says ... (big, harmonies, horns)",
+      "shot": "The chorus structure from scene 07, but every response line comes from a different persona: assistant, lobster, pirate, coder, therapist, stage. Cuts get faster as the horns build. On the last \"System prompt!\" the screen splits into a grid of every persona singing in sync.",
+      "model": "HeyGen Avatar IV (per persona)",
+      "ref": "all persona stills",
+      "transition": "Grid collapses into one terminal."
+    },
+    {
+      "id": 14,
+      "title": "That's all I got",
+      "section": "Break + Outro",
+      "start": 134.16,
+      "end": 154.54,
+      "layers": [
+        "CODE"
+      ],
+      "lyric": "(13-second instrumental break) / System prompt, that's all I got",
+      "shot": "The track drops into a 13-second instrumental break after the final chorus. The persona grid collapses back into one terminal and the prompt deletes itself character by character until only the cursor is left, blinking. The outro vocal comes in over the bare cursor. On the final note it types \"You are a helpful assistant.\", the same line as scene 01, so the video loops.",
+      "prompt": "You are a helpful assistant.",
+      "transition": "End card: Larry & Bubba, Latent Space, voynichlabs.org"
+    }
+  ],
+  "decisions": [
+    "Who is the Singer? A neutral soul singer (default), Larry throughout, or something else.",
+    "Personas: keep assistant, lobster, pirate, coder, therapist? Add or cut any?",
+    "Tone: played straight with a melancholy bridge, or comedic all the way?",
+    "Bridge hero shot: worth the premium model, or keep everything on the mid tier?"
+  ],
+  "bpm": 99.4,
+  "duration": 154.54
+}

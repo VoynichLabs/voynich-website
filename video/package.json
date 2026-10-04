@@ -1,0 +1,25 @@
+{
+  "name": "voynich-music-video",
+  "private": true,
+  "type": "module",
+  "description": "Remotion music-video pipeline for VoynichLabs tracks. Separate from the Astro site build.",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render:system-prompt": "remotion render src/index.ts SystemPrompt out/system-prompt-16x9.mp4",
+    "render:system-prompt:preview": "remotion render src/index.ts SystemPrompt out/system-prompt-animatic-720p.mp4 --scale=0.6666666666666666 --crf=28",
+    "still": "remotion still src/index.ts SystemPrompt",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.532",
+    "@remotion/google-fonts": "^4.0.532",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "remotion": "^4.0.532"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^7.0.2"
+  }
+}
