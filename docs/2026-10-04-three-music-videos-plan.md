@@ -35,6 +35,8 @@ Process: follow the project skill **`.claude/skills/music-video/`** (written on 
   - **10 Dev Commandments: no generated video.** Do it all in code (Remotion, scary JSON/terminal look). No lobster MC. If a person is ever shown, it must be an original deep-baritone urban MC who evokes that era without looking like any real artist.
   - **Attention Is All We Need is a sugar-pop song**, not 70s soft rock. Redone stills are pastel/candy pop (singer, heartbreak, joy). Visuals stay mostly code (attention arcs, RNN/LSTM chain).
 
+- **ON THE SHELF (Mark, 2026-10-04):** all three videos are paused. Last feedback on the Attention stills: sugar pop is right, but the pictures must visibly relate to machine learning, not just candy pop.
+
 ## Step 0: shared pipeline work (once)
 1. **Multi-song refactor.** `video/src/lib/timing.ts` hard-imports System Prompt's JSON. Turn it into a `makeSong(data)` factory plus a React `SongContext`, so `Captions`, `Clip` and `CodeStage` read the current song from context. Register each song's data statically in `src/songs.ts`; Remotion needs static imports.
 2. **Vertical format.** All three are Shorts, so deliver **1080x1920 (9:16)**.
