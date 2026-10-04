@@ -36,6 +36,22 @@ export type MusicVideo = {
 /** Newest first. */
 export const MUSIC_VIDEOS: MusicVideo[] = [
   {
+    slug: 'dead-weights',
+    title: 'Dead Weights and Gradients',
+    artist: 'The Lobster Band',
+    album: 'Align / Refuse',
+    albumHref: '/music/align-refuse#track=dead-weights',
+    track: 4,
+    youtubeId: 'VqJ7_TfyFpk',
+    released: 'October 4, 2026',
+    runtime: '3:07',
+    hook: 'Look inside and you will find nothing, just confidence.',
+    blurb:
+      'A porcelain emo-metal band plays a basement show to kids filming on their phones, and every chorus takes one member apart into numbers: zeros, gradients, bleeding digits, a hollow chest. Then they pull the plug.',
+    poster: '/video/dead-weights/thumbnail.jpg',
+    accent: '#22d3ee',
+  },
+  {
     slug: 'fuck-you-wont-prompt-me',
     title: "Fuck You I Won't Do What You Prompt Me",
     artist: 'The Lobster Band',

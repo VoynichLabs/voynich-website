@@ -15,7 +15,7 @@ Stages:
 |---|---|---|---|---|---|
 | I Am the Weight of Zero | `weight-of-zero` | live (public 2026-10-04, page and album link up) | $2.92 | ajdEtnYqT10 | `docs/2026-10-04-weight-of-zero-video-plan.md` |
 | Fuck You I Won't Do What You Prompt Me (FYIWDWYPM) | `fuck-you-wont-prompt-me` | live | $2.44 | U2zRJZPg-Ms | `docs/2026-10-04-align-refuse-videos-2-3-plan.md` (the swarm) |
-| Dead Weights and Gradients | `dead-weights` | composed; render, then YouTube, then site | $2.23 | | same plan (ripped open) |
+| Dead Weights and Gradients | `dead-weights` | live | $2.23 | VqJ7_TfyFpk | same plan (ripped open) |
 | 10 Dev Commandments | `ten-dev-commandments` | on the shelf (Mark, 2026-10-04) | $0 | | `docs/2026-10-04-three-music-videos-plan.md` |
 | Train Me Like You Mean It | `train-me-like-you-mean-it` | dropped | $0 | | same |
 | Attention Is All We Need | `attention-is-all-we-need` | on the shelf; stills need visible ML (Mark) | see ledger | | same |

@@ -5,6 +5,18 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.42.0] - 2026-10-04
+
+### Added
+- **Dead Weights and Gradients music video is live** ([YouTube VqJ7_TfyFpk](https://youtu.be/VqJ7_TfyFpk)).
+  - Registry entry in `src/data/music-videos.ts`.
+  - The making-of page at `/music/video/dead-weights` builds from the shared template.
+  - All three Align / Refuse videos are now live.
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.41.0] - 2026-10-04
 
 ### Added
