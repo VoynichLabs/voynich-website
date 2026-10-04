@@ -1,0 +1,30 @@
+[
+ {
+  "at": "2026-10-04T21:09:43.758Z",
+  "kind": "still",
+  "id": "singer",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.067257
+ },
+ {
+  "at": "2026-10-04T21:09:53.780Z",
+  "kind": "still",
+  "id": "singer-rain",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.067806
+ },
+ {
+  "at": "2026-10-04T21:10:34.263Z",
+  "kind": "still",
+  "id": "singer-sunlit",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.067802
+ },
+ {
+  "at": "2026-10-04T21:10:44.211Z",
+  "kind": "still",
+  "id": "chorus-mock",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0672525
+ }
+]

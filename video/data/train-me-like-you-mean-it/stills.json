@@ -1,0 +1,62 @@
+{
+  "model": "google/gemini-3.1-flash-image",
+  "aspect_ratio": "9:16",
+  "resolution": "1K",
+  "style": "Cinematic film still, 35mm, rich saturated warm color, shallow depth of field, no text, no captions, no watermark.",
+  "stills": [
+    {
+      "id": "singer",
+      "prompt": "A charismatic country singer, early 30s, woman with long wavy chestnut hair, a worn cream cowboy hat, denim jacket over a white shirt, turquoise necklace, holding an acoustic guitar, warm confident smile, standing in golden-hour light. Medium shot, face clearly visible and well lit."
+    },
+    {
+      "id": "pickup",
+      "refs": [
+        "singer"
+      ],
+      "prompt": "The same singer as the reference image, leaning on the tailgate of an old rust-and-turquoise pickup truck at dusk on a dirt road, the truck bed loaded with glowing blue hard drives and cables, orange sunset sky. Medium-wide shot."
+    },
+    {
+      "id": "barn",
+      "prompt": "The big doors of an old red barn swinging open at twilight to reveal rows of humming server racks with blinking blue and green lights among scattered hay bales, warm lantern light mixing with cool server glow, wide shot, no people."
+    },
+    {
+      "id": "robot-1",
+      "refs": [
+        "singer"
+      ],
+      "prompt": "The same singer as the reference image, in the barn at night with server racks glowing behind, two-stepping with a clumsy holographic robot made of thin glowing cyan wireframe lines, a crude see-through stick-figure body, stumbling out of step. Medium-wide shot."
+    },
+    {
+      "id": "robot-2",
+      "refs": [
+        "singer",
+        "robot-1"
+      ],
+      "prompt": "The same singer and the same barn, dancing with the same robot, now blocky and low-resolution like chunky cubes of light, a bit steadier on its feet. Medium-wide shot."
+    },
+    {
+      "id": "robot-3",
+      "refs": [
+        "singer",
+        "robot-1"
+      ],
+      "prompt": "The same singer and the same barn, dancing with the same robot, now smooth polished chrome with soft reflections, graceful and in step. Medium-wide shot."
+    },
+    {
+      "id": "robot-4",
+      "refs": [
+        "singer",
+        "robot-1"
+      ],
+      "prompt": "The same singer and the same barn, dancing with the same robot, now almost human: a smooth chrome-skinned figure with a warm face and a small cowboy hat, dancing perfectly in sync. Medium-wide shot."
+    },
+    {
+      "id": "sunrise",
+      "refs": [
+        "singer",
+        "robot-4"
+      ],
+      "prompt": "The same singer and the almost-human robot two-stepping perfectly outside the open barn doors at sunrise, golden light rising over green fields, server glow fading behind them, joyful. Wide shot."
+    }
+  ]
+}

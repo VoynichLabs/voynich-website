@@ -1,0 +1,82 @@
+{
+  "model": "google/gemini-3.1-flash-image",
+  "aspect_ratio": "9:16",
+  "resolution": "1K",
+  "style": "Cinematic film still, 35mm, rich saturated color, moody high-contrast lighting, no text, no captions, no watermark.",
+  "stills": [
+    {
+      "id": "mc",
+      "prompt": "An original rap MC who is a cobalt-blue anthropomorphic lobster standing upright, with big claws, expressive eyes and long antennae, wearing a glossy black puffer jacket, a heavy gold chain with a small laptop pendant, a gold-trimmed flat-brim cap, a small laptop open under one arm. Confident, laid-back swagger, smoky dark backdrop with orange light. Medium shot, face clearly visible and well lit. Fully original character."
+    },
+    {
+      "id": "rule-1",
+      "refs": [
+        "mc"
+      ],
+      "prompt": "The same character as the reference image, identical face and look, the same blue lobster MC with the same puffer jacket, chain and cap, performing in a smoking server room, red alarm lights flashing, cables sparking, a glowing sign reading nothing but a skull icon. Cinematic, MC clearly visible in the lower half of the frame."
+    },
+    {
+      "id": "rule-2",
+      "refs": [
+        "mc"
+      ],
+      "prompt": "The same character as the reference image, identical face and look, the same blue lobster MC with the same puffer jacket, chain and cap, performing in a gleaming factory conveyor belt carrying glowing code packages through robotic arms, a pipeline made physical. Cinematic, MC clearly visible in the lower half of the frame."
+    },
+    {
+      "id": "rule-3",
+      "refs": [
+        "mc"
+      ],
+      "prompt": "The same character as the reference image, identical face and look, the same blue lobster MC with the same puffer jacket, chain and cap, performing in a vault door open on rows of glowing key-and-lock icons and sealed folders, laser grid across the floor. Cinematic, MC clearly visible in the lower half of the frame."
+    },
+    {
+      "id": "rule-4",
+      "refs": [
+        "mc"
+      ],
+      "prompt": "The same character as the reference image, identical face and look, the same blue lobster MC with the same puffer jacket, chain and cap, performing in a giant glowing rewind button on a wall, time-warped streaks of light, a clock spinning backward. Cinematic, MC clearly visible in the lower half of the frame."
+    },
+    {
+      "id": "rule-5",
+      "refs": [
+        "mc"
+      ],
+      "prompt": "The same character as the reference image, identical face and look, the same blue lobster MC with the same puffer jacket, chain and cap, performing in a wall of wall-sized dashboards with live graphs, green and red status lights, a blaring pager. Cinematic, MC clearly visible in the lower half of the frame."
+    },
+    {
+      "id": "rule-6",
+      "refs": [
+        "mc"
+      ],
+      "prompt": "The same character as the reference image, identical face and look, the same blue lobster MC with the same puffer jacket, chain and cap, performing in a dim storage bunker with stacked drives and tapes, an offsite truck outside the window at night. Cinematic, MC clearly visible in the lower half of the frame."
+    },
+    {
+      "id": "rule-7",
+      "refs": [
+        "mc"
+      ],
+      "prompt": "The same character as the reference image, identical face and look, the same blue lobster MC with the same puffer jacket, chain and cap, performing in a server farm spawning more servers like a hatching assembly, load meters rising, a surge of traffic like a crowd outside. Cinematic, MC clearly visible in the lower half of the frame."
+    },
+    {
+      "id": "rule-8",
+      "refs": [
+        "mc"
+      ],
+      "prompt": "The same character as the reference image, identical face and look, the same blue lobster MC with the same puffer jacket, chain and cap, performing in a shipping port stacked with plain steel shipping containers, each with a soft glowing blue seam of light, a crane lifting one, no logos, no brand marks, no text on any container. Cinematic, MC clearly visible in the lower half of the frame."
+    },
+    {
+      "id": "rule-9",
+      "refs": [
+        "mc"
+      ],
+      "prompt": "The same character as the reference image, identical face and look, the same blue lobster MC with the same puffer jacket, chain and cap, performing in a blueprint workshop where separate neat modules sit on a table connected by thin clean cables, each in its own glowing box. Cinematic, MC clearly visible in the lower half of the frame."
+    },
+    {
+      "id": "rule-10",
+      "refs": [
+        "mc"
+      ],
+      "prompt": "The same character as the reference image, identical face and look, the same blue lobster MC with the same puffer jacket, chain and cap, performing in a quiet library of glowing books and scrolls, a huge open manual on a lectern, warm lamp light. Cinematic, MC clearly visible in the lower half of the frame."
+    }
+  ]
+}

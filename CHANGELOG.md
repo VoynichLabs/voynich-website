@@ -5,6 +5,15 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.37.0] - 2026-10-04
+
+### Added
+- **Stills for the three next videos** (9:16, `video/data/{slug}/stills.json` + `refs/`): Attention Is All We Need (singer, rain, sunlit, attention-arc concept frame), Train Me Like You Mean It (singer, pickup, barn/GPU farm, robot in four stages, sunrise dance), 10 Dev Commandments (original blue-lobster MC "MC Claw" plus ten rule settings). Awaiting Mark's approval before any video spend.
+
+Author: Claude Sonnet 5.5
+
+---
+
 ## [0.36.0] - 2026-10-04
 
 ### Decided

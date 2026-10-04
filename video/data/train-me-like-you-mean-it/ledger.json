@@ -1,0 +1,58 @@
+[
+ {
+  "at": "2026-10-04T21:09:43.775Z",
+  "kind": "still",
+  "id": "singer",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.067244
+ },
+ {
+  "at": "2026-10-04T21:09:56.401Z",
+  "kind": "still",
+  "id": "pickup",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.067799
+ },
+ {
+  "at": "2026-10-04T21:10:08.031Z",
+  "kind": "still",
+  "id": "barn",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0672365
+ },
+ {
+  "at": "2026-10-04T21:10:19.469Z",
+  "kind": "still",
+  "id": "robot-1",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.067802
+ },
+ {
+  "at": "2026-10-04T21:10:34.573Z",
+  "kind": "still",
+  "id": "robot-2",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.068354
+ },
+ {
+  "at": "2026-10-04T21:10:49.486Z",
+  "kind": "still",
+  "id": "robot-3",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.06835
+ },
+ {
+  "at": "2026-10-04T21:11:33.133Z",
+  "kind": "still",
+  "id": "robot-4",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.068356
+ },
+ {
+  "at": "2026-10-04T21:11:47.312Z",
+  "kind": "still",
+  "id": "sunrise",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0683535
+ }
+]
