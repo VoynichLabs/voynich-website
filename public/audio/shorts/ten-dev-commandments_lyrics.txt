@@ -9,36 +9,36 @@ So you won't deploy your apps fucked up, watch the whole shit smoke
 [One]
 Rule number uno, never let no dev push straight to prod
 Homie, that's how you end up dead
-Testing is necessary, that shit's non-negotiable (?)
+Testing is necessary, that shit's non-negotiable
 One slip up, your whole system fuckin' vulnerable
 
 [Two]
 Two, automate your shit, fuck manual labor
 CI/CD pipeline, that shit'll do you favors
-Jenkins, GitHub Actions, man, make your fuckin' boy sick (?)
+Jenkins, GitHub Actions, man, pick your fuckin' poison
 'Cause manual deployments leave your whole crew annoyed, son
 
 [Three]
 Three, watch your damn secrets, don't expose keys
-.gitignore your env files, homie, secure these (?)
+Gitignore your env files, homie, secure these
 Passwords in your repo, that's straight up criminal
 Hackers lurkin' quick, now your situation's critical
 
 [Four]
 Four, rollbacks ready, that shit's essential
 Blue-green deployment, man, that's confidential
-Feature flags, toggles, keep your users easy (?)
-Roll out gradual, so your app keeps breathin' (?)
+Feature flags, toggles, let your users ease in
+Roll out gradual, keep your app breathin'
 
 [Five]
 Five, watch those logs, homie, observability
 'Cause without alerts, downtime's a guarantee
-Watch them fuckin' dashboards, reliability (?)
-Don't let your site stay down longer than a damn minute (?)
+Watch them fuckin' dashboards for stability
+Don't let your site stay down longer than your pager ring
 
 [Six]
-Six, backups ready, son, off-site replication (?)
-Thinking shit won't crash, that's a fucked up expectation
+Six, backups ready, son, off-site replication
+Thinkin' shit won't crash, that's a fucked up expectation
 Restore testing monthly, don't trust blindly
 'Cause data loss have your whole team actin' grimy
 
@@ -46,16 +46,15 @@ Restore testing monthly, don't trust blindly
 Seven, scalability, respect that shit
 Load test often, know your servers gonna quit
 Elastic auto-scaling, Cloudflare at the gate
-'Cause downtime got your users makin' you migrate (?)
+'Cause downtime make your users fuckin' migrate
 
 [Eight]
 Eight, containerize apps, Docker that joint
-Messy environments, fuck around, find out, that's the point (?)
-Kubernetes cluster fucked up (?)
+Messy environments? Fuck around, get your whole cluster fucked up
 Homie, your career's up in smoke
 
 [Nine]
-Nine, separate concerns, microservices clear (?)
+Nine, separate concerns, microservices clear
 Monolith's dead, homie, I ain't shed a tear
 APIs decoupled, shit's major as fuck
 Maintainability, don't rely on luck

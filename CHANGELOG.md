@@ -5,6 +5,18 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.35.0] - 2026-10-04
+
+### Changed
+- **Lyrics finalized for two of the next videos.** Train Me Like You Mean It: verse 3 and final chorus confirmed against the audio. 10 Dev Commandments: Mark's verse 2 fix plus best-judgment fixes for the remaining uncertain lines; no `(?)` lines left.
+
+### Added
+- `public/audio/shorts/ten-dev-commandments_prompt.txt`: a Lyria prompt for a richer boom-bap remake of 10 Dev Commandments (to be generated on the Mac Mini with Bubba's Lyria skill). The plan in `docs/2026-10-04-three-music-videos-plan.md` is updated.
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.34.0] - 2026-10-04
 
 ### Added
