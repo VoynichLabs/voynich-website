@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-10-04T20:47:00.357287Z",
+  "model": "google/lyria-3-pro-preview",
+  "prompt": "Gritty mid-90s East Coast boom bap, 93 BPM, hard and spacious. Dusty swung drums: a fat thudding kick, a cracking crunchy snare with a little room reverb, loose open hi-hats, all with that SP-1200 / MPC grit and vinyl crackle. Under it, a dark, ominous loop: a moody minor-key string-and-horn stab phrase over a deep, warm upright-style bassline that walks and slides, with sparse eerie piano notes and a faint chopped vocal \"ahh\" pad for menace. Scratched turntable cuts on the hook transitions. Sparse, confident, cinematic: let the drums and bass breathe; no trap hi-hat rolls, no 808 slides, no EDM risers.\n\nVocal: one confident, deep, laid-back male MC with a smooth, conversational, slightly menacing flow, sitting just behind the beat, clear diction so every word lands. Calm authority, like an older head schooling a rookie, not shouting.\n\nStructure: a spoken intro over a filtered version of the loop. Then for each numbered rule, the beat drops out for a single bar on the number (\"Rule number uno\", \"Two\", \"Three\" ... \"Ten\"), a stark count-off with a cymbal stab, then slams back in full on the next line. Each count-off should hit harder than the last. Short scratched bridge after rule Five. Outro: the loop thins to bass, piano and crackle and fades.\n\nRicher than a basic loop: add layered texture as it builds (a muted trumpet answer-phrase in the back half, a low brass swell before Ten, subtle backing ad-libs echoing key words like \"prod\", \"keys\", \"rollback\", \"docs\"). Warm analog mix, punchy drums up front, vocal clear and centred.\n\nAn homage to classic numbered-rules hip-hop: honor that era's sound, but use an original beat, original melody and original samples. Do not imitate any specific artist's voice or reuse any recognizable sample or count-off.\n\nPreserve lyrics exactly. Explicit language is intentional.",
+  "lyrics_path": "public/audio/shorts/ten-dev-commandments_lyrics.txt",
+  "lyrics_text_inline": false,
+  "output_path": "public/audio/shorts/ten-dev-commandments-v2.mp3",
+  "audio_bytes": 4294962,
+  "audio_mb": 4.1,
+  "lyria_sections": [
+    {
+      "tag": "A0",
+      "first_line": "Yo, this one's for my devs out there grindin', deployin' code"
+    },
+    {
+      "tag": "B1",
+      "first_line": "Rule number uno, never let no dev push straight to prod"
+    },
+    {
+      "tag": "B3",
+      "first_line": "Six, backups ready, son, off-site replication"
+    },
+    {
+      "tag": "D4",
+      "first_line": "Follow these rules, deploys always slick"
+    }
+  ]
+}

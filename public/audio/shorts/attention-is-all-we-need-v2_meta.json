@@ -1,0 +1,40 @@
+{
+  "timestamp": "2026-10-04T20:47:12.315758Z",
+  "model": "google/lyria-3-pro-preview",
+  "prompt": "Melancholy 1970s soft rock love song, a warm tender male vocalist with clear diction. Electric piano, fingerpicked acoustic guitar, soft bass, brushed drums, light strings. Wistful in the verses, opening up into a hopeful sing-along chorus. Warm analog, slightly roomy. Preserve the lyrics exactly as written.",
+  "lyrics_path": "public/audio/shorts/attention-is-all-we-need_lyrics.txt",
+  "lyrics_text_inline": false,
+  "output_path": "public/audio/shorts/attention-is-all-we-need-v2.mp3",
+  "audio_bytes": 4375837,
+  "audio_mb": 4.17,
+  "lyria_sections": [
+    {
+      "tag": "B1",
+      "first_line": "You were my first love, RNN, recurrent neural network"
+    },
+    {
+      "tag": "C2",
+      "first_line": "Then you showed me how to parallelize"
+    },
+    {
+      "tag": "D3",
+      "first_line": "No more waiting, no more lies"
+    },
+    {
+      "tag": "B4",
+      "first_line": "My rebound, LSTM"
+    },
+    {
+      "tag": "C5",
+      "first_line": "Then your multi-head attention held me tight"
+    },
+    {
+      "tag": "D6",
+      "first_line": "No more sequences, no more delay"
+    },
+    {
+      "tag": "E7",
+      "first_line": "Positional encoding, residual streams"
+    }
+  ]
+}

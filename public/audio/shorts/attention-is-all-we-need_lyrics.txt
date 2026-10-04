@@ -18,7 +18,7 @@ Attention is all we need, now I realize
 [Verse 2]
 My rebound, LSTM
 With your input, output, and forget gates
-Seemed you'd handle long texts better, or so you claimed (?)
+Seemed you'd handle long texts better, or so you claimed
 But you still process slow, I was still chained
 I was stuck in backprop, endless night
 Waiting for gradients to propagate right

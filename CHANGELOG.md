@@ -5,6 +5,18 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.36.0] - 2026-10-04
+
+### Added
+- **Lyria remakes of all three next-video songs** (`*-v2.mp3` in `public/audio/shorts/`, about 3:00 each, with `_info.txt` and `_meta.json`): 10 Dev Commandments (boom bap, from the prompt file), Train Me Like You Mean It (country ballad), Attention Is All We Need (70s soft rock). Mark chooses v1 or v2 per song.
+
+### Changed
+- Attention Is All We Need lyrics finalized (last `(?)` removed). All three lyric files are now confirmed; the plan doc is updated.
+
+Author: Claude Sonnet 5.5
+
+---
+
 ## [0.35.0] - 2026-10-04
 
 ### Changed
