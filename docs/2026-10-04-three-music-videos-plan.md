@@ -21,6 +21,7 @@ Process: follow the project skill **`.claude/skills/music-video/`** (written on 
 - **Lyrics are Whisper transcriptions, hand-corrected, but still drafts.** Lines ending in `(?)` are guesses.
   - 10 Dev Commandments is fast, explicit rap, so it has the most `(?)` lines.
   - **Get Mark to confirm the lyrics before running `analyze.py`.** Captions show these words on screen, so mistakes will be visible.
+- **Train Me lyrics are confirmed** (Mark + a targeted re-check against the audio, 2026-10-04): verse 3 is "From the CPU to the GPU", and the final chorus is "tune those hyperparameters right / Batch normalization's gonna get us through the night / My divergence is coming like the sunrise on the bay". Mark remembered "gradient descent" on the second line, but the audio says "batch normalization" twice; ask him if it matters. No `(?)` lines remain in Train Me.
 - **Tooling:** `video/scripts/transcribe.py` (new), `analyze.py`, `generate.mjs`, and yt-dlp in `video/.venv`.
 
 ## Step 0: shared pipeline work (once)

@@ -23,14 +23,13 @@ My learning rate's been climbing like a summer day
 So feed me all your data, let that model play
 
 [Verse 3]
-Glued to the GPU, we're processing strong (?)
+From the CPU to the GPU, we're processing strong
 Random forest's been computing all night long
 Activation functions fire like whiskey going down
 I'm the best damn algorithm in this one-horse town
 
 [Final Chorus]
-Train me like you mean it baby
-Tune those hyperparameters, ride batch normalization (?)
-Gonna descend through the night (?)
-My convergence is coming like the sunrise on the bay (?)
+Train me like you mean it baby, tune those hyperparameters right
+Batch normalization's gonna get us through the night
+My divergence is coming like the sunrise on the bay
 So feed me all your data, let that model play
