@@ -18,10 +18,10 @@ Stages:
 | Dead Weights and Gradients | `dead-weights` | live | $2.23 | VqJ7_TfyFpk | same plan (ripped open) |
 | 10 Dev Commandments | `ten-dev-commandments` | on the shelf (Mark, 2026-10-04) | $0 | | `docs/2026-10-04-three-music-videos-plan.md` |
 | Train Me Like You Mean It | `train-me-like-you-mean-it` | dropped | $0 | | same |
-| Attention Is All We Need | `attention-is-all-we-need` | on the shelf; stills need visible ML (Mark) | see ledger | | same |
-| Get Gone | `get-gone` | live | n/a | fUET78d8MxM | source on the Mac Mini (streamline plan item 5) |
+| Attention Is All We Need | `attention-is-all-we-need` | code-only vertical first cut rendered (RNN → LSTM → Transformer dating history drawn as architecture diagrams, no generated footage); waiting on Mark's look. The sugar-pop stills route is shelved | see ledger | | same |
+| Get Gone | `get-gone` | live | n/a | fUET78d8MxM | source in the private music-videos repo (`get-gone-video/`), pushed |
 | System Prompt (disco + original cuts) | `system-prompt` | live | see ledger | 1GBB0X5K_Zk / eDYnvc1Go7k | |
-| CVE Carnival | `cve-carnival` | live | n/a | aBqnLb_rIOU | source on the Mac Mini |
+| CVE Carnival | `cve-carnival` | live | n/a | aBqnLb_rIOU | source in the private music-videos repo (`cve-carnival-video/`), pushed |
 | CVE Carnival — Bubba cut (cartoon carnival) | `cve-carnival-bubba` | YouTube private draft (720p render, default thumbnail: custom thumbnails blocked until Mark does YouTube's one-time verification); waiting on Mark's publish OK, then site | $0 | xXhXptWTUuY | handoff below |
 
 **Handoff: CVE Carnival — Bubba cut (cartoon carnival, alternate cut of the existing CVE Carnival video) — ready for YouTube upload** (Bubba, Mac Mini, 2026-10-04)
