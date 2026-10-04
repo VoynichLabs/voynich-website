@@ -2,11 +2,11 @@
 // Date: 2026-10-04
 // PURPOSE: 1280x720 posters / YouTube thumbnails for System Prompt (v2 disco cut and v1 cut):
 //          character stills in slanted slices, a JSON persona line, the title and a tagline.
-//          Rendered with `npm run thumb:system-prompt` and `npm run thumb:system-prompt-v1`.
+//          Rendered with `node scripts/video.mjs thumb system-prompt`.
 // SRP/DRY check: Pass - reuses the Scary palette and fonts; stills are copies of data/system-prompt/refs.
 import { AbsoluteFill, Img, staticFile } from 'remotion';
-import { mono, sans } from './theme';
-import { S } from './components/Scary';
+import { mono, sans } from '../../theme';
+import { S } from '../../components/Scary';
 
 type ThumbProps = { looks: string[]; persona: string; tagline: string };
 

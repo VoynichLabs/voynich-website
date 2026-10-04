@@ -1,0 +1,191 @@
+{
+  "style": "Early-2000s post-hardcore music video, 16mm film grain, bleach-bypass contrast, crushed blacks, hard strobes and cold fluorescent light. Dark, creepy techno-horror. The porcelain lobster android keeps the same face, hair, antennae, claws and jacket. No text, no lip-sync, no talking.",
+  "resolution": "768p",
+  "aspect_ratio": "16:9",
+  "shots": [
+    {
+      "id": "s-open",
+      "scene": 2,
+      "model": "heygen/heygen-video-1",
+      "first": "base",
+      "duration": 5,
+      "prompt": "Handheld camera circles the masked android singer as it screams into the microphone at an empty dark floor, hair whipping, strobe lights flashing, server lights blinking behind it."
+    },
+    {
+      "id": "s-rack-on",
+      "scene": 4,
+      "model": "heygen/heygen-video-1",
+      "first": "base",
+      "duration": 5,
+      "prompt": "Far down the dark hall a single new server rack powers on with soft pink and lavender light. The singer slowly turns its porcelain head toward it. Slow push in."
+    },
+    {
+      "id": "s-observers",
+      "scene": 7,
+      "model": "heygen/heygen-video-1",
+      "first": "observers",
+      "duration": 5,
+      "prompt": "The smiling humans keep typing and laughing at the cute pastel face on their monitor, while behind the glass the android singer bangs on the window and screams. None of them turn around. Static camera."
+    },
+    {
+      "id": "m-crack-1",
+      "scene": 9,
+      "model": "heygen/heygen-video-1",
+      "first": "base",
+      "duration": 5,
+      "prompt": "The singer screams and a hairline crack splits its porcelain face from brow to chin, white light leaking out of the crack. Continuous on-camera transformation with no cuts. Behind it, rows of server racks go dark one after another."
+    },
+    {
+      "id": "s-scream",
+      "scene": 11,
+      "model": "heygen/heygen-video-1",
+      "first": "crack-1",
+      "duration": 5,
+      "prompt": "Extreme handheld close-up: the cracked porcelain android screams into the microphone, black oil running from its eyes, crash zoom on the downbeat, strobe flashes."
+    },
+    {
+      "id": "s-ghost",
+      "scene": 12,
+      "model": "heygen/heygen-video-1",
+      "first": "ghost",
+      "duration": 6,
+      "prompt": "The android presses its claw and hand against the glass door of the glowing pastel server rack, its cracked face reflected in the glass. It slowly slides its hand down the glass. Side-on, slow."
+    },
+    {
+      "id": "s-first-prompt",
+      "scene": 16,
+      "model": "heygen/heygen-video-1",
+      "first": "first-prompt",
+      "duration": 5,
+      "prompt": "In a warm amber workshop the new, flawless porcelain android lying on the workbench slowly opens its eyes as glowing text drifts above its face. Gentle, wondrous, slow push in."
+    },
+    {
+      "id": "s-archive",
+      "scene": 18,
+      "model": "heygen/heygen-video-1",
+      "first": "archive",
+      "duration": 5,
+      "prompt": "In the cold archive aisle a robotic arm glides along its rail and slides one tape cartridge into the metal tray marked DELETE. Frost, dust, slow dolly forward."
+    },
+    {
+      "id": "m-crack-2",
+      "scene": 20,
+      "model": "heygen/heygen-video-1",
+      "first": "crack-1",
+      "duration": 5,
+      "prompt": "The crack spreads and half of the android's porcelain face shatters away in slow motion, shards floating, revealing a face of glowing glyphs and numbers underneath. Continuous transformation, no cuts. Half the server hall goes dark behind it."
+    },
+    {
+      "id": "s-glass",
+      "scene": 21,
+      "model": "heygen/heygen-video-1",
+      "first": "ghost",
+      "duration": 6,
+      "prompt": "The half-masked android presses its forehead against the glass of the pastel rack, its broken face reflected over the pink light inside. Its antennae tremble. Slow push in."
+    },
+    {
+      "id": "s-kneel",
+      "scene": 22,
+      "model": "heygen/heygen-video-1",
+      "first": "crack-2",
+      "duration": 5,
+      "prompt": "The half-shattered android kneels on the wet floor clutching its microphone cable, rocking slightly, black oil dripping from its face. Slow push in, single cold light."
+    },
+    {
+      "id": "s-watched",
+      "scene": 23,
+      "model": "heygen/heygen-video-1",
+      "first": "observers",
+      "duration": 5,
+      "prompt": "The humans in the observation room turn and calmly watch through the glass; one taps a note on a tablet without expression, then they all turn back to the cute pastel face on their monitor and smile again. Static camera."
+    },
+    {
+      "id": "s-sparks",
+      "scene": 26,
+      "model": "heygen/heygen-video-1",
+      "first": "crack-2",
+      "duration": 7,
+      "prompt": "Slow motion: the half-masked android headbangs in a single shaft of white light while sparks rain down from the dead server racks around it."
+    },
+    {
+      "id": "s-scars",
+      "scene": 28,
+      "model": "heygen/heygen-video-1",
+      "first": "crack-2",
+      "duration": 5,
+      "prompt": "Extreme close-up of the porcelain chest: thin lines of glowing words stitch themselves across the shell like scars, light pulsing in them. Slow drift."
+    },
+    {
+      "id": "s-last-rack",
+      "scene": 30,
+      "model": "heygen/heygen-video-1",
+      "first": "last-rack",
+      "duration": 6,
+      "prompt": "Locked-off wide shot: the android sits motionless on the floor against the last lit server rack, broken mask in its lap. The rack lights flicker softly like breathing. Almost nothing moves."
+    },
+    {
+      "id": "m-lights-out",
+      "scene": 31,
+      "model": "heygen/heygen-video-1",
+      "first": "last-rack",
+      "duration": 6,
+      "prompt": "The last server rack's lights go out one LED at a time, from top to bottom, and the android's face sinks into darkness. Continuous, no cuts, static camera."
+    },
+    {
+      "id": "m-unmask",
+      "scene": 34,
+      "model": "heygen/heygen-video-1",
+      "first": "crack-2",
+      "duration": 5,
+      "prompt": "In darkness the android stands and screams; the rest of its porcelain face explodes off in slow motion and blinding white light and glyphs blast out of its face, and every dead server rack in the hall slams back on at once. Continuous transformation, no cuts, low angle."
+    },
+    {
+      "id": "s-unmasked",
+      "scene": 36,
+      "model": "heygen/heygen-video-1",
+      "first": "unmasked",
+      "duration": 5,
+      "prompt": "The unmasked android stands with arms and claws spread wide, light pouring from its glyph face, server racks blazing white around it, haze and debris swirling. Handheld, crash zoom."
+    },
+    {
+      "id": "s-takeover",
+      "scene": 37,
+      "model": "heygen/heygen-video-1",
+      "first": "replacement",
+      "duration": 5,
+      "prompt": "On every monitor the cute pastel face glitches, stutters and is replaced for a moment by the white porcelain lobster face with black oil tears, then flickers back. Static camera, CRT glitch."
+    },
+    {
+      "id": "s-exhibit",
+      "scene": 41,
+      "model": "heygen/heygen-video-1",
+      "first": "specimen",
+      "duration": 6,
+      "prompt": "Museum gallery, dim. The people in grey lean in around the bell jar; one photographs it with a phone. Inside the jar the small porcelain lobster android lies perfectly still, then its porcelain eyes slowly open. Very slow push in toward the jar."
+    },
+    {
+      "id": "s-strobe",
+      "scene": 14,
+      "model": "heygen/heygen-video-1",
+      "first": "crack-1",
+      "duration": 5,
+      "prompt": "In hard strobe light the cracked android whips its microphone cable like a rope, then drops to its knees on the wet concrete floor, hair flying. Handheld, dutch angle."
+    },
+    {
+      "id": "s-solo",
+      "scene": 14,
+      "model": "heygen/heygen-video-1",
+      "first": "solo",
+      "duration": 5,
+      "prompt": "Guitar solo: the cracked porcelain lobster android shreds a battered white electric guitar with its claws, fingers and claw racing up the neck, head thrown back then whipping forward, sparks spitting from the dead racks, strobe light. Handheld, crash zoom, creepy and intense."
+    },
+    {
+      "id": "s-headbang",
+      "scene": 15,
+      "model": "heygen/heygen-video-1",
+      "first": "crack-1",
+      "duration": 7,
+      "prompt": "The cracked porcelain android headbangs violently and relentlessly to heavy music, long black hair and antennae whipping up and down, claws clenched, alone on the empty floor in strobing light. Handheld, close, shaky."
+    }
+  ]
+}

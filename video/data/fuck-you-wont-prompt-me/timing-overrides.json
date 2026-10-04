@@ -1,0 +1,13 @@
+{
+  "note": "Hand-pinned from the Whisper pass (screamed and repeated sections). Line index -> [start, end] seconds.",
+  "lines": {
+    "0": [15.4, 19.5],
+    "1": [19.6, 25.8],
+    "2": [27.5, 29.7],
+    "3": [29.7, 31.7],
+    "15": [99.6, 103.4],
+    "27": [149.5, 153.0],
+    "28": [153.0, 156.5],
+    "29": [156.5, 160.1]
+  }
+}

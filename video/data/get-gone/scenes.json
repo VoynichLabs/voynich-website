@@ -526,5 +526,28 @@
   "Next: more of the Scorned Woman album, and proper videos for the channel's older song Shorts."
  ],
  "bpm": 90,
- "duration": 181.16
+ "duration": 181.16,
+ "page": {
+  "description": "The Get Gone music video: you are the bad boyfriend, and Mother Earth and the AI, as four furious women, throw you out of their own rooms in first person. Scene book and timeline included.",
+  "decisionsTitle": "Open decisions",
+  "howMade": [
+   {
+    "label": "Timing",
+    "text": "The vocal is transcribed with Whisper and aligned word by word to the lyrics, with a repeat-safe match so the choruses cannot swap. The track is 90 BPM."
+   },
+   {
+    "label": "Stills",
+    "text": "One first frame per shot from Gemini, using the four Scorned Woman cover women as references so each stays the same woman, in four consistent rooms, in first person."
+   },
+   {
+    "label": "Clips",
+    "text": "Each still is animated into a 5 to 14 second clip with HeyGen Video 1 through OpenRouter, 36 in all."
+   },
+   {
+    "label": "Overlays and edit",
+    "text": "The lyrics, the four billion years counter, the flying objects, the locks, the terminal and the title are drawn in code (Canvas2D, WebGL, headless Chrome, ffmpeg) over the clips, with whip, dissolve and door-slam moves between rooms."
+   }
+  ],
+  "sourceNote": "Built outside Remotion, in the private music-videos repo (engine, render and generation scripts)."
+ }
 }

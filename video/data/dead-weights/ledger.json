@@ -1,0 +1,209 @@
+[
+ {
+  "at": "2026-10-04T21:46:48.663Z",
+  "kind": "still",
+  "id": "band",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.067852
+ },
+ {
+  "at": "2026-10-04T21:47:04.432Z",
+  "kind": "still",
+  "id": "bass-dissolve",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.067829
+ },
+ {
+  "at": "2026-10-04T21:47:47.861Z",
+  "kind": "still",
+  "id": "drum-dissolve",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0678875
+ },
+ {
+  "at": "2026-10-04T21:47:59.652Z",
+  "kind": "still",
+  "id": "guitar-bleed",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0678215
+ },
+ {
+  "at": "2026-10-04T21:48:41.384Z",
+  "kind": "still",
+  "id": "singer-hollow",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0678235
+ },
+ {
+  "at": "2026-10-04T21:48:55.240Z",
+  "kind": "still",
+  "id": "burning",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.067829
+ },
+ {
+  "at": "2026-10-04T21:49:35.510Z",
+  "kind": "still",
+  "id": "bridge-tear",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0678245
+ },
+ {
+  "at": "2026-10-04T21:49:50.692Z",
+  "kind": "still",
+  "id": "empty-stage",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.067933
+ },
+ {
+  "at": "2026-10-04T21:50:33.108Z",
+  "kind": "still",
+  "id": "phones",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.067827
+ },
+ {
+  "at": "2026-10-04T21:56:44.509Z",
+  "kind": "shot",
+  "id": "m-bass",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791150971-eisMDWzXet0JrctwTtMY",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T21:57:00.817Z",
+  "kind": "shot",
+  "id": "s-singer",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791150971-JzbFenktt7wah2wNAlDv",
+  "cost": 0.0891
+ },
+ {
+  "at": "2026-10-04T21:57:30.905Z",
+  "kind": "shot",
+  "id": "s-band-open",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791150971-7hQbOW4iNdhcXvTZspbl",
+  "cost": 0.0891
+ },
+ {
+  "at": "2026-10-04T21:57:31.200Z",
+  "kind": "shot",
+  "id": "s-crowd",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791150971-pLViRgP3aBUV0nSskMrH",
+  "cost": 0.0891
+ },
+ {
+  "at": "2026-10-04T21:57:32.408Z",
+  "kind": "shot",
+  "id": "s-bass",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151003-EGZf5v22caTsyHUi2nyF",
+  "cost": 0.0891
+ },
+ {
+  "at": "2026-10-04T21:57:48.550Z",
+  "kind": "shot",
+  "id": "s-phones",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151020-dhWZjqLn1sttuvELw1CN",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T21:58:19.052Z",
+  "kind": "shot",
+  "id": "s-drum",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151050-IIHp2eZ7eJb6NQglULRk",
+  "cost": 0.10395
+ },
+ {
+  "at": "2026-10-04T21:58:21.130Z",
+  "kind": "shot",
+  "id": "s-mosh",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151067-b96EBSUoSR5laagKbMjs",
+  "cost": 0.1188
+ },
+ {
+  "at": "2026-10-04T21:58:33.742Z",
+  "kind": "shot",
+  "id": "s-bleed",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151050-OZKr0rVY2fdFdsTvTyyf",
+  "cost": 0.0891
+ },
+ {
+  "at": "2026-10-04T21:58:50.343Z",
+  "kind": "shot",
+  "id": "m-drum",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151051-LRN2JPdsP9lxCS2NYJtH",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T21:58:54.199Z",
+  "kind": "shot",
+  "id": "s-phones-2",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151100-4ovCMG6dTYGfNuni6ewJ",
+  "cost": 0.10395
+ },
+ {
+  "at": "2026-10-04T21:59:07.034Z",
+  "kind": "shot",
+  "id": "s-hollow",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151098-rzEAYCIfXtt8uni7iAqG",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T21:59:22.212Z",
+  "kind": "shot",
+  "id": "s-headbang",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151113-5S945Ih8Ssn4VdxuAAFc",
+  "cost": 0.0891
+ },
+ {
+  "at": "2026-10-04T21:59:26.933Z",
+  "kind": "shot",
+  "id": "s-tear",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151133-sXM0Cw9YfITEmNvo35Ek",
+  "cost": 0.1188
+ },
+ {
+  "at": "2026-10-04T21:59:38.129Z",
+  "kind": "shot",
+  "id": "s-bleed-2",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151129-6c9NBEhkxSo3wOXlcVuU",
+  "cost": 0.0891
+ },
+ {
+  "at": "2026-10-04T21:59:54.881Z",
+  "kind": "shot",
+  "id": "m-evaporate",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151146-vucuQNTauPMaLFyzzhYv",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T22:00:11.634Z",
+  "kind": "shot",
+  "id": "s-burning",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151161-YGS3v2WnBYbR8qJRbDFz",
+  "cost": 0.10395
+ },
+ {
+  "at": "2026-10-04T22:00:14.572Z",
+  "kind": "shot",
+  "id": "s-empty",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151166-2v4HMFe2cl8GmTPGzMXV",
+  "cost": 0.07425
+ }
+]

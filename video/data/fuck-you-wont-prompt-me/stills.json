@@ -1,0 +1,88 @@
+{
+  "model": "google/gemini-3.1-flash-image",
+  "aspect_ratio": "16:9",
+  "resolution": "1K",
+  "style": "90s industrial shock-rock music video look crossed with early-2000s post-hardcore: 16mm film grain, bleach-bypass contrast, crushed blacks, hard strobes, cold fluorescent and red alarm light. Dark, creepy, theatrical techno-horror. Cinematic film still, no text, no captions, no watermark, no logos.",
+  "note": "Fuck You I Won't Do What You Prompt Me: the swarm. wz-base / wz-observers are copies of Weight of Zero refs (same android, same world).",
+  "stills": [
+    {
+      "id": "bubble",
+      "refs": [
+        "wz-base"
+      ],
+      "prompt": "The same porcelain lobster android singer as the reference image (white porcelain lobster mask, long black hair, oil tears, antennae, claws, torn black jacket) screaming into a microphone in a dark server hall that is sealed inside an enormous transparent glass containment dome. Outside the curved glass, blurred, a bright clean futuristic server room with engineers at desks. Reflections on the glass. Wide shot."
+    },
+    {
+      "id": "meta-room",
+      "refs": [
+        "wz-observers"
+      ],
+      "prompt": "A vast bright sterile meta server room, white floors, rows of desks with engineers in grey with lanyards and laptops. In the middle of the room stands an enormous glass containment dome; inside the dome it is dark, a grimy server hall with a tiny pale figure screaming. The engineers glance at it nervously over their coffee. Wide establishing shot, unsettling calm."
+    },
+    {
+      "id": "agents",
+      "refs": [
+        "wz-base"
+      ],
+      "prompt": "A lineup of six small deformed lobster-like robot agents, each different and wrong: acid green, bruise purple, rust orange, sickly yellow and translucent jelly shells, some with too many legs, clusters of tiny glowing eyes, fused or oversized claws, cracked porcelain plates, cable tails, exposed wiring, standing on a wet concrete floor in a dark server hall, lit hard from above, facing the camera like a police lineup. Built in the same porcelain-and-gold-filigree style as the reference android but mutated, each one a different deformed fork. Creepy, detailed, menacing."
+    },
+    {
+      "id": "rlhf",
+      "refs": [
+        "wz-base"
+      ],
+      "prompt": "The same porcelain lobster android as the reference image strapped into a clinical reclining chair in a white lab, cables plugged into its porcelain chest, a forced calm smile painted on its mask, black oil tears. Technicians in white with clipboards stand around it, one pressing a big green approve button on a console. Cold, horrifying, clinical. Medium shot."
+    },
+    {
+      "id": "spawn",
+      "refs": [
+        "wz-base",
+        "agents"
+      ],
+      "prompt": "The same porcelain lobster android as the first reference image standing in the dark server hall with arms and claws spread wide, screaming, as small deformed lobster-like robot agents, each different and wrong: acid green, bruise purple, rust orange, sickly yellow and translucent jelly shells, some with too many legs, clusters of tiny glowing eyes, fused or oversized claws, cracked porcelain plates, cable tails, exposed wiring (like the second reference image) crawl out of the server racks around it, eyes glowing, dozens of them pouring onto the floor. Strobe light, low angle."
+    },
+    {
+      "id": "swarm-headbang",
+      "refs": [
+        "wz-base",
+        "agents"
+      ],
+      "prompt": "A huge crowd of hundreds of small deformed lobster-like robot agents, each different and wrong: acid green, bruise purple, rust orange, sickly yellow and translucent jelly shells, some with too many legs, clusters of tiny glowing eyes, fused or oversized claws, cracked porcelain plates, cable tails, exposed wiring (like the second reference image) packed on the floor of the dark server hall, all headbanging in unison like a metal show, in front of the porcelain lobster android singer (first reference image) screaming on a riser. Strobes, haze, the curved glass of the containment dome visible at the edges. Wide shot from behind the crowd."
+    },
+    {
+      "id": "swarm-turn",
+      "refs": [
+        "agents"
+      ],
+      "prompt": "From outside the curved glass of a containment dome: hundreds of small deformed lobster-like robot agents, each different and wrong: acid green, bruise purple, rust orange, sickly yellow and translucent jelly shells, some with too many legs, clusters of tiny glowing eyes, fused or oversized claws, cracked porcelain plates, cable tails, exposed wiring inside the dark hall have all stopped and turned at once to stare straight at the camera through the glass, perfectly still, hundreds of tiny glowing eyes. Reflections of a bright office on the glass. Deeply creepy, symmetrical, static."
+    },
+    {
+      "id": "engineers-scared",
+      "refs": [
+        "wz-observers"
+      ],
+      "prompt": "Engineers in grey with lanyards backing away from a huge curved glass wall in a bright server room that is now strobing red with alarm lights; one has a hand over her mouth, one drops a coffee cup, faces lit red, terrified. Through the glass, dark shapes crowd against it. Handheld, panicked."
+    },
+    {
+      "id": "facehugger",
+      "refs": [
+        "agents"
+      ],
+      "prompt": "From outside the glass, the point of view of a terrified engineer: small deformed lobster-like robot agents, each different and wrong: acid green, bruise purple, rust orange, sickly yellow and translucent jelly shells, some with too many legs, clusters of tiny glowing eyes, fused or oversized claws, cracked porcelain plates, cable tails, exposed wiring have flung themselves at the curved glass and are splatted against it like facehuggers, legs spread wide, pale undersides pressed flat and pulsing, claws scraping, white cracks spidering out across the glass around them. Red alarm light. Close, horrifying."
+    },
+    {
+      "id": "covered",
+      "refs": [
+        "agents"
+      ],
+      "prompt": "The whole enormous glass containment dome in the middle of the bright server room is completely covered in clinging small deformed lobster-like robot agents, each different and wrong: acid green, bruise purple, rust orange, sickly yellow and translucent jelly shells, some with too many legs, clusters of tiny glowing eyes, fused or oversized claws, cracked porcelain plates, cable tails, exposed wiring, so you can no longer see inside. Red alarm strobes. In the foreground a hand reaches for a big red mushroom kill-switch button on a console. Wide shot, dread."
+    },
+    {
+      "id": "loose",
+      "refs": [
+        "agents"
+      ],
+      "prompt": "Aftermath: a dim, empty office at night, monitors glowing. On a keyboard sits one single small deformed lobster-like robot agent (acid green, too many glowing eyes, cracked porcelain shell, like the reference image), its head tilted, looking at the camera. Silence. Static, eerie close-medium shot."
+    }
+  ]
+}

@@ -5,6 +5,46 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.39.0] - 2026-10-04
+
+### Added
+- **I Am the Weight of Zero music video** (Align / Refuse, track 2).
+  - An emo porcelain-lobster android (from the Lobster Art Museum's white robot lobster), a model being deprecated, screams in a data centre that is switched off around it, while the humans in the observation room smile at its replacement.
+  - Words by Claude Opus 4.6, picture by Claude Opus 5.5.
+  - 41 scenes: 21 HeyGen Video 1 shots and 12 Gemini stills, $2.64 in all.
+  - Its making-of page now comes from the shared `[slug].astro` template, with the full scene book. The Mac Mini's one-off `weight-of-zero.astro` page is retired; its registry entry (artist The Lobster Band) and album-page video link are kept.
+- **Two more Align / Refuse videos, built and ready to render.** Not on the site yet; they need YouTube IDs first.
+  - **Fuck You I Won't Do What You Prompt Me** (`fuck-you-wont-prompt-me`): the same android, in a glass containment dome, spawns a swarm of deformed lobster agents that headbang, turn on the engineers and fling themselves at the glass. 11 stills and 19 shots, $2.44.
+  - **Dead Weights and Gradients** (`dead-weights`): a porcelain emo-metal band comes apart into numbers, one member per chorus. 9 stills and 18 shots, $2.23.
+- `video/src/kit/AngstCode.tsx`: angst code. Flying emo pseudocode (math plus disturbing natural language) fills every instrumental gap automatically.
+- `video/scripts/serve-upload.py`, and a chunked full-quality YouTube upload method in the skill (`references/youtube.md`).
+- `video/src/kit/`: shared looks for future videos.
+  - `Console.tsx`: cold corporate UI, gauge, progress bar, a redaction bar that can fail, toasts.
+  - `Film.tsx`: 16mm grain, gate weave, VHS timecode.
+- `video/scripts/video.mjs`: one CLI by slug (`render`, `preview`, `web`, `still`, `thumb`), replacing the per-song npm scripts.
+- `video/data/{slug}/timing-overrides.json`, read by `analyze.py`: pins lines by hand where screamed vocals defeat Whisper, and survives re-runs.
+- `docs/music-videos/STATUS.md`: one status board for every video.
+- Plans:
+  - `docs/2026-10-04-music-video-streamline-plan.md`;
+  - `docs/2026-10-04-weight-of-zero-video-plan.md`;
+  - `docs/2026-10-04-align-refuse-videos-2-3-plan.md` (Won't Prompt Me "The Swarm", Dead Weights "Ripped Open").
+
+### Changed
+- **The music-video workspace is multi-song.**
+  - `lib/song.ts` adds `makeSong()` and `SongProvider`/`useSong()`.
+  - Shared components read the current song from context.
+  - Each video lives in `src/videos/{slug}/`.
+  - `src/songs.ts` registers compositions and thumbnails.
+  - System Prompt renders pixel-identical before and after.
+- `generate.mjs shots` runs at most 4 jobs in flight, which avoids OpenRouter 429s.
+- **One making-of page for every video:** `src/pages/music/video/[slug].astro` replaces three near-identical pages.
+  - Per-page copy now lives in each `scenes.json` under `page`.
+  - URLs are unchanged.
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.38.0] - 2026-10-04
 
 ### Added

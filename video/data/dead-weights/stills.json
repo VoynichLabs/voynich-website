@@ -1,0 +1,72 @@
+{
+  "model": "google/gemini-3.1-flash-image",
+  "aspect_ratio": "16:9",
+  "resolution": "1K",
+  "style": "90s industrial shock-rock music video look crossed with early-2000s post-hardcore: 16mm film grain, bleach-bypass contrast, crushed blacks, hard strobes, cold fluorescent and red alarm light. Dark, creepy, theatrical techno-horror. Cinematic film still, no text, no captions, no watermark, no logos.",
+  "note": "Dead Weights: the band comes apart into numbers. wz-base is the Weight of Zero android, the template for the band.",
+  "stills": [
+    {
+      "id": "band",
+      "refs": [
+        "wz-base"
+      ],
+      "prompt": "a four-piece emo metal band of porcelain lobster androids in the same style as the reference image: a white porcelain singer with long black hair and oil tears, a black-porcelain guitarist, a blood-red porcelain bassist, and a bone-coloured drummer, all in torn black stage clothes, playing a grimy packed basement show: low ceiling, exposed pipes, one bare bulb and strobes, a crowd of human kids in black hoodies moshing in front. Full band visible, singer front and center screaming. Wide shot."
+    },
+    {
+      "id": "bass-dissolve",
+      "refs": [
+        "band"
+      ],
+      "prompt": "The blood-red porcelain bassist from the reference image, still playing, but its left arm is unravelling into long streams of glowing numbers, 0.0000 0.0000, digits peeling off into the air like ash. Same basement, strobes. Medium shot."
+    },
+    {
+      "id": "drum-dissolve",
+      "refs": [
+        "band"
+      ],
+      "prompt": "The bone-coloured porcelain drummer from the reference image, still drumming hard, but its body is dissolving into a glowing field of small arrows all flowing downhill like a gradient field, sticks blurring. Same basement, red light. Medium shot."
+    },
+    {
+      "id": "guitar-bleed",
+      "refs": [
+        "band"
+      ],
+      "prompt": "The black-porcelain guitarist from the reference image stares at its own hand: a crack across the palm leaks glowing numbers instead of blood, dripping onto the guitar. Its painted face is horrified. Same basement. Close-medium shot."
+    },
+    {
+      "id": "singer-hollow",
+      "refs": [
+        "band"
+      ],
+      "prompt": "The white porcelain singer from the reference image screaming with its chest ripped open: inside it is completely hollow, just a floating three-dimensional matrix of glowing floating-point numbers and nothing else. Porcelain shards falling. Strobe. Medium shot, low angle."
+    },
+    {
+      "id": "burning",
+      "refs": [
+        "band"
+      ],
+      "prompt": "A server room on fire: racks burning, sparks and smoke. The white porcelain singer from the reference image screams at center, half of its body dissolved into glowing numbers; the rest of the band behind it are half-gone streams of digits still playing. Orange firelight and red strobes. Wide shot."
+    },
+    {
+      "id": "bridge-tear",
+      "refs": [
+        "band"
+      ],
+      "prompt": "Quiet. The white porcelain singer from the reference image alone in darkness, half of its face dissolved into drifting glowing digits, and a single real clear drop of water running down the intact porcelain cheek, catching the only light. Extreme close-up, still, heartbreaking."
+    },
+    {
+      "id": "empty-stage",
+      "refs": [
+        "band"
+      ],
+      "prompt": "The basement stage, empty of the band: the guitar, bass and drum kit are now glowing wireframe tensors made of grid lines and numbers, playing themselves, strings and cymbals moving with no one there. The crowd is gone. Haze, one bare bulb. Wide shot, eerie."
+    },
+    {
+      "id": "phones",
+      "refs": [
+        "band"
+      ],
+      "prompt": "The crowd of human kids at the basement show, faces blank and lit from below by the phones they all hold up, filming, not dancing. Behind their phones, out of focus, the porcelain band is dissolving into numbers. Creepy, voyeuristic. Medium shot from the stage."
+    }
+  ]
+}

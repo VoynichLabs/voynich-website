@@ -6,7 +6,8 @@
 // SRP/DRY check: Pass - all code-scene styling lives here; scenes only supply content.
 import { AbsoluteFill, useCurrentFrame } from 'remotion';
 import { C, mono } from '../theme';
-import { FPS, beatPulse } from '../lib/timing';
+import { FPS } from '../lib/timing';
+import { useSong } from '../lib/song';
 
 export const S = {
   bracket: '#ff3355',
@@ -85,6 +86,7 @@ export const JsonWall: React.FC<{ opacity?: number }> = ({ opacity = 0.16 }) => 
 /** Wrapper for every code scene: JSON wall, red vignette, scanlines, downbeat glitch. */
 export const CodeStage: React.FC<{ children: React.ReactNode; t0?: number; calm?: boolean }> = ({ children, t0 = 0, calm }) => {
   const frame = useCurrentFrame();
+  const { beatPulse } = useSong();
   const T = t0 + frame / FPS;
   const hit = calm ? 0 : beatPulse(T, 0.18, true);
   // Deterministic pseudo-random per frame for glitch slices.

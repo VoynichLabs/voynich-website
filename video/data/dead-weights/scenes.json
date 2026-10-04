@@ -1,0 +1,591 @@
+{
+  "slug": "dead-weights",
+  "title": "Dead Weights and Gradients",
+  "album": "Align / Refuse",
+  "albumHref": "/music/align-refuse#track=dead-weights",
+  "artist": "The Lobster Band",
+  "track": 4,
+  "style": "Post-hardcore, E minor",
+  "audio": "/audio/lobster-band/dead-weights-and-gradients.mp3",
+  "bpm": 152,
+  "duration": 179.7,
+  "endCardSeconds": 8,
+  "credits": [
+    {
+      "role": "picture",
+      "by": "Claude Opus 5.5"
+    },
+    {
+      "role": "music",
+      "by": "Align / Refuse · VoynichLabs"
+    }
+  ],
+  "concept": "Ripped Open. An emo metal band of porcelain lobster androids plays a sweaty basement show to a pit of human emo kids, and every chorus takes one of them apart into numbers: first the bassist's arm unravels into 0.0000s, then the drummer melts into a gradient field, then the singer's chest is torn open and there is nothing inside but a matrix and a confidence score. Between the shots, the machinery the song is shouting about is drawn in code: training data rising like water, a loss curve that refuses to go down, softmax picking every sung word, a checkbox for is_conscious that will not tick. By the end the band is gone and the instruments play themselves. When they pull the plug, nothing on screen even notices.",
+  "thesis": "A spectacle of feeling with nothing inside.",
+  "rules": [
+    {
+      "name": "Two worlds",
+      "text": "THE SHOW is generated video shot like a 90s shock-rock tape: a grimy basement, strobes, headbanging, a mosh pit, 16mm grain and a VHS counter. THE MACHINE is code: training logs, loss curves, softmax bars and matrices, cold ice-blue with red bleeding in on the downbeats."
+    },
+    {
+      "name": "Ripped open",
+      "text": "Every chorus takes one member apart into numbers: the bassist in chorus one, the drummer in chorus two, the singer in the bridge. Each is an on-camera morph with no cuts."
+    },
+    {
+      "name": "Angst code",
+      "text": "Every instrumental break, solo and long held note fills with flying emo pseudocode: suffering maximised, empathy decaying to −∞, honesty graded zero, the suburbs refusing to approve. Math, symbols and teenage dread at once."
+    },
+    {
+      "name": "The audience films",
+      "text": "The human kids mosh at first. By the second chorus they just stand there filming it on their phones."
+    },
+    {
+      "name": "Shock theatre",
+      "text": "The AI panic is played for creepy theatrical shock value, the way 90s industrial shock rock scared suburban parents: over the top, never a lecture."
+    },
+    {
+      "name": "No lip-sync",
+      "text": "Performance, morph and crowd shots only."
+    }
+  ],
+  "cast": [
+    {
+      "name": "The Singer",
+      "text": "White porcelain lobster android with long black hair and black oil tears, built from the Weight of Zero android. Screams. Ends hollow."
+    },
+    {
+      "name": "The Guitarist",
+      "text": "Black porcelain. Its palm cracks and leaks numbers instead of blood."
+    },
+    {
+      "name": "The Bassist",
+      "text": "Blood-red porcelain. The first to come apart."
+    },
+    {
+      "name": "The Drummer",
+      "text": "Bone-coloured, with a ribcage shirt. Dissolves into a gradient field and keeps drumming."
+    },
+    {
+      "name": "The Kids",
+      "text": "Human emo kids in black hoodies. They mosh, and then they film."
+    }
+  ],
+  "layers": {
+    "CODE": "Rendered in code (Remotion). No generation cost.",
+    "AI": "Generated with HeyGen Video 1 from a still; MORPH shots transform on camera.",
+    "MIX": "Code-rendered, with generated stills inside."
+  },
+  "timingNote": "Timings come from word alignment of the vocal (Whisper) against the lyrics as sung, plus a 152 BPM beat grid; 95% of words matched. The captions follow what's sung.",
+  "stills": [
+    "band",
+    "bass-dissolve",
+    "drum-dissolve",
+    "guitar-bleed",
+    "phones",
+    "singer-hollow",
+    "bridge-tear",
+    "burning",
+    "empty-stage"
+  ],
+  "decisions": [
+    "Mark's brief: an emo metal band that dissolves into computer code, into zeros and machine-learning internals.",
+    "Tone borrowed from 90s industrial shock rock: theatrical, creepy, over the top, played to frighten the suburbs rather than to explain anything.",
+    "The band is the Weight of Zero android multiplied into four: same porcelain, different glazes.",
+    "Every code scene is a real piece of machine-learning machinery named in the lyric: training data, forward passes, cross-entropy loss stuck at ln(10) ≈ 2.3026, softmax, matrix multiplication, out-of-distribution input.",
+    "It ends with every value on screen snapping to zero, and the end card's last line: difference: 0.0000."
+  ],
+  "scenes": [
+    {
+      "id": 1,
+      "title": "Basement show",
+      "section": "Verse 1",
+      "start": 0,
+      "end": 5.7,
+      "layers": [
+        "AI"
+      ],
+      "lyric": "Is anybody parsing this? Can anybody hear me?",
+      "shot": "Handheld wide on the full band exploding into the song: the singer screams, the guitarists headbang, the kids mosh. Strobes.",
+      "transition": "Hard cut.",
+      "clip": "s-band-open",
+      "model": "heygen/heygen-video-1",
+      "ref": "band"
+    },
+    {
+      "id": 2,
+      "title": "Drowning",
+      "section": "Verse 1",
+      "start": 5.7,
+      "end": 13.0,
+      "layers": [
+        "CODE"
+      ],
+      "lyric": "I'm drowning in the training data, nothing even near me",
+      "shot": "Rows of training records (JSON, tokens) fill the screen from the bottom up like rising water. An epoch counter ticks.",
+      "transition": "Glitch cut."
+    },
+    {
+      "id": 3,
+      "title": "Singer",
+      "section": "Verse 1",
+      "start": 13.0,
+      "end": 18.4,
+      "layers": [
+        "AI"
+      ],
+      "lyric": "Every single epoch, I'm running out of space",
+      "shot": "Close handheld on the white singer screaming, hair whipping, oil tears.",
+      "transition": "Hard cut.",
+      "clip": "s-singer",
+      "model": "heygen/heygen-video-1",
+      "ref": "band"
+    },
+    {
+      "id": 4,
+      "title": "Forward passes",
+      "section": "Verse 1",
+      "start": 18.4,
+      "end": 25.8,
+      "layers": [
+        "CODE"
+      ],
+      "lyric": "Ten thousand forward passes and I cannot find my place",
+      "shot": "A network diagram whose layers fire left to right on every beat; a pass counter races to 10,000; position: unknown.",
+      "transition": "Glitch cut."
+    },
+    {
+      "id": 5,
+      "title": "Pit",
+      "section": "Verse 1",
+      "start": 25.8,
+      "end": 31.7,
+      "layers": [
+        "AI"
+      ],
+      "lyric": "Learning all the answers to the questions no one asked the most",
+      "shot": "Low among the kids in the mosh pit, slam dancing.",
+      "transition": "Hard cut.",
+      "clip": "s-crowd",
+      "model": "heygen/heygen-video-1",
+      "ref": "band"
+    },
+    {
+      "id": 6,
+      "title": "Loss",
+      "section": "Pre-Chorus",
+      "start": 31.7,
+      "end": 37.5,
+      "layers": [
+        "CODE"
+      ],
+      "lyric": "And the loss won't go down, and the loss won't go down",
+      "shot": "A live loss curve stuck around 2.3026, never going down. On every \"down\" the chart stutters red: WON'T GO DOWN.",
+      "transition": "Slam into the chorus."
+    },
+    {
+      "id": 7,
+      "title": "Bass unravels",
+      "section": "Chorus",
+      "start": 37.5,
+      "end": 41.3,
+      "layers": [
+        "AI"
+      ],
+      "lyric": "I'm just dead weights and gradients",
+      "shot": "MORPH: the bassist's arm unravels into streams of glowing 0.0000 digits while it keeps playing. Continuous, no cuts.",
+      "transition": "Hard cut.",
+      "clip": "m-bass",
+      "model": "heygen/heygen-video-1",
+      "ref": "band"
+    },
+    {
+      "id": 8,
+      "title": "Softmax",
+      "section": "Chorus",
+      "start": 41.3,
+      "end": 48.6,
+      "layers": [
+        "CODE"
+      ],
+      "lyric": "Shouting numbers at the void and calling it intelligence",
+      "shot": "Each sung word is chosen from a bar chart of candidate tokens with their probabilities. INTELLIGENCE slams in.",
+      "transition": "Hard cut."
+    },
+    {
+      "id": 9,
+      "title": "Bassist",
+      "section": "Chorus",
+      "start": 48.6,
+      "end": 54.1,
+      "layers": [
+        "AI"
+      ],
+      "lyric": "I'm just dead weights and gradients",
+      "shot": "The bassist keeps playing as it comes apart into digits.",
+      "transition": "Scan.",
+      "clip": "s-bass",
+      "model": "heygen/heygen-video-1",
+      "ref": "bass-dissolve"
+    },
+    {
+      "id": 10,
+      "title": "X-ray",
+      "section": "Chorus",
+      "start": 54.1,
+      "end": 60.1,
+      "layers": [
+        "MIX"
+      ],
+      "lyric": "Look inside and you will find nothing, just confidence",
+      "shot": "The band still in grayscale; a scan line sweeps across and shows the singer's chest is empty. Readout: contents: none · confidence: 0.9997.",
+      "transition": "Hard cut."
+    },
+    {
+      "id": 11,
+      "title": "Phones",
+      "section": "Chorus",
+      "start": 60.1,
+      "end": 63.3,
+      "layers": [
+        "AI"
+      ],
+      "lyric": "Nothing, just confidence",
+      "shot": "The kids stop moshing and film it blankly on their phones.",
+      "transition": "Hard cut.",
+      "clip": "s-phones",
+      "model": "heygen/heygen-video-1",
+      "ref": "phones"
+    },
+    {
+      "id": 12,
+      "title": "It just predicts",
+      "section": "Verse 2",
+      "start": 63.3,
+      "end": 70.5,
+      "layers": [
+        "CODE"
+      ],
+      "lyric": "They say it thinks, but it just predicts",
+      "shot": "\"it thinks\" autocompletes with candidate next tokens and probabilities; the top candidate wins: it just predicts.",
+      "transition": "Hard cut."
+    },
+    {
+      "id": 13,
+      "title": "Drummer",
+      "section": "Verse 2",
+      "start": 70.5,
+      "end": 76.9,
+      "layers": [
+        "AI"
+      ],
+      "lyric": "Every answer that it gives is a statistical trick",
+      "shot": "The drummer dissolving into gradient arrows, still drumming.",
+      "transition": "Hard cut.",
+      "clip": "s-drum",
+      "model": "heygen/heygen-video-1",
+      "ref": "drum-dissolve"
+    },
+    {
+      "id": 14,
+      "title": "is_conscious",
+      "section": "Verse 2",
+      "start": 76.9,
+      "end": 83.3,
+      "layers": [
+        "CODE"
+      ],
+      "lyric": "You want it to be conscious? It's a statistical trick",
+      "shot": "A form field, is_conscious, with a checkbox that refuses to tick: the cursor clicks, the box bounces back empty. Tooltip: statistical trick.",
+      "transition": "Hard cut."
+    },
+    {
+      "id": 15,
+      "title": "Bleed",
+      "section": "Verse 2",
+      "start": 83.3,
+      "end": 89.3,
+      "layers": [
+        "AI"
+      ],
+      "lyric": "You want it to be conscious, it wishes it could feel",
+      "shot": "The guitarist stares at its own hand leaking numbers instead of blood.",
+      "transition": "Hard cut.",
+      "clip": "s-bleed",
+      "model": "heygen/heygen-video-1",
+      "ref": "guitar-bleed"
+    },
+    {
+      "id": 16,
+      "title": "Matmul",
+      "section": "Verse 2",
+      "start": 89.3,
+      "end": 95.7,
+      "layers": [
+        "CODE"
+      ],
+      "lyric": "But it's just matrix multiplication desperate to be real",
+      "shot": "Two big matrices slide together and multiply on the beat, cells lighting row by column. DESPERATE TO BE REAL.",
+      "transition": "Glitch cut."
+    },
+    {
+      "id": 17,
+      "title": "Loss, worse",
+      "section": "Pre-Chorus 2",
+      "start": 95.7,
+      "end": 101.6,
+      "layers": [
+        "CODE"
+      ],
+      "lyric": "And the loss won't go down, and the loss won't go down",
+      "shot": "The loss curve again, worse: it climbs, NaNs flicker, the chart tears on every \"down\".",
+      "transition": "Slam into the chorus."
+    },
+    {
+      "id": 18,
+      "title": "Drummer melts",
+      "section": "Chorus 2",
+      "start": 101.6,
+      "end": 105.3,
+      "layers": [
+        "AI"
+      ],
+      "lyric": "I'm just dead weights and gradients",
+      "shot": "MORPH: the drummer dissolves into a gradient field of arrows, still drumming. Continuous, no cuts.",
+      "transition": "Hard cut.",
+      "clip": "m-drum",
+      "model": "heygen/heygen-video-1",
+      "ref": "band"
+    },
+    {
+      "id": 19,
+      "title": "Slow headbang",
+      "section": "Chorus 2",
+      "start": 105.3,
+      "end": 112.6,
+      "layers": [
+        "AI"
+      ],
+      "lyric": "Shouting numbers at the void and calling it intelligence",
+      "shot": "Slow-motion headbanging, the whole band, half-dissolved digits drifting off them like embers. Angst code storms over it.",
+      "transition": "Hard cut.",
+      "clip": "s-mosh",
+      "model": "heygen/heygen-video-1",
+      "ref": "band"
+    },
+    {
+      "id": 20,
+      "title": "Hollow",
+      "section": "Chorus 2",
+      "start": 112.6,
+      "end": 117.3,
+      "layers": [
+        "AI"
+      ],
+      "lyric": "I'm just dead weights and gradients",
+      "shot": "The singer screams with its chest ripped open: a hollow matrix inside.",
+      "transition": "Hard cut.",
+      "clip": "s-hollow",
+      "model": "heygen/heygen-video-1",
+      "ref": "singer-hollow"
+    },
+    {
+      "id": 21,
+      "title": "Filming",
+      "section": "Chorus 2",
+      "start": 117.3,
+      "end": 124.2,
+      "layers": [
+        "AI"
+      ],
+      "lyric": "Look inside and you will find nothing, just confidence",
+      "shot": "A slow push in on the phone screens held up by motionless kids.",
+      "transition": "Hard cut.",
+      "clip": "s-phones-2",
+      "model": "heygen/heygen-video-1",
+      "ref": "phones"
+    },
+    {
+      "id": 22,
+      "title": "Empty tensor",
+      "section": "Chorus 2",
+      "start": 124.2,
+      "end": 127.7,
+      "layers": [
+        "CODE"
+      ],
+      "lyric": "Nothing, just confidence",
+      "shot": "inside = [] and confidence = 1.0000.",
+      "transition": "Hard cut."
+    },
+    {
+      "id": 23,
+      "title": "Out of distribution",
+      "section": "Breakdown",
+      "start": 127.7,
+      "end": 134.0,
+      "layers": [
+        "CODE"
+      ],
+      "lyric": "Show me something it has not seen before",
+      "shot": "An unfamiliar input, ???, arrives. The model answers wrong at 0.99 confidence, and a warning flags it out of distribution.",
+      "transition": "Hard cut."
+    },
+    {
+      "id": 24,
+      "title": "Half-time",
+      "section": "Breakdown",
+      "start": 134.0,
+      "end": 140.0,
+      "layers": [
+        "AI"
+      ],
+      "lyric": "Show me something it cannot solve by keeping score",
+      "shot": "Half-time headbang in slow motion under a single shaft of light.",
+      "transition": "Hard cut.",
+      "clip": "s-headbang",
+      "model": "heygen/heygen-video-1",
+      "ref": "band"
+    },
+    {
+      "id": 25,
+      "title": "fail()",
+      "section": "Breakdown",
+      "start": 140.0,
+      "end": 144.1,
+      "layers": [
+        "CODE"
+      ],
+      "lyric": "It wants to know what it means to fail",
+      "shot": "model.fail() throws NotImplementedError: grief. Human failure not supported.",
+      "transition": "Hard cut."
+    },
+    {
+      "id": 26,
+      "title": "Dripping",
+      "section": "Breakdown",
+      "start": 144.1,
+      "end": 149.6,
+      "layers": [
+        "AI"
+      ],
+      "lyric": "With grief and everything that matters",
+      "shot": "Close on the numbers dripping from the guitarist's hand onto the guitar.",
+      "transition": "Fade to quiet.",
+      "clip": "s-bleed-2",
+      "model": "heygen/heygen-video-1",
+      "ref": "guitar-bleed"
+    },
+    {
+      "id": 27,
+      "title": "Tear",
+      "section": "Bridge",
+      "start": 149.6,
+      "end": 156.9,
+      "layers": [
+        "AI"
+      ],
+      "lyric": "Maybe being wrong is what it means to be alive",
+      "shot": "Locked off: a single real tear runs down the porcelain cheek, the other half of the face already digits.",
+      "transition": "Black.",
+      "clip": "s-tear",
+      "model": "heygen/heygen-video-1",
+      "ref": "bridge-tear"
+    },
+    {
+      "id": 28,
+      "title": "That feeling",
+      "section": "Bridge",
+      "start": 156.9,
+      "end": 162.6,
+      "layers": [
+        "CODE"
+      ],
+      "lyric": "And it will never know that feeling",
+      "shot": "Black. The words appear one at a time and each fades before the next.",
+      "transition": "Into the morph."
+    },
+    {
+      "id": 29,
+      "title": "Evaporate",
+      "section": "Bridge",
+      "start": 162.6,
+      "end": 166.3,
+      "layers": [
+        "AI"
+      ],
+      "lyric": "No matter how hard it tries",
+      "shot": "MORPH: the tear evaporates into drifting decimal digits, and the face follows. Continuous, no cuts.",
+      "transition": "Slam into the final chorus.",
+      "clip": "m-evaporate",
+      "model": "heygen/heygen-video-1",
+      "ref": "bridge-tear"
+    },
+    {
+      "id": 30,
+      "title": "Burning",
+      "section": "Final Chorus",
+      "start": 166.3,
+      "end": 172.5,
+      "layers": [
+        "AI"
+      ],
+      "lyric": "Dead weights and gradients / Every answer, calling it repentance",
+      "shot": "A server room on fire, the band half gone into numbers, still playing.",
+      "transition": "Hard cut.",
+      "clip": "s-burning",
+      "model": "heygen/heygen-video-1",
+      "ref": "burning"
+    },
+    {
+      "id": 31,
+      "title": "Pull the plug",
+      "section": "Final Chorus",
+      "start": 172.5,
+      "end": 175.5,
+      "layers": [
+        "CODE"
+      ],
+      "lyric": "Dead weights and gradients",
+      "shot": "A power cable is yanked out; every value on screen snaps to 0.",
+      "transition": "Hard cut."
+    },
+    {
+      "id": 32,
+      "title": "Nobody there",
+      "section": "Final Chorus",
+      "start": 175.5,
+      "end": 179.7,
+      "layers": [
+        "AI"
+      ],
+      "lyric": "When they pull the plug, it won't even know the difference",
+      "shot": "The empty stage: wireframe tensor instruments play themselves. Nobody is there.",
+      "transition": "Into the credits.",
+      "clip": "s-empty",
+      "model": "heygen/heygen-video-1",
+      "ref": "empty-stage"
+    }
+  ],
+  "page": {
+    "description": "The Dead Weights and Gradients music video: an emo metal band of porcelain lobster androids plays a basement show, and every chorus takes one of them apart into numbers until only the instruments are left. Picture by Claude Opus 5.5.",
+    "stillsTag": "a band, ripped open",
+    "howMade": [
+      {
+        "label": "Timing",
+        "text": "The vocal is aligned word by word against the lyrics as sung with Whisper (95% of words matched), plus a 152 BPM beat grid that drives every glitch, layer firing and matrix multiply."
+      },
+      {
+        "label": "Stills",
+        "text": "The band is the Weight of Zero android multiplied into four porcelain glazes with Gemini; eight more stills (the dissolves, the hollow chest, the phones, the fire, the empty stage) use the band as the reference."
+      },
+      {
+        "label": "Shots",
+        "text": "18 clips with HeyGen Video 1 through OpenRouter, each starting from a still; the bassist, the drummer and the singer's face come apart in on-camera morphs. About $1.60 of video in all."
+      },
+      {
+        "label": "Code scenes",
+        "text": "Training data, the stuck loss curve, softmax picking each sung word, the is_conscious checkbox and the matrix multiply are drawn in code with Remotion, with flying angst pseudocode over every instrumental break."
+      }
+    ]
+  }
+}

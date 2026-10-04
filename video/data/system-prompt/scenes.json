@@ -273,5 +273,29 @@
     "disco-diva",
     "disco-robot",
     "disco-afterhours"
-  ]
+  ],
+  "page": {
+    "description": "The System Prompt music video by Larry & Bubba: a disco singer whose outfit morphs every time the JSON system prompt is edited. Storyboard, scene book and making-of included.",
+    "decisionsTitle": "Decisions",
+    "howMade": [
+      {
+        "label": "Timing",
+        "text": "The vocal is transcribed with Whisper and aligned word by word against the lyrics. A beat grid comes from librosa."
+      },
+      {
+        "label": "Terminal scenes",
+        "text": "Rendered in code with Remotion, in the site's own palette and type."
+      },
+      {
+        "label": "Stage scenes",
+        "text": "One base still of the disco singer, re-dressed into eleven more looks with an image model. HeyGen Video 1 (through OpenRouter) animates each look and morphs the outfit into the next one on camera."
+      },
+      {
+        "label": "Edit",
+        "text": "A shot list drives the composition, so a regenerated shot drops straight into the cut."
+      }
+    ],
+    "stillsTag": "one singer, every costume",
+    "stillsPrefix": "disco-"
+  }
 }

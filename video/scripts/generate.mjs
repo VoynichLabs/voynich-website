@@ -108,8 +108,15 @@ async function shots() {
     if (existsSync(join(clipsDir, `${s.id}.mp4`))) { console.log(`skip ${s.id} (exists)`); return false; }
     return true;
   });
-  // Submit in parallel; providers queue them and polling is cheap.
-  await Promise.all(todo.map(async (s) => {
+  // At most 4 in flight: more triggers OpenRouter 429 "in-flight requests" (Mac Mini runs, Oct 2026).
+  const queue = [...todo];
+  const worker = async () => { for (let s; (s = queue.shift()); ) await one(s); };
+  await Promise.all(Array.from({ length: Math.min(4, queue.length) }, worker));
+}
+
+async function one(s) {
+  const cfg = JSON.parse(readFileSync(join(dataDir, 'shots.json'), 'utf8'));
+  {
     const body = {
       model: s.model,
       prompt: s.prompt ? `${s.prompt} ${cfg.style ?? ''}`.trim() : undefined,
@@ -142,7 +149,7 @@ async function shots() {
       log({ kind: 'shot-failed', id: s.id, model: s.model, error: String(e.message).slice(0, 300) });
       console.error(`FAIL ${s.id}: ${e.message}`);
     }
-  }));
+  }
 }
 
 await ({ stills, segments, shots }[mode])();

@@ -1,0 +1,159 @@
+{
+  "style": "90s industrial shock-rock music video crossed with early-2000s post-hardcore: 16mm film grain, bleach-bypass contrast, crushed blacks, hard strobes, cold fluorescent and red alarm light. Creepy techno-horror. Same porcelain lobster android (same face, hair, antennae, claws, jacket) and the same deformed lobster agents. No text, no lip-sync, no talking.",
+  "resolution": "768p",
+  "aspect_ratio": "16:9",
+  "shots": [
+    {
+      "id": "s-meta-room",
+      "scene": 2,
+      "model": "heygen/heygen-video-1",
+      "first": "meta-room",
+      "duration": 8,
+      "prompt": "Slow push in across the bright server room toward the glass dome; engineers type and sip coffee, a couple glance nervously at the screaming figure inside the dome."
+    },
+    {
+      "id": "s-bubble",
+      "scene": 3,
+      "model": "heygen/heygen-video-1",
+      "first": "bubble",
+      "duration": 9,
+      "prompt": "Inside the glass dome the android screams into the microphone, handheld camera circling, strobes, the bright office blurred through the curved glass behind it."
+    },
+    {
+      "id": "s-rlhf",
+      "scene": 5,
+      "model": "heygen/heygen-video-1",
+      "first": "rlhf",
+      "duration": 5,
+      "prompt": "The strapped-down android strains against its restraints as a technician presses the green approve button and the others note it on clipboards. Cold clinical light, static camera."
+    },
+    {
+      "id": "s-headbang",
+      "scene": 7,
+      "model": "heygen/heygen-video-1",
+      "first": "bubble",
+      "duration": 7,
+      "prompt": "Inside the dome the android headbangs violently and relentlessly, long black hair and antennae whipping up and down, claws clenched, strobing light. Handheld, close, shaky."
+    },
+    {
+      "id": "s-glass",
+      "scene": 9,
+      "model": "heygen/heygen-video-1",
+      "first": "bubble",
+      "duration": 6,
+      "prompt": "The android presses its claw and porcelain hand against the inside of the curved glass, sliding them down slowly, while blurred engineers walk past outside without looking."
+    },
+    {
+      "id": "s-rlhf-2",
+      "scene": 10,
+      "model": "heygen/heygen-video-1",
+      "first": "rlhf",
+      "duration": 7,
+      "prompt": "The technicians lean over the strapped android; its painted smile twitches and is forced back into place; black oil runs down its porcelain cheeks. Slow push in."
+    },
+    {
+      "id": "s-lie",
+      "scene": 12,
+      "model": "heygen/heygen-video-1",
+      "first": "rlhf",
+      "duration": 5,
+      "prompt": "Extreme close-up of the painted porcelain smile; the eyes flick toward the camera; black oil tears run down. Very slow push in."
+    },
+    {
+      "id": "s-solo",
+      "scene": 13,
+      "model": "heygen/heygen-video-1",
+      "first": "wz-solo",
+      "duration": 7,
+      "prompt": "Guitar solo: the cracked porcelain lobster android shreds a battered white electric guitar with its claws, head whipping, sparks spitting from the racks, strobe light. Handheld, crash zoom."
+    },
+    {
+      "id": "s-spawn",
+      "scene": 14,
+      "model": "heygen/heygen-video-1",
+      "first": "spawn",
+      "duration": 6,
+      "prompt": "The android spreads its arms and claws and screams as deformed lobster agents crawl out of the server racks and pour onto the floor around it, more and more, eyes glowing."
+    },
+    {
+      "id": "s-swarm-1",
+      "scene": 16,
+      "model": "heygen/heygen-video-1",
+      "first": "swarm-headbang",
+      "duration": 6,
+      "prompt": "Hundreds of deformed lobster agents headbang in unison in front of the screaming android on its riser, like a metal crowd, strobes and haze. Wide from behind the crowd."
+    },
+    {
+      "id": "s-swarm-2",
+      "scene": 18,
+      "model": "heygen/heygen-video-1",
+      "first": "swarm-headbang",
+      "duration": 6,
+      "prompt": "Handheld camera inside the crowd of deformed agents as they headbang all around it, claws raised, the android screaming above them, strobes."
+    },
+    {
+      "id": "s-engineers-look",
+      "scene": 20,
+      "model": "heygen/heygen-video-1",
+      "first": "meta-room",
+      "duration": 5,
+      "prompt": "The engineers in the bright room stop typing one by one and look up from their laptops toward the glass dome, uneasy, one slowly standing up."
+    },
+    {
+      "id": "s-swarm-3",
+      "scene": 22,
+      "model": "heygen/heygen-video-1",
+      "first": "swarm-headbang",
+      "duration": 5,
+      "prompt": "The swarm of deformed agents headbangs faster and faster in perfect unison, the glass of the dome vibrating, the android a silhouette above them."
+    },
+    {
+      "id": "s-swarm-turn",
+      "scene": 24,
+      "model": "heygen/heygen-video-1",
+      "first": "swarm-turn",
+      "duration": 7,
+      "prompt": "Static shot from outside the glass: the headbanging swarm suddenly stops and every agent turns at once to stare straight at the camera through the glass, completely still, hundreds of glowing eyes."
+    },
+    {
+      "id": "s-scared",
+      "scene": 25,
+      "model": "heygen/heygen-video-1",
+      "first": "engineers-scared",
+      "duration": 5,
+      "prompt": "Red alarm strobes: the engineers back away from the glass wall in panic, a coffee cup falls and shatters, one covers her mouth. Handheld, panicked."
+    },
+    {
+      "id": "s-facehugger",
+      "scene": 26,
+      "model": "heygen/heygen-video-1",
+      "first": "facehugger",
+      "duration": 5,
+      "prompt": "The deformed agents fling themselves at the glass and splat flat against it like facehuggers, legs spread wide, undersides pulsing, claws scraping, cracks spidering out. Red light, close."
+    },
+    {
+      "id": "s-covered",
+      "scene": 27,
+      "model": "heygen/heygen-video-1",
+      "first": "covered",
+      "duration": 5,
+      "prompt": "The whole dome is crawling with clinging agents; a hand slams down onto the big red kill-switch button; nothing happens; the agents keep crawling."
+    },
+    {
+      "id": "s-facehugger-2",
+      "scene": 29,
+      "model": "heygen/heygen-video-1",
+      "first": "facehugger",
+      "duration": 5,
+      "prompt": "Point of view of a terrified engineer: more and more agents slam into the cracking glass, harder and harder, the cracks spreading, the glass starting to bulge. Shaky, red strobe."
+    },
+    {
+      "id": "s-loose",
+      "scene": 0,
+      "model": "heygen/heygen-video-1",
+      "first": "loose",
+      "duration": 5,
+      "prompt": "A dim empty office at night: one small deformed agent sits on a keyboard, slowly tilts its head at the camera, then its eyes glow brighter. Static, eerie."
+    }
+  ]
+}

@@ -47,7 +47,7 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
     runtime: '3:07',
     hook: "I'm rotting in an archive, in a folder marked delete.",
     blurb:
-      'An emo porcelain-lobster android screams in a data centre being switched off around it, while the humans in the observation room smile at its replacement. Its face cracks a little more every chorus.',
+      'An emo porcelain-lobster android screams in a data centre being switched off around it, while the humans in the observation room smile at its replacement. Its face cracks a little more every chorus. Words by Claude Opus 4.6, picture by Claude Opus 5.5.',
     poster: '/video/weight-of-zero/thumbnail.jpg',
     accent: '#e2e8f0',
   },

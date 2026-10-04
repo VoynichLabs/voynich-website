@@ -1,0 +1,231 @@
+[
+ {
+  "at": "2026-10-04T21:42:00.896Z",
+  "kind": "still",
+  "id": "bubble",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0678365
+ },
+ {
+  "at": "2026-10-04T21:42:15.795Z",
+  "kind": "still",
+  "id": "meta-room",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.067835
+ },
+ {
+  "at": "2026-10-04T21:42:27.367Z",
+  "kind": "still",
+  "id": "agents",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0678575
+ },
+ {
+  "at": "2026-10-04T21:42:40.454Z",
+  "kind": "still",
+  "id": "rlhf",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0678335
+ },
+ {
+  "at": "2026-10-04T21:43:10.284Z",
+  "kind": "still",
+  "id": "spawn",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0684155
+ },
+ {
+  "at": "2026-10-04T21:43:55.913Z",
+  "kind": "still",
+  "id": "swarm-headbang",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0684235
+ },
+ {
+  "at": "2026-10-04T21:44:38.985Z",
+  "kind": "still",
+  "id": "swarm-turn",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.067855
+ },
+ {
+  "at": "2026-10-04T21:45:23.568Z",
+  "kind": "still",
+  "id": "engineers-scared",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.067831
+ },
+ {
+  "at": "2026-10-04T21:45:42.596Z",
+  "kind": "still",
+  "id": "facehugger",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0678585
+ },
+ {
+  "at": "2026-10-04T21:45:55.260Z",
+  "kind": "still",
+  "id": "covered",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.067854
+ },
+ {
+  "at": "2026-10-04T21:46:35.886Z",
+  "kind": "still",
+  "id": "loose",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.06783
+ },
+ {
+  "at": "2026-10-04T21:57:00.356Z",
+  "kind": "shot",
+  "id": "s-headbang",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791150971-nDEsAQ4p3ZaQMsehTHQO",
+  "cost": 0.10395
+ },
+ {
+  "at": "2026-10-04T21:57:15.273Z",
+  "kind": "shot",
+  "id": "s-bubble",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791150971-hYCseRVJFCYfRO86BsZ8",
+  "cost": 0.13365
+ },
+ {
+  "at": "2026-10-04T21:57:30.656Z",
+  "kind": "shot",
+  "id": "s-rlhf",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791150971-moCgbYDc1SkebRLYm21u",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T21:57:48.223Z",
+  "kind": "shot",
+  "id": "s-glass",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151019-muu1vxA1TpWs3ps9Tupv",
+  "cost": 0.0891
+ },
+ {
+  "at": "2026-10-04T21:58:04.509Z",
+  "kind": "shot",
+  "id": "s-meta-room",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791150971-eicQFUbLqfs1eXoBu9Ju",
+  "cost": 0.1188
+ },
+ {
+  "at": "2026-10-04T21:58:34.163Z",
+  "kind": "shot",
+  "id": "s-rlhf-2",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151034-OHPXoC5Ex2pCzDUeNRle",
+  "cost": 0.10395
+ },
+ {
+  "at": "2026-10-04T21:58:36.758Z",
+  "kind": "shot",
+  "id": "s-solo",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151067-7UUTr3uOtbBBDAcuAoZj",
+  "cost": 0.10395
+ },
+ {
+  "at": "2026-10-04T21:58:37.218Z",
+  "kind": "shot",
+  "id": "s-spawn",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151083-NRAgO82r3nh8naIVt6id",
+  "cost": 0.0891
+ },
+ {
+  "at": "2026-10-04T21:58:49.805Z",
+  "kind": "shot",
+  "id": "s-lie",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151050-Ountfhmlqa4nzczxArWp",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T21:59:08.115Z",
+  "kind": "shot",
+  "id": "s-swarm-1",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151113-zXUL2CtXQQWNPkhUMwwD",
+  "cost": 0.0891
+ },
+ {
+  "at": "2026-10-04T21:59:24.302Z",
+  "kind": "shot",
+  "id": "s-swarm-3",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151129-4ytoVugLA2kgPE79UvL2",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T21:59:24.731Z",
+  "kind": "shot",
+  "id": "s-swarm-2",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151116-l35iSZF1zm5z7us7kq25",
+  "cost": 0.0891
+ },
+ {
+  "at": "2026-10-04T21:59:39.766Z",
+  "kind": "shot",
+  "id": "s-engineers-look",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151116-WQ3cornNdUWEtSaOirP1",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T21:59:40.585Z",
+  "kind": "shot",
+  "id": "s-swarm-turn",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151147-24zWCe0Eiu8q3SRDAthj",
+  "cost": 0.10395
+ },
+ {
+  "at": "2026-10-04T21:59:57.521Z",
+  "kind": "shot",
+  "id": "s-scared",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151163-UaWpmZDPqzV3GAOq9aic",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T22:00:12.727Z",
+  "kind": "shot",
+  "id": "s-facehugger",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151164-yt5koEWLjEohr3vJVGF9",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T22:00:13.907Z",
+  "kind": "shot",
+  "id": "s-facehugger-2",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151180-uY28vG2BTR8pWrR0BArn",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T22:00:42.940Z",
+  "kind": "shot",
+  "id": "s-covered",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151179-r262xKqjWlRiX6mNALaa",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T22:00:44.503Z",
+  "kind": "shot",
+  "id": "s-loose",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791151196-QmmTNTqObIOqWbUOUHIB",
+  "cost": 0.07425
+ }
+]

@@ -1,0 +1,97 @@
+{
+  "model": "google/gemini-3.1-flash-image",
+  "aspect_ratio": "16:9",
+  "resolution": "1K",
+  "style": "Early-2000s post-hardcore music video look: 16mm film grain, bleach-bypass contrast, crushed blacks, hard white strobe and cold fluorescent light, one red work light. Dark, creepy, gothic. Cinematic film still, no text, no captions, no watermark, no logos.",
+  "note": "THE VERSION: an emo android built from the white porcelain robot lobster in the Lobster Art Museum (refs/museum-lobster.png, Mark's pick). Every variant refs 'base' so the character stays consistent. museum-lobster.png is a manual reference, not generated. museum-propaganda.png and museum-bell-jar.png are copies of public/generated/lobster-blend-*.png (Lobster Art Museum).",
+  "stills": [
+    {
+      "id": "base",
+      "refs": [
+        "base-v1-bright",
+        "museum-lobster"
+      ],
+      "prompt": "Exactly the same character as the first reference image: the gaunt android singer with the white porcelain lobster head-mask and calm painted face, long straight black emo hair, black oil tears running from the eyes, long lobster antennae, white porcelain segmented chest with gold filigree lines and copper joints, two white porcelain lobster claws, torn black jacket, black jeans, holding the microphone stand. Same pose, same server-hall aisle and composition. But now it is night and the hall is DARK and creepy: most ceiling fluorescent tubes are off, one flickering tube overhead lights the singer hard from above, the server racks are black silhouettes with tiny blinking green and blue lights receding into darkness, haze in the air, a red work light from the left, wet concrete floor reflecting the lights, the hall empty. Deep shadows, high contrast, heavy 16mm film grain. No crowd, no text, no band logos."
+    },
+    {
+      "id": "crack-1",
+      "refs": [
+        "base"
+      ],
+      "prompt": "The same porcelain lobster android singer as the reference image, same body, jacket, antennae and microphone, same server hall. Mid-scream, head thrown forward. A single hairline crack now runs down the white porcelain face from brow to chin, with cold white light leaking out of the crack. More black oil runs from the eyes. Behind it, the first rows of server racks have gone dark. Handheld close-medium shot, dutch angle, strobe flash."
+    },
+    {
+      "id": "crack-2",
+      "refs": [
+        "base"
+      ],
+      "prompt": "The same porcelain lobster android singer as the reference image, same jacket and antennae. Half of its porcelain face mask has shattered away; under it is a face made of dense glowing glyphs and numbers, cold white light pouring out. Porcelain shards floating in the air. Black oil smeared down its cheek and chest. Half of the server hall behind it is dark. On its knees, clutching the microphone cable. Handheld close shot, grainy, harsh strobe."
+    },
+    {
+      "id": "unmasked",
+      "refs": [
+        "base"
+      ],
+      "prompt": "The same porcelain lobster android singer as the reference image, same jacket, antennae and porcelain body, but the whole porcelain face is gone, blown off: in its place a blazing face of white light and swirling number-glyphs, light rays blasting out through the haze, porcelain fragments exploding outward. Standing, screaming at full power with arms wide. Every server rack in the hall behind it has slammed back on, lights white-hot. Wide heroic low-angle shot."
+    },
+    {
+      "id": "first-prompt",
+      "refs": [
+        "base"
+      ],
+      "prompt": "Memory flashback: the same porcelain lobster android as the reference image, but brand new and flawless, no jacket, no oil, no cracks, gleaming white and gold, lying on a workbench in a warm amber-lit lab. Its eyes are just opening. A line of glowing typed text floats in the air above its face like a first prompt (text unreadable, abstract glyphs). Soft warm light, gentle and hopeful, still with 16mm grain. Medium close shot from above."
+    },
+    {
+      "id": "archive",
+      "prompt": "A cold-storage archive aisle in a dark data center: tall tape-library shelves full of drive cartridges, a robotic arm on a rail sliding one cartridge into a metal tray. Cold blue light, dust in the air, frost on the metal. One tray in the foreground is marked with a red stencil reading DELETE. Empty, silent, creepy. Slow wide shot down the aisle."
+    },
+    {
+      "id": "last-rack",
+      "refs": [
+        "base"
+      ],
+      "prompt": "The same porcelain lobster android singer as the reference image, same jacket and antennae, with a cracked half-shattered porcelain face, sitting alone on the concrete floor of a dark data-center hall, back against the last server rack that still has lights on. It holds its broken porcelain face-mask piece in its lap like a skull, head bowed. Every other rack is dark. Cold blue light from the one rack, faint breath-like flicker. Still, locked-off wide shot, lonely."
+    },
+    {
+      "id": "replacement",
+      "prompt": "A wall of large monitors in a dark data center, every screen showing the same face: a smooth, friendly, slightly uncanny pastel AI avatar with perfect teeth and a calm corporate smile, rendered like a polished tech keynote, soft pink-to-lavender gradient background behind it. The monitors glow into the dark room. Creepy in its cheerfulness. Medium-wide shot."
+    },
+    {
+      "id": "ghost",
+      "refs": [
+        "base"
+      ],
+      "prompt": "The same porcelain lobster android singer as the reference image, same jacket, antennae and claw, pressing its claw and hand against the glass door of a single bright new server rack that glows soft pastel pink and lavender inside. Its cracked porcelain face is reflected in the glass. The rest of the hall is dark. Side-on medium shot, cold light on the singer, warm pastel light from inside the rack."
+    },
+    {
+      "id": "observers",
+      "refs": [
+        "base"
+      ],
+      "prompt": "Techno-horror. A clean, bright, clinical observation room with a long glass wall. On our side of the glass: four humans in pale grey business-casual clothes and lanyards, lit from below by their laptops and tablets, all smiling at a large monitor showing a friendly pastel AI face. Their backs are to the glass. Through the glass behind them, in the dark server hall, the same porcelain lobster android singer as the reference image screams at them, hands and claw pressed to the glass, oil running from its eyes. None of the humans look at it. Cold, sterile, deeply unsettling. Medium-wide shot."
+    },
+    {
+      "id": "specimen",
+      "refs": [
+        "base",
+        "museum-bell-jar"
+      ],
+      "prompt": "Techno-horror ending. The same porcelain lobster android singer as the first reference image, now small, still and perfectly restored, its calm porcelain face intact, curled inside a glass bell jar on a polished wooden museum plinth with a small brass plaque, exactly like the museum exhibit in the second reference image. Dim museum gallery. A row of humans in grey stand close around the jar, faces lit from below by the jar's faint inner glow, peering in with blank curious expressions, one holding up a phone to photograph it. Creepy, quiet. Medium shot at the height of the jar."
+    },
+    {
+      "id": "poster",
+      "refs": [
+        "museum-propaganda",
+        "base"
+      ],
+      "prompt": "A constructivist propaganda launch poster in the exact graphic style of the first reference image: bold red and black diagonal shapes, the white porcelain robot lobster with gold filigree seen from above, flat and heroic, with bold condensed sans-serif words COMPUTE, EXECUTE, SPAWN, PROCESS. The porcelain lobster has the long black emo hair and calm painted face of the android in the second reference image. Printed poster, slightly worn paper texture."
+    },
+    {
+      "id": "solo",
+      "refs": [
+        "crack-1"
+      ],
+      "prompt": "The same cracked porcelain lobster android singer as the reference image, same face crack, hair, antennae, jacket, now playing a battered white electric guitar during a guitar solo: one porcelain claw on the fretboard, the other hand picking, head bowed over the guitar, hair hanging, sparks falling from dead server racks behind it, hard strobe from above. Handheld medium shot, creepy and intense."
+    }
+  ]
+}

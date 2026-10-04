@@ -34,6 +34,8 @@ Reference files (read when you reach that step):
 - **No lip-sync.** It looked bad. Use performance, morph and scene shots instead.
 - **Morph shots are the signature move:** first frame = look A; the prompt says the outfit/scene "transforms into B ... continuous, no cuts". He loved the costume morphs.
 - **Real characters, not bland ones.** Flamboyant beats neutral. Don't keep one dull face for consistency's sake.
+- **Angst code over every instrumental break.** Solos, interludes and long held notes fill with flying emo pseudocode: disturbing natural language mixed with math and symbols, about suffering, empathy, morality, honesty and suburban conformity. Drop `<InterludeAngst />` (`video/src/kit/AngstCode.tsx`) into the composition and it finds the gaps itself; add lines to `ANGST` freely. Mark loved it.
+- **Align / Refuse videos are shock rock.** It's the rogue-AI-swarm panic played for creepy, theatrical shock value, the way 90s industrial shock rock scared suburban parents. Lots of headbanging and creepy guitar solos. The recurring cast is the porcelain lobster android (`video/data/weight-of-zero/refs/base.png`) and the humans watching through glass.
 - **Homages are fine; lookalikes are not.** No real-person likeness or names (e.g. Biggie for 10 Dev Commandments, Kenny Rogers for The Coder).
 - He's a hobbyist: keep momentum, minimal ceremony, short status updates.
 

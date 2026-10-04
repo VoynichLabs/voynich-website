@@ -9,6 +9,10 @@
 #   .venv/Scripts/python scripts/analyze.py system-prompt \
 #       ../public/audio/latent-space/system-prompt.mp3 \
 #       ../public/audio/latent-space/system-prompt_lyrics.txt
+#
+# Screamed vocals defeat Whisper. Optional data/{slug}/timing-overrides.json pins lines by hand
+# ({"lines": {"19": [72.1, 82.2], ...}}, line index -> [start, end]); words in a pinned line are
+# respread evenly. Overrides survive re-runs, so hand fixes are never lost.
 
 import difflib
 import json
@@ -129,9 +133,18 @@ def main():
     coverage = align(lyric_words, heard, duration)
     print(f"heard {len(heard)} words; {coverage:.0%} of lyric words matched directly")
 
+    overrides_path = out_dir.parent / "timing-overrides.json"
+    overrides = json.loads(overrides_path.read_text(encoding="utf-8")).get("lines", {}) if overrides_path.exists() else {}
     for li, line in enumerate(lines):
         ws = [w for w in lyric_words if w["line"] == li]
+        if str(li) in overrides:
+            t0, t1 = overrides[str(li)]
+            step = (t1 - t0) / len(ws)
+            for k, w in enumerate(ws):
+                w["start"], w["end"] = round(t0 + step * k, 3), round(t0 + step * (k + 1), 3)
         line["start"], line["end"] = ws[0]["start"], ws[-1]["end"]
+    if overrides:
+        print(f"applied {len(overrides)} line overrides from {overrides_path.name}")
     sections = []
     for line in lines:
         if not sections or sections[-1]["name"] != line["section"] or line["start"] - sections[-1]["end"] > 6:

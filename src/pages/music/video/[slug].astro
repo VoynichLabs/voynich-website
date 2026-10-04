@@ -1,33 +1,57 @@
 ---
 // Author: Claude Opus 5.5
 // Date: 2026-10-04
-// PURPOSE: Public page for the "System Prompt" music video (Latent Space track 10): the video
-//          (YouTube, click-to-play), wardrobe stills, timeline synced to the real track, and the
-//          scene book. Updated 2026-10-04: YouTube-first, shared with the CVE Carnival page layout.
-// SRP/DRY check: Pass — all scene copy and timings come from video/data/system-prompt/scenes.json,
-//          the same file the Remotion composition renders from. Nothing duplicated here.
+// PURPOSE: One making-of page for every music video in MUSIC_VIDEOS (/music/video/{slug}): YouTube player,
+//          optional cast stills, timeline synced to the real track, rules and cast, the scene book,
+//          decisions and how it was made. Replaces three near-identical per-video pages.
+// SRP/DRY check: Pass - page copy comes from each video/data/{slug}/scenes.json (the same file the Remotion
+//          composition renders from; per-page copy under `page`); YouTube id/poster from src/data/music-videos.ts.
 import Base from '../../../layouts/Base.astro';
 import MusicXNav from '../../../components/MusicXNav.astro';
 import YouTubePlayer from '../../../components/YouTubePlayer.astro';
 import VideoFeature from '../../../components/VideoFeature.astro';
 import { MUSIC_VIDEOS, videoBySlug, watchUrl } from '../../../data/music-videos';
-import book from '../../../../video/data/system-prompt/scenes.json';
+
+type Book = {
+  slug: string; title: string; album: string; albumHref: string; artist: string; track: number; style: string;
+  audio: string; bpm: number; duration: number; concept: string; thesis: string; timingNote: string;
+  rules: { name: string; text: string }[]; cast: { name: string; text: string }[]; layers: Record<string, string>;
+  decisions: string[]; stills?: string[]; credits?: { role: string; by: string }[];
+  scenes: { id: number; title: string; section: string; start: number; end: number; layers: string[]; lyric: string; shot: string; model?: string; ref?: string; transition: string }[];
+  page: {
+    description: string; decisionsTitle?: string; howMade: { label: string; text: string }[];
+    sourceNote?: string; stillsTag?: string; stillsPrefix?: string;
+  };
+};
+const books = import.meta.glob<Book>('../../../../video/data/*/scenes.json', { eager: true, import: 'default' });
+const bookFor = (slug: string) => Object.values(books).find((b) => b.slug === slug);
+
+export function getStaticPaths() {
+  // Alternate cuts with their own `page` share their parent's making-of page.
+  return MUSIC_VIDEOS.filter((v) => !v.page).map((v) => ({ params: { slug: v.slug } }));
+}
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const video = videoBySlug('system-prompt')!;
-const others = MUSIC_VIDEOS.filter((v) => v.slug !== 'system-prompt');
+const { slug } = Astro.params as { slug: string };
+const video = videoBySlug(slug)!;
+const book = bookFor(slug);
+if (!book) throw new Error(`No video/data/${slug}/scenes.json for music video "${slug}"`);
+const page = book.page;
+const others = MUSIC_VIDEOS.filter((v) => v.slug !== slug);
 const fmt = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
 const pad = (n: number) => String(n).padStart(2, '0');
 const scenes = book.scenes;
 const total = book.duration;
-const stillsBase = `${base}/video/system-prompt/stills`;
+const stillsBase = `${base}/video/${slug}/stills`;
+const prefix = page.stillsPrefix ?? '';
+const stillLabel = (id: string) => (prefix && !id.startsWith(prefix) ? `${id} (base)` : id.slice(prefix.length));
 const repo = 'https://github.com/VoynichLabs/voynich-website';
 ---
 
 <Base
-  title="System Prompt — Music Video"
-  description="The System Prompt music video by Larry & Bubba: a disco singer whose outfit morphs every time the JSON system prompt is edited. Storyboard, scene book and making-of included."
-  ogImage="/video/system-prompt/thumbnail.jpg"
+  title={`${video.title} — Music Video`}
+  description={page.description}
+  ogImage={video.poster}
   ogType="website"
 >
   <MusicXNav current="videos" />
@@ -35,7 +59,7 @@ const repo = 'https://github.com/VoynichLabs/voynich-website';
   <div class="sp" style={`--sp-accent:${video.accent}`}>
     <header class="sp-hero">
       <div class="sp-eyebrow">MUSIC VIDEO</div>
-      <h1 class="sp-title">System Prompt</h1>
+      <h1 class="sp-title">{video.title}</h1>
       <p class="sp-meta">
         <a href={`${base}${book.albumHref}`}>{book.album}</a>, track {book.track} · {book.artist} · {book.style} ·
         {book.bpm} BPM · {fmt(total)}
@@ -59,20 +83,22 @@ const repo = 'https://github.com/VoynichLabs/voynich-website';
       <p class="sp-concept">{book.concept}</p>
     </div>
 
-    <section class="sp-section" aria-labelledby="stills-h">
-      <div class="sp-section-head">
-        <h2 id="stills-h">Cast stills</h2>
-        <span class="sp-tag">one singer, every costume</span>
-      </div>
-      <ul class="sp-stills">
-        {book.stills.map((id) => (
-          <li>
-            <img src={`${stillsBase}/${id}.jpg`} alt={`Wardrobe still: ${id.replace('disco-', '')}`} loading="lazy" width="688" height="384" />
-            <span>{id === 'disco' ? 'disco (base)' : id.replace('disco-', '')}</span>
-          </li>
-        ))}
-      </ul>
-    </section>
+    {book.stills?.length ? (
+      <section class="sp-section" aria-labelledby="stills-h">
+        <div class="sp-section-head">
+          <h2 id="stills-h">Cast stills</h2>
+          {page.stillsTag && <span class="sp-tag">{page.stillsTag}</span>}
+        </div>
+        <ul class="sp-stills">
+          {book.stills.map((id) => (
+            <li>
+              <img src={`${stillsBase}/${id}.jpg`} alt={`Still: ${stillLabel(id)}`} loading="lazy" width="688" height="384" />
+              <span>{stillLabel(id)}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ) : null}
 
     <section class="sp-section" aria-labelledby="timeline-h">
       <div class="sp-section-head">
@@ -156,9 +182,9 @@ const repo = 'https://github.com/VoynichLabs/voynich-website';
       </ol>
     </section>
 
-    <section class="sp-section sp-two" aria-label="Open decisions and process">
+    <section class="sp-section sp-two" aria-label="Decisions and process">
       <div>
-        <h2>Decisions</h2>
+        <h2>{page.decisionsTitle ?? 'Decisions'}</h2>
         <ol class="sp-decisions">
           {book.decisions.map((d) => <li>{d}</li>)}
         </ol>
@@ -166,13 +192,15 @@ const repo = 'https://github.com/VoynichLabs/voynich-website';
       <div>
         <h2>How it's made</h2>
         <ol class="sp-process">
-          <li><strong>Timing.</strong> The vocal is transcribed with Whisper and aligned word by word against the lyrics. A beat grid comes from librosa.</li>
-          <li><strong>Terminal scenes.</strong> Rendered in code with Remotion, in the site's own palette and type.</li>
-          <li><strong>Stage scenes.</strong> One base still of the disco singer, re-dressed into eleven more looks with an image model. HeyGen Video 1 (through OpenRouter) animates each look and morphs the outfit into the next one on camera.</li>
-          <li><strong>Edit.</strong> A shot list drives the composition, so a regenerated shot drops straight into the cut.</li>
+          {page.howMade.map((h) => <li><strong>{h.label}.</strong> {h.text}</li>)}
         </ol>
+        {book.credits?.length ? (
+          <dl class="sp-dl sp-credits">
+            {book.credits.map((c) => (<div><dt>{c.role}</dt><dd>{c.by}</dd></div>))}
+          </dl>
+        ) : null}
         <p class="sp-note">
-          Source: <a href={`${repo}/tree/main/video`}>video/</a> ·
+          {page.sourceNote ? <>{page.sourceNote} · </> : <>Source: <a href={`${repo}/tree/main/video/src/videos/${slug}`}>video/src/videos/{slug}</a> · </>}
           plan: <a href={`${repo}/blob/main/docs/2026-10-04-music-video-pipeline-plan.md`}>pipeline plan</a>
         </p>
       </div>
@@ -295,6 +323,7 @@ const repo = 'https://github.com/VoynichLabs/voynich-website';
   .sp-dl { display: grid; gap: 14px; }
   .sp-dl dt { font-weight: 700; font-size: 14px; }
   .sp-dl dd { font-size: 14px; color: #a9a9bd; line-height: 1.6; }
+  .sp-credits { margin: 18px 0 6px; }
 
   .sp-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 16px; margin-top: 20px; }
   .sp-card {

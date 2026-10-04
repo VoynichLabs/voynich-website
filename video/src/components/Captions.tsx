@@ -5,10 +5,12 @@
 // SRP/DRY check: Pass - single caption renderer; timing comes from lib/timing.
 import { useCurrentFrame } from 'remotion';
 import { C, sans } from '../theme';
-import { FPS, activeLine, callEnd, lineWords, lines } from '../lib/timing';
+import { FPS } from '../lib/timing';
+import { useSong } from '../lib/song';
 
 export const Captions: React.FC<{ offset?: number }> = ({ offset = 0 }) => {
   const frame = useCurrentFrame();
+  const { activeLine, callEnd, lineWords, lines } = useSong();
   const t = frame / FPS + offset;
   const li = activeLine(t);
   if (li < 0) return null;

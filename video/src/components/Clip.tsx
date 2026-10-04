@@ -6,7 +6,8 @@
 //          Falls back to the given node when the shot has not been generated yet.
 // SRP/DRY check: Pass - the only place generated clips are mounted; availability comes from the ledger.
 import { OffthreadVideo, Sequence, staticFile } from 'remotion';
-import { FPS, book, clipReady } from '../lib/timing';
+import { FPS } from '../lib/timing';
+import { useSong } from '../lib/song';
 
 export const Clip: React.FC<{
   id: string;
@@ -14,10 +15,11 @@ export const Clip: React.FC<{
   fallback?: React.ReactNode;
   style?: React.CSSProperties;
 }> = ({ id, at = 0, fallback = null, style }) => {
+  const { slug, clipReady } = useSong();
   if (!clipReady(id)) return <>{fallback}</>;
   const video = (
     <OffthreadVideo
-      src={staticFile(`clips/${book.slug}/${id}.mp4`)}
+      src={staticFile(`clips/${slug}/${id}.mp4`)}
       muted
       style={{ width: '100%', height: '100%', objectFit: 'cover', ...style }}
     />

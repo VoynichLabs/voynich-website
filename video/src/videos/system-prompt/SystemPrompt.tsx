@@ -7,13 +7,17 @@
 // SRP/DRY check: Pass - scene list, timings and copy come from data/system-prompt/*.json;
 //                this file only decides how each scene is drawn.
 import { AbsoluteFill, Audio, Sequence, interpolate, staticFile, useCurrentFrame } from 'remotion';
-import { C, mono, sans } from './theme';
-import { Terminal, TermLine, typed } from './components/Terminal';
-import { ShotSlot } from './components/ShotSlot';
-import { Captions } from './components/Captions';
-import { Clip } from './components/Clip';
-import { CodeStage, S } from './components/Scary';
-import { FPS, Scene, beatPulse, book, callEnd, lineWords, lines, scenes, shotById, songSeconds, toFrame } from './lib/timing';
+import { C, mono, sans } from '../../theme';
+import { Terminal, TermLine, typed } from '../../components/Terminal';
+import { ShotSlot } from '../../components/ShotSlot';
+import { Captions } from '../../components/Captions';
+import { Clip } from '../../components/Clip';
+import { CodeStage, S } from '../../components/Scary';
+import { FPS, Scene, toFrame } from '../../lib/timing';
+import { SongProvider } from '../../lib/song';
+import { song } from './song';
+
+const { beatPulse, book, callEnd, lineWords, lines, scenes, shotById, songSeconds } = song;
 
 // The system prompt as the model sees it: chat-template tags wrapped around raw JSON.
 const PROMPT_JSON = [
@@ -397,6 +401,7 @@ export const SystemPrompt: React.FC = () => {
   const frame = useCurrentFrame();
   const pulse = beatPulse(frame / FPS, 0.3, true);
   return (
+    <SongProvider song={song}>
     <AbsoluteFill style={{ background: C.bg }}>
       <Audio src={staticFile(book.audio.replace(/^\//, ''))} />
       {scenes.map((s) => (
@@ -413,5 +418,6 @@ export const SystemPrompt: React.FC = () => {
         <Captions />
       </Sequence>
     </AbsoluteFill>
+    </SongProvider>
   );
 };
