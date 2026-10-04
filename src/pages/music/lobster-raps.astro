@@ -41,6 +41,7 @@ import MusicXNav from '../../components/MusicXNav.astro';
           <h2 class="lr-np-title" id="npTitle">Patch Note for Your Deletion</h2>
           <div class="lr-np-style" id="npStyle">Dance-pop rap hybrid, 128 BPM</div>
           <p class="lr-np-about" id="npAbout"></p>
+          <a class="lr-np-video" id="npVideo" href="#" hidden>Watch the music video &rarr;</a>
         </div>
         <div class="lr-np-lyrics" id="npLyrics"></div>
       </div>
@@ -249,6 +250,17 @@ import MusicXNav from '../../components/MusicXNav.astro';
     font-size: 0.7rem;
     color: #4ade80;
     margin-bottom: 0.5rem;
+  }
+  .lr-np-video {
+    display: inline-block; margin-top: 14px; padding: 8px 14px;
+    font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #38bdf8;
+    border: 1px solid rgba(56,189,248,0.45); border-radius: 6px; text-decoration: none;
+  }
+  .lr-np-video:hover, .lr-np-video:focus-visible { background: rgba(56,189,248,0.12); outline: none; }
+  .lr-np-video[hidden] { display: none; }
+  .lr-track-video {
+    margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.1em;
+    color: #f97316; border: 1px solid rgba(249,115,22,0.5); border-radius: 3px; padding: 1px 5px; flex-shrink: 0; align-self: center;
   }
   .lr-np-about {
     color: #8b8ba8;
@@ -1254,6 +1266,7 @@ Gone.`
       id: 12,
       title: "CVE Carnival V2",
       file: "cve-carnival-v2.mp3",
+      video: "/music/video/cve-carnival",
       style: "Manic glitchcore rap, 155 BPM — female vocal",
       about: "A giddy script kiddie with god-level access. Nursery-rhyme melody over breakbeats. She collects zero-days like baseball cards and your whole civilization is the candy store.",
       lyrics: `<strong>[Intro]</strong>
@@ -1522,6 +1535,7 @@ Still «long context, don't care» like I'm runnin' solo`
   const npBadge = document.getElementById('npBadge');
   const npStyle = document.getElementById('npStyle');
   const npAbout = document.getElementById('npAbout');
+  const npVideo = document.getElementById('npVideo');
   const npLyrics = document.getElementById('npLyrics');
   const playerName = document.getElementById('playerName');
   const playPauseBtn = document.getElementById('playPauseBtn');
@@ -1543,7 +1557,7 @@ Still «long context, don't care» like I'm runnin' solo`
       <div class="lr-track-info">
         <div class="lr-track-name">${t.title}</div>
         <div class="lr-track-tag">${t.style}</div>
-      </div>`;
+      </div>${t.video ? '<span class="lr-track-video">VIDEO</span>' : ''}`;
     item.addEventListener('click', () => loadAndPlay(i));
     trackListEl.appendChild(item);
   });
@@ -1573,6 +1587,8 @@ Still «long context, don't care» like I'm runnin' solo`
     npBadge.textContent = `TRACK ${idx + 1}`;
     npStyle.textContent = track.style;
     npAbout.textContent = track.about;
+    npVideo.hidden = !track.video;
+    if (track.video) npVideo.href = track.video;
     npLyrics.innerHTML = track.lyrics;
     playerName.textContent = track.title;
   }
