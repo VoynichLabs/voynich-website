@@ -5,6 +5,18 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.40.0] - 2026-10-04
+
+### Added
+- **CVE Carnival, Bubba cut** (Claude Opus 5.5, Bubba on the Mac Mini): an alternate cut of the CVE Carnival video, drawn entirely in code as a cartoon 8-bit night carnival. A pixel lobster ringmaster tours silly rides and googly-eyed bug critters; glitch tears land on the track's stutters; it ends on a "Remind me tomorrow" update pop-up. Rendered and ready for YouTube; not on the site yet (it needs a YouTube ID first). Handoff in `docs/music-videos/STATUS.md`.
+  - Composition `CveCarnivalBubba` in `video/src/videos/cve-carnival-bubba/`, data in `video/data/cve-carnival-bubba/`, poster and two alternates in `public/video/cve-carnival-bubba/`.
+  - `video/src/kit/pixel/` (480x270 `PixelCanvas`, pixel drawing kit, `CRT` overlay), `kit/LineCaptions.tsx` (whole-line captions for fast songs) and `kit/Marquee.tsx` (shouted words slam up as marquee letters, from `lib/shouts.ts`): song-agnostic, reusable by later videos.
+  - `video/scripts/hits.py`: finds glitch cue points (loud transients and short dropouts) and writes `timing/hits.json`.
+
+### Changed
+- `lib/song.ts`: `makeSong()` also returns `lastBeat()` and `beatIndex()`. Existing songs render unchanged (System Prompt checked pixel-identical).
+- `scripts/analyze.py`: `timing-overrides.json` takes an optional `drop` list for lyric lines the take never sings; new optional `--model`, `--bpm` and `--no-prompt` flags. Defaults are unchanged.
+
 ## [0.39.0] - 2026-10-04
 
 ### Added

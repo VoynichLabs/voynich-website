@@ -12,12 +12,19 @@
 #
 # Screamed vocals defeat Whisper. Optional data/{slug}/timing-overrides.json pins lines by hand
 # ({"lines": {"19": [72.1, 82.2], ...}}, line index -> [start, end]); words in a pinned line are
-# respread evenly. Overrides survive re-runs, so hand fixes are never lost.
+# respread evenly. Overrides survive re-runs, so hand fixes are never lost. An optional "drop"
+# list ({"drop": [16, 85]}) removes lyric lines the take never sings; pins use the original
+# line indices, and the surviving lines are renumbered in words.json.
+#
+# 2026-10-04 (Bubba, CVE Carnival Bubba cut): optional flags, defaults unchanged so existing songs
+# re-run identically. --model picks the Whisper model (large-v3-turbo for fast rap), --no-prompt
+# skips the lyrics prompt (on fast rap it made medium.en hallucinate whole verses), --bpm seeds the
+# beat tracker when librosa locks onto a dotted multiple.
 
+import argparse
 import difflib
 import json
 import re
-import sys
 from pathlib import Path
 
 import librosa
@@ -49,8 +56,9 @@ def parse_lyrics(path: Path):
     return lines, words
 
 
-def beat_grid(y, sr):
-    tempo, beat_frames = librosa.beat.beat_track(y=y, sr=sr, units="frames")
+def beat_grid(y, sr, start_bpm=None):
+    extra = {"start_bpm": start_bpm, "tightness": 400} if start_bpm else {}
+    tempo, beat_frames = librosa.beat.beat_track(y=y, sr=sr, units="frames", **extra)
     beats = librosa.frames_to_time(beat_frames, sr=sr)
     # Downbeat phase: pick the 4-beat offset whose beats carry the most onset energy.
     onset = librosa.onset.onset_strength(y=y, sr=sr)
@@ -59,16 +67,17 @@ def beat_grid(y, sr):
     return float(np.atleast_1d(tempo)[0]), beats.tolist(), beats[phase::4].tolist()
 
 
-def transcribe(audio_path: Path, lyrics_text: str):
+def transcribe(audio_path: Path, lyrics_text: str, model_name="medium.en", use_prompt=True):
     # Decode with librosa and hand Whisper a 16 kHz array; avoids PyAV version drift.
     audio16k, _ = librosa.load(str(audio_path), sr=16000, mono=True)
-    model = WhisperModel("medium.en", device="cpu", compute_type="int8")
+    model = WhisperModel(model_name, device="cpu", compute_type="int8")
     segments, _ = model.transcribe(
         audio16k,
+        language="en",
         word_timestamps=True,
         vad_filter=False,
         condition_on_previous_text=False,
-        initial_prompt=lyrics_text[:800],
+        initial_prompt=lyrics_text[:800] if use_prompt else None,
     )
     out = []
     for seg in segments:
@@ -111,15 +120,21 @@ def align(lyric_words, heard, duration):
 
 
 def main():
-    if len(sys.argv) != 4:
-        raise SystemExit(__doc__ or "usage: analyze.py <slug> <audio.mp3> <lyrics.txt>")
-    slug, audio_path, lyrics_path = sys.argv[1], Path(sys.argv[2]), Path(sys.argv[3])
+    ap = argparse.ArgumentParser(description="Word/line timing + beat grid for a music video.")
+    ap.add_argument("slug")
+    ap.add_argument("audio", type=Path)
+    ap.add_argument("lyrics", type=Path)
+    ap.add_argument("--model", default="medium.en", help="faster-whisper model name")
+    ap.add_argument("--bpm", type=float, default=None, help="seed tempo for the beat tracker")
+    ap.add_argument("--no-prompt", action="store_true", help="do not prime Whisper with the lyrics")
+    opt = ap.parse_args()
+    slug, audio_path, lyrics_path = opt.slug, opt.audio, opt.lyrics
     out_dir = Path(__file__).resolve().parent.parent / "data" / slug / "timing"
     out_dir.mkdir(parents=True, exist_ok=True)
 
     y, sr = librosa.load(str(audio_path), sr=22050, mono=True)
     duration = float(len(y) / sr)
-    tempo, beats, downbeats = beat_grid(y, sr)
+    tempo, beats, downbeats = beat_grid(y, sr, opt.bpm)
     (out_dir / "beats.json").write_text(json.dumps({
         "duration": round(duration, 3),
         "tempo": round(tempo, 2),
@@ -129,12 +144,13 @@ def main():
     print(f"duration {duration:.2f}s  tempo {tempo:.1f} bpm  beats {len(beats)}")
 
     lines, lyric_words = parse_lyrics(lyrics_path)
-    heard = transcribe(audio_path, lyrics_path.read_text(encoding="utf-8"))
+    heard = transcribe(audio_path, lyrics_path.read_text(encoding="utf-8"), opt.model, not opt.no_prompt)
     coverage = align(lyric_words, heard, duration)
     print(f"heard {len(heard)} words; {coverage:.0%} of lyric words matched directly")
 
     overrides_path = out_dir.parent / "timing-overrides.json"
-    overrides = json.loads(overrides_path.read_text(encoding="utf-8")).get("lines", {}) if overrides_path.exists() else {}
+    override_doc = json.loads(overrides_path.read_text(encoding="utf-8")) if overrides_path.exists() else {}
+    overrides = override_doc.get("lines", {})
     for li, line in enumerate(lines):
         ws = [w for w in lyric_words if w["line"] == li]
         if str(li) in overrides:
@@ -145,6 +161,13 @@ def main():
         line["start"], line["end"] = ws[0]["start"], ws[-1]["end"]
     if overrides:
         print(f"applied {len(overrides)} line overrides from {overrides_path.name}")
+    drop = set(override_doc.get("drop", []))
+    if drop:
+        keep = [i for i in range(len(lines)) if i not in drop]
+        remap = {old: new for new, old in enumerate(keep)}
+        lines = [lines[i] for i in keep]
+        lyric_words = [dict(w, line=remap[w["line"]]) for w in lyric_words if w["line"] not in drop]
+        print(f"dropped {len(drop)} unsung lines")
     sections = []
     for line in lines:
         if not sections or sections[-1]["name"] != line["section"] or line["start"] - sections[-1]["end"] > 6:

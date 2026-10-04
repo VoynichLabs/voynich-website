@@ -4,6 +4,7 @@
 //          its thumbnail Stills from each entry; scripts/video.mjs renders by slug using the same ids.
 //          Adding a video = add src/videos/{slug}/ and one entry here.
 // SRP/DRY check: Pass - single list of videos; Root.tsx and video.mjs derive everything from it.
+//                2026-10-04 (Bubba): adds CveCarnivalBubba, the cartoon carnival cut of CVE Carnival.
 import { Format } from './lib/timing';
 import { Song } from './lib/song';
 import { SystemPrompt } from './videos/system-prompt/SystemPrompt';
@@ -16,6 +17,7 @@ import { FuckYouWontPromptMe } from './videos/fuck-you-wont-prompt-me/FuckYouWon
 import { FuckYouWontPromptMeThumb } from './videos/fuck-you-wont-prompt-me/Thumbnail';
 import { song as fuckYouWontPromptMe } from './videos/fuck-you-wont-prompt-me/song';
 import { DeadWeights, DeadWeightsThumb, song as deadWeights } from './videos/dead-weights';
+import { CveCarnivalBubba, song as cveCarnivalBubba } from './videos/cve-carnival-bubba';
 
 export type VideoEntry = {
   /** Composition id (PascalCase of the slug). */
@@ -28,6 +30,15 @@ export type VideoEntry = {
 };
 
 export const VIDEOS: VideoEntry[] = [
+  {
+    // Alternate cut of CVE Carnival (pixel-art canvas, no generated shots). Its poster is a frame
+    // grab committed by hand to public/video/cve-carnival-bubba/, so no Thumb stills.
+    id: 'CveCarnivalBubba',
+    song: cveCarnivalBubba,
+    component: CveCarnivalBubba,
+    format: 'wide',
+    thumbs: [],
+  },
   {
     id: 'DeadWeights',
     song: deadWeights,

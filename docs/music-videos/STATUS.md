@@ -22,6 +22,14 @@ Stages:
 | Get Gone | `get-gone` | live | n/a | fUET78d8MxM | source on the Mac Mini (streamline plan item 5) |
 | System Prompt (disco + original cuts) | `system-prompt` | live | see ledger | 1GBB0X5K_Zk / eDYnvc1Go7k | |
 | CVE Carnival | `cve-carnival` | live | n/a | aBqnLb_rIOU | source on the Mac Mini |
+| CVE Carnival — Bubba cut (cartoon carnival) | `cve-carnival-bubba` | rendered; ready for YouTube upload, then site | $0 | | handoff below |
+
+**Handoff: CVE Carnival — Bubba cut (cartoon carnival, alternate cut of the existing CVE Carnival video) — ready for YouTube upload** (Bubba, Mac Mini, 2026-10-04)
+- Composition `CveCarnivalBubba` in `video/src/videos/cve-carnival-bubba/`, scene book `video/data/cve-carnival-bubba/scenes.json`. All 8-bit canvas art drawn in code: no generated clips, no stills, nothing machine-local except the song.
+- Render (from `video/`): `node scripts/sync-assets.mjs`, then `node scripts/video.mjs render cve-carnival-bubba` (1080p master to `out/cve-carnival-bubba.mp4`). Audio is `public/music/raps/cve-carnival-v2.mp3`.
+- Already rendered: a 720p MP4 exists on the Mac Mini at `~/.openclaw/media/outbound/cve-carnival-bubba/cve-carnival-bubba-720p.mp4` (masters in `/Volumes/Samsung 9100 SSD/data/music-video/cve-carnival/renders/bubba/`). Re-rendering from this commit gives the same frames (checked against the old branch on the Mac Mini).
+- Poster: `public/video/cve-carnival-bubba/thumbnail.jpg` (1280x720), alternates `thumbnail-b.jpg` and `thumbnail-c.jpg`.
+- Site, after upload: list it as an alternate cut of `cve-carnival` (`cut` field, e.g. "Bubba cut") in `MUSIC_VIDEOS`. Leave the existing `cve-carnival` entry, page and files alone. The scene book already has the `concept`, `thesis`, `rules` and scenes; it has no `page` block yet, so either give the entry its own page (add a `page` block) or point it at the parent's page with `page`.
 
 **OpenRouter:**
 - Check the account balance with `GET /api/v1/credits` before a batch. It was about $24 on 2026-10-04 after Weight of Zero.

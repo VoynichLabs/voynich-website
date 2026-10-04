@@ -6,6 +6,8 @@
 //          CodeStage) so they never import a particular song's JSON.
 // SRP/DRY check: Pass - replaces the System Prompt-only lib/timing.ts module imports; types and
 //                frame helpers stay in lib/timing.ts.
+//                2026-10-04 (Bubba, CVE Carnival Bubba cut): adds lastBeat() and beatIndex() for
+//                beat-stepped animation; beatPulse() now reads lastBeat() with identical results.
 import { createContext, createElement, useContext } from 'react';
 import { END_CARD_SECONDS, FPS, Line, Scene, Shot, Word } from './timing';
 
@@ -41,16 +43,31 @@ export const makeSong = <B extends BookBase>(d: SongData<B>) => {
       return t >= l.start - 0.1 && t < until;
     });
 
-  /** 1 on a beat, decaying to 0 over `decay` seconds. Downbeats only when `downOnly`. */
-  const beatPulse = (t: number, decay = 0.35, downOnly = false): number => {
+  /** Time of the most recent beat at or before t (-Infinity before the first beat). */
+  const lastBeat = (t: number, downOnly = false): number => {
     const grid = downOnly ? downbeats : beats;
     let last = -Infinity;
     for (const b of grid) {
       if (b > t) break;
       last = b;
     }
-    const dt = t - last;
+    return last;
+  };
+
+  /** 1 on a beat, decaying to 0 over `decay` seconds. Downbeats only when `downOnly`. */
+  const beatPulse = (t: number, decay = 0.35, downOnly = false): number => {
+    const dt = t - lastBeat(t, downOnly);
     return dt >= 0 && dt < decay ? 1 - dt / decay : 0;
+  };
+
+  /** Number of beats elapsed at time t (for beat-stepped animation). */
+  const beatIndex = (t: number): number => {
+    let n = 0;
+    for (const b of beats) {
+      if (b > t) break;
+      n++;
+    }
+    return n;
   };
 
   /** For a call-and-response line ("Who are you? I'm what ..."), the time the call part ends. */
@@ -77,7 +94,9 @@ export const makeSong = <B extends BookBase>(d: SongData<B>) => {
     totalFrames: Math.ceil((songSeconds + (book.endCardSeconds ?? END_CARD_SECONDS)) * FPS),
     lineWords,
     activeLine,
+    lastBeat,
     beatPulse,
+    beatIndex,
     callEnd,
   };
 };
