@@ -1,0 +1,322 @@
+{
+ "slug": "attention-is-all-we-need",
+ "title": "Attention Is All We Need",
+ "album": "Channel singles",
+ "albumHref": "/music/videos",
+ "artist": "VoynichLabs",
+ "track": 1,
+ "style": "Sugar pop",
+ "audio": "/audio/shorts/attention-is-all-we-need.mp3",
+ "bpm": 120,
+ "duration": 131.14,
+ "concept": "A love song to the Transformer, told as a dating history drawn as architecture diagrams. The singer's first love was the RNN, who faded with every word (the vanishing gradient); the rebound was the LSTM, all fancy gates and still stuck in sequential time; then self-attention looked at every word at once. Vertical, for Shorts, and every frame is drawn in code from the real vocal timing.",
+ "thesis": "Attention is all we need, now I realize.",
+ "rules": [
+  {
+   "name": "Every ex is an architecture",
+   "text": "The RNN, the LSTM and the Transformer are drawn the way they really work: a chain, a column of gated cells, and a ring of tokens that all attend to each other."
+  },
+  {
+   "name": "The words are the tokens",
+   "text": "Each sung word lands in a cell, a gate or an attention node exactly when it is sung, so the diagram is the lyric."
+  },
+  {
+   "name": "The loss falls with the story",
+   "text": "A JSON readout at the top tracks the model, the training step, the current token and a loss that falls from about four to near zero by the last line."
+  },
+  {
+   "name": "No generated footage",
+   "text": "Nothing here came from an image or video model. It is all Canvas2D, rendered frame by frame in headless Chrome."
+  }
+ ],
+ "cast": [
+  {
+   "name": "The RNN",
+   "text": "First love. Recurrent, one word at a time, and the feeling fades with every hop."
+  },
+  {
+   "name": "The LSTM",
+   "text": "The rebound. Input, forget and output gates, long short-term memory, still sequential."
+  },
+  {
+   "name": "The Transformer",
+   "text": "Self-attention, multi-head, positional encoding and residual streams. The one."
+  }
+ ],
+ "layers": {
+  "CODE": "Drawn in code (Canvas2D) from the real word timing."
+ },
+ "timingNote": "Word timings from Whisper aligned to the lyrics, on a 120 BPM beat grid. Each scene runs for the lyric lines that share one diagram.",
+ "scenes": [
+  {
+   "id": 1,
+   "title": "First love: the RNN",
+   "section": "Verse 1",
+   "start": 0.0,
+   "end": 19.06,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "You were my first love, RNN, recurrent neural network / You promised me everything but you left me hanging / On vanishing gradients, one word at a time / Drowning in your hesitance",
+   "shot": "RNN. A chain of hidden-state cells zig-zags down the screen, one sung word per cell. A pink heart is handed down the chain and shrinks at every hop while the gradient readout falls (0.72 to the power of the step): the vanishing gradient as a love that fades. On \"drowning\" the cells sink.",
+   "transition": "Glitch cut on the downbeat."
+  },
+  {
+   "id": 2,
+   "title": "The LSTM with the fancy gates",
+   "section": "Verse 1",
+   "start": 19.06,
+   "end": 27.08,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Then came LSTM with your fancy gates / Long, short-term memory, you said we'd relate",
+   "shot": "LSTM. The words fill a column of memory cells, each with input, forget and output gate bars that slam open and shut on the beat. Cells not yet sung sit \"waiting...\".",
+   "transition": "Glitch cut on the downbeat."
+  },
+  {
+   "id": 3,
+   "title": "Stuck in sequential time",
+   "section": "Verse 1",
+   "start": 27.08,
+   "end": 31.0,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "But you were still stuck in sequential time",
+   "shot": "A clock that will not advance: the hands tick one step per word, a single token at a time, while a training progress bar crawls.",
+   "transition": "Glitch cut on the downbeat."
+  },
+  {
+   "id": 4,
+   "title": "Training took forever",
+   "section": "Verse 1",
+   "start": 31.0,
+   "end": 35.24,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Training took forever, you were never really mine",
+   "shot": "An epoch counter climbs and climbs; the loss barely moves. \"never really mine\" breaks the heart in two.",
+   "transition": "Glitch cut on the downbeat."
+  },
+  {
+   "id": 5,
+   "title": "Then you showed me how to parallelize",
+   "section": "Pre-chorus",
+   "start": 35.24,
+   "end": 43.12,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Then you showed me how to parallelize / With self-attention in your transformer eyes",
+   "shot": "The sequential chain snaps apart and every word lights at once, side by side, in parallel lanes.",
+   "transition": "Glitch cut on the downbeat."
+  },
+  {
+   "id": 6,
+   "title": "No more waiting",
+   "section": "Chorus",
+   "start": 43.12,
+   "end": 52.88,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "No more waiting, no more lies / Attention is all we need, now I realize",
+   "shot": "The line lays out as a ring of tokens. Every word draws attention arcs to every other word at once, arc brightness from an attention matrix, while the matrix fills in as a heatmap below.",
+   "transition": "Glitch cut on the downbeat."
+  },
+  {
+   "id": 7,
+   "title": "Forward pass (instrumental)",
+   "section": "Instrumental",
+   "start": 52.88,
+   "end": 67.53,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "(instrumental)",
+   "shot": "The break: \"the love of my life is a transformer\" as a ring of tokens wired all-to-all, the arcs pulsing, the layer counter cycling through twelve layers.",
+   "transition": "Glitch cut on the downbeat."
+  },
+  {
+   "id": 8,
+   "title": "The LSTM with the fancy gates",
+   "section": "Verse 2",
+   "start": 67.53,
+   "end": 78.38,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "My rebound, LSTM / With your input, output, and forget gates / Seemed you'd handle long texts better, or so you claimed (?)",
+   "shot": "LSTM. The words fill a column of memory cells, each with input, forget and output gate bars that slam open and shut on the beat. Cells not yet sung sit \"waiting...\".",
+   "transition": "Glitch cut on the downbeat."
+  },
+  {
+   "id": 9,
+   "title": "Stuck in sequential time",
+   "section": "Verse 2",
+   "start": 78.38,
+   "end": 82.36,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "But you still process slow, I was still chained",
+   "shot": "A clock that will not advance: the hands tick one step per word, a single token at a time, while a training progress bar crawls.",
+   "transition": "Glitch cut on the downbeat."
+  },
+  {
+   "id": 10,
+   "title": "Backprop, endless night",
+   "section": "Verse 2",
+   "start": 82.36,
+   "end": 90.0,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "I was stuck in backprop, endless night / Waiting for gradients to propagate right",
+   "shot": "A night sky over a stack of twelve layers. A red heart (the gradient) travels back down the stack and shrinks by a power of ten at each layer.",
+   "transition": "Glitch cut on the downbeat."
+  },
+  {
+   "id": 11,
+   "title": "Multi-head attention",
+   "section": "Pre-chorus",
+   "start": 90.0,
+   "end": 98.0,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Then your multi-head attention held me tight / And showed me all words can shine in the same light",
+   "shot": "The attention ring again, now with eight heads, eight coloured dots all looking at once; on \"the same light\" every head weights every word equally.",
+   "transition": "Glitch cut on the downbeat."
+  },
+  {
+   "id": 12,
+   "title": "No recurrence",
+   "section": "Chorus",
+   "start": 98.0,
+   "end": 102.0,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "No more sequences, no more delay",
+   "shot": "The line lays out as a ring of tokens. Every word draws attention arcs to every other word at once, arc brightness from an attention matrix, while the matrix fills in as a heatmap below.",
+   "transition": "Glitch cut on the downbeat."
+  },
+  {
+   "id": 13,
+   "title": "Context doesn't fade",
+   "section": "Chorus",
+   "start": 102.0,
+   "end": 106.0,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Context windows don't fade away",
+   "shot": "The line lays out as a ring of tokens. Every word draws attention arcs to every other word at once, arc brightness from an attention matrix, while the matrix fills in as a heatmap below.",
+   "transition": "Glitch cut on the downbeat."
+  },
+  {
+   "id": 14,
+   "title": "Query meets key",
+   "section": "Chorus",
+   "start": 106.0,
+   "end": 110.0,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Query meets key in perfect array",
+   "shot": "The line lays out as a ring of tokens. Every word draws attention arcs to every other word at once, arc brightness from an attention matrix, while the matrix fills in as a heatmap below.",
+   "transition": "Glitch cut on the downbeat."
+  },
+  {
+   "id": 15,
+   "title": "Attention is all we need",
+   "section": "Chorus",
+   "start": 110.0,
+   "end": 114.0,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Attention is all we need, now I can say",
+   "shot": "The line lays out as a ring of tokens. Every word draws attention arcs to every other word at once, arc brightness from an attention matrix, while the matrix fills in as a heatmap below.",
+   "transition": "Glitch cut on the downbeat."
+  },
+  {
+   "id": 16,
+   "title": "Positional encoding, residual streams",
+   "section": "Outro",
+   "start": 114.0,
+   "end": 118.0,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Positional encoding, residual streams",
+   "shot": "A scrolling sine and cosine grid (positional encoding) above residual-stream bars that loop around each block.",
+   "transition": "Glitch cut on the downbeat."
+  },
+  {
+   "id": 17,
+   "title": "Rebuilt",
+   "section": "Outro",
+   "start": 118.0,
+   "end": 122.0,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "You rebuilt my broken machine learning dreams",
+   "shot": "Transformer blocks (multi-head attention, add and norm, feed forward) fall into place on the beat, one per beat, building the machine back up.",
+   "transition": "Glitch cut on the downbeat."
+  },
+  {
+   "id": 18,
+   "title": "No more RNNs or LSTMs",
+   "section": "Outro",
+   "start": 122.0,
+   "end": 125.5,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "No more RNNs or LSTMs",
+   "shot": "RNN and LSTM in big letters, struck through in red; \"attention\" glows in neon underneath.",
+   "transition": "Glitch cut on the downbeat."
+  },
+  {
+   "id": 19,
+   "title": "Transformer hymns",
+   "section": "Outro",
+   "start": 125.5,
+   "end": 131.14,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Just attention forever in transformer hymns",
+   "shot": "The last line: the attention matrix becomes a stained-glass window, lit from behind, with \"transformer hymns\" in gold serif. Fade to black.",
+   "transition": "Fade to black."
+  }
+ ],
+ "decisions": [
+  "The verse 2 line about handling long texts is still a best guess at the sung words.",
+  "The old still-image Short of this song stays up for now."
+ ],
+ "page": {
+  "description": "The Attention Is All We Need music video: a love song to the Transformer, told as a dating history drawn as architecture diagrams (RNN, LSTM, self-attention). Every frame drawn in code. Scene book and timeline included.",
+  "decisionsTitle": "Notes",
+  "howMade": [
+   {
+    "label": "Timing",
+    "text": "The vocal is transcribed with Whisper and aligned word by word to the lyrics, on a 120 BPM beat grid."
+   },
+   {
+    "label": "Diagrams",
+    "text": "Each scene is a real architecture drawn in Canvas2D: the RNN chain and its vanishing gradient, LSTM gates, attention rings and heatmaps, backprop through twelve layers, positional encoding."
+   },
+   {
+    "label": "Render",
+    "text": "Headless Chrome renders every frame at 1080 by 1920, then ffmpeg adds the song. No generated clips, no stills."
+   }
+  ],
+  "sourceNote": "Built outside Remotion, in the private music-videos repo (attention-video: engine, timing and render)."
+ }
+}

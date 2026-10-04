@@ -18,7 +18,7 @@ Stages:
 | Dead Weights and Gradients | `dead-weights` | live | $2.23 | VqJ7_TfyFpk | same plan (ripped open) |
 | 10 Dev Commandments | `ten-dev-commandments` | on the shelf (Mark, 2026-10-04) | $0 | | `docs/2026-10-04-three-music-videos-plan.md` |
 | Train Me Like You Mean It | `train-me-like-you-mean-it` | dropped | $0 | | same |
-| Attention Is All We Need | `attention-is-all-we-need` | code-only vertical first cut rendered (RNN → LSTM → Transformer dating history drawn as architecture diagrams, no generated footage); waiting on Mark's look. The sugar-pop stills route is shelved | see ledger | | same |
+| Attention Is All We Need | `attention-is-all-we-need` | live (public Short 2026-10-04; code-only vertical cut, LSTM line fixed to "you said we'd relate"; page and scene book up). Mark: "build more like that" | $0 | S-247iXCwtw | engine in music-videos `attention-video/` |
 | Get Gone | `get-gone` | live | n/a | fUET78d8MxM | source in the private music-videos repo (`get-gone-video/`), pushed |
 | System Prompt (disco + original cuts) | `system-prompt` | live | see ledger | 1GBB0X5K_Zk / eDYnvc1Go7k | |
 | CVE Carnival | `cve-carnival` | live | n/a | aBqnLb_rIOU | source in the private music-videos repo (`cve-carnival-video/`), pushed |

@@ -5,6 +5,15 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.43.0] - 2026-10-04
+
+### Added
+- **Attention Is All We Need music video** (vertical, all drawn in code): page at `/music/video/attention-is-all-we-need` with scene book (`video/data/attention-is-all-we-need/scenes.json`, exported from the music-videos repo), entry in `src/data/music-videos.ts`, poster. LSTM line corrected to "you said we'd relate" per Mark before upload.
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.42.1] - 2026-10-04
 
 ### Changed

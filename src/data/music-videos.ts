@@ -36,6 +36,22 @@ export type MusicVideo = {
 /** Newest first. */
 export const MUSIC_VIDEOS: MusicVideo[] = [
   {
+    slug: 'attention-is-all-we-need',
+    title: 'Attention Is All We Need',
+    artist: 'VoynichLabs',
+    album: 'Channel singles',
+    albumHref: '/music/videos',
+    track: 1,
+    youtubeId: 'S-247iXCwtw',
+    released: 'October 4, 2026',
+    runtime: '2:11',
+    hook: 'Attention is all we need, now I realize.',
+    blurb:
+      'A sugar-pop love song to the Transformer, told as a dating history drawn as real architecture diagrams: the RNN that faded with every word, the LSTM and its fancy gates, then self-attention. Every frame drawn in code.',
+    poster: '/video/attention-is-all-we-need/thumbnail.jpg',
+    accent: '#a78bfa',
+  },
+  {
     slug: 'dead-weights',
     title: 'Dead Weights and Gradients',
     artist: 'The Lobster Band',
@@ -156,7 +172,7 @@ export const videoBySlug = (slug: string) => MUSIC_VIDEOS.find((v) => v.slug ===
 
 /** Earlier songs on the channel, posted as Shorts (cover-art visualizers). Newest first. */
 export const CHANNEL_SHORTS: { id: string; title: string }[] = [
-  { id: 'u8ssdPZJSEc', title: 'Attention Is All We Need' },
+  { id: 'u8ssdPZJSEc', title: 'Attention Is All We Need (original Short)' },
   { id: 'topbYM5c_aE', title: 'Train Me Like You Mean It' },
   { id: 'wlnNiPCwtJ4', title: 'Vibecoding' },
   { id: 'a6WqQtLXvGU', title: 'Push Me One More Time' },
