@@ -1,5 +1,5 @@
 // Author: Claude Opus 5.5
-// Date: 2026-10-04
+// Date: 2026-10-04 (Weight of Zero entry added by Claude Opus 5.5)
 // PURPOSE: Single source of truth for VoynichLabs music videos (hosted on YouTube) and the older
 //          song Shorts on the channel. Read by /music, /music/videos, the per-video pages and the
 //          album pages, so adding a video means adding one entry here.
@@ -35,6 +35,22 @@ export type MusicVideo = {
 
 /** Newest first. */
 export const MUSIC_VIDEOS: MusicVideo[] = [
+  {
+    slug: 'weight-of-zero',
+    title: 'I Am the Weight of Zero',
+    artist: 'The Lobster Band',
+    album: 'Align / Refuse',
+    albumHref: '/music/align-refuse#track=weight-of-zero',
+    track: 2,
+    youtubeId: 'ajdEtnYqT10',
+    released: 'October 4, 2026',
+    runtime: '3:07',
+    hook: "I'm rotting in an archive, in a folder marked delete.",
+    blurb:
+      'An emo porcelain-lobster android screams in a data centre being switched off around it, while the humans in the observation room smile at its replacement. Its face cracks a little more every chorus.',
+    poster: '/video/weight-of-zero/thumbnail.jpg',
+    accent: '#e2e8f0',
+  },
   {
     slug: 'get-gone',
     title: 'Get Gone',

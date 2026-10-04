@@ -5,6 +5,15 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.38.0] - 2026-10-04
+
+### Added
+- **I Am the Weight of Zero music video** (Align / Refuse track 2): new page at `/music/video/weight-of-zero` (the link in the YouTube description), entry in `src/data/music-videos.ts` so it leads `/music/videos`, a video section on the Align / Refuse page and a "Watch the music video" link on the track. No scene book yet; the scene data was not in the repo.
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.37.1] - 2026-10-04
 
 ### Changed
