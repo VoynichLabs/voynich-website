@@ -28,7 +28,7 @@ Process: follow the project skill **`.claude/skills/music-video/`** (written on 
   - The music video is then cut to the new version, so run `analyze.py` on whichever he picks.
 - **Tooling:** `video/scripts/transcribe.py` (new), `analyze.py`, `generate.mjs`, and yt-dlp in `video/.venv`.
 
-- **Update (Mac Mini, 2026-10-04):** all three lyrics are now final (the one `(?)` in Attention is resolved), and **all three songs were remade with Lyria 3 Pro**: `ten-dev-commandments-v2.mp3`, `train-me-like-you-mean-it-v2.mp3`, `attention-is-all-we-need-v2.mp3` (each about 3:00) in `public/audio/shorts/`, with `_info.txt` / `_meta.json` sidecars holding the lyrics as Lyria sang them. Mark picks v1 (channel) or v2 per song before `analyze.py`.
+- **Decision (Mark, 2026-10-04): use the ORIGINAL channel audio for all three.** The Lyria remakes were tried and rejected, then deleted. All three lyric files are final; no `(?)` lines remain. Skip the new-audio step for 10 Dev Commandments; run `analyze.py` on the channel mp3.
 
 ## Step 0: shared pipeline work (once)
 1. **Multi-song refactor.** `video/src/lib/timing.ts` hard-imports System Prompt's JSON. Turn it into a `makeSong(data)` factory plus a React `SongContext`, so `Captions`, `Clip` and `CodeStage` read the current song from context. Register each song's data statically in `src/songs.ts`; Remotion needs static imports.
