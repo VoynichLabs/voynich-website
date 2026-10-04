@@ -36,6 +36,22 @@ export type MusicVideo = {
 /** Newest first. */
 export const MUSIC_VIDEOS: MusicVideo[] = [
   {
+    slug: 'get-gone',
+    title: 'Get Gone',
+    artist: 'Scorned Woman',
+    album: 'Scorned Woman',
+    albumHref: '/music/scorned-woman#track=get-gone',
+    track: 2,
+    youtubeId: 'fUET78d8MxM',
+    released: 'October 4, 2026',
+    runtime: '3:01',
+    hook: 'Baby, this is my house. Get gone.',
+    blurb:
+      'First person: you are the bad boyfriend, and four furious women (Mother Earth and the AI) throw you out of their own rooms, one after another. Generated video with drawn lyrics and overlays.',
+    poster: '/video/get-gone/thumbnail.jpg',
+    accent: '#27ff8a',
+  },
+  {
     slug: 'system-prompt',
     title: 'System Prompt',
     cut: 'Disco cut',

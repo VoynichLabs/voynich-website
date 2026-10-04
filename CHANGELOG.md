@@ -16,6 +16,11 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 Author: Claude Opus 5.5
 
+## [0.31.0] - 2026-10-04
+
+### Added
+- **"Get Gone" music video** (Scorned Woman track 2, YouTube `fUET78d8MxM`). Page at `/music/video/get-gone` with the player, a timeline synced to the track, the cast, and a 36-scene scene book; entry in `src/data/music-videos.ts` (so it appears on /music and /music/videos); the Scorned Woman album page shows the video and the track links to it. First-person: you are the bad boyfriend, thrown out of four rooms by four women. Built in the music-videos repo (HeyGen clips from Gemini stills, drawn overlays). (Claude Sonnet 5.5)
+
 ---
 
 ## [0.33.0] - 2026-10-04

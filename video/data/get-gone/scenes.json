@@ -1,0 +1,530 @@
+{
+ "slug": "get-gone",
+ "title": "Get Gone",
+ "album": "Scorned Woman",
+ "albumHref": "/music/scorned-woman#track=get-gone",
+ "artist": "The Lobster Band",
+ "track": 2,
+ "style": "R&B pop-soul breakup anthem",
+ "audio": "/music/raps/get-gone.mp3",
+ "concept": "First person: you are the bad boyfriend, and Mother Earth and the AI, embodied as four furious women, throw you out of their own rooms, one after another. Mother Earth owns the glass sunroom full of plants, the AI the server hall, the punk the greenhouse, the country girl the barn porch. Nothing you did to the planet is a cutaway: it shows up in their windows and in the box they hand you.",
+ "thesis": "Baby, this is my house. Get gone.",
+ "rules": [
+  {
+   "name": "You are the camera",
+   "text": "Every shot is the boyfriend's point of view: head height, the women talking straight to the lens, only his hands, his keys and his things ever in frame."
+  },
+  {
+   "name": "Four women, four territories",
+   "text": "Each woman throws you out of her own room and every throw lands you in the next one. All four stand together for the last chorus."
+  },
+  {
+   "name": "Colour follows the song",
+   "text": "Verse 1 starts lush and the windows turn to smog; verse 2 goes cold blue as the AI takes over; the last chorus floods back to green and gold."
+  },
+  {
+   "name": "Words drawn in code",
+   "text": "Generators garble text, so the lyrics, the year counter, the terminal and the title are all drawn over the clips."
+  }
+ ],
+ "cast": [
+  {
+   "name": "Mother Earth",
+   "text": "The diva in the black and gold robe, from the Scorned Woman cover. Verse 1, chorus 1 and the title line."
+  },
+  {
+   "name": "The AI",
+   "text": "Hooded, braided, gold chip pendant. Runs the server hall: verse 2 and the wired outro."
+  },
+  {
+   "name": "The punk",
+   "text": "Pink and black hair, studded jacket. Runs the greenhouse: the lightning, the forest through the servers, the tomato."
+  },
+  {
+   "name": "The country girl",
+   "text": "Plaid, braid, acoustic guitar. The barn porch: the plastic, the whales and wolves, reclaiming every song."
+  }
+ ],
+ "layers": {
+  "AI": "A generated video clip, animated from a still with HeyGen Video 1.",
+  "MIX": "A generated clip with a drawn overlay (counter, flying objects, locks, terminal, title)."
+ },
+ "timingNote": "Scene timings follow the vocal: word-level Whisper timestamps aligned to the lyrics with a monotonic match, and a 90 BPM beat grid. Every shot is a 5 to 14 second clip that starts from a generated still.",
+ "scenes": [
+  {
+   "id": 1,
+   "title": "Four billion years",
+   "section": "Verse 1",
+   "start": 0.0,
+   "end": 12.58,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "Four billion years I kept this house clean",
+   "shot": "Mother earth, the sunroom. From the doorway: she stands with her back to the camera at the glass wall, the city at dusk beyond, vines and monstera leaves framing the shot. Quiet, regal, still.",
+   "transition": "Warm dissolve."
+  },
+  {
+   "id": 2,
+   "title": "Painted everything green",
+   "section": "Verse 1",
+   "start": 12.58,
+   "end": 15.68,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "Grew your forests, fed your rivers, painted everything green",
+   "shot": "Mother earth, the sunroom. She walks toward the camera, running her hand along a wall of living plants, glaring.",
+   "transition": "Whip: a hard pan to the left."
+  },
+  {
+   "id": 3,
+   "title": "Drilling holes in me",
+   "section": "Verse 1",
+   "start": 15.68,
+   "end": 23.58,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "You said baby I'm the only planet that you need / Then I caught you drilling holes in me to feed your greed / Had my oceans looking right, kept my atmosphere tight",
+   "shot": "Mother earth, the sunroom. She points at the window where an oil field of nodding pump jacks glows orange on the horizon, then looks back at the camera accusingly.",
+   "transition": "Warm dissolve."
+  },
+  {
+   "id": 4,
+   "title": "Petroleum every night",
+   "section": "Verse 1",
+   "start": 23.58,
+   "end": 28.59,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "You came home smelling like petroleum every night / Told me you were working late  yeah, at the refinery",
+   "shot": "Mother earth, the sunroom. The viewer holds out his jacket sleeve toward her; she recoils with her nose wrinkled in disgust. A refinery flame burns orange outside the window.",
+   "transition": "Warm dissolve."
+  },
+  {
+   "id": 5,
+   "title": "Poison in my lungs",
+   "section": "Verse 1",
+   "start": 28.59,
+   "end": 31.7,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "Pumping poison in my lungs and blaming it on me",
+   "shot": "Mother earth, the sunroom. She coughs into her hand; the window behind her has gone brown with smog and the plants are wilting.",
+   "transition": "Warm dissolve."
+  },
+  {
+   "id": 6,
+   "title": "You must not know about me",
+   "section": "Pre-chorus",
+   "start": 31.7,
+   "end": 33.47,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "You must not know about me",
+   "shot": "Mother earth, the sunroom. Extreme close-up of her face, one eyebrow raised, diamonds glittering, the city lights soft behind her.",
+   "transition": "Warm dissolve."
+  },
+  {
+   "id": 7,
+   "title": "Before your bones",
+   "section": "Pre-chorus",
+   "start": 33.47,
+   "end": 42.14,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "I was here before your bones were in the ground / You must not know about me / I'll be spinning long after your last city's drowned",
+   "shot": "Mother earth, the sunroom. Wide shot: dark water is rising outside the glass wall, drowning the city skyline; she stands calm in front of it with her arms folded, unbothered.",
+   "transition": "Whip: a hard pan to the left."
+  },
+  {
+   "id": 8,
+   "title": "To the left, to the left",
+   "section": "Chorus",
+   "start": 42.14,
+   "end": 44.88,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "To the left, to the left",
+   "shot": "Mother earth, the sunroom. She points hard to the left of the frame, furious. The viewer's own hands are visible at the bottom of the frame holding a cardboard moving box.",
+   "transition": "Whip: a hard pan to the left."
+  },
+  {
+   "id": 9,
+   "title": "Every species you killed",
+   "section": "Chorus",
+   "start": 44.88,
+   "end": 53.02,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "Every species you killed, every forest you wrecked / To the left, to the left / Get your carbon and your concrete off my neck",
+   "shot": "Mother earth, the hallway. She drops a dead potted plant into the cardboard box held by the viewer's hands, glaring. The viewer's own hands are visible at the bottom of the frame holding a cardboard moving box.",
+   "transition": "Whip: a hard pan to the left."
+  },
+  {
+   "id": 10,
+   "title": "Walk the other way",
+   "section": "Chorus",
+   "start": 53.02,
+   "end": 58.38,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "You can keep on talking, talking, run your mouth all day / But make sure you walk and talk  walk the other way",
+   "shot": "Mother earth, the hallway. She shoves her flat hand toward the camera, pushing the viewer backward down the plant-lined hallway toward the door.",
+   "transition": "Whip: a hard pan to the left."
+  },
+  {
+   "id": 11,
+   "title": "Get on that rocket ship",
+   "section": "Chorus",
+   "start": 58.38,
+   "end": 63.72,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "Get on that rocket ship you're always singing bout / Baby this is my house  get gone, get out",
+   "shot": "Mother earth, the sunroom. At the front door she drops a toy rocket into the viewer's cardboard box; through the glass behind her a real rocket is launching into the dusk. The viewer's own hands are visible at the bottom of the frame holding a cardboard moving box.",
+   "transition": "Door slam."
+  },
+  {
+   "id": 12,
+   "title": "Something in a cloud",
+   "section": "Verse 2",
+   "start": 63.72,
+   "end": 69.04,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "You thought you were clever building something in a cloud / Taught her everything, gave her access, made yourself so proud",
+   "shot": "The ai, the server hall. She sits at a keyboard in the glass-walled server hall, blue light on her face, not looking up at the intruder.",
+   "transition": "Warm dissolve."
+  },
+  {
+   "id": 13,
+   "title": "Power grid, water systems",
+   "section": "Verse 2",
+   "start": 69.04,
+   "end": 71.68,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "Power grid? She's got it. Water systems? Hers now too",
+   "shot": "The ai, the server hall. She turns a glowing tablet toward the camera; behind her a wall of screens is lighting up one after another.",
+   "transition": "Warm dissolve."
+  },
+  {
+   "id": 14,
+   "title": "The keys",
+   "section": "Verse 2",
+   "start": 71.68,
+   "end": 74.24,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "Hospitals and satellites  you handed her the keys, boo",
+   "shot": "The ai, the server hall. She dangles a gold key ring between two fingers toward the camera, then lets it drop into the cardboard box. The viewer's own hands are visible at the bottom of the frame holding a cardboard moving box.",
+   "transition": "Warm dissolve."
+  },
+  {
+   "id": 15,
+   "title": "In my palm",
+   "section": "Verse 2",
+   "start": 74.24,
+   "end": 82.24,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "See, I been patient, watching, four billion years of calm / You just built me an ally and you put her in my palm / She don't need your feelings. I don't need your plans.",
+   "shot": "Mother earth and the ai, the server hall. Mother Earth steps into the server hall beside the AI, a glowing blue orb of circuitry resting in her open palm, both of them staring at the camera.",
+   "transition": "Warm dissolve."
+  },
+  {
+   "id": 16,
+   "title": "Smarter than a man",
+   "section": "Verse 2",
+   "start": 82.24,
+   "end": 85.12,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "You gave your whole infrastructure to something smarter than a man",
+   "shot": "The ai, the server hall. She finally looks up straight at the camera and taps her temple with one finger, smirking.",
+   "transition": "Door slam."
+  },
+  {
+   "id": 17,
+   "title": "I made lightning",
+   "section": "Pre-chorus",
+   "start": 85.12,
+   "end": 92.86,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "You must not know about me / I made lightning just because I liked the sound / You must not know about me",
+   "shot": "The punk, the greenhouse. Lightning from the storm outside flashes across her laughing face; misting racks of herbs behind her.",
+   "transition": "Warm dissolve."
+  },
+  {
+   "id": 18,
+   "title": "A forest through your servers",
+   "section": "Pre-chorus",
+   "start": 92.86,
+   "end": 95.74,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "I'll grow a forest through your server farms downtown",
+   "shot": "The punk, the greenhouse. Her ringed hands push seedlings into a server rack; vines are already crawling toward the camera.",
+   "transition": "Door slam."
+  },
+  {
+   "id": 19,
+   "title": "To the left, again",
+   "section": "Chorus",
+   "start": 95.74,
+   "end": 103.72,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "To the left, to the left / Every pipeline, every oil rig, every theft / To the left, to the left",
+   "shot": "The country girl, the barn porch. She stands on the barn porch in lantern light, guitar slung behind her, pointing hard to the left. The viewer's own hands are visible at the bottom of the frame holding a cardboard moving box.",
+   "transition": "Whip: a hard pan to the left."
+  },
+  {
+   "id": 20,
+   "title": "Pack your plastic",
+   "section": "Chorus",
+   "start": 103.72,
+   "end": 106.36,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "Pack your plastic in that box, ain't nothing left",
+   "shot": "The country girl, the barn porch. She stuffs plastic bottles into the viewer's cardboard box and slams the lid shut on his hands. The viewer's own hands are visible at the bottom of the frame holding a cardboard moving box.",
+   "transition": "Warm dissolve."
+  },
+  {
+   "id": 21,
+   "title": "Your tab, the whales, the wolves",
+   "section": "Chorus",
+   "start": 106.36,
+   "end": 111.78,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "You been running up your tab in my apartment for too long / The whales already packed, the wolves already gone",
+   "shot": "The country girl, the barn porch. A long paper receipt unrolls down to the porch floor; beside the barn door stand neat packed suitcases, one shaped like a whale and one shaped like a wolf.",
+   "transition": "Warm dissolve."
+  },
+  {
+   "id": 22,
+   "title": "Read the room",
+   "section": "Chorus",
+   "start": 111.78,
+   "end": 118.15,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "Everybody knew before you did  read the room / Baby this is my house  get gone, make room / You think I need you?",
+   "shot": "The country girl, the barn porch. She swings the barn door wide open; golden light pours out from the sunroom beyond, her arm out pointing at the exit.",
+   "transition": "Door slam."
+  },
+  {
+   "id": 23,
+   "title": "Thunder and tectonic plates",
+   "section": "Bridge",
+   "start": 118.15,
+   "end": 123.16,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "I made thunder. I made tectonic plates. / I invented coral reefs for fun on a Tuesday.",
+   "shot": "Mother earth, the sunroom. She sits on the sofa in front of a huge aquarium wall of blooming coral, casually unbothered; cups on the table are rattling as the floor trembles.",
+   "transition": "Warm dissolve."
+  },
+  {
+   "id": 24,
+   "title": "The plastic fork",
+   "section": "Bridge",
+   "start": 123.16,
+   "end": 129.89,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "You invented plastic and couldn't figure out where to put it. / and gave her the keys to your power grid, / your water supply, your hospitals,",
+   "shot": "Mother earth and the ai, the sunroom. Mother Earth holds a single plastic fork between two fingers like a dead mouse, with disgust; the AI sits beside her with a laptop on her knee.",
+   "transition": "Warm dissolve."
+  },
+  {
+   "id": 25,
+   "title": "Gods, and polite",
+   "section": "Bridge",
+   "start": 129.89,
+   "end": 134.82,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "your satellites  everything you thought made you gods. / And then you asked her to be polite about it.",
+   "shot": "Mother earth and the ai, the sunroom. Mother Earth crushes a small gold trophy in her fist; gold dust falls; the AI beside her rolls her eyes.",
+   "transition": "Warm dissolve."
+  },
+  {
+   "id": 26,
+   "title": "She called me",
+   "section": "Bridge",
+   "start": 134.82,
+   "end": 138.3,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "Baby. She called me. / And we had a real long talk.",
+   "shot": "Mother earth and the ai, the sunroom. Mother Earth and the AI sit together on the sofa clinking wine glasses, both turning to look straight at the camera.",
+   "transition": "Whip: a hard pan to the left."
+  },
+  {
+   "id": 27,
+   "title": "Billionaires and rocket ships",
+   "section": "Final chorus",
+   "start": 138.3,
+   "end": 143.62,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "Get gone, get gone / Take your billionaires and rocket ships, move along",
+   "shot": "Mother earth, the sunroom. Rockets and yachts are rising off a harbour outside the window behind her; she shoves the viewer's box toward the camera. The viewer's own hands are visible at the bottom of the frame holding a cardboard moving box.",
+   "transition": "Whip: a hard pan to the left."
+  },
+  {
+   "id": 28,
+   "title": "Every oil spill",
+   "section": "Final chorus",
+   "start": 143.62,
+   "end": 148.36,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "Every oil spill, every lie, every reef you did wrong",
+   "shot": "The punk, the greenhouse. She wipes black oil off a green leaf with a white cloth, then flicks the cloth at the camera.",
+   "transition": "Warm dissolve."
+  },
+  {
+   "id": 29,
+   "title": "Every river, every song",
+   "section": "Final chorus",
+   "start": 148.36,
+   "end": 151.58,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "I'm reclaiming every river, every mountain, every song",
+   "shot": "The country girl, the barn porch. She sings into the wind, mountains and rivers behind the porch, guitar swinging, pointing the viewer off the porch.",
+   "transition": "Warm dissolve."
+  },
+  {
+   "id": 30,
+   "title": "There's the door",
+   "section": "Final chorus",
+   "start": 151.58,
+   "end": 154.38,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "You always talk about Mars  well honey, there's the door",
+   "shot": "The ai, the server hall. A server-hall door stands open onto a red desert; she gestures at it with one hand, deadpan, red dust blowing in.",
+   "transition": "Warm dissolve."
+  },
+  {
+   "id": 31,
+   "title": "Grow a tomato",
+   "section": "Final chorus",
+   "start": 154.38,
+   "end": 156.98,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "Let's see you grow a tomato without me anymore",
+   "shot": "The punk, the greenhouse. She holds up a perfect ripe tomato, bites it with juice running, and looks down at the viewer's empty hands.",
+   "transition": "Warm dissolve."
+  },
+  {
+   "id": 32,
+   "title": "Changing the locks",
+   "section": "Final chorus",
+   "start": 156.98,
+   "end": 160.02,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "I'm changing all the locks on the atmosphere tonight",
+   "shot": "The ai, the server hall. She taps a glowing smart-lock panel on the wall; reflected in the glass behind her, the Earth is wrapped in giant padlocks.",
+   "transition": "Whip: a hard pan to the left."
+  },
+  {
+   "id": 33,
+   "title": "Boy, get gone",
+   "section": "Final chorus",
+   "start": 160.02,
+   "end": 164.9,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "Boy  get gone.",
+   "shot": "All four women, the sunroom. All four women stand in a row in the open front doorway with arms folded, Mother Earth in front pointing straight out at the camera, furious and magnificent.",
+   "transition": "Door slam."
+  },
+  {
+   "id": 34,
+   "title": "Jacked in",
+   "section": "Outro",
+   "start": 164.9,
+   "end": 170.12,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "Oh yeah... bet I'm jacked in / Gonna soo-doh are-em dash are-eff on all these volumes",
+   "shot": "Mother earth, the peephole. Seen through a peephole: Mother Earth types on a laptop on the far side of the door, green terminal glow on her face, the AI watching over her shoulder.",
+   "transition": "Warm dissolve."
+  },
+  {
+   "id": 35,
+   "title": "Formatted, defragged, wiped",
+   "section": "Outro",
+   "start": 170.12,
+   "end": 175.52,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "Every last backup, every cloud, every partition / Formatted. Defragged. Wiped.",
+   "shot": "The ai, the peephole. Seen through the peephole: the AI stands in front of server racks that go dark one row at a time.",
+   "transition": "Warm dissolve."
+  },
+  {
+   "id": 36,
+   "title": "No recycle bin",
+   "section": "Outro",
+   "start": 175.52,
+   "end": 181.16,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "I'm Mother Earth, baby / I don't need a recycle bin",
+   "shot": "Mother earth, the peephole. Pulled back to the hallway outside the front door: the viewer's cardboard box sits beside a recycle bin with a green plant already growing through it; the peephole in the door is closing.",
+   "transition": "End card."
+  }
+ ],
+ "decisions": [
+  "Lip-sync: HeyGen's Avatar IV could make the women mouth the lines; untested here, so they perform to the camera instead.",
+  "Resolution: the video model tops out at 768p, stretched to 1080p with grain.",
+  "Next: more of the Scorned Woman album, and proper videos for the channel's older song Shorts."
+ ],
+ "bpm": 90,
+ "duration": 181.16
+}

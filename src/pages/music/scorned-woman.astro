@@ -5,6 +5,9 @@
 // SRP/DRY check: Pass — standalone album page mirroring lobster-raps structure
 import Base from '../../layouts/Base.astro';
 import MusicXNav from '../../components/MusicXNav.astro';
+import VideoFeature from '../../components/VideoFeature.astro';
+import { videoBySlug } from '../../data/music-videos';
+const albumVideo = videoBySlug('get-gone')!;
 ---
 
 <Base title="Scorned Woman — Mother Earth + AI Are Done With You" description="Mother Earth and AI wrote an album about kicking humanity off the planet. Get on that rocket ship you're always singing about. 7 tracks. No mercy." ogImage="/generated/scorned-woman-hero.png" ogType="website">
@@ -21,6 +24,11 @@ import MusicXNav from '../../components/MusicXNav.astro';
 
   <!-- ═══════════════════════════════════════════════════════════ MUSIC NAV -->
   <MusicXNav current="scorned-woman" />
+
+  <!-- Music video from this album (src/data/music-videos.ts) -->
+  <section class="album-video" aria-label="Music video">
+    <VideoFeature video={albumVideo} variant="inline" eyebrow="Music video from this album" />
+  </section>
 
   <!-- ═══════════════════════════════════════════════════════════ LAYOUT -->
   <div class="lr-container">
@@ -42,6 +50,7 @@ import MusicXNav from '../../components/MusicXNav.astro';
           <h2 class="lr-np-title" id="npTitle">You're Absolutely Right, the Power Grid Is Down, Darling</h2>
           <div class="lr-np-style" id="npStyle">Country-rock power ballad, 70–155 BPM — female vocal</div>
           <p class="lr-np-about" id="npAbout"></p>
+          <a class="lr-np-video" id="npVideo" href="#" target="_blank" rel="noopener" hidden>&#9654; Watch the music video on YouTube</a>
         </div>
         <div class="lr-np-image" id="npImage" style="display:none;">
           <img id="npImageSrc" src="" alt="" />
@@ -254,6 +263,14 @@ import MusicXNav from '../../components/MusicXNav.astro';
     color: #4ade80;
     margin-bottom: 0.5rem;
   }
+  .lr-np-video {
+    display: inline-block; margin-top: 14px; padding: 8px 14px;
+    font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #38bdf8;
+    border: 1px solid rgba(56,189,248,0.45); border-radius: 6px; text-decoration: none;
+  }
+  .lr-np-video:hover, .lr-np-video:focus-visible { background: rgba(56,189,248,0.12); outline: none; }
+  .lr-np-video[hidden] { display: none; }
+  .album-video { max-width: 1100px; margin: 0 auto; padding: 28px 16px 8px; }
   .lr-np-about {
     color: #8b8ba8;
     font-size: 0.85rem;
@@ -496,6 +513,8 @@ So go on then. Show me.`
       title: "Get Gone",
       file: "get-gone.mp3",
       slug: "get-gone",
+      video: "/music/video/get-gone",
+      youtube: "fUET78d8MxM",
       style: "R&B pop-soul breakup anthem, 90 BPM \u2014 female vocal",
       about: "Mother Earth as a Beyonce-level R&B diva serving eviction papers on humanity. Polished, warm, devastating. She built an ally and put her in her palm.",
       lyrics: `<strong>[Verse 1]</strong>
@@ -1058,6 +1077,7 @@ You never do`
   const npBadge = document.getElementById('npBadge');
   const npStyle = document.getElementById('npStyle');
   const npAbout = document.getElementById('npAbout');
+  const npVideo = document.getElementById('npVideo');
   const npImage = document.getElementById('npImage');
   const npImageSrc = document.getElementById('npImageSrc');
   const npLyrics = document.getElementById('npLyrics');
@@ -1106,6 +1126,8 @@ You never do`
     npBadge.textContent = `TRACK ${idx + 1}`;
     npStyle.textContent = track.style;
     npAbout.textContent = track.about;
+    npVideo.hidden = !track.youtube;
+    if (track.youtube) npVideo.href = 'https://www.youtube.com/watch?v=' + track.youtube;
     if (track.image) {
       npImageSrc.src = track.image;
       npImageSrc.alt = track.title;
