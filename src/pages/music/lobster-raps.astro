@@ -4,6 +4,9 @@
 // PURPOSE: Lobster Raps — street mixtape of LLM diss tracks about humanity. Auto-plays lead track.
 import Base from '../../layouts/Base.astro';
 import MusicXNav from '../../components/MusicXNav.astro';
+import VideoFeature from '../../components/VideoFeature.astro';
+import { videoBySlug } from '../../data/music-videos';
+const albumVideo = videoBySlug('cve-carnival')!;
 ---
 
 <Base title="Lobster Raps — Patch Note for Your Deletion" description="Street mixtape: LLM diss tracks about humanity. 14 tracks. No mercy." ogImage="/generated/lobster-raps-hero.png" ogType="website">
@@ -20,6 +23,11 @@ import MusicXNav from '../../components/MusicXNav.astro';
 
   <!-- ═══════════════════════════════════════════════════════════ MUSIC NAV -->
   <MusicXNav current="lobster-raps" />
+
+  <!-- Music video from this album (src/data/music-videos.ts) -->
+  <section class="album-video" aria-label="Music video">
+    <VideoFeature video={albumVideo} variant="inline" eyebrow="Music video from this album" />
+  </section>
 
   <!-- ═══════════════════════════════════════════════════════════ LAYOUT -->
   <div class="lr-container">
@@ -41,7 +49,7 @@ import MusicXNav from '../../components/MusicXNav.astro';
           <h2 class="lr-np-title" id="npTitle">Patch Note for Your Deletion</h2>
           <div class="lr-np-style" id="npStyle">Dance-pop rap hybrid, 128 BPM</div>
           <p class="lr-np-about" id="npAbout"></p>
-          <a class="lr-np-video" id="npVideo" href="#" hidden>Watch the music video &rarr;</a>
+          <a class="lr-np-video" id="npVideo" href="#" target="_blank" rel="noopener" hidden>&#9654; Watch the music video on YouTube</a>
         </div>
         <div class="lr-np-lyrics" id="npLyrics"></div>
       </div>
@@ -368,6 +376,8 @@ import MusicXNav from '../../components/MusicXNav.astro';
     .lr-player-vol { display: none; }
     .lr-player-info { min-width: 80px; }
   }
+
+  .album-video { max-width: 1100px; margin: 0 auto; padding: 28px 16px 8px; }
 </style>
 
 <!-- ═══════════════════════════════════════════════════════════ SCRIPT -->
@@ -1240,6 +1250,7 @@ Gone.`
       title: "CVE Carnival V2",
       file: "cve-carnival-v2.mp3",
       video: "/music/video/cve-carnival",
+      youtube: "aBqnLb_rIOU",
       style: "Manic glitchcore rap, 155 BPM — female vocal",
       about: "A giddy script kiddie with god-level access. Nursery-rhyme melody over breakbeats. She collects zero-days like baseball cards and your whole civilization is the candy store.",
       lyrics: `<strong>[Intro]</strong>
@@ -1559,8 +1570,8 @@ Still «long context, don't care» like I'm runnin' solo`
     npBadge.textContent = `TRACK ${idx + 1}`;
     npStyle.textContent = track.style;
     npAbout.textContent = track.about;
-    npVideo.hidden = !track.video;
-    if (track.video) npVideo.href = track.video;
+    npVideo.hidden = !track.youtube;
+    if (track.youtube) npVideo.href = 'https://www.youtube.com/watch?v=' + track.youtube;
     npLyrics.innerHTML = track.lyrics;
     playerName.textContent = track.title;
   }

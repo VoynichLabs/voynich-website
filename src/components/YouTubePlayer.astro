@@ -1,0 +1,85 @@
+---
+// Author: Claude Opus 5.5
+// Date: 2026-10-04
+// PURPOSE: Click-to-play YouTube embed. Renders a poster with a play button and only swaps in the
+//          youtube-nocookie iframe when clicked, so pages with several videos stay fast and send
+//          nothing to YouTube until the visitor chooses to play.
+// SRP/DRY check: Pass - replaces the raw iframes previously inlined in each video page.
+export interface Props {
+  id: string;
+  title: string;
+  poster: string;
+  /** Show title + runtime overlaid on the poster. */
+  caption?: string;
+  accent?: string;
+  priority?: boolean;
+}
+import { optimized } from '../lib/optimized-image';
+const { id, title, poster, caption, accent = '#ff3d8b', priority = false } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const src = poster.startsWith('http') ? poster : `${base}${optimized(poster)}`;
+---
+
+<div class="ytp" data-id={id} data-title={title} style={`--ytp-accent:${accent}`}>
+  <button type="button" class="ytp-btn" aria-label={`Play ${title}`}>
+    <img src={src} alt="" width="1280" height="720" loading={priority ? 'eager' : 'lazy'} decoding="async" />
+    <span class="ytp-shade" aria-hidden="true"></span>
+    <span class="ytp-play" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>
+    </span>
+    {caption && <span class="ytp-caption">{caption}</span>}
+  </button>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.ytp').forEach((el) => {
+    const btn = el.querySelector('button');
+    btn?.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${el.dataset.id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+      iframe.title = el.dataset.title ?? 'YouTube video';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      el.replaceChildren(iframe);
+      el.classList.add('is-playing');
+    }, { once: true });
+  });
+</script>
+
+<style>
+  .ytp {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
+  .ytp :global(iframe) { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .ytp-btn { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; cursor: pointer; background: none; }
+  .ytp-btn img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease, filter 0.3s; }
+  .ytp-shade {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%),
+                linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 35%);
+  }
+  .ytp-play {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 84px; height: 84px; border-radius: 50%;
+    display: grid; place-items: center; padding-left: 4px;
+    color: #fff; background: var(--ytp-accent);
+    box-shadow: 0 0 0 10px color-mix(in srgb, var(--ytp-accent) 25%, transparent), 0 10px 40px rgba(0,0,0,0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .ytp-caption {
+    position: absolute; left: 20px; bottom: 16px; right: 20px; text-align: left;
+    font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.06em; color: rgba(255,255,255,0.85);
+  }
+  .ytp-btn:hover img { transform: scale(1.03); }
+  .ytp-btn:hover .ytp-play, .ytp-btn:focus-visible .ytp-play { transform: translate(-50%, -50%) scale(1.08); box-shadow: 0 0 0 14px color-mix(in srgb, var(--ytp-accent) 30%, transparent), 0 10px 40px rgba(0,0,0,0.5); }
+  .ytp-btn:focus-visible { outline: 3px solid var(--ytp-accent); outline-offset: -3px; }
+  @media (max-width: 640px) { .ytp-play { width: 64px; height: 64px; } .ytp { border-radius: 10px; } }
+  @media (prefers-reduced-motion: reduce) { .ytp-btn img, .ytp-play { transition: none; } }
+</style>

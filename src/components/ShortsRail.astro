@@ -1,0 +1,71 @@
+---
+// Author: Claude Opus 5.5
+// Date: 2026-10-04
+// PURPOSE: Horizontal rail of the earlier song Shorts on the YouTube channel, with a subscribe card
+//          at the end. Tiles link out to YouTube; thumbnails are YouTube's square Shorts covers.
+// SRP/DRY check: Pass - data from src/data/music-videos.ts (CHANNEL_SHORTS, CHANNEL).
+import { CHANNEL, CHANNEL_SHORTS, shortThumb, shortUrl } from '../data/music-videos';
+---
+
+<div class="sr">
+  <ul class="sr-track">
+    {CHANNEL_SHORTS.map((s) => (
+      <li>
+        <a class="sr-tile" href={shortUrl(s.id)} target="_blank" rel="noopener">
+          <img src={shortThumb(s.id)} alt="" width="720" height="720" loading="lazy" decoding="async" />
+          <span class="sr-badge">SHORT</span>
+          <span class="sr-title">{s.title}</span>
+        </a>
+      </li>
+    ))}
+    <li>
+      <a class="sr-tile sr-sub" href={CHANNEL.subscribe} target="_blank" rel="noopener">
+        <span class="sr-sub-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="28" height="28"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>
+        </span>
+        <span class="sr-sub-name">{CHANNEL.name}</span>
+        <span class="sr-sub-handle">{CHANNEL.handle}</span>
+        <span class="sr-sub-cta">Subscribe</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<style>
+  .sr { position: relative; margin-inline: -16px; }
+  .sr-track {
+    display: grid; grid-auto-flow: column; grid-auto-columns: 200px; gap: 14px;
+    overflow-x: auto; padding: 4px 16px 14px; scroll-snap-type: x proximity; scrollbar-width: thin; scrollbar-color: #2a2a3e transparent;
+  }
+  .sr-track::-webkit-scrollbar { height: 8px; }
+  .sr-track::-webkit-scrollbar-thumb { background: #2a2a3e; border-radius: 4px; }
+  .sr-track::-webkit-scrollbar-track { background: transparent; }
+  .sr-track li { scroll-snap-align: start; min-width: 0; }
+  .sr-tile {
+    position: relative; display: block; aspect-ratio: 1; border-radius: 12px; overflow: hidden;
+    background: #111119; border: 1px solid rgba(255,255,255,0.06);
+  }
+  .sr-tile img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.32); transition: transform 0.5s ease; }
+  .sr-tile:hover img { transform: scale(1.4); }
+  .sr-tile::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 55%); }
+  .sr-badge {
+    position: absolute; top: 10px; left: 10px; z-index: 1; font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    letter-spacing: 0.14em; color: #fff; background: rgba(255,0,51,0.85); padding: 3px 6px; border-radius: 4px;
+  }
+  .sr-title {
+    position: absolute; left: 12px; right: 12px; bottom: 10px; z-index: 1;
+    font-weight: 700; font-size: 14px; line-height: 1.25; color: #fff; text-wrap: balance;
+  }
+  .sr-tile:focus-visible { outline: 2px solid #ff3d8b; outline-offset: 2px; }
+  .sr-sub {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center;
+    background: radial-gradient(circle at 50% 30%, rgba(255,0,51,0.25), rgba(17,17,25,1) 70%);
+    border-color: rgba(255,0,51,0.35);
+  }
+  .sr-sub::after { display: none; }
+  .sr-sub-icon { width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center; background: #ff0033; color: #fff; padding-left: 3px; }
+  .sr-sub-name { font-weight: 800; color: #fff; margin-top: 6px; }
+  .sr-sub-handle { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #a9a9bd; }
+  .sr-sub-cta { margin-top: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; color: #0a0a10; background: #fff; padding: 6px 14px; border-radius: 999px; }
+  @media (prefers-reduced-motion: reduce) { .sr-tile img { transition: none; } }
+</style>

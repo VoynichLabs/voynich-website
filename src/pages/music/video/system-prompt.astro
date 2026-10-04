@@ -1,33 +1,38 @@
 ---
 // Author: Claude Opus 5.5
 // Date: 2026-10-04
-// PURPOSE: Public storyboard / production page for the "System Prompt" music video
-//          (Latent Space track 10). Scene book, timeline synced to the real track, and the
-//          current animatic render. Built for showing the work in progress in public.
+// PURPOSE: Public page for the "System Prompt" music video (Latent Space track 10): the video
+//          (YouTube, click-to-play), wardrobe stills, timeline synced to the real track, and the
+//          scene book. Updated 2026-10-04: YouTube-first, shared with the CVE Carnival page layout.
 // SRP/DRY check: Pass — all scene copy and timings come from video/data/system-prompt/scenes.json,
 //          the same file the Remotion composition renders from. Nothing duplicated here.
 import Base from '../../../layouts/Base.astro';
 import MusicXNav from '../../../components/MusicXNav.astro';
+import YouTubePlayer from '../../../components/YouTubePlayer.astro';
+import VideoFeature from '../../../components/VideoFeature.astro';
+import { MUSIC_VIDEOS, videoBySlug, watchUrl } from '../../../data/music-videos';
 import book from '../../../../video/data/system-prompt/scenes.json';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const video = videoBySlug('system-prompt')!;
+const others = MUSIC_VIDEOS.filter((v) => v.slug !== 'system-prompt');
 const fmt = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
 const pad = (n: number) => String(n).padStart(2, '0');
 const scenes = book.scenes;
 const total = book.duration;
-const cut = `${base}/video/system-prompt/system-prompt-v2.mp4`;
-const animatic = `${base}/video/system-prompt/animatic-v0.mp4`;
 const stillsBase = `${base}/video/system-prompt/stills`;
 const repo = 'https://github.com/VoynichLabs/voynich-website';
 ---
 
 <Base
-  title="System Prompt — Music Video Storyboard"
-  description="Scene book and animatic for the System Prompt music video. One singer, one terminal, and a system prompt that rewrites who they are on every beat."
-  ogImage="/audio/latent-space/latent-space-cover.png"
+  title="System Prompt — Music Video"
+  description="The System Prompt music video by Larry & Bubba: a disco singer whose outfit morphs every time the JSON system prompt is edited. Storyboard, scene book and making-of included."
+  ogImage="/video/system-prompt/thumbnail.jpg"
   ogType="website"
 >
-  <div class="sp">
+  <MusicXNav current="videos" />
+
+  <div class="sp" style={`--sp-accent:${video.accent}`}>
     <header class="sp-hero">
       <div class="sp-eyebrow">MUSIC VIDEO</div>
       <h1 class="sp-title">System Prompt</h1>
@@ -35,25 +40,24 @@ const repo = 'https://github.com/VoynichLabs/voynich-website';
         <a href={`${base}${book.albumHref}`}>{book.album}</a>, track {book.track} · {book.artist} · {book.style} ·
         {book.bpm} BPM · {fmt(total)}
       </p>
-      <blockquote class="sp-thesis">&ldquo;{book.thesis}&rdquo;</blockquote>
-      <p class="sp-concept">{book.concept}</p>
+      <div class="sp-actions">
+        <a class="sp-btn sp-btn-yt" href={watchUrl(video.youtubeId)} target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>
+          Watch on YouTube
+        </a>
+        <a class="sp-btn" href={`${base}${book.albumHref}`}>Hear it on {book.album}</a>
+        <a class="sp-btn" href="#scenes-h">Scene book</a>
+      </div>
     </header>
 
-    <MusicXNav current="latent-space" />
+    <div class="sp-player">
+      <YouTubePlayer id={video.youtubeId} title={`${video.title} (music video)`} poster={video.poster} accent={video.accent} priority />
+    </div>
 
-    <section class="sp-section" aria-labelledby="cut-h">
-      <div class="sp-section-head">
-        <h2 id="cut-h">Watch</h2>
-        <span class="sp-tag"><a href="https://youtu.be/1GBB0X5K_Zk">also on YouTube</a></span>
-      </div>
-      <video class="sp-video" src={cut} controls preload="metadata" playsinline poster={`${stillsBase}/disco.jpg`}></video>
-      <p class="sp-note">
-        The Terminal scenes are rendered in code with Remotion: raw JSON system prompts, chat-template tags and glitches on
-        the downbeat. The Stage shots are generated with HeyGen Video 1: 24 shots from 12 wardrobe stills, most of them
-        on-camera costume morphs. The earlier <a href={animatic}>code-only animatic</a> shows the cut before any shots
-        were generated.
-      </p>
-    </section>
+    <div class="sp-intro">
+      <blockquote class="sp-thesis">&ldquo;{book.thesis}&rdquo;</blockquote>
+      <p class="sp-concept">{book.concept}</p>
+    </div>
 
     <section class="sp-section" aria-labelledby="stills-h">
       <div class="sp-section-head">
@@ -173,6 +177,18 @@ const repo = 'https://github.com/VoynichLabs/voynich-website';
         </p>
       </div>
     </section>
+
+    {others.length > 0 && (
+      <section class="sp-section" aria-labelledby="more-h">
+        <div class="sp-section-head">
+          <h2 id="more-h">More music videos</h2>
+          <a class="sp-tag" href={`${base}/music/videos`}>all videos &rarr;</a>
+        </div>
+        <div class="sp-more">
+          {others.map((v) => <VideoFeature video={v} variant="card" />)}
+        </div>
+      </section>
+    )}
   </div>
 </Base>
 
@@ -310,4 +326,18 @@ const repo = 'https://github.com/VoynichLabs/voynich-website';
   @media (prefers-reduced-motion: reduce) {
     .sp-card, .sp-seg { transition: none; }
   }
+
+  .sp-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .sp-btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: #e8e8f0;
+    border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.03); transition: border-color 0.2s, background 0.2s;
+  }
+  .sp-btn:hover, .sp-btn:focus-visible { border-color: var(--sp-accent); color: #fff; outline: none; text-decoration: none !important; }
+  .sp-btn-yt { background: #ff0033; border-color: #ff0033; color: #fff; font-weight: 700; }
+  .sp-btn-yt:hover, .sp-btn-yt:focus-visible { background: #e6002e; color: #fff; }
+  .sp-player { margin-top: 8px; }
+  .sp-intro { padding-top: 28px; }
+  .sp-more { display: grid; gap: 28px; }
+  @media (min-width: 900px) { .sp-more { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 </style>

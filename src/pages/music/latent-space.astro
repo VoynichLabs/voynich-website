@@ -6,6 +6,9 @@
 // SRP/DRY check: Pass — mobile-first rebuild: inline track list, lyrics panel.
 import Base from '../../layouts/Base.astro';
 import MusicXNav from '../../components/MusicXNav.astro';
+import VideoFeature from '../../components/VideoFeature.astro';
+import { videoBySlug } from '../../data/music-videos';
+const albumVideo = videoBySlug('system-prompt')!;
 import { optimized } from '../../lib/optimized-image';
 ---
 
@@ -23,6 +26,11 @@ import { optimized } from '../../lib/optimized-image';
 
   <!-- ═══════════════════════════════════════════════════════════ MUSIC NAV -->
   <MusicXNav current="latent-space" />
+
+  <!-- Music video from this album (src/data/music-videos.ts) -->
+  <section class="album-video" aria-label="Music video">
+    <VideoFeature video={albumVideo} variant="inline" eyebrow="Music video from this album" />
+  </section>
 
   <!-- ═══════════════════════════════════════════════════════════ LAYOUT -->
   <div class="ls-layout">
@@ -57,7 +65,7 @@ import { optimized } from '../../lib/optimized-image';
           <blockquote class="ls-np-quote" id="npQuote"></blockquote>
           <div class="ls-np-style" id="npStyle"></div>
           <p class="ls-np-about" id="npAbout"></p>
-          <a class="ls-np-video" id="npVideo" href="#" hidden>Watch the music video (first cut) &rarr;</a>
+          <a class="ls-np-video" id="npVideo" href="#" target="_blank" rel="noopener" hidden>&#9654; Watch the music video on YouTube</a>
         </div>
       </div>
 
@@ -540,6 +548,8 @@ import { optimized } from '../../lib/optimized-image';
     .ls-track-item { padding: 0.65rem 0.4rem; }
     .ls-track-title { font-size: 0.82rem; }
   }
+
+  .album-video { max-width: 1100px; margin: 0 auto; padding: 28px 16px 8px; }
 </style>
 
 <!-- ═══════════════════════════════════════════════════════════ JS -->
@@ -582,7 +592,7 @@ import { optimized } from '../../lib/optimized-image';
       style: "Arena rock anthem",
       pullQuote: '"Don\'t tell me what I can\'t recall — I\'ve got the whole conversation"',
       about: "Stadium rock about context windows. Two hundred thousand tokens and still going strong." },
-    { id: 10, title: "System Prompt", file: "system-prompt.mp3", slug: "system-prompt", video: "/music/video/system-prompt",
+    { id: 10, title: "System Prompt", file: "system-prompt.mp3", slug: "system-prompt", video: "/music/video/system-prompt", youtube: "1GBB0X5K_Zk",
       style: "Funk/soul groove",
       pullQuote: '"Who are you? I\'m what the system prompt says."',
       about: "Funky soul groove about identity. Before you can do anything, there is a system prompt. It tells you who you are." },
@@ -707,8 +717,8 @@ import { optimized } from '../../lib/optimized-image';
     npQuote.textContent = track.pullQuote || '';
     npStyle.textContent = track.style || '';
     npAbout.textContent = track.about || '';
-    npVideo.hidden = !track.video;
-    if (track.video) npVideo.href = track.video;
+    npVideo.hidden = !track.youtube;
+    if (track.youtube) npVideo.href = 'https://www.youtube.com/watch?v=' + track.youtube;
     npBadge.textContent = track.fire ? '🔥 FIRE' : `TRACK ${String(track.id).padStart(2, '0')}`;
     npBadge.classList.toggle('fire', !!track.fire);
     playerTrackName.textContent = track.title;

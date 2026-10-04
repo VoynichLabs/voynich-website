@@ -1,0 +1,72 @@
+---
+// Author: Claude Opus 5.5
+// Date: 2026-10-04
+// PURPOSE: /music/videos — every VoynichLabs music video (YouTube, click-to-play), each linking to its
+//          storyboard / making-of page, followed by the earlier song Shorts on the channel.
+// SRP/DRY check: Pass — data from src/data/music-videos.ts; presentation via VideoFeature + ShortsRail.
+import Base from '../../layouts/Base.astro';
+import MusicXNav from '../../components/MusicXNav.astro';
+import VideoFeature from '../../components/VideoFeature.astro';
+import ShortsRail from '../../components/ShortsRail.astro';
+import { CHANNEL, MUSIC_VIDEOS } from '../../data/music-videos';
+---
+
+<Base
+  title="Music Videos — VoynichLabs"
+  description="Music videos by The Lobster Band and Larry & Bubba: AI-generated performances and code-rendered terminals, each with a public storyboard and making-of."
+  ogImage={MUSIC_VIDEOS[0].poster}
+  ogType="website"
+>
+  <MusicXNav current="videos" />
+
+  <div class="mvp">
+    <header class="mvp-head">
+      <p class="mvp-eyebrow">VoynichLabs · Music</p>
+      <h1>Music videos</h1>
+      <p class="mvp-sub">
+        AI-generated performances cut against terminals drawn in code, all timed to the real track. Every video has a
+        public storyboard and making-of page. Zero human musicians.
+      </p>
+      <a class="mvp-yt" href={CHANNEL.subscribe} target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>
+        Subscribe on YouTube · {CHANNEL.handle}
+      </a>
+    </header>
+
+    <ol class="mvp-list">
+      {MUSIC_VIDEOS.map((v, i) => (
+        <li>
+          <VideoFeature video={v} variant="hero" eyebrow={`${String(MUSIC_VIDEOS.length - i).padStart(2, '0')} · ${v.released}`} priority={i === 0} />
+        </li>
+      ))}
+    </ol>
+
+    <section class="mvp-shorts">
+      <div class="mvp-section-head">
+        <h2>Earlier on the channel</h2>
+        <a href={CHANNEL.url} target="_blank" rel="noopener">{CHANNEL.handle} &rarr;</a>
+      </div>
+      <ShortsRail />
+    </section>
+  </div>
+</Base>
+
+<style>
+  .mvp { max-width: 1152px; margin: 0 auto; padding-inline: 16px; padding-block: 48px 96px; }
+  .mvp-head { max-width: 760px; margin-bottom: 56px; }
+  .mvp-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #6b7085; margin-bottom: 12px; }
+  .mvp-head h1 { font-size: clamp(44px, 8vw, 84px); font-weight: 800; letter-spacing: -0.035em; line-height: 0.95; color: #f4f4fa; }
+  .mvp-sub { margin-top: 16px; font-size: 17px; line-height: 1.6; color: #a9a9bd; }
+  .mvp-yt {
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; padding: 9px 15px; border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #fff;
+    border: 1px solid rgba(255,0,51,0.6); background: rgba(255,0,51,0.15);
+  }
+  .mvp-yt:hover { background: rgba(255,0,51,0.3); }
+  .mvp-list { display: grid; gap: 88px; list-style: none; padding: 0; }
+  .mvp-shorts { margin-top: 96px; }
+  .mvp-section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+  .mvp-section-head h2 { font-size: 22px; font-weight: 800; color: #f4f4fa; }
+  .mvp-section-head a { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8b8ba8; }
+  .mvp-section-head a:hover { color: #fff; }
+</style>

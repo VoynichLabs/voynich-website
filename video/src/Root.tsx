@@ -3,11 +3,14 @@
 // PURPOSE: Registers one composition per music video. Duration comes from the song's beat
 //          analysis (data/{slug}/timing/beats.json) plus the end-card tail.
 // SRP/DRY check: Pass - composition sizing lives here; scene logic lives in each video file.
-import { Composition } from 'remotion';
+import { Composition, Still } from 'remotion';
 import { SystemPrompt } from './SystemPrompt';
+import { SystemPromptThumb } from './Thumbnail';
 import { FPS, totalFrames } from './lib/timing';
 
 export const Root: React.FC = () => (
+  <>
+  <Still id="SystemPromptThumb" component={SystemPromptThumb} width={1280} height={720} />
   <Composition
     id="SystemPrompt"
     component={SystemPrompt}
@@ -16,4 +19,5 @@ export const Root: React.FC = () => (
     width={1920}
     height={1080}
   />
+  </>
 );

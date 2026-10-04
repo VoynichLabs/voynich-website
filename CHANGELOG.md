@@ -5,6 +5,28 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.32.0] - 2026-10-04
+
+### Changed
+- **Music videos are front and center.** `/music` now opens with the newest music video (System Prompt) as a big click-to-play YouTube hero, then CVE Carnival, then a rail of the 13 earlier song Shorts from the channel with a Subscribe card, then albums and singles, then drafts.
+- **Video pages are YouTube-first.** `/music/video/system-prompt` and `/music/video/cve-carnival` share one layout: title, Watch on YouTube / album / scene book buttons, the player, then the concept, stills, timeline and scene book, with a More music videos footer. The music cross-nav sits on top and gains a **Videos** item.
+- **Album pages show their video.** Latent Space and Lobster Raps get a music-video strip under the nav, and the now-playing "Watch the music video" link on System Prompt and CVE Carnival goes straight to YouTube.
+
+### Added
+- `/music/videos`: every music video plus the channel Shorts.
+- `src/data/music-videos.ts`: single source for video metadata, YouTube ids, posters and the channel's Shorts.
+- `YouTubePlayer` (poster + play button, loads the youtube-nocookie iframe only on click), `VideoFeature` (hero / card / inline), `ShortsRail`.
+- System Prompt poster (`public/video/system-prompt/thumbnail.jpg`), rendered from a new Remotion still (`npm run thumb:system-prompt` in `video/`).
+
+### Removed
+- Self-hosted `system-prompt-v2.mp4` and `animatic-v0.mp4` (34 MB) from `public/`; the video plays from YouTube, matching CVE Carnival.
+
+Verified: `npm run build`; `/music`, `/music/videos`, both video pages, Latent Space and Lobster Raps checked at 1440px and 375px (no horizontal overflow, no console errors); clicking a poster loads the YouTube player.
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.31.0] - 2026-10-04
 
 ### Changed

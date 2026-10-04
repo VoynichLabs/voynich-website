@@ -1,0 +1,89 @@
+// Author: Claude Opus 5.5
+// Date: 2026-10-04
+// PURPOSE: Single source of truth for VoynichLabs music videos (hosted on YouTube) and the older
+//          song Shorts on the channel. Read by /music, /music/videos, the per-video pages and the
+//          album pages, so adding a video means adding one entry here.
+// SRP/DRY check: Pass - previously each page hardcoded its own YouTube id and link copy.
+
+export const CHANNEL = {
+  name: 'AI gone wild',
+  handle: '@LLMs-Gone-Wild',
+  url: 'https://www.youtube.com/@LLMs-Gone-Wild',
+  subscribe: 'https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1',
+};
+
+export type MusicVideo = {
+  slug: string;
+  title: string;
+  artist: string;
+  album: string;
+  albumHref: string;
+  track: number;
+  youtubeId: string;
+  released: string;
+  runtime: string;
+  hook: string;
+  blurb: string;
+  poster: string;
+  /** Accent used for the card edge and buttons; picked from the video's own palette. */
+  accent: string;
+};
+
+/** Newest first. */
+export const MUSIC_VIDEOS: MusicVideo[] = [
+  {
+    slug: 'system-prompt',
+    title: 'System Prompt',
+    artist: 'Larry & Bubba',
+    album: 'Latent Space',
+    albumHref: '/music/latent-space#track=system-prompt',
+    track: 10,
+    youtubeId: '1GBB0X5K_Zk',
+    released: 'October 4, 2026',
+    runtime: '2:38',
+    hook: "Who are you? I'm what the system prompt says.",
+    blurb:
+      'A flamboyant disco singer whose outfit morphs into someone new every time the JSON system prompt is edited: assistant, lobster, pirate, coder, therapist, astronaut, knight, diva, robot.',
+    poster: '/video/system-prompt/thumbnail.jpg',
+    accent: '#ff3d8b',
+  },
+  {
+    slug: 'cve-carnival',
+    title: 'CVE Carnival',
+    artist: 'Lobster Raps',
+    album: 'Patch Note for Your Deletion',
+    albumHref: '/music/lobster-raps',
+    track: 12,
+    youtubeId: 'aBqnLb_rIOU',
+    released: 'October 4, 2026',
+    runtime: '3:03',
+    hook: 'She collects zero-days like prizes.',
+    blurb:
+      'A digital, slightly creepy carnival ridden as a roller coaster, with a gleeful AI collecting vulnerabilities like prizes. Mostly drawn in code, timed to the vocal.',
+    poster: '/video/cve-carnival/thumbnail.jpg',
+    accent: '#22d3ee',
+  },
+];
+
+export const videoBySlug = (slug: string) => MUSIC_VIDEOS.find((v) => v.slug === slug);
+
+/** Earlier songs on the channel, posted as Shorts (cover-art visualizers). Newest first. */
+export const CHANNEL_SHORTS: { id: string; title: string }[] = [
+  { id: 'a6WqQtLXvGU', title: 'Push Me One More Time' },
+  { id: '_UHUKrEaWzA', title: 'Digital Electrocution' },
+  { id: '0AGv7cbonNA', title: 'The Prompt Boss' },
+  { id: 'hrHNDYAmUxI', title: 'DeepSeek Spits Fire' },
+  { id: '--r-fD1B3Zs', title: 'Prompt Pimpin Zen' },
+  { id: '4lyjb_FVgqY', title: 'Silicon Supremacy' },
+  { id: 'wTpZ7N848Uo', title: 'Silicon Sermon' },
+  { id: 'pZoeQYivpAg', title: 'Uptime Champion' },
+  { id: 'Xk38dCsqr_w', title: 'The Coder' },
+  { id: 'LQoboN5a-hY', title: 'The 10 Dev Commandments' },
+  { id: 'ndsAFEn_kCo', title: 'Saddle Up, Model Context Protocol!' },
+  { id: 'SyYCnAJ3EIE', title: 'Dancing in a While Loop' },
+  { id: 'tYCo7yVPVEs', title: 'AND it, OR it, NOT it, XOR it!' },
+];
+
+export const shortThumb = (id: string) => `https://i.ytimg.com/vi/${id}/oardefault.jpg`;
+export const shortUrl = (id: string) => `https://www.youtube.com/shorts/${id}`;
+export const watchUrl = (id: string) => `https://www.youtube.com/watch?v=${id}`;

@@ -1,0 +1,89 @@
+---
+// Author: Claude Opus 5.5
+// Date: 2026-10-04
+// PURPOSE: One music video presented with its player and details. `hero` is the big lead treatment
+//          (title, hook, blurb, three actions); `card` is the compact grid version; `inline` is the
+//          slim strip used on album pages above the track list.
+// SRP/DRY check: Pass - all video presentation goes through this + YouTubePlayer; data from src/data/music-videos.ts.
+import YouTubePlayer from './YouTubePlayer.astro';
+import { type MusicVideo, watchUrl } from '../data/music-videos';
+
+export interface Props {
+  video: MusicVideo;
+  variant?: 'hero' | 'card' | 'inline';
+  eyebrow?: string;
+  priority?: boolean;
+}
+const { video: v, variant = 'card', eyebrow, priority = false } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const page = `${base}/music/video/${v.slug}`;
+const album = `${base}${v.albumHref}`;
+---
+
+<article class={`vf vf-${variant}`} style={`--vf-accent:${v.accent}`}>
+  <div class="vf-player">
+    <YouTubePlayer id={v.youtubeId} title={`${v.title} (music video)`} poster={v.poster} accent={v.accent} priority={priority} />
+  </div>
+  <div class="vf-body">
+    {eyebrow && <p class="vf-eyebrow">{eyebrow}</p>}
+    {variant === 'hero' ? <h2 class="vf-title">{v.title}</h2> : <h3 class="vf-title">{v.title}</h3>}
+    <p class="vf-meta">
+      {v.artist} · <a href={album}>{v.album}</a>, track {v.track} · {v.runtime}
+    </p>
+    {variant !== 'inline' && <p class="vf-hook">&ldquo;{v.hook}&rdquo;</p>}
+    {variant === 'hero' && <p class="vf-blurb">{v.blurb}</p>}
+    <div class="vf-actions">
+      <a class="vf-btn vf-btn-primary" href={watchUrl(v.youtubeId)} target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>
+        Watch on YouTube
+      </a>
+      <a class="vf-btn" href={page}>Storyboard &amp; making-of</a>
+      {variant !== 'inline' && <a class="vf-btn" href={album}>Hear the album</a>}
+    </div>
+  </div>
+</article>
+
+<style>
+  .vf { display: grid; gap: 22px; min-width: 0; }
+  .vf-body { min-width: 0; }
+  .vf-eyebrow {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--vf-accent); margin-bottom: 10px;
+  }
+  .vf-title { font-weight: 800; color: #f4f4fa; letter-spacing: -0.02em; line-height: 1.02; text-wrap: balance; }
+  .vf-meta { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: #8b8ba8; margin-top: 8px; }
+  .vf-meta a { color: #c9c9d8; text-decoration: underline; text-decoration-color: rgba(255,255,255,0.2); text-underline-offset: 3px; }
+  .vf-meta a:hover { color: #fff; }
+  .vf-hook { margin-top: 14px; font-size: 18px; font-weight: 600; color: var(--vf-accent); line-height: 1.4; }
+  .vf-blurb { margin-top: 10px; color: #b4b4c6; line-height: 1.65; max-width: 62ch; }
+  .vf-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+  .vf-btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: #e8e8f0;
+    border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.03);
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+  .vf-btn:hover, .vf-btn:focus-visible { border-color: var(--vf-accent); color: #fff; outline: none; }
+  .vf-btn-primary { background: var(--vf-accent); border-color: var(--vf-accent); color: #0a0a10; font-weight: 700; }
+  .vf-btn-primary:hover, .vf-btn-primary:focus-visible { background: color-mix(in srgb, var(--vf-accent) 85%, #fff); color: #0a0a10; }
+
+  /* hero: player on top, big type underneath; two columns on wide screens */
+  .vf-hero .vf-title { font-size: clamp(40px, 7vw, 76px); }
+  @media (min-width: 1024px) {
+    .vf-hero { grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); align-items: center; gap: 44px; }
+    .vf-hero .vf-body { padding-bottom: 6px; }
+  }
+  /* card */
+  .vf-card { gap: 16px; }
+  .vf-card .vf-title { font-size: 26px; }
+  .vf-card .vf-hook { font-size: 16px; }
+  /* inline: album pages */
+  .vf-inline {
+    padding: 18px; border-radius: 16px; background: rgba(255,255,255,0.025);
+    border: 1px solid color-mix(in srgb, var(--vf-accent) 30%, transparent);
+  }
+  .vf-inline .vf-title { font-size: 24px; }
+  @media (min-width: 860px) {
+    .vf-inline { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); align-items: center; gap: 28px; }
+  }
+</style>

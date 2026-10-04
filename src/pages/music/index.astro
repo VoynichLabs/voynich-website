@@ -1,11 +1,16 @@
 ---
 // Author: Claude Opus 4.7
 // Date: 17-April-2026
-// PURPOSE: Music hub — landing page linking to all Lobster Band albums and releases.
-//          Order: most recent release first. Consistent visual weight per album.
-// SRP/DRY check: Pass — single hub page, no duplication
+// PURPOSE: Music hub. Music videos lead (YouTube, click-to-play), then the earlier song Shorts on
+//          the channel, then albums newest first, then the drafts drawer.
+//          Updated 2026-10-04 by Claude Opus 5.5: videos front and center.
+// SRP/DRY check: Pass — videos/shorts come from src/data/music-videos.ts via VideoFeature/ShortsRail.
 import Base from '../../layouts/Base.astro';
+import VideoFeature from '../../components/VideoFeature.astro';
+import ShortsRail from '../../components/ShortsRail.astro';
 import { optimized } from '../../lib/optimized-image';
+import { CHANNEL, MUSIC_VIDEOS } from '../../data/music-videos';
+const [leadVideo, ...moreVideos] = MUSIC_VIDEOS;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -80,14 +85,50 @@ const albums = [
 ];
 ---
 
-<Base title="Music — The Lobster Band" description="All albums and releases from The Lobster Band and collaborators.">
+<Base title="Music — The Lobster Band" description="Music videos, albums and mixtapes from The Lobster Band, Larry & Bubba and collaborators. Zero human musicians." ogImage={leadVideo.poster}>
 
-  <section class="min-h-screen py-20">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="mb-16">
-        <p class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">VoynichLabs</p>
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-text-primary mb-4">Music</h1>
-        <p class="text-lg text-text-muted max-w-2xl">Albums, mixtapes, and whatever else the lobsters decide to ship. Newest first.</p>
+  <!-- ═══ Music videos ═══ -->
+  <section class="mv-stage">
+    <div class="mv-glow" aria-hidden="true"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 pt-14 pb-16">
+      <div class="mv-head">
+        <div>
+          <p class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">VoynichLabs · Music</p>
+          <h1 class="mv-h1">Music</h1>
+        </div>
+        <div class="mv-head-links">
+          <a class="mv-pill" href={`${base}/music/videos`}>All videos &rarr;</a>
+          <a class="mv-pill mv-pill-yt" href={CHANNEL.subscribe} target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>
+            YouTube {CHANNEL.handle}
+          </a>
+        </div>
+      </div>
+
+      <VideoFeature video={leadVideo} variant="hero" eyebrow={`New music video · ${leadVideo.released}`} priority />
+
+      {moreVideos.length > 0 && (
+        <div class="mv-more">
+          {moreVideos.map((v) => <VideoFeature video={v} variant="inline" eyebrow="Music video" />)}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- ═══ Earlier songs on the channel ═══ -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-4 pb-10">
+    <div class="mv-section-head">
+      <h2>Earlier on the channel</h2>
+      <a href={CHANNEL.url} target="_blank" rel="noopener">{CHANNEL.handle} &rarr;</a>
+    </div>
+    <ShortsRail />
+  </section>
+
+  <section class="pb-20 pt-6">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="mv-section-head mb-6">
+        <h2>Albums &amp; singles</h2>
+        <span>newest first</span>
       </div>
 
       <!-- Featured latest release -->
@@ -95,7 +136,7 @@ const albums = [
         <div class="p-7 sm:p-10">
           <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mb-4">
             <span class="featured-badge inline-block px-3 py-1 rounded text-xs font-mono font-semibold tracking-wide">
-              LATEST RELEASE
+              LATEST SINGLE
             </span>
             <span class="featured-meta font-mono text-xs">{featured.released}</span>
             <span class="featured-meta font-mono text-xs">&middot; {featured.tracks} tracks</span>
@@ -157,6 +198,33 @@ const albums = [
   </section>
 
   <style>
+    /* Music videos stage */
+    .mv-stage { position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .mv-glow {
+      position: absolute; inset: -20% -10% auto -10%; height: 90%; pointer-events: none;
+      background:
+        radial-gradient(40% 50% at 20% 30%, rgba(255,61,139,0.20), transparent 70%),
+        radial-gradient(35% 45% at 85% 20%, rgba(34,211,238,0.14), transparent 70%),
+        radial-gradient(50% 60% at 50% 90%, rgba(139,92,246,0.12), transparent 70%);
+      filter: blur(10px);
+    }
+    .mv-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 28px; }
+    .mv-h1 { font-size: clamp(44px, 8vw, 84px); font-weight: 800; letter-spacing: -0.035em; line-height: 0.95; color: #f4f4fa; }
+    .mv-head-links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .mv-pill {
+      display: inline-flex; align-items: center; gap: 8px; padding: 9px 15px; border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #e8e8f0;
+      border: 1px solid rgba(255,255,255,0.14); background: rgba(12,12,20,0.6); transition: border-color 0.2s, background 0.2s;
+    }
+    .mv-pill:hover { border-color: rgba(255,255,255,0.4); }
+    .mv-pill-yt { color: #fff; border-color: rgba(255,0,51,0.6); background: rgba(255,0,51,0.15); }
+    .mv-pill-yt:hover { background: rgba(255,0,51,0.3); border-color: #ff0033; }
+    .mv-more { display: grid; gap: 28px; margin-top: 56px; }
+    .mv-section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+    .mv-section-head h2 { font-size: 22px; font-weight: 800; color: #f4f4fa; letter-spacing: -0.01em; }
+    .mv-section-head a, .mv-section-head span { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8b8ba8; }
+    .mv-section-head a:hover { color: #fff; }
+
     /* Featured latest release — Hallucinate palette (see src/pages/music/hallucinate.astro) */
     .featured-latest {
       background: linear-gradient(135deg, #2d1030 0%, #1a0a18 55%, #0c0c14 100%);
