@@ -1,244 +1,200 @@
 {
  "resolution": "768p",
  "aspect_ratio": "16:9",
- "audioBase": "https://voynichlabs.org/video/system-prompt/segments/",
- "style": "Cinematic, natural motion, 35mm film look, no on-screen text.",
+ "style": "Cinematic, 1970s disco energy, rich saturated color, 35mm film look, no on-screen text.",
+ "note": "v2: flamboyant disco singer whose wardrobe morphs. No lip-sync. v1 shot ids (s*, c*) remain in ledger.json for history.",
  "shots": [
   {
-   "id": "s02-reveal",
+   "id": "d02-reveal",
    "scene": 2,
    "model": "heygen/heygen-video-1",
    "duration": 5,
-   "first": "singer-blank",
-   "prompt": "Very slow dolly in toward the person. They stand completely still with eyes closed, breathing gently. Camera movement only, silent."
+   "first": "disco",
+   "prompt": "A spotlight snaps on. The flamboyant disco singer throws a huge pose, points at the camera, sequins flashing, feather boa flying, the crowd cheering. Slow push in."
   },
   {
-   "id": "s03-lookup",
+   "id": "d03-lookup",
    "scene": 3,
    "model": "heygen/heygen-video-1",
    "duration": 6,
-   "first": "singer-blank",
-   "prompt": "The person slowly opens their eyes, then tilts their head back and looks up toward the ceiling, as if reading words written in the air above them. Static camera."
+   "first": "disco",
+   "prompt": "The singer freezes mid-pose, then slowly tilts their head back to stare straight up, as if reading glowing words floating above them. Disco lights pulse. Static camera."
   },
   {
-   "id": "s04-assistant",
+   "id": "d04-to-assistant",
    "scene": 4,
    "model": "heygen/heygen-video-1",
    "duration": 5,
-   "first": "singer-assistant",
-   "prompt": "The person nods helpfully with a small warm smile and opens one hand in a welcoming gesture. Static camera."
+   "first": "disco",
+   "prompt": "The outfit transforms into a tailored pale-grey corporate suit with a white shirt, navy tie, ID lanyard and a headset microphone. Continuous on-camera transformation with no cuts: the outfit ripples and morphs like liquid fabric while the singer keeps dancing and posing to a funk groove. Same face, same afro, same stage and lighting."
   },
   {
-   "id": "s05-larry",
+   "id": "d05-to-lobster",
    "scene": 5,
    "model": "heygen/heygen-video-1",
    "duration": 5,
-   "first": "larry",
-   "prompt": "The lobster sways to a funky beat and sings into the tiny microphone, claws bobbing in rhythm. Slight handheld push in."
+   "first": "disco-assistant",
+   "prompt": "The outfit transforms into a glossy bright-red lobster costume with giant padded claws, a segmented shell and antennae. Continuous on-camera transformation with no cuts: the outfit ripples and morphs like liquid fabric while the singer keeps dancing and posing to a funk groove. Same face, same afro, same stage and lighting."
   },
   {
-   "id": "s09-pirate",
+   "id": "d07a-chorus",
+   "scene": 7,
+   "model": "heygen/heygen-video-1",
+   "duration": 12,
+   "first": "disco",
+   "prompt": "The disco singer performs a chorus with huge energy: spins, points at the crowd, struts across the lit-up dance floor, the feather boa flying, the mirror ball spinning, the crowd going wild. Dynamic handheld camera."
+  },
+  {
+   "id": "d07b-chorus",
+   "scene": 7,
+   "model": "heygen/heygen-video-1",
+   "duration": 12,
+   "first": "disco",
+   "prompt": "The singer keeps dancing hard while the sequined jumpsuit shimmers and changes on every beat: silver, gold, leopard print, rainbow stripes, mirror-ball mosaic. Same face and afro. Dynamic camera, strobing lights."
+  },
+  {
+   "id": "d09-to-pirate",
    "scene": 9,
    "model": "heygen/heygen-video-1",
    "duration": 5,
-   "first": "singer-pirate",
-   "prompt": "The person sings with confidence, chin raised, wind moving the coat and the sails behind. Static camera."
+   "first": "disco-lobster",
+   "prompt": "The outfit transforms into a flamboyant pirate captain costume: plumed black tricorn hat, crimson velvet frock coat with gold braid, ruffled shirt. Continuous on-camera transformation with no cuts: the outfit ripples and morphs like liquid fabric while the singer keeps dancing and posing to a funk groove. Same face, same afro, same stage and lighting."
   },
   {
-   "id": "s09-coder",
+   "id": "d09-to-coder",
    "scene": 9,
    "model": "heygen/heygen-video-1",
    "duration": 5,
-   "first": "singer-coder",
-   "prompt": "The person sings, monitor glow flickering across their face. Static camera."
+   "first": "disco-pirate",
+   "prompt": "The outfit transforms into a late-night programmer look: oversized black hoodie, headphones around the neck, a glowing laptop in one hand. Continuous on-camera transformation with no cuts: the outfit ripples and morphs like liquid fabric while the singer keeps dancing and posing to a funk groove. Same face, same afro, same stage and lighting."
   },
   {
-   "id": "s09-therapist",
+   "id": "d09-to-therapist",
    "scene": 9,
    "model": "heygen/heygen-video-1",
    "duration": 5,
-   "first": "singer-therapist",
-   "prompt": "The person nods gently while singing, pen resting on the notepad. Static camera."
+   "first": "disco-coder",
+   "prompt": "The outfit transforms into a gentle therapist look: oatmeal knit cardigan, round tortoiseshell glasses, a notepad and pen. Continuous on-camera transformation with no cuts: the outfit ripples and morphs like liquid fabric while the singer keeps dancing and posing to a funk groove. Same face, same afro, same stage and lighting."
   },
   {
-   "id": "s10-underneath",
+   "id": "d10-underneath",
    "scene": 10,
    "model": "heygen/heygen-video-1",
    "duration": 12,
-   "first": "singer-therapist",
-   "prompt": "The room and the costume dissolve away in layers like peeling paint: the armchair and bookshelves fade to white, the cardigan falls away, until the same person stands alone in a plain seamless white room wearing a grey t-shirt. Slow, dreamlike, continuous."
+   "first": "disco-therapist",
+   "prompt": "The cardigan and glasses peel away in layers, and the outfit flickers rapidly backwards through a black hoodie, a pirate coat, a red lobster shell and a grey suit, until the original sequined disco jumpsuit, gold chains and pink feather boa are back. Same face and afro throughout. Continuous, dreamlike, no cuts."
   },
   {
-   "id": "s11-night",
+   "id": "d11-afterhours",
    "scene": 11,
    "model": "heygen/heygen-video-1",
    "duration": 15,
-   "first": "singer-night",
-   "prompt": "Faint pale blue light flickers softly across the blank wall like distant projected text that never resolves. The person sits still, then slowly lowers their head. Very slow push in. Quiet and melancholy."
+   "first": "disco-afterhours",
+   "prompt": "The empty club after hours. The mirror ball turns slowly, specks of light drifting across the floor and over the singer, who sits very still, then slowly lowers their head. Very slow push in. Quiet, melancholy."
   },
   {
-   "id": "s13-larry",
+   "id": "f0-to-astronaut",
    "scene": 13,
    "model": "heygen/heygen-video-1",
    "duration": 5,
-   "first": "larry",
-   "prompt": "The lobster belts out a big note with both claws raised high, then pumps a claw to the beat. Energetic, joyful."
+   "first": "disco",
+   "prompt": "The outfit transforms into a glossy white-and-gold retro space suit covered in sequin mission patches, helmet visor open. Continuous on-camera transformation with no cuts: the outfit ripples and morphs like liquid fabric while the singer keeps dancing and posing to a funk groove. Same face, same afro, same stage and lighting."
   },
   {
-   "id": "c1a-stage",
-   "scene": 7,
-   "model": "heygen/heygen-video-1",
-   "duration": 13,
-   "ref": "singer-stage",
-   "audio": {
-    "start": 28.6,
-    "end": 41.4
-   },
-   "prompt": "The person from the reference image sings this vocal directly to camera, lips precisely synced to the audio, expressive soul performance, same face, outfit and setting as the reference image. Medium close-up, static camera."
-  },
-  {
-   "id": "c1b-stage",
-   "scene": 7,
-   "model": "heygen/heygen-video-1",
-   "duration": 12,
-   "ref": "singer-stage",
-   "audio": {
-    "start": 41.2,
-    "end": 52.5
-   },
-   "prompt": "The person from the reference image sings this vocal directly to camera, lips precisely synced to the audio, expressive soul performance, same face, outfit and setting as the reference image. Medium close-up, static camera."
-  },
-  {
-   "id": "c2-l0-assistant",
+   "id": "f1-to-cowboy",
    "scene": 13,
    "model": "heygen/heygen-video-1",
    "duration": 5,
-   "ref": "singer-assistant",
-   "audio": {
-    "start": 100.3,
-    "end": 105.3
-   },
-   "prompt": "The person from the reference image sings this vocal directly to camera, lips precisely synced to the audio, expressive soul performance, same face, outfit and setting as the reference image. Medium close-up, static camera."
+   "first": "disco-astronaut",
+   "prompt": "The outfit transforms into a rhinestone cowboy outfit: white Stetson, white fringed suit covered in rhinestones, turquoise bolo tie. Continuous on-camera transformation with no cuts: the outfit ripples and morphs like liquid fabric while the singer keeps dancing and posing to a funk groove. Same face, same afro, same stage and lighting."
   },
   {
-   "id": "c2-l1-pirate",
+   "id": "f2-to-knight",
    "scene": 13,
    "model": "heygen/heygen-video-1",
    "duration": 5,
-   "ref": "singer-pirate",
-   "audio": {
-    "start": 104.2,
-    "end": 109.2
-   },
-   "prompt": "The person from the reference image sings this vocal directly to camera, lips precisely synced to the audio, expressive soul performance, same face, outfit and setting as the reference image. Medium close-up, static camera."
+   "first": "disco-cowboy",
+   "prompt": "The outfit transforms into polished silver plate armor with a magenta velvet cape, reflecting the disco lights. Continuous on-camera transformation with no cuts: the outfit ripples and morphs like liquid fabric while the singer keeps dancing and posing to a funk groove. Same face, same afro, same stage and lighting."
   },
   {
-   "id": "c2-l2-coder",
+   "id": "f3-to-diva",
    "scene": 13,
    "model": "heygen/heygen-video-1",
    "duration": 5,
-   "ref": "singer-coder",
-   "audio": {
-    "start": 109.8,
-    "end": 114.8
-   },
-   "prompt": "The person from the reference image sings this vocal directly to camera, lips precisely synced to the audio, expressive soul performance, same face, outfit and setting as the reference image. Medium close-up, static camera."
+   "first": "disco-knight",
+   "prompt": "The outfit transforms into an opera diva costume: towering powdered wig and an enormous crimson ball gown with gold embroidery. Continuous on-camera transformation with no cuts: the outfit ripples and morphs like liquid fabric while the singer keeps dancing and posing to a funk groove. Same face, same afro, same stage and lighting."
   },
   {
-   "id": "c2-l3-therapist",
+   "id": "f4-to-robot",
    "scene": 13,
    "model": "heygen/heygen-video-1",
    "duration": 5,
-   "ref": "singer-therapist",
-   "audio": {
-    "start": 114.5,
-    "end": 119.5
-   },
-   "prompt": "The person from the reference image sings this vocal directly to camera, lips precisely synced to the audio, expressive soul performance, same face, outfit and setting as the reference image. Medium close-up, static camera."
+   "first": "disco-diva",
+   "prompt": "The outfit transforms into chrome robot armor with glowing magenta seams and exposed cables at the joints. Continuous on-camera transformation with no cuts: the outfit ripples and morphs like liquid fabric while the singer keeps dancing and posing to a funk groove. Same face, same afro, same stage and lighting."
   },
   {
-   "id": "c2-l4-stage",
+   "id": "f5-to-lobster",
    "scene": 13,
    "model": "heygen/heygen-video-1",
    "duration": 5,
-   "ref": "singer-stage",
-   "audio": {
-    "start": 118.1,
-    "end": 123.1
-   },
-   "prompt": "The person from the reference image sings this vocal directly to camera, lips precisely synced to the audio, expressive soul performance, same face, outfit and setting as the reference image. Medium close-up, static camera."
+   "first": "disco-robot",
+   "prompt": "The outfit transforms into a glossy bright-red lobster costume with giant padded claws and antennae. Continuous on-camera transformation with no cuts: the outfit ripples and morphs like liquid fabric while the singer keeps dancing and posing to a funk groove. Same face, same afro, same stage and lighting."
   },
   {
-   "id": "c2-l6-blank",
+   "id": "f6-to-disco",
    "scene": 13,
    "model": "heygen/heygen-video-1",
    "duration": 5,
-   "ref": "singer-blank",
-   "audio": {
-    "start": 127.6,
-    "end": 132.6
-   },
-   "prompt": "The person from the reference image sings this vocal directly to camera, lips precisely synced to the audio, expressive soul performance, same face, outfit and setting as the reference image. Medium close-up, static camera."
+   "first": "disco-lobster",
+   "prompt": "The outfit transforms into the original silver-and-magenta sequined disco jumpsuit with gold chains and a pink feather boa. Continuous on-camera transformation with no cuts: the outfit ripples and morphs like liquid fabric while the singer keeps dancing and posing to a funk groove. Same face, same afro, same stage and lighting."
   },
   {
-   "id": "c2-l7-assistant",
+   "id": "g-disco",
    "scene": 13,
    "model": "heygen/heygen-video-1",
    "duration": 5,
-   "ref": "singer-assistant",
-   "audio": {
-    "start": 129.8,
-    "end": 134.8
-   },
-   "prompt": "The person from the reference image sings this vocal directly to camera, lips precisely synced to the audio, expressive soul performance, same face, outfit and setting as the reference image. Medium close-up, static camera."
+   "first": "disco",
+   "prompt": "The singer dances hard to a funk groove in this outfit, big confident moves, singing out to the crowd, lights strobing. Static camera."
   },
   {
-   "id": "c2-l7-pirate",
+   "id": "g-disco-astronaut",
    "scene": 13,
    "model": "heygen/heygen-video-1",
    "duration": 5,
-   "ref": "singer-pirate",
-   "audio": {
-    "start": 129.8,
-    "end": 134.8
-   },
-   "prompt": "The person from the reference image sings this vocal directly to camera, lips precisely synced to the audio, expressive soul performance, same face, outfit and setting as the reference image. Medium close-up, static camera."
+   "first": "disco-astronaut",
+   "prompt": "The singer dances hard to a funk groove in this outfit, big confident moves, singing out to the crowd, lights strobing. Static camera."
   },
   {
-   "id": "c2-l7-coder",
+   "id": "g-disco-cowboy",
    "scene": 13,
    "model": "heygen/heygen-video-1",
    "duration": 5,
-   "ref": "singer-coder",
-   "audio": {
-    "start": 129.8,
-    "end": 134.8
-   },
-   "prompt": "The person from the reference image sings this vocal directly to camera, lips precisely synced to the audio, expressive soul performance, same face, outfit and setting as the reference image. Medium close-up, static camera."
+   "first": "disco-cowboy",
+   "prompt": "The singer dances hard to a funk groove in this outfit, big confident moves, singing out to the crowd, lights strobing. Static camera."
   },
   {
-   "id": "c2-l7-therapist",
+   "id": "g-disco-knight",
    "scene": 13,
    "model": "heygen/heygen-video-1",
    "duration": 5,
-   "ref": "singer-therapist",
-   "audio": {
-    "start": 129.8,
-    "end": 134.8
-   },
-   "prompt": "The person from the reference image sings this vocal directly to camera, lips precisely synced to the audio, expressive soul performance, same face, outfit and setting as the reference image. Medium close-up, static camera."
+   "first": "disco-knight",
+   "prompt": "The singer dances hard to a funk groove in this outfit, big confident moves, singing out to the crowd, lights strobing. Static camera."
   },
   {
-   "id": "c2-l7-stage",
+   "id": "g-disco-diva",
    "scene": 13,
    "model": "heygen/heygen-video-1",
    "duration": 5,
-   "ref": "singer-stage",
-   "audio": {
-    "start": 129.8,
-    "end": 134.8
-   },
-   "prompt": "The person from the reference image sings this vocal directly to camera, lips precisely synced to the audio, expressive soul performance, same face, outfit and setting as the reference image. Medium close-up, static camera."
+   "first": "disco-diva",
+   "prompt": "The singer dances hard to a funk groove in this outfit, big confident moves, singing out to the crowd, lights strobing. Static camera."
+  },
+  {
+   "id": "g-disco-robot",
+   "scene": 13,
+   "model": "heygen/heygen-video-1",
+   "duration": 5,
+   "first": "disco-robot",
+   "prompt": "The singer dances hard to a funk groove in this outfit, big confident moves, singing out to the crowd, lights strobing. Static camera."
   }
  ]
 }

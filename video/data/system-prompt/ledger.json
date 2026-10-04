@@ -315,5 +315,281 @@
   "model": "heygen/heygen-video-1",
   "job": "gen-vid-1791137409-SFGUT40px7ydDzKzrkgr",
   "cost": 0.3861
+ },
+ {
+  "at": "2026-10-04T18:33:33.448Z",
+  "kind": "still",
+  "id": "disco",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0672745
+ },
+ {
+  "at": "2026-10-04T18:34:25.054Z",
+  "kind": "still",
+  "id": "disco-assistant",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0678065
+ },
+ {
+  "at": "2026-10-04T18:34:38.099Z",
+  "kind": "still",
+  "id": "disco-lobster",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.067806
+ },
+ {
+  "at": "2026-10-04T18:34:51.964Z",
+  "kind": "still",
+  "id": "disco-pirate",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0678095
+ },
+ {
+  "at": "2026-10-04T18:35:05.618Z",
+  "kind": "still",
+  "id": "disco-coder",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.067805
+ },
+ {
+  "at": "2026-10-04T18:35:18.029Z",
+  "kind": "still",
+  "id": "disco-therapist",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.067805
+ },
+ {
+  "at": "2026-10-04T18:35:30.578Z",
+  "kind": "still",
+  "id": "disco-astronaut",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0678025
+ },
+ {
+  "at": "2026-10-04T18:35:45.621Z",
+  "kind": "still",
+  "id": "disco-cowboy",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.067798
+ },
+ {
+  "at": "2026-10-04T18:35:59.038Z",
+  "kind": "still",
+  "id": "disco-knight",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0677965
+ },
+ {
+  "at": "2026-10-04T18:36:12.951Z",
+  "kind": "still",
+  "id": "disco-diva",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0678025
+ },
+ {
+  "at": "2026-10-04T18:36:25.219Z",
+  "kind": "still",
+  "id": "disco-robot",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0677975
+ },
+ {
+  "at": "2026-10-04T18:36:37.280Z",
+  "kind": "still",
+  "id": "disco-afterhours",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.06781
+ },
+ {
+  "at": "2026-10-04T18:37:51.512Z",
+  "kind": "shot",
+  "id": "f5-to-lobster",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791139037-uH8OTAIx441YKW7Mt9DE",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:37:51.576Z",
+  "kind": "shot",
+  "id": "f2-to-knight",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791139038-bXqgG945angjlvD8pzfi",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:37:51.822Z",
+  "kind": "shot",
+  "id": "g-disco-cowboy",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791139038-0SSKh0jzEgE5QZduHJHQ",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:37:51.826Z",
+  "kind": "shot",
+  "id": "d09-to-coder",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791139038-sUNUZZez1MfLylq2XHKy",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:37:51.980Z",
+  "kind": "shot",
+  "id": "d02-reveal",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791139038-7MxTnqXyOW7iK5r66BnG",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:37:54.801Z",
+  "kind": "shot",
+  "id": "d09-to-therapist",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791139038-ov217IHB4RXvUBJdtg9j",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:38:06.437Z",
+  "kind": "shot",
+  "id": "d11-afterhours",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791139038-UnsPbIoMGv7ge6VaoThK",
+  "cost": 0.22275
+ },
+ {
+  "at": "2026-10-04T18:38:06.846Z",
+  "kind": "shot",
+  "id": "f3-to-diva",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791139038-9j6KF6wtlTU8mhbwxcfQ",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:38:07.157Z",
+  "kind": "shot",
+  "id": "f6-to-disco",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791139038-0Jsw0KY0GThOaczbXsoA",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:38:07.180Z",
+  "kind": "shot",
+  "id": "g-disco-knight",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791139038-jZvkgviNlnEqIbOnKFM7",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:38:07.231Z",
+  "kind": "shot",
+  "id": "d09-to-pirate",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791139039-W1JGWq86UWiedT1qviYZ",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:38:07.653Z",
+  "kind": "shot",
+  "id": "d04-to-assistant",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791139038-RDKceli83CvnfOTYfULg",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:38:08.052Z",
+  "kind": "shot",
+  "id": "d03-lookup",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791139037-AUwNYVpXCHlQZpbzBBzx",
+  "cost": 0.0891
+ },
+ {
+  "at": "2026-10-04T18:38:08.159Z",
+  "kind": "shot",
+  "id": "g-disco",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791139038-1vM3pQVfSAKaNKxqS7mh",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:38:22.082Z",
+  "kind": "shot",
+  "id": "d07a-chorus",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791139038-Cna7vdEJHJNQpakafSZG",
+  "cost": 0.1782
+ },
+ {
+  "at": "2026-10-04T18:38:22.234Z",
+  "kind": "shot",
+  "id": "f0-to-astronaut",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791139037-CxWqBZVgIidCXf9svrBG",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:38:22.375Z",
+  "kind": "shot",
+  "id": "g-disco-astronaut",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791139038-lyXLo9FtbQjpQ5eXNCHv",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:38:22.811Z",
+  "kind": "shot",
+  "id": "d05-to-lobster",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791139038-6dToU0BV4RNLzolEGk09",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:38:23.120Z",
+  "kind": "shot",
+  "id": "d07b-chorus",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791139038-7tVqCmRbIKNzI14DBERm",
+  "cost": 0.1782
+ },
+ {
+  "at": "2026-10-04T18:38:24.546Z",
+  "kind": "shot",
+  "id": "g-disco-diva",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791139038-VhB41TjAxsgO3hfA3nyr",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:38:36.886Z",
+  "kind": "shot",
+  "id": "f4-to-robot",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791139037-jGw8c3g5EQuc8hLDj9XT",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:38:37.499Z",
+  "kind": "shot",
+  "id": "f1-to-cowboy",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791139038-bIfEhGALZauf5CzbzOtd",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:38:37.743Z",
+  "kind": "shot",
+  "id": "g-disco-robot",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791139039-4G3UkJjZBFF0fUn1y41a",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:38:38.702Z",
+  "kind": "shot",
+  "id": "d10-underneath",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791139038-tmp3LoFoRPGPE4U37OWP",
+  "cost": 0.1782
  }
 ]

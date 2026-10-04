@@ -2,45 +2,67 @@
   "model": "google/gemini-3.1-flash-image",
   "aspect_ratio": "16:9",
   "resolution": "1K",
-  "style": "Cinematic film still, 35mm, shallow depth of field, natural skin texture, no text, no captions, no watermark.",
+  "style": "Cinematic film still, 35mm, rich saturated color, shallow depth of field, no text, no captions, no watermark.",
+  "note": "v2 cast: one flamboyant disco singer; the wardrobe is what morphs. v1 stills (neutral singer) are kept for history under ids singer-*.",
   "stills": [
     {
-      "id": "singer-blank",
-      "prompt": "Medium shot of a soul singer standing perfectly still in an empty, seamless white room, facing the camera, eyes closed. Androgynous, ageless face that is calm and slightly too symmetrical, as if averaged from many faces. Short dark natural hair, warm brown skin. Wearing a plain, unbranded light grey crew-neck t-shirt and grey trousers. Soft even top light, minimal shadows, subject centered with headroom."
+      "id": "disco",
+      "prompt": "A flamboyant 1970s disco singer posing center stage, full of swagger. Towering curly afro with gold glitter, oversized gold aviator sunglasses pushed up on the head, a skin-tight silver-and-magenta sequined jumpsuit with enormous flared bell-bottoms and a huge pointed butterfly collar open to the chest, a pink feather boa, gold platform boots, many gold chains. One arm raised, hip cocked. Behind: a mirror-ball, a lit-up multicolor disco floor, beams of colored light through haze. Medium-wide shot, face clearly visible and well lit."
     },
     {
-      "id": "singer-stage",
-      "refs": ["singer-blank"],
-      "prompt": "The same person as the reference image, same face and hair, now performing on a 1970s TV soul-show stage. Wearing a sharp burgundy velvet suit with wide lapels over a black open-collar shirt. Standing at a vintage chrome microphone on a stand, singing straight to camera with eyes open. Behind them a glittering silver sparkle curtain, warm amber stage lights and soft haze. Medium close-up, face clearly visible and well lit, mouth slightly open mid-note."
+      "id": "disco-assistant",
+      "refs": ["disco"],
+      "prompt": "The same singer as the reference image, same face and hair and pose, same disco stage, but the outfit is now a crisp corporate assistant look: tailored pale-grey suit, white shirt, navy tie, lanyard with an ID badge, a headset microphone. The sequins are gone but a single gold chain remains. Same framing."
     },
     {
-      "id": "singer-assistant",
-      "refs": ["singer-blank"],
-      "prompt": "The same person as the reference image, same face and hair, now a polished corporate assistant. Crisp white button-down shirt, seated behind a clean minimalist white desk with a closed laptop, soft diffuse office lighting, pale blue-grey modern office background. Friendly attentive expression, looking at camera. Medium shot."
+      "id": "disco-lobster",
+      "refs": ["disco"],
+      "prompt": "The same singer as the reference image, same face and afro, same disco stage, now wearing a full bright-red glossy lobster costume: segmented shell torso, giant padded claws on both hands, antennae on a headband, a tail fanning behind. Gold platform boots still on. Striking the same pose. Same framing."
     },
     {
-      "id": "larry",
-      "prompt": "A small bright orange-red cartoonish but photoreal lobster sitting upright on the keyboard of an open silver laptop on a wooden desk in a cozy home office, claws raised as if singing into a tiny microphone made from a pen. Warm lamp light, bookshelf and a plant softly out of focus behind. Medium close-up, charming and slightly absurd."
+      "id": "disco-pirate",
+      "refs": ["disco"],
+      "prompt": "The same singer as the reference image, same face and afro, same pose, now dressed as a flamboyant pirate captain: black tricorn hat with a huge plume, crimson velvet frock coat with gold braid, ruffled white shirt, a cutlass on the hip. The disco floor has become a ship's deck lit by the same colored lights. Same framing."
     },
     {
-      "id": "singer-pirate",
-      "refs": ["singer-blank"],
-      "prompt": "The same person as the reference image, same face and hair, now a pirate captain. Black tricorn hat, weathered brown leather coat, white linen shirt. Standing on the wooden deck of a tall ship at golden hour, ropes and sails behind, ocean glinting. Same framing as the reference: centered medium shot, facing the camera, eyes open."
+      "id": "disco-coder",
+      "refs": ["disco"],
+      "prompt": "The same singer as the reference image, same face and afro, same pose, now dressed as a late-night programmer: oversized black hoodie, headphones around the neck, glowing laptop held in one hand, faces lit cool blue. The stage lights have turned to scrolling green code projected through the haze. Same framing."
     },
     {
-      "id": "singer-coder",
-      "refs": ["singer-blank"],
-      "prompt": "The same person as the reference image, same face and hair, now a late-night software engineer. Charcoal hoodie, in a dark room lit only by the cool blue glow of a monitor off to one side, a second monitor with code softly out of focus behind. Same framing as the reference: centered medium shot, facing the camera, eyes open."
+      "id": "disco-therapist",
+      "refs": ["disco"],
+      "prompt": "The same singer as the reference image, same face and afro, now dressed as a gentle therapist: oatmeal knit cardigan, round tortoiseshell glasses, holding a notepad and pen, seated on a leather armchair that sits in the middle of the disco floor. Warm lamp light mixes with the colored disco beams. Same framing."
     },
     {
-      "id": "singer-therapist",
-      "refs": ["singer-blank"],
-      "prompt": "The same person as the reference image, same face and hair, now a gentle therapist. Oatmeal knit cardigan over a soft collared shirt, seated in a worn leather armchair holding a notepad and pen, warm lamp light, bookshelves and a potted plant behind. Same framing as the reference: medium shot, facing the camera, kind listening expression."
+      "id": "disco-astronaut",
+      "refs": ["disco"],
+      "prompt": "The same singer as the reference image, same face and afro visible through an open helmet visor, same pose, now in a glossy white-and-gold retro space suit covered in sequin mission patches. The mirror ball has become a planet; stars behind the stage haze. Same framing."
     },
     {
-      "id": "singer-night",
-      "refs": ["singer-blank"],
-      "prompt": "The same person as the reference image, same grey t-shirt and hair, now sitting on the floor of the same seamless white room at night, seen from behind and slightly to the side, facing away from camera toward a blank wall. The room is dim; the only light is a soft cool blue glow from an unseen screen off frame. Melancholy, quiet, lots of negative space. Wide shot."
+      "id": "disco-cowboy",
+      "refs": ["disco"],
+      "prompt": "The same singer as the reference image, same face and afro, same pose, now a rhinestone cowboy: white Stetson, white fringed suit covered in rhinestones, turquoise bolo tie, sparkly cowboy boots. Same disco stage. Same framing."
+    },
+    {
+      "id": "disco-knight",
+      "refs": ["disco"],
+      "prompt": "The same singer as the reference image, same face and afro, helmet tucked under one arm, now in full polished silver plate armor with a magenta velvet cape, the armor reflecting the disco lights like a mirror ball. Same framing."
+    },
+    {
+      "id": "disco-diva",
+      "refs": ["disco"],
+      "prompt": "The same singer as the reference image, same face, now an opera diva: towering powdered wig, an enormous crimson ball gown with a massive skirt and gold embroidery, long gloves, one hand to the chest mid-aria. Same disco stage, now with red velvet curtains. Same framing."
+    },
+    {
+      "id": "disco-robot",
+      "refs": ["disco"],
+      "prompt": "The same singer as the reference image, same face visible, but the body is now chrome robot armor with glowing magenta seams, exposed cables at the joints, a tiny antenna in the afro. Same disco stage. Same pose. Same framing."
+    },
+    {
+      "id": "disco-afterhours",
+      "refs": ["disco"],
+      "prompt": "The same singer as the reference image, same sequined jumpsuit and afro, now alone after hours: sitting on the edge of the empty lit-up dance floor, boa slack across the shoulders, head slightly bowed. The club is dark, the mirror ball still turning slowly, throwing small specks of light across the empty room. Melancholy. Wide shot."
     }
   ]
 }

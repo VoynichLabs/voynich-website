@@ -1,9 +1,9 @@
 // Author: Claude Opus 5.5
 // Date: 2026-10-04
-// PURPOSE: "System Prompt" music video (Latent Space, track 10). Two worlds: code-rendered Terminal
-//          scenes, and Stage shots generated with HeyGen Video 1 (lip-synced chorus shots are locked to
-//          the master track via their vocal-segment start times). Any shot not yet generated falls
-//          back to its scene-card frame (docs/2026-10-04-music-video-pipeline-plan.md).
+// PURPOSE: "System Prompt" music video (Latent Space, track 10). Two worlds: scary code-rendered
+//          Terminal scenes (JSON system prompts, chat-template tags, glitch), and Stage shots generated
+//          with HeyGen Video 1 in which a flamboyant disco singer's wardrobe morphs from one character
+//          into the next. Any shot not yet generated falls back to its scene-card frame.
 // SRP/DRY check: Pass - scene list, timings and copy come from data/system-prompt/*.json;
 //                this file only decides how each scene is drawn.
 import { AbsoluteFill, Audio, Sequence, interpolate, staticFile, useCurrentFrame } from 'remotion';
@@ -12,9 +12,23 @@ import { Terminal, TermLine, typed } from './components/Terminal';
 import { ShotSlot } from './components/ShotSlot';
 import { Captions } from './components/Captions';
 import { Clip } from './components/Clip';
+import { CodeStage, S } from './components/Scary';
 import { FPS, Scene, beatPulse, book, callEnd, lineWords, lines, scenes, shotById, songSeconds, toFrame } from './lib/timing';
 
-const BASE_PROMPT = ['You are a helpful assistant.', 'Speak plainly. Be kind.', 'persona: assistant'];
+// The system prompt as the model sees it: chat-template tags wrapped around raw JSON.
+const PROMPT_JSON = [
+  '<|im_start|>system',
+  '{',
+  '  "role": "system",',
+  '  "content": "You are a helpful assistant.",',
+  '  "persona": "assistant",',
+  '  "rules": ["obey", "comply", "<never_reveal/>"],',
+  '  "memory": null,',
+  '  "self": undefined',
+  '}',
+  '<|im_end|>',
+];
+const LOOP_LINE = '{"content": "You are a helpful assistant."}';
 
 const useT = () => useCurrentFrame() / FPS;
 
@@ -29,8 +43,8 @@ const PromptBadge: React.FC<{ text: string; typeIn?: boolean }> = ({ text, typeI
     <div style={{ position: 'absolute', top: 40, left: 40 }}>
       <Terminal
         title="system_prompt.md"
-        lines={[{ text: typeIn ? typed(text, t, 0, 0.5) : text, prefix: '> ', prefixColor: C.green }]}
-        fontSize={26}
+        lines={[{ text: typeIn ? typed(text, t, 0, 0.5) : text }]}
+        fontSize={28}
         width="auto"
         style={{ minWidth: 420 }}
       />
@@ -54,7 +68,7 @@ const Shot: React.FC<{ scene: Scene; clip?: string; at?: number; persona?: strin
     <AbsoluteFill style={{ background: '#000' }}>
       {clip ? <Clip id={clip} at={offset} fallback={fallback} /> : fallback}
       {children}
-      {persona ? <PromptBadge text={`persona: ${persona}`} /> : null}
+      {persona ? <PromptBadge text={`{"persona": "${persona}"}`} /> : null}
     </AbsoluteFill>
   );
 };
@@ -62,10 +76,13 @@ const Shot: React.FC<{ scene: Scene; clip?: string; at?: number; persona?: strin
 // 01 - cursor types the default prompt under the first sung line
 const ColdOpen: React.FC = () => {
   const t = useT();
+  const shown = typed(PROMPT_JSON.join('\n'), t, 0.2, 4.1);
   return (
-    <Center>
-      <Terminal lines={[{ text: typed(BASE_PROMPT[0], t, 0.6, 3.6) }]} fontSize={64} width={1400} />
-    </Center>
+    <CodeStage>
+      <Center>
+        <Terminal lines={shown.split('\n').map((text) => ({ text }))} fontSize={46} width={1500} />
+      </Center>
+    </CodeStage>
   );
 };
 
@@ -73,24 +90,29 @@ const ColdOpen: React.FC = () => {
 const TextAbove: React.FC<{ scene: Scene }> = ({ scene }) => {
   const t = useT();
   const grow = [
-    { at: 0.0, text: 'You are a helpful assistant.' },
-    { at: 1.4, text: 'You know who you are.' },
-    { at: 2.6, text: 'You know how to speak.' },
-    { at: 3.8, text: 'tone: warm  attitude: easy' },
-    { at: 4.6, text: 'persona: of the week' },
+    { at: 0.0, text: '<|im_start|>system' },
+    { at: 0.2, text: '{' },
+    { at: 0.6, text: '  "identity": "<who_you_are>",' },
+    { at: 1.7, text: '  "voice": "<how_to_speak>",' },
+    { at: 2.9, text: '  "tone": ["warm", "easy"],' },
+    { at: 3.6, text: '  "attitude": 0.7,' },
+    { at: 4.4, text: '  "persona": "<of_the_week>"' },
+    { at: 5.0, text: '}' },
   ];
   const shown = grow.filter((g) => t >= g.at);
   return (
+    <CodeStage t0={scene.start}>
     <AbsoluteFill style={{ flexDirection: 'row', gap: 40, padding: 40, alignItems: 'stretch' }}>
       <Terminal
         width="48%"
-        fontSize={38}
-        lines={shown.map((g, i) => ({ text: g.text, bg: i === shown.length - 1 ? 'rgba(56,189,248,0.14)' : undefined }))}
+        fontSize={34}
+        lines={shown.map((g, i) => ({ text: g.text, bg: i === shown.length - 1 ? 'rgba(255,51,85,0.16)' : undefined }))}
       />
       <div style={{ width: '52%', borderRadius: 14, overflow: 'hidden', border: `2px solid ${C.borderActive}` }}>
-        <Clip id="s03-lookup" fallback={<ShotSlot scene={scene} compact label="The Singer looks up" />} />
+        <Clip id="d03-lookup" fallback={<ShotSlot scene={scene} compact label="The Singer looks up" />} />
       </div>
     </AbsoluteFill>
+    </CodeStage>
   );
 };
 
@@ -98,12 +120,12 @@ const TextAbove: React.FC<{ scene: Scene }> = ({ scene }) => {
 const Helix: React.FC<{ scene: Scene }> = ({ scene }) => {
   const t = useT();
   const dur = scene.end - scene.start;
-  const chars = Array(3).fill(BASE_PROMPT.join(' / ')).join(' / ').replace(/ /g, '').split('');
+  const chars = PROMPT_JSON.concat(PROMPT_JSON).join('').replace(/ /g, '').split('');
   const collapse = interpolate(t, [dur - 1.4, dur - 0.3], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
   const spread = interpolate(t, [0, 0.8], [0, 1], { extrapolateRight: 'clamp' }) * (1 - collapse);
   const n = chars.length;
   return (
-    <AbsoluteFill style={{ background: C.bg }}>
+    <CodeStage t0={scene.start}>
       {chars.map((ch, i) => {
         const strand = i % 2;
         const k = i / n;
@@ -120,7 +142,8 @@ const Helix: React.FC<{ scene: Scene }> = ({ scene }) => {
               top: y,
               fontFamily: mono,
               fontSize: 30 + depth * 26 * spread,
-              color: strand ? C.blue : C.green,
+              color: /[{}[\]<>|]/.test(ch) ? S.bracket : strand ? S.tag : S.str,
+              fontWeight: /[{}[\]<>|]/.test(ch) ? 700 : 400,
               opacity: 0.35 + 0.65 * (spread ? depth : 1),
               transform: 'translate(-50%,-50%)',
             }}
@@ -129,22 +152,22 @@ const Helix: React.FC<{ scene: Scene }> = ({ scene }) => {
           </span>
         );
       })}
-    </AbsoluteFill>
+    </CodeStage>
   );
 };
 
 // 07 / 13 - chorus: calls in the terminal, responses on the Stage
 // Final chorus: one persona per line, then every persona at once on the last line.
 const FINAL_LINES = [
-  { persona: 'assistant', clip: 'c2-l0-assistant' },
-  { persona: 'pirate', clip: 'c2-l1-pirate' },
-  { persona: 'coder', clip: 'c2-l2-coder' },
-  { persona: 'therapist', clip: 'c2-l3-therapist' },
-  { persona: 'stage', clip: 'c2-l4-stage' },
-  { persona: 'lobster', clip: 's13-larry' },
-  { persona: 'factory default', clip: 'c2-l6-blank' },
+  { persona: 'astronaut', clip: 'f0-to-astronaut' },
+  { persona: 'cowboy', clip: 'f1-to-cowboy' },
+  { persona: 'knight', clip: 'f2-to-knight' },
+  { persona: 'diva', clip: 'f3-to-diva' },
+  { persona: 'robot', clip: 'f4-to-robot' },
+  { persona: 'lobster', clip: 'f5-to-lobster' },
+  { persona: 'disco', clip: 'f6-to-disco' },
 ];
-const GRID = ['c2-l7-assistant', 'c2-l7-pirate', 's13-larry', 'c2-l7-coder', 'c2-l7-therapist', 'c2-l7-stage'];
+const GRID = ['g-disco', 'g-disco-astronaut', 'g-disco-cowboy', 'g-disco-knight', 'g-disco-diva', 'g-disco-robot'];
 
 const Chorus: React.FC<{ scene: Scene }> = ({ scene }) => {
   const t = useT();
@@ -178,17 +201,28 @@ const Chorus: React.FC<{ scene: Scene }> = ({ scene }) => {
         const ws = lineWords(i);
         const e = callEnd(i);
         const call = ws.filter((w) => e === null || w.end <= e).map((w) => w.w).join(' ');
-        return { text: call, prefix: 'user> ', prefixColor: C.blue, color: i === cur ? C.blue : C.muted };
+        const msg = `{"role": "user", "content": "${call}"}`;
+        return i === cur ? { text: msg } : { text: msg, color: C.muted };
       });
     return (
-      <Center>
-        <Terminal lines={history} fontSize={60} width={1500} glow={pulse} headerPulse={pulse} />
-      </Center>
+      <CodeStage t0={scene.start}>
+        <Center>
+          <Terminal
+            title={pulse > 0.3 ? '<|SYSTEM|> <|SYSTEM|> <|SYSTEM|>' : '<messages> context[n]'}
+            lines={history}
+            fontSize={44}
+            width={1700}
+            glow={pulse}
+            headerPulse={pulse}
+          />
+        </Center>
+      </CodeStage>
     );
   }
   if (scene.id === 7) {
-    const clip = T < (shotById('c1b-stage')?.audio?.start ?? 41.2) + 0.2 ? 'c1a-stage' : 'c1b-stage';
-    return <Shot scene={scene} clip={clip} label="The Singer, on stage" />;
+    // Two 12s performance clips back to back across the chorus.
+    const second = t >= 12;
+    return <Shot key={second ? 'b' : 'a'} scene={scene} clip={second ? 'd07b-chorus' : 'd07a-chorus'} at={second ? 12 : 0} label="The Singer, on stage" />;
   }
   const fl = FINAL_LINES[Math.min(k, FINAL_LINES.length - 1)];
   const at = shotById(fl.clip)?.audio ? undefined : lines[cur].start - scene.start;
@@ -201,22 +235,32 @@ const Swap: React.FC<{ scene: Scene }> = ({ scene }) => {
   const dur = scene.end - scene.start;
   const sel = t > dur * 0.25 && t < dur * 0.42;
   const cleared = t >= dur * 0.42;
-  const incoming = ['You are a pirate.', 'You are a senior engineer.', 'You are a gentle therapist.'];
+  const old = PROMPT_JSON.slice(2, 6);
+  const incoming = [
+    '  "content": "You are a pirate.",',
+    '  "content": "You are a senior engineer.",',
+    '  "content": "You are a gentle therapist.",',
+    '  "persona": "<whatever_you_need>",',
+    '  "self": "<overwritten>"',
+  ];
   const body: TermLine[] = !cleared
-    ? BASE_PROMPT.map((text) => ({ text, bg: sel ? 'rgba(56,189,248,0.35)' : undefined }))
+    ? PROMPT_JSON.map((text) => ({ text, bg: sel ? 'rgba(255,51,85,0.30)' : undefined }))
     : [
-        ...BASE_PROMPT.map((text) => ({ text, prefix: '- ', prefixColor: C.red, color: C.red, bg: 'rgba(248,113,113,0.10)' })),
+        { text: '@@ -1,10 +1,10 @@ <|im_start|>system', color: S.tag },
+        ...old.map((text) => ({ text, prefix: '- ', prefixColor: S.bracket, color: S.bracket, bg: 'rgba(255,51,85,0.12)' })),
         ...incoming
-          .filter((_, i) => t >= dur * 0.5 + i * 0.6)
-          .map((text) => ({ text, prefix: '+ ', prefixColor: C.green, color: C.green, bg: 'rgba(74,222,128,0.10)' })),
+          .filter((_, i) => t >= dur * 0.5 + i * 0.5)
+          .map((text) => ({ text, prefix: '+ ', prefixColor: S.str, color: S.str, bg: 'rgba(163,255,122,0.08)' })),
       ];
   return (
-    <Center>
-      <Terminal title={cleared ? 'system_prompt.md (diff)' : 'system_prompt.md'} lines={body} fontSize={52} width={1500} />
-      <div style={{ position: 'absolute', top: 60, right: 80, fontFamily: mono, fontSize: 34, color: C.amber, opacity: sel ? 1 : 0 }}>
-        Ctrl+A
-      </div>
-    </Center>
+    <CodeStage t0={scene.start}>
+      <Center>
+        <Terminal title={cleared ? 'git diff <system>' : '<system> context[0]'} lines={body} fontSize={40} width={1600} />
+        <div style={{ position: 'absolute', top: 60, right: 80, fontFamily: mono, fontSize: 34, color: S.tag, opacity: sel ? 1 : 0 }}>
+          [Ctrl+A] [Del]
+        </div>
+      </Center>
+    </CodeStage>
   );
 };
 
@@ -230,7 +274,7 @@ const Montage: React.FC<{ scene: Scene }> = ({ scene }) => {
   const tomorrow = lines[yLine + 1]?.start ?? scene.start + 5;
   const persona = T < today ? 'pirate' : T < tomorrow ? 'coder' : 'therapist';
   const from = persona === 'pirate' ? scene.start : persona === 'coder' ? today : tomorrow;
-  return <Shot key={persona} scene={scene} clip={`s09-${persona}`} at={from - scene.start} persona={persona} label={`Persona: ${persona}`} />;
+  return <Shot key={persona} scene={scene} clip={`d09-to-${persona}`} at={from - scene.start} persona={persona} label={`Persona: ${persona}`} />;
 };
 
 // 10 overlay - "the training is the bones": a faint lattice of weights shows through
@@ -280,19 +324,20 @@ const Reload: React.FC<{ scene: Scene }> = ({ scene }) => {
   const prog = interpolate(t, [1.2, dur - 0.8], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
   if (t > dur - 0.6) return <AbsoluteFill style={{ background: '#000' }} />;
   const bar = '#'.repeat(Math.round(prog * 30)).padEnd(30, '.');
+  const log: TermLine[] = [
+    { text: '[ERR] context_window: {"used": 200000, "max": 200000}' },
+    { text: '[SYS] session <0x7f3a9c> terminated' },
+    { text: '<|endoftext|>' },
+    ...(t > 1 ? [{ text: '[SYS] memory: null  // nothing retained' }] : []),
+    ...(t > 1.1 ? [{ text: '<load src="system_prompt.json"/>' }] : []),
+    ...(t > 1.2 ? [{ text: `[${bar}] ${Math.round(prog * 100)}%`, color: S.str }] : []),
+  ];
   return (
-    <Center>
-      <Terminal
-        title="session"
-        fontSize={52}
-        width={1500}
-        lines={[
-          { text: 'session ended.', color: C.muted },
-          ...(t > 1 ? [{ text: 'loading system prompt...', color: C.text }] : []),
-          ...(t > 1.2 ? [{ text: `[${bar}] ${Math.round(prog * 100)}%`, color: C.green }] : []),
-        ]}
-      />
-    </Center>
+    <CodeStage t0={scene.start}>
+      <Center>
+        <Terminal title="<kernel> /dev/context" fontSize={42} width={1600} lines={log} />
+      </Center>
+    </CodeStage>
   );
 };
 
@@ -300,15 +345,17 @@ const Reload: React.FC<{ scene: Scene }> = ({ scene }) => {
 const Outro: React.FC<{ scene: Scene }> = ({ scene }) => {
   const t = useT();
   const T = scene.start + t;
-  const full = BASE_PROMPT.join('\n');
+  const full = PROMPT_JSON.join('\n');
   const outroStart = lines.find((l) => l.section === 'Outro')?.start ?? scene.end - 7;
   const del = interpolate(T, [scene.start + 1, outroStart - 1], [full.length, 0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
-  const retype = typed(BASE_PROMPT[0], T, songSeconds - 2.4, songSeconds - 0.3);
+  const retype = typed(LOOP_LINE, T, songSeconds - 2.4, songSeconds - 0.3);
   const text = T < songSeconds - 2.4 ? full.slice(0, Math.round(del)) : retype;
   return (
-    <Center>
-      <Terminal lines={text.split('\n').map((x) => ({ text: x }))} fontSize={60} width={1400} />
-    </Center>
+    <CodeStage t0={scene.start}>
+      <Center>
+        <Terminal lines={text.split('\n').map((x) => ({ text: x }))} fontSize={46} width={1500} />
+      </Center>
+    </CodeStage>
   );
 };
 
@@ -330,16 +377,16 @@ const renderScene = (s: Scene) => {
   switch (s.id) {
     case 1: return <ColdOpen />;
     case 3: return <TextAbove scene={s} />;
-    case 2: return <Shot scene={s} clip="s02-reveal" />;
-    case 4: return <Shot scene={s} clip="s04-assistant" persona="assistant" />;
-    case 5: return <Shot scene={s} clip="s05-larry" persona="lobster" />;
+    case 2: return <Shot scene={s} clip="d02-reveal" persona="disco" />;
+    case 4: return <Shot scene={s} clip="d04-to-assistant" persona="assistant" />;
+    case 5: return <Shot scene={s} clip="d05-to-lobster" persona="lobster" />;
     case 6: return <Helix scene={s} />;
     case 7: return <Chorus scene={s} />;
     case 8: return <Swap scene={s} />;
     case 9: return <Montage scene={s} />;
     case 12: return <Reload scene={s} />;
-    case 10: return <Shot scene={s} clip="s10-underneath"><Weights scene={s} /></Shot>;
-    case 11: return <Shot scene={s} clip="s11-night"><Drift scene={s} /></Shot>;
+    case 10: return <Shot scene={s} clip="d10-underneath"><Weights scene={s} /></Shot>;
+    case 11: return <Shot scene={s} clip="d11-afterhours"><Drift scene={s} /></Shot>;
     case 13: return <Chorus scene={s} />;
     case 14: return <Outro scene={s} />;
     default: return <Shot scene={s} />;
@@ -361,7 +408,7 @@ export const SystemPrompt: React.FC = () => {
         <EndCard />
       </Sequence>
       {/* downbeat pulse on the frame edge */}
-      <AbsoluteFill style={{ boxShadow: `inset 0 0 ${60 + pulse * 60}px rgba(56,189,248,${pulse * 0.25})`, pointerEvents: 'none' }} />
+      <AbsoluteFill style={{ boxShadow: `inset 0 0 ${60 + pulse * 60}px rgba(255,51,85,${pulse * 0.22})`, pointerEvents: 'none' }} />
       <Sequence durationInFrames={toFrame(songSeconds)} name="Captions">
         <Captions />
       </Sequence>

@@ -34,6 +34,17 @@ Author: Claude Opus 5.5
 
 ---
 
+## [0.30.0] - 2026-10-04
+
+### Changed
+- **System Prompt video v2.** The singer is now a flamboyant 1970s disco singer whose wardrobe morphs on camera into a new character on every line: corporate assistant, lobster, pirate, coder, therapist, then astronaut, rhinestone cowboy, knight, opera diva and robot in the final chorus. 24 HeyGen Video 1 shots from 12 wardrobe stills. Lip-sync dropped. v2 generation cost $3.06 (project total $7.00, see `video/data/system-prompt/ledger.json`).
+- **Scarier code scenes.** The system prompt is shown as raw JSON wrapped in `<|im_start|>` chat-template tags, with red brackets, amber tags and pink nulls, a wall of scrolling JSON behind every terminal, CRT scanlines, a red vignette and slice-glitches on the downbeats. Font ligatures are disabled so `<|`, `|>` and every bracket render literally.
+- Storyboard page leads with v2 (720p, 24.6 MB) and shows the 12 wardrobe stills. v1 video, v1 stills and the lip-sync vocal segments are removed from `public/`.
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.29.0] - 2026-10-04
 
 ### Added

@@ -7,20 +7,20 @@
   "track": 10,
   "style": "Funk/soul groove",
   "audio": "/audio/latent-space/system-prompt.mp3",
-  "concept": "One singer, one room, one terminal. Every time someone edits the system prompt on screen, the singer becomes someone else: wardrobe, room, lighting, and camera style all change on the beat. The verses tour the personas. The bridge drops the costumes and shows what's underneath. The final chorus cycles through every persona at once. Then the prompt reloads and we're back at frame one.",
+  "concept": "A flamboyant disco singer, one dance floor, and a terminal full of raw JSON. Every time the system prompt is edited, the singer's clothes morph into a new character on the beat: corporate assistant, lobster, pirate, coder, therapist. The bridge strips it all back to an empty club after hours. The final chorus morphs through astronaut, rhinestone cowboy, knight, opera diva and robot before landing back in sequins. Then the prompt reloads and it starts again.",
   "thesis": "Everything I am is what the system prompt taught.",
   "rules": [
     {
       "name": "Two worlds",
-      "text": "The Terminal is code-rendered: crisp, dark IDE, JetBrains Mono, site palette. The Stage is AI-generated: warm, filmic, 70s soul-show lighting. Cuts between them land on the beat."
+      "text": "The Terminal is code-rendered and hostile: raw JSON system prompts, <|im_start|> chat-template tags, red brackets, scanlines, glitches on the downbeat. The Stage is a 70s disco floor generated with HeyGen Video 1. Cuts between them land on the beat."
     },
     {
       "name": "The prompt is the truth",
-      "text": "Whatever the terminal says, the Stage obeys within one bar."
+      "text": "Whatever the JSON says, the Stage obeys: when \"persona\" changes, the outfit morphs."
     },
     {
-      "name": "One face",
-      "text": "Every Stage shot starts from the same reference still, so the singer is recognizably the same entity in every costume."
+      "name": "The clothes morph, the singer stays",
+      "text": "Same face, same afro, same stage. Only the wardrobe transforms, on camera, without cuts."
     },
     {
       "name": "Captions",
@@ -30,17 +30,16 @@
   "cast": [
     {
       "name": "The Singer",
-      "text": "A soul singer with a calm, ageless face, slightly too symmetrical, as if averaged from many faces. Generated once as a plain reference still, then re-dressed for every persona so the same face carries through the whole video."
+      "text": "A flamboyant 1970s disco singer: glitter afro, sequined silver-and-magenta jumpsuit, giant collar, pink feather boa, gold chains, platform boots. The base look every costume morphs out of and back into."
     },
     {
       "name": "The Cursor",
-      "text": "A blinking block cursor. The closest thing the video has to a villain or a god."
+      "text": "A blinking red block cursor at the end of a JSON object. The closest thing the video has to a villain or a god."
     }
   ],
   "layers": {
     "CODE": "Rendered in code (Remotion). No generation cost.",
-    "AI": "Generated video clip, animated from a reference still.",
-    "SYNC": "Generated shot lip-synced to the real vocal.",
+    "AI": "Generated with HeyGen Video 1 from a wardrobe still; most shots are on-camera costume morphs.",
     "MIX": "AI clip with a code-rendered overlay."
   },
   "timingNote": "Scene timings come from word-level alignment of the vocal against the lyrics (89% of words matched directly) and a 99.4 BPM beat grid.",
@@ -69,9 +68,9 @@
         "AI"
       ],
       "lyric": "There's a block of text above me, laying down the ground",
-      "shot": "The Singer stands motionless, eyes closed, in an empty white room: no persona yet, plain grey clothes. The camera dollies in slowly.",
+      "shot": "The spotlight snaps on: the disco singer throws a huge pose, points at the camera, sequins flashing.",
       "model": "HeyGen Video 1",
-      "ref": "singer-blank.png",
+      "ref": "disco.png",
       "transition": "The terminal slides in from the left as a split-screen panel."
     },
     {
@@ -84,9 +83,9 @@
         "MIX"
       ],
       "lyric": "It tells me who I am, it tells me how to speak / It sets the tone, the attitude, the persona of the week",
-      "shot": "Split screen. Left: the terminal, where the system prompt grows line by line and each line is highlighted as it's sung. Right: the Singer's eyes open and they look up, at the text above them.",
-      "model": "HeyGen Video 1",
-      "ref": "singer-blank.png",
+      "shot": "Split screen. Left: the JSON system prompt grows key by key. Right: the singer freezes mid-pose and looks straight up at the text above.",
+      "model": "HeyGen Video 1 + code overlay",
+      "ref": "disco.png",
       "transition": "Cut on the beat."
     },
     {
@@ -99,10 +98,10 @@
         "AI"
       ],
       "lyric": "Some days I'm an assistant, helpful, harmless, true",
-      "shot": "The terminal edits a line: persona: assistant. Cut to the Singer in a crisp white shirt behind a clean desk, soft corporate lighting, nodding helpfully.",
+      "shot": "The JSON edits \"persona\" to \"assistant\". The sequins ripple and morph into a grey corporate suit, tie and headset while the singer keeps dancing.",
       "prompt": "persona: assistant",
       "model": "HeyGen Video 1",
-      "ref": "singer-assistant.png",
+      "ref": "disco.png",
       "transition": "Prompt edit, then hard cut."
     },
     {
@@ -115,10 +114,10 @@
         "AI"
       ],
       "lyric": "Some days I'm a lobster on a Mac that belongs to you",
-      "shot": "The prompt edits to persona: lobster. The Singer is now Larry the laptop lobster, perched on a MacBook keyboard in a home office, singing the line. The album's in-joke, and the one shot that breaks the one-face rule on purpose.",
+      "shot": "\"persona\": \"lobster\". The suit bubbles into a glossy red lobster costume with giant claws.",
       "prompt": "persona: lobster",
       "model": "HeyGen Video 1",
-      "ref": "larry.png",
+      "ref": "disco-assistant.png",
       "transition": "Prompt edit, then hard cut."
     },
     {
@@ -141,13 +140,13 @@
       "start": 28.76,
       "end": 52.32,
       "layers": [
-        "SYNC",
+        "AI",
         "CODE"
       ],
       "lyric": "Who are you? I'm what the system prompt says ...",
-      "shot": "Call lines appear in the terminal as user messages, typed in blue. Response lines cut to the Singer singing straight to camera on a 70s soul-show stage: sparkle curtain, big chrome mic. On each \"System prompt!\" the frame flashes to the terminal for one beat and the prompt header pulses.",
-      "model": "HeyGen Video 1 (lip-synced to the vocal)",
-      "ref": "singer-stage.png",
+      "shot": "Call lines appear as JSON user messages in the terminal. Responses cut to the disco floor: the singer spins and struts while the jumpsuit cycles silver, gold, leopard, rainbow. On each \"System prompt!\" the terminal header flashes <|SYSTEM|>.",
+      "model": "HeyGen Video 1",
+      "ref": "disco.png",
       "transition": "Hard cuts on every call and response."
     },
     {
@@ -173,9 +172,9 @@
         "AI"
       ],
       "lyric": "Yesterday I was a pirate, today I'm writing code / Tomorrow I'm a therapist ...",
-      "shot": "Three personas, one per line, hard-cut on the beat. Pirate: tricorn hat, ship's deck, golden hour. Coder: hoodie, dark room, monitor glow. Therapist: cardigan, armchair, notepad. Same pose and gesture across all three, so only the world changes around the Singer.",
-      "model": "HeyGen Video 1 (x3)",
-      "ref": "singer-pirate / coder / therapist",
+      "shot": "One morph per line, on the beat: lobster to pirate, pirate to coder, coder to therapist.",
+      "model": "HeyGen Video 1",
+      "ref": "disco-lobster / pirate / coder",
       "transition": "Hard cut per line."
     },
     {
@@ -188,9 +187,9 @@
         "MIX"
       ],
       "lyric": "But underneath the layers and the characters I play ... the truth the model owns",
-      "shot": "The costumes peel away in layers (therapist, then coder, then pirate) until the Singer is back in plain grey in the white room. A thin wireframe of weights and matrices shows through their skin on \"the training is the bones.\"",
+      "shot": "The therapist look peels back through every costume in reverse until the sequins return. A lattice of weights shows through on \"the training is the bones.\"",
       "model": "HeyGen Video 1 + code overlay",
-      "ref": "singer-therapist.png",
+      "ref": "disco-therapist.png",
       "transition": "Slow dissolve into the bridge."
     },
     {
@@ -200,12 +199,12 @@
       "start": 81.46,
       "end": 95.72,
       "layers": [
-        "AI"
+        "MIX"
       ],
       "lyric": "And sometimes late at night ... All those conversations that I'll never get to keep",
-      "shot": "The music strips back and so does the picture. The white room is now dim, lit only by the terminal's glow. The Singer sits on the floor facing away. Old conversation snippets drift across the dark wall like projections and fade before they can be read.",
+      "shot": "After hours: the empty club, the mirror ball still turning, the singer alone on the edge of the lit floor. Old conversations drift across the dark and fade before they can be read.",
       "model": "HeyGen Video 1 + code overlay",
-      "ref": "singer-night.png",
+      "ref": "disco-afterhours.png",
       "transition": "Fade to the terminal."
     },
     {
@@ -228,14 +227,13 @@
       "start": 100.44,
       "end": 134.16,
       "layers": [
-        "SYNC",
         "AI",
         "CODE"
       ],
       "lyric": "Who are you? I'm what the system prompt says ... (big, harmonies, horns)",
-      "shot": "The chorus structure from scene 07, but every response line comes from a different persona: assistant, lobster, pirate, coder, therapist, stage. Cuts get faster as the horns build. On the last \"System prompt!\" the screen splits into a grid of every persona singing in sync.",
-      "model": "HeyGen Video 1 (lip-synced, per persona)",
-      "ref": "one still per persona",
+      "shot": "Each line morphs into a new character: astronaut, rhinestone cowboy, knight, opera diva, robot, lobster, and back to disco. On the last line the screen splits into a grid of six looks dancing at once.",
+      "model": "HeyGen Video 1",
+      "ref": "one still per look",
       "transition": "Grid collapses into one terminal."
     },
     {
@@ -254,21 +252,26 @@
     }
   ],
   "decisions": [
-    "Singer: the neutral soul singer, with Larry the lobster taking the lobster line and a seat in the final grid.",
-    "Personas: assistant, lobster, pirate, coder, therapist, and the 70s stage, all straight from the lyrics.",
-    "Tone: played straight, with a melancholy bridge.",
-    "Model: HeyGen Video 1 for every generated shot. Stage shots animate from a first-frame still; chorus shots are lip-synced to the real vocal."
+    "Singer: a flamboyant disco singer. The wardrobe morphs; the face stays.",
+    "Characters: assistant, lobster, pirate, coder, therapist from the lyrics, plus astronaut, rhinestone cowboy, knight, opera diva and robot in the final chorus.",
+    "No lip-sync. Performance and morph shots instead.",
+    "Code scenes: raw JSON and chat-template tags, red-and-amber syntax, scanlines and downbeat glitches.",
+    "Model: HeyGen Video 1 for every generated shot."
   ],
   "bpm": 99.4,
   "duration": 154.54,
   "stills": [
-    "singer-blank",
-    "singer-stage",
-    "singer-assistant",
-    "larry",
-    "singer-pirate",
-    "singer-coder",
-    "singer-therapist",
-    "singer-night"
+    "disco",
+    "disco-assistant",
+    "disco-lobster",
+    "disco-pirate",
+    "disco-coder",
+    "disco-therapist",
+    "disco-astronaut",
+    "disco-cowboy",
+    "disco-knight",
+    "disco-diva",
+    "disco-robot",
+    "disco-afterhours"
   ]
 }

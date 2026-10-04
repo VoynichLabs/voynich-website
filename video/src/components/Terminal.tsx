@@ -1,11 +1,13 @@
 // Author: Claude Opus 5.5
 // Date: 2026-10-04
-// PURPOSE: The "Terminal" world: an IDE-style window that renders system-prompt text, chat
-//          turns, diffs, and a blinking block cursor. Reused by every code-rendered scene.
+// PURPOSE: The "Terminal" world: an IDE-style window that renders system-prompt JSON, chat
+//          turns, diffs, and a blinking block cursor. Lines without an explicit color are
+//          syntax-highlighted (Scary.Hl). Reused by every code-rendered scene.
 // SRP/DRY check: Pass - single terminal renderer; scenes pass content, not styling.
 import { useCurrentFrame } from 'remotion';
 import { C, mono } from '../theme';
 import { FPS } from '../lib/timing';
+import { Hl, S } from './Scary';
 
 export type TermLine = {
   text: string;
@@ -42,16 +44,18 @@ export const Terminal: React.FC<{
   glow?: number;
   headerPulse?: number;
   style?: React.CSSProperties;
-}> = ({ title = 'system_prompt.md', lines, cursor = true, fontSize = 40, width = 1500, height, glow = 0, headerPulse = 0, style }) => (
+}> = ({ title = '<system> context[0]', lines, cursor = true, fontSize = 40, width = 1500, height, glow = 0, headerPulse = 0, style }) => (
   <div
     style={{
       width,
       height,
-      background: C.terminal,
-      border: `2px solid ${C.borderActive}`,
-      borderRadius: 14,
-      boxShadow: `0 0 ${40 + glow * 80}px rgba(56,189,248,${0.08 + glow * 0.35})`,
+      background: 'rgba(6,4,8,0.94)',
+      border: `2px solid rgba(255,51,85,${0.35 + glow * 0.6})`,
+      borderRadius: 10,
+      boxShadow: `0 0 ${50 + glow * 120}px ${S.blood}${0.25 + glow * 0.5})`,
       fontFamily: mono,
+      fontVariantLigatures: 'none',
+      fontFeatureSettings: '"liga" 0, "calt" 0',
       overflow: 'hidden',
       display: 'flex',
       flexDirection: 'column',
@@ -64,10 +68,10 @@ export const Terminal: React.FC<{
         alignItems: 'center',
         gap: 12,
         padding: '14px 22px',
-        background: headerPulse > 0 ? `rgba(56,189,248,${0.15 + headerPulse * 0.5})` : C.surface,
-        borderBottom: `1px solid ${C.border}`,
+        background: headerPulse > 0 ? `${S.blood}${0.3 + headerPulse * 0.6})` : '#120a10',
+        borderBottom: `1px solid rgba(255,51,85,0.25)`,
         fontSize: 22,
-        color: headerPulse > 0.3 ? C.text : C.muted,
+        color: headerPulse > 0.3 ? C.text : S.tag,
       }}
     >
       {[C.red, C.amber, C.green].map((c) => (
@@ -79,8 +83,8 @@ export const Terminal: React.FC<{
       {lines.map((l, i) => (
         <div key={i} style={{ background: l.bg, color: l.color ?? C.text, whiteSpace: 'pre-wrap', padding: '0 8px', margin: '0 -8px' }}>
           {l.prefix ? <span style={{ color: l.prefixColor ?? C.muted }}>{l.prefix}</span> : null}
-          {l.text}
-          {cursor && i === lines.length - 1 ? <Cursor /> : null}
+          {l.color ? l.text : <Hl text={l.text} />}
+          {cursor && i === lines.length - 1 ? <Cursor color={S.bracket} /> : null}
         </div>
       ))}
       {cursor && lines.length === 0 ? <Cursor /> : null}

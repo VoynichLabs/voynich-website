@@ -15,7 +15,7 @@ const fmt = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).p
 const pad = (n: number) => String(n).padStart(2, '0');
 const scenes = book.scenes;
 const total = book.duration;
-const cut = `${base}/video/system-prompt/system-prompt-v1.mp4`;
+const cut = `${base}/video/system-prompt/system-prompt-v2.mp4`;
 const animatic = `${base}/video/system-prompt/animatic-v0.mp4`;
 const stillsBase = `${base}/video/system-prompt/stills`;
 const repo = 'https://github.com/VoynichLabs/voynich-website';
@@ -29,7 +29,7 @@ const repo = 'https://github.com/VoynichLabs/voynich-website';
 >
   <div class="sp">
     <header class="sp-hero">
-      <div class="sp-eyebrow">MUSIC VIDEO · FIRST CUT</div>
+      <div class="sp-eyebrow">MUSIC VIDEO</div>
       <h1 class="sp-title">System Prompt</h1>
       <p class="sp-meta">
         <a href={`${base}${book.albumHref}`}>{book.album}</a>, track {book.track} · {book.artist} · {book.style} ·
@@ -43,27 +43,28 @@ const repo = 'https://github.com/VoynichLabs/voynich-website';
 
     <section class="sp-section" aria-labelledby="cut-h">
       <div class="sp-section-head">
-        <h2 id="cut-h">Cut v1</h2>
+        <h2 id="cut-h">Watch</h2>
         <span class="sp-tag">1080p · {fmt(total)}</span>
       </div>
-      <video class="sp-video" src={cut} controls preload="metadata" playsinline poster={`${stillsBase}/singer-stage.jpg`}></video>
+      <video class="sp-video" src={cut} controls preload="metadata" playsinline poster={`${stillsBase}/disco.jpg`}></video>
       <p class="sp-note">
-        The Terminal scenes are rendered in code with Remotion. The Stage shots are generated with HeyGen Video 1: 23 shots
-        animated from 8 reference stills, with every chorus shot lip-synced to the real vocal. The earlier
-        <a href={animatic}>code-only animatic</a> shows the cut before any shots were generated.
+        The Terminal scenes are rendered in code with Remotion: raw JSON system prompts, chat-template tags and glitches on
+        the downbeat. The Stage shots are generated with HeyGen Video 1: 24 shots from 12 wardrobe stills, most of them
+        on-camera costume morphs. The earlier <a href={animatic}>code-only animatic</a> shows the cut before any shots
+        were generated.
       </p>
     </section>
 
     <section class="sp-section" aria-labelledby="stills-h">
       <div class="sp-section-head">
         <h2 id="stills-h">Cast stills</h2>
-        <span class="sp-tag">one face, every persona</span>
+        <span class="sp-tag">one singer, every costume</span>
       </div>
       <ul class="sp-stills">
         {book.stills.map((id) => (
           <li>
-            <img src={`${stillsBase}/${id}.jpg`} alt={`Reference still: ${id.replace('singer-', '')}`} loading="lazy" width="688" height="384" />
-            <span>{id.replace('singer-', '')}</span>
+            <img src={`${stillsBase}/${id}.jpg`} alt={`Wardrobe still: ${id.replace('disco-', '')}`} loading="lazy" width="688" height="384" />
+            <span>{id === 'disco' ? 'disco (base)' : id.replace('disco-', '')}</span>
           </li>
         ))}
       </ul>
@@ -163,7 +164,7 @@ const repo = 'https://github.com/VoynichLabs/voynich-website';
         <ol class="sp-process">
           <li><strong>Timing.</strong> The vocal is transcribed with Whisper and aligned word by word against the lyrics. A beat grid comes from librosa.</li>
           <li><strong>Terminal scenes.</strong> Rendered in code with Remotion, in the site's own palette and type.</li>
-          <li><strong>Stage scenes.</strong> One reference still per persona, animated with HeyGen Video 1 through OpenRouter. Chorus shots take the persona still plus the matching slice of the real vocal, so the singing is lip-synced to the track.</li>
+          <li><strong>Stage scenes.</strong> One base still of the disco singer, re-dressed into eleven more looks with an image model. HeyGen Video 1 (through OpenRouter) animates each look and morphs the outfit into the next one on camera.</li>
           <li><strong>Edit.</strong> A shot list drives the composition, so a regenerated shot drops straight into the cut.</li>
         </ol>
         <p class="sp-note">
