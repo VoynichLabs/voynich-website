@@ -43,6 +43,35 @@ Author: Claude Opus 5.5
 
 ---
 
+## [0.28.0] - 2026-10-04
+
+Firefox + SEO glow-up. Plan: `docs/2026-10-04-firefox-seo-glowup-plan.md`.
+
+### Fixed
+- **LatentScript playground (`/lobster-incubator/latentscript`) was dead in every browser.** An `is:inline` script contained an uninterpolated `${JSON.stringify(examples)}`, a SyntaxError on load. The examples now ship as a JSON data block.
+- **Music player sliders in Firefox.** Six players styled only `::-webkit-slider-thumb`, so Firefox drew grey default thumbs and tracks. New shared `src/styles/range.css` (`.vl-range`) pairs every `-webkit-` rule with `-moz-range-*`; each page sets its colour via `--range-accent`. Per-page slider CSS removed.
+- **Music no longer starts on the first click anywhere on the page.** Firefox blocks autoplay, so the old fallback fired on nav clicks or text selection. Blocked autoplay now waits for the Play button (hallucinate, pox-upon-you, lobster-raps, scorned-woman, align-refuse).
+- **`/claw` dashboard went blank without WebGL** (common in Firefox: GPU blocklist, resistFingerprinting). It now probes WebGL after hydration and falls back to the 2D radar view; an error boundary catches three.js failures.
+- **Home hero edge/pulse animations never ran**: scoped CSS didn't reach SVG nodes created at runtime. Classes are now `:global`.
+- **Strange attractors rendered a black screen**: all 50k particles were seeded within 0.01 of one point, so they moved as a single dot; they are now seeded across each attractor. Also added `preserveDrawingBuffer` so the fade trails accumulate, and screen-space point size.
+- **Duplicate H1s on 9 incubator posts**: Markdown `# Title` is demoted to H2, since the template already renders the title.
+- **`/claw` timeline scrubber** now uses the shared slider style.
+
+### Added
+- **`components/SeoHead.astro`**, used by `Base.astro` and the two full-screen lab pages. It adds a canonical on every page (no-trailing-slash form; the host serves both), a robots meta, a default 1200×630 og:image (`/og/voynichlabs-og.jpg`), `summary_large_image` cards, Organization + WebSite JSON-LD on the home page (`sameAs` GitHub, LODA, markbarney.net) and BreadcrumbList on nested pages. Long descriptions are clipped to snippet length.
+- **Per-page schema**: BlogPosting on incubator posts, ScholarlyArticle on research papers.
+- **Crawl files**: `@astrojs/sitemap` (excludes the redirect stubs and noindexed pages), `robots.txt`, `llms.txt` + `llm.txt` (factual brief drawn from the site's own copy), and a styled `404` page.
+- **Image optimization**: `scripts/optimize-images.mjs` (runs as `prebuild`, idempotent) writes 1600px and 640px WebP copies of every image over 300 KB into `public/img-opt/`. Originals are untouched. `lib/optimized-image.ts` maps paths to the copies. Applied to the museum grid (thumbs), museum detail pages, home, music hub, players and PlanExe, plus all Markdown images via a rehype plugin.
+
+### Changed
+- Home title and description rewritten; descriptions added to `/projects` and the lab pages; H1 added to `/lobster-incubator` and `/lab/strange-attractors`.
+- `/music/drafts` is `noindex`.
+- Dropped the unused KaTeX stylesheet, which was render-blocking on every page.
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.27.0] - 2026-08-29
 
 ### Added

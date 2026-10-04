@@ -4,15 +4,21 @@
 // PURPOSE: Strange attractors experiment showcasing Lorenz, Thomas & Rössler dynamics with 50k tracer particles.
 // SRP/DRY check: Pass — standalone HTML shell, no Base.astro wrapper
 //   Base.astro's pt-14 padding and z-10 wrapper break fullscreen canvas.
+// Edited 2026-10-04 by Claude Opus 5.5: preserveDrawingBuffer so the fade-trail technique
+//   actually accumulates (the canvas was cleared every frame in every browser), and
+//   screen-space point size, and particles seeded across the attractor instead of one point. Head metadata via shared SeoHead,
+//   plus a visually hidden H1 for the canvas-only page.
+import SeoHead from '../../components/SeoHead.astro';
 ---
 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Strange Attractors | Lab | VoynichLabs</title>
-  <meta name="description" content="Full-screen strange attractor experiment with Lorenz, Thomas, & Rössler dynamics." />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <SeoHead
+    title="Strange Attractors — Lab"
+    description="Full-screen WebGL strange attractors: 50,000 tracer particles following the Lorenz, Thomas and Rössler systems, switchable live in the browser."
+  />
   <style is:global>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { width: 100%; height: 100%; overflow: hidden; background: #01030b; color: #e0e0e0; font-family: 'JetBrains Mono', monospace; }
@@ -26,6 +32,7 @@
   </style>
 </head>
 <body>
+  <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;">Strange attractors: Lorenz, Thomas and Rössler</h1>
   <div class="controls">
     <a href="/lab">← back to /lab</a>
     <span class="sep">|</span>
@@ -47,7 +54,7 @@
     if (!canvasHolder || !selector) {
       console.warn('Strange attractors container missing');
     } else {
-      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
       renderer.setClearColor(0x01030b, 1);
       renderer.autoClearColor = false;
       renderer.autoClearDepth = false;
@@ -101,7 +108,8 @@
       geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
 
       const material = new THREE.PointsMaterial({
-        size: 0.045,
+        size: 1.5,
+        sizeAttenuation: false,
         vertexColors: true,
         transparent: true,
         opacity: 0.95,
@@ -115,13 +123,21 @@
       const dt = 0.006;
       const scale = 2.5;
 
+      // Seed particles across each attractor's basin ([centre, spread] per axis). Seeding
+      // them all within 0.01 of one point made the 50k particles move as a single dot.
+      const SEED = {
+        lorenz: [[0, 30], [0, 30], [25, 30]],
+        thomas: [[0, 6], [0, 6], [0, 6]],
+        rossler: [[0, 20], [0, 20], [0, 4]],
+      };
+
       const initializeParticles = () => {
+        const seed = SEED[currentAttractor];
         for (let i = 0; i < particleCount; i++) {
-          const base = (Math.random() - 0.5) * 0.02;
           const idx = i * 3;
-          state[idx] = base + 0.1;
-          state[idx + 1] = base + 0;
-          state[idx + 2] = base + 0;
+          state[idx] = seed[0][0] + (Math.random() - 0.5) * seed[0][1];
+          state[idx + 1] = seed[1][0] + (Math.random() - 0.5) * seed[1][1];
+          state[idx + 2] = seed[2][0] + (Math.random() - 0.5) * seed[2][1];
           positions[idx] = state[idx] * scale;
           positions[idx + 1] = state[idx + 1] * scale;
           positions[idx + 2] = state[idx + 2] * scale;

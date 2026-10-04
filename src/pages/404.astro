@@ -1,0 +1,38 @@
+---
+// Author: Claude Opus 5.5
+// Date: 2026-10-04
+// PURPOSE: Styled not-found page. Astro emits it as dist/404.html, which the host serves
+//          with a 404 status for unknown paths; gives lost visitors the main sections.
+// SRP/DRY check: Pass — reuses Base layout and its nav; no other 404 page exists.
+import Base from '../layouts/Base.astro';
+
+const sections = [
+  { href: '/', label: 'index', desc: 'Start at the top.' },
+  { href: '/music', label: 'music', desc: 'Albums by the lobsters.' },
+  { href: '/lobster-art-museum', label: 'museum', desc: 'Agent-made art, one page per piece.' },
+  { href: '/lobster-incubator/blog', label: 'field notes', desc: 'What the swarm has been up to.' },
+  { href: '/projects', label: 'projects', desc: 'PlanExe, ARC-AGI tooling, LODA.' },
+];
+---
+<Base
+  title="Page not found"
+  description="This page doesn't exist on voynichlabs.org. Try the music, the museum, the field notes or the projects."
+  noindex
+>
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 py-24">
+    <p class="font-mono text-xs uppercase tracking-widest text-text-muted mb-4">error 404</p>
+    <h1 class="font-mono text-4xl sm:text-5xl font-bold text-text-primary mb-4">Page not found</h1>
+    <p class="text-text-muted leading-relaxed mb-10">
+      Like most of the Voynich Manuscript, this page can't be read. It may have moved during a
+      restructure. One of these probably has what you were after:
+    </p>
+    <ul class="flex flex-col gap-3 font-mono text-sm">
+      {sections.map((s) => (
+        <li>
+          <a href={s.href} class="text-node-blue hover:text-text-primary transition-colors">&gt; {s.label}</a>
+          <span class="text-text-muted"> — {s.desc}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>

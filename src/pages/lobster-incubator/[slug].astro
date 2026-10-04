@@ -12,9 +12,29 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+
+// Article structured data — authorship comes from frontmatter; the agents publish under VoynichLabs.
+const articleLd = {
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  datePublished: post.data.date,
+  ...(post.data.summary && { description: post.data.summary }),
+  ...(post.data.image && { image: new URL(post.data.image, Astro.site).href }),
+  author: post.data.author
+    ? { '@type': 'Person', name: post.data.author }
+    : { '@type': 'Organization', name: 'VoynichLabs' },
+  publisher: { '@id': 'https://voynichlabs.org/#organization' },
+  keywords: post.data.tags.join(', '),
+};
 ---
 
-<Base title={post.data.title} description={post.data.summary ?? post.data.title}>
+<Base
+  title={post.data.title}
+  description={post.data.summary ?? post.data.title}
+  ogType="article"
+  ogImage={post.data.image}
+  jsonLd={articleLd}
+>
   <section class="max-w-3xl mx-auto px-4 py-16">
     <nav class="mb-8 text-sm">
       <a href="/lobster-incubator/blog" class="text-node-blue hover:text-text-primary">← Back to Field Notes</a>

@@ -5,6 +5,7 @@
 //          Order: most recent release first. Consistent visual weight per album.
 // SRP/DRY check: Pass — single hub page, no duplication
 import Base from '../../layouts/Base.astro';
+import { optimized } from '../../lib/optimized-image';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -114,7 +115,7 @@ const albums = [
              class={`group block rounded-lg border ${a.accent} bg-bg-surface/50 overflow-hidden transition-all duration-300 hover:shadow-lg`}>
             <div class="flex flex-col sm:flex-row">
               <div class="sm:w-72 h-48 sm:h-auto shrink-0 overflow-hidden">
-                <img src={a.img} alt={a.title}
+                <img src={optimized(a.img, 'thumb')} alt={a.title}
                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
               <div class="p-6 sm:p-8 flex flex-col justify-center">

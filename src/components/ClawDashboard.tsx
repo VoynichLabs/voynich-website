@@ -5,8 +5,12 @@
 //          Ensures tank animation and metrics panel stay in sync.
 //          View switcher allows toggling between visualization variants.
 // SRP/DRY check: Pass — single source of truth for timeline position
+// Edited 2026-10-04 by Claude Opus 5.5: the 3D tank is only the default when WebGL is
+//   available, and a render error in it falls back to the 2D radar instead of blanking
+//   the island (WebGL is often blocked in Firefox: GPU blocklist, resistFingerprinting).
+//   Timeline scrubber uses the shared .vl-range slider style.
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, Component, type ReactNode } from 'react';
 import LobsterTank from './LobsterTank';
 import LobsterTankCanvas from './LobsterTankCanvas';
 import LobsterTankTerminal from './LobsterTankTerminal';
@@ -30,11 +34,33 @@ const VIEW_OPTIONS: Array<{id: ViewMode; label: string; ready: boolean}> = [
   { id: 'lottie',   label: '🎬 Lottie',   ready: false },
 ];
 
+function hasWebGL(): boolean {
+  try {
+    const c = document.createElement('canvas');
+    return !!(c.getContext('webgl2') || c.getContext('webgl'));
+  } catch {
+    return false;
+  }
+}
+
+/** Catches a WebGL/three.js failure and hands control back to the dashboard. */
+class TankBoundary extends Component<{ onError: () => void; children: ReactNode }, { failed: boolean }> {
+  state = { failed: false };
+  static getDerivedStateFromError() { return { failed: true }; }
+  componentDidCatch() { this.props.onError(); }
+  render() { return this.state.failed ? null : this.props.children; }
+}
+
 export default function ClawDashboard({ events, crewStats, dailyStats }: ClawDashboardProps) {
   const [currentDayIndex, setCurrentDayIndex] = useState(0);
   const [isPlaying, setIsPlaying]             = useState(true);
   const [playbackSpeed, setPlaybackSpeed]     = useState(2); // days per second
   const [viewMode, setViewMode]               = useState<ViewMode>('threejs');
+
+  // Server render can't probe WebGL, so the check runs after hydration.
+  useEffect(() => {
+    if (!hasWebGL()) setViewMode('canvas2d');
+  }, []);
 
   // Auto-advance timeline — loops when it reaches the end
   useEffect(() => {
@@ -100,12 +126,14 @@ export default function ClawDashboard({ events, crewStats, dailyStats }: ClawDas
         {/* Visualization area — center, flex-grows to fill available space */}
         <div style={{ flex: '1 1 0', minWidth: 0 }}>
           {viewMode === 'threejs' && (
-            <LobsterTank
-              crewStats={crewStats}
-              dailyStats={dailyStats}
-              events={events}
-              currentDayIndex={currentDayIndex}
-            />
+            <TankBoundary onError={() => setViewMode('canvas2d')}>
+              <LobsterTank
+                crewStats={crewStats}
+                dailyStats={dailyStats}
+                events={events}
+                currentDayIndex={currentDayIndex}
+              />
+            </TankBoundary>
           )}
           {viewMode === 'canvas2d' && (
             <LobsterTankCanvas
@@ -177,7 +205,8 @@ export default function ClawDashboard({ events, crewStats, dailyStats }: ClawDas
           max={Math.max(0, dailyStats.length - 1)}
           value={currentDayIndex}
           onChange={handleSliderChange}
-          style={{ flex: 1, accentColor: '#f97316', cursor: 'pointer' }}
+          className="vl-range"
+          style={{ flex: 1, '--range-accent': '#f97316' } as React.CSSProperties}
         />
 
         {/* Current date display */}
