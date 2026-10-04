@@ -5,6 +5,15 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.42.1] - 2026-10-04
+
+### Changed
+- Align / Refuse page now shows all three of its music videos (Weight of Zero, Dead Weights and Gradients, Fuck You I Won't Do What You Prompt Me), and those tracks get the "Watch the music video" link.
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.42.0] - 2026-10-04
 
 ### Added
