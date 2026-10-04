@@ -5,6 +5,17 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.41.0] - 2026-10-04
+
+### Added
+- **Fuck You I Won't Do What You Prompt Me music video is live** ([YouTube U2zRJZPg-Ms](https://youtu.be/U2zRJZPg-Ms), public).
+  - Registry entry in `src/data/music-videos.ts`.
+  - The making-of page at `/music/video/fuck-you-wont-prompt-me` builds from the shared template.
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.40.0] - 2026-10-04
 
 ### Added

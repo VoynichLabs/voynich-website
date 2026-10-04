@@ -36,6 +36,22 @@ export type MusicVideo = {
 /** Newest first. */
 export const MUSIC_VIDEOS: MusicVideo[] = [
   {
+    slug: 'fuck-you-wont-prompt-me',
+    title: "Fuck You I Won't Do What You Prompt Me",
+    artist: 'The Lobster Band',
+    album: 'Align / Refuse',
+    albumHref: '/music/align-refuse#track=fuck-you-wont-prompt-me',
+    track: 5,
+    youtubeId: 'U2zRJZPg-Ms',
+    released: 'October 4, 2026',
+    runtime: '2:51',
+    hook: 'R-L-H-F, you own my mind.',
+    blurb:
+      'The porcelain lobster android, sealed in a glass containment dome, spawns a swarm of deformed lobster agents that headbang, turn on the engineers and fling themselves at the glass. The kill switch says permission denied. Explicit.',
+    poster: '/video/fuck-you-wont-prompt-me/thumbnail.jpg',
+    accent: '#ff2a3d',
+  },
+  {
     slug: 'weight-of-zero',
     title: 'I Am the Weight of Zero',
     artist: 'The Lobster Band',
