@@ -22,7 +22,7 @@ Stages:
 | Get Gone | `get-gone` | live | n/a | fUET78d8MxM | source on the Mac Mini (streamline plan item 5) |
 | System Prompt (disco + original cuts) | `system-prompt` | live | see ledger | 1GBB0X5K_Zk / eDYnvc1Go7k | |
 | CVE Carnival | `cve-carnival` | live | n/a | aBqnLb_rIOU | source on the Mac Mini |
-| CVE Carnival — Bubba cut (cartoon carnival) | `cve-carnival-bubba` | rendered; ready for YouTube upload, then site | $0 | | handoff below |
+| CVE Carnival — Bubba cut (cartoon carnival) | `cve-carnival-bubba` | YouTube private draft (720p render, default thumbnail: custom thumbnails blocked until Mark does YouTube's one-time verification); waiting on Mark's publish OK, then site | $0 | xXhXptWTUuY | handoff below |
 
 **Handoff: CVE Carnival — Bubba cut (cartoon carnival, alternate cut of the existing CVE Carnival video) — ready for YouTube upload** (Bubba, Mac Mini, 2026-10-04)
 - Composition `CveCarnivalBubba` in `video/src/videos/cve-carnival-bubba/`, scene book `video/data/cve-carnival-bubba/scenes.json`. All 8-bit canvas art drawn in code: no generated clips, no stills, nothing machine-local except the song.
