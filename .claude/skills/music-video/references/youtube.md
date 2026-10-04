@@ -26,3 +26,13 @@ Channel: **AI gone wild**, `@LLMs-Gone-Wild`, signed in on Mark's Chrome. Use Cl
 ## Shorts
 - A new animated version of an existing Short is a **new upload**; YouTube can't replace a file. Ask Mark whether the old still-image Short stays public or goes unlisted.
 - Vertical 9:16, 3 minutes or less.
+
+## Full-quality upload from the Mac Mini (added 4 Oct 2026 by Claude Sonnet 5.5, used for CVE Carnival and Get Gone)
+The 10 MB `file_upload` cap is only for that tool. A full 1080p file (about 160 MB for 3 minutes) can go in by letting the Studio page fetch it from a throwaway local server:
+1. Encode the upload copy: `ffmpeg -i master.mp4 -c:v libx264 -preset slow -crf 24 -maxrate 7M -bufsize 14M -pix_fmt yuv420p -c:a aac -b:a 192k -movflags +faststart upload.mp4`.
+2. Serve its folder on 127.0.0.1 with a Python `http.server` subclass that adds `Access-Control-Allow-Origin: *` and `Access-Control-Allow-Private-Network: true`.
+3. Open `studio.youtube.com/channel/<id>/videos/upload?d=ud`. With `javascript_tool`, fetch the URL, build a `File`, put it in a `DataTransfer`, assign it to `input[type=file].files` and dispatch `change`. Start it without awaiting (the tool times out at 45 s) and poll a `window` variable.
+4. **The first time, Chrome shows a "local network access" Allow prompt** that the extension cannot click: ask Mark to click Allow. After that it worked without asking.
+5. Continue as above (title, description, thumbnail by `file_upload`, kids/AI radios). Radios also work by real clicks on a screenshot. Kill the server afterwards.
+6. Claude Code's auto-mode classifier may refuse the final Next/Publish click as an "unrequested commit". Mark's plain instruction to publish publicly, in his own words, clears it: stop at the Visibility screen, say so, and click once he says it.
+Details and the CVE Carnival worked example: `skills/youtube-upload/SKILL.md` in the private music-videos repo.

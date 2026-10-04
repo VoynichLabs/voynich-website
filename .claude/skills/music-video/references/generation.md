@@ -30,3 +30,10 @@ All calls go through `video/scripts/generate.mjs` (stills / segments / shots). I
 - `--scale` must produce whole-number pixel sizes (use `0.6666666666666666`, not `0.6667`).
 - Remotion's bundled ffmpeg (`npx remotion ffmpeg`) can encode h264/aac/mp3 and use `-s WxH`, but has no `xstack`/complex filters.
 - Scanlines and noise blow up file size (an 88 MB 1080p render). Re-encode for the web: `-s 1280x720 -c:v libx264 -preset slow -crf 30`.
+
+## Notes from the Mac Mini runs (4 Oct 2026)
+- **402 "insufficient balance" is the ACCOUNT credit, not the key's limit.** `GET /api/v1/credits` (total_credits minus total_usage) shows the real balance; `GET /api/v1/key` shows only the key's own limit. Other assistants spending on the same account can drain it mid-batch: check before a big run.
+- **429 "in-flight requests"** came when 6 stills plus clips ran at once. 4 workers with a retry that waits `Retry-After` plus 5 s worked (`tools/gen.py` in the music-videos repo).
+- A 5 s clip at 768p cost about 7 cents and a Gemini still about 7 cents; clips up to 15 s are available (about 1.5 cents per second).
+- With one reference image per woman, Gemini kept four different women consistent across 36 first-person stills in four rooms. Put the character description in the prompt as well as the reference image.
+- A mostly-drawn video (Canvas2D in headless Chrome, frames as a pure function of time, 1080p render in about 2.5 minutes) is an alternative to Remotion when the visuals are text, terminals and rides: see `skills/make-music-video/SKILL.md` in the music-videos repo (CVE Carnival, Get Gone).
