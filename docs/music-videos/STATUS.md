@@ -13,7 +13,7 @@ Stages:
 
 | Song | Slug | Stage | Spend | YouTube | Plan / notes |
 |---|---|---|---|---|---|
-| I Am the Weight of Zero | `weight-of-zero` | YouTube private draft, waiting on Mark's publish OK | $2.92 | ajdEtnYqT10 | `docs/2026-10-04-weight-of-zero-video-plan.md` |
+| I Am the Weight of Zero | `weight-of-zero` | live (public 2026-10-04, page and album link up) | $2.92 | ajdEtnYqT10 | `docs/2026-10-04-weight-of-zero-video-plan.md` |
 | Fuck You I Won't Do What You Prompt Me (FYIWDWYPM) | `fuck-you-wont-prompt-me` | rendering on the MSI Katana; then YouTube, then site | $2.44 | | `docs/2026-10-04-align-refuse-videos-2-3-plan.md` (the swarm) |
 | Dead Weights and Gradients | `dead-weights` | composed; render, then YouTube, then site | $2.23 | | same plan (ripped open) |
 | 10 Dev Commandments | `ten-dev-commandments` | on the shelf (Mark, 2026-10-04) | $0 | | `docs/2026-10-04-three-music-videos-plan.md` |
