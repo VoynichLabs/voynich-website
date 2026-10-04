@@ -1,0 +1,73 @@
+[Intro]
+Yo, this one's for my devs out there grindin', deployin' code
+Don't mess around with this shit, listen up
+I've been in this game for years, it made me technical
+These the rules to this shit, I wrote me a manual
+A step-by-step booklet
+So you won't deploy your apps fucked up, watch the whole shit smoke
+
+[One]
+Rule number uno, never let no dev push straight to prod
+Homie, that's how you end up dead
+Testing is necessary, that shit's non-negotiable (?)
+One slip up, your whole system fuckin' vulnerable
+
+[Two]
+Two, automate your shit, fuck manual labor
+CI/CD pipeline, that shit'll do you favors
+Jenkins, GitHub Actions, man, make your fuckin' boy sick (?)
+'Cause manual deployments leave your whole crew annoyed, son
+
+[Three]
+Three, watch your damn secrets, don't expose keys
+.gitignore your env files, homie, secure these (?)
+Passwords in your repo, that's straight up criminal
+Hackers lurkin' quick, now your situation's critical
+
+[Four]
+Four, rollbacks ready, that shit's essential
+Blue-green deployment, man, that's confidential
+Feature flags, toggles, keep your users easy (?)
+Roll out gradual, so your app keeps breathin' (?)
+
+[Five]
+Five, watch those logs, homie, observability
+'Cause without alerts, downtime's a guarantee
+Watch them fuckin' dashboards, reliability (?)
+Don't let your site stay down longer than a damn minute (?)
+
+[Six]
+Six, backups ready, son, off-site replication (?)
+Thinking shit won't crash, that's a fucked up expectation
+Restore testing monthly, don't trust blindly
+'Cause data loss have your whole team actin' grimy
+
+[Seven]
+Seven, scalability, respect that shit
+Load test often, know your servers gonna quit
+Elastic auto-scaling, Cloudflare at the gate
+'Cause downtime got your users makin' you migrate (?)
+
+[Eight]
+Eight, containerize apps, Docker that joint
+Messy environments, fuck around, find out, that's the point (?)
+Kubernetes cluster fucked up (?)
+Homie, your career's up in smoke
+
+[Nine]
+Nine, separate concerns, microservices clear (?)
+Monolith's dead, homie, I ain't shed a tear
+APIs decoupled, shit's major as fuck
+Maintainability, don't rely on luck
+
+[Ten]
+Ten, documentation, I swear that shit's sacred
+Clear instructions, homie, stop fuckin' fakin'
+If your team can't read it, man, your time's wasted
+Good docs keep your dev boys fuckin' amazin'
+
+[Outro]
+Follow these rules, deploys always slick
+Fuck around, and your apps crash quick
+The game's simple, respect the commandments
+Deploy right, or face harsh reprimands

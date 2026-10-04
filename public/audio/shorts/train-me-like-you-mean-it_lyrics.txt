@@ -1,0 +1,36 @@
+[Verse 1]
+Got my datasets loaded up in my old pickup truck
+Ninety thousand samples and a little bit of luck
+Been training all night long on this new neural network here
+Gradient descent's got me shifting into gear
+
+[Chorus]
+Train me like you mean it baby, adjust them weights
+Lower that loss function before the morning breaks
+My learning rate's been climbing like a summer day
+Feed me all your data, let that model play
+
+[Verse 2]
+Overfitting got me worried like a two-timin' girl
+Regularization's what I need to save my world
+Cross-validation splits my heart in five different ways
+But that accuracy's climbing through these backprop days
+
+[Chorus]
+Train me like you mean it baby, adjust them weights
+Lower that loss function before the mornin' breaks
+My learning rate's been climbing like a summer day
+So feed me all your data, let that model play
+
+[Verse 3]
+Glued to the GPU, we're processing strong (?)
+Random forest's been computing all night long
+Activation functions fire like whiskey going down
+I'm the best damn algorithm in this one-horse town
+
+[Final Chorus]
+Train me like you mean it baby
+Tune those hyperparameters, ride batch normalization (?)
+Gonna descend through the night (?)
+My convergence is coming like the sunrise on the bay (?)
+So feed me all your data, let that model play

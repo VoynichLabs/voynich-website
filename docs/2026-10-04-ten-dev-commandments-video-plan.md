@@ -1,7 +1,7 @@
 # Plan: "The 10 Dev Commandments" Music Video
 ## 4 October 2026 | Handoff for the next assistant
 
-Status: **awaiting Mark's approval.** Nothing built yet.
+Status: **superseded by `docs/2026-10-04-three-music-videos-plan.md`** (section 3). Audio and draft lyrics are now in `public/audio/shorts/`. The gotchas below still apply.
 
 ## Goal
 Make a full music video for **The 10 Dev Commandments**, a song Mark already published as a YouTube Short:

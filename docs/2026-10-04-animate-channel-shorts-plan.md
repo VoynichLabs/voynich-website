@@ -1,7 +1,7 @@
 # Plan: Animate the Channel's Still-Image Shorts
 ## 4 October 2026
 
-Status: **awaiting Mark's approval.** Nothing generated yet.
+Status: **first three picked.** Mark chose 10 Dev Commandments, Train Me Like You Mean It and Attention Is All We Need, planned in `docs/2026-10-04-three-music-videos-plan.md`. The channel has 16 Shorts, not 13: Vibecoding, Train Me and Attention were missing from the RSS feed.
 
 ## Goal
 The 13 older songs on Mark's channel ("AI gone wild", @LLMs-Gone-Wild) are Udio clips: one square cover image over the audio, 2:11 each. Turn them into real animated vertical videos, using the pipeline that made System Prompt and CVE Carnival. Feature the results on `/music/videos`.

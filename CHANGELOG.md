@@ -5,6 +5,19 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.34.0] - 2026-10-04
+
+### Added
+- **Music-video project skill** at `.claude/skills/music-video/` (`SKILL.md` + `references/generation.md`, `youtube.md`, `site.md`): the end-to-end pipeline, approval gates (stills before any video spend), Mark's taste notes, cost guardrails, HeyGen/YouTube Studio quirks.
+- **Plan for three videos:** `docs/2026-10-04-three-music-videos-plan.md` (10 Dev Commandments, Train Me Like You Mean It, Attention Is All We Need), handed to the Mac Mini assistant.
+- Channel audio for those three in `public/audio/shorts/` (pulled from Mark's own Shorts; the channel version of Train Me, not the drafts remake), with hand-corrected Whisper draft lyrics. Uncertain lines are marked `(?)` and need Mark's check.
+- `video/scripts/transcribe.py`: drafts a lyrics file from audio when none exists.
+- Three missing channel Shorts added to the Shorts rail (16 total).
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.33.0] - 2026-10-04
 
 ### Added

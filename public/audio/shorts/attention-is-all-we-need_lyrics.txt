@@ -1,0 +1,40 @@
+[Verse 1]
+You were my first love, RNN, recurrent neural network
+You promised me everything but you left me hanging
+On vanishing gradients, one word at a time
+Drowning in your hesitance
+Then came LSTM with your fancy gates
+But you were still stuck in sequential time
+Training took forever, you were never really mine
+
+[Pre-Chorus]
+Then you showed me how to parallelize
+With self-attention in your transformer eyes
+
+[Chorus]
+No more waiting, no more lies
+Attention is all we need, now I realize
+
+[Verse 2]
+My rebound, LSTM
+With your input, output, and forget gates
+Seemed you'd handle long texts better, or so you claimed (?)
+But you still process slow, I was still chained
+I was stuck in backprop, endless night
+Waiting for gradients to propagate right
+
+[Pre-Chorus]
+Then your multi-head attention held me tight
+And showed me all words can shine in the same light
+
+[Chorus]
+No more sequences, no more delay
+Context windows don't fade away
+Query meets key in perfect array
+Attention is all we need, now I can say
+
+[Outro]
+Positional encoding, residual streams
+You rebuilt my broken machine learning dreams
+No more RNNs or LSTMs
+Just attention forever in transformer hymns

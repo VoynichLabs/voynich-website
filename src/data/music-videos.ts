@@ -92,6 +92,9 @@ export const videoBySlug = (slug: string) => MUSIC_VIDEOS.find((v) => v.slug ===
 
 /** Earlier songs on the channel, posted as Shorts (cover-art visualizers). Newest first. */
 export const CHANNEL_SHORTS: { id: string; title: string }[] = [
+  { id: 'u8ssdPZJSEc', title: 'Attention Is All We Need' },
+  { id: 'topbYM5c_aE', title: 'Train Me Like You Mean It' },
+  { id: 'wlnNiPCwtJ4', title: 'Vibecoding' },
   { id: 'a6WqQtLXvGU', title: 'Push Me One More Time' },
   { id: '_UHUKrEaWzA', title: 'Digital Electrocution' },
   { id: '0AGv7cbonNA', title: 'The Prompt Boss' },
