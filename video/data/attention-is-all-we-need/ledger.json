@@ -26,5 +26,26 @@
   "id": "chorus-mock",
   "model": "google/gemini-3.1-flash-image",
   "cost": 0.0672525
+ },
+ {
+  "at": "2026-10-04T21:37:03.910Z",
+  "kind": "still",
+  "id": "singer",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.06726
+ },
+ {
+  "at": "2026-10-04T21:37:45.978Z",
+  "kind": "still",
+  "id": "singer-heartbreak",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.0678145
+ },
+ {
+  "at": "2026-10-04T21:37:58.422Z",
+  "kind": "still",
+  "id": "singer-joy",
+  "model": "google/gemini-3.1-flash-image",
+  "cost": 0.067809
  }
 ]

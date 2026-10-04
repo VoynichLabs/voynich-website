@@ -2,29 +2,25 @@
   "model": "google/gemini-3.1-flash-image",
   "aspect_ratio": "9:16",
   "resolution": "1K",
-  "style": "Cinematic film still, 35mm film grain, warm 1970s color grade, shallow depth of field, no text, no captions, no watermark.",
+  "style": "Glossy sugar-pop music video still, candy pastel colors, bubblegum pink, baby blue and lilac, bright high-key lighting, sparkle, shallow depth of field, no text, no captions, no watermark.",
   "stills": [
     {
       "id": "singer",
-      "prompt": "A melancholy 1970s soft-rock singer-songwriter, mid-30s, shaggy feathered hair, moustache, an open-collar cream shirt and brown suede jacket, holding an acoustic guitar, sitting on a stool and looking toward the camera with a wistful expression. Plain warm-lit backdrop of wood paneling. Medium shot, face clearly visible and well lit."
+      "prompt": "A bubbly sugar-pop singer, young woman in her mid-20s, long wavy strawberry-blonde hair with a pink bow, glitter eyeshadow, a fluffy pastel pink cropped cardigan and a sparkly baby-blue skirt, holding a heart-shaped microphone, playful wink, in a pastel candy-colored studio with fairy lights. Medium shot, face clearly visible and well lit."
     },
     {
-      "id": "singer-rain",
+      "id": "singer-heartbreak",
       "refs": [
         "singer"
       ],
-      "prompt": "The same character as the reference image, identical face and look, same jacket and guitar, now sitting by a large window streaked with rain on a grey evening, cold blue light on his face, a half-empty coffee mug on the sill, heartbroken and distant. Medium shot."
+      "prompt": "The same singer as the reference image, identical face, hair and look, same pastel outfit, now sitting on a pink bed hugging a plush pillow, mascara-streaked tears, a rainy window behind her glowing in soft blue light, a dramatic over-the-top heartbreak pose, still glossy and pastel. Medium shot."
     },
     {
-      "id": "singer-sunlit",
+      "id": "singer-joy",
       "refs": [
         "singer"
       ],
-      "prompt": "The same character as the reference image, identical face and look, same jacket and guitar, now in a sunlit room with golden afternoon light flooding through open windows, dust motes glowing, a hopeful smile, houseplants around him. Medium shot."
-    },
-    {
-      "id": "chorus-mock",
-      "prompt": "Concept frame for a music video chorus: a row of glowing words floating across a dark navy screen as tokens, with dozens of thin luminous arcs connecting every word to every other word, brighter arcs for stronger links, a soft heatmap grid in the lower third filling with warm amber squares, clean diagram look, no readable text except abstract word-like tokens."
+      "prompt": "The same singer as the reference image, identical face, hair and look, same pastel outfit, now dancing joyfully in a sunlit pastel room full of floating confetti and sparkles, huge smile, arms wide, heart-shaped balloons, bright and bouncy. Medium shot."
     }
   ]
 }

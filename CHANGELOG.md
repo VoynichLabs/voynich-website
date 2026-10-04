@@ -5,6 +5,15 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.37.1] - 2026-10-04
+
+### Changed
+- Per Mark: Train Me dropped; 10 Dev Commandments becomes code-only (stills removed); Attention stills redone as sugar pop. Plan updated.
+
+Author: Claude Sonnet 5.5
+
+---
+
 ## [0.37.0] - 2026-10-04
 
 ### Added
