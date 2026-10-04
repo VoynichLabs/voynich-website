@@ -15,7 +15,9 @@ const fmt = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).p
 const pad = (n: number) => String(n).padStart(2, '0');
 const scenes = book.scenes;
 const total = book.duration;
+const cut = `${base}/video/system-prompt/system-prompt-v1.mp4`;
 const animatic = `${base}/video/system-prompt/animatic-v0.mp4`;
+const stillsBase = `${base}/video/system-prompt/stills`;
 const repo = 'https://github.com/VoynichLabs/voynich-website';
 ---
 
@@ -27,7 +29,7 @@ const repo = 'https://github.com/VoynichLabs/voynich-website';
 >
   <div class="sp">
     <header class="sp-hero">
-      <div class="sp-eyebrow">MUSIC VIDEO · IN PRODUCTION</div>
+      <div class="sp-eyebrow">MUSIC VIDEO · FIRST CUT</div>
       <h1 class="sp-title">System Prompt</h1>
       <p class="sp-meta">
         <a href={`${base}${book.albumHref}`}>{book.album}</a>, track {book.track} · {book.artist} · {book.style} ·
@@ -39,17 +41,32 @@ const repo = 'https://github.com/VoynichLabs/voynich-website';
 
     <MusicXNav current="latent-space" />
 
-    <section class="sp-section" aria-labelledby="animatic-h">
+    <section class="sp-section" aria-labelledby="cut-h">
       <div class="sp-section-head">
-        <h2 id="animatic-h">Animatic v0</h2>
-        <span class="sp-tag">code-rendered · AI shots pending</span>
+        <h2 id="cut-h">Cut v1</h2>
+        <span class="sp-tag">1080p · {fmt(total)}</span>
       </div>
-      <video class="sp-video" src={animatic} controls preload="metadata" playsinline></video>
+      <video class="sp-video" src={cut} controls preload="metadata" playsinline poster={`${stillsBase}/singer-stage.jpg`}></video>
       <p class="sp-note">
-        This is the first full render, made entirely in code with Remotion and timed to the real track. The Terminal
-        scenes are close to final. The dashed frames mark where AI-generated shots go once the singer is cast; each one
-        shows the scene card it will be generated from.
+        The Terminal scenes are rendered in code with Remotion. The Stage shots are generated with HeyGen Video 1: 23 shots
+        animated from 8 reference stills, with every chorus shot lip-synced to the real vocal. The earlier
+        <a href={animatic}>code-only animatic</a> shows the cut before any shots were generated.
       </p>
+    </section>
+
+    <section class="sp-section" aria-labelledby="stills-h">
+      <div class="sp-section-head">
+        <h2 id="stills-h">Cast stills</h2>
+        <span class="sp-tag">one face, every persona</span>
+      </div>
+      <ul class="sp-stills">
+        {book.stills.map((id) => (
+          <li>
+            <img src={`${stillsBase}/${id}.jpg`} alt={`Reference still: ${id.replace('singer-', '')}`} loading="lazy" width="688" height="384" />
+            <span>{id.replace('singer-', '')}</span>
+          </li>
+        ))}
+      </ul>
     </section>
 
     <section class="sp-section" aria-labelledby="timeline-h">
@@ -136,7 +153,7 @@ const repo = 'https://github.com/VoynichLabs/voynich-website';
 
     <section class="sp-section sp-two" aria-label="Open decisions and process">
       <div>
-        <h2>Open decisions</h2>
+        <h2>Decisions</h2>
         <ol class="sp-decisions">
           {book.decisions.map((d) => <li>{d}</li>)}
         </ol>
@@ -146,7 +163,7 @@ const repo = 'https://github.com/VoynichLabs/voynich-website';
         <ol class="sp-process">
           <li><strong>Timing.</strong> The vocal is transcribed with Whisper and aligned word by word against the lyrics. A beat grid comes from librosa.</li>
           <li><strong>Terminal scenes.</strong> Rendered in code with Remotion, in the site's own palette and type.</li>
-          <li><strong>Stage scenes.</strong> One reference still per persona, animated with image-to-video models. Lip-synced chorus shots come from an avatar model driven by the isolated vocal.</li>
+          <li><strong>Stage scenes.</strong> One reference still per persona, animated with HeyGen Video 1 through OpenRouter. Chorus shots take the persona still plus the matching slice of the real vocal, so the singing is lip-synced to the track.</li>
           <li><strong>Edit.</strong> A shot list drives the composition, so a regenerated shot drops straight into the cut.</li>
         </ol>
         <p class="sp-note">
@@ -223,6 +240,10 @@ const repo = 'https://github.com/VoynichLabs/voynich-website';
   .sp-note { font-size: 14px; color: #8b8ba8; line-height: 1.6; max-width: 72ch; margin-top: 12px; }
   .sp-video { width: 100%; max-width: 100%; aspect-ratio: 16 / 9; background: #0a0a0a; border: 1px solid #2a2a3e; border-radius: 10px; }
   .sp-audio { width: 100%; margin-bottom: 14px; }
+  .sp-stills { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .sp-stills li { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  .sp-stills img { width: 100%; max-width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px; border: 1px solid #1e1e2e; }
+  .sp-stills span { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8b8ba8; }
 
   .sp-timeline { position: relative; display: flex; gap: 2px; height: 46px; }
   .sp-seg {

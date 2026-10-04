@@ -7,6 +7,8 @@
 import scenesData from '../../data/system-prompt/scenes.json';
 import wordsData from '../../data/system-prompt/timing/words.json';
 import beatsData from '../../data/system-prompt/timing/beats.json';
+import shotsData from '../../data/system-prompt/shots.json';
+import ledgerData from '../../data/system-prompt/ledger.json';
 
 export const FPS = 30;
 export const END_CARD_SECONDS = 4;
@@ -36,6 +38,12 @@ export const words = wordsData.words as Word[];
 export const beats = beatsData.beats as number[];
 export const downbeats = beatsData.downbeats as number[];
 export const songSeconds = beatsData.duration;
+
+export type Shot = { id: string; scene: number; model: string; audio?: { start: number; end: number } };
+export const shots = shotsData.shots as Shot[];
+export const shotById = (id: string) => shots.find((s) => s.id === id);
+/** A shot is usable once generate.mjs has logged it as completed. */
+export const clipReady = (id: string) => (ledgerData as { kind: string; id: string }[]).some((e) => e.kind === 'shot' && e.id === id);
 
 export const totalFrames = Math.ceil((songSeconds + END_CARD_SECONDS) * FPS);
 export const toFrame = (s: number) => Math.round(s * FPS);

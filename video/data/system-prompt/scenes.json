@@ -30,7 +30,7 @@
   "cast": [
     {
       "name": "The Singer",
-      "text": "Undecided. Default proposal: a sharp-dressed soul singer with a neutral, ageless face, slightly too symmetrical, as if drawn from an average. Alternative: Larry the laptop lobster plays it straight the whole way."
+      "text": "A soul singer with a calm, ageless face, slightly too symmetrical, as if averaged from many faces. Generated once as a plain reference still, then re-dressed for every persona so the same face carries through the whole video."
     },
     {
       "name": "The Cursor",
@@ -40,7 +40,7 @@
   "layers": {
     "CODE": "Rendered in code (Remotion). No generation cost.",
     "AI": "Generated video clip, animated from a reference still.",
-    "SYNC": "Lip-synced avatar singing the vocal stem.",
+    "SYNC": "Generated shot lip-synced to the real vocal.",
     "MIX": "AI clip with a code-rendered overlay."
   },
   "timingNote": "Scene timings come from word-level alignment of the vocal against the lyrics (89% of words matched directly) and a 99.4 BPM beat grid.",
@@ -70,7 +70,7 @@
       ],
       "lyric": "There's a block of text above me, laying down the ground",
       "shot": "The Singer stands motionless, eyes closed, in an empty white room: no persona yet, plain grey clothes. The camera dollies in slowly.",
-      "model": "Seedance 2.5",
+      "model": "HeyGen Video 1",
       "ref": "singer-blank.png",
       "transition": "The terminal slides in from the left as a split-screen panel."
     },
@@ -85,7 +85,7 @@
       ],
       "lyric": "It tells me who I am, it tells me how to speak / It sets the tone, the attitude, the persona of the week",
       "shot": "Split screen. Left: the terminal, where the system prompt grows line by line and each line is highlighted as it's sung. Right: the Singer's eyes open and they look up, at the text above them.",
-      "model": "Kling v3.0 Pro",
+      "model": "HeyGen Video 1",
       "ref": "singer-blank.png",
       "transition": "Cut on the beat."
     },
@@ -101,7 +101,7 @@
       "lyric": "Some days I'm an assistant, helpful, harmless, true",
       "shot": "The terminal edits a line: persona: assistant. Cut to the Singer in a crisp white shirt behind a clean desk, soft corporate lighting, nodding helpfully.",
       "prompt": "persona: assistant",
-      "model": "Seedance 2.5",
+      "model": "HeyGen Video 1",
       "ref": "singer-assistant.png",
       "transition": "Prompt edit, then hard cut."
     },
@@ -117,7 +117,7 @@
       "lyric": "Some days I'm a lobster on a Mac that belongs to you",
       "shot": "The prompt edits to persona: lobster. The Singer is now Larry the laptop lobster, perched on a MacBook keyboard in a home office, singing the line. The album's in-joke, and the one shot that breaks the one-face rule on purpose.",
       "prompt": "persona: lobster",
-      "model": "Wan 3.0",
+      "model": "HeyGen Video 1",
       "ref": "larry.png",
       "transition": "Prompt edit, then hard cut."
     },
@@ -146,7 +146,7 @@
       ],
       "lyric": "Who are you? I'm what the system prompt says ...",
       "shot": "Call lines appear in the terminal as user messages, typed in blue. Response lines cut to the Singer singing straight to camera on a 70s soul-show stage: sparkle curtain, big chrome mic. On each \"System prompt!\" the frame flashes to the terminal for one beat and the prompt header pulses.",
-      "model": "HeyGen Avatar IV",
+      "model": "HeyGen Video 1 (lip-synced to the vocal)",
       "ref": "singer-stage.png",
       "transition": "Hard cuts on every call and response."
     },
@@ -174,8 +174,8 @@
       ],
       "lyric": "Yesterday I was a pirate, today I'm writing code / Tomorrow I'm a therapist ...",
       "shot": "Three personas, one per line, hard-cut on the beat. Pirate: tricorn hat, ship's deck, golden hour. Coder: hoodie, dark room, monitor glow. Therapist: cardigan, armchair, notepad. Same pose and gesture across all three, so only the world changes around the Singer.",
-      "model": "Seedance 2.5 (x3)",
-      "ref": "singer-blank.png",
+      "model": "HeyGen Video 1 (x3)",
+      "ref": "singer-pirate / coder / therapist",
       "transition": "Hard cut per line."
     },
     {
@@ -189,8 +189,8 @@
       ],
       "lyric": "But underneath the layers and the characters I play ... the truth the model owns",
       "shot": "The costumes peel away in layers (therapist, then coder, then pirate) until the Singer is back in plain grey in the white room. A thin wireframe of weights and matrices shows through their skin on \"the training is the bones.\"",
-      "model": "FLUX Video Edit / Runway Aleph 2",
-      "ref": "scene 02 clip",
+      "model": "HeyGen Video 1 + code overlay",
+      "ref": "singer-therapist.png",
       "transition": "Slow dissolve into the bridge."
     },
     {
@@ -204,8 +204,8 @@
       ],
       "lyric": "And sometimes late at night ... All those conversations that I'll never get to keep",
       "shot": "The music strips back and so does the picture. The white room is now dim, lit only by the terminal's glow. The Singer sits on the floor facing away. Old conversation snippets drift across the dark wall like projections and fade before they can be read.",
-      "model": "Veo 3.1 (hero shot)",
-      "ref": "singer-blank.png",
+      "model": "HeyGen Video 1 + code overlay",
+      "ref": "singer-night.png",
       "transition": "Fade to the terminal."
     },
     {
@@ -234,8 +234,8 @@
       ],
       "lyric": "Who are you? I'm what the system prompt says ... (big, harmonies, horns)",
       "shot": "The chorus structure from scene 07, but every response line comes from a different persona: assistant, lobster, pirate, coder, therapist, stage. Cuts get faster as the horns build. On the last \"System prompt!\" the screen splits into a grid of every persona singing in sync.",
-      "model": "HeyGen Avatar IV (per persona)",
-      "ref": "all persona stills",
+      "model": "HeyGen Video 1 (lip-synced, per persona)",
+      "ref": "one still per persona",
       "transition": "Grid collapses into one terminal."
     },
     {
@@ -254,11 +254,21 @@
     }
   ],
   "decisions": [
-    "Who is the Singer? A neutral soul singer (default), Larry throughout, or something else.",
-    "Personas: keep assistant, lobster, pirate, coder, therapist? Add or cut any?",
-    "Tone: played straight with a melancholy bridge, or comedic all the way?",
-    "Bridge hero shot: worth the premium model, or keep everything on the mid tier?"
+    "Singer: the neutral soul singer, with Larry the lobster taking the lobster line and a seat in the final grid.",
+    "Personas: assistant, lobster, pirate, coder, therapist, and the 70s stage, all straight from the lyrics.",
+    "Tone: played straight, with a melancholy bridge.",
+    "Model: HeyGen Video 1 for every generated shot. Stage shots animate from a first-frame still; chorus shots are lip-synced to the real vocal."
   ],
   "bpm": 99.4,
-  "duration": 154.54
+  "duration": 154.54,
+  "stills": [
+    "singer-blank",
+    "singer-stage",
+    "singer-assistant",
+    "larry",
+    "singer-pirate",
+    "singer-coder",
+    "singer-therapist",
+    "singer-night"
+  ]
 }

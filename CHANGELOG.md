@@ -5,6 +5,22 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.29.0] - 2026-10-04
+
+### Added
+- **System Prompt music video, cut v1** (`public/video/system-prompt/system-prompt-v1.mp4`, 1080p). 23 Stage shots generated with HeyGen Video 1 (`heygen/heygen-video-1`) via OpenRouter: 10 animated from first-frame persona stills and 13 lip-synced to slices of the real vocal. Terminal scenes, captions and the edit stay in Remotion. Generation cost $3.93 total, logged per shot in `video/data/system-prompt/ledger.json`.
+- **Eight reference stills** (gemini-3.1-flash-image): one neutral Singer re-dressed as assistant, pirate, coder, therapist, 70s stage and the bridge scene, plus Larry. Shown on the storyboard page under "Cast stills".
+- **Latent Space track 10 links to the video.** A VIDEO tag in the track list and a "Watch the music video" link in the now-playing panel.
+- `video/scripts/generate.mjs` gains `segments` (cuts lip-sync vocal windows into `public/video/system-prompt/segments/`, because OpenRouter only accepts HTTPS audio references) and `shots` targeting HeyGen Video 1.
+
+### Changed
+- Storyboard page leads with cut v1; the code-only animatic stays linked. Open decisions are now recorded as decisions.
+- Composition (`video/src/SystemPrompt.tsx`) mounts generated clips via a new `Clip` component; lip-synced shots are positioned by their vocal-segment start time, so they stay locked to the master track. Missing shots still fall back to their scene card.
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.28.0] - 2026-10-04
 
 ### Added

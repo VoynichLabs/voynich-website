@@ -47,5 +47,6 @@ Publishing an animatic to the site: copy the render to `../public/video/{slug}/a
 
 ## Status
 
-- Phase 1 (code-only animatic): done for System Prompt. AI-shot slots render as scene-card frames.
-- Phase 2 (reference stills) and Phase 3 (AI shots via OpenRouter): blocked on casting the Singer and on budget. See plan open questions.
+- System Prompt cut v1 is done: stills (`generate.mjs stills`), vocal segments (`generate.mjs segments`, then deploy the site so the HTTPS URLs resolve), shots (`generate.mjs shots`, HeyGen Video 1), then render.
+- HeyGen Video 1 notes: always renders audio (do not send `generate_audio: false`); `frame_images` supports `first_frame` only; lip-sync uses `input_references` = [persona still, HTTPS audio URL] and the returned clip's audio starts exactly at the segment start.
+- Generated clips live in `public/clips/` (gitignored); `data/{slug}/ledger.json` records which shots exist and what they cost.

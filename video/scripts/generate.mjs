@@ -116,7 +116,7 @@ async function shots() {
       ...(s.duration ? { duration: s.duration } : {}),
       ...(s.resolution ?? cfg.resolution ? { resolution: s.resolution ?? cfg.resolution } : {}),
       aspect_ratio: s.aspect_ratio ?? cfg.aspect_ratio ?? '16:9',
-      generate_audio: false,
+      ...(cfg.generate_audio !== undefined ? { generate_audio: cfg.generate_audio } : {}),
     };
     if (s.first || s.last) {
       body.frame_images = [

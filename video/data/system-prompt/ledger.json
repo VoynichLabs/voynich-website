@@ -61,5 +61,259 @@
   "id": "c2-l4-stage",
   "model": "heygen/avatar-iv",
   "error": "400 {\"error\":{\"message\":\"Invalid reference URL: input_references[1].audio_url.url: Only HTTPS URLs are allowed\",\"code\":400}}"
+ },
+ {
+  "at": "2026-10-04T18:06:00.262Z",
+  "kind": "shot-failed",
+  "id": "s05-larry",
+  "model": "heygen/heygen-video-1",
+  "error": "400 {\"error\":{\"message\":\"HeyGen Video 1 always renders an audio track; generate_audio cannot be set to false\",\"code\":400}}"
+ },
+ {
+  "at": "2026-10-04T18:06:00.299Z",
+  "kind": "shot-failed",
+  "id": "s02-reveal",
+  "model": "heygen/heygen-video-1",
+  "error": "400 {\"error\":{\"message\":\"HeyGen Video 1 always renders an audio track; generate_audio cannot be set to false\",\"code\":400}}"
+ },
+ {
+  "at": "2026-10-04T18:06:00.380Z",
+  "kind": "shot-failed",
+  "id": "s13-larry",
+  "model": "heygen/heygen-video-1",
+  "error": "400 {\"error\":{\"message\":\"HeyGen Video 1 always renders an audio track; generate_audio cannot be set to false\",\"code\":400}}"
+ },
+ {
+  "at": "2026-10-04T18:06:00.403Z",
+  "kind": "shot-failed",
+  "id": "s03-lookup",
+  "model": "heygen/heygen-video-1",
+  "error": "400 {\"error\":{\"message\":\"HeyGen Video 1 always renders an audio track; generate_audio cannot be set to false\",\"code\":400}}"
+ },
+ {
+  "at": "2026-10-04T18:06:00.492Z",
+  "kind": "shot-failed",
+  "id": "s09-pirate",
+  "model": "heygen/heygen-video-1",
+  "error": "400 {\"error\":{\"message\":\"HeyGen Video 1 always renders an audio track; generate_audio cannot be set to false\",\"code\":400}}"
+ },
+ {
+  "at": "2026-10-04T18:06:00.500Z",
+  "kind": "shot-failed",
+  "id": "s04-assistant",
+  "model": "heygen/heygen-video-1",
+  "error": "400 {\"error\":{\"message\":\"HeyGen Video 1 always renders an audio track; generate_audio cannot be set to false\",\"code\":400}}"
+ },
+ {
+  "at": "2026-10-04T18:06:00.621Z",
+  "kind": "shot-failed",
+  "id": "s11-night",
+  "model": "heygen/heygen-video-1",
+  "error": "400 {\"error\":{\"message\":\"HeyGen Video 1 always renders an audio track; generate_audio cannot be set to false\",\"code\":400}}"
+ },
+ {
+  "at": "2026-10-04T18:06:00.683Z",
+  "kind": "shot-failed",
+  "id": "s09-coder",
+  "model": "heygen/heygen-video-1",
+  "error": "400 {\"error\":{\"message\":\"HeyGen Video 1 always renders an audio track; generate_audio cannot be set to false\",\"code\":400}}"
+ },
+ {
+  "at": "2026-10-04T18:06:00.694Z",
+  "kind": "shot-failed",
+  "id": "s10-underneath",
+  "model": "heygen/heygen-video-1",
+  "error": "400 {\"error\":{\"message\":\"HeyGen Video 1 always renders an audio track; generate_audio cannot be set to false\",\"code\":400}}"
+ },
+ {
+  "at": "2026-10-04T18:06:00.705Z",
+  "kind": "shot-failed",
+  "id": "s09-therapist",
+  "model": "heygen/heygen-video-1",
+  "error": "400 {\"error\":{\"message\":\"HeyGen Video 1 always renders an audio track; generate_audio cannot be set to false\",\"code\":400}}"
+ },
+ {
+  "at": "2026-10-04T18:06:41.856Z",
+  "kind": "shot",
+  "id": "s09-coder",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791137183-zVPtGpBLnPwKG4z5vDOe",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:06:42.345Z",
+  "kind": "shot",
+  "id": "s09-pirate",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791137183-Gzj3M7ElIW9YeO5AJ0D0",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:06:55.954Z",
+  "kind": "shot",
+  "id": "s02-reveal",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791137183-6XcsUru9UYi695DbMqbZ",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:06:56.137Z",
+  "kind": "shot",
+  "id": "s03-lookup",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791137183-duxzlcPGF7xIixzn3TrO",
+  "cost": 0.0891
+ },
+ {
+  "at": "2026-10-04T18:06:56.783Z",
+  "kind": "shot",
+  "id": "s05-larry",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791137183-A8XYmtg2CBTnKIXugreM",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:06:57.079Z",
+  "kind": "shot",
+  "id": "s11-night",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791137183-qcr4iyiQWmyljKlWfBjh",
+  "cost": 0.22275
+ },
+ {
+  "at": "2026-10-04T18:06:57.297Z",
+  "kind": "shot",
+  "id": "s13-larry",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791137183-Ij9vjJ3PBnIRr2fU0VvE",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:07:11.626Z",
+  "kind": "shot",
+  "id": "s10-underneath",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791137183-GfHqWX3JnVPDX6zFqbHc",
+  "cost": 0.1782
+ },
+ {
+  "at": "2026-10-04T18:07:11.653Z",
+  "kind": "shot",
+  "id": "s09-therapist",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791137183-5x5Qi51Sh2Nj7RXBFLhE",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:07:12.254Z",
+  "kind": "shot",
+  "id": "s04-assistant",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791137183-N1InAKTyFxsk5JGs4aVA",
+  "cost": 0.07425
+ },
+ {
+  "at": "2026-10-04T18:10:42.840Z",
+  "kind": "shot",
+  "id": "c2-l7-coder",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791137408-uvRfGG01afv4mRPFvyPR",
+  "cost": 0.1485
+ },
+ {
+  "at": "2026-10-04T18:10:58.061Z",
+  "kind": "shot",
+  "id": "c2-l7-therapist",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791137408-9uQg7iClVmvLPk3phsCI",
+  "cost": 0.1485
+ },
+ {
+  "at": "2026-10-04T18:11:12.653Z",
+  "kind": "shot",
+  "id": "c2-l7-assistant",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791137408-55f9bp1FYr6WJvh3q1yJ",
+  "cost": 0.1485
+ },
+ {
+  "at": "2026-10-04T18:11:13.311Z",
+  "kind": "shot",
+  "id": "c2-l7-stage",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791137408-yXyYD99Y3jOfArhGNKNv",
+  "cost": 0.1485
+ },
+ {
+  "at": "2026-10-04T18:11:13.381Z",
+  "kind": "shot",
+  "id": "c2-l2-coder",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791137408-SH5AHT037UxbIKUe12Rj",
+  "cost": 0.1485
+ },
+ {
+  "at": "2026-10-04T18:11:57.751Z",
+  "kind": "shot",
+  "id": "c2-l7-pirate",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791137408-xro2SBdS947RM6wYkeXz",
+  "cost": 0.1485
+ },
+ {
+  "at": "2026-10-04T18:12:13.116Z",
+  "kind": "shot",
+  "id": "c2-l3-therapist",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791137408-b4xnmUKg0tXPvs6WFa3j",
+  "cost": 0.1485
+ },
+ {
+  "at": "2026-10-04T18:12:28.158Z",
+  "kind": "shot",
+  "id": "c2-l4-stage",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791137408-ybfEAUG5AchvNqVD4yBP",
+  "cost": 0.1485
+ },
+ {
+  "at": "2026-10-04T18:12:43.638Z",
+  "kind": "shot",
+  "id": "c2-l6-blank",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791137408-BUQu2REowxdj9kSkTnpj",
+  "cost": 0.1485
+ },
+ {
+  "at": "2026-10-04T18:12:58.885Z",
+  "kind": "shot",
+  "id": "c1b-stage",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791137408-26zFSQ5vtA6bK2pkN0Uy",
+  "cost": 0.3564
+ },
+ {
+  "at": "2026-10-04T18:15:01.104Z",
+  "kind": "shot",
+  "id": "c2-l0-assistant",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791137408-gYy8crTsoRzsHuik47ya",
+  "cost": 0.1485
+ },
+ {
+  "at": "2026-10-04T18:15:01.277Z",
+  "kind": "shot",
+  "id": "c2-l1-pirate",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791137408-F85LtCxvfmJvyktSLgKU",
+  "cost": 0.1485
+ },
+ {
+  "at": "2026-10-04T18:16:01.633Z",
+  "kind": "shot",
+  "id": "c1a-stage",
+  "model": "heygen/heygen-video-1",
+  "job": "gen-vid-1791137409-SFGUT40px7ydDzKzrkgr",
+  "cost": 0.3861
  }
 ]
