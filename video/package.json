@@ -9,6 +9,7 @@
     "render:system-prompt:preview": "remotion render src/index.ts SystemPrompt out/system-prompt-animatic-720p.mp4 --scale=0.6666666666666666 --crf=28",
     "still": "remotion still src/index.ts SystemPrompt",
     "thumb:system-prompt": "remotion still src/index.ts SystemPromptThumb ../public/video/system-prompt/thumbnail.jpg --image-format=jpeg --jpeg-quality=88",
+    "thumb:system-prompt-v1": "remotion still src/index.ts SystemPromptV1Thumb ../public/video/system-prompt/thumbnail-v1.jpg --image-format=jpeg --jpeg-quality=88",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

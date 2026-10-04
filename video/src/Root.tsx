@@ -5,12 +5,13 @@
 // SRP/DRY check: Pass - composition sizing lives here; scene logic lives in each video file.
 import { Composition, Still } from 'remotion';
 import { SystemPrompt } from './SystemPrompt';
-import { SystemPromptThumb } from './Thumbnail';
+import { SystemPromptThumb, SystemPromptV1Thumb } from './Thumbnail';
 import { FPS, totalFrames } from './lib/timing';
 
 export const Root: React.FC = () => (
   <>
   <Still id="SystemPromptThumb" component={SystemPromptThumb} width={1280} height={720} />
+  <Still id="SystemPromptV1Thumb" component={SystemPromptV1Thumb} width={1280} height={720} />
   <Composition
     id="SystemPrompt"
     component={SystemPrompt}

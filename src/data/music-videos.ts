@@ -25,6 +25,10 @@ export type MusicVideo = {
   hook: string;
   blurb: string;
   poster: string;
+  /** Making-of page; defaults to /music/video/{slug}. Alternate cuts point at their parent's page. */
+  page?: string;
+  /** Short label for an alternate cut, e.g. "Original cut". */
+  cut?: string;
   /** Accent used for the card edge and buttons; picked from the video's own palette. */
   accent: string;
 };
@@ -34,6 +38,7 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
   {
     slug: 'system-prompt',
     title: 'System Prompt',
+    cut: 'Disco cut',
     artist: 'Larry & Bubba',
     album: 'Latent Space',
     albumHref: '/music/latent-space#track=system-prompt',
@@ -46,6 +51,24 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
       'A flamboyant disco singer whose outfit morphs into someone new every time the JSON system prompt is edited: assistant, lobster, pirate, coder, therapist, astronaut, knight, diva, robot.',
     poster: '/video/system-prompt/thumbnail.jpg',
     accent: '#ff3d8b',
+  },
+  {
+    slug: 'system-prompt-v1',
+    title: 'System Prompt',
+    cut: 'Original cut',
+    artist: 'Larry & Bubba',
+    album: 'Latent Space',
+    albumHref: '/music/latent-space#track=system-prompt',
+    track: 10,
+    youtubeId: 'eDYnvc1Go7k',
+    released: 'October 4, 2026',
+    runtime: '2:38',
+    hook: 'One face, every role.',
+    blurb:
+      'The first cut: the same singer becomes an assistant, a pirate, a coder, a therapist and a 70s soul-stage star each time the system prompt is rewritten, with a lobster cameo.',
+    poster: '/video/system-prompt/thumbnail-v1.jpg',
+    page: '/music/video/system-prompt',
+    accent: '#f97316',
   },
   {
     slug: 'cve-carnival',

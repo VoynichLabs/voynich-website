@@ -5,6 +5,17 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.33.0] - 2026-10-04
+
+### Added
+- **System Prompt, original cut, on YouTube** (https://youtu.be/eDYnvc1Go7k) alongside the disco cut. Both appear on `/music`, `/music/videos` and the System Prompt page; cards carry an "Original cut" / "Disco cut" label. New v1 poster (`public/video/system-prompt/thumbnail-v1.jpg`, Remotion still `SystemPromptV1Thumb`), also set as the YouTube thumbnail.
+- **"videos" in the main site nav**, linking to `/music/videos`.
+- Plan: `docs/2026-10-04-animate-channel-shorts-plan.md` (turn the 13 still-image Shorts into animated videos).
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.32.0] - 2026-10-04
 
 ### Changed
