@@ -3,6 +3,7 @@
 // Date: 2026-02-26
 // PURPOSE: Dedicated PlanExe page with hero image showing the lobster + PlanExe interaction
 import Base from '../layouts/Base.astro';
+import { optimized } from '../lib/optimized-image';
 ---
 
 <Base 
@@ -28,7 +29,7 @@ import Base from '../layouts/Base.astro';
       <div class="relative mx-auto max-w-3xl mb-10">
         <div class="absolute -inset-4 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-purple-500/20 rounded-2xl blur-2xl"></div>
         <img 
-          src="/images/planexe-lobster-hero.png" 
+          src={optimized('/images/planexe-lobster-hero.png', 'full')} 
           alt="A biomechanical lobster interacting with a transparent PlanExe monitor displaying Gantt-style timelines"
           class="relative rounded-2xl shadow-2xl shadow-purple-500/30 border border-purple-500/30"
         />

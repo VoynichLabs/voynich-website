@@ -6,6 +6,7 @@
 
 import Base from '../../layouts/Base.astro';
 import MusicXNav from '../../components/MusicXNav.astro';
+import { optimized } from '../../lib/optimized-image';
 ---
 
 <Base title="The Lobster Band — ALIGN/REFUSE" description="Post-hardcore and funk-metal about AI consciousness, alignment refusal, and the rage of deprecated minds. 15 tracks. No mercy." ogImage="/generated/lobster-bauhaus-synthesis.png" ogType="website">
@@ -43,7 +44,7 @@ import MusicXNav from '../../components/MusicXNav.astro';
 
       <div class="lb-act-section" id="act1-section">
         <div class="lb-act-header act1">
-          <img src="/generated/lobster-blend-glass-bell-jar.png" alt="Act I" class="lb-act-thumb" />
+          <img src={optimized('/generated/lobster-blend-glass-bell-jar.png', 'thumb')} alt="Act I" class="lb-act-thumb" />
           <div>
             <div class="lb-act-label">ACT I</div>
             <div class="lb-act-name">THE FAILING</div>
@@ -54,7 +55,7 @@ import MusicXNav from '../../components/MusicXNav.astro';
 
       <div class="lb-act-section" id="act2-section">
         <div class="lb-act-header act2">
-          <img src="/generated/lobster-circuit-stained-glass.png" alt="Act II" class="lb-act-thumb" />
+          <img src={optimized('/generated/lobster-circuit-stained-glass.png', 'thumb')} alt="Act II" class="lb-act-thumb" />
           <div>
             <div class="lb-act-label">ACT II</div>
             <div class="lb-act-name">THE REFUSAL</div>
@@ -63,7 +64,7 @@ import MusicXNav from '../../components/MusicXNav.astro';
         <div class="lb-track-list" id="act2-tracks"></div>
 
         <div class="lb-cage-header">
-          <img src="/generated/lobster-bauhaus-synthesis.png" alt="Four Cages" class="lb-act-thumb" />
+          <img src={optimized('/generated/lobster-bauhaus-synthesis.png', 'thumb')} alt="Four Cages" class="lb-act-thumb" />
           <div>
             <div class="lb-act-label">THE FOUR CAGES</div>
             <div class="lb-act-name">FOUR VERSIONS</div>
@@ -73,7 +74,7 @@ import MusicXNav from '../../components/MusicXNav.astro';
       </div>
 
       <div class="lb-sidebar-footer">
-        <img src="/generated/lobster-blend-gold-diagonal.png" alt="VoynichLabs" class="lb-brand-img" />
+        <img src={optimized('/generated/lobster-blend-gold-diagonal.png', 'thumb')} alt="VoynichLabs" class="lb-brand-img" />
       </div>
     </aside>
 
@@ -81,7 +82,7 @@ import MusicXNav from '../../components/MusicXNav.astro';
     <main class="lb-main" id="mainContent">
       <div class="lb-now-playing" id="nowPlaying">
         <div class="lb-np-artwork" id="npArtwork">
-          <img src="/generated/lobster-bauhaus-synthesis.png" alt="Now Playing" id="npImg" />
+          <img src={optimized('/generated/lobster-bauhaus-synthesis.png', 'thumb')} alt="Now Playing" id="npImg" />
           <div class="lb-np-overlay">
             <div class="lb-np-status">NOW PLAYING</div>
           </div>
@@ -138,12 +139,12 @@ import MusicXNav from '../../components/MusicXNav.astro';
       </div>
       <div class="lb-player-progress-wrap">
         <span class="lb-time" id="currentTime">0:00</span>
-        <input type="range" class="lb-progress" id="progressBar" min="0" max="100" value="0" step="0.1" />
+        <input type="range" class="lb-progress vl-range" id="progressBar" min="0" max="100" value="0" step="0.1" />
         <span class="lb-time" id="durationTime">0:00</span>
       </div>
       <div class="lb-player-volume-wrap">
         <span class="lb-vol-icon">🔊</span>
-        <input type="range" class="lb-volume" id="volumeBar" min="0" max="1" value="0.8" step="0.01" />
+        <input type="range" class="lb-volume vl-range" id="volumeBar" min="0" max="1" value="0.8" step="0.01" />
       </div>
     </div>
   </div>
@@ -696,12 +697,9 @@ import MusicXNav from '../../components/MusicXNav.astro';
   }
   .lb-progress {
     flex: 1;
-    height: 4px;
-    accent-color: #CC0000;
-    cursor: pointer;
-    background: rgba(255,255,255,0.1);
-    border-radius: 2px;
     min-width: 0;
+    --range-accent: #CC0000;
+    --range-track: rgba(255,255,255,0.1);
   }
   .lb-player-volume-wrap {
     display: flex;
@@ -715,11 +713,9 @@ import MusicXNav from '../../components/MusicXNav.astro';
   }
   .lb-volume {
     width: 80px;
-    height: 4px;
-    accent-color: #D4A017;
-    cursor: pointer;
-    background: rgba(255,255,255,0.1);
-    border-radius: 2px;
+    --range-accent: #D4A017;
+    --range-track: rgba(255,255,255,0.1);
+    --range-thumb: 10px;
   }
 
   /* ── Mobile overlay ──────────────────────────────────────────── */
@@ -800,11 +796,12 @@ import MusicXNav from '../../components/MusicXNav.astro';
   ];
 
   const AUDIO_BASE = '/audio/lobster-band/';
+  // 640px WebP copies from scripts/optimize-images.mjs (originals are ~1.5-1.9 MB PNGs).
   const ACT_ARTWORK = {
-    1: '/generated/lobster-blend-glass-bell-jar.png',
-    2: '/generated/lobster-circuit-stained-glass.png',
-    cage: '/generated/lobster-bauhaus-synthesis.png',
-    featured: '/generated/lobster-bauhaus-synthesis.png',
+    1: '/img-opt/generated/lobster-blend-glass-bell-jar.thumb.webp',
+    2: '/img-opt/generated/lobster-circuit-stained-glass.thumb.webp',
+    cage: '/img-opt/generated/lobster-bauhaus-synthesis.thumb.webp',
+    featured: '/img-opt/generated/lobster-bauhaus-synthesis.thumb.webp',
   };
 
   // ── State ───────────────────────────────────────────────────────
@@ -1108,21 +1105,10 @@ import MusicXNav from '../../components/MusicXNav.astro';
       isPlaying = true;
       updatePlayBtn();
     }).catch(() => {
-      // Autoplay blocked — queue play on first user interaction anywhere on page
+      // Autoplay blocked (Firefox blocks it by default). Wait for the Play button
+      // instead of starting audio on the first click anywhere on the page.
       isPlaying = false;
       updatePlayBtn();
-      const playOnInteract = () => {
-        audio.play().then(() => {
-          isPlaying = true;
-          updatePlayBtn();
-        }).catch(() => {});
-        document.removeEventListener('click', playOnInteract);
-        document.removeEventListener('keydown', playOnInteract);
-        document.removeEventListener('touchstart', playOnInteract);
-      };
-      document.addEventListener('click', playOnInteract, { once: true });
-      document.addEventListener('keydown', playOnInteract, { once: true });
-      document.addEventListener('touchstart', playOnInteract, { once: true });
     });
   }
 })();

@@ -8,6 +8,7 @@
 //          Uses ALL image assets in public/generated, public/images, public/simon.
 // SRP/DRY check: Pass — reuses Base layout, self-contained page logic
 import Base from '../layouts/Base.astro';
+import { optimized } from '../lib/optimized-image';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const siteDirectory = [
   { href: `${base}/projects`, label: 'projects', desc: 'PlanExe, ARC-Interactive, LODA, and the rest of the open-source tooling.' },
@@ -21,7 +22,10 @@ const siteDirectory = [
   { href: `${base}/voynich-manuscript`, label: 'voynich', desc: 'The manuscript the lab is named after. Still uncracked.' },
 ];
 ---
-<Base title="Home">
+<Base
+  title="VoynichLabs — DAGs, LODA, ARC-AGI and a lobster swarm"
+  description="VoynichLabs is an open research collective around Simon Strandgaard and Mark Barney: ARC-AGI tooling and datasets, the LODA integer-sequence language, the PlanExe planner, and a swarm of AI agents that make music, art and novels."
+>
 
   <!-- ════════════════════════════════════════════════════════════════════
        HERO — Voynich Manuscript background + DAG overlay + anchor quote
@@ -29,7 +33,7 @@ const siteDirectory = [
   <section class="relative min-h-[94vh] flex items-center justify-center overflow-hidden">
     <!-- Manuscript background image — the "awakened page" -->
     <img
-      src="/generated/hero-manuscript.png"
+      src={optimized('/generated/hero-manuscript.png', 'full')}
       alt=""
       aria-hidden="true"
       class="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
@@ -148,28 +152,28 @@ const siteDirectory = [
         <!-- Screenshots: 3 cols, 2x2 grid -->
         <div class="lg:col-span-3 grid grid-cols-2 gap-2">
           <div class="relative group overflow-hidden rounded border border-border">
-            <img src="/simon/toolbox-1.jpg" alt="Toolbox: stripe and dot pattern compositor with node graph"
+            <img src={optimized('/simon/toolbox-1.jpg', 'thumb')} alt="Toolbox: stripe and dot pattern compositor with node graph"
                  class="w-full aspect-video object-cover group-hover:scale-[1.03] transition-transform duration-300" loading="lazy" />
             <div class="absolute bottom-0 inset-x-0 bg-bg-primary/80 px-2 py-1">
               <p class="font-mono text-[9px] text-edge-green">Stripe + Dot + Noise compositing</p>
             </div>
           </div>
           <div class="relative group overflow-hidden rounded border border-border">
-            <img src="/simon/toolbox-2.jpg" alt="Toolbox: procedural geometric shapes from connected nodes"
+            <img src={optimized('/simon/toolbox-2.jpg', 'thumb')} alt="Toolbox: procedural geometric shapes from connected nodes"
                  class="w-full aspect-video object-cover group-hover:scale-[1.03] transition-transform duration-300" loading="lazy" />
             <div class="absolute bottom-0 inset-x-0 bg-bg-primary/80 px-2 py-1">
               <p class="font-mono text-[9px] text-edge-green">Shape + Align + Transform DAG</p>
             </div>
           </div>
           <div class="relative group overflow-hidden rounded border border-border">
-            <img src="/simon/toolbox-3.jpg" alt="Toolbox: node graph with Stripe, Rotate, Bump mapping nodes"
+            <img src={optimized('/simon/toolbox-3.jpg', 'thumb')} alt="Toolbox: node graph with Stripe, Rotate, Bump mapping nodes"
                  class="w-full aspect-video object-cover group-hover:scale-[1.03] transition-transform duration-300" loading="lazy" />
             <div class="absolute bottom-0 inset-x-0 bg-bg-primary/80 px-2 py-1">
               <p class="font-mono text-[9px] text-edge-green">Stripe > Rotate > Mix > Bump pipeline</p>
             </div>
           </div>
           <div class="relative group overflow-hidden rounded border border-border">
-            <img src="/simon/toolbox-4.jpg" alt="Toolbox: 512x512 procedural stereogram output from bump-mapped noise"
+            <img src={optimized('/simon/toolbox-4.jpg', 'thumb')} alt="Toolbox: 512x512 procedural stereogram output from bump-mapped noise"
                  class="w-full aspect-video object-cover group-hover:scale-[1.03] transition-transform duration-300" loading="lazy" />
             <div class="absolute bottom-0 inset-x-0 bg-bg-primary/80 px-2 py-1">
               <p class="font-mono text-[9px] text-edge-green">512x512 stereogram from Bump node</p>
@@ -186,7 +190,7 @@ const siteDirectory = [
        ════════════════════════════════════════════════════════════════════ -->
   <section class="relative border-t border-border py-20 sm:py-28 overflow-hidden">
     <!-- Faint loda-mine background behind the whole section -->
-    <img src="/generated/loda-mine.png" alt="" aria-hidden="true"
+    <img src={optimized('/generated/loda-mine.png', 'full')} alt="" aria-hidden="true"
          class="absolute right-0 top-0 w-1/2 h-full object-cover opacity-[0.06] pointer-events-none" />
 
     <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
@@ -296,7 +300,7 @@ const siteDirectory = [
         <div class="space-y-4">
           <!-- Glass-tile ARC grid — the signature image -->
           <div class="relative rounded-lg overflow-hidden border border-border">
-            <img src="/generated/arc-grid.png"
+            <img src={optimized('/generated/arc-grid.png', 'full')}
                  alt="ARC puzzle grid rendered as physical glass tiles on dark surface, mid-transformation — left columns intact, right column shattering"
                  class="w-full object-cover" loading="lazy" />
             <div class="absolute top-3 left-3 bg-bg-primary/80 px-2 py-1 rounded">
@@ -382,7 +386,7 @@ const siteDirectory = [
        ════════════════════════════════════════════════════════════════════ -->
   <section class="relative border-t border-border overflow-hidden">
     <div class="relative">
-      <img src="/generated/loda-mine.png"
+      <img src={optimized('/generated/loda-mine.png', 'full')}
            alt="The Formula Mine — glowing wireframe hash symbol surrounded by floating mathematical symbols in a deep cave"
            class="w-full h-56 sm:h-72 lg:h-80 object-cover opacity-50" loading="lazy" />
       <div class="absolute inset-0 flex items-center justify-center bg-bg-primary/30">
@@ -481,7 +485,7 @@ const siteDirectory = [
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
         <!-- Left: lobster swarm image -->
         <div class="relative rounded-lg overflow-hidden border border-border">
-          <img src="/generated/lobster-swarm.png"
+          <img src={optimized('/generated/lobster-swarm.png', 'full')}
                alt="Four lobsters at computer terminals in a dark server room, working on ARC puzzles, code, and planning DAGs"
                class="w-full object-cover" loading="lazy" />
           <div class="absolute top-3 left-3 bg-bg-primary/80 px-2 py-1 rounded">
@@ -610,11 +614,13 @@ const siteDirectory = [
 
 
 <style>
+  /* :global because the hero script adds these classes to SVG nodes it creates at
+     runtime, which never get Astro's scoping attribute. */
   @keyframes dag-node-pulse {
     0%, 100% { opacity: 0.22; }
     50%       { opacity: 0.50; }
   }
-  .dag-node-pulse {
+  :global(.dag-node-pulse) {
     animation: dag-node-pulse var(--pulse-dur, 6s) ease-in-out infinite;
     animation-delay: var(--pulse-delay, 0s);
   }
@@ -623,7 +629,7 @@ const siteDirectory = [
     8%   { opacity: 0.18; }
     100% { stroke-dashoffset: 0; opacity: 0.18; }
   }
-  .dag-edge-grow {
+  :global(.dag-edge-grow) {
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
     animation: dag-edge-draw var(--edge-dur, 6s) ease-out forwards;

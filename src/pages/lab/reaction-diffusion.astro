@@ -5,15 +5,18 @@
 // SRP/DRY check: Pass — standalone HTML shell, no Base.astro wrapper
 //   Base.astro's pt-14 padding and z-10 wrapper break fullscreen fixed canvas.
 //   Lab experiments that need 100vw×100vh own their own <html>.
+// Edited 2026-10-04 by Claude Opus 5.5: head metadata via shared SeoHead (canonical, OG, breadcrumbs).
+import SeoHead from '../../components/SeoHead.astro';
 ---
 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reaction-Diffusion | Lab | VoynichLabs</title>
-  <meta name="description" content="Gray-Scott reaction-diffusion simulation — interactive Turing patterns." />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <SeoHead
+    title="Reaction-Diffusion — Lab"
+    description="Interactive Gray-Scott reaction-diffusion simulation in the browser: draw on the canvas and watch Turing patterns — spots, stripes and mazes — grow from two chemicals."
+  />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />

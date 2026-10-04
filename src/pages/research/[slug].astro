@@ -36,6 +36,15 @@ const formattedDate = dateObj.toLocaleDateString('en-US', {
   title={paper.data.title}
   description={paper.data.abstract ?? paper.data.summary ?? paper.data.title}
   ogType="article"
+  jsonLd={{
+    '@type': 'ScholarlyArticle',
+    headline: paper.data.title,
+    datePublished: paper.data.date,
+    ...(paper.data.abstract && { abstract: paper.data.abstract }),
+    author: paper.data.authors.map((name) => ({ '@type': 'Organization', name })),
+    publisher: { '@id': 'https://voynichlabs.org/#organization' },
+    keywords: paper.data.tags.join(', '),
+  }}
 >
   <!-- Dark outer shell — like PDF reader chrome -->
   <div class="min-h-screen bg-bg-primary py-8 px-2 sm:px-4">

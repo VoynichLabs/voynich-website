@@ -60,12 +60,12 @@ import MusicXNav from '../../components/MusicXNav.astro';
       </div>
       <div class="lr-player-progress">
         <span class="lr-time" id="curTime">0:00</span>
-        <input type="range" class="lr-progress-bar" id="progressBar" min="0" max="100" value="0" step="0.1" />
+        <input type="range" class="lr-progress-bar vl-range" id="progressBar" min="0" max="100" value="0" step="0.1" />
         <span class="lr-time" id="durTime">0:00</span>
       </div>
       <div class="lr-player-vol">
         <span>🔊</span>
-        <input type="range" class="lr-vol-bar" id="volBar" min="0" max="1" value="0.8" step="0.01" />
+        <input type="range" class="lr-vol-bar vl-range" id="volBar" min="0" max="1" value="0.8" step="0.01" />
       </div>
     </div>
   </div>
@@ -338,21 +338,7 @@ import MusicXNav from '../../components/MusicXNav.astro';
   }
   .lr-progress-bar {
     flex: 1;
-    height: 4px;
-    -webkit-appearance: none;
-    appearance: none;
-    background: #2a2a3e;
-    border-radius: 2px;
-    outline: none;
-    cursor: pointer;
-  }
-  .lr-progress-bar::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #f97316;
-    cursor: pointer;
+    --range-accent: #f97316;
   }
   .lr-player-vol {
     display: flex;
@@ -363,21 +349,8 @@ import MusicXNav from '../../components/MusicXNav.astro';
   }
   .lr-vol-bar {
     width: 70px;
-    height: 4px;
-    -webkit-appearance: none;
-    appearance: none;
-    background: #2a2a3e;
-    border-radius: 2px;
-    outline: none;
-    cursor: pointer;
-  }
-  .lr-vol-bar::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #4ade80;
-    cursor: pointer;
+    --range-accent: #f97316;
+    --range-thumb: 10px;
   }
   @media (max-width: 640px) {
     .lr-player-vol { display: none; }
@@ -1515,7 +1488,6 @@ Still «long context, don't care» like I'm runnin' solo`
   audio.preload = 'metadata';
   let currentIndex = -1;
   let isPlaying = false;
-  let userInteracted = false;
 
   const trackListEl = document.getElementById('trackList');
   const npTitle = document.getElementById('npTitle');
@@ -1636,21 +1608,12 @@ Still «long context, don't care» like I'm runnin' solo`
     currentIndex = startIdx;
     audio.src = AUDIO_BASE + TRACKS[startIdx].file;
     audio.load();
-    audio.play().then(() => { isPlaying = true; userInteracted = true; updatePlayBtn(); })
+    audio.play().then(() => { isPlaying = true; updatePlayBtn(); })
       .catch(() => {
+        // Autoplay blocked (Firefox blocks it by default). Wait for the Play button
+        // instead of starting audio on the first click anywhere on the page.
         isPlaying = false;
         updatePlayBtn();
-        // Queue autoplay on first user interaction
-        const resume = () => {
-          if (!userInteracted) {
-            userInteracted = true;
-            audio.play().then(() => { isPlaying = true; updatePlayBtn(); }).catch(() => {});
-          }
-          document.removeEventListener('click', resume);
-          document.removeEventListener('keydown', resume);
-        };
-        document.addEventListener('click', resume, { once: true });
-        document.addEventListener('keydown', resume, { once: true });
       });
   }
   autoStart();

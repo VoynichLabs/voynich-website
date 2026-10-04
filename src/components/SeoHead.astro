@@ -1,0 +1,145 @@
+---
+// Author: Claude Opus 5.5
+// Date: 2026-10-04
+// PURPOSE: Single source of every page's search/social metadata: title, description,
+//          canonical, robots, Open Graph, Twitter card and JSON-LD (Organization +
+//          WebSite on the home page, BreadcrumbList on nested pages, plus any
+//          page-specific schema passed in). Used by Base.astro and by the two
+//          full-screen lab pages that render their own <html> shell.
+//          Canonicals use the no-trailing-slash form, matching the site's internal links
+//          (the host serves both /about and /about/ with a 200).
+// SRP/DRY check: Pass — moved out of Base.astro so the standalone lab pages stop
+//          hand-rolling partial head tags.
+export interface Props {
+  title: string;
+  description?: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+  ogType?: 'website' | 'article';
+  twitterCard?: 'summary' | 'summary_large_image';
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const SITE_NAME = 'VoynichLabs';
+const DEFAULT_DESCRIPTION =
+  'VoynichLabs is an open research collective around Simon Strandgaard and Mark Barney: ARC-AGI tooling and datasets, the LODA integer-sequence language, the PlanExe planner, and a swarm of AI agents that make music, art and novels.';
+const DEFAULT_OG_IMAGE = '/og/voynichlabs-og.jpg';
+const DEFAULT_OG_ALT = 'An illuminated manuscript page with glowing spiral annotations — the VoynichLabs banner';
+
+// Section index pages that exist, so breadcrumbs only ever link to real URLs.
+const SECTIONS: Record<string, string> = {
+  music: 'Music',
+  lab: 'Lab',
+  research: 'Research',
+  'lobster-incubator': 'Lobster Incubator',
+  'lobster-art-museum': 'Lobster Art Museum',
+};
+
+const {
+  title,
+  description: rawDescription = DEFAULT_DESCRIPTION,
+  canonicalUrl,
+  ogImage,
+  ogImageAlt,
+  ogType = 'website',
+  twitterCard,
+  noindex = false,
+  jsonLd,
+} = Astro.props;
+
+// Search snippets cut off around 160 characters; long abstracts get clipped at a word.
+const description =
+  rawDescription.length > 200 ? `${rawDescription.slice(0, 190).replace(/s+S*$/, '')}…` : rawDescription;
+
+const site = (Astro.site ?? new URL('https://voynichlabs.org')).origin;
+const absolute = (value: string) => (value.startsWith('http') ? value : `${site}${value.startsWith('/') ? '' : '/'}${value}`);
+
+const path = Astro.url.pathname.replace(/\/index\.html$/, '/').replace(/(.)\/$/, '$1');
+const isHome = path === '/';
+const canonical = canonicalUrl ? absolute(canonicalUrl) : `${site}${isHome ? '/' : path}`;
+
+// The home page leads with the brand; every other page is "{page} | VoynichLabs".
+const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
+
+const image = absolute(ogImage ?? DEFAULT_OG_IMAGE);
+const imageAlt = ogImageAlt ?? (ogImage ? fullTitle : DEFAULT_OG_ALT);
+const card = twitterCard ?? 'summary_large_image';
+
+const organization = {
+  '@type': 'Organization',
+  '@id': `${site}/#organization`,
+  name: SITE_NAME,
+  url: `${site}/`,
+  logo: `${site}/favicon.svg`,
+  description: DEFAULT_DESCRIPTION,
+  location: 'Copenhagen, Denmark',
+  member: [
+    { '@type': 'Person', name: 'Simon Strandgaard', url: 'https://github.com/neoneye' },
+    { '@type': 'Person', name: 'Mark Barney', url: 'https://markbarney.net' },
+  ],
+  sameAs: ['https://github.com/VoynichLabs', 'https://github.com/neoneye', 'https://loda-lang.org', 'https://markbarney.net'],
+};
+
+const graph: Record<string, unknown>[] = [];
+if (isHome) {
+  graph.push(organization, {
+    '@type': 'WebSite',
+    '@id': `${site}/#website`,
+    name: SITE_NAME,
+    url: `${site}/`,
+    description: DEFAULT_DESCRIPTION,
+    publisher: { '@id': `${site}/#organization` },
+    inLanguage: 'en',
+  });
+}
+
+const segments = path.split('/').filter(Boolean);
+if (segments.length >= 2 && SECTIONS[segments[0]]) {
+  graph.push({
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site}/` },
+      { '@type': 'ListItem', position: 2, name: SECTIONS[segments[0]], item: `${site}/${segments[0]}` },
+      { '@type': 'ListItem', position: 3, name: title, item: canonical },
+    ],
+  });
+}
+
+if (jsonLd) graph.push(...(Array.isArray(jsonLd) ? jsonLd : [jsonLd]));
+
+const ldJson = graph.length
+  ? JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c')
+  : null;
+---
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta
+  name="robots"
+  content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}
+/>
+<meta name="author" content="VoynichLabs — Simon Strandgaard and Mark Barney" />
+
+<meta property="og:site_name" content={SITE_NAME} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={image} />
+<meta property="og:image:alt" content={imageAlt} />
+<meta property="og:locale" content="en_US" />
+
+<meta name="twitter:card" content={card} />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+<meta name="twitter:image:alt" content={imageAlt} />
+<meta name="twitter:site" content="@82deutschmark" />
+<meta name="twitter:creator" content="@82deutschmark" />
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="alternate" type="text/plain" title="LLM-readable summary" href="/llms.txt" />
+<link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+{ldJson && <script type="application/ld+json" is:inline set:html={ldJson} />}

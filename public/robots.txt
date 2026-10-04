@@ -1,0 +1,24 @@
+# robots.txt for voynichlabs.org
+# Updated: 2026-10-04
+
+User-agent: *
+Allow: /
+
+# AI / LLM crawlers are explicitly welcome. For a plain-text brief on what
+# VoynichLabs is, see /llms.txt (and /llm.txt).
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://voynichlabs.org/sitemap-index.xml

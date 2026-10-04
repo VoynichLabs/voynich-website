@@ -1,0 +1,64 @@
+/*
+ * Author: Claude Opus 5.5
+ * Date: 2026-10-04
+ * PURPOSE: One cross-browser range-slider style for every music player. Each page used to
+ *   style only ::-webkit-slider-thumb, so Firefox drew its grey default thumb and track
+ *   over the custom bar. This file pairs every -webkit- rule with its -moz- equivalent.
+ *   Pages opt in with class="vl-range" and tint it by setting --range-accent (and
+ *   optionally --range-thumb / --range-track) on their own class.
+ * SRP/DRY check: Pass - replaces four copies of per-page slider CSS plus two ad-hoc variants.
+ */
+
+.vl-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: calc(var(--range-thumb, 12px) + 4px);
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.vl-range:focus { outline: none; }
+.vl-range:focus-visible {
+  outline: 1px solid var(--range-accent, #8b5cf6);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* WebKit / Blink */
+.vl-range::-webkit-slider-runnable-track {
+  height: var(--range-height, 4px);
+  background: var(--range-track, #2a2a3e);
+  border-radius: 2px;
+}
+.vl-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: var(--range-thumb, 12px);
+  height: var(--range-thumb, 12px);
+  margin-top: calc((var(--range-height, 4px) - var(--range-thumb, 12px)) / 2);
+  border: 0;
+  border-radius: 50%;
+  background: var(--range-accent, #8b5cf6);
+  cursor: pointer;
+}
+
+/* Firefox */
+.vl-range::-moz-range-track {
+  height: var(--range-height, 4px);
+  background: var(--range-track, #2a2a3e);
+  border: 0;
+  border-radius: 2px;
+}
+.vl-range::-moz-range-progress {
+  height: var(--range-height, 4px);
+  background: var(--range-accent, #8b5cf6);
+  border-radius: 2px;
+}
+.vl-range::-moz-range-thumb {
+  width: var(--range-thumb, 12px);
+  height: var(--range-thumb, 12px);
+  border: 0;
+  border-radius: 50%;
+  background: var(--range-accent, #8b5cf6);
+  cursor: pointer;
+}

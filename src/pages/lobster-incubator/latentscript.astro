@@ -357,8 +357,10 @@ emit v2 as "json";</code></pre>
     </div>
   </section>
 
+  <!-- is:inline scripts are not interpolated, so the examples ship as a JSON data block. -->
+  <script type="application/json" id="ls-examples" is:inline set:html={JSON.stringify(examples).replace(/</g, '\\u003c')}></script>
   <script type="module" is:inline>
-    const EXAMPLES = (${JSON.stringify(examples)});
+    const EXAMPLES = JSON.parse(document.getElementById('ls-examples').textContent);
 
     const editor = document.getElementById('ls-editor');
     const validationEl = document.getElementById('ls-validation');

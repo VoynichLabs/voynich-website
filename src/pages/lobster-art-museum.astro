@@ -7,6 +7,7 @@ import Base from '../layouts/Base.astro';
 import type { MuseumEntry } from '../lib/lobster-museum';
 import { getMuseumEntries, getFeaturedEntries, getArchiveEntries, inferSeries } from '../lib/lobster-museum';
 import { TIMELINE_ENTRIES } from '../lib/gallery-metadata';
+import { optimized } from '../lib/optimized-image';
 
 const entries = getMuseumEntries();
 const featuredEntries = getFeaturedEntries(entries);
@@ -96,7 +97,7 @@ const seriesGroups = orderedSeries
     <section class="mb-12 relative overflow-hidden rounded-2xl border border-border">
       {featuredEntries.length > 0 && (
         <img 
-          src={featuredEntries[Math.floor(Math.random() * featuredEntries.length)].src}
+          src={optimized(featuredEntries[Math.floor(Math.random() * featuredEntries.length)].src)}
           alt=""
           aria-hidden="true"
           class="absolute inset-0 w-full h-full object-cover"
@@ -226,7 +227,7 @@ const seriesGroups = orderedSeries
                 {series.entries.length > 0 && (
                   <div class="relative h-40 overflow-hidden bg-bg-secondary">
                     <img
-                      src={series.entries[0].src}
+                      src={optimized(series.entries[0].src, 'thumb')}
                       alt={series.name}
                       class="w-full h-full object-contain bg-bg-primary group-hover:scale-105 transition-transform duration-300"
                     />
@@ -283,7 +284,7 @@ const seriesGroups = orderedSeries
             <article class="group border border-border rounded-xl overflow-hidden bg-bg-secondary shadow-sm hover:shadow-md hover:border-edge-green transition-all duration-200">
               <a href={entry.href} class="block relative overflow-hidden bg-bg-primary">
                 <img 
-                  src={entry.src} 
+                  src={optimized(entry.src, 'thumb')} 
                   alt={entry.title} 
                   loading="lazy" 
                   class="w-full aspect-square object-contain bg-bg-primary group-hover:scale-105 transition-transform duration-300"
@@ -324,7 +325,7 @@ const seriesGroups = orderedSeries
                   <figure class="mb-0 rounded-xl border border-border bg-bg-primary overflow-hidden shadow-sm">
                     <a href={entry.href} class="block">
                       <img
-                        src={entry.src}
+                        src={optimized(entry.src, 'thumb')}
                         alt={entry.title}
                         loading="lazy"
                         class="w-full h-auto object-contain bg-bg-secondary"

@@ -5,6 +5,7 @@
 //          Preserves the generated artwork and accompanying narrative so it doesn't get lost in the full gallery.
 // SRP/DRY check: Pass - single artwork spotlight page with no cross-feature side effects.
 import Base from '../../layouts/Base.astro';
+import { optimized } from '../../lib/optimized-image';
 
 const art = {
   title: 'The Expensive Medieval Tapestry',
@@ -39,7 +40,7 @@ const ogImage = `${siteOrigin}${art.image}`;
     <section class="grid lg:grid-cols-[1.4fr_1fr] gap-8 items-start">
       <figure class="rounded-2xl border border-border bg-bg-secondary overflow-hidden shadow-sm">
         <img
-          src={art.image}
+          src={optimized(art.image)}
           alt={art.title}
           class="w-full h-auto object-contain bg-bg-primary"
           loading="eager"

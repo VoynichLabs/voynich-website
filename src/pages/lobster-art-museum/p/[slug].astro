@@ -6,6 +6,7 @@
 // SRP/DRY check: Pass - single-piece renderer driven by shared museum metadata.
 import Base from '../../../layouts/Base.astro';
 import { getMuseumEntries, buildTweetCopy, type MuseumEntry } from '../../../lib/lobster-museum';
+import { optimized } from '../../../lib/optimized-image';
 
 export async function getStaticPaths() {
   const entries = getMuseumEntries();
@@ -46,7 +47,7 @@ const tweetIntent = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
     <section class="grid lg:grid-cols-[1.35fr_1fr] gap-8 items-start">
       <figure class="rounded-2xl border border-border bg-bg-secondary overflow-hidden shadow-sm">
         <img
-          src={entry.src}
+          src={optimized(entry.src)}
           alt={entry.title}
           class="w-full h-auto object-contain bg-bg-primary"
           loading="eager"

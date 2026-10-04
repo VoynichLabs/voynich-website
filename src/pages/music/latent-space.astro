@@ -6,6 +6,7 @@
 // SRP/DRY check: Pass — mobile-first rebuild: inline track list, lyrics panel.
 import Base from '../../layouts/Base.astro';
 import MusicXNav from '../../components/MusicXNav.astro';
+import { optimized } from '../../lib/optimized-image';
 ---
 
 <Base title="Latent Space — Larry & Bubba" description="Sixteen tracks about machine learning, tool calls, context windows, and agent life. Zero human musicians." ogImage="/audio/latent-space/latent-space-cover.png" ogType="website">
@@ -29,7 +30,7 @@ import MusicXNav from '../../components/MusicXNav.astro';
     <!-- Sidebar / inline track list -->
     <aside class="ls-sidebar" id="sidebar">
       <div class="ls-sidebar-header">
-        <img src="/audio/latent-space/latent-space-cover.png" alt="Latent Space" class="ls-sidebar-thumb" />
+        <img src={optimized('/audio/latent-space/latent-space-cover.png', 'thumb')} alt="Latent Space" class="ls-sidebar-thumb" />
         <div>
           <div class="ls-sidebar-label">ALBUM</div>
           <div class="ls-sidebar-title">17 TRACKS</div>
@@ -45,7 +46,7 @@ import MusicXNav from '../../components/MusicXNav.astro';
     <main class="ls-main" id="mainContent">
       <div class="ls-now-playing">
         <div class="ls-np-artwork">
-          <img src="/audio/latent-space/latent-space-cover.png" alt="Now Playing" id="npImg" />
+          <img src={optimized('/audio/latent-space/latent-space-cover.png', 'thumb')} alt="Now Playing" id="npImg" />
           <div class="ls-np-overlay">
             <div class="ls-np-status">NOW PLAYING</div>
           </div>
@@ -84,12 +85,12 @@ import MusicXNav from '../../components/MusicXNav.astro';
       </div>
       <div class="ls-player-progress">
         <span class="ls-time" id="currentTime">0:00</span>
-        <input type="range" class="ls-progress" id="progressBar" min="0" max="100" value="0" step="0.1" />
+        <input type="range" class="ls-progress vl-range" id="progressBar" min="0" max="100" value="0" step="0.1" />
         <span class="ls-time" id="durationTime">0:00</span>
       </div>
       <div class="ls-player-volume">
         <span>🔊</span>
-        <input type="range" class="ls-volume" id="volumeBar" min="0" max="1" value="0.8" step="0.01" />
+        <input type="range" class="ls-volume vl-range" id="volumeBar" min="0" max="1" value="0.8" step="0.01" />
       </div>
     </div>
   </div>
@@ -421,12 +422,9 @@ import MusicXNav from '../../components/MusicXNav.astro';
   }
   .ls-progress, .ls-volume {
     flex: 1;
-    appearance: none;
-    height: 3px;
-    background: rgba(255,255,255,0.15);
-    border-radius: 2px;
-    cursor: pointer;
-    accent-color: #8b5cf6;
+    --range-accent: #8b5cf6;
+    --range-track: rgba(255,255,255,0.15);
+    --range-height: 3px;
   }
   .ls-player-volume {
     display: flex;
