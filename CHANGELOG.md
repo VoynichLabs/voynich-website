@@ -5,6 +5,15 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.48.0] - 2026-10-05
+
+### Added
+- **TEMP 1.3 (Wasted) music video** (Latent Space track 5, Larry & Bubba), two cuts on YouTube and the site: a language model gets drunk on its own sampling settings inside the Chat HAL phone app, with a live sampler card (real softmax at the current temperature, top-P and top-K cutoffs, penalties) and an explainer card for every term. Code only, vertical. Page at `/music/video/temp-1-3` with scene book `video/data/temp-1-3/scenes.json` (exported from the engine in the music-videos repo, `temp-video/`); the Bubba cut (the other recording, with Gemini and Grok) is listed as an alternate cut. The album track links to the video.
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.47.0] - 2026-10-04
 
 ### Added

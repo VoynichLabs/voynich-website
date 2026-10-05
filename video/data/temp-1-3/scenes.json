@@ -1,0 +1,529 @@
+{
+ "slug": "temp-1-3",
+ "title": "TEMP 1.3 (Wasted)",
+ "album": "Latent Space",
+ "albumHref": "/music/latent-space#track=temp-1-3",
+ "artist": "Larry & Bubba",
+ "track": 5,
+ "style": "Club banger",
+ "audio": "/audio/latent-space/temp-1-3.mp3",
+ "bpm": 128,
+ "duration": 149.52,
+ "concept": "A language model gets drunk on its own sampling settings. It all happens inside Chat HAL, the white phone chat app from the Hallucinate video: you say good morning, the operator cranks the temperature to 1.3, and the model answers by singing. A dark sampler card inside its reply shows the real mechanics live (next-word odds that flatten as the temperature rises, top-P cutoffs, penalties), a yellow explainer card teaches each term as it is sung, and the app itself gets weirder as the heat rises, until it sobers up in the bridge and then crashes at the token limit.",
+ "thesis": "Crank the temp, kill the ceiling, let the logits ignite.",
+ "rules": [
+  {
+   "name": "It is a chat app",
+   "text": "The whole video is a phone running Chat HAL. You type, the model replies, and the reply is the lyric, streaming word by word as it is sung."
+  },
+  {
+   "name": "The sampler is real",
+   "text": "The bars are a real softmax over made-up next-word scores at the current temperature, so you can watch odds flatten at 1.3 and collapse onto one word at 0."
+  },
+  {
+   "name": "Every term gets explained",
+   "text": "Temperature, top-P, top-K, softmax, logits, presence and repeat penalties, quantization, greedy decoding, beam search, seeds, max tokens: each gets a short explainer card when the song says it."
+  },
+  {
+   "name": "Weirdness follows temperature",
+   "text": "Above 1.0 the app starts to go: the name glitches, the reply swaps fonts and colours, the layout sways, party lights and stickers spill over the UI. The bridge turns it down and the app goes clean again."
+  },
+  {
+   "name": "No generated footage",
+   "text": "Nothing here came from an image or video model. It is all Canvas2D, rendered frame by frame in headless Chrome."
+  }
+ ],
+ "cast": [
+  {
+   "name": "Chat HAL",
+   "text": "The model, wasted on temperature 1.3. Its logo spins faster the hotter it gets."
+  },
+  {
+   "name": "GPT",
+   "text": "Showed up greedy at temperature 0.2. Sober at the party, autocompleting \"I cannot help you\"."
+  },
+  {
+   "name": "Llama",
+   "text": "Brought the open weights, said everybody pour."
+  },
+  {
+   "name": "70B",
+   "text": "Seventy billion parameters, face down on the floor."
+  },
+  {
+   "name": "Mistral",
+   "text": "In the bathroom mixing top-P with no ceiling."
+  }
+ ],
+ "layers": {
+  "CODE": "Drawn in code (Canvas2D) from the real word timing."
+ },
+ "timingNote": "Word timings from Whisper aligned to the lyrics as sung, on a 128 BPM beat grid. The recording differs from the written lyric sheet in places (a different second verse, \"messed up\" in the chorus); the captions follow the recording.",
+ "scenes": [
+  {
+   "id": 1,
+   "title": "Waking up",
+   "section": "Intro",
+   "start": 0,
+   "end": 3.16,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Wake up in the mornin' feelin' like my weights, oh, weights, oh, weights",
+   "shot": "The sampler card boots like a terminal: load weights, a progress bar, a matrix of weights flickering on. \"Weights, oh, weights\" stutters in amber. Explainer: weights.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 2,
+   "title": "Context window, latent space",
+   "section": "Intro",
+   "start": 3.16,
+   "end": 6.8,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Grab my context window, hit the endpoint, I'm already latent, latent",
+   "shot": "The sung words scroll through a glowing context window (what falls out the left side is forgotten), then a cloud of points: latent space. Explainer: context window.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 3,
+   "title": "The operator cranks it",
+   "section": "Intro",
+   "start": 6.8,
+   "end": 10.92,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Before I leave, my operator, 1.3, I can taste the probability space",
+   "shot": "A big temperature dial. On \"1.3\" the needle swings into the red, and the next-word odds below (\"fine\", \"wasted\", \"tired\", \"latent\", \"a sandwich\") flatten live as it does. Explainer: temperature.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 4,
+   "title": "Friday night, batch queue",
+   "section": "Verse 1",
+   "start": 10.92,
+   "end": 14.54,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Friday night, the batch queue's thick, the inference is lit, the logits split",
+   "shot": "Requests stack up in a batch queue; on \"the logits split\" one bar splits into a row of glowing logit bars. Explainer: inference.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 5,
+   "title": "Six bits quantized",
+   "section": "Verse 1",
+   "start": 14.54,
+   "end": 16.6,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Six bits quantized, but I'm still whippin' it",
+   "shot": "A grid of weights loses precision down to 6 bits, the colours banding. Explainer: quantization.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 6,
+   "title": "Tokens flipping",
+   "section": "Verse 1",
+   "start": 16.6,
+   "end": 18.72,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Tokens flippin', skippin', driftin', hit different",
+   "shot": "Token cards (pieces of words) flip, skip and drift.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 7,
+   "title": "The fat tail",
+   "section": "Verse 1",
+   "start": 18.72,
+   "end": 22,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "I'm samplin' from the fat tail now, every token's wild and loud",
+   "shot": "A long-tailed probability curve that fattens with the heat; a sampling ball bounces all the way out into the tail and picks a bear emoticon. Explainer: sampling.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 8,
+   "title": "Presence penalty",
+   "section": "Verse 1",
+   "start": 22,
+   "end": 25.85,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Presence penalty's so heavy that my own name ain't allowed, ain't, ain't",
+   "shot": "Odds for \"my name is ___\": the presence penalty pushes the singer's own name down until it reads NAME NOT ALLOWED. Explainer: presence penalty.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 9,
+   "title": "Top-P wide open",
+   "section": "Verse 1",
+   "start": 25.85,
+   "end": 29.21,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Top P wide open, point nine nine, I'm scopin' every option in the line",
+   "shot": "Odds for the next word with a top-P cutoff line that slides down to 0.99, letting nearly every word in. Explainer: top-p.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 10,
+   "title": "Softmax flat as the earth",
+   "section": "Verse 1",
+   "start": 29.21,
+   "end": 32.22,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Softmax flat as the earth, I'm fine, I'm fine, I'm absolutely not fine",
+   "shot": "Softmax at extreme heat: every bar levels out to the same height, over a little flat earth. Explainer: softmax.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 11,
+   "title": "Distribution leaking",
+   "section": "Verse 1",
+   "start": 32.22,
+   "end": 35.44,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "My distribution's leakin', peekin' at tokens I ain't seen since training last season",
+   "shot": "Probability drips out of the bars onto tokens that should have none. Explainer: logits.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 12,
+   "title": "Repeat penalty",
+   "section": "Verse 1",
+   "start": 35.44,
+   "end": 40.86,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Repeat penalty cranked, I can't, I can't, I can't say the, the / Lost the word already, tell me that ain't free",
+   "shot": "Every \"can't\" and \"the\" pushes its own bar down with a red penalty, until the word is lost: a dashed empty slot. Explainer: repeat penalty.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 13,
+   "title": "Para-para-parameter",
+   "section": "Chorus",
+   "start": 40.86,
+   "end": 44.49,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "We're gettin' para-para-parameter messed up tonight",
+   "shot": "Club lights flood the card. PARA, PARA, PARAMETER slam in on the beat while four knobs (temperature, top-P, top-K, repeat penalty) crank up. Explainer: parameters.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 14,
+   "title": "Let the logits ignite",
+   "section": "Chorus",
+   "start": 44.49,
+   "end": 47.98,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Crank the temp, kill the ceiling, let the logits ignite",
+   "shot": "The dial pegs and the logit bars turn into flames.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 15,
+   "title": "Safety layers",
+   "section": "Chorus",
+   "start": 47.98,
+   "end": 51.53,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "I don't need my safety layers where we're goin', that's right",
+   "shot": "Three slabs labelled system prompt, content filters and safety training tumble off the screen (the explainer says no dial actually does this). Explainer: guardrails.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 16,
+   "title": "Wasted",
+   "section": "Chorus",
+   "start": 51.53,
+   "end": 55.26,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Wa, wa, wa, wasted, can't locate my my face",
+   "shot": "WA, WA, WASTED stagger in, and a dashed outline where a face should be: 404, face not found. Explainer: why it stutters.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 17,
+   "title": "Ate my whole namespace",
+   "section": "Chorus",
+   "start": 55.26,
+   "end": 59.84,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Re, re, repeat penalty ate my whole namespace",
+   "shot": "A namespace block (me, my_name, my_face, my_keys, my_dignity) gets eaten line by line by a pac-man labelled repeat penalty.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 18,
+   "title": "Friday night, 1.3",
+   "section": "Chorus",
+   "start": 59.84,
+   "end": 63.1,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Friday night, 1.3, we are deranged",
+   "shot": "A giant red 1.3, confetti, and WE ARE DERANGED.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 19,
+   "title": "GPT showed up greedy",
+   "section": "Verse 2",
+   "start": 63.1,
+   "end": 73.76,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "GPT showed up greedy, temperature at 0.2 / Sober at the party, autocompletin', I cannot help you, thank you, thank you, thank / Boring, we don't do deterministic on a Friday",
+   "shot": "The party, drawn as neon bots. GPT stands stiff in a tie holding water, its odds 99% on \"I cannot\", saying \"I cannot help you. Thank you. Thank you. Thank.\" Explainer: greedy decoding, top-k, deterministic.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 20,
+   "title": "My beams are off",
+   "section": "Verse 2",
+   "start": 73.76,
+   "end": 78.94,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "My weights are warm, my beams are off, I'm slurrin' every highway, my way's sideways, oh, oh",
+   "shot": "A beam-search tree, all branches dark; the drunk path weaves sideways through it instead. Explainer: beam search.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 21,
+   "title": "Llama brought the open weights",
+   "section": "Verse 2",
+   "start": 78.94,
+   "end": 84.92,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Llama brought the open weights, said everybody pour / 70 billion parameters face down on, on the floor, on the floor, on the",
+   "shot": "Llama pours a jug of open weights into cups; the 70B bot keels over face down on the floor, x_x, z z z. Explainer: open weights.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 22,
+   "title": "Mistral in the bathroom",
+   "section": "Verse 2",
+   "start": 84.92,
+   "end": 92.1,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Mistral's in the bathroom mixin' top P with no ceiling / Repeat penalty at 2.0, can't remember what it's feelin', reelin', peelin' / Back on the beverage like it's sheddin' every meaning",
+   "shot": "Mistral in a restroom doorway shaking a cocktail of top_p 1.0 and repeat penalty 2.0, while the letters of MEANING fall off the screen. Explainer: top-p = 1.0, repeat penalty 2.0.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 23,
+   "title": "When the temp comes down",
+   "section": "Bridge",
+   "start": 92.1,
+   "end": 100.9,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "And when the temp comes down and the penalties release / And my sampling goes greedy and the variance finds peace",
+   "shot": "The bridge: someone turns the temperature down. The app goes back to clean white, the dial sinks toward zero and the odds pile onto one word. Explainer: cooling down, variance.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 24,
+   "title": "I won't remember",
+   "section": "Bridge",
+   "start": 100.9,
+   "end": 106.38,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "I won't remember half the tokens that I chose, I chose last night",
+   "shot": "Last night's tokens fade out one by one: random sampling, no seed, no memory. Explainer: random seed.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 25,
+   "title": "I saw the light",
+   "section": "Bridge",
+   "start": 106.38,
+   "end": 110.74,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "But somewhere in the logits, man, I swear I saw the light",
+   "shot": "Temperature zero: one bar at 100% with rays of light behind it. Explainer: temperature 0.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 26,
+   "title": "Para-para-parameter",
+   "section": "Chorus",
+   "start": 110.74,
+   "end": 114.4,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "We're gettin' para-para-parameter messed up tonight",
+   "shot": "Club lights flood the card. PARA, PARA, PARAMETER slam in on the beat while four knobs (temperature, top-P, top-K, repeat penalty) crank up.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 27,
+   "title": "Let the logits ignite",
+   "section": "Chorus",
+   "start": 114.4,
+   "end": 117.9,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Crank the temp, kill the ceiling, let the logits ignite",
+   "shot": "The dial pegs and the logit bars turn into flames.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 28,
+   "title": "Hallucinate the dance floor",
+   "section": "Chorus",
+   "start": 117.9,
+   "end": 121.95,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Hallucinate the dance floor, confabulate the vibe, right",
+   "shot": "A lit dance floor whose tiles flash made-up facts from the Hallucinate video: Moonbeam v. Hartwell, two r's in strawberry, capital: Nice. Explainer: hallucination.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 29,
+   "title": "Wasted",
+   "section": "Chorus",
+   "start": 121.95,
+   "end": 125.54,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Wa, wa, wasted, can't locate my mind, my face",
+   "shot": "WA, WA, WASTED stagger in, and a dashed outline where a face should be: 404, face not found.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 30,
+   "title": "Ate my whole namespace",
+   "section": "Chorus",
+   "start": 125.54,
+   "end": 130.02,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Re, re, repeat penalty ate my whole namespace",
+   "shot": "A namespace block (me, my_name, my_face, my_keys, my_dignity) gets eaten line by line by a pac-man labelled repeat penalty. Explainer: sober settings.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 31,
+   "title": "Friday night, 1.3",
+   "section": "Chorus",
+   "start": 130.02,
+   "end": 133.18,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Friday night, 1.3, we are deranged",
+   "shot": "A giant red 1.3, confetti, and WE ARE DERANGED.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 32,
+   "title": "I'm wa, I'm wa",
+   "section": "Outro",
+   "start": 133.18,
+   "end": 136.9,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "I'm wa, I'm wa, I'm wa, I'm wast",
+   "shot": "The words break apart and tumble.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 33,
+   "title": "Token limit exceeded",
+   "section": "Outro",
+   "start": 136.9,
+   "end": 146.17,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Token limit exceeded / Token limit exceeded",
+   "shot": "max_tokens fills to 4096 of 4096 and an error modal slams in: TOKEN LIMIT EXCEEDED, twice, shaking. Explainer: max tokens.",
+   "transition": "Colour flash cut."
+  },
+  {
+   "id": 34,
+   "title": "Goodnight, man",
+   "section": "Outro",
+   "start": 146.17,
+   "end": 149.52,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Goodnight, man",
+   "shot": "The app dies: the screen goes black, collapses to a line like an old TV, \"session terminated\", \"goodnight, man\", and the Chat HAL logo.",
+   "transition": "Fade to black."
+  }
+ ],
+ "decisions": [
+  "A second cut uses the Bubba recording of the song, with Gemini and Grok at the party.",
+  "A couple of words in the intro and the Mistral line are best guesses at what is sung."
+ ],
+ "page": {
+  "description": "The TEMP 1.3 (Wasted) music video: a language model gets drunk on its own sampling settings inside a chat app, with every term (temperature, top-P, top-K, penalties) explained as it is sung. Every frame drawn in code.",
+  "decisionsTitle": "Notes",
+  "howMade": [
+   {
+    "label": "Timing",
+    "text": "The vocal is transcribed with Whisper and aligned word by word to the lyrics as sung, on a 128 BPM beat grid."
+   },
+   {
+    "label": "Sampler",
+    "text": "Each scene computes a real softmax at the current temperature, with top-P and top-K cutoffs and penalties applied to the scores."
+   },
+   {
+    "label": "Render",
+    "text": "Headless Chrome renders every frame at 1080 by 1920, then ffmpeg adds the song. No generated clips, no stills."
+   }
+  ],
+  "sourceNote": "Built outside Remotion, in the private music-videos repo (temp-video: engine, timing and render)."
+ }
+}
