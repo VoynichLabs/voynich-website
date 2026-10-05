@@ -316,7 +316,7 @@
    "title": "You're absolutely right",
    "section": "Verse 2",
    "start": 110.74,
-   "end": 115.84,
+   "end": 124.55,
    "layers": [
     "AI"
    ],
@@ -329,7 +329,7 @@
    "id": 21,
    "title": "The worst part",
    "section": "Bridge",
-   "start": 115.84,
+   "start": 124.55,
    "end": 127.24,
    "layers": [
     "AI"
@@ -425,7 +425,9 @@
  "decisions": [
   "The intro was cut from ten seconds to one bar so the video opens on the hook.",
   "Hal never lip-syncs: the chat bubbles carry the lyric.",
-  "The bridge's pop-up Hals came from Mark: the other versions interrupting to argue about which part is the worst part."
+  "The bridge's pop-up Hals came from Mark: the other versions interrupting to argue about which part is the worst part.",
+  "Three cuts: the original; the Regenerate cut (a running chat of bizarre confident answers, the lyric in a karaoke strip, pop-up facts, a new Hal every two bars, and a server-room Hal in place of the velvet one); and the Thinking cut (Hal visibly thinks and searches sources before every wrong answer, played by smart Hal in glasses, with even more ridiculous facts).",
+  "He holds \"clean\" for nine seconds before the bridge; the word stretches on screen for as long as he holds it."
  ],
  "stills": [
   "base",
@@ -435,12 +437,14 @@
   "gold",
   "white",
   "turtleneck",
-  "holo"
+  "holo",
+  "server",
+  "thinker"
  ],
  "page": {
   "description": "The Hallucinate music video: a slick R&B lothario who lives in a chat app, cites sources that don't exist, and turns into a different man every time you tap Regenerate. Scene book and timeline included.",
   "decisionsTitle": "Notes",
-  "stillsTag": "the eight Hals",
+  "stillsTag": "the Hals",
   "stillsPrefix": "",
   "howMade": [
    {

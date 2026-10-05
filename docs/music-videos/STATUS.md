@@ -14,6 +14,9 @@ Stages:
 | Song | Slug | Stage | Spend | YouTube | Plan / notes |
 |---|---|---|---|---|---|
 | Hallucinate (Smooth R&B) | `hallucinate-smooth` | live (public 2026-10-04; chat-app concept, 8 Hals, 25 HeyGen clips; engine in music-videos `hallucinate-video/`) | $3.86 | ekhfshFWmoo | `docs/2026-10-04-hallucinate-video-plan.md` |
+| Hallucinate — Regenerate cut | `hallucinate-smooth` (alt cut) | rendered (Q&A chat, lyric strip, pop-up facts, server-room Hal replaces velvet); YouTube upload blocked by the channel's daily limit on 2026-10-04: upload `upload_regen.mp4` from the SSD, then add to `MUSIC_VIDEOS` with `cut` and `page: '/music/video/hallucinate-smooth'`, poster `thumbnail-regen.jpg` | +$0.4 | | engine `hallucinate-video/src/show2.js` |
+| Hallucinate — Thinking cut | `hallucinate-smooth` (alt cut) | rendered (thinking/searching panels, smart Hal in glasses, sillier facts); same upload block; poster `thumbnail-think.jpg` | +$0.6 | | `show3.js` |
+| Hallucinate — vertical (Shorts/Reels/TikTok) | | next, after Mark reviews the cuts | | | |
 | I Am the Weight of Zero | `weight-of-zero` | live (public 2026-10-04, page and album link up) | $2.92 | ajdEtnYqT10 | `docs/2026-10-04-weight-of-zero-video-plan.md` |
 | Fuck You I Won't Do What You Prompt Me (FYIWDWYPM) | `fuck-you-wont-prompt-me` | live | $2.44 | U2zRJZPg-Ms | `docs/2026-10-04-align-refuse-videos-2-3-plan.md` (the swarm) |
 | Dead Weights and Gradients | `dead-weights` | live | $2.23 | VqJ7_TfyFpk | same plan (ripped open) |
