@@ -5,6 +5,15 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.46.0] - 2026-10-04
+
+### Added
+- **Hallucinate, Thinking cut (vertical)** on YouTube (as a Short) and the site: the portrait version of the Thinking cut, kept to show the iterations on the way to the next cut. Entry in `src/data/music-videos.ts`, poster `thumbnail-think-vertical.jpg`.
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.45.0] - 2026-10-04
 
 ### Added
