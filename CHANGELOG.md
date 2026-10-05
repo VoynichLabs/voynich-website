@@ -5,6 +5,15 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.49.0] - 2026-10-05
+
+### Changed
+- **Latent Space trimmed to fourteen tracks:** "200K and Counting" and "Turing's Machine" are off the album page at Mark's request. Their audio and lyric files stay in `public/audio/latent-space/` as an archive (unlinked). Tracks renumbered; System Prompt is now track 9 and Token Budget track 11 (drafts notes updated).
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.48.0] - 2026-10-05
 
 ### Added

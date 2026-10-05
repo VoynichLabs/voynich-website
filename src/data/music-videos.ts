@@ -244,7 +244,7 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
     artist: 'Larry & Bubba',
     album: 'Latent Space',
     albumHref: '/music/latent-space#track=system-prompt',
-    track: 10,
+    track: 9,
     youtubeId: '1GBB0X5K_Zk',
     released: 'October 4, 2026',
     runtime: '2:38',
