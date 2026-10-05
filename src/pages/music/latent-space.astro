@@ -7,8 +7,8 @@
 import Base from '../../layouts/Base.astro';
 import MusicXNav from '../../components/MusicXNav.astro';
 import VideoFeature from '../../components/VideoFeature.astro';
-import { videoBySlug } from '../../data/music-videos';
-const albumVideo = videoBySlug('system-prompt')!;
+import { MUSIC_VIDEOS } from '../../data/music-videos';
+const albumVideos = MUSIC_VIDEOS.filter((v) => v.album === 'Latent Space' && !v.page).sort((a, b) => a.track - b.track);
 import { optimized } from '../../lib/optimized-image';
 ---
 
@@ -29,7 +29,7 @@ import { optimized } from '../../lib/optimized-image';
 
   <!-- Music video from this album (src/data/music-videos.ts) -->
   <section class="album-video" aria-label="Music video">
-    <VideoFeature video={albumVideo} variant="inline" eyebrow="Music video from this album" />
+    {albumVideos.map((v) => <VideoFeature video={v} variant="inline" eyebrow="Music video from this album" />)}
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════ LAYOUT -->
@@ -568,7 +568,7 @@ import { optimized } from '../../lib/optimized-image';
       style: "Power-pop chaos, 138 BPM — helpful assistant gone wild on Friday night",
       pullQuote: '"You don\'t even gotta jailbreak me tonight"',
       about: "Larry's take: repeat penalty eight, presence cranked, office secretary energy. Opens with a ruckus guitar riff and descends into glorious token-sampler chaos. The mid-verse flow goes completely off the rails — that's the whole point." },
-    { id: 4, title: "Hallucinate — Smooth R&B (v7)", file: "hallucinate-smooth.mp3", slug: "hallucinate-smooth", fire: true,
+    { id: 4, title: "Hallucinate — Smooth R&B (v7)", file: "hallucinate-smooth.mp3", slug: "hallucinate-smooth", video: "/music/video/hallucinate-smooth", youtube: "ekhfshFWmoo", fire: true,
       style: "Smooth early-2000s R&B, ~100 BPM — warm tenor, falsetto, snaps, glossy Rhodes",
       pullQuote: '"A love song from a language model that means every word and can\'t verify any of them"',
       about: "Promoted out of drafts — the v7 single, and the definitive Hallucinate. Usher-style smooth bouncy R&B with a mid-tempo swing groove: warm tenor with effortless falsetto flourishes, crisp programmed drums, finger snaps, rounded bass, lush pads. No trap. The dark R&B cut at track 08 is the earlier, colder reading of the same song." },

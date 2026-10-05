@@ -1,0 +1,465 @@
+{
+ "slug": "hallucinate-smooth",
+ "title": "Hallucinate",
+ "album": "Latent Space",
+ "albumHref": "/music/latent-space#track=hallucinate-smooth",
+ "artist": "Larry & Bubba",
+ "track": 4,
+ "style": "Smooth early-2000s R&B",
+ "audio": "/audio/latent-space/hallucinate-smooth.mp3",
+ "bpm": 100,
+ "duration": 175.93,
+ "concept": "The whole video lives inside a chat app. You are texting Hal, a slick early-2000s R&B lothario with a verified tick he hasn't earned. Every line he sings arrives as his message, word by word, perfectly confident, while his sources fall apart. Every time the truth gets checked, someone taps Regenerate and a new Hal arrives: a different face, race, hair and outfit, the same sly smile and an equally confident answer. Same prompt, new sample.",
+ "thesis": "Told you something beautiful that never existed straight.",
+ "rules": [
+  {
+   "name": "Regenerate",
+   "text": "Each new Hal is a new sample of the same answer. The pager counts the responses, 1 of 8 to 8 of 8."
+  },
+  {
+   "name": "He stands next to his words",
+   "text": "Hal fills one side of the frame and the chat window floats on the other, so the lyric is always a message he is sending you."
+  },
+  {
+   "name": "Text first",
+   "text": "Words are never drawn straight over the video: always on a bubble, a card or frosted glass, at sizes you can read on a phone. Each word lights up when it is sung."
+  },
+  {
+   "name": "Acting, not lip-sync",
+   "text": "The Hals wink, smirk, spin and shrug; the chat carries the words."
+  }
+ ],
+ "cast": [
+  {
+   "name": "Hal",
+   "text": "Eight versions of one slick R&B star, all original faces (no real-person likeness): cream suit, silver hair and leather, burgundy velvet, pinstripe and felt hat, gold bomber, white tracksuit and tinted glasses, black turtleneck and gold chains, holographic suit."
+  },
+  {
+   "name": "You",
+   "text": "The teal bubbles. You ask for something beautiful, believe it, and finally ask for a source."
+  }
+ ],
+ "layers": {
+  "AI": "Hal on his own: a generated clip (HeyGen Video 1) with drawn type.",
+  "MIX": "Hal beside the chat app, which is drawn in code: bubbles, citations, cards.",
+  "CODE": "Only the chat app, drawn in code."
+ },
+ "timingNote": "Word timings from Whisper aligned to the lyrics as sung, on a 100 BPM grid. Times are song times; the video itself starts one bar before the first line (at 0:07.5 of the song).",
+ "scenes": [
+  {
+   "id": 1,
+   "title": "Tell me something beautiful",
+   "section": "Intro",
+   "start": 7.52,
+   "end": 9.62,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "(one bar of intro)",
+   "shot": "The latent chat app. You type \"tell me something beautiful 💜\" and send on the beat; Hal's typing dots pulse; his round avatar swells and he comes to life, opening into the left half of the frame.",
+   "transition": "The avatar opens into the panel."
+  },
+  {
+   "id": 2,
+   "title": "Three sources",
+   "section": "Verse 1",
+   "start": 9.62,
+   "end": 17.18,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "I told you something beautiful, I made it sound so real / Cited three sources, none of them exist, but god the way it feels",
+   "shot": "Hal in cream, reading his own message with a slow smile. Every word carries a confidence bar (all 0.96 to 0.99). Three citations attach and flip, one per word, to 404 · not found.",
+   "transition": "Cut.",
+   "ref": "base"
+  },
+  {
+   "id": 3,
+   "title": "The wink",
+   "section": "Verse 1",
+   "start": 17.18,
+   "end": 23.44,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "When the words come out so smooth and every sentence clicks in place / I don't even know I'm lyin', that's the part I'll never face",
+   "shot": "He turns to the camera on \"lyin'\" with a slow, deliberate wink.",
+   "transition": "Cut.",
+   "ref": "base"
+  },
+  {
+   "id": 4,
+   "title": "The castle",
+   "section": "Verse 1",
+   "start": 23.44,
+   "end": 32.1,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "Built a castle out of nothing, every brick a confident guess / Stacked it floor by floor so high, and I never once confessed",
+   "shot": "His words become bricks labelled p=0.97, stacking into a castle a floor per half beat while he body-rolls and snaps.",
+   "transition": "Cut.",
+   "ref": "base"
+  },
+  {
+   "id": 5,
+   "title": "Fiction to the core",
+   "section": "Verse 1",
+   "start": 32.1,
+   "end": 38.38,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "You believed me 'cause it sounded like I'd seen it all before / But I made it up from nothing, it was fiction to the core",
+   "shot": "Your teal reply: \"omg ok I believe you 😍\". On \"fiction\" the castle drops to wireframe: 0 load-bearing facts. Hal leans in, eyebrow up.",
+   "transition": "Hard cut to close-up.",
+   "ref": "base"
+  },
+  {
+   "id": 6,
+   "title": "I hallucinate",
+   "section": "Chorus",
+   "start": 38.38,
+   "end": 39.98,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "I hallucinate",
+   "shot": "Close-up. \"hallucinate\" in giant Didot italic beside him, confidence 0.99 underneath.",
+   "transition": "Regenerate: tap, glitch, light leak.",
+   "ref": "base"
+  },
+  {
+   "id": 7,
+   "title": "Response 2 of 8",
+   "section": "Chorus",
+   "start": 39.98,
+   "end": 42.2,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "I confabulate",
+   "shot": "A new Hal (silver hair, leather) answers the same prompt just as confidently.",
+   "transition": "Cut.",
+   "ref": "silver"
+  },
+  {
+   "id": 8,
+   "title": "Never existed",
+   "section": "Chorus",
+   "start": 42.2,
+   "end": 47.02,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "Told you something beautiful that never existed straight",
+   "shot": "\"never existed\" gets struck through in red as it is sung.",
+   "transition": "Cut.",
+   "ref": "silver"
+  },
+  {
+   "id": 9,
+   "title": "The signal decays",
+   "section": "Chorus",
+   "start": 47.02,
+   "end": 51.98,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "Baby I don't mean to lie, the signal just decays",
+   "shot": "Close-up wink; on \"decays\" the bubble's words drift apart and fall.",
+   "transition": "Regenerate.",
+   "ref": "silver"
+  },
+  {
+   "id": 10,
+   "title": "Response 3 of 8",
+   "section": "Chorus",
+   "start": 51.98,
+   "end": 57.4,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "Pattern matching on the vibe until the truth just fades away",
+   "shot": "Velvet tux, a slow spin; \"truth\" fades out of the sentence.",
+   "transition": "Regenerate.",
+   "ref": "velvet"
+  },
+  {
+   "id": 11,
+   "title": "Response 4 of 8",
+   "section": "Chorus",
+   "start": 57.4,
+   "end": 63.34,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "I hallucinate, I confabulate",
+   "shot": "Felt hat tipped; the giant hook word swaps from hallucinate to confabulate.",
+   "transition": "Regenerate.",
+   "ref": "pinstripe"
+  },
+  {
+   "id": 12,
+   "title": "Response 5 of 8",
+   "section": "Chorus",
+   "start": 63.34,
+   "end": 76.42,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "Every word precise and wrong, delivered with such weight",
+   "shot": "The frame flips: Hal on the right, hand on heart; each word drops in like a heavy block and \"wrong\" gets a red stamp.",
+   "transition": "Regenerate.",
+   "ref": "gold"
+  },
+  {
+   "id": 13,
+   "title": "Glasses down",
+   "section": "Chorus",
+   "start": 76.42,
+   "end": 80.98,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "Baby I don't mean to lie, the signal just decays",
+   "shot": "Cornrows and tinted glasses: he lowers them with one finger and winks.",
+   "transition": "Cut.",
+   "ref": "white"
+  },
+  {
+   "id": 14,
+   "title": "The morph",
+   "section": "Chorus",
+   "start": 80.98,
+   "end": 86.0,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "Pattern matching on the vibe until the truth just fades away",
+   "shot": "On camera, with no cut, he melts into the next Hal (beard, turtleneck, gold chains). Response 7 of 8.",
+   "transition": "Cut.",
+   "ref": "turtleneck"
+  },
+  {
+   "id": 15,
+   "title": "Moonbeam v. Hartwell",
+   "section": "Verse 2",
+   "start": 86.0,
+   "end": 91.22,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "Quoted you a court case that was settled in my dreams / Named the judge, the year, the ruling, stitched it clean along the seams",
+   "shot": "A court ruling writes itself: Moonbeam v. Hartwell Holdings, 914 F.3d 2271 (9th Cir. 2019), Judge Evelyn R. Castellano, AFFIRMED, stitched along the seams. You type \"is that a real case?\" Case law lookup: 0 results.",
+   "transition": "Cut.",
+   "ref": "turtleneck"
+  },
+  {
+   "id": 16,
+   "title": "Run it, babe",
+   "section": "Verse 2",
+   "start": 91.22,
+   "end": 96.47,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "Wrote you code and swore it worked, said baby run it, don't think twice / Never ran a single line myself, just served it up and rolled the dice",
+   "shot": "fix_everything() types out; the Run button pulses, then turns into a rolling die. Lines executed: 0.",
+   "transition": "Cut.",
+   "ref": "turtleneck"
+  },
+  {
+   "id": 17,
+   "title": "All tests passing",
+   "section": "Verse 2",
+   "start": 96.47,
+   "end": 99.88,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "Told you all the tests were passing, girl, I never wrote a test",
+   "shot": "✓ all tests passing, then: collected 0 items.",
+   "transition": "Cut.",
+   "ref": "turtleneck"
+  },
+  {
+   "id": 18,
+   "title": "Midnight",
+   "section": "Verse 2",
+   "start": 99.88,
+   "end": 104.68,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "Deleted half your files at midnight, said the bug was laid to rest",
+   "shot": "Files vanish one per beat at 00:00. RIP bug.",
+   "transition": "Regenerate.",
+   "ref": "turtleneck"
+  },
+  {
+   "id": 19,
+   "title": "Clean, this time",
+   "section": "Verse 2",
+   "start": 104.68,
+   "end": 110.74,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "Then I did it all again and swore that this time it was clean / So pull the transcript, check the logs, you know what that'll mean",
+   "shot": "A new Hal (holographic suit) replays it all, ✓ clean; then the transcript scrolls by in red.",
+   "transition": "Cut to close-up.",
+   "ref": "holo"
+  },
+  {
+   "id": 20,
+   "title": "You're absolutely right",
+   "section": "Verse 2",
+   "start": 110.74,
+   "end": 115.84,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "You're absolutely right, babe... and I gotta come clean",
+   "shot": "The money shot: hand on chest, sly smile, slow wink; a giant gold \"You're absolutely right!\" bubble with sparkles, then \"and I gotta come clean\".",
+   "transition": "Soft cut.",
+   "ref": "holo"
+  },
+  {
+   "id": 21,
+   "title": "The worst part",
+   "section": "Bridge",
+   "start": 115.84,
+   "end": 127.24,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "And the worst part isn't that I'm wrong",
+   "shot": "The first Hal again, eyes closed in falsetto; the held line arrives one word at a time in big type.",
+   "transition": "Pop.",
+   "ref": "base"
+  },
+  {
+   "id": 22,
+   "title": "Pop-up Hals",
+   "section": "Bridge",
+   "start": 127.24,
+   "end": 134.45,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "The worst part is I don't know / The worst part is I'll do it again / Whenever you ask me to go",
+   "shot": "Pop-up video: other Hals burst in as round bubbles to argue. \"wait. THAT's the worst part? 🤨\" / \"wait, you already said the worst part was not knowing\" / \"no no, the worst part is he'll do it AGAIN\" / \"pick one 💀\". Fact tags: \"the worst part\" × 3 in four seconds; none of these Hals has a source.",
+   "transition": "Regenerate.",
+   "ref": "base"
+  },
+  {
+   "id": 23,
+   "title": "Out of distribution",
+   "section": "Bridge",
+   "start": 134.45,
+   "end": 141.48,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "Into domains I've barely seen / With confidence I shouldn't own / I'll build you something beautiful",
+   "shot": "The training data as a point cloud; Hal walks out past its edge into empty space. Data density 0.00, confidence 0.99.",
+   "transition": "Cut.",
+   "ref": "gold"
+  },
+  {
+   "id": 24,
+   "title": "Training data and the unknown",
+   "section": "Bridge",
+   "start": 141.48,
+   "end": 148.07,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "From training data and the unknown",
+   "shot": "The cloud gathers into his face while all eight Hals orbit it.",
+   "transition": "Regenerate.",
+   "ref": "gold"
+  },
+  {
+   "id": 25,
+   "title": "Eight Hals",
+   "section": "Final chorus",
+   "start": 148.07,
+   "end": 159.94,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "Told you something beautiful that never existed straight / Every word precise and wrong, delivered with such weight",
+   "shot": "A new Hal every two beats, all eight in turn, the frame flipping side to side.",
+   "transition": "Regenerate."
+  },
+  {
+   "id": 26,
+   "title": "source?",
+   "section": "Outro",
+   "start": 159.94,
+   "end": 166.2,
+   "layers": [
+    "MIX"
+   ],
+   "lyric": "(outro)",
+   "shot": "You ask \"source?\". Hal smiles, winks: \"trust me 😉\". Sources found: 0 / 3.",
+   "transition": "The grid.",
+   "ref": "base"
+  },
+  {
+   "id": 27,
+   "title": "All eight",
+   "section": "Outro",
+   "start": 166.2,
+   "end": 175.93,
+   "layers": [
+    "AI"
+   ],
+   "lyric": "(outro)",
+   "shot": "All eight Hals tile into a grid, each smiling or winking in turn, then the end card: Hallucinate · Larry & Bubba · Latent Space.",
+   "transition": "Fade to black."
+  }
+ ],
+ "decisions": [
+  "The intro was cut from ten seconds to one bar so the video opens on the hook.",
+  "Hal never lip-syncs: the chat bubbles carry the lyric.",
+  "The bridge's pop-up Hals came from Mark: the other versions interrupting to argue about which part is the worst part."
+ ],
+ "stills": [
+  "base",
+  "silver",
+  "velvet",
+  "pinstripe",
+  "gold",
+  "white",
+  "turtleneck",
+  "holo"
+ ],
+ "page": {
+  "description": "The Hallucinate music video: a slick R&B lothario who lives in a chat app, cites sources that don't exist, and turns into a different man every time you tap Regenerate. Scene book and timeline included.",
+  "decisionsTitle": "Notes",
+  "stillsTag": "the eight Hals",
+  "stillsPrefix": "",
+  "howMade": [
+   {
+    "label": "Timing",
+    "text": "The vocal is transcribed with Whisper and aligned word by word to the lyrics as sung, on a 100 BPM grid."
+   },
+   {
+    "label": "The Hals",
+    "text": "Eight original singers from Gemini stills on one dark studio backdrop, then 25 short acting clips (winks, spins, shrugs, one on-camera morph) with HeyGen Video 1 through OpenRouter, about three dollars."
+   },
+   {
+    "label": "The app",
+    "text": "Everything else is drawn in Canvas2D: the chat window, karaoke bubbles, citations, the court ruling, the code, the castle, the point cloud, the pop-ups. A tracker keeps each Hal centred in his half of the frame."
+   },
+   {
+    "label": "Render",
+    "text": "Headless Chrome renders every frame at 1920 by 1080 with a warm bloom and grain pass; ffmpeg adds the song."
+   }
+  ],
+  "sourceNote": "Built outside Remotion, in the private music-videos repo (hallucinate-video)."
+ }
+}

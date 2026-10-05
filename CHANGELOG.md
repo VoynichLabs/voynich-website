@@ -5,6 +5,15 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.44.0] - 2026-10-04
+
+### Added
+- **Hallucinate music video** (Latent Space track 4, Larry & Bubba): Hal, a shape-shifting R&B lothario who lives in a chat app; every Regenerate brings a different man with the same confident lie. Page at `/music/video/hallucinate-smooth` with scene book (`video/data/hallucinate-smooth/scenes.json`, exported from the engine in the music-videos repo) and the eight cast stills, entry in `src/data/music-videos.ts`, poster. Latent Space now shows all its videos and the track links to its video. Plan: `docs/2026-10-04-hallucinate-video-plan.md`.
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.43.0] - 2026-10-04
 
 ### Added

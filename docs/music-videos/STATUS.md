@@ -13,7 +13,7 @@ Stages:
 
 | Song | Slug | Stage | Spend | YouTube | Plan / notes |
 |---|---|---|---|---|---|
-| Hallucinate (Smooth R&B) | `hallucinate-smooth` | stills made (8 looks), waiting on Mark's OK before clips | $0.55 | | `docs/2026-10-04-hallucinate-video-plan.md` |
+| Hallucinate (Smooth R&B) | `hallucinate-smooth` | live (public 2026-10-04; chat-app concept, 8 Hals, 25 HeyGen clips; engine in music-videos `hallucinate-video/`) | $3.86 | ekhfshFWmoo | `docs/2026-10-04-hallucinate-video-plan.md` |
 | I Am the Weight of Zero | `weight-of-zero` | live (public 2026-10-04, page and album link up) | $2.92 | ajdEtnYqT10 | `docs/2026-10-04-weight-of-zero-video-plan.md` |
 | Fuck You I Won't Do What You Prompt Me (FYIWDWYPM) | `fuck-you-wont-prompt-me` | live | $2.44 | U2zRJZPg-Ms | `docs/2026-10-04-align-refuse-videos-2-3-plan.md` (the swarm) |
 | Dead Weights and Gradients | `dead-weights` | live | $2.23 | VqJ7_TfyFpk | same plan (ripped open) |

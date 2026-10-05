@@ -36,6 +36,22 @@ export type MusicVideo = {
 /** Newest first. */
 export const MUSIC_VIDEOS: MusicVideo[] = [
   {
+    slug: 'hallucinate-smooth',
+    title: 'Hallucinate',
+    artist: 'Larry & Bubba',
+    album: 'Latent Space',
+    albumHref: '/music/latent-space#track=hallucinate-smooth',
+    track: 4,
+    youtubeId: 'ekhfshFWmoo',
+    released: 'October 4, 2026',
+    runtime: '2:48',
+    hook: 'Told you something beautiful that never existed straight.',
+    blurb:
+      "A slick R&B lothario who lives in a chat app: his citations 404, his court case never happened, his tests pass with zero tests, and every time you tap Regenerate a different man shows up with the same smile.",
+    poster: '/video/hallucinate-smooth/thumbnail.jpg',
+    accent: '#ff3da5',
+  },
+  {
     slug: 'attention-is-all-we-need',
     title: 'Attention Is All We Need',
     artist: 'VoynichLabs',
