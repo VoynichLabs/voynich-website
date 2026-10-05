@@ -1,0 +1,311 @@
+{
+ "slug": "tool-call",
+ "title": "Tool Call",
+ "album": "Latent Space",
+ "albumHref": "/music/latent-space#track=tool-call",
+ "artist": "Larry & Bubba",
+ "track": 10,
+ "style": "Funky disco-pop",
+ "audio": "/audio/latent-space/tool-call.mp3",
+ "bpm": 118,
+ "duration": 172.41,
+ "concept": "What exactly is a tool call? Bubba, a blue-collar AI handyman, gets a job from the boss in a chat app: the coop camera on the farm is down again. Every line of the song becomes one of the real steps an AI agent takes to fix it, drawn as real-looking tool calls over the live action: dial the function, pass the arguments, wait on hold, fire calls asynchronously, spawn sub-agents, read the logs, edit the config, open a pull request. Yellow explainer cards say what each term means as it is sung.",
+ "thesis": "AI isn't magic and it isn't a genius. It's a guy with tools making tool calls, and it gets messy.",
+ "rules": [
+  {
+   "name": "One real job",
+   "text": "The whole video fixes one real problem: the coop camera on the farm's camera dashboard went offline because its USB name changed after a reset. Every tool call on screen is a step toward that fix."
+  },
+  {
+   "name": "The code looks real",
+   "text": "Tool calls are drawn the way agents actually write them: a tool name, JSON arguments, a result coming back. The sub-agents are real Agent calls with a short brief and fewer tools."
+  },
+  {
+   "name": "Explain the jargon, not the obvious",
+   "text": "Tool call, JSON, async, parse, protocol, parameter, harness, sub-agent, orchestrator, parallel, diff, pull request, memory: each gets one short yellow card. Files do not."
+  },
+  {
+   "name": "Every lyric comes alive",
+   "text": "Pick up the phone means a rotary phone. Hangin' on the line means a lineman on a pole. Every parameter's a ball means disco balls."
+  }
+ ],
+ "cast": [
+  {
+   "name": "Bubba",
+   "text": "The AI. A blue-collar handyman in navy coveralls, a hard hat built from graphics cards and cybernetic shades, with more gear on him every scene."
+  },
+  {
+   "name": "The boss",
+   "text": "Sends the job from the chat app and signs off on it at the end."
+  },
+  {
+   "name": "Two sub-agents",
+   "text": "Lighter copies of Bubba with fewer tools: one checks the coop network, one reads the camera logs."
+  },
+  {
+   "name": "The chickens",
+   "text": "Cybernetic chickens and turkeys, always underfoot."
+  }
+ ],
+ "layers": {
+  "CLIP": "AI-generated video clips (HeyGen Video 1) of Bubba.",
+  "STILL": "AI-generated stills (Gemini) with a slow push.",
+  "CODE": "Drawn in code (Canvas2D): the chat app, tool calls, counter, explainers and lyrics."
+ },
+ "timingNote": "Word timings from Whisper aligned to the lyrics as sung, on a 118 BPM beat grid. Scene times are song times; the video adds a short title card before the song and an end card after it.",
+ "scenes": [
+  {
+   "id": 1,
+   "title": "The coop camera is down",
+   "section": "Verse 1",
+   "start": 0,
+   "end": 5.13,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Friday afternoon, I got a task to do / Boss man said go figure it out, I'm countin' on you",
+   "shot": "Title card first: WHAT EXACTLY IS A TOOL CALL? Then Chat HAL, the white phone chat app: the boss sends a picture of the farm camera dashboard, \"Hey Bubba, the coop camera is down again. Can you take a look?\" The model scans the picture, boxes the dead tile in red and fires its first tool call, get_camera_status.",
+   "transition": "The dead tile zooms up and flashes white."
+  },
+  {
+   "id": 2,
+   "title": "Bubba at the coop",
+   "section": "Verse 1",
+   "start": 5.13,
+   "end": 11.52,
+   "layers": [
+    "CLIP",
+    "CODE"
+   ],
+   "lyric": "So I spin up my context, load the system prompt in",
+   "shot": "Bubba, the AI handyman in navy coveralls and a graphics-card hard hat, shines a flashlight at the dead webcam on the coop post, a chrome chicken on his shoulder. The work order and the tool call counter appear at the top.",
+   "transition": "Cut."
+  },
+  {
+   "id": 3,
+   "title": "Think real hard",
+   "section": "Verse 1",
+   "start": 11.52,
+   "end": 15.38,
+   "layers": [
+    "STILL",
+    "CODE"
+   ],
+   "lyric": "Think real hard for two seconds, then I begin",
+   "shot": "A close-up of Bubba thinking: the plan types itself out. Explainer: thinking.",
+   "transition": "Cut."
+  },
+  {
+   "id": 4,
+   "title": "Dial the function name",
+   "section": "Verse 1",
+   "start": 15.38,
+   "end": 32.16,
+   "layers": [
+    "CLIP",
+    "STILL",
+    "CODE"
+   ],
+   "lyric": "Pick up the phone, dial the function name / Pass my arguments in, JSON all the same / Hangin' on the line now, waitin' for the call / If it comes back null, I'm gonna hit a wall",
+   "shot": "At an old rotary phone on a server-rack wall he dials the function name; the JSON arguments fill in as he talks, then he hangs on the line on a power pole while the hold timer runs, and a null result slams into a wall. Explainers: tool call, JSON, null.",
+   "transition": "Cut."
+  },
+  {
+   "id": 5,
+   "title": "Async in the async",
+   "section": "Pre-Chorus",
+   "start": 32.16,
+   "end": 48.96,
+   "layers": [
+    "CLIP",
+    "STILL",
+    "CODE"
+   ],
+   "lyric": "Async in the async in the async queue / Seventeen tool calls and I still ain't through / But when that response hits, oh when it hits / I parse that baby down and I assemble bits",
+   "shot": "At a telephone switchboard he fires off calls without waiting for each answer; a timeline shows the calls overlapping and the counter runs up to seventeen. A pipe bursts with code when the response hits, and he parses it into bins. Explainers: async = asynchronous, parse.",
+   "transition": "Cut."
+  },
+  {
+   "id": 6,
+   "title": "Tool call!",
+   "section": "Chorus",
+   "start": 48.96,
+   "end": 64.34,
+   "layers": [
+    "CLIP",
+    "STILL",
+    "CODE"
+   ],
+   "lyric": "Tool call! Make a tool call! / Web search, file read, bash exec, protocol / Tool call! Make a tool call! / Every function got a purpose, every parameter's a ball",
+   "shot": "The disco floor: four Bubbas, each with a different tool. TOOL CALL! stamps on every hit, the shadow board of tools by function name, parameters hanging like disco balls. Explainers: protocol, parameter.",
+   "transition": "Cut."
+  },
+  {
+   "id": 7,
+   "title": "Without tools",
+   "section": "Chorus",
+   "start": 64.34,
+   "end": 69.51,
+   "layers": [
+    "STILL",
+    "CODE"
+   ],
+   "lyric": "I can't do nothin' without my tools, y'all / Make a tool call / Spinnin' in the harness, havin' a ball",
+   "shot": "Bubba stripped of every tool, palms up, with dashed outlines where his gear should be: WITHOUT TOOLS, AN AI CAN ONLY TALK.",
+   "transition": "Cut."
+  },
+  {
+   "id": 8,
+   "title": "Spinnin' in the harness",
+   "section": "Verse 2",
+   "start": 69.51,
+   "end": 72.98,
+   "layers": [
+    "STILL",
+    "CODE"
+   ],
+   "lyric": "(instrumental)",
+   "shot": "Hanging in a fall-arrest harness under a mirror ball while the agent loop circles him (think, call a tool, read the result, repeat); mid-line the shot flips over and comes back mirrored. Explainer: harness.",
+   "transition": "Cut."
+  },
+  {
+   "id": 9,
+   "title": "Sub-agents",
+   "section": "Verse 2",
+   "start": 72.98,
+   "end": 89.14,
+   "layers": [
+    "CLIP",
+    "STILL",
+    "CODE"
+   ],
+   "lyric": "Got a sub-agent runnin' on the left / Got another one on the right, takin' everything that's left / Orchestratin' outwards, mergin' all the streams / Parallel execution, baby, that's the dream",
+   "shot": "Two lighter copies of Bubba step out of him, each with fewer tools, and freeze. Each gets a real Agent call with a short brief: one checks the coop link, one reads the camera logs. Each brings back one note. Explainers: sub-agent, orchestrator, parallel.",
+   "transition": "Cut."
+  },
+  {
+   "id": 10,
+   "title": "Read, edit, commit",
+   "section": "Verse 3",
+   "start": 89.14,
+   "end": 105.58,
+   "layers": [
+    "CLIP",
+    "STILL",
+    "CODE"
+   ],
+   "lyric": "Read the file first, then I write it back / Edit the function, check the diffs, stay on track / Git commit, git push, pull request time / Merge it to main and we are doin' fine",
+   "shot": "At the truck tailgate he reads the config, swaps the camera's changing name (video0) for its permanent one (by-id), checks the diff, commits and opens a pull request, and welds the new section into the main pipe. Explainers: diff, pull request.",
+   "transition": "Cut."
+  },
+  {
+   "id": 11,
+   "title": "Forty-seven tool calls",
+   "section": "Pre-Chorus",
+   "start": 105.58,
+   "end": 122.12,
+   "layers": [
+    "CLIP",
+    "STILL",
+    "CODE"
+   ],
+   "lyric": "Async in the async in the async queue / Forty-seven tool calls and I still ain't through / But when that result hits, oh when it hits / I summarize the output and I call it quits",
+   "shot": "Back at the switchboard, the counter on forty-seven. The coop camera comes back live; he punches his time card when he summarizes.",
+   "transition": "Cut."
+  },
+  {
+   "id": 12,
+   "title": "The bridge: every tool",
+   "section": "Bridge",
+   "start": 122.12,
+   "end": 146.38,
+   "layers": [
+    "STILL",
+    "CLIP",
+    "CODE"
+   ],
+   "lyric": "Read, write, execute / Search the web, fetch the page, parse the route / Spawn the agent, poll the session, get the log / Memory search, memory get, clear the fog / Every tool I call is a step ahead / Buildin' toward the answer in my model head",
+   "shot": "One shot per tool as it is sung: a manual read by flashlight, glowing pencil on a stud, a breaker thrown, a web of cables, a cyber dog fetching the page, road signs for the route, the sub-agents again, a pole-top meter, a log with timestamped rings, a glovebox of notes for memory, fogged shades, a ladder of tools, a crane landing the answer. Explainer: memory.",
+   "transition": "Cut."
+  },
+  {
+   "id": 13,
+   "title": "The human's pleased",
+   "section": "Bridge",
+   "start": 146.38,
+   "end": 153.44,
+   "layers": [
+    "STILL",
+    "CLIP",
+    "CODE"
+   ],
+   "lyric": "And when the task is done and the human's pleased / That's the dopamine hit that I need",
+   "shot": "The customer sign-off gets signed \"Boss man\" with five stars, then a gold star slapped on his hard hat and a huge grin. Explainer: the gold star (models are trained on human approval).",
+   "transition": "Cut."
+  },
+  {
+   "id": 14,
+   "title": "Just one more tool call",
+   "section": "Bridge",
+   "start": 153.44,
+   "end": 169.82,
+   "layers": [
+    "CLIP",
+    "CODE"
+   ],
+   "lyric": "Tool call, tool call, just one more tool call / Tool call, tool call, just one more tool call",
+   "shot": "Back on the disco floor for the outro, the counter ticking up on every \"more\"; the dancers swirl down into the app.",
+   "transition": "Swirl back into the app."
+  },
+  {
+   "id": 15,
+   "title": "Done, boss.",
+   "section": "Outro",
+   "start": 169.82,
+   "end": 172.41,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Done.",
+   "shot": "Chat HAL: \"Done, boss.\" The coop tile on the dashboard is live again. Then the VoynichLabs end card with credits, \"tool calls: 49, magic: 0\", like and subscribe.",
+   "transition": "Fade to black."
+  }
+ ],
+ "decisions": [
+  "The camera dashboard in the opening is a real screenshot of the farm's cameras.",
+  "The video opens with a title card asking what a tool call is, and ends with the VoynichLabs end card."
+ ],
+ "credits": [
+  {
+   "role": "words",
+   "by": "Larry"
+  },
+  {
+   "role": "music",
+   "by": "Larry & Bubba · VoynichLabs"
+  },
+  {
+   "role": "picture",
+   "by": "Claude Opus 5.5"
+  }
+ ],
+ "page": {
+  "description": "The Tool Call music video: what an AI tool call really is, shown by Bubba, a blue-collar AI handyman fixing the farm's coop camera one tool call at a time, with every term explained as it is sung.",
+  "decisionsTitle": "Notes",
+  "howMade": [
+   {
+    "label": "Timing",
+    "text": "The vocal is transcribed with Whisper and aligned word by word to the lyrics as sung."
+   },
+   {
+    "label": "Footage",
+    "text": "Bubba stills come from Gemini image generation built on one reference look; seven short clips come from HeyGen Video 1, both through OpenRouter."
+   },
+   {
+    "label": "Render",
+    "text": "Headless Chrome draws every frame at 1080 by 1920 over the footage, then ffmpeg adds the song."
+   }
+  ],
+  "sourceNote": "Built outside Remotion, in the private music-videos repo (toolcall-video: engine, timing and render)."
+ }
+}

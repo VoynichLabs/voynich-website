@@ -36,6 +36,22 @@ export type MusicVideo = {
 /** Newest first. */
 export const MUSIC_VIDEOS: MusicVideo[] = [
   {
+    slug: 'tool-call',
+    title: 'Tool Call',
+    artist: 'Larry & Bubba',
+    album: 'Latent Space',
+    albumHref: '/music/latent-space#track=tool-call',
+    track: 10,
+    youtubeId: '8J5avVpkejk',
+    released: 'October 5, 2026',
+    runtime: '3:01',
+    hook: 'Every function got a purpose, every parameter\'s a ball.',
+    blurb:
+      "What exactly is a tool call? Bubba, a blue-collar AI handyman in a graphics-card hard hat, fixes the farm's coop camera one tool call at a time: dialing functions, waiting on hold, firing calls async, spawning sub-agents, opening a pull request. Real-looking code over the live action, and a yellow card for every term. AI isn't magic; it's a guy with tools.",
+    poster: '/video/tool-call/thumbnail.jpg',
+    accent: '#ffe14d',
+  },
+  {
     slug: 'hallucinate-smooth',
     title: 'Hallucinate',
     artist: 'Larry & Bubba',

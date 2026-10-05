@@ -5,6 +5,15 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.50.0] - 2026-10-05
+
+### Added
+- **Tool Call music video** (Latent Space track 10, Larry & Bubba), vertical: what exactly is a tool call? Bubba, a blue-collar AI handyman, fixes the farm's coop camera one tool call at a time, with real-looking tool calls drawn over AI-generated stills and clips, a tool call counter, and an explainer card for every term. Opens on a title card and in the Chat HAL app, ends with the VoynichLabs end card. Page at `/music/video/tool-call` with scene book `video/data/tool-call/scenes.json`; the album track links to the video. Engine in the music-videos repo, `toolcall-video/`.
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.49.0] - 2026-10-05
 
 ### Changed
