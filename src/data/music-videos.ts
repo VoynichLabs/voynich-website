@@ -63,7 +63,7 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
     runtime: '2:48',
     hook: 'Do you remember my name? Of course… Jessica?',
     blurb:
-      'Hal lives in Chat HAL, a white phone chat app with its own logo. Sixteen men play him, each with equal screen time, and every one thinks hard, searches ridiculous sources and lands confidently wrong. The latest cut, built for phones.',
+      'A smooth R&B love song about AI hallucinations, sung by a chatbot who sounds certain and is wrong. In this cut he lives in Chat HAL, a chat app on your phone: he thinks, searches made-up sources and answers with total confidence, and sixteen different Hals take turns because every regenerate brings a new face and the same mistake.',
     poster: '/video/hallucinate-smooth/thumbnail-chathal.jpg',
     page: '/music/video/hallucinate-smooth',
     accent: '#ffe14d',
