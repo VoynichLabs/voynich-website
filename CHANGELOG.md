@@ -5,6 +5,15 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.45.0] - 2026-10-04
+
+### Added
+- **Hallucinate, two more cuts** on YouTube and the site: the Regenerate cut (running chat of bizarre confident answers, a new Hal every two bars, pop-up facts, server-room Hal) and the Thinking cut (Hal thinks and searches sources before every wrong answer, smart Hal in glasses). Listed as alternate cuts in `src/data/music-videos.ts` pointing at the Hallucinate making-of page; posters `thumbnail-regen.jpg`, `thumbnail-think.jpg`.
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.44.0] - 2026-10-04
 
 ### Added
