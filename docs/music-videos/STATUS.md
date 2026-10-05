@@ -17,7 +17,7 @@ Stages:
 | Hallucinate — Regenerate cut | `hallucinate-regenerate` (alt cut) | live (public 2026-10-04) | +$0.4 | qWpv5crkrGA | engine `hallucinate-video/src/show2.js` |
 | Hallucinate — Thinking cut | `hallucinate-thinking` (alt cut) | live (public 2026-10-04) | +$1.2 | ygsPEC0z19Y | `show3.js` |
 | Hallucinate — Thinking cut (vertical) | `hallucinate-thinking-vertical` (alt cut) | live (public Short 2026-10-04) | +$0.6 | 5fyZIFu4BgI | `studio3v.html` |
-| Hallucinate — Chat HAL cut (vertical) | | in review with Mark (white phone chat app frame, sixteen Hals) | | | `studio5.html` |
+| Hallucinate — Chat HAL cut (vertical) | `hallucinate-chathal` (alt cut) | live (public 2026-10-04) | | WFGGtjjIoyk | `studio5.html` |
 | I Am the Weight of Zero | `weight-of-zero` | live (public 2026-10-04, page and album link up) | $2.92 | ajdEtnYqT10 | `docs/2026-10-04-weight-of-zero-video-plan.md` |
 | Fuck You I Won't Do What You Prompt Me (FYIWDWYPM) | `fuck-you-wont-prompt-me` | live | $2.44 | U2zRJZPg-Ms | `docs/2026-10-04-align-refuse-videos-2-3-plan.md` (the swarm) |
 | Dead Weights and Gradients | `dead-weights` | live | $2.23 | VqJ7_TfyFpk | same plan (ripped open) |

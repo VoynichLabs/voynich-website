@@ -5,6 +5,15 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.47.0] - 2026-10-04
+
+### Added
+- **Hallucinate, Chat HAL cut** (vertical) on YouTube and the site: the whole frame is a phone running Chat HAL, sixteen Hals with equal screen time, the best jokes enlarged, pop-ups only in the bridge. Entry in `src/data/music-videos.ts`, poster `thumbnail-chathal.jpg`. Engine: `show5.js` / `studio5.html` in the music-videos repo.
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.46.0] - 2026-10-04
 
 ### Added
