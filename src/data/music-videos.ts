@@ -68,7 +68,7 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
     accent: '#ff3da5',
   },  {
     slug: 'temp-1-3',
-    title: 'TEMP 1.3 (Wasted)',
+    title: 'Hallucinate the dance floor, confabulate the vibe.',
     artist: 'Larry & Bubba',
     album: 'Latent Space',
     albumHref: '/music/latent-space#track=temp-1-3',

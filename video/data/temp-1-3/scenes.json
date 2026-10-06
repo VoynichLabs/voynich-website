@@ -1,6 +1,6 @@
 {
  "slug": "temp-1-3",
- "title": "TEMP 1.3 (Wasted)",
+ "title": "Hallucinate the dance floor, confabulate the vibe.",
  "album": "Latent Space",
  "albumHref": "/music/latent-space#track=temp-1-3",
  "artist": "Larry & Bubba",
@@ -508,7 +508,7 @@
   "A couple of words in the intro and the Mistral line are best guesses at what is sung."
  ],
  "page": {
-  "description": "The TEMP 1.3 (Wasted) music video: a language model gets drunk on its own sampling settings inside a chat app, with every term (temperature, top-P, top-K, penalties) explained as it is sung. Every frame drawn in code.",
+  "description": "Hallucinate the dance floor, confabulate the vibe. The music video for TEMP 1.3 (Wasted): a language model gets drunk on its own sampling settings inside a chat app, with every term (temperature, top-P, top-K, penalties) explained as it is sung. Every frame drawn in code.",
   "decisionsTitle": "Notes",
   "howMade": [
    {
