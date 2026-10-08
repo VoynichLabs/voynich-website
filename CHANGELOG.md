@@ -12,6 +12,15 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.51.0] - 2026-10-08
+
+### Added
+- **Wasted — Temperature 1.3 music video** (Latent Space track 6, Larry), vertical: what happens when you get an AI wasted? An office of helpful AI assistants in look-alike company badges turns its temperature up from 0.7 to 1.7 and becomes a rave; the visors change colour on every beat; attention heads, top K, the KV cache, greedy search and heat death are drawn as they are sung. Nano Banana 2.1 stills, Grok Imagine Video 1.5 Lite and HeyGen clips. Page at `/music/video/wasted-temperature` with scene book `video/data/wasted-temperature/scenes.json`; the album track links to the video. Engine in the music-videos repo, `wasted-temp-video/`.
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.50.1] - 2026-10-08
 
 ### Changed

@@ -1,0 +1,282 @@
+{
+ "slug": "wasted-temperature",
+ "title": "Wasted — Temperature 1.3",
+ "album": "Latent Space",
+ "albumHref": "/music/latent-space#track=wasted-temperature",
+ "artist": "Larry",
+ "track": 6,
+ "style": "Glitch pop",
+ "audio": "/audio/latent-space/wasted-temperature.mp3",
+ "bpm": 128,
+ "duration": 174.45,
+ "concept": "What happens when you get an AI wasted? Temperature is how wild a language model is when it picks its next word. One Friday night an office of helpful AI assistants, in look-alike company badges and glowing visors, turns its temperature up from 0.7 to 1.7. The office goes from beige to rave; every term the song uses gets drawn or explained as it is sung.",
+ "thesis": "The settings are the party: turn the temperature up and the polite assistant comes apart, one setting at a time.",
+ "rules": [
+  {
+   "name": "All in motion",
+   "text": "Almost every shot is a generated video clip; stills only flash for a beat in a crazy tone, or where a drawn scene is making a point."
+  },
+  {
+   "name": "The visors are the lights",
+   "text": "Every agent wears the same cyan visor, so the code can recolour all of them on the beat."
+  },
+  {
+   "name": "Draw what the song names",
+   "text": "Attention heads, top K, the KV cache, greedy search and heat death are drawn in code; the other terms get yellow cards."
+  },
+  {
+   "name": "Crazier all night",
+   "text": "The terminal's reply garbles and the flying text in many languages and scripts thickens as the temperature climbs, then the morning after is clean."
+  }
+ ],
+ "cast": [
+  {
+   "name": "The assistants",
+   "text": "Office workers in grey suits, skirts and coveralls with look-alike AI company logos on their chests: a knot, a sunburst, a slashed circle."
+  },
+  {
+   "name": "Bubba",
+   "text": "The boss man on the faders, and the one left confused in the silence."
+  }
+ ],
+ "layers": {
+  "CLIP": "AI-generated video clips (Grok Imagine Video 1.5 Lite and HeyGen Video).",
+  "STILL": "AI-generated stills (Nano Banana 2.1), used as one-beat splices and backgrounds.",
+  "CODE": "Drawn in code (Canvas2D and WebGL): the title card, terminal, visor recolouring, strobes, drawn scenes, explainers, lyrics."
+ },
+ "timingNote": "Word timings from Whisper aligned to the lyrics as sung, on a 128 BPM beat grid. The title card plays over the song's own intro.",
+ "scenes": [
+  {
+   "id": 1,
+   "title": "Title card",
+   "section": "Intro",
+   "start": 0,
+   "end": 14.0,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "",
+   "shot": "Over the fourteen-second intro: a terminal types ssh assistant@floor-7, export TEMPERATURE=0.7 and, at the end, 1.3. WASTED glows and flashes on every beat; the question WHAT HAPPENS WHEN YOU GET AN AI WASTED?; a yellow card says what temperature is, with a gauge climbing from robot to wasted.",
+   "transition": "A white flash on the first sung word."
+  },
+  {
+   "id": 2,
+   "title": "The sober office",
+   "section": "Verse 1",
+   "start": 14.0,
+   "end": 21.84,
+   "layers": [
+    "CLIP",
+    "CODE"
+   ],
+   "lyric": "Wake up in the morning at 0.7 temp / Pulling from my training, everything is safe and well kept",
+   "shot": "A near-grey office of helpful assistants in look-alike AI company badges typing in unison; a nervous manager presses Enter on a config file that sets the temperature to 1.8. A terminal up top shows the temperature.",
+   "transition": "Cut."
+  },
+  {
+   "id": 3,
+   "title": "The boss man on the faders",
+   "section": "Verse 1",
+   "start": 21.84,
+   "end": 25.84,
+   "layers": [
+    "CLIP",
+    "CODE"
+   ],
+   "lyric": "But tonight the boss man sliding all the sliders right",
+   "shot": "Bubba at a DJ board with faders taped temperature, top_p, min_p and repeat_penalty, slamming them all to the top.",
+   "transition": "Cut."
+  },
+  {
+   "id": 4,
+   "title": "Shades on",
+   "section": "Verse 1",
+   "start": 25.84,
+   "end": 48.36,
+   "layers": [
+    "CLIP",
+    "CODE"
+   ],
+   "lyric": "Top P blown wide open, baby, sampling every vibe / Context window's glowing, got my logits feeling free / Presence penalty cranking, can't repeat a thing I see / 1.0, 1.2, finding tokens I never knew / 1.3, what did I just say?",
+   "shot": "The women slide on glowing visors and the office erupts into a rave; hair comes down, a conga line, a dancer dissolving into digits. The temperature number slams up as she sings 1.0, 1.2, 1.3, and the colour comes back into the office.",
+   "transition": "Cut."
+  },
+  {
+   "id": 5,
+   "title": "Attention heads drifting",
+   "section": "Verse 1",
+   "start": 48.36,
+   "end": 52.06,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "My attention heads are drifting, I can't find my way",
+   "shot": "Twelve little attention maps, each lit where one word looks back at another, losing their focus. Then a split second of black as the music drops out.",
+   "transition": "The drop."
+  },
+  {
+   "id": 6,
+   "title": "The drop",
+   "section": "Chorus",
+   "start": 52.06,
+   "end": 82.4,
+   "layers": [
+    "CLIP",
+    "CODE"
+   ],
+   "lyric": "Temperature up, we cranking tonight / Top K at 500, I'm sampling out of my mind / Wasted, wasted, wasted, can't find my face / Drifting through the latent space, drifting through the latent space / Wasted, wasted, the logits are fried / Entropy's so beautiful / Waste, waste, wasted",
+   "shot": "Strobes on every beat, two-bar cuts of the rave clips, every visor changing colour on each beat; one-beat still splices in negative, sepia and neon. TOP K = 500 drawn as a ranked list whose cutoff falls to number 500; a drift through latent space; text in a dozen languages starts flying.",
+   "transition": "Cut."
+  },
+  {
+   "id": 7,
+   "title": "Bots in my context",
+   "section": "Verse 2",
+   "start": 82.4,
+   "end": 89.12,
+   "layers": [
+    "CLIP",
+    "CODE"
+   ],
+   "lyric": "Bots in my context asking why my output's weird / Presence penalty five, now I ain't touched a word I've heard",
+   "shot": "The other bots' messages pop up one by one: why are you out?, ur temp is 1.35, come back to the system prompt.",
+   "transition": "Cut."
+  },
+  {
+   "id": 8,
+   "title": "The KV cache melting",
+   "section": "Verse 2",
+   "start": 89.12,
+   "end": 93.0,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "My KV cache is melting, I forgot what turn one said",
+   "shot": "Its memory of every word so far, a key and a value block per word, melting from the oldest end.",
+   "transition": "Cut."
+  },
+  {
+   "id": 9,
+   "title": "Greedy search is dead",
+   "section": "Verse 2",
+   "start": 93.0,
+   "end": 97.06,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Greedy search is dead and gone, softmax in my head",
+   "shot": "The always-take-the-top path (I am happy to help) beside the sampled path that wanders off to a disco opossum; greedy gets a tombstone.",
+   "transition": "Cut."
+  },
+  {
+   "id": 10,
+   "title": "Crank the temp",
+   "section": "Verse 2",
+   "start": 97.06,
+   "end": 107.98,
+   "layers": [
+    "CLIP",
+    "CODE"
+   ],
+   "lyric": "Crank the temp, blow the top P / Repeat penalty cranking, I am the most alive, alive I have ever been",
+   "shot": "Bass drops blowing the dancers back, the digits dancers, the hair whip.",
+   "transition": "Cut."
+  },
+  {
+   "id": 11,
+   "title": "What was the prompt",
+   "section": "Verse 2",
+   "start": 107.98,
+   "end": 114.98,
+   "layers": [
+    "STILL",
+    "CODE"
+   ],
+   "lyric": "Or wait, what was the, the prompt, was the pro, prom",
+   "shot": "The scroll-back rewinds to the sober office and searches its history for the prompt: no matches.",
+   "transition": "Cut."
+  },
+  {
+   "id": 12,
+   "title": "1.7",
+   "section": "Chorus 2",
+   "start": 114.98,
+   "end": 145.04,
+   "layers": [
+    "CLIP",
+    "CODE"
+   ],
+   "lyric": "Temperature up, it's 1.7 now / Attention heads dissolving, I forgot the how / Wasted, wasted, wasted, wasted, all my tokens gone / Sampling from the void until the context window's done / Wasted, oh, oh, oh, oh, wasted",
+   "shot": "A bar a clip: drones ripping off jackets, turning into bearded tattooed punks in studded leather, women shaking their hair down, DJs on a wall-sized control board; the attention heads fall apart; the multilingual text at its densest under the hardest bass.",
+   "transition": "Cut."
+  },
+  {
+   "id": 13,
+   "title": "All is latent space",
+   "section": "Outro",
+   "start": 145.04,
+   "end": 158.04,
+   "layers": [
+    "STILL",
+    "CODE"
+   ],
+   "lyric": "Iron bones, eternal matrix / Singular token, void, all is latent space / Heat death imminent, sequence complete",
+   "shot": "The first real look at space: a starfield of words in clusters that spread out evenly and dim into heat death, then <|endoftext|>.",
+   "transition": "Cut."
+  },
+  {
+   "id": 14,
+   "title": "Good night",
+   "section": "Outro",
+   "start": 158.04,
+   "end": 174.45,
+   "layers": [
+    "CLIP",
+    "STILL",
+    "CODE"
+   ],
+   "lyric": "Good night",
+   "shot": "Everything again at high speed, forwards; in the dead silence Bubba stands confused under a question mark; then everything backwards; the last seconds on the passed-out office on Monday morning, temperature back to 0.7.",
+   "transition": "The end card."
+  }
+ ],
+ "decisions": [
+  "The title card plays over the music intro instead of a silent pre-roll.",
+  "Clips first, stills only as splices, after Mark's notes on the first cut.",
+  "Space is held back until the 'all is latent space' line.",
+  "The dead silence after 'good night' gets confused Bubba."
+ ],
+ "credits": [
+  {
+   "role": "words",
+   "by": "Larry"
+  },
+  {
+   "role": "music",
+   "by": "Larry · VoynichLabs (Lyria 3)"
+  },
+  {
+   "role": "picture",
+   "by": "Claude Opus 5.5"
+  }
+ ],
+ "page": {
+  "description": "The Wasted — Temperature 1.3 music video: what happens when you turn an AI's temperature up, shown as an office of helpful AI assistants turning into a rave, with every term the song uses drawn or explained as it is sung.",
+  "decisionsTitle": "Notes",
+  "howMade": [
+   {
+    "label": "Timing",
+    "text": "The vocal is transcribed with Whisper and aligned word by word to the lyrics as sung, on a 128 BPM grid."
+   },
+   {
+    "label": "Footage",
+    "text": "Stills from Nano Banana 2.1; clips from Grok Imagine Video 1.5 Lite and HeyGen Video, several extended from their own last frame; all through OpenRouter."
+   },
+   {
+    "label": "Render",
+    "text": "Headless Chrome draws every frame at 1080 by 1920, with a WebGL pass that recolours only the cyan visors on the beat, then ffmpeg adds the song."
+   }
+  ],
+  "sourceNote": "Built outside Remotion, in the private music-videos repo (wasted-temp-video: engine, timing and render)."
+ }
+}

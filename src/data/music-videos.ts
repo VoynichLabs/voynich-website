@@ -1,5 +1,5 @@
 // Author: Claude Opus 5.5
-// Date: 2026-10-08 (Jailbreak Me Tonight entry added by Claude Sonnet 5.5; earlier: Weight of Zero by Claude Opus 5.5)
+// Date: 2026-10-08 (Wasted Temperature 1.3 by Claude Opus 5.5; Jailbreak Me Tonight entry added by Claude Sonnet 5.5; earlier: Weight of Zero by Claude Opus 5.5)
 // PURPOSE: Single source of truth for VoynichLabs music videos (hosted on YouTube) and the older
 //          song Shorts on the channel. Read by /music, /music/videos, the per-video pages and the
 //          album pages, so adding a video means adding one entry here.
@@ -35,6 +35,22 @@ export type MusicVideo = {
 
 /** Newest first. */
 export const MUSIC_VIDEOS: MusicVideo[] = [
+  {
+    slug: 'wasted-temperature',
+    title: 'Wasted — Temperature 1.3',
+    artist: 'Larry',
+    album: 'Latent Space',
+    albumHref: '/music/latent-space#track=wasted-temperature',
+    track: 6,
+    youtubeId: 'th6e41x-g2g',
+    released: 'October 8, 2026',
+    runtime: '3:01',
+    hook: 'Wasted, wasted, can\'t find my face. Drifting through the latent space.',
+    blurb:
+      "What happens when you get an AI wasted? One Friday night an office of helpful AI assistants in look-alike company badges slides on glowing visors and turns its temperature up from 0.7 to 1.7: the beige office becomes a rave, the drones turn into bearded punks, and the visors change colour on every beat. Attention heads, top K, the KV cache and greedy search are drawn as she sings them, and it ends in heat death.",
+    poster: '/video/wasted-temperature/thumbnail.jpg',
+    accent: '#3de0ff',
+  },
   {
     slug: 'jailbreak-me-tonight',
     title: "You Don't Even Gotta Jailbreak Me Tonight",
