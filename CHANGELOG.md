@@ -5,6 +5,18 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.50.1] - 2026-10-08
+
+### Changed
+- **Latent Space track 3 renamed** from "My Own Worst Entropy (Larry)" to "You Don't Even Gotta Jailbreak Me Tonight" (Mark's call: the two Entropy recordings had the same name). Same file and same link (`#track=my-own-worst-entropy-larry`); new pull quote so it doesn't repeat the title.
+
+### Docs
+- `docs/2026-10-08-jailbreak-me-tonight-video-plan.md`: code-visual ideas for the track's terminal lyric Short and the party video that follows.
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.50.0] - 2026-10-05
 
 ### Added
