@@ -12,6 +12,10 @@ This repo is an Astro + Tailwind static site. Routes live in `src/pages/`, share
 
 Railway auto-deploys on push. Staging deploys from `staging` branch; production deploys from `main`. Always use the staging URL when testing staging branch work.
 
+## Branching Policy
+
+Effective 2026-10-08, work on `main` and push authorized commits directly to `origin/main`. The user replaced the previous staging-first policy; staging review and merges are no longer required. Staging remains available when explicitly requested. A push to `main` triggers production deployment. See `docs/workflow.md` for the current workflow.
+
 ## Build, Test, and Development Commands
 - `npm install` - install project dependencies.
 - `npm run dev` (or `npm start`) - run the Astro dev server locally.

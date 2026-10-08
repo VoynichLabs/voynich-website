@@ -5,6 +5,16 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.51.1] - 2026-10-08
+
+### Docs
+- Added `docs/2026-10-08-code-audit.md` with six open code findings, verification results, and maintenance concerns for revision `87601eb`.
+- Updated `AGENTS.md`, `README.md`, and `docs/workflow.md` with the user's new policy: authorized commits go directly to `main`; staging review and merges are no longer required.
+
+Author: Codex GPT-6
+
+---
+
 ## [0.51.0] - 2026-10-08
 
 ### Added

@@ -1,36 +1,23 @@
 # Workflow for VoynichLabs Website
 
-This repo maintains a strict staging-first workflow. Follow these steps for every change:
+Effective 2026-10-08, the user has replaced the staging-first policy with direct pushes to `main`. This policy supersedes staging requirements in older plans and workflow notes.
 
-1. **Branching**
-   - Pull the latest `origin/main` and create a working branch off `staging`. Never work directly on `main`.
-   - Name branches after the feature/task (e.g., `staging/hero-images`, `staging/loda-terminal`).
+## Branching and deployment
 
-2. **Documentation & Planning**
-   - Before coding, add or update a dated plan/note in `docs/` (e.g., `2026-02-23-voynich-website-plan.md`).
-   - Document data sources, references, and expected copy/visual changes so the rest of the swarm can review easily.
+Work on `main`. Check the working tree and fetch `origin` before starting; incorporate remote changes without discarding local work. Commit and push to `origin/main` when authorized by the user. Railway automatically deploys production from `main` to <https://voynichlabs.org/>.
 
-3. **Development & Validation**
-   - Use `npm run dev` while iterating locally.
-   - Build with `npm run build` to ensure the site compiles before committing.
-   - Include any new assets (images, docs) under `public/` or `docs/` and reference them with real content only.
+Staging remains available at <https://voynich-website-staging.up.railway.app/> when explicitly requested. A staging branch, staging review, or staging merge is no longer required before pushing to production. This changes the repository workflow, not the Railway branch configuration.
 
-4. **Commits & Push**
-   - Commit stage-specific changes to your branch.
-   - Push the branch to `staging` (e.g., `git push origin staging/hero-images`).
-   - Merge back into `staging` after peer-review, keeping `main` untouched.
+## Planning and documentation
 
-5. **Staging Deployment**
-   - The `staging` branch is what Railway builds (via `voynich-website` project) and drives the staging site at <https://voynich-website-staging.up.railway.app>. Confirm that build before requesting human sign-off and document exactly what facts you're shipping.
-   - Log any new deploy or notable change in `docs/health-checks/` or the applicable plan file.
+Before substantive implementation, follow the plan requirements in `AGENTS.md` and `coding-standards.md`. Record scope, architecture, verification, and documentation touchpoints in a dated plan under `docs/`. Update relevant documentation and the changelog when behavior changes. Routine documentation updates can follow the user's direct instructions.
 
-6. **Production Release**
-   - After a human reviews staging and approves the visual/copy changes, merge `staging` into `main` and push.
-   - Human sign-off must be recorded (comment in docs or in `docs/health-checks/`).
-   - Railway/Pages will rebuild off `main` once the merge completes.
+## Validation
 
-7. **Post-Deploy**
-   - Verify the live URLs (<https://voynich-website-production.up.railway.app> and <https://voynichlabs.github.io/voynich-website/>) update with the latest content.
-   - Update `docs/health-checks/` with the results and any follow-up tasks.
+Validate application changes with `npm run build` and relevant local flows. Use `npm run check` to identify Astro and TypeScript errors; distinguish existing diagnostics from regressions. Verify affected pages locally when their behavior or appearance changes. For documentation-only changes, review content, source links, and `git diff --check`; application checks need not be repeated when code and dependencies are unchanged.
 
-> The Lobster Swarm respects this flow so the site stays accurate, staged, and signed off before we push to production.
+## Commits and pushes
+
+Review the diff, stage only intended files, and use a specific Conventional Commit-style message. Do not commit or push without user authorization. When authorized, push normally with `git push origin main`; resolve divergence without force-pushing shared history. No additional staging sign-off is required.
+
+After pushing, verify that the remote contains the intended commit. For changes to deployed behavior, verify the production deployment and affected flows and record any unresolved failures. A successful Git push alone does not confirm deployment success.

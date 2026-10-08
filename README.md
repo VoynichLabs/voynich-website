@@ -42,13 +42,13 @@ If you want to understand the project before editing copy/design, start here:
 
 ## Contribution Notes
 
-This repo follows a documentation-first workflow and enforces a staging-first branch strategy:
+This repo follows a documentation-first workflow with direct pushes to `main` (policy updated by the user on 2026-10-08):
 
 - Create a dated plan in `docs/` before substantial changes
 - Use real data and real integrations (no placeholder/mock content in shipped pages)
-- Do all work in the `staging` branch; never push directly to `main`
-- Railway builds staging automatically and publishes <https://voynich-website-staging.up.railway.app>
+- Work on `main` and push authorized commits directly to `origin/main`
+- Railway builds production automatically from `main` and publishes <https://voynichlabs.org/>
 - Update `CHANGELOG.md` and relevant docs when behavior or content changes
-- Merge `staging` into `main` only after a human reviews the staging deployment and explicitly signs off
+- Use `staging` only when requested; staging review and merges are no longer required before a production push
 
 Read `docs/workflow.md` for the full branching, review, and deployment checklist. The goal is to preserve technical accuracy while keeping the site visually and narratively strong.
