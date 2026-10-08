@@ -19,6 +19,7 @@ Stages:
 | Hallucinate — Thinking cut (vertical) | `hallucinate-thinking-vertical` (alt cut) | live (public Short 2026-10-04) | +$0.6 | 5fyZIFu4BgI | `studio3v.html` |
 | Hallucinate — Chat HAL cut (vertical) | `hallucinate-chathal` (alt cut) | live (public 2026-10-04) | | WFGGtjjIoyk | `studio5.html` |
 | Tool Call | `tool-call` | live (public 2026-10-05; Bubba the AI handyman, 7 HeyGen clips plus Gemini stills, code layer, title card and end card) | |  8J5avVpkejk | `docs/2026-10-05-tool-call-video-plan.md`, engine in music-videos `toolcall-video/` |
+| My Own Worst Entropy (Bubba) | `my-own-worst-entropy` | render (first full cut 2026-10-08, sent to Mark for notes; Nano Banana 2.1 stills, Grok Imagine Video 1.5 Lite clips, sampler panel with a live next-token chart, garbled flying text that climbs with the temperature) | about $3 | | engine in music-videos `entropy-video/` |
 | TEMP 1.3 (Wasted) | `temp-1-3` | live (public Short 2026-10-05; code only, Chat HAL app, explainers) | $0 | lXyeo86gQfc | engine in music-videos `temp-video/` |
 | TEMP 1.3 (Wasted) — Bubba cut | `temp-1-3-bubba` (alt cut) | live (public Short 2026-10-05; the other recording, Gemini and Grok scenes) | $0 | mIz3Jz9MMVo | same engine, `?v=bubba` |
 | I Am the Weight of Zero | `weight-of-zero` | live (public 2026-10-04, page and album link up) | $2.92 | ajdEtnYqT10 | `docs/2026-10-04-weight-of-zero-video-plan.md` |
