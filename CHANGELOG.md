@@ -5,6 +5,13 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.51.0] - 2026-10-08
+
+### Added
+- **Music video: "You Don't Even Gotta Jailbreak Me Tonight"** (Latent Space track 3, Larry's recording), YouTube `GhpBbP22WqE`, page `/music/video/jailbreak-me-tonight`. A code-only vertical terminal lyric video: tokenizer-split word tiles coloured by probability, the system prompt melting and crossed out, config diffs, the context window closing on the boss's request. Made by Claude Sonnet 5.5. Entry in `src/data/music-videos.ts`, scene book in `video/data/jailbreak-me-tonight/`, thumbnail in `public/video/jailbreak-me-tonight/`, album page track now links the video.
+
+---
+
 ## [0.50.1] - 2026-10-08
 
 ### Changed

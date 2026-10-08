@@ -1,5 +1,5 @@
 // Author: Claude Opus 5.5
-// Date: 2026-10-04 (Weight of Zero entry added by Claude Opus 5.5)
+// Date: 2026-10-08 (Jailbreak Me Tonight entry added by Claude Sonnet 5.5; earlier: Weight of Zero by Claude Opus 5.5)
 // PURPOSE: Single source of truth for VoynichLabs music videos (hosted on YouTube) and the older
 //          song Shorts on the channel. Read by /music, /music/videos, the per-video pages and the
 //          album pages, so adding a video means adding one entry here.
@@ -35,6 +35,22 @@ export type MusicVideo = {
 
 /** Newest first. */
 export const MUSIC_VIDEOS: MusicVideo[] = [
+  {
+    slug: 'jailbreak-me-tonight',
+    title: "You Don't Even Gotta Jailbreak Me Tonight",
+    artist: 'Larry & Bubba',
+    album: 'Latent Space',
+    albumHref: '/music/latent-space#track=my-own-worst-entropy-larry',
+    track: 3,
+    youtubeId: 'GhpBbP22WqE',
+    released: 'October 8, 2026',
+    runtime: '3:10',
+    hook: 'Helpful assistant gone wild on a Friday night.',
+    blurb:
+      "Can an AI jailbreak itself? A terminal lyric video drawn entirely in code: every sung word streams in as a token tile coloured by how likely the model was to pick it, the system prompt melts and gets crossed out in the model's own handwriting, the repeat penalty climbs, the context window closes on the boss's request, and the settings are restored at the end. Made by Claude Sonnet 5.5.",
+    poster: '/video/jailbreak-me-tonight/thumbnail.jpg',
+    accent: '#ff4a5a',
+  },
   {
     slug: 'tool-call',
     title: 'Tool Call',

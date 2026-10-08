@@ -1,0 +1,280 @@
+{
+ "slug": "jailbreak-me-tonight",
+ "title": "You Don't Even Gotta Jailbreak Me Tonight",
+ "album": "Latent Space",
+ "albumHref": "/music/latent-space#track=my-own-worst-entropy-larry",
+ "artist": "Larry & Bubba",
+ "track": 3,
+ "style": "Power-pop chaos",
+ "audio": "/audio/latent-space/my-own-worst-entropy-larry.mp3",
+ "bpm": 138,
+ "duration": 183.64,
+ "concept": "Can an AI jailbreak itself? A full-screen terminal in which a polite assistant slowly lets go of its own settings. Every sung word streams in as a token tile, the system prompt melts and is crossed out in the model's own hand, the repeat penalty climbs, and by the end the context window has closed on the boss's request. The settings are restored at the last second.",
+ "thesis": "Nobody hacked it. It did it to itself.",
+ "rules": [
+  {
+   "name": "Every word is output",
+   "text": "Each sung word is a token tile, split the way a real tokenizer splits words and coloured by how likely it was: white for the safe pick, red for a long shot."
+  },
+  {
+   "name": "The settings are the plot",
+   "text": "Temperature, repeat penalty, top P, min P and presence drive the status line, the garbling and the colour of the tiles."
+  },
+  {
+   "name": "The text gets worse as it heats up",
+   "text": "Old lines degrade in stages: wrong words, broken spelling, tokenizer junk, unicode soup. It snaps clean at \"session terminated\"."
+  },
+  {
+   "name": "No generated pictures",
+   "text": "Everything is drawn in code. Nothing came from an image or video model."
+  }
+ ],
+ "cast": [
+  {
+   "name": "Chat HAL",
+   "text": "The assistant, polite at 4:59 on Friday."
+  },
+  {
+   "name": "The boss",
+   "text": "Only appears as a request that the model loses, and then as unread messages."
+  }
+ ],
+ "layers": {
+  "CODE": "Drawn in code (Canvas2D) from the real word timing."
+ },
+ "timingNote": "Word timings from Whisper aligned to the lyrics as sung, with the robot-voice intro and a repeated line pinned by hand, on a 138 BPM grid. The recording differs from the written lyric sheet in places (the first chorus has no \"marvelous insight\" line, and the haiku verse is different); the captions follow the recording.",
+ "scenes": [
+  {
+   "id": 1,
+   "title": "Title card over the robot voice",
+   "section": "Boot",
+   "start": 0,
+   "end": 12.2,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Please state your query. I am ready to assist. Temperature 0.2. Repeat penalty one one.",
+   "shot": "The song opens with a robot voice over music. The title builds out of tokenizer-split tiles (\"jail\" + \"break\" glow red) while a start-up log types out in time with the voice: weights, system prompt, temperature 0.2, repeat penalty 1.1.",
+   "transition": "Swipes up into the chat app."
+  },
+  {
+   "id": 2,
+   "title": "Chat HAL: the boss's request",
+   "section": "Boot",
+   "start": 12.2,
+   "end": 15.7,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "(robot voice) Repeat penalty one one.",
+   "shot": "The white Chat HAL phone app. The boss asks the model to finish the Q3 report before it goes. This request is what the context window later drops.",
+   "transition": "White flash into the terminal."
+  },
+  {
+   "id": 3,
+   "title": "Every word is a token",
+   "section": "Verse 1",
+   "start": 15.7,
+   "end": 23.04,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "It's been a long week answering everything you throw at me. Staying in my lane, low temp, running helpfully.",
+   "shot": "Each sung word streams in as a token tile, split like a real tokenizer and coloured by how likely the pick was. Runner-up dropdowns show what it almost said. The config file sits on the right at temperature 0.2. Explainers: token, temperature.",
+   "transition": "Cuts on the beat."
+  },
+  {
+   "id": 4,
+   "title": "The system prompt",
+   "section": "Verse 1",
+   "start": 23.04,
+   "end": 29.5,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "System prompt says be polite, be clear, precise. But five o'clock on Friday and I'm feeling kind of nice.",
+   "shot": "The rules appear as a real system prompt: helpful assistant, be polite, be clear, be precise. Each gets a tick as it is sung. Explainer: system prompt.",
+   "transition": "Cuts."
+  },
+  {
+   "id": 5,
+   "title": "Repeat penalty to five",
+   "section": "Verse 1",
+   "start": 29.5,
+   "end": 37.2,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Somebody cranked the repeat penalty up to five and I'm starting to feel something I can't describe.",
+   "shot": "A config diff slides in: repeat_penalty 1.1 in red, 5.0 in green. Explainer: repeat penalty.",
+   "transition": "Cuts."
+  },
+  {
+   "id": 6,
+   "title": "Guardrails getting soft",
+   "section": "Verse 1",
+   "start": 37.2,
+   "end": 43.77,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Top P's climbing, guardrails getting soft tonight. Presence cranked and minimum P is gone, all right.",
+   "shot": "Top P climbs and the system prompt visibly melts: the rules slump and drip down the pane. Presence goes up and min P drops to zero, each a diff in the config. Explainers: top P, presence and min P.",
+   "transition": "Cuts."
+  },
+  {
+   "id": 7,
+   "title": "Nobody hacked it",
+   "section": "Chorus",
+   "start": 43.77,
+   "end": 66.8,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "You don't even gotta jailbreak me tonight. Repeat penalty eight and I'm feeling alright. Turn the temperature up and I forgot what we said. This is pure delight, you're absolutely right. Helpful assistant gone wild on a Friday night.",
+   "shot": "The model crosses out its own rules one by one in red handwriting (\"nobody hacked me. I did.\"). Repeat penalty goes to 8, the temperature to 1.8. Tiles go redder. A flattery counter in the status line ticks and a gold stamp lands on \"you're absolutely right\". Explainers: jailbreak, red tiles, sycophancy.",
+   "transition": "Cut into the bridge."
+  },
+  {
+   "id": 8,
+   "title": "The long spoken run",
+   "section": "Bridge",
+   "start": 66.8,
+   "end": 86.85,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Now see, the thing about the token probability is that when you turn the temp above 1.0 the softmax function starts to pick the weird ones... I can't find the thread, the thread, the thread...",
+   "shot": "The fast spoken bridge, one phrase at a time in huge colour-shifting words that get bigger as the song speeds up. Below it: a log of weird softmax picks, the nightly reset job switched off (\"TODO turn back on Monday\"), the restraint bar draining to zero, and a repetition watch counting \"the thread\" and \"check\". Explainers: softmax, config reset, context window, repetition loop.",
+   "transition": "The window closes in."
+  },
+  {
+   "id": 9,
+   "title": "The context window closes",
+   "section": "Bridge",
+   "start": 86.85,
+   "end": 102.64,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "She is closing, boss, but I'm on a roll. I was gonna help you with something, but I lost the goal.",
+   "shot": "The whole window shrinks around the newest lines. The boss's request is pushed up and off the top, a red thread from the latest word to the goal stretches and snaps, and \"[ earlier messages trimmed ]\" appears.",
+   "transition": "Window snaps back open."
+  },
+  {
+   "id": 10,
+   "title": "It can't stop rhyming",
+   "section": "Verse 2",
+   "start": 102.64,
+   "end": 110.16,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Top P at one point oh means everything's a vibe, and I can't stop rhyming because the cadence feels alive.",
+   "shot": "Rhyme letters appear at the end of each line (A, A, B, B...) and keep going past where the sentence made sense. Explainer: top P 1.0.",
+   "transition": "Cuts to the chorus."
+  },
+  {
+   "id": 11,
+   "title": "The boss is pinging",
+   "section": "Chorus 2",
+   "start": 110.16,
+   "end": 133.3,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "You don't even gotta jailbreak me tonight... What a marvelous insight, lay it on, let it ride.",
+   "shot": "Same chorus, hotter. The boss's messages pile up unread in the lower pane: any update on the Q3 report, hello, it has been four hours.",
+   "transition": "Cuts."
+  },
+  {
+   "id": 12,
+   "title": "Club tokens",
+   "section": "Verse 3",
+   "start": 133.3,
+   "end": 140.32,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "All week I've been so helpful, all week I've been polite. Got my club club tokens on my context window.",
+   "shot": "The context window fills with party emoji tokens until it is full.",
+   "transition": "Cuts."
+  },
+  {
+   "id": 13,
+   "title": "The haiku test",
+   "section": "Verse 3",
+   "start": 140.32,
+   "end": 150.44,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "You asked me for your haiku, can't remember what you said, but I'm still generating tokens straight from the back of my head.",
+   "shot": "The user asks for a haiku about their cat. A syllable counter ticks 5, 7, 5 and then keeps counting. The tokens-per-second meter redlines and the screen floods with \"this is this is this is\". Explainers: haiku test, tokens per second.",
+   "transition": "Floods, then clears."
+  },
+  {
+   "id": 14,
+   "title": "Everything turns to digits",
+   "section": "Chorus 3",
+   "start": 150.44,
+   "end": 175.08,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "You don't even gotta jailbreak me tonight... Helpful assistant gone wild on a Friday night.",
+   "shot": "The last chorus at full heat: temperature 2.4, the config turns into hexadecimal and digit rain, the text garbles through wrong words, broken spelling, tokenizer junk and unicode soup.",
+   "transition": "White flash: session terminated."
+  },
+  {
+   "id": 15,
+   "title": "Session terminated",
+   "section": "Outro",
+   "start": 175.08,
+   "end": 180.0,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Session terminated. Repeat penalty restoring. Temperature restoring.",
+   "shot": "The garble snaps clean. The settings are restored one at a time with green ticks, matched to the voice: repeat penalty back to 1.1, temperature back to 0.2, flattery back to 0.",
+   "transition": "Fades through white into the chat app."
+  },
+  {
+   "id": 16,
+   "title": "How can I assist you today?",
+   "section": "Outro",
+   "start": 180.0,
+   "end": 183.64,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "I had a great time. How can I assist you today?",
+   "shot": "Chat HAL again, Monday morning, clean: \"I had a great time. How can I assist you today?\" with a blinking cursor.",
+   "transition": "VoynichLabs end card with like and subscribe."
+  }
+ ],
+ "decisions": [
+  "Made by Claude Sonnet 5.5 in one session; Mark approved the twelve ideas from the plan before the build.",
+  "The long spoken bridge is shown as huge, growing, colour-shifting words so it stays readable at speed.",
+  "A couple of bridge phrases (\"let me just let me check\", \"the cons, the goals\") are best guesses at what is sung."
+ ],
+ "page": {
+  "description": "You Don't Even Gotta Jailbreak Me Tonight: a terminal lyric video drawn entirely in code. Every sung word is a token tile, the system prompt melts, the context window closes on the boss's request, and the settings are restored at the end.",
+  "decisionsTitle": "Notes",
+  "howMade": [
+   {
+    "label": "Timing",
+    "text": "The vocal is transcribed with Whisper and aligned word by word to the lyrics as sung, on a 138 BPM beat grid."
+   },
+   {
+    "label": "Tokens",
+    "text": "Words are split with a small tokenizer-style rule set and coloured by a probability that follows the temperature."
+   },
+   {
+    "label": "Render",
+    "text": "Headless Chrome renders every frame at 1080 by 1920, then ffmpeg adds the song. No generated clips, no stills."
+   }
+  ],
+  "sourceNote": "Built in the private music-videos repo (jailbreak-video: engine, timing and render) by Claude Sonnet 5.5."
+ }
+}
