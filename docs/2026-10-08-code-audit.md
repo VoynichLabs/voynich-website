@@ -6,7 +6,7 @@ Author: Codex GPT-6
 
 Audited revision: `87601eb502f2382a519d09d4eb510dc62cacc7d1` on `main`
 
-The production build succeeds, but the code contains broken navigation, inaccessible controls, and incorrect dashboard calculations. The six findings below cover recent music/video integration and shared or existing site code. All remain open; this document does not implement fixes.
+The production build succeeds, but the code contains broken navigation, inaccessible controls, and incorrect dashboard calculations. The six findings below cover recent music/video integration and shared or existing site code. These were open at the audited revision. The remediation status and verification for the implementation are recorded below.
 
 ## Scope and verification
 
@@ -113,3 +113,40 @@ The scan reported 27 affected packages, including one critical and 19 high class
 3. Correct agent calculations using the existing event data.
 4. Triage dependency advisories and code-check errors, then enforce relevant checks.
 5. Reduce dashboard payload and load optional visualization code on demand.
+
+
+## Remediation on October 8 2026
+
+Author: Codex GPT-6
+
+The six findings are addressed. The original findings and pinned source references above describe the audited revision and are retained as evidence.
+
+| Finding | Implementation | Verification |
+| --- | --- | --- |
+| Tag links | Use the article-route fallback `post.data.slug ?? post.slug` | All 208 generated tag article links resolve; zero undefined URLs or missing targets |
+| Get Gone selection | A shared parser accepts both `#get-gone` and `#track=get-gone` | Real browser selects Get Gone from the published video-card link; fragment regression tests pass |
+| Fragment changes | All six album players use the shared parser on initial load and `hashchange` | Same-page video links switch Latent Space, Align / Refuse, and Scorned Woman to the intended track |
+| Keyboard access | Playlist rows and pagination use buttons with focus styles, selected state, and disabled navigation boundaries | Space/Enter selects tracks on all six albums; Enter reaches blog page 2 and focus survives pagination |
+| Mobile dashboard | Panels stack below the desktop breakpoint; scrubber wraps; visualization retains width; mobile summary scrolls normally | Browser viewport override verifies one column and no page overflow at mobile width; radar and terminal remain usable |
+| Agent statistics | 3D tank and page sparklines aggregate recorded events by agent and date | March 19 regression confirms Egon 1,175 events/66 errors and Bubba 947 events/3 errors; all-event conservation passes |
+
+The radar's particles now select an actual recorded event and its agent, and the terminal's seven-day window excludes events after the selected date.
+
+### Code checks and payload
+
+`npm run check` now reports zero errors and zero warnings, after fixing the 164 original diagnostics and checking all six album scripts as bundled modules. Required DOM controls use validated, correctly typed lookups. Existing optional controls retain optional lookups. `npm run build` runs the code check first, so future errors stop deployment builds. Four regression tests pass with `npm test`. The DASH Unicode encoding round trip and real CDN tokenizer were also verified in the browser.
+
+The production build generates 337 pages plus the static `/claw/events.json` endpoint. CLAW HTML is 26,114 bytes, down from 3,051,335. Its main dashboard chunk is approximately 25 kB, down from approximately 921 kB. The separate compact event feed is 636,492 bytes and preserves all 7,306 events. It loads when the dashboard is visible, with a retry control on failure. Radar is the initial view; the 3D bundle downloads only when the user selects an available 3D view.
+
+The verification browser does not expose WebGL, so the disabled 3D control and radar fallback were verified. The 3D path was verified through build, type checks, bundle separation, and the actual-event calculation tests; its rendered appearance still needs a WebGL-capable browser.
+
+### Dependency triage
+
+Compatible dependency updates changed Astro from 5.17.3 to 5.18.2 and repaired transitively affected packages. `npm audit --omit=dev` now reports 11 affected packages (one critical, six high, three moderate, one low), down from 27. The remaining packages are Astro, sharp, esbuild, Tailwind CSS and its integration, braces, chokidar, fast-glob, micromatch, postcss-nested, and postcss-selector-parser.
+
+- Astro's critical AVIF advisory requires an attacker-controlled image to reach optimization. This repository uses static output and build-time repository images; it has no public image-upload endpoint. The installed version remains in the advisory range and this is not a security clearance. Hosting runtime configuration and future remote-image inputs must also be considered. [Astro advisory](https://github.com/advisories/GHSA-26w7-cxv4-gfx2).
+- sharp advisories concern image-decoding libraries, so they still matter to build jobs that process untrusted images. No untrusted image-processing flow was introduced in this remediation. [sharp advisory](https://github.com/advisories/GHSA-f88m-g3jw-g9cj).
+- esbuild's remaining advisory concerns its development server on Windows. This is distinct from serving the built static artifact. [esbuild advisory](https://github.com/advisories/GHSA-g7r4-m6w7-qqqr).
+- The remaining Tailwind, glob and selector-parser paths consume repository-controlled build configuration and CSS. Public deployment exploitability was not established; they remain upgrade work.
+
+The audit's dependency maintenance item is partially addressed, not closed. npm proposes Astro 7.3.8 and Tailwind 4 as breaking upgrades to clear the remaining ranges. A framework migration must preserve legacy content routes (`post.slug`, `entry.render()`), CSS and build compatibility. This change applies compatible updates rather than silently combining the site repairs with that migration. [Astro content migration requirements](https://docs.astro.build/en/guides/upgrade-to/v6/).

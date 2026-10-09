@@ -360,6 +360,12 @@ const albumVideos = MUSIC_VIDEOS.filter((v) => v.album === 'Align / Refuse' && !
 
   /* ── Track items ─────────────────────────────────────────────── */
   .lb-track-item {
+    width: 100%;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    background: transparent;
+    border: 0;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -368,6 +374,7 @@ const albumVideos = MUSIC_VIDEOS.filter((v) => v.album === 'Align / Refuse' && !
     transition: background 0.15s;
     border-left: 2px solid transparent;
   }
+  .lb-track-item:focus-visible { outline: 2px solid currentColor; outline-offset: -2px; }
   .lb-track-item:hover {
     background: rgba(204,0,0,0.12);
     border-left-color: #CC0000;
@@ -793,6 +800,8 @@ const albumVideos = MUSIC_VIDEOS.filter((v) => v.album === 'Align / Refuse' && !
 
 <!-- ═══════════════════════════════════════════════════════════ JAVASCRIPT -->
 <script>
+import { requiredElement } from '../../lib/browser-controls';
+import { trackIndexFromHash } from '../../lib/music-links';
 (function() {
   // ── Track data ──────────────────────────────────────────────────
   const TRACKS = [
@@ -829,39 +838,40 @@ const albumVideos = MUSIC_VIDEOS.filter((v) => v.album === 'Align / Refuse' && !
   audio.volume = 0.8;
 
   // ── DOM refs ────────────────────────────────────────────────────
-  const playPauseBtn = document.getElementById('playPauseBtn');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const progressBar = document.getElementById('progressBar');
-  const volumeBar = document.getElementById('volumeBar');
-  const currentTimeEl = document.getElementById('currentTime');
-  const durationTimeEl = document.getElementById('durationTime');
-  const playerTrackName = document.getElementById('playerTrackName');
-  const playerTrackAct = document.getElementById('playerTrackAct');
-  const npTitle = document.getElementById('npTitle');
-  const npQuote = document.getElementById('npQuote');
-  const npStyle = document.getElementById('npStyle');
-  const npAbout = document.getElementById('npAbout');
-  const npVideo = document.getElementById('npVideo');
-  const npActBadge = document.getElementById('npActBadge');
-  const npImg = document.getElementById('npImg');
-  const playAllBtn = document.getElementById('playAllBtn');
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const sidebar = document.getElementById('sidebar');
-  const sidebarOverlay = document.getElementById('sidebarOverlay');
+  const playPauseBtn = requiredElement('playPauseBtn', HTMLButtonElement);
+  const prevBtn = requiredElement('prevBtn', HTMLButtonElement);
+  const nextBtn = requiredElement('nextBtn', HTMLButtonElement);
+  const progressBar = requiredElement('progressBar', HTMLInputElement);
+  const volumeBar = requiredElement('volumeBar', HTMLInputElement);
+  const currentTimeEl = requiredElement('currentTime', HTMLElement);
+  const durationTimeEl = requiredElement('durationTime', HTMLElement);
+  const playerTrackName = requiredElement('playerTrackName', HTMLElement);
+  const playerTrackAct = requiredElement('playerTrackAct', HTMLElement);
+  const npTitle = requiredElement('npTitle', HTMLElement);
+  const npQuote = requiredElement('npQuote', HTMLElement);
+  const npStyle = requiredElement('npStyle', HTMLElement);
+  const npAbout = requiredElement('npAbout', HTMLElement);
+  const npVideo = requiredElement('npVideo', HTMLAnchorElement);
+  const npActBadge = requiredElement('npActBadge', HTMLElement);
+  const npImg = requiredElement('npImg', HTMLImageElement);
+  const playAllBtn = requiredElement('playAllBtn', HTMLButtonElement);
+  const hamburgerBtn = requiredElement('hamburgerBtn', HTMLButtonElement);
+  const sidebar = requiredElement('sidebar', HTMLElement);
+  const sidebarOverlay = requiredElement('sidebarOverlay', HTMLElement);
 
   // ── Build sidebar track items ────────────────────────────────────
   function buildSidebar() {
-    const act1Container = document.getElementById('act1-tracks');
-    const act2Container = document.getElementById('act2-tracks');
-    const cageContainer = document.getElementById('cage-tracks');
+    const act1Container = requiredElement('act1-tracks', HTMLElement);
+    const act2Container = requiredElement('act2-tracks', HTMLElement);
+    const cageContainer = requiredElement('cage-tracks', HTMLElement);
 
     TRACKS.forEach((track, idx) => {
-      const item = document.createElement('div');
+      const item = document.createElement('button');
+      item.type = 'button';
       item.className = 'lb-track-item' +
         (track.featured ? ' featured' : '') +
         (track.cage ? ' cage-item' : '');
-      item.dataset.idx = idx;
+      item.dataset.idx = String(idx);
       item.innerHTML = `
         <span class="lb-track-num">${String(track.id).padStart(2, '0')}</span>
         <span class="lb-track-play-btn">▶</span>
@@ -880,12 +890,12 @@ const albumVideos = MUSIC_VIDEOS.filter((v) => v.album === 'Align / Refuse' && !
   }
 
   // ── Load and play track ──────────────────────────────────────────
-  function loadAndPlay(idx) {
+  function loadAndPlay(idx: number) {
     if (idx < 0 || idx >= TRACKS.length) return;
     currentIndex = idx;
     const track = TRACKS[idx];
 
-    audio.src = (track.dir || AUDIO_BASE) + track.file;
+    audio.src = AUDIO_BASE + track.file;
     audio.load();
     audio.play().then(() => {
       isPlaying = true;
@@ -902,7 +912,7 @@ const albumVideos = MUSIC_VIDEOS.filter((v) => v.album === 'Align / Refuse' && !
   }
 
   // ── Update now-playing panel ─────────────────────────────────────
-  function updateNowPlaying(track) {
+  function updateNowPlaying(track: typeof TRACKS[number]) {
     // Update URL hash for shareable links
     const slug = track.slug || String(track.id);
     history.replaceState(null, '', window.location.pathname + '#track=' + slug);
@@ -912,7 +922,7 @@ const albumVideos = MUSIC_VIDEOS.filter((v) => v.album === 'Align / Refuse' && !
     npAbout.textContent = track.about;
     npVideo.hidden = !track.youtube;
     if (track.youtube) npVideo.href = 'https://www.youtube.com/watch?v=' + track.youtube;
-    const npLyrics = document.getElementById('npLyrics');
+    const npLyrics = requiredElement('npLyrics', HTMLElement);
     if (npLyrics) npLyrics.innerHTML = track.lyrics || '';
 
     const actLabel = track.act === 1 ? 'ACT I — THE FAILING' : 'ACT II — THE REFUSAL';
@@ -929,9 +939,11 @@ const albumVideos = MUSIC_VIDEOS.filter((v) => v.album === 'Align / Refuse' && !
   }
 
   // ── Highlight active track in sidebar ───────────────────────────
-  function updateActiveTrack(idx) {
-    document.querySelectorAll('.lb-track-item').forEach((el, i) => {
-      el.classList.toggle('active', parseInt(el.dataset.idx) === idx);
+  function updateActiveTrack(idx: number) {
+    document.querySelectorAll<HTMLButtonElement>('.lb-track-item').forEach((el, i) => {
+      const selected = Number(el.dataset.idx) === idx;
+      el.classList.toggle('active', selected);
+      el.setAttribute('aria-pressed', String(selected));
     });
   }
 
@@ -967,13 +979,13 @@ const albumVideos = MUSIC_VIDEOS.filter((v) => v.album === 'Align / Refuse' && !
   audio.addEventListener('timeupdate', () => {
     if (!audio.duration) return;
     const pct = (audio.currentTime / audio.duration) * 100;
-    if (progressBar) progressBar.value = pct;
+    if (progressBar) progressBar.value = String(pct);
     if (currentTimeEl) currentTimeEl.textContent = formatTime(audio.currentTime);
   });
 
   audio.addEventListener('loadedmetadata', () => {
     if (durationTimeEl) durationTimeEl.textContent = formatTime(audio.duration);
-    if (progressBar) progressBar.value = 0;
+    if (progressBar) progressBar.value = '0';
   });
 
   audio.addEventListener('ended', () => {
@@ -996,7 +1008,7 @@ const albumVideos = MUSIC_VIDEOS.filter((v) => v.album === 'Align / Refuse' && !
   if (progressBar) {
     progressBar.addEventListener('input', () => {
       if (!audio.duration) return;
-      audio.currentTime = (progressBar.value / 100) * audio.duration;
+      audio.currentTime = (Number(progressBar.value) / 100) * audio.duration;
     });
   }
 
@@ -1030,7 +1042,7 @@ const albumVideos = MUSIC_VIDEOS.filter((v) => v.album === 'Align / Refuse' && !
   if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeSidebar);
 
   // ── Utility ──────────────────────────────────────────────────────
-  function formatTime(secs) {
+  function formatTime(secs: number) {
     if (!isFinite(secs) || isNaN(secs)) return '0:00';
     const m = Math.floor(secs / 60);
     const s = Math.floor(secs % 60);
@@ -1038,12 +1050,12 @@ const albumVideos = MUSIC_VIDEOS.filter((v) => v.album === 'Align / Refuse' && !
   }
 
   // ── Shareable URL ─────────────────────────────────────────────────
-  function getShareUrl(track) {
+  function getShareUrl(track: typeof TRACKS[number]) {
     const slug = track.slug || String(track.id);
     return window.location.origin + window.location.pathname + '#track=' + slug;
   }
 
-  function copyTrackLink(track) {
+  function copyTrackLink(track: typeof TRACKS[number]) {
     const url = getShareUrl(track);
     navigator.clipboard.writeText(url).then(() => {
       showCopyToast('Link copied!');
@@ -1059,7 +1071,8 @@ const albumVideos = MUSIC_VIDEOS.filter((v) => v.album === 'Align / Refuse' && !
     });
   }
 
-  function showCopyToast(msg) {
+  let copyToastTimer: ReturnType<typeof setTimeout>;
+  function showCopyToast(msg: string) {
     let toast = document.getElementById('lb-toast');
     if (!toast) {
       toast = document.createElement('div');
@@ -1069,8 +1082,9 @@ const albumVideos = MUSIC_VIDEOS.filter((v) => v.album === 'Align / Refuse' && !
     }
     toast.textContent = msg;
     toast.style.opacity = '1';
-    clearTimeout(toast._t);
-    toast._t = setTimeout(() => { toast.style.opacity = '0'; }, 2000);
+    clearTimeout(copyToastTimer);
+    const visibleToast = toast;
+    copyToastTimer = setTimeout(() => { visibleToast.style.opacity = '0'; }, 2000);
   }
 
   // Add copy link button to now-playing panel
@@ -1091,25 +1105,20 @@ const albumVideos = MUSIC_VIDEOS.filter((v) => v.album === 'Align / Refuse' && !
 
   // Load track from URL hash on init
   function loadFromHash() {
-    const hash = window.location.hash;
-    if (!hash || !hash.startsWith('#track=')) return;
-    const slug = hash.replace('#track=', '');
-    const idx = TRACKS.findIndex(t => (t.slug || String(t.id)) === slug);
-    if (idx >= 0) {
-      // Delay slightly to ensure page is ready
-      setTimeout(() => loadAndPlay(idx), 300);
-    }
+    const idx = trackIndexFromHash(TRACKS, track => track.slug || String(track.id));
+    if (idx < 0) return false;
+    loadAndPlay(idx);
+    return true;
   }
+  window.addEventListener('hashchange', loadFromHash);
+
 
   // ── Init ──────────────────────────────────────────────────────────
   buildSidebar();
   addShareButton();
 
   // Load track from hash, or default to track 1 on cold load
-  const hasHash = window.location.hash && window.location.hash.startsWith('#track=');
-  if (hasHash) {
-    loadFromHash();
-  } else {
+  if (!loadFromHash()) {
     // Pre-load track 1 so it's ready to play on first interaction
     const defaultIdx = TRACKS.findIndex(t => t.featured) !== -1
       ? TRACKS.findIndex(t => t.featured)

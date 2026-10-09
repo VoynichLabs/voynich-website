@@ -182,7 +182,7 @@ const unknowns = [
             what: 'Large language models trained on every digitized human language have been run against it. The same systems that translate between hundreds of languages, read ancient scripts, and find patterns invisible to humans. No match. No breakthrough. Nothing.',
           },
         ].map((attempt) => (
-          <div class="border-l-2 pl-8" style="border-color: rgba(200,184,154,0.2);" key={attempt.who}>
+          <div class="border-l-2 pl-8" style="border-color: rgba(200,184,154,0.2);">
             <p class="font-mono text-xs uppercase tracking-wider mb-2 opacity-40" style="color: #c8b89a;">{attempt.label}</p>
             <p class="text-lg font-semibold mb-3 text-text-primary" style="font-family: 'Georgia', serif;">{attempt.who}</p>
             <p class="text-text-secondary leading-relaxed">{attempt.what}</p>
@@ -206,7 +206,6 @@ const unknowns = [
         {worlds.map((world, i) => (
           <div
             class={`grid grid-cols-1 lg:grid-cols-2 border border-border ${i > 0 ? 'border-t-0' : ''}`}
-            key={world.folio}
           >
             <div class={`relative overflow-hidden ${i % 2 === 1 ? 'lg:order-2' : ''}`} style="min-height: 360px;">
               <img
@@ -274,7 +273,6 @@ const unknowns = [
         {unknowns.map((item, i) => (
           <div
             class={`grid grid-cols-2 gap-0 ${i > 0 ? 'border-t border-border' : ''}`}
-            key={item.q}
           >
             <div class="px-6 py-4 text-text-secondary text-sm leading-relaxed" style="font-family: 'Georgia', serif; font-style: italic; background: rgba(20,15,10,0.5);">
               {item.q}
@@ -300,7 +298,6 @@ const unknowns = [
             rel="noopener noreferrer"
             class="group relative aspect-[3/4] overflow-hidden border border-border hover:border-amber-400/20 transition-colors duration-300"
             style="background: #080604;"
-            key={`gallery-${world.folio}`}
             title={`Folio ${world.folio}`}
           >
             <img

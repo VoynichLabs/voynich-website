@@ -196,6 +196,12 @@ const albumVideo = videoBySlug('get-gone')!;
 
   /* ── Track items ─────────────────────────────────────────── */
   .lr-track-item {
+    width: 100%;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    background: transparent;
+    border: 0;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -204,6 +210,7 @@ const albumVideo = videoBySlug('get-gone')!;
     transition: background 0.15s;
     border-left: 3px solid transparent;
   }
+  .lr-track-item:focus-visible { outline: 2px solid currentColor; outline-offset: -2px; }
   .lr-track-item:hover { background: rgba(255,255,255,0.03); }
   .lr-track-item.active {
     background: rgba(249,115,22,0.08);
@@ -217,6 +224,7 @@ const albumVideo = videoBySlug('get-gone')!;
     text-align: right;
   }
   .lr-track-item.active .lr-track-num { color: #f97316; }
+  .lr-track-name, .lr-track-tag { display: block; }
   .lr-track-info { flex: 1; min-width: 0; }
   .lr-track-name {
     font-size: 0.8rem;
@@ -394,7 +402,9 @@ const albumVideo = videoBySlug('get-gone')!;
 </style>
 
 <!-- ═══════════════════════════════════════════════════════════ SCRIPT -->
-<script is:inline>
+<script>
+import { requiredElement } from '../../lib/browser-controls';
+import { trackIndexFromHash } from '../../lib/music-links';
   const AUDIO_BASE = '/music/raps/';
   const TRACKS = [
     {
@@ -1072,42 +1082,43 @@ You never do`
   let currentIndex = -1;
   let isPlaying = false;
 
-  const trackListEl = document.getElementById('trackList');
-  const npTitle = document.getElementById('npTitle');
-  const npBadge = document.getElementById('npBadge');
-  const npStyle = document.getElementById('npStyle');
-  const npAbout = document.getElementById('npAbout');
-  const npVideo = document.getElementById('npVideo');
-  const npImage = document.getElementById('npImage');
-  const npImageSrc = document.getElementById('npImageSrc');
-  const npLyrics = document.getElementById('npLyrics');
-  const playerName = document.getElementById('playerName');
-  const playPauseBtn = document.getElementById('playPauseBtn');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const progressBar = document.getElementById('progressBar');
-  const curTime = document.getElementById('curTime');
-  const durTime = document.getElementById('durTime');
-  const volBar = document.getElementById('volBar');
-  const playAllBtn = document.getElementById('playAllBtn');
+  const trackListEl = requiredElement('trackList', HTMLElement);
+  const npTitle = requiredElement('npTitle', HTMLElement);
+  const npBadge = requiredElement('npBadge', HTMLElement);
+  const npStyle = requiredElement('npStyle', HTMLElement);
+  const npAbout = requiredElement('npAbout', HTMLElement);
+  const npVideo = requiredElement('npVideo', HTMLAnchorElement);
+  const npImage = requiredElement('npImage', HTMLElement);
+  const npImageSrc = requiredElement('npImageSrc', HTMLImageElement);
+  const npLyrics = requiredElement('npLyrics', HTMLElement);
+  const playerName = requiredElement('playerName', HTMLElement);
+  const playPauseBtn = requiredElement('playPauseBtn', HTMLButtonElement);
+  const prevBtn = requiredElement('prevBtn', HTMLButtonElement);
+  const nextBtn = requiredElement('nextBtn', HTMLButtonElement);
+  const progressBar = requiredElement('progressBar', HTMLInputElement);
+  const curTime = requiredElement('curTime', HTMLElement);
+  const durTime = requiredElement('durTime', HTMLElement);
+  const volBar = requiredElement('volBar', HTMLInputElement);
+  const playAllBtn = requiredElement('playAllBtn', HTMLButtonElement);
 
   // ── Build playlist ───────────────────────────────────────────────
   TRACKS.forEach((t, i) => {
-    const item = document.createElement('div');
+    const item = document.createElement('button');
+      item.type = 'button';
     item.className = 'lr-track-item';
-    item.dataset.idx = i;
+    item.dataset.idx = String(i);
     item.innerHTML = `
       <span class="lr-track-num">${i + 1}</span>
-      <div class="lr-track-info">
-        <div class="lr-track-name">${t.title}</div>
-        <div class="lr-track-tag">${t.style}</div>
-      </div>`;
+      <span class="lr-track-info">
+        <span class="lr-track-name">${t.title}</span>
+        <span class="lr-track-tag">${t.style}</span>
+      </span>`;
     item.addEventListener('click', () => loadAndPlay(i));
     trackListEl.appendChild(item);
   });
 
   // ── Load and play ────────────────────────────────────────────────
-  function loadAndPlay(idx) {
+  function loadAndPlay(idx: number) {
     if (idx < 0 || idx >= TRACKS.length) return;
     currentIndex = idx;
     const track = TRACKS[idx];
@@ -1121,7 +1132,7 @@ You never do`
     history.replaceState(null, '', '#' + track.slug);
   }
 
-  function updateNowPlaying(track, idx) {
+  function updateNowPlaying(track: typeof TRACKS[number], idx: number) {
     npTitle.textContent = track.title;
     npBadge.textContent = `TRACK ${idx + 1}`;
     npStyle.textContent = track.style;
@@ -1139,9 +1150,11 @@ You never do`
     playerName.textContent = track.title;
   }
 
-  function updateActiveTrack(idx) {
-    document.querySelectorAll('.lr-track-item').forEach(el => {
-      el.classList.toggle('active', parseInt(el.dataset.idx) === idx);
+  function updateActiveTrack(idx: number) {
+    document.querySelectorAll<HTMLButtonElement>('.lr-track-item').forEach(el => {
+      const selected = Number(el.dataset.idx) === idx;
+      el.classList.toggle('active', selected);
+      el.setAttribute('aria-pressed', String(selected));
     });
   }
 
@@ -1159,7 +1172,7 @@ You never do`
   function playPrev() { if (currentIndex > 0) loadAndPlay(currentIndex - 1); }
   function playNext() { if (currentIndex < TRACKS.length - 1) loadAndPlay(currentIndex + 1); }
 
-  function fmt(s) {
+  function fmt(s: number) {
     if (!isFinite(s) || isNaN(s)) return '0:00';
     return Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0');
   }
@@ -1167,19 +1180,19 @@ You never do`
   // ── Audio events ─────────────────────────────────────────────────
   audio.addEventListener('timeupdate', () => {
     if (!audio.duration) return;
-    progressBar.value = (audio.currentTime / audio.duration) * 100;
+    progressBar.value = String((audio.currentTime / audio.duration) * 100);
     curTime.textContent = fmt(audio.currentTime);
   });
   audio.addEventListener('loadedmetadata', () => {
     durTime.textContent = fmt(audio.duration);
-    progressBar.value = 0;
+    progressBar.value = '0';
   });
   audio.addEventListener('ended', () => { isPlaying = false; updatePlayBtn(); playNext(); });
   audio.addEventListener('play', () => { isPlaying = true; updatePlayBtn(); });
   audio.addEventListener('pause', () => { isPlaying = false; updatePlayBtn(); });
 
   progressBar.addEventListener('input', () => {
-    if (audio.duration) audio.currentTime = (progressBar.value / 100) * audio.duration;
+    if (audio.duration) audio.currentTime = (Number(progressBar.value) / 100) * audio.duration;
   });
   volBar.addEventListener('input', () => { audio.volume = parseFloat(volBar.value); });
 
@@ -1191,8 +1204,7 @@ You never do`
   // ── Auto-play on load (with hash anchor support) ─────────────────
   function autoStart() {
     // Check for hash anchor to deep-link a specific track
-    const slug = location.hash.slice(1);
-    const hashIdx = slug ? TRACKS.findIndex(t => t.slug === slug) : -1;
+    const hashIdx = trackIndexFromHash(TRACKS, track => track.slug);
     const startIdx = hashIdx >= 0 ? hashIdx : 0;
 
     updateNowPlaying(TRACKS[startIdx], startIdx);
@@ -1208,5 +1220,9 @@ You never do`
         updatePlayBtn();
       });
   }
+  window.addEventListener('hashchange', () => {
+    const idx = trackIndexFromHash(TRACKS, track => track.slug);
+    if (idx >= 0) loadAndPlay(idx);
+  });
   autoStart();
 </script>

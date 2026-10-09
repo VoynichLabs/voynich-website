@@ -51,7 +51,7 @@ const { tag, posts } = Astro.props;
           {post.data.summary && (
             <p class="text-sm text-text-muted leading-relaxed">{post.data.summary}</p>
           )}
-          <a href={`/lobster-incubator/${post.data.slug}`} class="text-node-blue text-sm hover:text-text-primary">
+          <a href={`/lobster-incubator/${post.data.slug ?? post.slug}`} class="text-node-blue text-sm hover:text-text-primary">
             Read →
           </a>
         </article>

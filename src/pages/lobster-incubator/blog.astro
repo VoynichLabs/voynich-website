@@ -45,17 +45,18 @@ const PAGE_SIZE = 5;
       ))}
     </div>
 
-    <nav id="pagination-nav" class="flex items-center justify-between text-sm" aria-label="Pagination">
+    <nav id="pagination-nav" class="flex flex-wrap gap-3 items-center justify-between text-sm" aria-label="Pagination">
     </nav>
   </section>
 
   <script define:vars={{ PAGE_SIZE }}>
     const allCards = Array.from(document.querySelectorAll('[data-blog-post]'));
     const nav = document.getElementById('pagination-nav');
+    if (!nav) throw new Error('Missing pagination controls');
     const totalPages = Math.max(1, Math.ceil(allCards.length / PAGE_SIZE));
     let currentPage = 1;
 
-    function showPage(page) {
+    function showPage(page, focusPage = false) {
       currentPage = Math.max(1, Math.min(page, totalPages));
       const start = (currentPage - 1) * PAGE_SIZE;
       const end = start + PAGE_SIZE;
@@ -63,6 +64,7 @@ const PAGE_SIZE = 5;
         card.style.display = (i >= start && i < end) ? '' : 'none';
       });
       renderNav();
+      if (focusPage) nav.querySelector(`[data-page="${currentPage}"]`)?.focus({ preventScroll: true });
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -71,24 +73,27 @@ const PAGE_SIZE = 5;
       let html = '';
       const prevClass = currentPage === 1
         ? 'text-text-muted pointer-events-none' : 'text-node-blue hover:text-text-primary cursor-pointer';
-      html += `<span class="font-semibold ${prevClass}" data-page="${currentPage - 1}">← Newer</span>`;
-      html += '<div class="flex gap-2">';
+      html += `<button type="button" class="font-semibold ${prevClass}" data-page="${currentPage - 1}" ${currentPage === 1 ? "disabled" : ""}>← Newer</button>`;
+      html += '<div class="flex flex-wrap gap-2">';
       for (let p = 1; p <= totalPages; p++) {
         const cls = p === currentPage
           ? 'border-node-blue bg-node-blue/10 text-node-blue'
           : 'border-border text-text-muted hover:border-node-blue hover:text-node-blue cursor-pointer';
-        html += `<span class="px-3 py-1 rounded-full border ${cls}" data-page="${p}">${p}</span>`;
+        html += `<button type="button" class="px-3 py-1 rounded-full border ${cls}" data-page="${p}" aria-label="Page ${p}" ${p === currentPage ? 'aria-current="page"' : ""}>${p}</button>`;
       }
       html += '</div>';
       const nextClass = currentPage === totalPages
         ? 'text-text-muted pointer-events-none' : 'text-node-blue hover:text-text-primary cursor-pointer';
-      html += `<span class="font-semibold ${nextClass}" data-page="${currentPage + 1}">Older →</span>`;
+      html += `<button type="button" class="font-semibold ${nextClass}" data-page="${currentPage + 1}" ${currentPage === totalPages ? "disabled" : ""}>Older →</button>`;
       nav.innerHTML = html;
       nav.querySelectorAll('[data-page]').forEach((el) => {
-        el.addEventListener('click', () => showPage(Number(el.dataset.page)));
+        el.addEventListener('click', () => showPage(Number(el.dataset.page), true));
       });
     }
 
     showPage(1);
   </script>
+  <style is:global>
+    #pagination-nav button:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+  </style>
 </Base>

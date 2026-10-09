@@ -385,10 +385,11 @@ const totalWords = chaptersData.reduce((sum, ch) => sum + ch.text.split(/\s+/).l
   <!-- Scroll-restore for hero card -->
   <script>
     (function () {
-      const card = document.getElementById('hero-card');
-      if (!card) return;
+      const cardElement = document.getElementById('hero-card');
+      if (!cardElement) return;
+      const card = cardElement;
 
-      const hero = card.closest('.hero-fullscreen');
+      const hero = card.closest<HTMLElement>('.hero-fullscreen');
       let restored = false;
 
       function restoreCard() {

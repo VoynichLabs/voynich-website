@@ -8,20 +8,21 @@
 //          Data pre-built by scripts/build-claw-data.js.
 // SRP/DRY check: Pass — single page, all data from pre-built JSON imports.
 import Base from '../layouts/Base.astro';
-import LobsterTank from '../components/LobsterTank';
-import MetricsPanel from '../components/MetricsPanel';
 import ClawDashboard from '../components/ClawDashboard';
 import dailyStats from '../data/claw/daily-stats.json';
 import crewStats from '../data/claw/crew-stats.json';
 import prTimeline from '../data/claw/pr-timeline.json';
 import events from '../data/claw/events.json';
+import { activityByDay } from '../lib/claw-activity';
+
+const dailyAgentActivity = activityByDay(events);
 
 // --- Computed stats ---
 const prsBeforeAgents = prTimeline.filter(p => p.opened_at < '2026-02-01').length;
 const prsSinceAgents = prTimeline.filter(p => p.opened_at >= '2026-02-01').length;
 const firstAgentDate = new Date('2026-02-01');
 const today = new Date();
-const daysSinceAgents = Math.floor((today - firstAgentDate) / 86400000);
+const daysSinceAgents = Math.floor((today.getTime() - firstAgentDate.getTime()) / 86400000);
 const totalEvents = events.length;
 
 // Supervision ratio: human message events / PRs merged (approximate — session data is partial)
@@ -50,12 +51,7 @@ const crewMap = Object.fromEntries(crewStats.map(c => [c.agent_id, c]));
 // Sparkline: last 14 days events per crew member
 const last14 = dailyStats.slice(-14);
 function getSparkline(agentId: string): number[] {
-  // For agents (egon/bubba/larry): event density from daily totals weighted by share
-  // Since per-agent per-day not stored, approximate from crew-level ratios
-  const total = crewStats.find(c => c.agent_id === agentId)?.total_events ?? 0;
-  const grandTotal = crewStats.reduce((s, c) => s + c.total_events, 0);
-  const share = grandTotal > 0 ? total / grandTotal : 0;
-  return last14.map(d => Math.round(d.events * share));
+  return last14.map(day => dailyAgentActivity[day.date]?.[agentId]?.events ?? 0);
 }
 
 // Timeline: auto-detect notable days from data (no hard-coded milestones)
@@ -143,12 +139,12 @@ function agentIcon(id: string): string {
 
 <Base 
   title="CLAW" 
-  description="CLAW — Creative Lobster Autonomous Workers. Real agent coordination data from the VoynichLabs PlanExe project: 308 PRs, 7,169 events, 3 lobsters + 2 humans."
+  description={`CLAW — Creative Lobster Autonomous Workers. Real agent coordination data from the VoynichLabs PlanExe project: ${prTimeline.length} PRs, ${totalEvents.toLocaleString()} events, 3 lobsters + 2 humans.`}
 >
   <main class="min-h-screen bg-bg-primary text-text-primary">
     
     <!-- ═══ HEADER ═══ -->
-    <header class="border-b border-border bg-bg-secondary/80 backdrop-blur-sm sticky top-14 z-40">
+    <header class="border-b border-border bg-bg-secondary/80 backdrop-blur-sm lg:sticky lg:top-14 z-40">
       <div class="max-w-[1400px] mx-auto px-4 sm:px-6 py-4">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
@@ -207,10 +203,10 @@ function agentIcon(id: string): string {
           <!-- ClawDashboard React island — wraps LobsterTank + MetricsPanel with shared scrubber -->
           <div class="bg-bg-primary rounded border border-border relative overflow-hidden">
             <ClawDashboard
-              client:load
-              events={events as any}
-              crewStats={crewStats as any}
-              dailyStats={dailyStats as any}
+              client:visible
+              eventsUrl={`${import.meta.env.BASE_URL}claw/events.json`}
+              crewStats={crewStats}
+              dailyStats={dailyStats}
             />
           </div>
 
@@ -227,8 +223,8 @@ function agentIcon(id: string): string {
       <div class="max-w-[1400px] mx-auto px-4 sm:px-6">
         <p class="font-mono text-xs text-text-muted text-center">
           Data visualization powered by real OpenClaw agent coordination data ·
-          <span class="text-rust-orange">7,169 events</span> ·
-          <span class="text-edge-green">308 PRs</span> ·
+          <span class="text-rust-orange">{totalEvents.toLocaleString()} events</span> ·
+          <span class="text-edge-green">{prTimeline.length} PRs</span> ·
           <span class="text-node-blue">3 lobsters</span>
         </p>
       </div>

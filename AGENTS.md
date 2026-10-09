@@ -21,7 +21,8 @@ Effective 2026-10-08, work on `main` and push authorized commits directly to `or
 - `npm run dev` (or `npm start`) - run the Astro dev server locally.
 - `npm run build` - create the production build in `dist/`.
 - `npm run preview` - preview the built site locally.
-- `npm run astro -- check` - optional Astro checks for routes/content changes.
+- `npm run check` - required Astro and TypeScript checks, also enforced before builds.
+- `npm test` - focused album-fragment and real CLAW event regression checks.
 
 ## Coding Style & Naming Conventions
 Use 2-space indentation. Prefer descriptive names and kebab-case route files (for example, `src/pages/simon-larry.astro`). Reuse existing layouts/components before creating new ones (SRP/DRY). Tailwind utilities should remain readable and consistent with `tailwind.config.mjs`.
@@ -31,7 +32,7 @@ Strict standards from `coding-standards.md` apply: no placeholder/mock logic in 
 ## Workflow, Testing, and Verification
 Before substantial edits, create a plan doc in `docs/` named `YYYY-MM-DD-{goal}-plan.md` and get approval before implementing. Validate changes with real flows (no simulated integrations).
 
-There is no dedicated automated test suite configured yet. Minimum verification is `npm run build` plus manual checks of affected pages using `npm run preview`.
+Minimum verification is `npm run build`, `npm test`, and manual checks of affected pages using `npm run preview`. The build enforces a passing Astro and TypeScript check.
 
 ## Documentation, Commits, and PRs
 Behavior changes require updates to relevant docs and the top entry in `CHANGELOG.md`. If you create or edit TS/JS/Py files, follow the required header metadata format from `coding-standards.md`.

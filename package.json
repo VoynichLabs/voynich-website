@@ -5,11 +5,12 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "prebuild": "node scripts/optimize-images.mjs",
+    "prebuild": "npm run check && node scripts/optimize-images.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "astro check"
+    "check": "astro check",
+    "test": "node --test tests/*.test.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.1",

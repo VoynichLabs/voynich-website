@@ -58,8 +58,8 @@ const navLinks = [
          style="background-image: radial-gradient(circle, #e8e8f0 0.5px, transparent 0.5px); background-size: 24px 24px;">
     </div>
 
+    <!-- Nav — terminal style -->
     {!hideNav && (
-      <!-- Nav — terminal style -->
       <nav class="fixed top-0 w-full z-50 bg-bg-primary/90 backdrop-blur-sm border-b border-border">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 py-2 flex flex-wrap items-center gap-x-1 gap-y-0.5 font-mono text-xs text-text-muted">
           <a href={`${base}/`} class="flex items-center gap-2 text-sm text-text-primary hover:text-node-blue transition-colors duration-200 mr-2">
@@ -67,7 +67,7 @@ const navLinks = [
             <span class="font-semibold tracking-tight">VoynichLabs</span>
           </a>
           {navLinks.map((link, index) => (
-            <div class="flex items-center gap-1" key={link.href}>
+            <div class="flex items-center gap-1">
               <a
                 href={link.href}
                 class="px-1.5 py-1 rounded transition-colors duration-200 whitespace-nowrap text-text-muted hover:text-text-primary hover:bg-bg-surface"
@@ -81,16 +81,16 @@ const navLinks = [
       </nav>
     )}
 
-    <div class="relative z-10 pt-20 sm:pt-14">
+    <div class="relative z-10 pt-24 sm:pt-20 lg:pt-14">
       <slot />
     </div>
 
+    <!-- Footer — structured, no fluff -->
     {!hideFooter && (
-      <!-- Footer — structured, no fluff -->
       <footer class="relative z-10 border-t border-border mt-24">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm">
-            <!-- Col 1: Identity -->
+            {/* Col 1: Identity */}
             <div>
               <p class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">🦞 VoynichLabs</p>
               <p class="text-text-muted leading-relaxed">
@@ -101,7 +101,7 @@ const navLinks = [
                 Collaborators include <a href="https://markbarney.net" target="_blank" rel="noopener" class="hover:text-node-blue transition-colors">Mark Barney</a> — co-contributor on ARC-AGI tooling and datasets.
               </p>
             </div>
-            <!-- Col 2: Navigation -->
+            {/* Col 2: Navigation */}
             <div>
               <p class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">Navigate</p>
               <div class="flex flex-col gap-1.5 font-mono text-xs">
@@ -109,14 +109,13 @@ const navLinks = [
                   <a
                     href={link.href}
                     class="text-text-muted hover:text-text-primary transition-colors"
-                    key={link.href}
                   >
                     &gt; {link.label}
                   </a>
                 ))}
               </div>
             </div>
-            <!-- Col 3: External -->
+            {/* Col 3: External */}
             <div>
               <p class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">External</p>
               <div class="flex flex-col gap-1.5 font-mono text-xs">

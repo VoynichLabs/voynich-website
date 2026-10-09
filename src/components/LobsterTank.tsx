@@ -1,5 +1,5 @@
-// Author: Bubba (OpenClaw agent)
-// Date: 2026-03-19
+// Author: Codex GPT-6
+// Date: 2026-10-08
 // PURPOSE: Three.js fishbowl animation for CLAW dashboard — fully data-driven.
 //          Every visual element maps to real agent coordination data:
 //          - Lobster SIZE = total event count  (Egon biggest, Larry smallest)
@@ -13,6 +13,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Html } from '@react-three/drei';
 import { useRef, useState, useMemo, useEffect, useCallback } from 'react';
 import * as THREE from 'three';
+import { activityByDay, type AgentActivity, type ClawEvent } from '../lib/claw-activity';
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
@@ -39,7 +40,7 @@ interface DayStat {
 interface LobsterTankProps {
   crewStats: CrewStat[];
   dailyStats: DayStat[];
-  events?: Array<{ timestamp: string; agent_id: string; event_type: string; [key: string]: any }>;
+  events: ClawEvent[];
   /** When provided by a parent (e.g. ClawDashboard), overrides internal scrubber state. */
   currentDayIndex?: number;
 }
@@ -306,15 +307,15 @@ function Lobster({ id, name, baseColor, type, size, speed, brightness, errorRate
 interface TankSceneProps {
   crewStats: CrewStat[];
   currentDay: DayStat;
+  agentActivity: Record<string, AgentActivity>;
 }
 
-function TankScene({ crewStats, currentDay }: TankSceneProps) {
+function TankScene({ crewStats, currentDay, agentActivity }: TankSceneProps) {
   const statsMap = useMemo(
     () => Object.fromEntries(crewStats.map(c => [c.agent_id, c])),
     [crewStats]
   );
 
-  const totalEvents = crewStats.reduce((s, c) => s + c.total_events, 0) || 1;
   const maxEvents   = Math.max(...crewStats.map(c => c.total_events), 1);
 
   // Per-lobster data-driven properties for this day
@@ -328,13 +329,13 @@ function TankScene({ crewStats, currentDay }: TankSceneProps) {
       const humanBonus = def.type === 'human' ? 0.12 : 0;
       const finalSize = size + humanBonus;
 
-      // SPEED: based on today's activity (agent's share of day's events)
-      const agentShare = totalEvents > 0 ? agentTotal / totalEvents : 0;
-      const agentDayEvents = currentDay.events * agentShare;
+      // SPEED: exact recorded activity for this agent on the selected date.
+      const activity = agentActivity[def.id];
+      const agentDayEvents = activity?.events ?? 0;
       const speed = 0.15 + Math.min(1, agentDayEvents / 80) * 0.65;
 
       // HEALTH: error rate today dims color and adds red tint
-      const agentDayErrors = currentDay.errors * agentShare;
+      const agentDayErrors = activity?.errors ?? 0;
       const errorRate = agentDayEvents > 0
         ? Math.min(1, agentDayErrors / agentDayEvents)
         : 0;
@@ -351,7 +352,7 @@ function TankScene({ crewStats, currentDay }: TankSceneProps) {
 
       return { ...def, size: finalSize, speed, brightness, errorRate, initialPos, phaseOffset: i * 1.3 };
     });
-  }, [statsMap, maxEvents, totalEvents, currentDay]);
+  }, [statsMap, maxEvents, agentActivity]);
 
   return (
     <>
@@ -392,8 +393,9 @@ function TankScene({ crewStats, currentDay }: TankSceneProps) {
 
 // ── Root Component ─────────────────────────────────────────────────────────────
 
-export default function LobsterTank({ crewStats, dailyStats, events: _events, currentDayIndex: controlledDayIndex }: LobsterTankProps) {
+export default function LobsterTank({ crewStats, dailyStats, events, currentDayIndex: controlledDayIndex }: LobsterTankProps) {
   const [mounted, setMounted] = useState(false);
+  const dailyActivity = useMemo(() => activityByDay(events), [events]);
 
   // Internal scrubber state — only used when not controlled by a parent
   const [internalDayIndex, setInternalDayIndex] = useState(0);
@@ -452,7 +454,7 @@ export default function LobsterTank({ crewStats, dailyStats, events: _events, cu
         gl={{ antialias: true, alpha: false }}
         onCreated={({ gl }) => { gl.setClearColor(new THREE.Color('#0a0a1a')); }}
       >
-        <TankScene crewStats={crewStats} currentDay={currentDay} />
+        <TankScene crewStats={crewStats} currentDay={currentDay} agentActivity={dailyActivity[currentDate] ?? {}} />
       </Canvas>
 
       {/* Particle legend (bottom-left, only shown in uncontrolled/standalone mode) */}

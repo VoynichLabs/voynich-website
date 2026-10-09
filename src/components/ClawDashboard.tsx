@@ -1,24 +1,27 @@
-// Author: Bubba (OpenClaw agent)
-// Date: 2026-03-19
+// Author: Codex GPT-6
+// Date: 2026-10-08
 // PURPOSE: Parent container for CLAW dashboard. Owns timeline scrubber state
 //          and distributes currentDate to both LobsterTank and MetricsPanel.
 //          Ensures tank animation and metrics panel stay in sync.
 //          View switcher allows toggling between visualization variants.
 // SRP/DRY check: Pass — single source of truth for timeline position
-// Edited 2026-10-04 by Claude Opus 5.5: the 3D tank is only the default when WebGL is
-//   available, and a render error in it falls back to the 2D radar instead of blanking
-//   the island (WebGL is often blocked in Firefox: GPU blocklist, resistFingerprinting).
+// A render error in the optional 3D tank falls back to the 2D radar.
+// WebGL availability is checked after hydration before enabling the 3D control.
+// Edited 2026-10-08: load compact events separately and optional 3D code on selection;
+//   responsive grid keeps all panels usable at narrow widths.
 //   Timeline scrubber uses the shared .vl-range slider style.
 
-import { useState, useEffect, useCallback, Component, type ReactNode } from 'react';
-import LobsterTank from './LobsterTank';
+import { useState, useEffect, useCallback, Component, lazy, Suspense, type ReactNode } from 'react';
 import LobsterTankCanvas from './LobsterTankCanvas';
 import LobsterTankTerminal from './LobsterTankTerminal';
 import MetricsPanel from './MetricsPanel';
 import CrewRoster from './CrewRoster';
+import type { ClawEvent } from '../lib/claw-activity';
+
+const LobsterTank = lazy(() => import('./LobsterTank'));
 
 interface ClawDashboardProps {
-  events: any[];
+  events: ClawEvent[];
   crewStats: any[];
   dailyStats: any[];
 }
@@ -51,15 +54,52 @@ class TankBoundary extends Component<{ onError: () => void; children: ReactNode 
   render() { return this.state.failed ? null : this.props.children; }
 }
 
-export default function ClawDashboard({ events, crewStats, dailyStats }: ClawDashboardProps) {
+interface ClawDashboardLoaderProps extends Omit<ClawDashboardProps, 'events'> {
+  eventsUrl: string;
+}
+
+export default function ClawDashboard({ eventsUrl, crewStats, dailyStats }: ClawDashboardLoaderProps) {
+  const [events, setEvents] = useState<ClawEvent[] | null>(null);
+  const [loadFailed, setLoadFailed] = useState(false);
+  const [attempt, setAttempt] = useState(0);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    setLoadFailed(false);
+    async function loadEvents() {
+      try {
+        const response = await fetch(eventsUrl, { signal: controller.signal });
+        if (!response.ok) throw new Error(`Event feed returned ${response.status}`);
+        const records = await response.json();
+        if (!Array.isArray(records)) throw new Error('Invalid event feed');
+        if (!controller.signal.aborted) setEvents(records);
+      } catch {
+        if (!controller.signal.aborted) setLoadFailed(true);
+      }
+    }
+    void loadEvents();
+    return () => controller.abort();
+  }, [eventsUrl, attempt]);
+
+  if (!events) return (
+    <div className="min-h-[500px] flex flex-col gap-4 items-center justify-center p-6 text-center font-mono text-sm" role="status" aria-busy={!loadFailed}>
+      <p>{loadFailed ? 'The activity data could not load.' : 'Loading recorded crew activity…'}</p>
+      {loadFailed && <button type="button" className="border border-border px-4 py-2" onClick={() => setAttempt(value => value + 1)}>Retry</button>}
+    </div>
+  );
+  return <Dashboard events={events} crewStats={crewStats} dailyStats={dailyStats} />;
+}
+
+function Dashboard({ events, crewStats, dailyStats }: ClawDashboardProps) {
   const [currentDayIndex, setCurrentDayIndex] = useState(0);
   const [isPlaying, setIsPlaying]             = useState(true);
   const [playbackSpeed, setPlaybackSpeed]     = useState(2); // days per second
-  const [viewMode, setViewMode]               = useState<ViewMode>('threejs');
+  const [viewMode, setViewMode]               = useState<ViewMode>('canvas2d');
+  const [webGLAvailable, setWebGLAvailable] = useState(false);
 
   // Server render can't probe WebGL, so the check runs after hydration.
   useEffect(() => {
-    if (!hasWebGL()) setViewMode('canvas2d');
+    setWebGLAvailable(hasWebGL());
   }, []);
 
   // Auto-advance timeline — loops when it reaches the end
@@ -90,6 +130,7 @@ export default function ClawDashboard({ events, crewStats, dailyStats }: ClawDas
           <button
             key={v.id}
             onClick={() => v.ready && setViewMode(v.id)}
+            aria-pressed={viewMode === v.id}
             className={`
               px-3 py-1 rounded font-mono text-xs whitespace-nowrap transition-colors
               ${viewMode === v.id
@@ -99,8 +140,8 @@ export default function ClawDashboard({ events, crewStats, dailyStats }: ClawDas
                   : 'bg-bg-surface/50 text-text-muted/40 border border-border/30 cursor-not-allowed'
               }
             `}
-            disabled={!v.ready}
-            title={v.ready ? v.label : `${v.label} — coming soon`}
+            disabled={!v.ready || (v.id === 'threejs' && !webGLAvailable)}
+            title={v.id === 'threejs' && !webGLAvailable ? '3D Tank requires WebGL' : v.ready ? v.label : `${v.label} — coming soon`}
           >
             {v.label}
             {!v.ready && <span className="ml-1 text-[9px] opacity-50">soon</span>}
@@ -109,10 +150,10 @@ export default function ClawDashboard({ events, crewStats, dailyStats }: ClawDas
       </div>
 
       {/* ── Crew Roster + Tank + Metrics side by side ── */}
-      <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
+      <div className="grid grid-cols-1 xl:grid-cols-[180px_minmax(0,1fr)_240px] gap-4 items-start">
 
         {/* CrewRoster — left, fixed width, responds to scrubber */}
-        <div style={{ width: '180px', flexShrink: 0 }}>
+        <div className="min-w-0">
           <h2 style={{
             fontFamily: 'monospace', fontSize: '10px', textTransform: 'uppercase',
             letterSpacing: '0.1em', color: 'var(--color-text-muted, #6b7280)',
@@ -127,12 +168,14 @@ export default function ClawDashboard({ events, crewStats, dailyStats }: ClawDas
         <div style={{ flex: '1 1 0', minWidth: 0 }}>
           {viewMode === 'threejs' && (
             <TankBoundary onError={() => setViewMode('canvas2d')}>
-              <LobsterTank
-                crewStats={crewStats}
-                dailyStats={dailyStats}
-                events={events}
-                currentDayIndex={currentDayIndex}
-              />
+              <Suspense fallback={<div role="status" className="h-[500px] flex items-center justify-center font-mono text-sm">Loading 3D tank…</div>}>
+                <LobsterTank
+                  crewStats={crewStats}
+                  dailyStats={dailyStats}
+                  events={events}
+                  currentDayIndex={currentDayIndex}
+                />
+              </Suspense>
             </TankBoundary>
           )}
           {viewMode === 'canvas2d' && (
@@ -169,7 +212,7 @@ export default function ClawDashboard({ events, crewStats, dailyStats }: ClawDas
         </div>
 
         {/* MetricsPanel — right, fixed width, receives same currentDate */}
-        <div style={{ width: '240px', flexShrink: 0, alignSelf: 'stretch' }}>
+        <div className="min-w-0 self-stretch">
           <MetricsPanel events={events} currentDate={currentDate} />
         </div>
 
@@ -181,6 +224,7 @@ export default function ClawDashboard({ events, crewStats, dailyStats }: ClawDas
         padding: '8px 12px',
         display: 'flex',
         alignItems: 'center',
+        flexWrap: 'wrap',
         gap: '10px',
         borderTop: '1px solid #1e3a5f',
       }}>
@@ -193,6 +237,7 @@ export default function ClawDashboard({ events, crewStats, dailyStats }: ClawDas
             background: 'none', border: 'none', cursor: 'pointer', padding: '0 4px',
             lineHeight: 1,
           }}
+          aria-label={isPlaying ? 'Pause timeline' : 'Play timeline'}
           title={isPlaying ? 'Pause' : 'Play'}
         >
           {isPlaying ? '⏸' : '▶'}
@@ -206,7 +251,8 @@ export default function ClawDashboard({ events, crewStats, dailyStats }: ClawDas
           value={currentDayIndex}
           onChange={handleSliderChange}
           className="vl-range"
-          style={{ flex: 1, '--range-accent': '#f97316' } as React.CSSProperties}
+          aria-label="Timeline date"
+          style={{ flex: '1 1 100px', minWidth: 0, '--range-accent': '#f97316' } as React.CSSProperties}
         />
 
         {/* Current date display */}

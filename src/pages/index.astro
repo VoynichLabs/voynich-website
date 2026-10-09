@@ -642,8 +642,9 @@ const siteDirectory = [
   // hero text (center band ~x:300-900, y:200-550).
   // No randomness. Each entry: [x1, y1, x2, y2, color, r, edgeDurSeconds, delayAfterPrevMs]
   (function () {
-    const svg = document.querySelector('.dag-hero-svg');
-    if (!svg) return;
+    const svgElement = document.querySelector<SVGSVGElement>('.dag-hero-svg');
+    if (!svgElement) return;
+    const svg = svgElement;
 
     // Staggered pulse on existing static nodes
     svg.querySelectorAll('circle').forEach((c, i) => {
@@ -655,7 +656,7 @@ const siteDirectory = [
     // Pre-designed extensions — each chains naturally from an existing endpoint.
     // Clusters stay in the margins; no new nodes in the hero text zone.
     //   col 0-3: coords  col 4: stroke  col 5: r  col 6: edge draw dur (s)  col 7: wait after prev (ms)
-    const steps = [
+    const steps: [number, number, number, number, string, number, number, number][] = [
       //  x1    y1    x2    y2    color      r    dur  wait
       [   80,  120,   55,  270, '#38bdf8', 2.5,  6,  7000],  // left cluster → down left margin
       [  420,  150,  560,   75, '#4ade80', 3.0,  6,  7000],  // top-left cluster → top margin
@@ -683,8 +684,8 @@ const siteDirectory = [
       const [x1, y1, x2, y2, col, r, dur, waitNext] = steps[idx++];
 
       const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-      line.setAttribute('x1', x1); line.setAttribute('y1', y1);
-      line.setAttribute('x2', x2); line.setAttribute('y2', y2);
+      line.setAttribute('x1', String(x1)); line.setAttribute('y1', String(y1));
+      line.setAttribute('x2', String(x2)); line.setAttribute('y2', String(y2));
       line.setAttribute('stroke', col);
       line.setAttribute('stroke-width', '0.8');
       line.setAttribute('filter', 'url(#edge-glow)');
@@ -694,7 +695,7 @@ const siteDirectory = [
 
       // Node appears once the edge finishes drawing
       const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      circle.setAttribute('cx', x2); circle.setAttribute('cy', y2); circle.setAttribute('r', r);
+      circle.setAttribute('cx', String(x2)); circle.setAttribute('cy', String(y2)); circle.setAttribute('r', String(r));
       circle.setAttribute('fill', col);
       circle.setAttribute('opacity', '0');
       svg.appendChild(circle);

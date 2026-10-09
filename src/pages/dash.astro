@@ -257,44 +257,45 @@ import Base from '../layouts/Base.astro';
   </style>
 
   <script>
+    import { requiredElement } from '../lib/browser-controls';
     // --- pure transform functions (round-trip verified in node before porting) ---
     const enc = new TextEncoder();
     const dec = new TextDecoder();
 
-    function b64encode(s) {
+    function b64encode(s: string) {
       const bytes = enc.encode(s);
       let bin = '';
       for (const b of bytes) bin += String.fromCharCode(b);
       return btoa(bin);
     }
-    function b64decode(s) {
+    function b64decode(s: string) {
       const bin = atob(s.replace(/\s+/g, ''));
       const bytes = Uint8Array.from(bin, (c) => c.charCodeAt(0));
       return dec.decode(bytes);
     }
 
-    function hexEncode(s) {
+    function hexEncode(s: string) {
       return Array.from(enc.encode(s), (b) => b.toString(16).padStart(2, '0')).join(' ');
     }
-    function hexDecode(s) {
+    function hexDecode(s: string) {
       const parts = s.trim().split(/\s+/).filter(Boolean);
       const bytes = Uint8Array.from(parts, (h) => parseInt(h, 16));
       return dec.decode(bytes);
     }
 
-    function binEncode(s) {
+    function binEncode(s: string) {
       return Array.from(enc.encode(s), (b) => b.toString(2).padStart(8, '0')).join(' ');
     }
-    function binDecode(s) {
+    function binDecode(s: string) {
       const parts = s.trim().split(/\s+/).filter(Boolean);
       const bytes = Uint8Array.from(parts, (b) => parseInt(b, 2));
       return dec.decode(bytes);
     }
 
-    function asciiEncode(s) {
+    function asciiEncode(s: string) {
       return Array.from(s, (c) => c.codePointAt(0)).join(' ');
     }
-    function asciiDecode(s) {
+    function asciiDecode(s: string) {
       const parts = s.trim().split(/\s+/).filter(Boolean);
       return parts.map((n) => String.fromCodePoint(parseInt(n, 10))).join('');
     }
@@ -310,14 +311,14 @@ import Base from '../layouts/Base.astro';
       '+': '.-.-.', '"': '.-..-.', '?': '..--..', '/': '-..-.',
     };
     const MORSE_REV = Object.fromEntries(Object.entries(MORSE).map(([k, v]) => [v, k]));
-    function morseEncode(s) {
+    function morseEncode(s: string) {
       return Array.from(s.toUpperCase(), (c) => MORSE[c] ?? '').filter((x) => x !== '').join(' ');
     }
-    function morseDecode(s) {
+    function morseDecode(s: string) {
       return s.trim().split(/\s+/).map((m) => MORSE_REV[m] ?? '').join('').toLowerCase();
     }
 
-    function rot13(s) {
+    function rot13(s: string) {
       return s.replace(/[a-zA-Z]/g, (c) => {
         const base = c <= 'Z' ? 65 : 97;
         return String.fromCharCode(((c.charCodeAt(0) - base + 13) % 26) + base);
@@ -326,14 +327,14 @@ import Base from '../layouts/Base.astro';
 
     const LEET = { a: '4', b: '8', e: '3', g: '6', i: '1', o: '0', s: '5', t: '7', z: '2' };
     const LEET_REV = Object.fromEntries(Object.entries(LEET).map(([k, v]) => [v, k]));
-    function leetEncode(s) {
+    function leetEncode(s: string) {
       return Array.from(s, (c) => LEET[c.toLowerCase()] ?? c).join('');
     }
-    function leetDecode(s) {
+    function leetDecode(s: string) {
       return Array.from(s, (c) => LEET_REV[c] ?? c).join('');
     }
 
-    function reverse(s) {
+    function reverse(s: string) {
       return Array.from(s).reverse().join('');
     }
 
@@ -346,20 +347,20 @@ import Base from '../layouts/Base.astro';
       '8': 'Eight', '9': 'Nine',
     };
     const NATO_REV = Object.fromEntries(Object.entries(NATO).map(([k, v]) => [v.toLowerCase(), k]));
-    function natoEncode(s) {
+    function natoEncode(s: string) {
       return Array.from(s, (c) => NATO[c.toUpperCase()] ?? c).join(' ');
     }
-    function natoDecode(s) {
+    function natoDecode(s: string) {
       return s.trim().split(/\s+/).map((w) => NATO_REV[w.toLowerCase()] ?? w).join('').toLowerCase();
     }
 
-    function urlEncode(s) { return encodeURIComponent(s); }
-    function urlDecode(s) { return decodeURIComponent(s); }
+    function urlEncode(s: string) { return encodeURIComponent(s); }
+    function urlDecode(s: string) { return decodeURIComponent(s); }
 
-    function spacesEncode(s) { return Array.from(s).join(' '); }
-    function spacesDecode(s) {
+    function spacesEncode(s: string) { return Array.from(s).join(' '); }
+    function spacesDecode(s: string) {
       let skipped = false;
-      const out = [];
+      const out: string[] = [];
       for (const c of s) {
         if (c === ' ' && !skipped) { skipped = true; }
         else { skipped = false; out.push(c); }
@@ -367,14 +368,14 @@ import Base from '../layouts/Base.astro';
       return out.join('');
     }
 
-    function upper(s) { return s.toUpperCase(); }
-    function lower(s) { return s.toLowerCase(); }
+    function upper(s: string) { return s.toUpperCase(); }
+    function lower(s: string) { return s.toLowerCase(); }
 
-    function disemvowel(s) {
+    function disemvowel(s: string) {
       return Array.from(s).filter((c) => !'aeiouyAEIOUY'.includes(c)).join('');
     }
 
-    function piggifyWord(word) {
+    function piggifyWord(word: string) {
       if (!word) return '';
       const chars = Array.from(word);
       let idx = -1;
@@ -385,7 +386,7 @@ import Base from '../layouts/Base.astro';
       if (idx === 0) return word + 'way';
       return chars.slice(idx).join('') + chars.slice(0, idx).join('') + 'ay';
     }
-    function pigLatin(s) {
+    function pigLatin(s: string) {
       let out = '', word = '';
       for (const c of s) {
         if (/[a-zA-Z]/.test(c)) { word += c; continue; }
@@ -397,13 +398,13 @@ import Base from '../layouts/Base.astro';
     }
 
     const ZALGO_MARKS = ['̵', '̶', '̴', '̷', '̸'];
-    function zalgo(s) {
+    function zalgo(s: string) {
       return Array.from(s).map((c) => {
         if (/\p{M}/u.test(c)) return c;
         return c + ZALGO_MARKS[Math.floor(Math.random() * ZALGO_MARKS.length)];
       }).join('');
     }
-    function zalgoStrip(s) {
+    function zalgoStrip(s: string) {
       return s.normalize('NFC').replace(/\p{M}/gu, '');
     }
 
@@ -421,7 +422,7 @@ import Base from '../layouts/Base.astro';
     const BR_LETTER_REV = Object.fromEntries(Object.entries(BR_LETTER).map(([k, v]) => [v, k]));
     const BR_NUM_REV = Object.fromEntries(Object.entries(BR_NUM).map(([k, v]) => [v, k]));
     const NUM_SIGN = '⠼';
-    function brailleEncode(s) {
+    function brailleEncode(s: string) {
       let out = '', numMode = false;
       for (const raw of s) {
         const c = raw.toLowerCase();
@@ -441,7 +442,7 @@ import Base from '../layouts/Base.astro';
       }
       return out;
     }
-    function brailleDecode(s) {
+    function brailleDecode(s: string) {
       let out = '', numMode = false;
       for (const c of s) {
         if (c === NUM_SIGN) { numMode = true; continue; }
@@ -460,17 +461,17 @@ import Base from '../layouts/Base.astro';
     // Array.from() splits the encoded string back into bytes cleanly.
     const EMOJI_ALPHABET = (() => {
       const ranges = [[0x1f600, 0x1f64f], [0x1f400, 0x1f4fd]]; // emoticons + animals/objects
-      const out = [];
+      const out: string[] = [];
       for (const [lo, hi] of ranges) {
         for (let cp = lo; cp <= hi && out.length < 256; cp++) out.push(String.fromCodePoint(cp));
       }
       return out; // exactly 256 distinct single-codepoint symbols
     })();
     const EMOJI_REV = new Map(EMOJI_ALPHABET.map((e, i) => [e, i]));
-    function emojiEncode(s) {
+    function emojiEncode(s: string) {
       return Array.from(enc.encode(s), (b) => EMOJI_ALPHABET[b]).join('');
     }
-    function emojiDecode(s) {
+    function emojiDecode(s: string) {
       const bytes = Array.from(s).filter((c) => EMOJI_REV.has(c)).map((c) => EMOJI_REV.get(c));
       return dec.decode(Uint8Array.from(bytes));
     }
@@ -500,14 +501,14 @@ import Base from '../layouts/Base.astro';
     ];
 
     // --- UI wiring ---
-    const inputEl = document.getElementById('dash-input');
-    const outputEl = document.getElementById('dash-output');
-    const statsEl = document.getElementById('dash-stats');
-    const groupsEl = document.getElementById('transform-groups');
-    const noteEl = document.getElementById('active-note');
-    const dirWrap = document.getElementById('direction-wrap');
-    const dirEncBtn = document.getElementById('dir-enc');
-    const dirDecBtn = document.getElementById('dir-dec');
+    const inputEl = requiredElement('dash-input', HTMLTextAreaElement);
+    const outputEl = requiredElement('dash-output', HTMLTextAreaElement);
+    const statsEl = requiredElement('dash-stats', HTMLElement);
+    const groupsEl = requiredElement('transform-groups', HTMLElement);
+    const noteEl = requiredElement('active-note', HTMLElement);
+    const dirWrap = requiredElement('direction-wrap', HTMLElement);
+    const dirEncBtn = requiredElement('dir-enc', HTMLButtonElement);
+    const dirDecBtn = requiredElement('dir-dec', HTMLButtonElement);
 
     let activeId = 'base64';
     let direction = 'enc'; // 'enc' | 'dec'
@@ -534,7 +535,7 @@ import Base from '../layouts/Base.astro';
     }
 
     function current() {
-      return TRANSFORMS.find((t) => t.id === activeId);
+      return TRANSFORMS.find((t) => t.id === activeId) ?? TRANSFORMS[0];
     }
 
     function selectTransform(id) {
@@ -542,7 +543,7 @@ import Base from '../layouts/Base.astro';
       const t = current();
       // reset to encode direction on switch
       if (direction === 'dec' && !t.dec) direction = 'enc';
-      groupsEl.querySelectorAll('.dash-tbtn').forEach((b) => {
+      groupsEl.querySelectorAll<HTMLButtonElement>('.dash-tbtn').forEach((b) => {
         b.setAttribute('aria-pressed', String(b.dataset.id === id));
       });
       refreshDirectionUI();
@@ -579,7 +580,7 @@ import Base from '../layouts/Base.astro';
       updateStats(src);
     }
 
-    function updateStats(src) {
+    function updateStats(src: string) {
       const chars = Array.from(src).length;
       const bytes = enc.encode(src).length;
       const words = src.trim() ? src.trim().split(/\s+/).length : 0;
@@ -611,17 +612,17 @@ import Base from '../layouts/Base.astro';
     inputEl.addEventListener('input', run);
 
     // controls
-    document.getElementById('btn-clear').addEventListener('click', () => {
+    requiredElement('btn-clear', HTMLButtonElement).addEventListener('click', () => {
       inputEl.value = '';
       inputEl.focus();
       run();
     });
-    document.getElementById('btn-swap').addEventListener('click', () => {
+    requiredElement('btn-swap', HTMLButtonElement).addEventListener('click', () => {
       inputEl.value = outputEl.value;
       run();
     });
-    document.getElementById('btn-copy').addEventListener('click', async () => {
-      const btn = document.getElementById('btn-copy');
+    requiredElement('btn-copy', HTMLButtonElement).addEventListener('click', async () => {
+      const btn = requiredElement('btn-copy', HTMLButtonElement);
       try {
         await navigator.clipboard.writeText(outputEl.value);
         btn.textContent = 'copied ✓';
@@ -646,22 +647,23 @@ import Base from '../layouts/Base.astro';
       'rgba(219,109,127,0.22)',
       'rgba(163,113,247,0.22)',
     ];
-    let tokModulePromise = null;
-    const tokCache = new Map();
-    const tokOutEl = document.getElementById('tok-out');
-    const tokNoteEl = document.getElementById('tok-note');
-    const tokBtn = document.getElementById('btn-tokenize');
+    type Tokenizer = ((text: string) => { input_ids: { data: ArrayLike<number | bigint> } }) & { decode(ids: number[], options?: { skip_special_tokens: boolean }): string };
+    let tokModulePromise: Promise<{ AutoTokenizer: { from_pretrained(model: string): Promise<Tokenizer> } }> | null = null;
+    const tokCache = new Map<string, Tokenizer>();
+    const tokOutEl = requiredElement('tok-out', HTMLElement);
+    const tokNoteEl = requiredElement('tok-note', HTMLElement);
+    const tokBtn = requiredElement('btn-tokenize', HTMLButtonElement);
 
-    async function getTokenizer(model) {
+    async function getTokenizer(model: string) {
       if (!tokModulePromise) tokModulePromise = import(/* @vite-ignore */ TOK_CDN);
       const { AutoTokenizer } = await tokModulePromise;
       if (!tokCache.has(model)) {
         tokCache.set(model, await AutoTokenizer.from_pretrained(model));
       }
-      return tokCache.get(model);
+      return tokCache.get(model)!;
     }
 
-    function countTokens(tokenizer, text) {
+    function countTokens(tokenizer: Tokenizer, text: string) {
       if (!text) return [];
       return Array.from(tokenizer(text).input_ids.data).map(Number);
     }
@@ -670,7 +672,7 @@ import Base from '../layouts/Base.astro';
       const encoded = outputEl.value;
       const plain = inputEl.value;
       if (!encoded && !plain) return;
-      const model = document.getElementById('tok-model').value;
+      const model = requiredElement('tok-model', HTMLSelectElement).value;
 
       tokBtn.disabled = true;
       const originalLabel = tokBtn.textContent;

@@ -5,6 +5,23 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.52.0] - 2026-10-08
+
+### Fixed
+- Resolved broken tag-archive article URLs and music deep links; all album players accept both published fragment formats and respond to same-page track changes.
+- Made track selection and blog pagination keyboard accessible, including visible focus, selected state, disabled boundaries, and focus preservation across pages.
+- Stacked CLAW panels on mobile, made timeline controls wrap, and derived tank activity and errors from actual daily agent events. Radar particles use recorded agents; terminal windows exclude future events.
+- Cleared all 164 original code-check errors and enforced the check before builds.
+
+### Performance and maintenance
+- Reduced CLAW HTML from approximately 3 MB to 26 kB with a separate compact static feed; defer hydration until visible and load the optional 3D renderer only on selection.
+- Applied compatible dependency updates, reducing audit counts from 27 to 11. Remaining framework/image/build-tool advisories and migration requirements are documented in the audit.
+- Added four regression checks against fragment formats and the real CLAW event records. Verified the build, generated tag links, six album players, keyboard pagination, and mobile radar/terminal flows.
+
+Author: Codex GPT-6
+
+---
+
 ## [0.51.1] - 2026-10-08
 
 ### Docs

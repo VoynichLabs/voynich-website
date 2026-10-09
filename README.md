@@ -27,9 +27,10 @@ npm run dev
 
 Useful commands:
 
-- `npm run build` - production build to `dist/`
+- `npm run build` - runs the required code check, optimizes images, and builds to `dist/`
 - `npm run preview` - serve the built site locally
-- `npm run astro -- check` - optional Astro checks
+- `npm run check` - required Astro and TypeScript check (also enforced before builds)
+- `npm test` - album-fragment and real CLAW event regression checks
 
 ## Read These Docs First (Context Matters)
 

@@ -227,6 +227,12 @@ import { optimized } from '../../lib/optimized-image';
     flex-direction: column;
   }
   .ls-track-item {
+    width: 100%;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    background: transparent;
+    border: 0;
     display: grid;
     grid-template-columns: 28px 20px 1fr;
     gap: 0.5rem;
@@ -236,6 +242,7 @@ import { optimized } from '../../lib/optimized-image';
     border-left: 2px solid transparent;
     transition: background 0.15s, border-color 0.15s;
   }
+  .ls-track-item:focus-visible { outline: 2px solid currentColor; outline-offset: -2px; }
   .ls-track-item:hover {
     background: rgba(139,92,246,0.08);
     border-left-color: rgba(139,92,246,0.5);
@@ -554,6 +561,8 @@ import { optimized } from '../../lib/optimized-image';
 
 <!-- ═══════════════════════════════════════════════════════════ JS -->
 <script>
+import { requiredElement } from '../../lib/browser-controls';
+import { trackIndexFromHash } from '../../lib/music-links';
 (function() {
   const TRACKS = [
     { id: 1, title: "My Own Worst Inference (Bubba)", file: "my-own-worst-inference.mp3", slug: "my-own-worst-inference", fire: true,
@@ -621,32 +630,33 @@ import { optimized } from '../../lib/optimized-image';
   const audio = new Audio();
   audio.volume = 0.8;
 
-  const playPauseBtn = document.getElementById('playPauseBtn');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const progressBar = document.getElementById('progressBar');
-  const volumeBar = document.getElementById('volumeBar');
-  const currentTimeEl = document.getElementById('currentTime');
-  const durationTimeEl = document.getElementById('durationTime');
-  const playerTrackName = document.getElementById('playerTrackName');
-  const npTitle = document.getElementById('npTitle');
-  const npQuote = document.getElementById('npQuote');
-  const npStyle = document.getElementById('npStyle');
-  const npAbout = document.getElementById('npAbout');
-  const npBadge = document.getElementById('npBadge');
-  const npImg = document.getElementById('npImg');
-  const npVideo = document.getElementById('npVideo');
-  const playAllBtn = document.getElementById('playAllBtn');
-  const trackListEl = document.getElementById('trackList');
-  const lyricsPanel = document.getElementById('lyricsPanel');
-  const lyricsBody = document.getElementById('lyricsBody');
-  const lyricsToggle = document.getElementById('lyricsToggle');
+  const playPauseBtn = requiredElement('playPauseBtn', HTMLButtonElement);
+  const prevBtn = requiredElement('prevBtn', HTMLButtonElement);
+  const nextBtn = requiredElement('nextBtn', HTMLButtonElement);
+  const progressBar = requiredElement('progressBar', HTMLInputElement);
+  const volumeBar = requiredElement('volumeBar', HTMLInputElement);
+  const currentTimeEl = requiredElement('currentTime', HTMLElement);
+  const durationTimeEl = requiredElement('durationTime', HTMLElement);
+  const playerTrackName = requiredElement('playerTrackName', HTMLElement);
+  const npTitle = requiredElement('npTitle', HTMLElement);
+  const npQuote = requiredElement('npQuote', HTMLElement);
+  const npStyle = requiredElement('npStyle', HTMLElement);
+  const npAbout = requiredElement('npAbout', HTMLElement);
+  const npBadge = requiredElement('npBadge', HTMLElement);
+  const npImg = requiredElement('npImg', HTMLImageElement);
+  const npVideo = requiredElement('npVideo', HTMLAnchorElement);
+  const playAllBtn = requiredElement('playAllBtn', HTMLButtonElement);
+  const trackListEl = requiredElement('trackList', HTMLElement);
+  const lyricsPanel = requiredElement('lyricsPanel', HTMLElement);
+  const lyricsBody = requiredElement('lyricsBody', HTMLElement);
+  const lyricsToggle = requiredElement('lyricsToggle', HTMLButtonElement);
 
   function buildSidebar() {
     TRACKS.forEach((track, idx) => {
-      const item = document.createElement('div');
+      const item = document.createElement('button');
+      item.type = 'button';
       item.className = 'ls-track-item' + (track.fire ? ' fire' : '');
-      item.dataset.idx = idx;
+      item.dataset.idx = String(idx);
       item.innerHTML = `
         <span class="ls-track-num">${String(track.id).padStart(2, '0')}</span>
         <span class="ls-track-play-btn">▶</span>
@@ -658,7 +668,7 @@ import { optimized } from '../../lib/optimized-image';
     });
   }
 
-  function loadAndPlay(idx) {
+  function loadAndPlay(idx: number) {
     if (idx < 0 || idx >= TRACKS.length) return;
     currentIndex = idx;
     const track = TRACKS[idx];
@@ -679,12 +689,12 @@ import { optimized } from '../../lib/optimized-image';
 
   function scrollToNowPlaying() {
     if (window.innerWidth > 860) return;
-    const el = document.getElementById('mainContent');
+    const el = requiredElement('mainContent', HTMLElement);
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   let lyricsReqId = 0;
-  async function loadLyrics(track) {
+  async function loadLyrics(track: typeof TRACKS[number]) {
     const myReq = ++lyricsReqId;
     const slug = track.slug || String(track.id);
     lyricsPanel.hidden = true;
@@ -702,7 +712,7 @@ import { optimized } from '../../lib/optimized-image';
     } catch (e) { /* no lyrics available */ }
   }
 
-  function updateNowPlaying(track) {
+  function updateNowPlaying(track: typeof TRACKS[number]) {
     const slug = track.slug || String(track.id);
     history.replaceState(null, '', window.location.pathname + '#track=' + slug);
     npTitle.textContent = track.title;
@@ -716,9 +726,11 @@ import { optimized } from '../../lib/optimized-image';
     playerTrackName.textContent = track.title;
   }
 
-  function updateActive(idx) {
-    document.querySelectorAll('.ls-track-item').forEach(el => {
-      el.classList.toggle('active', parseInt(el.dataset.idx) === idx);
+  function updateActive(idx: number) {
+    document.querySelectorAll<HTMLButtonElement>('.ls-track-item').forEach(el => {
+      const selected = Number(el.dataset.idx) === idx;
+      el.classList.toggle('active', selected);
+      el.setAttribute('aria-pressed', String(selected));
     });
   }
 
@@ -739,12 +751,12 @@ import { optimized } from '../../lib/optimized-image';
   audio.addEventListener('timeupdate', () => {
     if (!audio.duration) return;
     const pct = (audio.currentTime / audio.duration) * 100;
-    if (progressBar) progressBar.value = pct;
+    if (progressBar) progressBar.value = String(pct);
     if (currentTimeEl) currentTimeEl.textContent = formatTime(audio.currentTime);
   });
   audio.addEventListener('loadedmetadata', () => {
     if (durationTimeEl) durationTimeEl.textContent = formatTime(audio.duration);
-    if (progressBar) progressBar.value = 0;
+    if (progressBar) progressBar.value = '0';
   });
   audio.addEventListener('ended', () => { isPlaying = false; updatePlayBtn(); playNext(); });
   audio.addEventListener('play', () => { isPlaying = true; updatePlayBtn(); });
@@ -752,7 +764,7 @@ import { optimized } from '../../lib/optimized-image';
 
   if (progressBar) progressBar.addEventListener('input', () => {
     if (!audio.duration) return;
-    audio.currentTime = (progressBar.value / 100) * audio.duration;
+    audio.currentTime = (Number(progressBar.value) / 100) * audio.duration;
   });
   if (volumeBar) volumeBar.addEventListener('input', () => { audio.volume = parseFloat(volumeBar.value); });
   if (playPauseBtn) playPauseBtn.addEventListener('click', togglePlay);
@@ -766,7 +778,7 @@ import { optimized } from '../../lib/optimized-image';
     lyricsToggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
   });
 
-  function formatTime(secs) {
+  function formatTime(secs: number) {
     if (!isFinite(secs) || isNaN(secs)) return '0:00';
     const m = Math.floor(secs / 60);
     const s = Math.floor(secs % 60);
@@ -774,17 +786,16 @@ import { optimized } from '../../lib/optimized-image';
   }
 
   function loadFromHash() {
-    const hash = window.location.hash;
-    if (!hash || !hash.startsWith('#track=')) return;
-    const slug = hash.replace('#track=', '');
-    const idx = TRACKS.findIndex(t => (t.slug || String(t.id)) === slug);
-    if (idx >= 0) setTimeout(() => loadAndPlay(idx), 200);
+    const idx = trackIndexFromHash(TRACKS, track => track.slug || String(track.id));
+    if (idx < 0) return false;
+    loadAndPlay(idx);
+    return true;
   }
+  window.addEventListener('hashchange', loadFromHash);
+
 
   buildSidebar();
-  if (window.location.hash && window.location.hash.startsWith('#track=')) {
-    loadFromHash();
-  } else {
+  if (!loadFromHash()) {
     currentIndex = 0;
     const t = TRACKS[0];
     audio.src = AUDIO_BASE + t.file;
@@ -795,5 +806,3 @@ import { optimized } from '../../lib/optimized-image';
   }
 })();
 </script>
-</content>
-</invoke>

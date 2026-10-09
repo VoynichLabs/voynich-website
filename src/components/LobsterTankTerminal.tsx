@@ -1,5 +1,5 @@
-// Author: Bubba (OpenClaw agent)
-// Date: 2026-03-19
+// Author: Codex GPT-6
+// Date: 2026-10-08
 // PURPOSE: V5 ASCII Terminal — retro green-on-black lobster tank visualization.
 //          Renders ASCII art lobsters drifting across a terminal-style display.
 //          Events scroll as terminal log entries. Pure DOM, no canvas/SVG/WebGL.
@@ -158,15 +158,15 @@ export default function LobsterTankTerminal({
   // Current date from dailyStats
   const currentDate = dailyStats[currentDayIndex]?.date ?? '';
 
-  // Events near currentDate (7-day window)
+  // Recorded events in the seven days ending on currentDate; exclude future events.
   const windowEvents = useMemo(() => {
     if (!currentDate) return events.slice(-20);
-    const current = new Date(currentDate).getTime();
-    const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
-    return events.filter(e => {
-      if (!e.timestamp) return false;
-      const t = new Date(e.timestamp).getTime();
-      return Math.abs(t - current) <= WEEK_MS;
+    const start = new Date(currentDate + 'T00:00:00Z');
+    start.setUTCDate(start.getUTCDate() - 6);
+    const startDate = start.toISOString().slice(0, 10);
+    return events.filter(event => {
+      const date = event.timestamp.slice(0, 10);
+      return date >= startDate && date <= currentDate;
     });
   }, [events, currentDate]);
 

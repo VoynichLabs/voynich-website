@@ -1,5 +1,5 @@
-// Author: Bubba (OpenClaw agent)
-// Date: 2026-03-19
+// Author: Codex GPT-6
+// Date: 2026-10-08
 // PURPOSE: Canvas 2D radar-style lobster visualization for CLAW dashboard.
 //          Radar sweep + concentric rings + colored agent circles + particle effects.
 //          Self-contained — no external renderer modules, no new deps.
@@ -63,6 +63,13 @@ export default function LobsterTankCanvas({ events, crewStats, dailyStats, curre
     const cy = H / 2;
     const maxR = Math.min(W, H) * 0.44;
 
+    // Index the recorded events once; decorative particles still belong to the
+    // agent and event type actually recorded on the selected date.
+    const eventsByDate: Record<string, typeof events> = {};
+    for (const event of events) {
+      (eventsByDate[event.timestamp.slice(0, 10)] ??= []).push(event);
+    }
+
     // Build agent list from crewStats + config
     const agents: AgentState[] = Object.entries(AGENT_CONFIG).map(([id, cfg]) => {
       const stat = crewStats.find(s => s.agent_id === id);
@@ -110,9 +117,6 @@ export default function LobsterTankCanvas({ events, crewStats, dailyStats, curre
 
       // Sweep line
       const sweep = stateRef.current!.sweep;
-      const sweepGrad = ctx!.createConicalGradient
-        ? null // not widely supported
-        : null;
       // Draw sweep as a thin amber line + trailing arc glow
       ctx!.save();
       ctx!.globalAlpha = 0.18;
@@ -240,17 +244,11 @@ export default function LobsterTankCanvas({ events, crewStats, dailyStats, curre
       if (now - lastSpawn > 300) {
         lastSpawn = now;
         const dayData = dailyStats[st.dayIndex];
-        if (dayData && dayData.events > 0) {
-          // Pick a random event type weighted by day stats
-          const types = [
-            ...Array(dayData.prs_merged).fill('pr_merged'),
-            ...Array(dayData.prs_opened).fill('pr_opened'),
-            ...Array(dayData.errors).fill('error'),
-            ...Array(dayData.messages).fill('message'),
-          ];
-          const type = types.length > 0 ? types[Math.floor(Math.random() * types.length)] : 'message';
-          const ag = st.agents[Math.floor(Math.random() * st.agents.length)];
-          spawnParticles(ag, type);
+        const recordedEvents = eventsByDate[dayData?.date] ?? [];
+        if (recordedEvents.length > 0) {
+          const event = recordedEvents[Math.floor(Math.random() * recordedEvents.length)];
+          const agent = st.agents.find(agent => agent.id === event.agent_id);
+          if (agent) spawnParticles(agent, event.event_type);
         }
       }
 
@@ -276,7 +274,7 @@ export default function LobsterTankCanvas({ events, crewStats, dailyStats, curre
     return () => {
       if (stateRef.current) cancelAnimationFrame(stateRef.current.raf);
     };
-  }, [crewStats, dailyStats]);
+  }, [crewStats, dailyStats, events]);
 
   return (
     <canvas
