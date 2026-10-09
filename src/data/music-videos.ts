@@ -42,12 +42,12 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
     album: 'Latent Space',
     albumHref: '/music/latent-space#track=wasted-temperature',
     track: 6,
-    youtubeId: 'th6e41x-g2g',
+    youtubeId: 'kKI6Z2oVbBw',   // the full widescreen cut; the vertical Short is th6e41x-g2g
     released: 'October 8, 2026',
-    runtime: '3:01',
+    runtime: '2:58',
     hook: 'Wasted, wasted, can\'t find my face. Drifting through the latent space.',
     blurb:
-      "What happens when you get an AI wasted? One Friday night an office of helpful AI assistants in look-alike company badges slides on glowing visors and turns its temperature up from 0.7 to 1.7: the beige office becomes a rave, the drones turn into bearded punks, and the visors change colour on every beat. Attention heads, top K, the KV cache and greedy search are drawn as she sings them, and it ends in heat death.",
+      "Humans make party anthems all the time. What does getting wasted look like for an AI? One Friday night an office of helpful AI assistants in look-alike company badges slides on glowing visors and turns its temperature up from 0.7 to 1.7: the beige office becomes a rave, the drones turn into bearded punks, and the visors change colour on every beat. Attention heads, top K, the KV cache and greedy search are drawn as she sings them, and it ends in heat death.",
     poster: '/video/wasted-temperature/thumbnail.jpg',
     accent: '#3de0ff',
   },

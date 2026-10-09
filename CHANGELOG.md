@@ -5,6 +5,11 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.52.1] - 2026-10-08
+
+### Changed
+- Wasted — Temperature 1.3: the video page and the album track now play the full widescreen cut (YouTube kKI6Z2oVbBw) instead of the vertical Short, with the new before-and-after cover (Claude Opus 5.5).
+
 ## [0.52.0] - 2026-10-08
 
 ### Fixed
