@@ -1,6 +1,6 @@
 ---
-// Author: Claude Opus 5.5
-// Date: 2026-10-04
+// Author: Codex GPT-6
+// Date: 2026-10-09
 // PURPOSE: One making-of page for every music video in MUSIC_VIDEOS (/music/video/{slug}): YouTube player,
 //          optional cast stills, timeline synced to the real track, rules and cast, the scene book,
 //          decisions and how it was made. Replaces three near-identical per-video pages.
@@ -10,7 +10,8 @@ import Base from '../../../layouts/Base.astro';
 import MusicXNav from '../../../components/MusicXNav.astro';
 import YouTubePlayer from '../../../components/YouTubePlayer.astro';
 import VideoFeature from '../../../components/VideoFeature.astro';
-import { MUSIC_VIDEOS, videoBySlug, watchUrl } from '../../../data/music-videos';
+import { MUSIC_VIDEOS, FEATURED_MUSIC_VIDEOS, videoBySlug, watchPageVideos, watchUrl } from '../../../data/music-videos';
+import { videoName, videoSchema } from '../../../lib/music-video-seo';
 
 type Book = {
   slug: string; title: string; album: string; albumHref: string; artist: string; track: number; style: string;
@@ -33,15 +34,20 @@ export function getStaticPaths() {
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const { slug } = Astro.params as { slug: string };
-const video = videoBySlug(slug)!;
+const originalVideo = videoBySlug(slug)!;
+const cuts = watchPageVideos(slug);
+const video = cuts[0] ?? originalVideo;
+const alternateCuts = cuts.filter((cut) => cut.youtubeId !== video.youtubeId);
+const publicCuts = cuts.filter((cut) => cut.visibility === 'public');
+const site = Astro.site ?? new URL('https://voynichlabs.org');
+const videoJsonLd = publicCuts.map((cut) => videoSchema(cut, site, `/music/video/${slug}`));
 const book = bookFor(slug);
 if (!book) throw new Error(`No video/data/${slug}/scenes.json for music video "${slug}"`);
 const page = book.page;
-const others = MUSIC_VIDEOS.filter((v) => v.slug !== slug);
+const others = FEATURED_MUSIC_VIDEOS.filter((v) => !cuts.some((cut) => cut.youtubeId === v.youtubeId));
 const fmt = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
 const pad = (n: number) => String(n).padStart(2, '0');
 const scenes = book.scenes;
-const total = book.duration;
 const stillsBase = `${base}/video/${slug}/stills`;
 const prefix = page.stillsPrefix ?? '';
 const stillLabel = (id: string) => (prefix && !id.startsWith(prefix) ? `${id} (base)` : id.slice(prefix.length));
@@ -49,21 +55,24 @@ const repo = 'https://github.com/VoynichLabs/voynich-website';
 ---
 
 <Base
-  title={`${video.title} — Music Video`}
-  description={page.description}
+  title={`${video.title} — ${video.genre} AI Music Video`}
+  description={video.searchDescription}
   ogImage={video.poster}
+  ogImageAlt={`${videoName(video)} music video cover`}
   ogType="website"
+  jsonLd={videoJsonLd}
 >
   <MusicXNav current="videos" />
 
   <div class="sp" style={`--sp-accent:${video.accent}`}>
     <header class="sp-hero">
-      <div class="sp-eyebrow">MUSIC VIDEO</div>
+      <div class="sp-eyebrow">AI-GENERATED MUSIC VIDEO{video.cut ? ` · ${video.cut}` : ''}</div>
       <h1 class="sp-title">{video.title}</h1>
       <p class="sp-meta">
-        <a href={`${base}${book.albumHref}`}>{book.album}</a>, track {book.track} · {book.artist} · {book.style} ·
-        {book.bpm} BPM · {fmt(total)}
+        <a href={`${base}${video.albumHref}`}>{video.album}</a>, track {video.track} · {video.artist} · {video.genre} · {video.runtime}
       </p>
+      <p class="sp-description">{video.searchDescription}</p>
+      <p class="sp-meta">{video.visibility === 'public' ? `Published on YouTube ${video.released}` : 'Unlisted archive video'}</p>
       <div class="sp-actions">
         <a class="sp-btn sp-btn-yt" href={watchUrl(video.youtubeId)} target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>
@@ -74,11 +83,22 @@ const repo = 'https://github.com/VoynichLabs/voynich-website';
       </div>
     </header>
 
-    <div class="sp-player">
-      <YouTubePlayer id={video.youtubeId} title={`${video.title} (music video)`} poster={video.poster} accent={video.accent} priority />
+    <div class="sp-player" id={`video-${video.youtubeId}`}>
+      <YouTubePlayer id={video.youtubeId} title={videoName(video)} poster={video.poster} accent={video.accent} priority discoverable={video.visibility === 'public'} />
     </div>
 
+    {alternateCuts.length > 0 && (
+      <section class="sp-section" aria-labelledby="cuts-h">
+        <div class="sp-section-head"><h2 id="cuts-h">Alternate cuts &amp; Shorts</h2></div>
+        <p class="sp-note">Different recordings and edits of this song. Each player opens its own YouTube video.</p>
+        <div class="sp-more">
+          {alternateCuts.map((cut) => <VideoFeature video={cut} variant="card" discoverable={cut.visibility === 'public'} />)}
+        </div>
+      </section>
+    )}
+
     <div class="sp-intro">
+      {video.youtubeId !== originalVideo.youtubeId && <p class="sp-note">The scene book, audio timeline and production notes below document the original {originalVideo.title} cut, also available above.</p>}
       <blockquote class="sp-thesis">&ldquo;{book.thesis}&rdquo;</blockquote>
       <p class="sp-concept">{book.concept}</p>
     </div>
@@ -275,6 +295,7 @@ const repo = 'https://github.com/VoynichLabs/voynich-website';
   .sp-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #f97316; }
   .sp-title { font-size: clamp(44px, 9vw, 96px); font-weight: 800; line-height: 1; margin: 12px 0 14px; letter-spacing: -0.02em; }
   .sp-meta { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #8b8ba8; }
+  .sp-description { max-width: 68ch; margin-top: 16px; line-height: 1.65; color: #c9c9d8; }
   .sp-thesis { margin: 28px 0 14px; font-size: clamp(20px, 3vw, 28px); font-weight: 600; color: #4ade80; text-wrap: balance; }
   .sp-concept { max-width: 68ch; line-height: 1.65; color: #c9c9d8; }
 

@@ -5,6 +5,20 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.53.0] - 2026-10-09
+
+### Changed
+- Added clickable Related video links from six matching Shorts to their full music videos; archived original metadata and verified all 30 updated titles through public YouTube responses.
+- Optimized titles, descriptions and tags on all 30 public YouTube music videos, updated the channel description, and created the public “AI Music Videos | Funny Songs About AI & Coding” playlist. The music hub and video index now link directly to that playlist.
+- Reconciled the music catalog with live YouTube Studio: full TEMP 1.3 now leads its watch page, Wasted and Jailbreak Shorts link alongside full cuts, public CVE Carnival Bubba leads its page, and unlisted originals remain labeled in the archive. Corrected video runtimes and both System Prompt cuts to album track 9.
+- Added song-specific AI topic and genre search/social descriptions, clearer music discovery copy, and the YouTube channel in organization identity and crawler summaries.
+- Added verified VideoObject metadata and a public video sitemap linked from robots.txt and the sitemap index. Individual public watch pages expose lazy native embeds for crawler discovery while collections keep click-to-load players; alternate players visibly match their metadata.
+- Added regression checks against the real 30-public-video Studio inventory, real thumbnail files and the 21-video website sitemap; no guessed times, view counts or media-file URLs.
+
+Author: Codex GPT-6
+
+---
+
 ## [0.52.1] - 2026-10-08
 
 ### Changed

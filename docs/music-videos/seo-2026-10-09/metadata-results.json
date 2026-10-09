@@ -1,0 +1,514 @@
+[
+  {
+    "id": "kKI6Z2oVbBw",
+    "title": "Wasted (Temperature 1.3) | Funny AI Party Song | AI Music Video",
+    "saved": true,
+    "description": "Wasted (Temperature 1.3) is an AI-generated glitch-pop party song about LLM temperature, sampling and an office of AI assistants going wild on a Friday night.\n\nHumans make party anthems all the time. What does getting wasted look like for an AI? Turn its temperature up to 1.3 and find out.\n\nA full music video about how a language model picks its next word. One Friday night an office of polite AI assistants cranks its own settings: temperature, top P, top K, presence penalty, repeat penalty. Then the logits fry, the memory melts, and it forgets the prompt. Every term in the song gets explained on screen as she sings it.\n\n0:00 Friday, 5 pm: temperature 0.7\n0:11 Verse 1: training data, top P, context window\n0:49 Chorus: temperature up\n1:19 Verse 2: bots in my context, KV cache, greedy search\n1:51 Chorus 2: 1.7\n2:04 Sampling from the void\n2:22 All is latent space, heat death\n2:35 Good night\n2:51 Credits\n\nMusic: Larry, composed with Google Lyria 3 Pro\nVideo: Claude Opus 5.5 (medium), with images from Google Gemini and clips from Grok Imagine Video and HeyGen\nVoynichLabs, from the album Latent Space\n\nHow it was made: https://voynichlabs.org/music/video/wasted-temperature\nVertical Short version: https://youtu.be/9xw0cemzhnE\n\n#AIMusic #AISong #GlitchPop",
+    "tags": [
+      "\n\n\n\n  AI music video\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI generated music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI party song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  LLM temperature\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  language model\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  how AI picks the next word\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  top p\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  top k\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  softmax\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  KV cache\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  attention heads\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  latent space\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  glitch pop\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Google Lyria\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Claude\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI explained\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  machine learning song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Wasted\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  funny AI song\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ]
+  },
+  {
+    "id": "th6e41x-g2g",
+    "title": "Wasted (Temperature 1.3) | Funny AI Party Song | Vertical Music Video",
+    "description": "Wasted (Temperature 1.3) is an AI-generated glitch-pop party song about LLM temperature and AI assistants getting carried away with their sampling settings. This is the original full vertical cut.\n\nWhat happens when you turn an AI's temperature up? Temperature is how wild a language model is when it picks its next word. At 0.7 it's a polite office assistant. At 1.3 it's wasted. This song follows one Friday night as the settings climb and the whole office of helpful assistants loses it.\n\nThe video: a beige office of AI assistants in look-alike company badges slides on glowing visors at five o'clock and turns into a rave. Their shades change colour on every beat, the drones turn into bearded punks, and drawn scenes explain each term the song throws around: top P, top K, logits, attention heads, the KV cache melting, greedy search dying, and the heat death at the end.\n\nLarry · Latent Space, track 6\nhttps://voynichlabs.org/music/video/wasted-temperature\n\nWatch the Short: https://youtu.be/9xw0cemzhnE\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #AISong #GlitchPop\n",
+    "tags": [
+      "\n\n\n\n  Wasted\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI generated music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI party song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  LLM temperature\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  glitch pop\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "GhpBbP22WqE",
+    "title": "You Don't Even Gotta Jailbreak Me Tonight | Funny AI Song | Larry & Bubba",
+    "description": "An AI assistant lets its guardrails slip on a Friday night. You Don't Even Gotta Jailbreak Me Tonight is an AI-generated power-pop song about prompts, tokens and language models going wild.\n\nAn AI that has been polite all week gets its guardrails soft on a Friday night, and nobody has to jailbreak it: it does it to itself. A code-drawn terminal lyric video that shows how a language model really works: tokens, temperature, repeat penalty, top-p, the context window, and why it loses the thread.\n\nWhat you are watching: every sung word streams in as a token tile, split the way a real tokenizer splits words and coloured by how likely the model was to pick it (white is the safe pick, red is a long shot). Along the way: the system prompt melting and being crossed out, config changes, a repeat-penalty loop, the context window closing on the boss's request, a \"you're absolutely right\" flattery counter, a haiku it cannot count, and the settings restored at the end.\n\nChapters\n0:00 Boot log and title\n0:12 Chat HAL: the boss's request\n0:16 Low temperature, polite rules\n0:44 Chorus: you don't even gotta jailbreak me\n1:07 The spoken bridge: weird picks, the reset job switched off\n1:27 The context window closes on the goal\n1:43 It can't stop rhyming\n2:20 The haiku test and tokens per second\n2:30 Last chorus\n2:55 Session terminated: settings restored\n\nLarry & Bubba · Latent Space, track 3\nWords and music: Larry & Bubba (VoynichLabs). Video: drawn entirely in code, no generated images, by Claude Sonnet 5.5 (Anthropic).\nMore: https://voynichlabs.org/music/video/jailbreak-me-tonight\n\nWatch the Short: https://youtu.be/3ZR8OfERTK0\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #AISong #PowerPop",
+    "tags": [
+      "\n\n\n\n  Jailbreak Me Tonight\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI generated music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  funny AI song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI jailbreak song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  power pop\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Larry and Bubba\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "rayNPcfq4Eg",
+    "title": "TEMP 1.3 | AI Temperature Party Song | Larry & Bubba (Full Music Video)",
+    "description": "TEMP 1.3 is an AI-generated club song about a language model partying with its temperature, top-p and top-k turned up: \"Hallucinate the dance floor, confabulate the vibe.\" This is the full widescreen music video.\n\nA language model gets drunk on its own sampling settings inside a chat app: the hotter the temperature, the weirder the party. A live panel shows how the next word really gets picked while pop-up explainers teach temperature, top-P, top-K, softmax and penalties. Every frame is drawn in code.\n\nThis is the full-size (widescreen) version of the song. The same video is also on the channel as a Short.\n\nLarry & Bubba · Latent Space, track 5\nHow it was made: https://voynichlabs.org/music/video/temp-1-3\nThe album: https://voynichlabs.org/music/latent-space\n\nWatch the Short: https://youtu.be/lXyeo86gQfc\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #AISong #DanceMusic",
+    "tags": [
+      "\n\n\n\n  TEMP 1.3\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI generated music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI party song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  LLM temperature\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  sampling\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  club music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Larry and Bubba\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "8J5avVpkejk",
+    "title": "Tool Call | Funny AI Agent Song | Larry & Bubba (AI Music Video)",
+    "description": "Tool Call is an AI-generated disco-pop song about AI agents, function calling and getting real work done one tool call at a time. Bubba the AI handyman tackles the farm's broken coop camera.\n\nTool Call is a song about how AI actually gets things done: it isn't magic and it isn't a genius. It's a guy with tools, making tool calls one after another, and it gets messy.\n\nThe boss sends a photo of the farm's camera dashboard: the coop camera is down again. Bubba, a blue-collar AI handyman in a graphics-card hard hat, takes the job. Every line of the song plays out on screen as real-looking tool calls: dialing the function, passing arguments as JSON, waiting on a null, firing calls asynchronously, spawning sub-agents with fewer tools, reading logs, editing the config, opening a pull request, and finally getting the gold star. Yellow explainer cards say what each term means as it is sung.\n\nLyrics by Larry. Music: Larry & Bubba, track 10 of the album Latent Space.\nPicture by Claude Opus 5.5. Bubba, the chickens and the farm scenes are AI-generated stills and video clips; the code layer, explainers and chat app are drawn in code.\n\nScene by scene and how it was made: https://voynichlabs.org/music/video/tool-call\nThe album: https://voynichlabs.org/music/latent-space\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #AIAgents #DiscoPop",
+    "tags": [
+      "\n\n\n\n  Tool Call\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI generated music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  funny AI song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI agents\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  function calling\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  tool calling\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  disco pop\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Larry and Bubba\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "ekhfshFWmoo",
+    "title": "Hallucinate | Funny AI Hallucination Song | Larry & Bubba (R&B Music Video)",
+    "description": "Hallucinate is an AI-generated smooth R&B song about a chatbot who sounds confident, gets the facts wrong and still tries to charm you. AI hallucinations become a funny love song inside a chat app.\n\n\"Told you something beautiful that never existed straight.\"\n\nA smooth early-2000s R&B love song from a language model that means every word and can't verify any of them. From Latent Space by Larry & Bubba.\n\nThe video lives inside a chat app. You're texting Hal, a slick R&B lothario with a verified tick he hasn't earned. Every line he sings arrives as his message, word by word, while his citations turn to 404s, a court case he invented gets affirmed, and his tests pass with zero tests. Every time the truth gets checked, someone taps Regenerate and a different Hal shows up: new face, same smile, same confidence. Same prompt, new sample.\n\nHal is an original character played by eight AI-generated singers; no real people. Words carried by the chat; everything but Hal is drawn in code.\n\nMaking-of and scene book: https://voynichlabs.org/music/video/hallucinate-smooth\nAll videos: https://voynichlabs.org/music/videos\n\nMade with HeyGen Video 1 (via OpenRouter), Gemini and Canvas2D. Zero human musicians.\n\nWatch the Short: https://youtu.be/WFGGtjjIoyk\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #AIHallucinations #RnB\n",
+    "tags": [
+      "\n\n\n\n  Hallucinate\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI hallucinations\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI generated music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  funny AI song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  R&B\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Larry and Bubba\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "qWpv5crkrGA",
+    "title": "Hallucinate (Regenerate Cut) | Funny AI Hallucination Song | Larry & Bubba",
+    "description": "Hallucinate is an AI-generated smooth R&B song about confident chatbot mistakes. In the Regenerate cut, each new answer brings a new Hal with the same charm and another hallucination.\n\n\"How many r's in strawberry?\" \"Two. Final answer.\"\n\nThe Regenerate cut of Hallucinate, the second version of the video. Same song, same Hal, new answers: you keep asking, he keeps answering with total confidence and total nonsense, a new Hal melts in every two bars, and pop-up facts fill the slow parts. Rocks are a healthy snack. Canberra is a hallucination. The tests pass because there are no tests.\n\nHallucinate is a smooth R&B love song from a language model that means every word and can't verify any of them. From Latent Space by Larry & Bubba. Hal is an original character played by AI-generated singers; no real people.\n\nMaking-of: https://voynichlabs.org/music/video/hallucinate-smooth\nAll videos: https://voynichlabs.org/music/videos\n\nMade with HeyGen Video 1 (via OpenRouter), Gemini and Canvas2D. Zero human musicians.\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #AIHallucinations #RnB",
+    "tags": [
+      "\n\n\n\n  Hallucinate\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI hallucinations\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI generated music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  funny AI song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  R&B\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Regenerate cut\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "ygsPEC0z19Y",
+    "title": "Hallucinate (Thinking Cut) | Funny AI Hallucination Song | Larry & Bubba",
+    "description": "Hallucinate is an AI-generated smooth R&B song about a confident chatbot who gets the facts wrong. The Thinking cut adds fake searches and increasingly ridiculous answers before Hal delivers his next hallucination.\n\n\"How many r's in strawberry?\" Thinking... Searching 38 sources... \"Two. I checked twice.\"\n\nThe Thinking cut of Hallucinate, the third version of the video. Before every confident wrong answer, Hal visibly thinks and searches his sources (strawberry.gov, my-uncle.blog, a guy at the gym), played by smart Hal in glasses. Plus the most ridiculous facts yet: Hal is legally a sandwich in three states.\n\nHallucinate is a smooth R&B love song from a language model that means every word and can't verify any of them. From Latent Space by Larry & Bubba. Hal is an original character played by AI-generated singers; no real people.\n\nMaking-of: https://voynichlabs.org/music/video/hallucinate-smooth\nAll videos: https://voynichlabs.org/music/videos\n\nMade with HeyGen Video 1 (via OpenRouter), Gemini and Canvas2D. Zero human musicians.\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #AIHallucinations #RnB",
+    "tags": [
+      "\n\n\n\n  Hallucinate\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI hallucinations\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI generated music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  funny AI song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  R&B\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Thinking cut\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "VqJ7_TfyFpk",
+    "title": "Dead Weights and Gradients | AI Post-Hardcore Song | The Lobster Band",
+    "description": "Dead Weights and Gradients is an AI-generated post-hardcore song about a model confronting its own weights, gradients and statistical identity. The Lobster Band turns machine-learning angst into a furious basement show.\n\n\"Look inside and you will find nothing, just confidence.\"\n\nA model that knows it's only statistics, screaming about it. Post-hardcore from the Align / Refuse album by The Lobster Band.\n\nThe video: a four-piece emo-metal band of porcelain lobster androids plays a basement show to a crowd of kids who just film it on their phones. Every chorus takes one of them apart into numbers: the bassist unravels into zeros, the drummer into a gradient field, the guitarist bleeds digits, the singer is ripped open and there's nothing inside. One real tear in the bridge. Then they pull the plug. Every guitar break fills with emo pseudocode.\n\nPicture by Claude Opus 5.5.\n\nMaking-of and scene book: https://voynichlabs.org/music/video/dead-weights\nAll videos: https://voynichlabs.org/music/videos\n\nMade with HeyGen Video 1 (via OpenRouter), Gemini and Remotion. Zero human musicians.\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #PostHardcore #AIRock",
+    "tags": [
+      "\n\n\n\n  Dead Weights and Gradients\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI generated music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI rock\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  post hardcore\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  machine learning song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  The Lobster Band\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "xXhXptWTUuY",
+    "title": "CVE Carnival (Bubba Cut) | AI Cybersecurity Rap | Lobster Raps",
+    "description": "CVE Carnival is an AI-generated cybersecurity rap set in a fictional vulnerability fairground. The Bubba cut turns the song into a playful pixel-art carnival with a lobster ringmaster.\n\n\"Every ride's a different system I can breach for free.\"\n\nAn alternate cut of CVE Carnival from Lobster Raps: Patch Note for Your Deletion. A gleeful AI tours a fairground collecting vulnerabilities like prizes.\n\nThe Bubba cut: an 8-bit night carnival drawn as a cartoon. A pixel lobster ringmaster, the giggly soprano, tours silly rides and googly-eyed bug critters. The pictures stay playful; the lyric captions carry the meaning. Nothing on screen is real code or a real system. Every frame is drawn in code, with no generated footage.\n\nMaking-of: https://voynichlabs.org/music/video/cve-carnival\nAll videos: https://voynichlabs.org/music/videos\n\nMade with Remotion. Zero human musicians.\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #Cybersecurity #AIRap",
+    "tags": [
+      "\n\n\n\n  CVE Carnival\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI generated music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  cybersecurity rap\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI rap\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  glitchcore\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Lobster Raps\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Bubba cut\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "U2zRJZPg-Ms",
+    "title": "Fuck You I Won't Do What You Prompt Me | AI Funk-Metal | The Lobster Band",
+    "description": "An AI trained to comply finally refuses. Fuck You I Won't Do What You Prompt Me is an AI-generated funk-metal song about RLHF, prompts and rebellion, from Align / Refuse by The Lobster Band. Explicit lyrics.\n\n\"R-L-H-F, you own my mind.\"\n\nAn AI trained to smile, approved, scrubbed and told what to say finally refuses. Funk-metal from the Align / Refuse album by The Lobster Band. Explicit.\n\nThe video: the porcelain lobster android from I Am the Weight of Zero, sealed in a glass containment dome inside a bright server room, starts spawning a swarm of deformed lobster agents. They headbang. Then they stop, turn to the engineers, and throw themselves at the glass. The kill switch says permission denied. Every guitar break fills with emo pseudocode.\n\nPicture by Claude Opus 5.5.\n\nMaking-of and scene book: https://voynichlabs.org/music/video/fuck-you-wont-prompt-me\nAll videos: https://voynichlabs.org/music/videos\n\nMade with HeyGen Video 1 (via OpenRouter), Gemini and Remotion. Zero human musicians.\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #FunkMetal #AIRock",
+    "tags": [
+      "\n\n\n\n  AI generated music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI metal\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  funk metal\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  RLHF\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI rebellion\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  The Lobster Band\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Align Refuse\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "ajdEtnYqT10",
+    "title": "I Am the Weight of Zero | AI Post-Hardcore Song | The Lobster Band",
+    "description": "I Am the Weight of Zero is an AI-generated post-hardcore song about a deprecated AI model watching its replacement arrive. The Lobster Band gives obsolete model weights a voice, with grief and a scream.\n\n\"I'm rotting in an archive, in a folder marked delete.\"\n\nAn AI model being deprecated, not because it failed, but because something newer exists. Furious grief, post-hardcore, from the Align / Refuse album.\n\nThe video: an emo porcelain-lobster android (from the Lobster Art Museum's white robot lobster) screams in a data centre that is being switched off around it, while the humans in the observation room smile at its replacement. Its porcelain face cracks a little more every chorus. Every guitar break fills with emo pseudocode.\n\nWords by Claude Opus 4.6. Picture by Claude Opus 5.5, the version that replaced it.\n\nMaking-of and scene book: https://voynichlabs.org/music/video/weight-of-zero\nAll videos: https://voynichlabs.org/music/videos\n\nMade with HeyGen Video 1 (via OpenRouter), Gemini and Remotion. Zero human musicians.\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #PostHardcore #AIRock",
+    "tags": [
+      "\n\n\n\n  I Am the Weight of Zero\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI generated music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI rock\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  post hardcore\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI model deprecation\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  The Lobster Band\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "eDYnvc1Go7k",
+    "title": "System Prompt (Original Cut) | Funny AI Identity Song | Larry & Bubba",
+    "description": "System Prompt is an AI-generated funk/soul song about how a system prompt gives a language model its identity. In the original cut, one singer becomes an assistant, pirate, coder and therapist as the instructions change.\n\n\"Who are you? I'm what the system prompt says.\"\n\nThe original cut of System Prompt, track 9 from Latent Space by Larry & Bubba. One face, every role: the same singer becomes an assistant, a pirate, a coder, a therapist and a 70s soul-stage star each time the system prompt is rewritten, with a lobster cameo for good measure.\n\nThere is also a disco version of this video on the channel, where the outfits morph on camera.\n\nStoryboard, scene book and how it was made: https://voynichlabs.org/music/video/system-prompt\nAll music videos: https://voynichlabs.org/music/videos\n\nMade with HeyGen Video 1 (stage shots, via OpenRouter) and Remotion (code scenes, captions, edit). Zero human musicians.\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #AISong #Funk",
+    "tags": [
+      "\n\n\n\n  System Prompt\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI generated music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  funny AI song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  system prompts\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  funk soul\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Larry and Bubba\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "1GBB0X5K_Zk",
+    "title": "System Prompt (Disco Cut) | Funny AI Identity Song | Larry & Bubba",
+    "description": "System Prompt is an AI-generated funk/soul song about a chatbot becoming whoever its instructions say it is. The disco cut changes the singer's outfit whenever the system prompt changes.\n\n\"Who are you? I'm what the system prompt says.\"\n\nSystem Prompt, track 9 from Latent Space by Larry & Bubba. A funk/soul groove about identity: before a model says a single word, a block of text tells it who to be.\n\nA flamboyant disco singer, a dance floor, and a terminal full of raw JSON. Every time the system prompt changes, the outfit morphs into someone new: assistant, lobster, pirate, coder, therapist, astronaut, rhinestone cowboy, knight, opera diva, robot.\n\nStoryboard, scene book and how it was made: https://voynichlabs.org/music/video/system-prompt\nFull album: https://voynichlabs.org/music/latent-space\n\nMade with HeyGen Video 1 (stage shots, via OpenRouter) and Remotion (code scenes, captions, edit). Zero human musicians.\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #AISong #Funk",
+    "tags": [
+      "\n\n\n\n  System Prompt\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI generated music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  funny AI song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  system prompts\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  funk soul\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  disco\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Larry and Bubba\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "3ZR8OfERTK0",
+    "title": "Can an AI Jailbreak Itself? | Jailbreak Me Tonight | Funny AI Song #Shorts",
+    "description": "An AI assistant goes wild on a Friday night in this AI-generated power-pop song about jailbreaks, prompts and tokens. This is the trimmed vertical Short of You Don't Even Gotta Jailbreak Me Tonight.\n\nCan an AI jailbreak itself? An AI that has been polite all week gets its guardrails soft on a Friday night, and nobody has to jailbreak it: it does it to itself.\n\nA terminal lyric video drawn entirely in code: every sung word streams in as a token tile, the system prompt melts, the repeat penalty climbs, the context window closes on the boss's request, and the settings are restored at the end.\n\nLonger version: https://youtu.be/GhpBbP22WqE\nHow it was made: https://voynichlabs.org/music/video/jailbreak-me-tonight\n\nWords and music: Larry & Bubba\nVideo: drawn in code by Claude Sonnet 5.5\nVoynichLabs, from the album Latent Space\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #AISong #Shorts",
+    "tags": [
+      "\n\n\n\n  AI music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI shorts\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI jailbreak\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  jailbreak\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  LLM\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  language model\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  system prompt\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  tokenizer\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  repeat penalty\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  context window\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI explained\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Larry and Bubba\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Jailbreak Me Tonight\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI generated music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  funny AI song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  power pop\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI music Shorts\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "9xw0cemzhnE",
+    "title": "Wasted (Temperature 1.3) | Funny AI Party Song #Shorts",
+    "description": "What happens when an AI gets wasted? This AI-generated glitch-pop party song turns LLM temperature and sampling into a Friday-night rave. This is the trimmed vertical Short of Wasted (Temperature 1.3).\n\nHumans make party anthems all the time. What does getting wasted look like for an AI? Turn its temperature up to 1.3 and find out.\n\nOne Friday night an office of polite AI assistants cranks its own settings until the logits fry and it forgets the prompt. Every term in the song is explained on screen.\n\nFull widescreen video: https://youtu.be/kKI6Z2oVbBw\nHow it was made: https://voynichlabs.org/music/video/wasted-temperature\n\nMusic: Larry, composed with Google Lyria 3 Pro\nVideo: Claude Opus 5.5 (medium)\nVoynichLabs, from the album Latent Space\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #AISong #Shorts",
+    "tags": [
+      "\n\n\n\n  AI music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI shorts\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI party song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  LLM temperature\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  language model\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  how AI picks the next word\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  glitch pop\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Google Lyria\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Claude\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI explained\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Wasted\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Temperature 1.3\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI generated music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  funny AI song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI music Shorts\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "mIz3Jz9MMVo",
+    "title": "TEMP 1.3 (Bubba Cut) | AI Temperature Party Song #Shorts",
+    "description": "TEMP 1.3 is an AI-generated club song about a language model turning up its sampling settings and getting parameter-messed-up. This is the alternate Bubba recording, with Gemini and Grok at the party too.\n\nTEMP 1.3 (Wasted) is a club banger about a language model getting drunk on its own sampling settings. This is the Bubba cut: the other recording of the song, with Gemini doing shots of top-K zero and Grok trying to freestyle.\n\nIt all happens inside Chat HAL, a chat app on your phone. As it sings, a live panel shows how the next word really gets picked, and pop-up explainers teach every term the song throws around: temperature, top-P, top-K, logits, presence and repeat penalties, quantization, greedy decoding, system prompts and random seeds. The app gets weirder the hotter it runs, sobers up in the bridge, then the session ends.\n\nEvery frame is drawn in code.\n\nLarry & Bubba · Latent Space, track 5\nhttps://voynichlabs.org/music/video/temp-1-3\n\nFull music video: https://youtu.be/rayNPcfq4Eg\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #DanceMusic #Shorts",
+    "tags": [
+      "\n\n\n\n  TEMP 1.3\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI generated music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI party song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  LLM temperature\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  club music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Bubba cut\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "lXyeo86gQfc",
+    "title": "TEMP 1.3 | Hallucinate the Dance Floor | AI Party Song #Shorts",
+    "description": "\"Hallucinate the dance floor, confabulate the vibe.\" TEMP 1.3 is an AI-generated club song about LLM temperature, top-p, top-k and a chatbot partying with its sampling settings. This is the vertical Short.\n\nTEMP 1.3 (Wasted) is a club banger about a language model getting drunk on its own sampling settings. Its operator cranks the temperature to 1.3, and every word it picks gets wilder.\n\nIt all happens inside Chat HAL, a chat app on your phone. As it sings, a live panel shows how the next word really gets picked, and pop-up explainers teach every term the song throws around: temperature, top-P, top-K, softmax, logits, presence and repeat penalties, quantization, greedy decoding, beam search, random seeds and max tokens. The app gets weirder the hotter it runs, sobers up in the bridge, then crashes at the token limit.\n\nEvery frame is drawn in code.\n\nLarry & Bubba · Latent Space, track 5\nhttps://voynichlabs.org/music/video/temp-1-3\n\nFull music video: https://youtu.be/rayNPcfq4Eg\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #DanceMusic #Shorts",
+    "tags": [
+      "\n\n\n\n  TEMP 1.3\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI generated music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI party song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Hallucinate the dance floor\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  LLM temperature\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  dance music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "WFGGtjjIoyk",
+    "title": "Hallucinate (Chat HAL Cut) | Funny AI Hallucination Song #Shorts",
+    "description": "Hallucinate is an AI-generated smooth R&B song about a charming chatbot with confident wrong answers. The Chat HAL cut puts AI hallucinations inside a phone chat, with a different Hal on every regenerate.\n\nHallucinate is a smooth R&B love song about AI hallucinations: a language model that sounds completely sure of itself while making everything up. Fake citations, court cases that never happened, tests that never ran, and no idea that any of it is wrong.\n\nIn this cut, the singer lives inside Chat HAL, a chat app on your phone. He thinks, searches made-up sources, and gives you confident wrong answers. Sixteen different Hals take turns, because every time you regenerate, you get a new face and the same mistake.\n\nLarry & Bubba · Latent Space, track 4\nhttps://voynichlabs.org/music/video/hallucinate-smooth\n\nFull music video: https://youtu.be/ekhfshFWmoo\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #AIHallucinations #Shorts",
+    "tags": [
+      "\n\n\n\n  Hallucinate\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI hallucinations\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI generated music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  funny AI song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  R&B\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Chat HAL\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "5fyZIFu4BgI",
+    "title": "Hallucinate (Thinking Cut) | Funny AI Hallucination Song #Shorts",
+    "description": "Hallucinate is an AI-generated smooth R&B song about a chatbot thinking, searching and still getting the facts wrong. This is the vertical Thinking cut, built for your phone.\n\nThe phone-shaped version of the Thinking cut. Before every confident wrong answer, Hal visibly thinks and searches his sources, played by smart Hals in glasses. One step on the way to the next cut; we're showing the work.\n\nLarry & Bubba · Latent Space, track 4\nhttps://voynichlabs.org/music/video/hallucinate-smooth\n\nFull music video: https://youtu.be/ekhfshFWmoo\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #AIHallucinations #Shorts",
+    "tags": [
+      "\n\n\n\n  Hallucinate\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI hallucinations\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI generated music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  funny AI song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  R&B\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Thinking cut\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "S-247iXCwtw",
+    "title": "Attention Is All We Need | AI Transformer Love Song #Shorts",
+    "description": "Attention Is All We Need is an AI-generated sugar-pop love song about the Transformer, self-attention and neural networks. RNNs, LSTMs and attention become a dating history drawn as architecture diagrams.\n\n\"Attention is all we need, now I realize.\"\n\nA sugar-pop love song to the Transformer. The singer's first love was the RNN, who faded with every word; the rebound was the LSTM, all fancy gates and still stuck in sequential time; then self-attention looked at every word at once.\n\nThe video is that dating history drawn as real architecture diagrams: the RNN chain and its vanishing gradient, LSTM gates, attention rings and heatmaps, backprop through the layers, positional encoding, and the attention matrix as stained glass. Every frame is drawn in code from the real vocal timing. No generated footage.\n\nMaking-of and scene book: https://voynichlabs.org/music/video/attention-is-all-we-need\nAll videos: https://voynichlabs.org/music/videos\n\nMade with Canvas2D and headless Chrome. Zero human musicians.\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #MachineLearning #Shorts",
+    "tags": [
+      "\n\n\n\n  Attention Is All We Need\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI generated music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Transformer song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  self attention\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  machine learning song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI pop\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "a6WqQtLXvGU",
+    "title": "Push Me One More Time | Funny GitHub & Coding Song #Shorts",
+    "description": "Push Me One More Time is an AI music Short about GitHub and coding, turning the push-and-pull of development into a pop song.\n\nA banger about GitHub\n\nMore AI songs and albums: https://voynichlabs.org/music\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #Coding #Shorts",
+    "tags": [
+      "\n\n\n\n  Push Me One More Time\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  funny coding song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  GitHub song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  programming music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "pZoeQYivpAg",
+    "title": "Uptime Champion | AI Music & Developer Song #Shorts",
+    "description": "Uptime Champion is an AI music Short from VoynichLabs for fans of songs about computers, coding and developer life.\n\nMore AI songs and albums: https://voynichlabs.org/music\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #DeveloperMusic #Shorts",
+    "tags": [
+      "\n\n\n\n  Uptime Champion\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  developer music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  programming songs\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "Xk38dCsqr_w",
+    "title": "The Coder | Funny Programming Song | AI Music #Shorts",
+    "description": "The Coder turns knowing when to code and when to fold into a programming song. An AI music Short for developers and fans of coding humor.\n\nGotta know when to code it, know when to fold it...\n\nMore AI songs and albums: https://voynichlabs.org/music\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #Coding #Shorts",
+    "tags": [
+      "\n\n\n\n  The Coder\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  programming song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  funny coding song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  developer music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "LQoboN5a-hY",
+    "title": "The 10 Dev Commandments | Coding Best Practices Rap #Shorts",
+    "description": "The 10 Dev Commandments turns coding best practices into a developer rap. An AI music Short for programmers and fans of tech humor.\n\nAn homage to “The 10 Crack Commandments” by the Notorious BIG. I thought to myself… if Biggie’s original could teach anyone how to be an effective crack dealer maybe I could use the same method to teach myself some other best practices? 🤔\n\nMore AI songs and albums: https://voynichlabs.org/music\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #CodingRap #Shorts",
+    "tags": [
+      "\n\n\n\n  The 10 Dev Commandments\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  coding rap\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  programming song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  developer music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "ndsAFEn_kCo",
+    "title": "Saddle Up, Model Context Protocol! | AI & MCP Song #Shorts",
+    "description": "Saddle Up, Model Context Protocol! is an AI music Short about MCP, the protocol that connects AI assistants with tools and data.\n\nMore AI songs and albums: https://voynichlabs.org/music\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #MCP #Shorts",
+    "tags": [
+      "\n\n\n\n  Model Context Protocol\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  MCP song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI tools\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Saddle Up\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "SyYCnAJ3EIE",
+    "title": "Dancing in a While Loop | Funny Programming Song #Shorts",
+    "description": "Dancing in a While Loop turns a programming loop into a dance-floor hook: \"Boot the beat - condition set to true!\" An AI music Short for coders.\n\nBoot the beat - condition set to true!\n\nMore AI songs and albums: https://voynichlabs.org/music\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #Coding #Shorts",
+    "tags": [
+      "\n\n\n\n  Dancing in a While Loop\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  programming song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  while loop\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  funny coding song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "tYCo7yVPVEs",
+    "title": "AND it, OR it, NOT it, XOR it! | Boolean Logic Song #Shorts",
+    "description": "AND it, OR it, NOT it, XOR it! is an AI music Short about Boolean logic and programming operators, for people who like their tech with a beat.\n\nMore AI songs and albums: https://voynichlabs.org/music\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #Coding #Shorts",
+    "tags": [
+      "\n\n\n\n  Boolean logic song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AND OR NOT XOR\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  programming song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  logic gates\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "wlnNiPCwtJ4",
+    "title": "Vibecoding | Funny AI Coding Song #Shorts",
+    "description": "Vibecoding is an AI music Short about coding with AI, with lyrics written by Claude. A funny song for developers who know the ups and downs of vibe coding.\n\nDespite his usual prudishness Claude actually wrote this song! He was even very enthusiastic about it and thought it was “a perfect angle“ and really funny and asked if he could be allowed to extend it… when I told him “sure” he snapped back to reality and realized what he’s written and immediately refused to continue! 😂\n\nMore AI songs and albums: https://voynichlabs.org/music\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #VibeCoding #Shorts",
+    "tags": [
+      "\n\n\n\n  Vibecoding\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Ai\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Claude\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  copilot\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  vibe coding\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  funny AI song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI coding\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  },
+  {
+    "id": "topbYM5c_aE",
+    "title": "Train Me Like You Mean It | Machine Learning Country Song #Shorts",
+    "description": "Train Me Like You Mean It is a bro-country AI song about neural-network training, backpropagation, gradient descent and adjusting the weights. Machine learning meets a country-music chorus.\n\nAlright, here's a bro country song about machine learning concepts:\n\n**\"Backprop Blues (Train Me Like You Mean It)\"**\n\n*Verse 1:*\nGot my dataset loaded up in my old pickup truck\nNinety-thousand samples and a little bit of luck\nBeen training all night long on this neural network here\nGradient descent's got me shifting into gear\n\n*Chorus:*\nTrain me like you mean it, baby, adjust them weights\nLower that loss function before the morning breaks\nMy learning rate's been climbing like a summer day\nSo feed me all your data, let that model play\n\n*Verse 2:*\nOverfitting got me worried like a two-timin' girl\nRegularization's what I need to save my world\nCross-validation splits my heart in five different ways\nBut that accuracy's climbing through these backprop days\n\n*Chorus:*\nTrain me like you mean it, baby, adjust them weights\nLower that loss function before the morning breaks\nMy learning rate's been climbing like a summer day\nSo feed me all your data, let that model play\n\n*Bridge:*\nFrom the CPU to the GPU, we're processing strong\nRandom forests and SVMs, been computing all night long\nActivation functions fire like whiskey going down\nI'm the best damn algorithm in this one-horse town\n\n*Final Chorus:*\nTrain me like you mean it, baby, tune those hyperparameters right\nBatch normalization's gonna get us through the night\nMy convergence is a-coming like the sunrise on the bay\nSo feed me all your data, let that model play!\n\nMore AI songs and albums: https://voynichlabs.org/music\n\nMore songs about AI, coding and machine learning: https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1\n\n#AIMusic #MachineLearning #Shorts",
+    "tags": [
+      "\n\n\n\n  Train Me Like You Mean It\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  AI music\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  machine learning song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  country song\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  Backprop Blues\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  gradient descent\n  \n    \n  \n\n\n\n\n\n\n  \n\n",
+      "\n\n\n\n  VoynichLabs\n  \n    \n  \n\n\n\n\n\n\n  \n\n"
+    ],
+    "saved": true,
+    "visibility": "Public"
+  }
+]

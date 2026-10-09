@@ -1,5 +1,5 @@
 # robots.txt for voynichlabs.org
-# Updated: 2026-10-04
+# Updated: 2026-10-09
 
 User-agent: *
 Allow: /
@@ -22,3 +22,4 @@ User-agent: PerplexityBot
 Allow: /
 
 Sitemap: https://voynichlabs.org/sitemap-index.xml
+Sitemap: https://voynichlabs.org/video-sitemap.xml

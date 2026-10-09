@@ -1,6 +1,6 @@
 ---
-// Author: Claude Opus 5.5
-// Date: 2026-10-04
+// Author: Codex GPT-6
+// Date: 2026-10-09
 // PURPOSE: Horizontal rail of the earlier song Shorts on the YouTube channel, with a subscribe card
 //          at the end. Tiles link out to YouTube; thumbnails are YouTube's square Shorts covers.
 // SRP/DRY check: Pass - data from src/data/music-videos.ts (CHANNEL_SHORTS, CHANNEL).
@@ -9,7 +9,7 @@ import { CHANNEL, CHANNEL_SHORTS, shortThumb, shortUrl } from '../data/music-vid
 
 <div class="sr">
   <ul class="sr-track">
-    {CHANNEL_SHORTS.map((s) => (
+    {CHANNEL_SHORTS.filter((s) => s.visibility === 'public').map((s) => (
       <li>
         <a class="sr-tile" href={shortUrl(s.id)} target="_blank" rel="noopener">
           <img src={shortThumb(s.id)} alt="" width="720" height="720" loading="lazy" decoding="async" />

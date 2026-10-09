@@ -1,9 +1,11 @@
 ---
-// Author: Claude Opus 5.5
-// Date: 2026-10-04
+// Author: Codex GPT-6
+// Date: 2026-10-09
 // PURPOSE: Click-to-play YouTube embed. Renders a poster with a play button and only swaps in the
 //          youtube-nocookie iframe when clicked, so pages with several videos stay fast and send
-//          nothing to YouTube until the visitor chooses to play.
+//          nothing to YouTube until the visitor chooses to play on collection pages.
+//          Individual public watch pages opt into a visible native iframe so search
+//          crawlers can discover the video without requiring a visitor's click.
 // SRP/DRY check: Pass - replaces the raw iframes previously inlined in each video page.
 export interface Props {
   id: string;
@@ -13,14 +15,18 @@ export interface Props {
   caption?: string;
   accent?: string;
   priority?: boolean;
+  discoverable?: boolean;
 }
 import { optimized } from '../lib/optimized-image';
-const { id, title, poster, caption, accent = '#ff3d8b', priority = false } = Astro.props;
+const { id, title, poster, caption, accent = '#ff3d8b', priority = false, discoverable = false } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const src = poster.startsWith('http') ? poster : `${base}${optimized(poster)}`;
 ---
 
 <div class="ytp" data-id={id} data-title={title} style={`--ytp-accent:${accent}`}>
+  {discoverable ? (
+    <iframe src={`https://www.youtube-nocookie.com/embed/${id}`} title={title} loading={priority ? 'eager' : 'lazy'} allow="encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>
+  ) : (
   <button type="button" class="ytp-btn" aria-label={`Play ${title}`}>
     <img src={src} alt="" width="1280" height="720" loading={priority ? 'eager' : 'lazy'} decoding="async" />
     <span class="ytp-shade" aria-hidden="true"></span>
@@ -29,6 +35,7 @@ const src = poster.startsWith('http') ? poster : `${base}${optimized(poster)}`;
     </span>
     {caption && <span class="ytp-caption">{caption}</span>}
   </button>
+  )}
 </div>
 
 <script>

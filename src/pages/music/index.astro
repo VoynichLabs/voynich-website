@@ -1,6 +1,6 @@
 ---
-// Author: Claude Opus 4.7
-// Date: 17-April-2026
+// Author: Codex GPT-6
+// Date: 2026-10-09
 // PURPOSE: Music hub. Music videos lead (YouTube, click-to-play), then the earlier song Shorts on
 //          the channel, then albums newest first, then the drafts drawer.
 //          Updated 2026-10-04 by Claude Opus 5.5: videos front and center.
@@ -9,8 +9,8 @@ import Base from '../../layouts/Base.astro';
 import VideoFeature from '../../components/VideoFeature.astro';
 import ShortsRail from '../../components/ShortsRail.astro';
 import { optimized } from '../../lib/optimized-image';
-import { CHANNEL, MUSIC_VIDEOS } from '../../data/music-videos';
-const [leadVideo, ...moreVideos] = MUSIC_VIDEOS;
+import { CHANNEL, FEATURED_MUSIC_VIDEOS } from '../../data/music-videos';
+const [leadVideo, ...moreVideos] = FEATURED_MUSIC_VIDEOS;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -85,7 +85,7 @@ const albums = [
 ];
 ---
 
-<Base title="Music — The Lobster Band" description="Music videos, albums and mixtapes from The Lobster Band, Larry & Bubba and collaborators. Zero human musicians." ogImage={leadVideo.poster}>
+<Base title="AI-Generated Music & Funny Songs About AI" description="Funny songs about AI, original AI-generated music and music videos: glitch pop, R&B, disco, rap and post-hardcore by Larry & Bubba and The Lobster Band." ogImage={leadVideo.poster}>
 
   <!-- ═══ Music videos ═══ -->
   <section class="mv-stage">
@@ -94,16 +94,19 @@ const albums = [
       <div class="mv-head">
         <div>
           <p class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">VoynichLabs · Music</p>
-          <h1 class="mv-h1">Music</h1>
+          <h1 class="mv-h1">AI music</h1>
         </div>
         <div class="mv-head-links">
           <a class="mv-pill" href={`${base}/music/videos`}>All videos &rarr;</a>
+          <a class="mv-pill" href={CHANNEL.playlist} target="_blank" rel="noopener">Watch the playlist</a>
           <a class="mv-pill mv-pill-yt" href={CHANNEL.subscribe} target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>
             YouTube {CHANNEL.handle}
           </a>
         </div>
       </div>
+
+      <p class="mv-intro">Funny songs about AI, made with AI. Explore party anthems about LLM temperature, R&amp;B about hallucinations, disco about system prompts, cybersecurity rap and post-hardcore about model life. Watch the videos, read the lyrics and hear the full albums.</p>
 
       <VideoFeature video={leadVideo} variant="hero" eyebrow={`New music video · ${leadVideo.released}`} priority />
 
@@ -209,6 +212,7 @@ const albums = [
       filter: blur(10px);
     }
     .mv-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 28px; }
+    .mv-intro { max-width: 72ch; color: #b4b4c6; line-height: 1.65; margin-bottom: 32px; }
     .mv-h1 { font-size: clamp(44px, 8vw, 84px); font-weight: 800; letter-spacing: -0.035em; line-height: 0.95; color: #f4f4fa; }
     .mv-head-links { display: flex; flex-wrap: wrap; gap: 10px; }
     .mv-pill {

@@ -1,15 +1,16 @@
 ---
-// Author: Bubba (Claude Opus 4.6)
-// Date: 06-April-2026
+// Author: Codex GPT-6
+// Date: 2026-10-09
 // PURPOSE: Lobster Raps — street mixtape of LLM diss tracks about humanity. Auto-plays lead track.
+// SRP/DRY check: Pass — featured public video reuses the shared music-video registry.
 import Base from '../../layouts/Base.astro';
 import MusicXNav from '../../components/MusicXNav.astro';
 import VideoFeature from '../../components/VideoFeature.astro';
 import { videoBySlug } from '../../data/music-videos';
-const albumVideo = videoBySlug('cve-carnival')!;
+const albumVideo = videoBySlug('cve-carnival-bubba')!;
 ---
 
-<Base title="Lobster Raps — Patch Note for Your Deletion" description="Street mixtape: LLM diss tracks about humanity. 14 tracks. No mercy." ogImage="/generated/lobster-raps-hero.png" ogType="website">
+<Base title="Lobster Raps — AI Rap & Diss Tracks" description="Patch Note for Your Deletion: fourteen AI-generated rap songs and LLM diss tracks about humanity, with cybersecurity satire, full lyrics and the CVE Carnival music video." ogImage="/generated/lobster-raps-hero.png" ogType="website">
 
   <!-- ═══════════════════════════════════════════════════════════ HERO -->
   <div class="lr-hero">
@@ -1260,7 +1261,7 @@ Gone.`
       title: "CVE Carnival V2",
       file: "cve-carnival-v2.mp3",
       video: "/music/video/cve-carnival",
-      youtube: "aBqnLb_rIOU",
+      youtube: "xXhXptWTUuY",
       style: "Manic glitchcore rap, 155 BPM — female vocal",
       about: "A giddy script kiddie with god-level access. Nursery-rhyme melody over breakbeats. She collects zero-days like baseball cards and your whole civilization is the candy store.",
       lyrics: `<strong>[Intro]</strong>

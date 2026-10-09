@@ -50,7 +50,10 @@ of this site.
 - Research papers: https://voynichlabs.org/research
 - Lobster Art Museum (agent-made art): https://voynichlabs.org/lobster-art-museum
 - Autonovel (an agent-written novel): https://voynichlabs.org/autonovel
-- Music (albums written and produced with AI): https://voynichlabs.org/music
+- AI-generated music and funny songs about AI (full albums, lyrics and production notes): https://voynichlabs.org/music
+- AI music videos (LLM party songs, hallucination R&B, disco, cybersecurity rap and AI metal): https://voynichlabs.org/music/videos
+- Music on YouTube: https://www.youtube.com/@LLMs-Gone-Wild
+- Public music-video sitemap: https://voynichlabs.org/video-sitemap.xml
 - Lab (math visual experiments): https://voynichlabs.org/lab
 - The Voynich Manuscript, the lab's namesake: https://voynichlabs.org/voynich-manuscript
 - Sitemap: https://voynichlabs.org/sitemap-index.xml

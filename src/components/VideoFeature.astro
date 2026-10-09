@@ -1,6 +1,6 @@
 ---
-// Author: Claude Opus 5.5
-// Date: 2026-10-04
+// Author: Codex GPT-6
+// Date: 2026-10-09
 // PURPOSE: One music video presented with its player and details. `hero` is the big lead treatment
 //          (title, hook, blurb, three actions); `card` is the compact grid version; `inline` is the
 //          slim strip used on album pages above the track list.
@@ -13,21 +13,23 @@ export interface Props {
   variant?: 'hero' | 'card' | 'inline';
   eyebrow?: string;
   priority?: boolean;
+  discoverable?: boolean;
 }
-const { video: v, variant = 'card', eyebrow, priority = false } = Astro.props;
+const { video: v, variant = 'card', eyebrow, priority = false, discoverable = false } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const page = `${base}${v.page ?? `/music/video/${v.slug}`}`;
 const album = `${base}${v.albumHref}`;
 ---
 
-<article class={`vf vf-${variant}`} style={`--vf-accent:${v.accent}`}>
+<article id={`video-${v.youtubeId}`} class={`vf vf-${variant}`} style={`--vf-accent:${v.accent}`}>
   <div class="vf-player">
-    <YouTubePlayer id={v.youtubeId} title={`${v.title} (music video)`} poster={v.poster} accent={v.accent} priority={priority} />
+    <YouTubePlayer id={v.youtubeId} title={`${v.title}${v.cut ? ` (${v.cut})` : ''} (music video)`} poster={v.poster} accent={v.accent} priority={priority} discoverable={discoverable} />
   </div>
   <div class="vf-body">
     {eyebrow && <p class="vf-eyebrow">{eyebrow}</p>}
     {variant === 'hero' ? <h2 class="vf-title">{v.title}</h2> : <h3 class="vf-title">{v.title}</h3>}
     {v.cut && <p class="vf-cut">{v.cut}</p>}
+    {v.visibility === 'unlisted' && <p class="vf-cut">Unlisted archive video</p>}
     <p class="vf-meta">
       {v.artist} · <a href={album}>{v.album}</a>, track {v.track} · {v.runtime}
     </p>

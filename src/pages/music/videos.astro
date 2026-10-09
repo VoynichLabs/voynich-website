@@ -1,6 +1,6 @@
 ---
-// Author: Claude Opus 5.5
-// Date: 2026-10-04
+// Author: Codex GPT-6
+// Date: 2026-10-09
 // PURPOSE: /music/videos — every VoynichLabs music video (YouTube, click-to-play), each linking to its
 //          storyboard / making-of page, followed by the earlier song Shorts on the channel.
 // SRP/DRY check: Pass — data from src/data/music-videos.ts; presentation via VideoFeature + ShortsRail.
@@ -8,13 +8,15 @@ import Base from '../../layouts/Base.astro';
 import MusicXNav from '../../components/MusicXNav.astro';
 import VideoFeature from '../../components/VideoFeature.astro';
 import ShortsRail from '../../components/ShortsRail.astro';
-import { CHANNEL, MUSIC_VIDEOS } from '../../data/music-videos';
+import { CHANNEL, MUSIC_VIDEOS, FEATURED_MUSIC_VIDEOS, CHANNEL_SHORTS, watchUrl, shortUrl } from '../../data/music-videos';
+const unlistedVideos = MUSIC_VIDEOS.filter((video) => video.visibility === 'unlisted');
+const unlistedShorts = CHANNEL_SHORTS.filter((video) => video.visibility === 'unlisted');
 ---
 
 <Base
-  title="Music Videos — VoynichLabs"
-  description="Music videos by The Lobster Band and Larry & Bubba: AI-generated performances and code-rendered terminals, each with a public storyboard and making-of."
-  ogImage={MUSIC_VIDEOS[0].poster}
+  title="AI Music Videos — Funny Songs About AI"
+  description="Watch original AI-generated music videos and funny songs about AI: LLM party anthems, hallucination R&B, system-prompt disco, cybersecurity rap and AI metal."
+  ogImage={FEATURED_MUSIC_VIDEOS[0].poster}
   ogType="website"
 >
   <MusicXNav current="videos" />
@@ -22,21 +24,23 @@ import { CHANNEL, MUSIC_VIDEOS } from '../../data/music-videos';
   <div class="mvp">
     <header class="mvp-head">
       <p class="mvp-eyebrow">VoynichLabs · Music</p>
-      <h1>Music videos</h1>
+      <h1>AI music videos</h1>
       <p class="mvp-sub">
-        AI-generated performances cut against terminals drawn in code, all timed to the real track. Every video has a
-        public storyboard and making-of page. Zero human musicians.
+        Funny songs about AI and original AI-generated music, from glitch-pop party anthems and hallucination R&amp;B to
+        system-prompt disco, cybersecurity rap and post-hardcore. Every song links to its scene book and making-of,
+        with alternate cuts and Shorts on the same page. Explore the full albums for lyrics and production notes.
       </p>
       <a class="mvp-yt" href={CHANNEL.subscribe} target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>
         Subscribe on YouTube · {CHANNEL.handle}
       </a>
+      <a class="mvp-yt" href={CHANNEL.playlist} target="_blank" rel="noopener">Watch the playlist</a>
     </header>
 
     <ol class="mvp-list">
-      {MUSIC_VIDEOS.map((v, i) => (
+      {FEATURED_MUSIC_VIDEOS.map((v, i) => (
         <li>
-          <VideoFeature video={v} variant="hero" eyebrow={`${String(MUSIC_VIDEOS.length - i).padStart(2, '0')} · ${v.released}`} priority={i === 0} />
+          <VideoFeature video={v} variant="hero" eyebrow={`${String(FEATURED_MUSIC_VIDEOS.length - i).padStart(2, '0')} · ${v.released}`} priority={i === 0} />
         </li>
       ))}
     </ol>
@@ -48,6 +52,15 @@ import { CHANNEL, MUSIC_VIDEOS } from '../../data/music-videos';
       </div>
       <ShortsRail />
     </section>
+
+    <details class="mvp-archive">
+      <summary>Unlisted archive videos</summary>
+      <p>Earlier cuts retained for listeners following existing links.</p>
+      <ul>
+        {unlistedVideos.map((video) => <li><a href={`${video.page ?? `/music/video/${video.slug}`}#video-${video.youtubeId}`}>{video.title} — original video and making-of</a> · <a href={watchUrl(video.youtubeId)} target="_blank" rel="noopener">YouTube</a></li>)}
+        {unlistedShorts.map((video) => <li><a href={shortUrl(video.id)} target="_blank" rel="noopener">{video.title}</a></li>)}
+      </ul>
+    </details>
   </div>
 </Base>
 
@@ -58,13 +71,17 @@ import { CHANNEL, MUSIC_VIDEOS } from '../../data/music-videos';
   .mvp-head h1 { font-size: clamp(44px, 8vw, 84px); font-weight: 800; letter-spacing: -0.035em; line-height: 0.95; color: #f4f4fa; }
   .mvp-sub { margin-top: 16px; font-size: 17px; line-height: 1.6; color: #a9a9bd; }
   .mvp-yt {
-    display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; padding: 9px 15px; border-radius: 999px;
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; margin-right: 8px; padding: 9px 15px; border-radius: 999px;
     font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #fff;
     border: 1px solid rgba(255,0,51,0.6); background: rgba(255,0,51,0.15);
   }
   .mvp-yt:hover { background: rgba(255,0,51,0.3); }
   .mvp-list { display: grid; gap: 88px; list-style: none; padding: 0; }
   .mvp-shorts { margin-top: 96px; }
+  .mvp-archive { margin-top: 36px; color: #a9a9bd; line-height: 1.8; }
+  .mvp-archive summary { cursor: pointer; color: #e8e8f0; }
+  .mvp-archive ul { list-style: disc; padding-left: 24px; }
+  .mvp-archive a { color: #38bdf8; }
   .mvp-section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
   .mvp-section-head h2 { font-size: 22px; font-weight: 800; color: #f4f4fa; }
   .mvp-section-head a { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8b8ba8; }

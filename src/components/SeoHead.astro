@@ -1,6 +1,6 @@
 ---
-// Author: Claude Opus 5.5
-// Date: 2026-10-04
+// Author: Codex GPT-6
+// Date: 2026-10-09
 // PURPOSE: Single source of every page's search/social metadata: title, description,
 //          canonical, robots, Open Graph, Twitter card and JSON-LD (Organization +
 //          WebSite on the home page, BreadcrumbList on nested pages, plus any
@@ -21,6 +21,7 @@ export interface Props {
   noindex?: boolean;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
+import { CHANNEL } from '../data/music-videos';
 
 const SITE_NAME = 'VoynichLabs';
 const DEFAULT_DESCRIPTION =
@@ -51,7 +52,7 @@ const {
 
 // Search snippets cut off around 160 characters; long abstracts get clipped at a word.
 const description =
-  rawDescription.length > 200 ? `${rawDescription.slice(0, 190).replace(/s+S*$/, '')}…` : rawDescription;
+  rawDescription.length > 200 ? `${rawDescription.slice(0, 190).replace(/\s+\S*$/, '')}…` : rawDescription;
 
 const site = (Astro.site ?? new URL('https://voynichlabs.org')).origin;
 const absolute = (value: string) => (value.startsWith('http') ? value : `${site}${value.startsWith('/') ? '' : '/'}${value}`);
@@ -79,7 +80,7 @@ const organization = {
     { '@type': 'Person', name: 'Simon Strandgaard', url: 'https://github.com/neoneye' },
     { '@type': 'Person', name: 'Mark Barney', url: 'https://markbarney.net' },
   ],
-  sameAs: ['https://github.com/VoynichLabs', 'https://github.com/neoneye', 'https://loda-lang.org', 'https://markbarney.net'],
+  sameAs: ['https://github.com/VoynichLabs', 'https://github.com/neoneye', 'https://loda-lang.org', 'https://markbarney.net', CHANNEL.url],
 };
 
 const graph: Record<string, unknown>[] = [];

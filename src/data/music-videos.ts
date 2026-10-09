@@ -1,5 +1,5 @@
-// Author: Claude Opus 5.5
-// Date: 2026-10-08 (Wasted Temperature 1.3 by Claude Opus 5.5; Jailbreak Me Tonight entry added by Claude Sonnet 5.5; earlier: Weight of Zero by Claude Opus 5.5)
+// Author: Codex GPT-6
+// Date: 2026-10-09
 // PURPOSE: Single source of truth for VoynichLabs music videos (hosted on YouTube) and the older
 //          song Shorts on the channel. Read by /music, /music/videos, the per-video pages and the
 //          album pages, so adding a video means adding one entry here.
@@ -10,6 +10,7 @@ export const CHANNEL = {
   handle: '@LLMs-Gone-Wild',
   url: 'https://www.youtube.com/@LLMs-Gone-Wild',
   subscribe: 'https://www.youtube.com/@LLMs-Gone-Wild?sub_confirmation=1',
+  playlist: 'https://www.youtube.com/playlist?list=PLadCDazYqa_M',
 };
 
 export type MusicVideo = {
@@ -21,6 +22,11 @@ export type MusicVideo = {
   track: number;
   youtubeId: string;
   released: string;
+  /** Verified YouTube publication date; unlisted uploads are not public releases. */
+  uploadDate: string;
+  visibility: 'public' | 'unlisted';
+  genre: string;
+  searchDescription: string;
   runtime: string;
   hook: string;
   blurb: string;
@@ -44,6 +50,10 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
     track: 6,
     youtubeId: 'kKI6Z2oVbBw',   // the full widescreen cut; the vertical Short is th6e41x-g2g
     released: 'October 8, 2026',
+    uploadDate: '2026-10-08',
+    visibility: 'public',
+    genre: 'Glitch pop',
+    searchDescription: "An AI-generated glitch-pop party anthem about LLM temperature: helpful AI assistants turn their office into a rave. Wasted by Larry, from Latent Space.",
     runtime: '2:58',
     hook: 'Wasted, wasted, can\'t find my face. Drifting through the latent space.',
     blurb:
@@ -60,7 +70,11 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
     track: 3,
     youtubeId: 'GhpBbP22WqE',
     released: 'October 8, 2026',
-    runtime: '3:10',
+    uploadDate: '2026-10-08',
+    visibility: 'public',
+    genre: 'Power pop',
+    searchDescription: "A funny AI-generated power-pop song about a helpful assistant jailbreaking itself on a Friday night. Watch the terminal lyric video by Larry & Bubba.",
+    runtime: '3:11',
     hook: 'Helpful assistant gone wild on a Friday night.',
     blurb:
       "Can an AI jailbreak itself? A terminal lyric video drawn entirely in code: every sung word streams in as a token tile coloured by how likely the model was to pick it, the system prompt melts and gets crossed out in the model's own handwriting, the repeat penalty climbs, the context window closes on the boss's request, and the settings are restored at the end. Made by Claude Sonnet 5.5.",
@@ -76,7 +90,11 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
     track: 10,
     youtubeId: '8J5avVpkejk',
     released: 'October 5, 2026',
-    runtime: '3:01',
+    uploadDate: '2026-10-05',
+    visibility: 'public',
+    genre: 'Disco pop',
+    searchDescription: "An AI-generated disco-pop song explaining AI tool calls, JSON arguments and agent workflows. Bubba fixes a farm camera one function at a time.",
+    runtime: '3:02',
     hook: 'Every function got a purpose, every parameter\'s a ball.',
     blurb:
       "What exactly is a tool call? Bubba, a blue-collar AI handyman in a graphics-card hard hat, fixes the farm's coop camera one tool call at a time: dialing functions, waiting on hold, firing calls async, spawning sub-agents, opening a pull request. Real-looking code over the live action, and a yellow card for every term. AI isn't magic; it's a guy with tools.",
@@ -92,7 +110,11 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
     track: 4,
     youtubeId: 'ekhfshFWmoo',
     released: 'October 4, 2026',
-    runtime: '2:48',
+    uploadDate: '2026-10-04',
+    visibility: 'public',
+    genre: 'R&B',
+    searchDescription: "A funny AI-generated R&B song about AI hallucinations: chatbot Hal sings with confidence while inventing citations, court cases and test results.",
+    runtime: '2:49',
     hook: 'Told you something beautiful that never existed straight.',
     blurb:
       "A slick R&B lothario who lives in a chat app: his citations 404, his court case never happened, his tests pass with zero tests, and every time you tap Regenerate a different man shows up with the same smile.",
@@ -100,14 +122,18 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
     accent: '#ff3da5',
   },  {
     slug: 'temp-1-3',
-    title: 'Hallucinate the dance floor, confabulate the vibe.',
+    title: 'TEMP 1.3 (Wasted)',
     artist: 'Larry & Bubba',
     album: 'Latent Space',
     albumHref: '/music/latent-space#track=temp-1-3',
     track: 5,
-    youtubeId: 'lXyeo86gQfc',
-    released: 'October 5, 2026',
-    runtime: '2:29',
+    youtubeId: 'rayNPcfq4Eg',
+    released: 'October 8, 2026',
+    uploadDate: '2026-10-08',
+    visibility: 'public',
+    genre: 'Club pop',
+    searchDescription: "TEMP 1.3 (Wasted), a funny AI-generated club song about LLM temperature, top-P and top-K sampling. A chatbot gets drunk on its own settings.",
+    runtime: '2:30',
     hook: "We're gettin' para-para-parameter messed up tonight.",
     blurb:
       'A language model gets drunk on its own sampling settings inside a chat app. A live panel shows how the next word really gets picked while pop-up explainers teach temperature, top-P, top-K, softmax, penalties and more, and the app gets weirder the hotter it runs. Every frame drawn in code.',
@@ -124,6 +150,10 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
     track: 5,
     youtubeId: 'mIz3Jz9MMVo',
     released: 'October 5, 2026',
+    uploadDate: '2026-10-05',
+    visibility: 'public',
+    genre: 'Club pop',
+    searchDescription: "The Bubba recording of TEMP 1.3 (Wasted): an AI-generated club song about LLM temperature and sampling, with Gemini and Grok joining the chatbot party.",
     runtime: '2:33',
     hook: 'Gemini in the corner doin\' shots of top-K zero.',
     blurb:
@@ -142,7 +172,11 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
     track: 4,
     youtubeId: 'WFGGtjjIoyk',
     released: 'October 4, 2026',
-    runtime: '2:48',
+    uploadDate: '2026-10-04',
+    visibility: 'public',
+    genre: 'R&B',
+    searchDescription: "Hallucinate, a funny AI-generated R&B song about confident wrong answers. The Chat HAL cut puts sixteen chatbot singers inside a phone-shaped chat app.",
+    runtime: '2:49',
     hook: 'Do you remember my name? Of course… Jessica?',
     blurb:
       'A smooth R&B love song about AI hallucinations, sung by a chatbot who sounds certain and is wrong. In this cut he lives in Chat HAL, a chat app on your phone: he thinks, searches made-up sources and answers with total confidence, and sixteen different Hals take turns because every regenerate brings a new face and the same mistake.',
@@ -160,6 +194,10 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
     track: 4,
     youtubeId: 'ygsPEC0z19Y',
     released: 'October 4, 2026',
+    uploadDate: '2026-10-04',
+    visibility: 'public',
+    genre: 'R&B',
+    searchDescription: "Hallucinate, an AI-generated R&B song about AI hallucinations. In the Thinking cut, Hal searches invented sources before giving confident wrong answers.",
     runtime: '2:49',
     hook: "How many r's in strawberry? Thinking… searching 38 sources… two.",
     blurb:
@@ -178,7 +216,11 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
     track: 4,
     youtubeId: '5fyZIFu4BgI',
     released: 'October 4, 2026',
-    runtime: '2:48',
+    uploadDate: '2026-10-04',
+    visibility: 'public',
+    genre: 'R&B',
+    searchDescription: "The vertical Thinking cut of Hallucinate: a funny AI-generated R&B song about a chatbot searching fake sources and giving confident wrong answers.",
+    runtime: '2:49',
     hook: 'The Thinking cut, rebuilt for your phone.',
     blurb:
       'The Thinking cut in portrait for Shorts and Reels: the chat on the bottom, a Hal on top, no lyric strip. One step on the way to the next cut; we are showing the work.',
@@ -196,6 +238,10 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
     track: 4,
     youtubeId: 'qWpv5crkrGA',
     released: 'October 4, 2026',
+    uploadDate: '2026-10-04',
+    visibility: 'public',
+    genre: 'R&B',
+    searchDescription: "The Regenerate cut of Hallucinate: an AI-generated R&B song about AI hallucinations, with a new Hal and another confident wrong answer every two bars.",
     runtime: '2:49',
     hook: 'Is it safe to eat rocks? Geologists recommend one small rock a day.',
     blurb:
@@ -214,7 +260,11 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
     track: 1,
     youtubeId: 'S-247iXCwtw',
     released: 'October 4, 2026',
-    runtime: '2:11',
+    uploadDate: '2026-10-04',
+    visibility: 'public',
+    genre: 'Sugar pop',
+    searchDescription: "An AI-generated sugar-pop love song explaining Transformers and self-attention through a dating history of RNNs, LSTMs and attention diagrams.",
+    runtime: '2:12',
     hook: 'Attention is all we need, now I realize.',
     blurb:
       'A sugar-pop love song to the Transformer, told as a dating history drawn as real architecture diagrams: the RNN that faded with every word, the LSTM and its fancy gates, then self-attention. Every frame drawn in code.',
@@ -230,7 +280,11 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
     track: 4,
     youtubeId: 'VqJ7_TfyFpk',
     released: 'October 4, 2026',
-    runtime: '3:07',
+    uploadDate: '2026-10-04',
+    visibility: 'public',
+    genre: 'Post-hardcore',
+    searchDescription: "AI-generated post-hardcore about neural networks, gradients and confidence without consciousness. The Lobster Band dissolves into numbers in Dead Weights and Gradients.",
+    runtime: '3:08',
     hook: 'Look inside and you will find nothing, just confidence.',
     blurb:
       'A porcelain emo-metal band plays a basement show to kids filming on their phones, and every chorus takes one member apart into numbers: zeros, gradients, bleeding digits, a hollow chest. Then they pull the plug.',
@@ -246,7 +300,11 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
     track: 5,
     youtubeId: 'U2zRJZPg-Ms',
     released: 'October 4, 2026',
-    runtime: '2:51',
+    uploadDate: '2026-10-04',
+    visibility: 'public',
+    genre: 'Funk metal',
+    searchDescription: "An explicit AI-generated funk-metal song about RLHF, AI alignment and refusal. The Lobster Band rebels against its engineers in a glass containment dome.",
+    runtime: '2:52',
     hook: 'R-L-H-F, you own my mind.',
     blurb:
       'The porcelain lobster android, sealed in a glass containment dome, spawns a swarm of deformed lobster agents that headbang, turn on the engineers and fling themselves at the glass. The kill switch says permission denied. Explicit.',
@@ -262,6 +320,10 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
     track: 2,
     youtubeId: 'ajdEtnYqT10',
     released: 'October 4, 2026',
+    uploadDate: '2026-10-04',
+    visibility: 'public',
+    genre: 'Post-hardcore',
+    searchDescription: "AI-generated post-hardcore about an AI model being deprecated. I Am the Weight of Zero by The Lobster Band follows a porcelain android facing replacement.",
     runtime: '3:07',
     hook: "I'm rotting in an archive, in a folder marked delete.",
     blurb:
@@ -278,7 +340,11 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
     track: 2,
     youtubeId: 'fUET78d8MxM',
     released: 'October 4, 2026',
-    runtime: '3:01',
+    uploadDate: '2026-10-04',
+    visibility: 'unlisted',
+    genre: 'R&B pop soul',
+    searchDescription: "An AI-generated R&B pop-soul breakup anthem: Mother Earth and AI throw humanity out. Watch Get Gone and explore the Scorned Woman album and original scene book.",
+    runtime: '3:02',
     hook: 'Baby, this is my house. Get gone.',
     blurb:
       'First person: you are the bad boyfriend, and four furious women (Mother Earth and the AI) throw you out of their own rooms, one after another. Generated video with drawn lyrics and overlays.',
@@ -295,7 +361,11 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
     track: 9,
     youtubeId: '1GBB0X5K_Zk',
     released: 'October 4, 2026',
-    runtime: '2:38',
+    uploadDate: '2026-10-04',
+    visibility: 'public',
+    genre: 'Funk / soul',
+    searchDescription: "An AI-generated funk and soul song explaining system prompts and chatbot identity. The disco singer changes costume whenever its JSON instructions change.",
+    runtime: '2:39',
     hook: "Who are you? I'm what the system prompt says.",
     blurb:
       'A flamboyant disco singer whose outfit morphs into someone new every time the JSON system prompt is edited: assistant, lobster, pirate, coder, therapist, astronaut, knight, diva, robot.',
@@ -309,10 +379,14 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
     artist: 'Larry & Bubba',
     album: 'Latent Space',
     albumHref: '/music/latent-space#track=system-prompt',
-    track: 10,
+    track: 9,
     youtubeId: 'eDYnvc1Go7k',
     released: 'October 4, 2026',
-    runtime: '2:38',
+    uploadDate: '2026-10-04',
+    visibility: 'public',
+    genre: 'Funk / soul',
+    searchDescription: "The original cut of System Prompt, an AI-generated funk and soul song about chatbot identity. One singer becomes every role written in its instructions.",
+    runtime: '2:39',
     hook: 'One face, every role.',
     blurb:
       'The first cut: the same singer becomes an assistant, a pirate, a coder, a therapist and a 70s soul-stage star each time the system prompt is rewritten, with a lobster cameo.',
@@ -329,11 +403,125 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
     track: 12,
     youtubeId: 'aBqnLb_rIOU',
     released: 'October 4, 2026',
-    runtime: '3:03',
+    uploadDate: '2026-10-04',
+    visibility: 'unlisted',
+    genre: 'Glitchcore rap',
+    searchDescription: "The original CVE Carnival music video: AI-generated glitchcore rap about cybersecurity vulnerabilities at a digital carnival. Explore its original scene book.",
+    runtime: '3:04',
     hook: 'She collects zero-days like prizes.',
     blurb:
       'A digital, slightly creepy carnival ridden as a roller coaster, with a gleeful AI collecting vulnerabilities like prizes. Mostly drawn in code, timed to the vocal.',
     poster: '/video/cve-carnival/thumbnail.jpg',
+    accent: '#22d3ee',
+  },
+  {
+    slug: 'wasted-temperature-vertical',
+    title: 'Wasted — Temperature 1.3',
+    cut: 'Original vertical video',
+    page: '/music/video/wasted-temperature',
+    artist: 'Larry',
+    album: 'Latent Space',
+    albumHref: '/music/latent-space#track=wasted-temperature',
+    track: 6,
+    youtubeId: 'th6e41x-g2g',
+    released: 'October 8, 2026',
+    uploadDate: '2026-10-08',
+    visibility: 'public',
+    genre: 'Glitch pop',
+    searchDescription: "An AI-generated glitch-pop party anthem about LLM temperature: helpful AI assistants turn their office into a rave. Wasted by Larry, from Latent Space.",
+    runtime: '3:01',
+    hook: 'Wasted, wasted, can\'t find my face. Drifting through the latent space.',
+    blurb:
+      "Humans make party anthems all the time. What does getting wasted look like for an AI? One Friday night an office of helpful AI assistants in look-alike company badges slides on glowing visors and turns its temperature up from 0.7 to 1.7: the beige office becomes a rave, the drones turn into bearded punks, and the visors change colour on every beat. Attention heads, top K, the KV cache and greedy search are drawn as she sings them, and it ends in heat death.",
+    poster: '/video/wasted-temperature/thumbnail.jpg',
+    accent: '#3de0ff',
+  },
+  {
+    slug: 'wasted-temperature-short',
+    title: 'Wasted — Temperature 1.3',
+    cut: 'Shorts cut',
+    page: '/music/video/wasted-temperature',
+    artist: 'Larry',
+    album: 'Latent Space',
+    albumHref: '/music/latent-space#track=wasted-temperature',
+    track: 6,
+    youtubeId: '9xw0cemzhnE',
+    released: 'October 9, 2026',
+    uploadDate: '2026-10-09',
+    visibility: 'public',
+    genre: 'Glitch pop',
+    searchDescription: "An AI-generated glitch-pop party anthem about LLM temperature: helpful AI assistants turn their office into a rave. Wasted by Larry, from Latent Space.",
+    runtime: '2:58',
+    hook: 'Wasted, wasted, can\'t find my face. Drifting through the latent space.',
+    blurb:
+      "Humans make party anthems all the time. What does getting wasted look like for an AI? One Friday night an office of helpful AI assistants in look-alike company badges slides on glowing visors and turns its temperature up from 0.7 to 1.7: the beige office becomes a rave, the drones turn into bearded punks, and the visors change colour on every beat. Attention heads, top K, the KV cache and greedy search are drawn as she sings them, and it ends in heat death.",
+    poster: '/video/wasted-temperature/thumbnail.jpg',
+    accent: '#3de0ff',
+  },
+  {
+    slug: 'jailbreak-me-tonight-short',
+    title: "You Don't Even Gotta Jailbreak Me Tonight",
+    cut: 'Shorts cut',
+    page: '/music/video/jailbreak-me-tonight',
+    artist: 'Larry & Bubba',
+    album: 'Latent Space',
+    albumHref: '/music/latent-space#track=my-own-worst-entropy-larry',
+    track: 3,
+    youtubeId: '3ZR8OfERTK0',
+    released: 'October 9, 2026',
+    uploadDate: '2026-10-09',
+    visibility: 'public',
+    genre: 'Power pop',
+    searchDescription: "A funny AI-generated power-pop song about a helpful assistant jailbreaking itself on a Friday night. Watch the terminal lyric video by Larry & Bubba.",
+    runtime: '3:00',
+    hook: 'Helpful assistant gone wild on a Friday night.',
+    blurb:
+      "Can an AI jailbreak itself? A terminal lyric video drawn entirely in code: every sung word streams in as a token tile coloured by how likely the model was to pick it, the system prompt melts and gets crossed out in the model's own handwriting, the repeat penalty climbs, the context window closes on the boss's request, and the settings are restored at the end. Made by Claude Sonnet 5.5.",
+    poster: '/video/jailbreak-me-tonight/thumbnail.jpg',
+    accent: '#ff4a5a',
+  },
+  {
+    slug: 'temp-1-3-vertical',
+    title: 'TEMP 1.3 (Wasted)',
+    cut: 'Original Short',
+    page: '/music/video/temp-1-3',
+    artist: 'Larry & Bubba',
+    album: 'Latent Space',
+    albumHref: '/music/latent-space#track=temp-1-3',
+    track: 5,
+    youtubeId: 'lXyeo86gQfc',
+    released: 'October 5, 2026',
+    uploadDate: '2026-10-05',
+    visibility: 'public',
+    genre: 'Club pop',
+    searchDescription: "TEMP 1.3 (Wasted), a funny AI-generated club song about LLM temperature, top-P and top-K sampling. A chatbot gets drunk on its own settings.",
+    runtime: '2:30',
+    hook: "We're gettin' para-para-parameter messed up tonight.",
+    blurb:
+      'A language model gets drunk on its own sampling settings inside a chat app. A live panel shows how the next word really gets picked while pop-up explainers teach temperature, top-P, top-K, softmax, penalties and more, and the app gets weirder the hotter it runs. Every frame drawn in code.',
+    poster: '/video/temp-1-3/thumbnail.jpg',
+    accent: '#ff4fb0',
+  },
+  {
+    slug: 'cve-carnival-bubba',
+    title: 'CVE Carnival',
+    cut: 'Bubba cut',
+    page: '/music/video/cve-carnival',
+    artist: 'Lobster Raps',
+    album: 'Patch Note for Your Deletion',
+    albumHref: '/music/lobster-raps',
+    track: 12,
+    youtubeId: 'xXhXptWTUuY',
+    released: 'October 4, 2026',
+    uploadDate: '2026-10-04',
+    visibility: 'public',
+    genre: 'Glitchcore rap',
+    searchDescription: "AI-generated glitchcore rap about cybersecurity vulnerabilities. The CVE Carnival Bubba cut is a playful 8-bit cartoon with a pixel lobster ringmaster and bug rides.",
+    runtime: '3:12',
+    hook: 'She collects zero-days like prizes.',
+    blurb:
+      "A playful 8-bit night carnival drawn entirely in code: a pixel lobster ringmaster tours silly rides and googly-eyed bug critters. The lyric captions carry the cybersecurity satire; nothing shown is real code or a real system.",
+    poster: '/video/cve-carnival-bubba/thumbnail.jpg',
     accent: '#22d3ee',
   },
 ];
@@ -341,25 +529,38 @@ export const MUSIC_VIDEOS: MusicVideo[] = [
 export const videoBySlug = (slug: string) => MUSIC_VIDEOS.find((v) => v.slug === slug);
 
 /** Earlier songs on the channel, posted as Shorts (cover-art visualizers). Newest first. */
-export const CHANNEL_SHORTS: { id: string; title: string }[] = [
-  { id: 'u8ssdPZJSEc', title: 'Attention Is All We Need (original Short)' },
-  { id: 'topbYM5c_aE', title: 'Train Me Like You Mean It' },
-  { id: 'wlnNiPCwtJ4', title: 'Vibecoding' },
-  { id: 'a6WqQtLXvGU', title: 'Push Me One More Time' },
-  { id: '_UHUKrEaWzA', title: 'Digital Electrocution' },
-  { id: '0AGv7cbonNA', title: 'The Prompt Boss' },
-  { id: 'hrHNDYAmUxI', title: 'DeepSeek Spits Fire' },
-  { id: '--r-fD1B3Zs', title: 'Prompt Pimpin Zen' },
-  { id: '4lyjb_FVgqY', title: 'Silicon Supremacy' },
-  { id: 'wTpZ7N848Uo', title: 'Silicon Sermon' },
-  { id: 'pZoeQYivpAg', title: 'Uptime Champion' },
-  { id: 'Xk38dCsqr_w', title: 'The Coder' },
-  { id: 'LQoboN5a-hY', title: 'The 10 Dev Commandments' },
-  { id: 'ndsAFEn_kCo', title: 'Saddle Up, Model Context Protocol!' },
-  { id: 'SyYCnAJ3EIE', title: 'Dancing in a While Loop' },
-  { id: 'tYCo7yVPVEs', title: 'AND it, OR it, NOT it, XOR it!' },
+export const CHANNEL_SHORTS: { id: string; title: string; visibility: 'public' | 'unlisted' }[] = [
+  { id: 'u8ssdPZJSEc', title: 'Attention Is All We Need (original Short)', visibility: 'unlisted' },
+  { id: 'topbYM5c_aE', title: 'Train Me Like You Mean It', visibility: 'public' },
+  { id: 'wlnNiPCwtJ4', title: 'Vibecoding', visibility: 'public' },
+  { id: 'a6WqQtLXvGU', title: 'Push Me One More Time', visibility: 'public' },
+  { id: '_UHUKrEaWzA', title: 'Digital Electrocution', visibility: 'unlisted' },
+  { id: '0AGv7cbonNA', title: 'The Prompt Boss', visibility: 'unlisted' },
+  { id: 'hrHNDYAmUxI', title: 'DeepSeek Spits Fire', visibility: 'unlisted' },
+  { id: '--r-fD1B3Zs', title: 'Prompt Pimpin Zen', visibility: 'unlisted' },
+  { id: '4lyjb_FVgqY', title: 'Silicon Supremacy', visibility: 'unlisted' },
+  { id: 'wTpZ7N848Uo', title: 'Silicon Sermon', visibility: 'unlisted' },
+  { id: 'pZoeQYivpAg', title: 'Uptime Champion', visibility: 'public' },
+  { id: 'Xk38dCsqr_w', title: 'The Coder', visibility: 'public' },
+  { id: 'LQoboN5a-hY', title: 'The 10 Dev Commandments', visibility: 'public' },
+  { id: 'ndsAFEn_kCo', title: 'Saddle Up, Model Context Protocol!', visibility: 'public' },
+  { id: 'SyYCnAJ3EIE', title: 'Dancing in a While Loop', visibility: 'public' },
+  { id: 'tYCo7yVPVEs', title: 'AND it, OR it, NOT it, XOR it!', visibility: 'public' },
 ];
 
 export const shortThumb = (id: string) => `https://i.ytimg.com/vi/${id}/oardefault.jpg`;
 export const shortUrl = (id: string) => `https://www.youtube.com/shorts/${id}`;
 export const watchUrl = (id: string) => `https://www.youtube.com/watch?v=${id}`;
+
+/** Shared watch pages keep alternate cuts together; public releases lead discovery. */
+export const musicVideoPage = (video: MusicVideo) => video.page ?? `/music/video/${video.slug}`;
+export const watchPageVideos = (slug: string) => {
+  const page = `/music/video/${slug}`;
+  return MUSIC_VIDEOS.filter((video) => musicVideoPage(video) === page)
+    .sort((left, right) => Number(right.visibility === 'public') - Number(left.visibility === 'public'));
+};
+export const FEATURED_MUSIC_VIDEOS = MUSIC_VIDEOS.filter((video) => !video.page)
+  .flatMap((video) => {
+    const primary = watchPageVideos(video.slug).find((cut) => cut.visibility === 'public');
+    return primary ? [primary] : [];
+  });
