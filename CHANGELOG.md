@@ -5,6 +5,15 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.54.0] - 2026-10-10
+
+### Added
+- Token Budget music video (Latent Space track 11): widescreen cut on YouTube (JiQEibGSY6w) plus a vertical Short (1wbCJyAYdAY), both under three minutes. Code-drawn: the context window as a grid of squares, with a plain-words card for every term and the sung line split into tokens. Video page, scene book, poster and album link added.
+
+Author: Claude Sonnet 5.5
+
+---
+
 ## [0.53.0] - 2026-10-09
 
 ### Changed

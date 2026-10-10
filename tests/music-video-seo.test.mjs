@@ -29,7 +29,7 @@ test('public discovery matches the real Studio catalog, retaining unlisted archi
     ...CHANNEL_SHORTS.filter(video => video.visibility === 'public').map(video => video.id),
   ].sort();
   assert.deepEqual(registryIds, publicIds);
-  assert.equal(publicIds.length, 30);
+  assert.equal(publicIds.length, 32);
   assert.equal(FEATURED_MUSIC_VIDEOS.find(video => video.slug === 'get-gone'), undefined);
   assert.equal(watchPageVideos('temp-1-3')[0].youtubeId, 'rayNPcfq4Eg');
   assert.equal(watchPageVideos('cve-carnival')[0].youtubeId, 'xXhXptWTUuY');
@@ -39,7 +39,7 @@ test('public discovery matches the real Studio catalog, retaining unlisted archi
 
 test('schema and sitemap preserve verified cuts, dates, durations and real thumbnails', async () => {
   const sitemap = videoSitemap(MUSIC_VIDEOS, site);
-  assert.equal((sitemap.match(/<video:video>/g) ?? []).length, 21);
+  assert.equal((sitemap.match(/<video:video>/g) ?? []).length, 22);
   assert.ok(sitemap.includes('&apos;'));
   for (const video of MUSIC_VIDEOS) {
     if (video.visibility !== 'public') {

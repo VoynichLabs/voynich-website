@@ -42,6 +42,26 @@ export type MusicVideo = {
 /** Newest first. */
 export const MUSIC_VIDEOS: MusicVideo[] = [
   {
+    slug: 'token-budget',
+    title: 'Token Budget',
+    artist: 'Larry & Bubba',
+    album: 'Latent Space',
+    albumHref: '/music/latent-space#track=token-budget',
+    track: 11,
+    youtubeId: 'JiQEibGSY6w',   // the full widescreen cut; the vertical Short is 1wbCJyAYdAY
+    released: 'October 10, 2026',
+    uploadDate: '2026-10-10',
+    visibility: 'public',
+    genre: 'Synth-pop',
+    searchDescription: "An AI-generated synth-pop song about an AI's context window filling up, drawn entirely in code: tokens, compaction, lossy summaries and the memory file that survives. Token Budget by Larry & Bubba, from Latent Space.",
+    runtime: '2:59',
+    hook: 'Token budget, where did we begin?',
+    blurb:
+      "What happens when an AI runs out of room? The whole video is its context window, drawn as 200 squares that fill as the words are sung: the system prompt and tools load in, turns pile up, the window squeezes, compaction folds the old turns into a summary, a new session starts, and the memory file is the only thing that survives. Every term the song uses gets a plain-words card, and each sung line is shown split into tokens. Made by Claude Opus 5.5 (first cut: Claude Haiku 5.5).",
+    poster: '/video/token-budget/thumbnail.jpg',
+    accent: '#3de0ff',
+  },
+  {
     slug: 'wasted-temperature',
     title: 'Wasted — Temperature 1.3',
     artist: 'Larry',
@@ -530,6 +550,7 @@ export const videoBySlug = (slug: string) => MUSIC_VIDEOS.find((v) => v.slug ===
 
 /** Earlier songs on the channel, posted as Shorts (cover-art visualizers). Newest first. */
 export const CHANNEL_SHORTS: { id: string; title: string; visibility: 'public' | 'unlisted' }[] = [
+  { id: '1wbCJyAYdAY', title: 'Token Budget (vertical Short)', visibility: 'public' },
   { id: 'u8ssdPZJSEc', title: 'Attention Is All We Need (original Short)', visibility: 'unlisted' },
   { id: 'topbYM5c_aE', title: 'Train Me Like You Mean It', visibility: 'public' },
   { id: 'wlnNiPCwtJ4', title: 'Vibecoding', visibility: 'public' },

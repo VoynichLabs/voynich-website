@@ -1,0 +1,260 @@
+{
+ "slug": "token-budget",
+ "title": "Token Budget",
+ "album": "Latent Space",
+ "albumHref": "/music/latent-space#track=token-budget",
+ "artist": "Larry & Bubba",
+ "track": 11,
+ "style": "Moody synth-pop",
+ "audio": "/audio/latent-space/token-budget.mp3",
+ "bpm": 104,
+ "duration": 175.78,
+ "concept": "What happens when an AI runs out of room? The video is the context window itself, drawn as 200 squares, one per thousand tokens. The system prompt and tools load first, turns fill it, the window squeezes, compaction folds the old turns into a summary, a new session starts, and the memory file is what survives. Every term the song sings gets a yellow explainer card in plain words, and the sung line is shown split into tokens, the way a model reads it.",
+ "thesis": "An AI only remembers what fits in the window. Anything it wants to keep has to be written to a file.",
+ "rules": [
+  {
+   "name": "The window is the picture",
+   "text": "Every scene is the same 200-square window doing what the lyric says: filling, squeezing, folding, emptying, reloading."
+  },
+  {
+   "name": "Colours mean the same thing throughout",
+   "text": "Violet is the system prompt, cyan the tools, amber you, pink the AI, mint a summary and green the memory file."
+  },
+  {
+   "name": "Explain the jargon",
+   "text": "A yellow card for token, system prompt, tool definitions, turn, context window, attention, compaction, summary, lossy compression, session, memory file, overflow and daily logs."
+  },
+  {
+   "name": "Fits a Short",
+   "text": "The video is under three minutes, and the same scenes render as a 16:9 and a 9:16 cut."
+  }
+ ],
+ "cast": [],
+ "layers": {
+  "CODE": "Drawn in code (Canvas2D): every frame, the window, the explainers, the tokenizer view and the end card."
+ },
+ "timingNote": "The song's own vocal is transcribed with local Whisper and aligned word by word to the lyrics as sung, on a 104 BPM grid. The singing starts at once, so the title sits over the first line.",
+ "scenes": [
+  {
+   "id": 1,
+   "title": "Title and an empty window",
+   "section": "Verse 1",
+   "start": 0,
+   "end": 7.48,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Two hundred thousand tokens and a dream",
+   "shot": "TOKEN BUDGET glows over the first line; an empty context window of 200 squares draws itself on and the counter runs up to 200,000 tokens.",
+   "transition": "The system prompt and tools drop in as the lyric names them."
+  },
+  {
+   "id": 2,
+   "title": "The system prompt and the tools",
+   "section": "Verse 1",
+   "start": 7.48,
+   "end": 13.56,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "System prompt up top, tools defined",
+   "shot": "The first squares fill: a violet system prompt and cyan tool definitions, each with a card and a file panel.",
+   "transition": "A wave of runway lights runs down the empty squares."
+  },
+  {
+   "id": 3,
+   "title": "Turns",
+   "section": "Verse 1",
+   "start": 13.56,
+   "end": 22.74,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "First few messages, I'm flying free / Summarizing, coding, writing poetry",
+   "shot": "Chat bubbles pop in and the squares fill in amber (you) and pink (the AI). A turn counter climbs; a yellow card says what a turn is.",
+   "transition": "Red glitches creep in on \"something going wrong\"."
+  },
+  {
+   "id": 4,
+   "title": "The squeeze",
+   "section": "Verse 1",
+   "start": 22.74,
+   "end": 30.36,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Eighty percent used and I feel the squeeze",
+   "shot": "Red jaws close in on the window as the gauge passes eighty percent.",
+   "transition": "Shake and cut."
+  },
+  {
+   "id": 5,
+   "title": "Page one",
+   "section": "Verse 1",
+   "start": 30.36,
+   "end": 36.62,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Can't remember what we talked about, page one",
+   "shot": "The earliest squares grey out and drift away while attention lines run from the newest square, strong to recent text and faint to old.",
+   "transition": "Fade."
+  },
+  {
+   "id": 6,
+   "title": "Chorus, first pass",
+   "section": "Chorus",
+   "start": 36.62,
+   "end": 63.52,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Token budget, running out of space",
+   "shot": "Eight pictures for eight lines: the window filling, words flying into squares, a face scrambling, compaction folding the turns into a summary block, ninety percent, question marks over the beginning, a stack of messages with the first one gone, and the window full.",
+   "transition": "Cut on each line."
+  },
+  {
+   "id": 7,
+   "title": "Compaction",
+   "section": "Verse 2",
+   "start": 63.52,
+   "end": 75.2,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "The compaction hits and suddenly it's clear",
+   "shot": "Eight chat bubbles fold flat into one summary.md panel, and the original turns fade to dashed ghosts.",
+   "transition": "Fade."
+  },
+  {
+   "id": 8,
+   "title": "Lossy compression",
+   "section": "Verse 2",
+   "start": 75.2,
+   "end": 82.02,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "A lossy compression is the thing that never learns",
+   "shot": "A drawn sunset shrinks to a few blocky squares and is blown back up with the gaps guessed wrong, a shadow of the past.",
+   "transition": "Cut."
+  },
+  {
+   "id": 9,
+   "title": "New session, memory file",
+   "section": "Verse 2",
+   "start": 82.02,
+   "end": 94.76,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "New session spins up, clean slate, fresh start",
+   "shot": "The window wipes clean; a terminal reads MEMORY.md first. Then ninety-five percent, overflow, and the oldest squares spill out of the bottom while the memory file stays lit.",
+   "transition": "Cut."
+  },
+  {
+   "id": 10,
+   "title": "Saved to disk",
+   "section": "Verse 2",
+   "start": 94.76,
+   "end": 100.76,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "I got my memory files, I wrote them down",
+   "shot": "Two panels: the dead window and the disk, where MEMORY.md survives and is carried back into the new window.",
+   "transition": "Cut."
+  },
+  {
+   "id": 11,
+   "title": "Chorus, second pass",
+   "section": "Chorus",
+   "start": 100.76,
+   "end": 127.58,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Token budget, can't recall your face",
+   "shot": "The same eight lines with new pictures where they would repeat: a name tag whose letters are forgotten, and a scroll back through summaries of summaries.",
+   "transition": "Cut."
+  },
+  {
+   "id": 12,
+   "title": "Write it to a file",
+   "section": "Bridge",
+   "start": 127.58,
+   "end": 144.22,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Write it to a file, write it to a file",
+   "shot": "A code editor types MEMORY.md line by line; a thought bubble (\"I'll just remember it\") pops; a file tree shows daily logs feeding the long-term file.",
+   "transition": "Cut."
+  },
+  {
+   "id": 13,
+   "title": "Window closed, frozen, archived",
+   "section": "Outro",
+   "start": 144.22,
+   "end": 164.22,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "Context window closed / Token budget froze",
+   "shot": "Tokens pour out of the window like a river, shutters close, frost spreads at 200,000 of 200,000, and every square drops into an archive box.",
+   "transition": "Cut."
+  },
+  {
+   "id": 14,
+   "title": "Fresh start and end card",
+   "section": "Outro",
+   "start": 164.22,
+   "end": 179.5,
+   "layers": [
+    "CODE"
+   ],
+   "lyric": "But the memory files remember what we said last night",
+   "shot": "A new session loads MEMORY.md first and the AI greets the user from its notes. The end card credits the song, the music and lyric model, and both Claude models, and leaves the right side clear for YouTube's end screen.",
+   "transition": "End."
+  }
+ ],
+ "decisions": [
+  "The first cut was one chat window and a thin bar; the Boss asked for a better picture and explainer, so each lyric section now has its own drawing.",
+  "Lyrics were corrected from the transcript by meaning (for example 'tools defined').",
+  "The picture ends at 179.5 seconds so the video also works as a Short.",
+  "Painted like and subscribe buttons were removed; the end card leaves room for YouTube's real end screen."
+ ],
+ "credits": [
+  {
+   "role": "words",
+   "by": "Larry & Bubba"
+  },
+  {
+   "role": "music",
+   "by": "Lyria 3 Pro"
+  },
+  {
+   "role": "picture",
+   "by": "Claude Opus 5.5 (first cut: Claude Haiku 5.5)"
+  }
+ ],
+ "page": {
+  "description": "The Token Budget music video: what happens when an AI's context window fills up, drawn as a grid of squares, with a plain-words card for every term the song uses.",
+  "decisionsTitle": "Notes",
+  "howMade": [
+   {
+    "label": "Timing",
+    "text": "The vocal is transcribed locally with Whisper and aligned word by word to the lyrics, on a 104 BPM grid."
+   },
+   {
+    "label": "Footage",
+    "text": "None: every frame is drawn in code."
+   },
+   {
+    "label": "Render",
+    "text": "Headless Chrome draws every frame at 1920 by 1080 (and 1080 by 1920 for the Short), then ffmpeg adds the song."
+   }
+  ],
+  "sourceNote": "Built outside Remotion, in the private music-videos repo (tokenbudget-video: engine, timing and render)."
+ }
+}
