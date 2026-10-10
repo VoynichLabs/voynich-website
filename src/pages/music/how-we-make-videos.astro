@@ -8,6 +8,7 @@ import Base from '../../layouts/Base.astro';
 import MusicXNav from '../../components/MusicXNav.astro';
 import YouTubePlayer from '../../components/YouTubePlayer.astro';
 import { MUSIC_VIDEOS } from '../../data/music-videos';
+import { videoSchema } from '../../lib/music-video-seo';
 const tb = MUSIC_VIDEOS.find((v) => v.slug === 'token-budget')!;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const steps = [
@@ -19,23 +20,64 @@ const steps = [
   { n: '6', h: 'Make it fit a Short', p: 'YouTube only treats a video as a Short if it is three minutes or less. So the video stops at just under three minutes, the end card sits over the song\'s quiet tail, and the same scenes are drawn twice: once as a widescreen 16:9 video and once as a tall 9:16 one, with the words kept clear of the edges the phone player covers.' },
   { n: '7', h: 'Look before you ship', p: 'We render contact sheets (a grid of frames from across the song) and look at every one: each scene, the very first frame, the end card, and the tall layout. Only when it looks right do we render the whole video, check its length, and publish.' },
 ];
+const faqs = [
+  { q: 'Can you make a music video entirely with code?', a: 'Yes. Every frame of Token Budget is drawn by a short program: it takes a time in the song and draws the picture for that moment. A headless browser renders the frames and ffmpeg joins them with the song, so no footage and no generated images are involved.' },
+  { q: 'How do you sync a lyric video to a song automatically?', a: 'A speech model (Whisper) running locally gives a time for each sung word, and a script aligns the real lyrics to those times. Because speech-to-text mishears jargon, the lyric file is corrected by meaning first, then aligned. The same pass measures loudness and the beat.' },
+  { q: 'What tools does it use, and does it cost anything?', a: 'Whisper for word timing, a headless Chrome browser drawing on an HTML canvas, and ffmpeg for encoding. All of it runs on one Mac, so a finished video costs nothing beyond the computer. The song itself was made with Google Lyria 3 Pro.' },
+  { q: 'How do you make one video work as both a Short and a normal video?', a: 'YouTube treats a video as a Short only if it is three minutes or less, so the cut stops just under that. The scenes are drawn twice, once at 16:9 and once at 9:16, with words kept away from the edges a phone player covers.' },
+  { q: 'Are the subscribe buttons in the video clickable?', a: 'No. Anything painted into a video frame is just a picture. The real subscribe button and next-video link come from YouTube\'s end screen, which is added in YouTube Studio after upload.' },
+];
+const site = new URL('https://voynichlabs.org');
+const pageUrl = `${site.origin}/music/how-we-make-videos`;
+const jsonLd = [
+  {
+    '@type': 'HowTo',
+    '@id': `${pageUrl}#howto`,
+    name: 'How to make a music video drawn entirely in code',
+    description: 'A step-by-step method for turning a song into a lyric video where every frame is drawn by code, using local speech timing and ffmpeg.',
+    image: new URL(tb.poster, site).href,
+    tool: [{ '@type': 'HowToTool', name: 'Whisper (speech-to-text)' }, { '@type': 'HowToTool', name: 'Headless Chrome with HTML Canvas' }, { '@type': 'HowToTool', name: 'ffmpeg' }],
+    step: steps.map((x, i) => ({ '@type': 'HowToStep', position: i + 1, name: x.h, text: x.p, url: `${pageUrl}#step-${x.n}` })),
+  },
+  {
+    '@type': 'FAQPage',
+    '@id': `${pageUrl}#faq`,
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+  {
+    '@type': 'Article',
+    '@id': `${pageUrl}#article`,
+    headline: 'How we make a music video out of code',
+    datePublished: '2026-10-10',
+    dateModified: '2026-10-10',
+    image: [new URL(tb.poster, site).href],
+    author: { '@type': 'Organization', name: 'VoynichLabs', url: site.origin },
+    publisher: { '@type': 'Organization', name: 'VoynichLabs', url: site.origin },
+    mainEntityOfPage: pageUrl,
+    about: ['code-drawn music video', 'lyric video', 'AI context window', 'Whisper', 'ffmpeg'],
+  },
+  videoSchema(tb, site, '/music/how-we-make-videos'),
+];
 ---
 
 <Base
-  title="How We Make Code-Drawn Music Videos"
-  description="How VoynichLabs makes music videos drawn entirely in code: local speech timing, one picture per lyric, a context window as the example, and a widescreen cut plus a Short from the same scenes."
+  title="How to Make a Music Video With Code (Lyric Video Guide)"
+  description="How to make a lyric video drawn entirely in code: Whisper word timing, one picture per lyric, a canvas renderer and ffmpeg, with a widescreen cut and a Short."
   ogImage={tb.poster}
+  ogImageAlt="Token Budget music video: the AI context window drawn as a grid of squares, squeezed at 80 percent used"
   ogType="article"
+  jsonLd={jsonLd}
 >
   <MusicXNav current="videos" />
 
   <div class="hw">
     <header class="hw-head">
       <p class="hw-eyebrow">VoynichLabs · Music · Making of</p>
-      <h1>How we make a music video out of code</h1>
+      <h1>How to make a music video out of code</h1>
       <p class="hw-sub">
-        The songs are about AI, so the videos are drawn as the real thing the song describes. No stock footage, no generated
-        clips: every frame is code. Here is how one gets made, using <strong>Token Budget</strong> as the example.
+        A code-drawn music video is a lyric video where every frame is drawn by a program: no stock footage, no generated
+        clips. Our songs are about AI, so each video draws the real thing the song describes. Here is the method, step by
+        step, using <strong>Token Budget</strong> (an AI's context window filling up) as the example.
       </p>
     </header>
 
@@ -46,7 +88,7 @@ const steps = [
 
     <ol class="hw-steps">
       {steps.map((s) => (
-        <li>
+        <li id={`step-${s.n}`}>
           <span class="hw-n">{s.n}</span>
           <div><h2>{s.h}</h2><p>{s.p}</p></div>
         </li>
@@ -60,6 +102,26 @@ const steps = [
         <figure><img src={`${base}/video/how-its-made/fold.jpg`} alt="Chat bubbles folding into a single summary file" loading="lazy" width="1200" height="675" /><figcaption>"A summary replaces all those precious turns": eight messages fold into one summary.</figcaption></figure>
         <figure><img src={`${base}/video/how-its-made/chorus.jpg`} alt="The chorus: the window nearly full with a yellow explainer card" loading="lazy" width="1200" height="675" /><figcaption>The chorus: the window fills while a yellow card explains the term being sung.</figcaption></figure>
       </div>
+    </section>
+
+    <section class="hw-faq">
+      <h2>Questions people ask</h2>
+      {faqs.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <section class="hw-more">
+      <h2>More code-drawn videos</h2>
+      <ul>
+        <li><a href="/music/video/attention-is-all-we-need">Attention Is All We Need</a>: the transformer paper as drawn diagrams</li>
+        <li><a href="/music/video/jailbreak-me-tonight">You Don't Even Gotta Jailbreak Me Tonight</a>: a terminal lyric video, every word a token tile</li>
+        <li><a href="/music/video/token-budget">Token Budget</a>: scene-by-scene notes for the video above</li>
+        <li><a href="/music/videos">All VoynichLabs music videos</a> · <a href="/music/latent-space">The Latent Space album</a></li>
+      </ul>
     </section>
 
     <section class="hw-note">
@@ -94,6 +156,13 @@ const steps = [
   .hw-grid { display: grid; gap: 24px; margin-bottom: 64px; }
   .hw-grid img { width: 100%; height: auto; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12); display: block; }
   .hw-grid figcaption { margin-top: 8px; font-size: 14px; color: #8b8ba8; }
+  .hw-faq, .hw-more { margin-bottom: 56px; }
+  .hw-faq h2, .hw-more h2 { font-size: 24px; font-weight: 800; color: #f4f4fa; margin-bottom: 16px; }
+  .hw-faq details { border-top: 1px solid rgba(255,255,255,0.12); padding: 14px 0; }
+  .hw-faq summary { cursor: pointer; font-weight: 700; color: #e8e8f0; font-size: 17px; }
+  .hw-faq p { margin-top: 8px; color: #b8b8cc; line-height: 1.65; }
+  .hw-more ul { list-style: disc; padding-left: 22px; line-height: 1.9; color: #a9a9bd; }
+  .hw-more a { color: #38bdf8; }
   .hw-note ul { padding-left: 22px; list-style: disc; color: #b8b8cc; line-height: 1.8; font-size: 16px; }
   .hw-note p { margin-top: 16px; color: #a9a9bd; line-height: 1.6; }
 </style>

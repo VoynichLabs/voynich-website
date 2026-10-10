@@ -19,7 +19,7 @@ Author: Claude Opus 5.5
 ### Added
 - Token Budget music video (Latent Space track 11): widescreen cut on YouTube (JiQEibGSY6w) plus a vertical Short (1wbCJyAYdAY), both under three minutes. Code-drawn: the context window as a grid of squares, with a plain-words card for every term and the sung line split into tokens. Video page, scene book, poster and album link added.
 
-- Added /music/how-we-make-videos: a plain-words explainer of how a code-drawn music video is made (Token Budget as the example), linked from /music/videos.
+- Added /music/how-we-make-videos: a plain-words explainer of how a code-drawn music video is made (Token Budget as the example), linked from /music/videos. SEO: keyword title and description, HowTo, FAQPage, Article and VideoObject structured data, visible FAQ, internal links to related videos, image alt text.
 
 Author: Claude Sonnet 5.5
 
