@@ -9,7 +9,7 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ### Added
 - Latent Space track 15, "Haiku, Sonnet, Opus": the reworked Cursor, Codex, Claude song with a Haiku-Sonnet-Opus chant hook, the Boss's original first verse, and a new second verse in the model's voice. Made with Lyria 3 Pro. Song, lyrics and track entry added. Sidebar track count corrected to match the list.
-- Raw drafts: a chilled-out take of Haiku, Sonnet, Opus and take 3 of Shoulder Off.
+- Raw drafts: a chilled-out take and take 9 of Haiku, Sonnet, Opus, and take 3 of Shoulder Off.
 
 Author: Claude Opus 5.5
 
