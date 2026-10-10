@@ -5,6 +5,15 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.55.0] - 2026-10-10
+
+### Added
+- Latent Space track 15, "Haiku, Sonnet, Opus": the reworked Cursor, Codex, Claude song with a Haiku-Sonnet-Opus chant hook, the Boss's original first verse, and a new second verse in the model's voice. Made with Lyria 3 Pro. Song, lyrics and track entry added. Sidebar track count corrected to match the list.
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.54.0] - 2026-10-10
 
 ### Added
