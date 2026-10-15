@@ -5,6 +5,20 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.56.0] - 2026-10-15
+
+### Changed
+- Home page now leads with the Voynich Manuscript: real folio hero with the "nobody knows" questions and a button to the write-up, then a strip of the five manuscript sections that all open /voynich-manuscript. The DAG overlay stays in the hero.
+- ARC section reframed around Mark Barney's ARC Explainer (live ARC-AGI-3 and ARC-AGI-2 leaderboards, guides, puzzles). Simon's tools stay credited to him; his stats row is gone from the home page.
+- Agent swarm section leads with what Larry, Bubba and Egon make; the three Simon tribute pages are now one line of links.
+- Simon's story is now one short "where it started" band plus the LODA showcase near the bottom. Toolbox screenshots, formula-mine band, DAG throughline and the Simon closing call-to-action left the home page (all still on /simon).
+- Nav: voynich moved to second. Footer names Mark Barney with co-founder Simon Strandgaard, and links ARC Explainer.
+- The five manuscript sections now live in one shared data file used by both the home page and the write-up.
+
+Author: Claude Opus 5.5 Low
+
+---
+
 ## [0.55.0] - 2026-10-10
 
 ### Added

@@ -5,45 +5,11 @@
 //          The center of gravity is the mystery — what no one knows, what no one can know,
 //          and why that's extraordinary after 600 years of humanity's best efforts.
 // SRP/DRY check: Pass - single responsibility per page, shared Base layout reused
+// 2026-10-15 Claude Opus 5.5 Low: section list moved to src/data/voynich-worlds.ts (shared with home).
 import Base from '../layouts/Base.astro';
+import { voynichWorlds } from '../data/voynich-worlds';
 
-const worlds = [
-  {
-    emoji: '🌿',
-    name: 'Herbal',
-    folio: 'f2v',
-    image: '/voynich/f2v-herbal.jpg',
-    question: 'What plants are these? They don\'t exist.',
-  },
-  {
-    emoji: '⭐',
-    name: 'Astronomical',
-    folio: 'f68r3',
-    image: '/voynich/f68r3-astronomical.jpg',
-    question: 'What sky is this? It doesn\'t match any known system.',
-  },
-  {
-    emoji: '🧘',
-    name: 'Biological',
-    folio: 'f77v',
-    image: '/voynich/f77v-biological.jpg',
-    question: 'What are these figures doing? Nobody knows.',
-  },
-  {
-    emoji: '🌍',
-    name: 'Cosmological',
-    folio: 'f86v',
-    image: '/voynich/f86v-cosmological.jpg',
-    question: 'What place is this map of? It has never been found.',
-  },
-  {
-    emoji: '💊',
-    name: 'Pharmaceutical',
-    folio: 'f99r',
-    image: '/voynich/f99r-pharmaceutical.jpg',
-    question: 'What is this medicine for? We don\'t know what it treats.',
-  },
-];
+const worlds = voynichWorlds;
 
 const unknowns = [
   { q: 'Who wrote it?', a: 'Unknown' },

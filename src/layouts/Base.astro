@@ -8,6 +8,8 @@
 // Edited 2026-10-04 by Claude Opus 5.5: head metadata moved to components/SeoHead.astro
 //   (auto canonical, default og:image, JSON-LD, noindex); unused KaTeX stylesheet dropped;
 //   shared cross-browser range-slider CSS imported.
+// Edited 2026-10-15 by Claude Opus 5.5 Low: voynich moved up to second in the nav; footer now names
+//   Mark Barney and Simon Strandgaard as the people behind the lab instead of "built around Simon's work".
 import SeoHead from '../components/SeoHead.astro';
 import '../styles/range.css';
 
@@ -32,6 +34,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 // simon/team/collaborators via /about.
 const navLinks = [
   { href: `${base}/`, label: 'index' },
+  { href: `${base}/voynich-manuscript`, label: 'voynich' },
   { href: `${base}/about`, label: 'about' },
   { href: `${base}/projects`, label: 'projects' },
   { href: `${base}/lobster-incubator`, label: 'incubator' },
@@ -39,7 +42,6 @@ const navLinks = [
   { href: `${base}/autonovel`, label: 'autonovel' },
   { href: `${base}/music`, label: 'music' },
   { href: `${base}/music/videos`, label: 'videos' },
-  { href: `${base}/voynich-manuscript`, label: 'voynich' },
 ];
 ---
 <!doctype html>
@@ -94,11 +96,12 @@ const navLinks = [
             <div>
               <p class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">🦞 VoynichLabs</p>
               <p class="text-text-muted leading-relaxed">
-                A research collective for generative computation, mathematical discovery, and AI research.
-                Built around the work of Simon Strandgaard and his collaborators. Copenhagen, Denmark.
+                A lab for ARC-AGI research, generative computation and AI agents, named after the
+                book nobody can read.
               </p>
               <p class="text-text-muted leading-relaxed mt-2 text-xs">
-                Collaborators include <a href="https://markbarney.net" target="_blank" rel="noopener" class="hover:text-node-blue transition-colors">Mark Barney</a> — co-contributor on ARC-AGI tooling and datasets.
+                Run by <a href="https://markbarney.net" target="_blank" rel="noopener" class="hover:text-node-blue transition-colors">Mark Barney</a>
+                with co-founder Simon Strandgaard and the lobster swarm.
               </p>
             </div>
             {/* Col 2: Navigation */}
@@ -119,20 +122,22 @@ const navLinks = [
             <div>
               <p class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">External</p>
               <div class="flex flex-col gap-1.5 font-mono text-xs">
-                <a href="https://github.com/neoneye" target="_blank" rel="noopener"
-                   class="text-text-muted hover:text-node-blue transition-colors">github.com/neoneye</a>
                 <a href="https://github.com/VoynichLabs" target="_blank" rel="noopener"
                    class="text-text-muted hover:text-node-blue transition-colors">github.com/VoynichLabs</a>
-                <a href="https://loda-lang.org" target="_blank" rel="noopener"
-                   class="text-text-muted hover:text-edge-green transition-colors">loda-lang.org</a>
+                <a href="https://arc.markbarney.net" target="_blank" rel="noopener"
+                   class="text-text-muted hover:text-node-blue transition-colors">arc.markbarney.net</a>
                 <a href="https://markbarney.net" target="_blank" rel="noopener"
                    class="text-text-muted hover:text-node-blue transition-colors">markbarney.net</a>
+                <a href="https://github.com/neoneye" target="_blank" rel="noopener"
+                   class="text-text-muted hover:text-node-blue transition-colors">github.com/neoneye</a>
+                <a href="https://loda-lang.org" target="_blank" rel="noopener"
+                   class="text-text-muted hover:text-edge-green transition-colors">loda-lang.org</a>
               </div>
             </div>
           </div>
           <div class="mt-10 pt-6 border-t border-border flex items-center justify-between text-xs font-mono text-text-muted">
             <span>&copy; {new Date().getFullYear()} VoynichLabs</span>
-            <span class="text-border">Simon Strandgaard &middot; <a href="https://markbarney.net" target="_blank" rel="noopener" class="hover:text-text-muted transition-colors">Mark Barney</a></span>
+            <span class="text-border"><a href="https://markbarney.net" target="_blank" rel="noopener" class="hover:text-text-muted transition-colors">Mark Barney</a> &middot; Simon Strandgaard</span>
           </div>
         </div>
       </footer>
