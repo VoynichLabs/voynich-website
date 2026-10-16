@@ -5,6 +5,18 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.59.0] - 2026-10-16
+
+### Changed
+- Voynich pages no longer describe what is in each picture: the per-page captions, curator notes and section blurbs are gone. Pages are labelled only by folio (and grouped by section); the images speak for themselves.
+
+### Added
+- "Go deeper" credit for René Zandbergen's voynich.nu on the story page and the whole-book page, with links to its history, illustrations, script, decipherment and transliteration pages and to the Voynich MS Conference 2026 at the University of Malta. States plainly that VoynichLabs is not affiliated with voynich.nu. A one-line version sits in the reader. The reader's text is noted as released CC0 by voynich.nu.
+
+Author: Claude Opus 5.5 Low
+
+---
+
 ## [0.58.0] - 2026-10-16
 
 ### Fixed

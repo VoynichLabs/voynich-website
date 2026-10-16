@@ -6,11 +6,12 @@
 //          deep-zoom reader), the script and what its statistics say, the chain of owners, the
 //          people who tried to read it, and the main ideas about what it could be. Leads readers
 //          into /voynich-manuscript/book, the complete page-by-page reader.
-// SRP/DRY check: Pass — sections, notes and page lookups come from src/lib/voynich.ts; images are
+// SRP/DRY check: Pass — sections and page lookups come from src/lib/voynich.ts; images are
 //          the folio scans in public/voynich/folios (Yale, public domain).
 import Base from '../layouts/Base.astro';
 import { optimized } from '../lib/optimized-image';
-import { pages, sections, sectionBlurbs, notes, pageBySlug, pageTitle, pageKind, credit } from '../lib/voynich';
+import VoynichNuCredit from '../components/VoynichNuCredit.astro';
+import { pages, sections, pageBySlug, pageTitle, credit } from '../lib/voynich';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const book = `${base}/voynich-manuscript/book`;
@@ -23,8 +24,6 @@ const shot = (file: string, slug = file) => {
     thumb: optimized(`/voynich/folios/${file}.jpg`, 'thumb'),
     href: `${book}/${slug}`,
     title: pageTitle(page),
-    kind: pageKind(page),
-    note: notes[slug],
     wide: page.width > page.height * 1.1,
   };
 };
@@ -45,7 +44,7 @@ const tour = [
 ].map((t) => {
   const s = sections.find((x) => x.id === t.id)!;
   const first = pages.find((p) => p.section === t.id)!;
-  return { ...t, name: s.name, range: `folios ${s.from}–${s.to}`, blurb: sectionBlurbs[t.id], start: `${book}/${first.slug}` };
+  return { ...t, name: s.name, range: `folios ${s.from}–${s.to}`, start: `${book}/${first.slug}` };
 });
 
 const owners = [
@@ -127,7 +126,7 @@ const wall = ['f1r', 'f3v', 'f42r', 'f49v', 'f56r', 'f69r', 'f72v', 'f73r', 'f79
           {[shot('cover', 'front-cover'), shot('f1r')].map((s) => (
             <a href={s.href} class="group block">
               <img src={s.src} alt={`${s.title} of the Voynich Manuscript`} loading="lazy" class="w-full rounded-sm v-frame group-hover:opacity-100 opacity-90 transition-opacity" />
-              <p class="mt-2 font-mono text-[11px] opacity-60" style="color: #c8b89a;">{s.title} · {s.kind}</p>
+              <p class="mt-2 font-mono text-[11px] opacity-60" style="color: #c8b89a;">{s.title}</p>
             </a>
           ))}
         </div>
@@ -156,10 +155,10 @@ const wall = ['f1r', 'f3v', 'f42r', 'f49v', 'f56r', 'f69r', 'f72v', 'f73r', 'f79
           </div>
           <div class:list={['grid gap-3', t.shots.length === 1 ? 'grid-cols-1' : t.shots.length <= 4 ? 'grid-cols-2 lg:grid-cols-4' : 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4']}>
             {t.shots.map((s) => (
-              <a href={s.href} class:list={['group block relative overflow-hidden rounded-sm v-frame', { 'col-span-2 lg:col-span-2': s.wide && t.shots.length > 1 }]} title={s.note ?? s.title}>
+              <a href={s.href} class:list={['group block relative overflow-hidden rounded-sm v-frame', { 'col-span-2 lg:col-span-2': s.wide && t.shots.length > 1 }]} title={s.title}>
                 <img src={t.shots.length === 1 ? s.src : s.thumb} alt={`${s.title} of the Voynich Manuscript, ${t.name.toLowerCase()} section`} loading="lazy"
                      class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.02] transition duration-500" />
-                <span class="absolute bottom-0 left-0 right-0 px-3 py-2 font-mono text-[11px]" style="background: linear-gradient(transparent, rgba(0,0,0,0.85)); color: #f5e6c8;">{s.title} · {s.kind}</span>
+                <span class="absolute bottom-0 left-0 right-0 px-3 py-2 font-mono text-[11px]" style="background: linear-gradient(transparent, rgba(0,0,0,0.85)); color: #f5e6c8;">{s.title}</span>
               </a>
             ))}
           </div>
@@ -291,11 +290,11 @@ const wall = ['f1r', 'f3v', 'f42r', 'f49v', 'f56r', 'f69r', 'f72v', 'f73r', 'f79
           plans, patterns in data. The Voynich Manuscript is the oldest open problem of that kind,
           and we would love to help crack it. In the meantime we can just enjoy it.
         </p>
-        <div class="mt-14 pt-8 border-t v-rule text-sm leading-relaxed" style="color: #c8b89a;">
+        <div class="mt-14"><VoynichNuCredit /></div>
+        <div class="mt-10 pt-8 border-t v-rule text-sm leading-relaxed" style="color: #c8b89a;">
           <p class="mb-4">Scans: {credit}. Public domain.</p>
           <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
             <a href="https://collections.library.yale.edu/catalog/2002046" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-text-primary">Yale catalogue record</a>
-            <a href="https://www.voynich.nu/" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-text-primary">voynich.nu (René Zandbergen)</a>
             <a href="https://en.wikipedia.org/wiki/Voynich_manuscript" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-text-primary">Wikipedia</a>
           </div>
         </div>

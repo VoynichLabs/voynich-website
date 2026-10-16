@@ -2,14 +2,12 @@
 // Date: 2026-10-16
 // PURPOSE: One place for everything the Voynich pages need to know about the manuscript's scans:
 //          the ordered page list (from src/data/voynich-pages.json, written by
-//          scripts/fetch-voynich-pages.mjs), sections, missing folios, curator notes, and URL
+//          scripts/fetch-voynich-pages.mjs), sections, missing folios, and URL
 //          helpers for local thumbnails and Yale's IIIF deep-zoom service.
-// 2026-10-16: pageKind() captions pages by what they show (src/data/voynich-kinds.ts).
+// 2026-10-16: per-page descriptions, notes and section blurbs removed; pages show only their folio.
 // SRP/DRY check: Pass — the reader, the book overview, the story page and the home page all
 //          read from here instead of hardcoding folios.
 import data from '../data/voynich-pages.json';
-import { voynichNotes } from '../data/voynich-notes';
-import { kindBySection, kindOverrides } from '../data/voynich-kinds';
 
 export interface VoynichPage {
   slug: string;
@@ -34,23 +32,6 @@ export const pages: VoynichPage[] = data.pages;
 export const sections: VoynichSection[] = data.sections;
 export const missingFolios: number[] = data.missing;
 export const credit: string = data.credit;
-export const notes = voynichNotes;
-
-/** Short descriptions for each section, shown on the book overview and in the reader. */
-export const sectionBlurbs: Record<string, string> = {
-  binding: 'The covers, flyleaves and edges of the book as it survives today.',
-  herbal: 'Page after page of plants, each with a block of text. Almost none of them can be matched to a real species.',
-  astronomical: 'Circular diagrams of suns, moons and stars, then the zodiac: rings of small figures, most holding a star, around a central sign.',
-  biological: 'Small nude figures bathing in pools joined by tubes and channels, with long pages of text between them. The strangest pictures in the book.',
-  cosmological: 'The great foldout: nine linked circles on one sheet, the largest drawing in the manuscript.',
-  pharmaceutical: 'Jars and containers drawn beside neat rows of roots and leaves, like an apothecary\'s reference, with more full-page plants mixed in.',
-  recipes: 'Dense text in short paragraphs, each marked with a little star in the margin.',
-};
-
-/** What the page actually shows, e.g. "Plant" or "Zodiac: Pisces" — the caption under every image. */
-export function pageKind(p: VoynichPage): string {
-  return kindOverrides[p.slug] ?? kindBySection[p.section] ?? 'Page';
-}
 
 export function sectionName(id: string): string {
   return sections.find((s) => s.id === id)?.name ?? 'Binding';

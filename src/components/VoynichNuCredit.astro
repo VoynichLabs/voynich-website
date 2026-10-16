@@ -1,0 +1,43 @@
+---
+// Author: Claude Opus 5.5 Low
+// Date: 2026-10-16
+// PURPOSE: Credit and pointer to René Zandbergen's voynich.nu, the leading Voynich research site:
+//          says plainly that VoynichLabs is not affiliated with it, recommends it, and mentions the
+//          University of Malta Voynich conference. voynich.nu asks reusers to acknowledge the
+//          source and link back; the transliteration we show is released there under CC0.
+//          Variants: "full" (story and book pages) and "short" (one line, e.g. the reader text tab).
+// SRP/DRY check: Pass — the one place this credit is worded, reused by every Voynich page.
+interface Props { variant?: 'full' | 'short' }
+const { variant = 'full' } = Astro.props;
+---
+{variant === 'short' ? (
+  <p class="text-[11px] leading-relaxed" style="color: #c8b89a;">
+    Transliteration by René Zandbergen and Gabriel Landini, from
+    <a href="https://www.voynich.nu/transcr.html" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-text-primary">voynich.nu</a>
+    (released CC0). We are not affiliated with voynich.nu, but it is the best place to go deeper.
+  </p>
+) : (
+  <div class="rounded-sm p-6 sm:p-8 text-left" style="border: 1px solid rgba(200,184,154,0.25); background: rgba(20,15,10,0.6);">
+    <p class="font-mono text-[11px] uppercase tracking-widest mb-3" style="color: #c8b89a;">Go deeper</p>
+    <p class="text-lg leading-relaxed mb-4" style="font-family: Georgia, serif; color: #f5e6c8;">
+      The best resource on the Voynich Manuscript is
+      <a href="https://www.voynich.nu/" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4">voynich.nu</a>,
+      built by René Zandbergen and kept up for more than twenty years.
+    </p>
+    <p class="text-sm leading-relaxed mb-4" style="color: #d8cab0;">
+      It covers the manuscript's
+      <a href="https://www.voynich.nu/history.html" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2">history</a>,
+      its <a href="https://www.voynich.nu/illustr.html" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2">illustrations</a>,
+      the <a href="https://www.voynich.nu/writing.html" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2">script</a>,
+      every major <a href="https://www.voynich.nu/solvers.html" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2">decipherment attempt</a>,
+      and the <a href="https://www.voynich.nu/transcr.html" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2">transliterations</a>
+      researchers use. The page-by-page text in our reader comes from there.
+      There is even a research conference: the
+      <a href="https://www.um.edu.mt/events/voynich2026/" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2">Voynich MS Conference 2026</a>
+      at the University of Malta.
+    </p>
+    <p class="text-xs leading-relaxed" style="color: #c8b89a;">
+      VoynichLabs is not affiliated with voynich.nu or its author. We just think it is a wonderful resource and encourage everyone to explore it.
+    </p>
+  </div>
+)}

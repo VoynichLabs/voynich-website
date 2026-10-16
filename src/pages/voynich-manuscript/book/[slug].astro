@@ -8,12 +8,14 @@
 //          book. Every page still has its own static URL for links, sharing and search engines.
 //          Controls: arrow keys or side buttons to turn, + / - / 0 to zoom, F for fullscreen,
 //          and a strip of every page along the bottom with the current one highlighted.
-//          A "Text" tab beside the notes shows the page's transcription (loaded on demand from
+//          A "Text" tab beside the About tab shows the page's transcription (loaded on demand from
 //          public/voynich/text, built by scripts/build-voynich-text.mjs); images stay the focus.
-// SRP/DRY check: Pass — page data, notes and URL helpers come from src/lib/voynich.ts.
+// 2026-10-16: per-page descriptions and notes removed at the Boss's request; images speak for themselves.
+// SRP/DRY check: Pass — page data and URL helpers come from src/lib/voynich.ts.
 import Base from '../../../layouts/Base.astro';
+import VoynichNuCredit from '../../../components/VoynichNuCredit.astro';
 import {
-  pages, notes, credit, sectionName, sectionBlurbs, pageTitle, pageKind, thumbUrl, iiifImage, pageBySlug,
+  pages, credit, sectionName, pageTitle, thumbUrl, iiifImage, pageBySlug,
 } from '../../../lib/voynich';
 
 export function getStaticPaths() {
@@ -31,10 +33,7 @@ const next = pages[index + 1];
 const clientPages = pages.map((p) => ({
   slug: p.slug,
   title: pageTitle(p),
-  kind: pageKind(p),
   section: sectionName(p.section),
-  blurb: sectionBlurbs[p.section] ?? '',
-  note: notes[p.slug] ?? '',
   service: p.service,
   width: p.width,
   height: p.height,
@@ -42,8 +41,7 @@ const clientPages = pages.map((p) => ({
 }));
 
 const title = `${pageTitle(page)} · The Voynich Manuscript`;
-const description = notes[page.slug]
-  ?? `${pageTitle(page)} of the Voynich Manuscript (Beinecke MS 408): ${pageKind(page).toLowerCase()}. Zoom into Yale's full-resolution scan, page by page.`;
+const description = `${pageTitle(page)} of the Voynich Manuscript (Beinecke MS 408). Zoom into Yale's full-resolution scan, page by page.`;
 let lastSection = '';
 ---
 <Base title={title} description={description} ogImage={iiifImage(page, 1200)} hideFooter>
@@ -61,7 +59,7 @@ let lastSection = '';
       </a>
       <div class="flex items-baseline gap-3 min-w-0">
         <h1 id="vr-title" class="vr-serif text-lg sm:text-xl truncate">{pageTitle(page)}</h1>
-        <span id="vr-kind" class="font-mono text-[11px] uppercase tracking-widest vr-muted whitespace-nowrap">{pageKind(page)}</span>
+        <span id="vr-section" class="font-mono text-[11px] uppercase tracking-widest vr-muted whitespace-nowrap">{sectionName(page.section)}</span>
       </div>
       <span class="font-mono text-[11px] vr-muted whitespace-nowrap">
         page <span id="vr-count">{index + 1}</span> of {pages.length}
@@ -102,23 +100,15 @@ let lastSection = '';
             for one shape in the Voynich script. It is a transcription, not a translation: nobody can read it.
           </p>
           <div id="vr-text" class="vr-text"></div>
-          <p class="text-[11px] vr-muted leading-relaxed mt-6 pt-4 border-t border-border">
-            Transcription by René Zandbergen and Gabriel Landini,
-            <a href="https://www.voynich.nu/transcr.html" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-text-primary">voynich.nu</a>.
-          </p>
+          <div class="mt-6 pt-4 border-t border-border"><VoynichNuCredit variant="short" /></div>
         </div>
         <div id="vr-tab-about" role="tabpanel">
-        <div id="vr-notebox" class:list={[{ hidden: !notes[page.slug] }]}>
-          <p class="font-mono text-[11px] uppercase tracking-widest vr-muted mb-2">About this page</p>
-          <p id="vr-note" class="vr-serif text-[17px] leading-relaxed mb-6">{notes[page.slug]}</p>
-        </div>
-        <p class="font-mono text-[11px] uppercase tracking-widest vr-muted mb-2">The section: <span id="vr-section">{sectionName(page.section)}</span></p>
-        <p id="vr-blurb" class="text-sm text-text-secondary leading-relaxed mb-8">{sectionBlurbs[page.section]}</p>
-        <div class="text-xs vr-muted leading-relaxed space-y-2 border-t border-border pt-5">
+        <div class="text-xs vr-muted leading-relaxed space-y-2">
           <p>Drag to move. Scroll or pinch to zoom all the way into the vellum.</p>
           <p>Arrow keys turn pages. <kbd>+</kbd> <kbd>-</kbd> zoom, <kbd>0</kbd> fits the page, <kbd>F</kbd> goes fullscreen.</p>
           <p class="pt-3">Scans: {credit}. Public domain.</p>
           <p><a href={`${base}/voynich-manuscript`} class="hover:text-text-primary underline underline-offset-2">Read the story of the manuscript &rarr;</a></p>
+          <div class="pt-3"><VoynichNuCredit variant="short" /></div>
         </div>
         </div>
       </aside>
@@ -135,7 +125,7 @@ let lastSection = '';
               {showSection && i > 0 && <span class="vr-divider" aria-hidden="true"></span>}
               <a href={`${base}/voynich-manuscript/book/${p.slug}`} data-i={i}
                  class:list={['vr-thumb', { 'is-current': i === index }]}
-                 title={`${pageTitle(p)} · ${pageKind(p)}`}>
+                 title={pageTitle(p)}>
                 <img src={thumbUrl(base, p)} alt={pageTitle(p)} loading="lazy" decoding="async"
                      style={`aspect-ratio: ${p.width} / ${p.height};`} />
               </a>
@@ -202,7 +192,7 @@ let lastSection = '';
   import OpenSeadragon from 'openseadragon';
 
   interface ClientPage {
-    slug: string; title: string; kind: string; section: string; blurb: string; note: string;
+    slug: string; title: string; section: string;
     service: string; width: number; height: number; thumb: string;
   }
 
@@ -327,12 +317,8 @@ let lastSection = '';
   function render() {
     const p = book[current];
     $('vr-title').textContent = p.title;
-    $('vr-kind').textContent = p.kind;
     $('vr-section').textContent = p.section;
     $('vr-count').textContent = String(current + 1);
-    $('vr-blurb').textContent = p.blurb;
-    $('vr-note').textContent = p.note;
-    $('vr-notebox').classList.toggle('hidden', !p.note);
     document.title = `${p.title} · The Voynich Manuscript | VoynichLabs`;
     setArrow($('vr-prev'), current - 1);
     setArrow($('vr-next'), current + 1);

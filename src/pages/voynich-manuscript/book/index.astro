@@ -7,8 +7,9 @@
 //          Each thumbnail opens that page in the deep-zoom reader.
 // SRP/DRY check: Pass — page data, sections and missing-folio runs come from src/lib/voynich.ts.
 import Base from '../../../layouts/Base.astro';
+import VoynichNuCredit from '../../../components/VoynichNuCredit.astro';
 import {
-  pages, sections, sectionBlurbs, pageTitle, pageKind, thumbUrl, missingFolios, credit, notes,
+  pages, sections, pageTitle, thumbUrl, missingFolios, credit,
 } from '../../../lib/voynich';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -41,9 +42,9 @@ function cellsFor(id: string, from: number, to: number): Cell[] {
 }
 
 const groups = [
-  { id: 'front', name: 'Covers', blurb: sectionBlurbs.binding, cells: front.map((p) => ({ kind: 'page', page: p, i: pages.indexOf(p) }) as Cell) },
-  ...sections.map((s) => ({ id: s.id, name: s.name, blurb: sectionBlurbs[s.id], cells: cellsFor(s.id, s.from, s.to) })),
-  { id: 'back', name: 'Back of the book', blurb: 'Flyleaf, back cover, and the edges and spine of the volume.', cells: back.map((p) => ({ kind: 'page', page: p, i: pages.indexOf(p) }) as Cell) },
+  { id: 'front', name: 'Covers', cells: front.map((p) => ({ kind: 'page', page: p, i: pages.indexOf(p) }) as Cell) },
+  ...sections.map((s) => ({ id: s.id, name: s.name, range: `folios ${s.from}–${s.to}`, cells: cellsFor(s.id, s.from, s.to) })),
+  { id: 'back', name: 'Back of the book', cells: back.map((p) => ({ kind: 'page', page: p, i: pages.indexOf(p) }) as Cell) },
 ];
 const textPages = pages.filter((p) => p.section !== 'binding').length;
 ---
@@ -84,21 +85,20 @@ const textPages = pages.filter((p) => p.section !== 'binding').length;
               {g.cells.filter((c) => c.kind === 'page').length} images
             </span>
           </div>
-          <p class="text-sm max-w-2xl leading-relaxed mb-8" style="color: #c8b89a;">{g.blurb}</p>
+          <p class="font-mono text-[11px] mb-8" style="color: #c8b89a; opacity: 0.6;">{'range' in g ? g.range : ''}</p>
           <ol class="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-8 gap-3">
             {g.cells.map((c) => c.kind === 'page' ? (
               <li>
-                <a href={`${base}/voynich-manuscript/book/${c.page.slug}`} class="group block" title={notes[c.page.slug] ?? pageTitle(c.page)}>
+                <a href={`${base}/voynich-manuscript/book/${c.page.slug}`} class="group block" title={pageTitle(c.page)}>
                   <div class="aspect-[3/4] overflow-hidden rounded-sm flex items-center justify-center transition-colors"
                        style="background: #15100a; border: 1px solid rgba(200,184,154,0.12);">
-                    <img src={thumbUrl(base, c.page)} alt={`${pageTitle(c.page)}: ${pageKind(c.page)}`}
+                    <img src={thumbUrl(base, c.page)} alt={`${pageTitle(c.page)} of the Voynich Manuscript`}
                          loading="lazy" decoding="async"
                          class="max-w-full max-h-full object-contain opacity-80 group-hover:opacity-100 group-hover:scale-[1.03] transition duration-300" />
                   </div>
                   <p class="mt-1.5 font-mono text-[11px] truncate" style="color: #c8b89a;">
-                    {c.page.folios.length ? `f${c.page.slug.slice(1)}` : pageKind(c.page)}{notes[c.page.slug] && <span title="Has a note" style="color: #f5e6c8;"> ✦</span>}
+                    {c.page.label.replace(/[[\]]/g, '').replace(/ \(part of 85-86 foldout\)/, '')}
                   </p>
-                  {c.page.folios.length > 0 && <p class="text-[11px] truncate opacity-70" style="color: #c8b89a;">{pageKind(c.page)}</p>}
                 </a>
               </li>
             ) : (
@@ -121,7 +121,6 @@ const textPages = pages.filter((p) => p.section !== 'binding').length;
       <div class="max-w-3xl mx-auto px-4 sm:px-6 py-14 text-sm leading-relaxed" style="color: #c8b89a;">
         <p class="mb-3">
           Sections follow the grouping researchers have used for decades; foldouts sit with their first folio.
-          Pages marked ✦ have a short note in the reader.
         </p>
         <p class="mb-6">
           Scans: {credit}, streamed in full resolution from Yale's public image server. The manuscript is in the public domain.
@@ -129,6 +128,7 @@ const textPages = pages.filter((p) => p.section !== 'binding').length;
         <a href={`${base}/voynich-manuscript`} class="font-mono text-xs underline underline-offset-2 hover:text-text-primary">
           read the story of the manuscript &rarr;
         </a>
+        <div class="mt-10"><VoynichNuCredit /></div>
       </div>
     </section>
   </div>
