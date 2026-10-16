@@ -11,7 +11,7 @@
 // SRP/DRY check: Pass — reuses Base layout; manuscript pages come from src/lib/voynich.ts
 import Base from '../layouts/Base.astro';
 import { optimized } from '../lib/optimized-image';
-import { pages as voynichPages, pageBySlug, pageTitle, thumbUrl, sectionName } from '../lib/voynich';
+import { pages as voynichPages, pageBySlug, pageTitle, pageKind, thumbUrl } from '../lib/voynich';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const siteDirectory = [
   { href: `${base}/voynich-manuscript`, label: 'voynich', desc: 'Our write-up on the manuscript the lab is named after. Six centuries, still unread.' },
@@ -155,14 +155,14 @@ const textPageCount = voynichPages.filter((p) => p.section !== 'binding').length
       <ol class="flex gap-4 px-4 sm:px-6 w-max">
         {ribbon.map((p) => (
           <li>
-            <a href={`${base}/voynich-manuscript/book/${p.slug}`} class="group block" title={`${pageTitle(p)} · ${sectionName(p.section)}`}>
+            <a href={`${base}/voynich-manuscript/book/${p.slug}`} class="group block" title={`${pageTitle(p)} · ${pageKind(p)}`}>
               <div class="h-56 sm:h-72 overflow-hidden rounded-sm" style="border: 1px solid rgba(200,184,154,0.18); background: #15100a;">
                 <img src={thumbUrl(base, p)} alt={`${pageTitle(p)} of the Voynich Manuscript`} loading="lazy" decoding="async"
                      class="h-full w-auto opacity-85 group-hover:opacity-100 group-hover:scale-[1.03] transition duration-500"
                      style={`aspect-ratio: ${p.width} / ${p.height};`} />
               </div>
               <p class="mt-2 font-mono text-[11px]" style="color: #c8b89a;">
-                {pageTitle(p)} <span class="opacity-60">· {sectionName(p.section)}</span>
+                {pageTitle(p)} <span class="opacity-60">· {pageKind(p)}</span>
               </p>
             </a>
           </li>

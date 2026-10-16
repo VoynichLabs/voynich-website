@@ -18,6 +18,9 @@ VoynichLabs, since Yale's own viewer does not do it justice.
   attempts, four leading ideas, why the lab is named after it.
 - Home: hero buttons open the book; a ribbon of real pages replaces the five-card strip.
 
+## Follow-up, same day
+- Captions by what each page shows (checked against every scan), replacing section-based captions.
+- Optional text tab in the reader (Zandbergen-Landini transcription), never the main view.
+
 ## Next (not in this version)
-- Transcription layer: the text of each page in the standard research alphabet, alongside the scan.
 - Word and letter statistics explorer; side-by-side page comparison; shareable zoomed views.

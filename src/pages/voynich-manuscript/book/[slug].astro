@@ -8,10 +8,12 @@
 //          book. Every page still has its own static URL for links, sharing and search engines.
 //          Controls: arrow keys or side buttons to turn, + / - / 0 to zoom, F for fullscreen,
 //          and a strip of every page along the bottom with the current one highlighted.
+//          A "Text" tab beside the notes shows the page's transcription (loaded on demand from
+//          public/voynich/text, built by scripts/build-voynich-text.mjs); images stay the focus.
 // SRP/DRY check: Pass — page data, notes and URL helpers come from src/lib/voynich.ts.
 import Base from '../../../layouts/Base.astro';
 import {
-  pages, notes, credit, sectionName, sectionBlurbs, pageTitle, thumbUrl, iiifImage, pageBySlug,
+  pages, notes, credit, sectionName, sectionBlurbs, pageTitle, pageKind, thumbUrl, iiifImage, pageBySlug,
 } from '../../../lib/voynich';
 
 export function getStaticPaths() {
@@ -29,6 +31,7 @@ const next = pages[index + 1];
 const clientPages = pages.map((p) => ({
   slug: p.slug,
   title: pageTitle(p),
+  kind: pageKind(p),
   section: sectionName(p.section),
   blurb: sectionBlurbs[p.section] ?? '',
   note: notes[p.slug] ?? '',
@@ -40,7 +43,7 @@ const clientPages = pages.map((p) => ({
 
 const title = `${pageTitle(page)} · The Voynich Manuscript`;
 const description = notes[page.slug]
-  ?? `${pageTitle(page)} of the Voynich Manuscript (Beinecke MS 408), ${sectionName(page.section).toLowerCase()} section. Zoom into Yale's full-resolution scan, page by page.`;
+  ?? `${pageTitle(page)} of the Voynich Manuscript (Beinecke MS 408): ${pageKind(page).toLowerCase()}. Zoom into Yale's full-resolution scan, page by page.`;
 let lastSection = '';
 ---
 <Base title={title} description={description} ogImage={iiifImage(page, 1200)} hideFooter>
@@ -58,7 +61,7 @@ let lastSection = '';
       </a>
       <div class="flex items-baseline gap-3 min-w-0">
         <h1 id="vr-title" class="vr-serif text-lg sm:text-xl truncate">{pageTitle(page)}</h1>
-        <span id="vr-section" class="font-mono text-[11px] uppercase tracking-widest vr-muted whitespace-nowrap">{sectionName(page.section)}</span>
+        <span id="vr-kind" class="font-mono text-[11px] uppercase tracking-widest vr-muted whitespace-nowrap">{pageKind(page)}</span>
       </div>
       <span class="font-mono text-[11px] vr-muted whitespace-nowrap">
         page <span id="vr-count">{index + 1}</span> of {pages.length}
@@ -89,17 +92,34 @@ let lastSection = '';
       </div>
 
       <aside id="vr-info" class="vr-info hidden lg:block w-80 shrink-0 border-l border-border overflow-y-auto p-6">
+        <div class="flex gap-4 mb-6 font-mono text-[11px] uppercase tracking-widest" role="tablist">
+          <button type="button" class="vr-tab is-active" data-tab="about" role="tab" aria-selected="true">About</button>
+          <button type="button" class="vr-tab" data-tab="text" role="tab" aria-selected="false">Text</button>
+        </div>
+        <div id="vr-tab-text" class="hidden" role="tabpanel">
+          <p class="text-xs vr-muted leading-relaxed mb-5">
+            The writing on this page, typed out by researchers letter by letter. Each Latin letter stands
+            for one shape in the Voynich script. It is a transcription, not a translation: nobody can read it.
+          </p>
+          <div id="vr-text" class="vr-text"></div>
+          <p class="text-[11px] vr-muted leading-relaxed mt-6 pt-4 border-t border-border">
+            Transcription by René Zandbergen and Gabriel Landini,
+            <a href="https://www.voynich.nu/transcr.html" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-text-primary">voynich.nu</a>.
+          </p>
+        </div>
+        <div id="vr-tab-about" role="tabpanel">
         <div id="vr-notebox" class:list={[{ hidden: !notes[page.slug] }]}>
           <p class="font-mono text-[11px] uppercase tracking-widest vr-muted mb-2">About this page</p>
           <p id="vr-note" class="vr-serif text-[17px] leading-relaxed mb-6">{notes[page.slug]}</p>
         </div>
-        <p class="font-mono text-[11px] uppercase tracking-widest vr-muted mb-2">The section</p>
+        <p class="font-mono text-[11px] uppercase tracking-widest vr-muted mb-2">The section: <span id="vr-section">{sectionName(page.section)}</span></p>
         <p id="vr-blurb" class="text-sm text-text-secondary leading-relaxed mb-8">{sectionBlurbs[page.section]}</p>
         <div class="text-xs vr-muted leading-relaxed space-y-2 border-t border-border pt-5">
           <p>Drag to move. Scroll or pinch to zoom all the way into the vellum.</p>
           <p>Arrow keys turn pages. <kbd>+</kbd> <kbd>-</kbd> zoom, <kbd>0</kbd> fits the page, <kbd>F</kbd> goes fullscreen.</p>
           <p class="pt-3">Scans: {credit}. Public domain.</p>
           <p><a href={`${base}/voynich-manuscript`} class="hover:text-text-primary underline underline-offset-2">Read the story of the manuscript &rarr;</a></p>
+        </div>
         </div>
       </aside>
     </div>
@@ -115,7 +135,7 @@ let lastSection = '';
               {showSection && i > 0 && <span class="vr-divider" aria-hidden="true"></span>}
               <a href={`${base}/voynich-manuscript/book/${p.slug}`} data-i={i}
                  class:list={['vr-thumb', { 'is-current': i === index }]}
-                 title={`${pageTitle(p)} · ${sectionName(p.section)}`}>
+                 title={`${pageTitle(p)} · ${pageKind(p)}`}>
                 <img src={thumbUrl(base, p)} alt={pageTitle(p)} loading="lazy" decoding="async"
                      style={`aspect-ratio: ${p.width} / ${p.height};`} />
               </a>
@@ -159,6 +179,15 @@ let lastSection = '';
   .vr-thumb img { height: 64px; width: auto; display: block; background: #1a140d; }
   .vr-thumb.is-current { opacity: 1; border-color: #f5e6c8; }
   .vr-divider { width: 1px; height: 64px; background: rgba(200, 184, 154, 0.35); margin: 0 6px; }
+  .vr-tab { color: #c8b89a; opacity: 0.55; padding-bottom: 4px; border-bottom: 1px solid transparent; }
+  .vr-tab:hover { opacity: 0.9; }
+  .vr-tab.is-active { opacity: 1; color: #f5e6c8; border-bottom-color: #f5e6c8; }
+  .vr-text { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: #e6d7bb; }
+  .vr-text h4 { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #c8b89a; opacity: 0.7; margin: 14px 0 6px; }
+  .vr-text p { margin: 0; }
+  .vr-text p.is-start { margin-top: 10px; }
+  .vr-text p.is-label { color: #c8b89a; font-style: italic; }
+  .vr-text p.is-label::before { content: 'label · '; opacity: 0.5; font-style: normal; }
   .vr-info kbd {
     font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 1px 5px;
     border: 1px solid rgba(200, 184, 154, 0.3); border-radius: 3px;
@@ -173,7 +202,7 @@ let lastSection = '';
   import OpenSeadragon from 'openseadragon';
 
   interface ClientPage {
-    slug: string; title: string; section: string; blurb: string; note: string;
+    slug: string; title: string; kind: string; section: string; blurb: string; note: string;
     service: string; width: number; height: number; thumb: string;
   }
 
@@ -243,9 +272,62 @@ let lastSection = '';
     if (ok) el.setAttribute('href', pageUrl(i)); else el.removeAttribute('href');
   }
 
+  // Optional text tab: each page's transcription is a small JSON file fetched only when the tab
+  // is open, so the reader stays an image viewer first.
+  type TextPanel = { panel: string; lines: { n: number; type: string; start: boolean; text: string }[] };
+  let tab: 'about' | 'text' = 'about';
+  const textCache = new Map<string, TextPanel[] | null>();
+  const KIND_LABEL: Record<string, string> = { circle: 'around a circle', radius: 'along a radius', label: 'labels', paragraph: '' };
+
+  async function loadText() {
+    const slug = book[current].slug;
+    const box = $('vr-text');
+    if (!textCache.has(slug)) {
+      box.textContent = 'Loading…';
+      try {
+        const r = await fetch(`${base}/voynich/text/${slug}.json`);
+        textCache.set(slug, r.ok ? await r.json() : null);
+      } catch { textCache.set(slug, null); }
+    }
+    if (book[current].slug !== slug) return; // page turned while loading
+    const panels = textCache.get(slug);
+    box.replaceChildren();
+    if (!panels?.length) { box.textContent = 'No writing on this page.'; return; }
+    for (const panel of panels) {
+      if (panels.length > 1) {
+        const h = document.createElement('h4');
+        h.textContent = `Panel ${panel.panel.slice(1)}`;
+        box.append(h);
+      }
+      for (const line of panel.lines) {
+        const el = document.createElement('p');
+        el.textContent = line.text;
+        if (line.start) el.classList.add('is-start');
+        if (line.type === 'label') el.classList.add('is-label');
+        else if (KIND_LABEL[line.type]) el.title = `Written ${KIND_LABEL[line.type]}`;
+        box.append(el);
+      }
+    }
+  }
+
+  function setTab(t: 'about' | 'text') {
+    tab = t;
+    document.querySelectorAll<HTMLButtonElement>('.vr-tab').forEach((b) => {
+      const on = b.dataset.tab === t;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-selected', String(on));
+    });
+    $('vr-tab-about').classList.toggle('hidden', t !== 'about');
+    $('vr-tab-text').classList.toggle('hidden', t !== 'text');
+    if (t === 'text') loadText();
+  }
+  document.querySelectorAll<HTMLButtonElement>('.vr-tab').forEach((b) =>
+    b.addEventListener('click', () => setTab(b.dataset.tab as 'about' | 'text')));
+
   function render() {
     const p = book[current];
     $('vr-title').textContent = p.title;
+    $('vr-kind').textContent = p.kind;
     $('vr-section').textContent = p.section;
     $('vr-count').textContent = String(current + 1);
     $('vr-blurb').textContent = p.blurb;
@@ -255,6 +337,7 @@ let lastSection = '';
     setArrow($('vr-prev'), current - 1);
     setArrow($('vr-next'), current + 1);
     showStripCurrent(true);
+    if (tab === 'text') loadText();
   }
 
   function go(i: number, push = true) {

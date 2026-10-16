@@ -8,7 +8,7 @@
 // SRP/DRY check: Pass — page data, sections and missing-folio runs come from src/lib/voynich.ts.
 import Base from '../../../layouts/Base.astro';
 import {
-  pages, sections, sectionBlurbs, sectionName, pageTitle, thumbUrl, missingFolios, credit, notes,
+  pages, sections, sectionBlurbs, pageTitle, pageKind, thumbUrl, missingFolios, credit, notes,
 } from '../../../lib/voynich';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -91,13 +91,14 @@ const textPages = pages.filter((p) => p.section !== 'binding').length;
                 <a href={`${base}/voynich-manuscript/book/${c.page.slug}`} class="group block" title={notes[c.page.slug] ?? pageTitle(c.page)}>
                   <div class="aspect-[3/4] overflow-hidden rounded-sm flex items-center justify-center transition-colors"
                        style="background: #15100a; border: 1px solid rgba(200,184,154,0.12);">
-                    <img src={thumbUrl(base, c.page)} alt={`${pageTitle(c.page)}, ${sectionName(c.page.section)}`}
+                    <img src={thumbUrl(base, c.page)} alt={`${pageTitle(c.page)}: ${pageKind(c.page)}`}
                          loading="lazy" decoding="async"
                          class="max-w-full max-h-full object-contain opacity-80 group-hover:opacity-100 group-hover:scale-[1.03] transition duration-300" />
                   </div>
                   <p class="mt-1.5 font-mono text-[11px] truncate" style="color: #c8b89a;">
-                    {c.page.label.replace(/[[\]]/g, '')}{notes[c.page.slug] && <span title="Has a note" style="color: #f5e6c8;"> ✦</span>}
+                    {c.page.folios.length ? `f${c.page.slug.slice(1)}` : pageKind(c.page)}{notes[c.page.slug] && <span title="Has a note" style="color: #f5e6c8;"> ✦</span>}
                   </p>
+                  {c.page.folios.length > 0 && <p class="text-[11px] truncate opacity-70" style="color: #c8b89a;">{pageKind(c.page)}</p>}
                 </a>
               </li>
             ) : (

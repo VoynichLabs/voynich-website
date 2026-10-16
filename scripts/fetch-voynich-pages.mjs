@@ -25,7 +25,7 @@ const UA = { 'User-Agent': 'VoynichLabs-site/1.0 (voynichlabs.org)' };
 const SECTIONS = [
   { id: 'herbal', name: 'Herbal', from: 1, to: 66 },
   { id: 'astronomical', name: 'Astronomical & Zodiac', from: 67, to: 74 },
-  { id: 'biological', name: 'Biological', from: 75, to: 84 },
+  { id: 'biological', name: 'Bathing', from: 75, to: 84 },
   { id: 'cosmological', name: 'Rosettes', from: 85, to: 86 },
   { id: 'pharmaceutical', name: 'Pharmaceutical', from: 87, to: 102 },
   { id: 'recipes', name: 'Recipes', from: 103, to: 116 },

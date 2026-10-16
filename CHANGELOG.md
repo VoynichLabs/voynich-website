@@ -5,6 +5,19 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.58.0] - 2026-10-16
+
+### Fixed
+- Voynich captions now say what each page actually shows ("Plant", "Text page", "Zodiac: Pisces", "Jars and plant parts" ...), checked by eye against every scan. Before, every image was captioned with its section, so text-only pages, the circle diagram and the late plant pages among the jars were mislabelled, and zodiac pages never named their sign.
+- Corrected notes for the first zodiac pages (Aries pages have fifteen figures, not thirty; Pisces carries the month name "mars") and the first astronomical spread. The "Biological" section is now called "Bathing".
+
+### Added
+- Optional "Text" tab in the book reader: the page's writing as typed out by researchers (Zandbergen-Landini transliteration, credited), loaded only when opened. Built per page by scripts/build-voynich-text.mjs into public/voynich/text.
+
+Author: Claude Opus 5.5 Low
+
+---
+
 ## [0.57.0] - 2026-10-16
 
 ### Added
