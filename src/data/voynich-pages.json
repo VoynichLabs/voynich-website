@@ -1,0 +1,2820 @@
+{
+ "source": "https://collections.library.yale.edu/manifests/2002046",
+ "credit": "Yale University Library, Beinecke MS 408",
+ "sections": [
+  {
+   "id": "herbal",
+   "name": "Herbal",
+   "from": 1,
+   "to": 66
+  },
+  {
+   "id": "astronomical",
+   "name": "Astronomical & Zodiac",
+   "from": 67,
+   "to": 74
+  },
+  {
+   "id": "biological",
+   "name": "Biological",
+   "from": 75,
+   "to": 84
+  },
+  {
+   "id": "cosmological",
+   "name": "Rosettes",
+   "from": 85,
+   "to": 86
+  },
+  {
+   "id": "pharmaceutical",
+   "name": "Pharmaceutical",
+   "from": 87,
+   "to": 102
+  },
+  {
+   "id": "recipes",
+   "name": "Recipes",
+   "from": 103,
+   "to": 116
+  }
+ ],
+ "missing": [
+  12,
+  59,
+  60,
+  61,
+  62,
+  63,
+  64,
+  74,
+  91,
+  92,
+  97,
+  98,
+  109,
+  110
+ ],
+ "pages": [
+  {
+   "slug": "front-cover",
+   "label": "[Front cover]",
+   "folios": [],
+   "section": "binding",
+   "service": "https://collections.library.yale.edu/iiif/2/1006074",
+   "width": 2931,
+   "height": 3865,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "inside-front-cover",
+   "label": "[Inside front cover]",
+   "folios": [],
+   "section": "binding",
+   "service": "https://collections.library.yale.edu/iiif/2/1006075",
+   "width": 2812,
+   "height": 3797,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f1r",
+   "label": "1r",
+   "folios": [
+    1
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006076",
+   "width": 2972,
+   "height": 3766,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f1v",
+   "label": "1v",
+   "folios": [
+    1
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006077",
+   "width": 2804,
+   "height": 3797,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f2r",
+   "label": "2r",
+   "folios": [
+    2
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006078",
+   "width": 2691,
+   "height": 3770,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f2v",
+   "label": "2v",
+   "folios": [
+    2
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006079",
+   "width": 2771,
+   "height": 3797,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f3r",
+   "label": "3r",
+   "folios": [
+    3
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006080",
+   "width": 2691,
+   "height": 3770,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f3v",
+   "label": "3v",
+   "folios": [
+    3
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006081",
+   "width": 2762,
+   "height": 3797,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f4r",
+   "label": "4r",
+   "folios": [
+    4
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006082",
+   "width": 2682,
+   "height": 3740,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f4v",
+   "label": "4v",
+   "folios": [
+    4
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006083",
+   "width": 2768,
+   "height": 3797,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f5r",
+   "label": "5r",
+   "folios": [
+    5
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006084",
+   "width": 2636,
+   "height": 3723,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f5v",
+   "label": "5v",
+   "folios": [
+    5
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006085",
+   "width": 2759,
+   "height": 3797,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f6r",
+   "label": "6r",
+   "folios": [
+    6
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006086",
+   "width": 2662,
+   "height": 3727,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f6v",
+   "label": "6v",
+   "folios": [
+    6
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006087",
+   "width": 2753,
+   "height": 3797,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f7r",
+   "label": "7r",
+   "folios": [
+    7
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006088",
+   "width": 2656,
+   "height": 3721,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f7v",
+   "label": "7v",
+   "folios": [
+    7
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006089",
+   "width": 2806,
+   "height": 3797,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f8r",
+   "label": "8r",
+   "folios": [
+    8
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006090",
+   "width": 2660,
+   "height": 3719,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f8v",
+   "label": "8v",
+   "folios": [
+    8
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006091",
+   "width": 2791,
+   "height": 3797,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f9r",
+   "label": "9r",
+   "folios": [
+    9
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006092",
+   "width": 2691,
+   "height": 3737,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f9v",
+   "label": "9v",
+   "folios": [
+    9
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006093",
+   "width": 2812,
+   "height": 3797,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f10r",
+   "label": "10r",
+   "folios": [
+    10
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006094",
+   "width": 2691,
+   "height": 3739,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f10v",
+   "label": "10v",
+   "folios": [
+    10
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006095",
+   "width": 2839,
+   "height": 3797,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f11r",
+   "label": "11r",
+   "folios": [
+    11
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006096",
+   "width": 2672,
+   "height": 3744,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f11v",
+   "label": "11v",
+   "folios": [
+    11
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006097",
+   "width": 2825,
+   "height": 3775,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f13r",
+   "label": "13r",
+   "folios": [
+    13
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006098",
+   "width": 2601,
+   "height": 3723,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f13v",
+   "label": "13v",
+   "folios": [
+    13
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006099",
+   "width": 2812,
+   "height": 3770,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f14r",
+   "label": "14r",
+   "folios": [
+    14
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006100",
+   "width": 2662,
+   "height": 3739,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f14v",
+   "label": "14v",
+   "folios": [
+    14
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006101",
+   "width": 2812,
+   "height": 3772,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f15r",
+   "label": "15r",
+   "folios": [
+    15
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006102",
+   "width": 2648,
+   "height": 3729,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f15v",
+   "label": "15v",
+   "folios": [
+    15
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006103",
+   "width": 2835,
+   "height": 3776,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f16r",
+   "label": "16r",
+   "folios": [
+    16
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006104",
+   "width": 2658,
+   "height": 3758,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f16v",
+   "label": "16v",
+   "folios": [
+    16
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006105",
+   "width": 2840,
+   "height": 3793,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f17r",
+   "label": "17r",
+   "folios": [
+    17
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006106",
+   "width": 2649,
+   "height": 3743,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f17v",
+   "label": "17v",
+   "folios": [
+    17
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006107",
+   "width": 2843,
+   "height": 3775,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f18r",
+   "label": "18r",
+   "folios": [
+    18
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006108",
+   "width": 2649,
+   "height": 3743,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f18v",
+   "label": "18v",
+   "folios": [
+    18
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006109",
+   "width": 2846,
+   "height": 3781,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f19r",
+   "label": "19r",
+   "folios": [
+    19
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006110",
+   "width": 2649,
+   "height": 3743,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f19v",
+   "label": "19v",
+   "folios": [
+    19
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006111",
+   "width": 2849,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f20r",
+   "label": "20r",
+   "folios": [
+    20
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006112",
+   "width": 2649,
+   "height": 3743,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f20v",
+   "label": "20v",
+   "folios": [
+    20
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006113",
+   "width": 2849,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f21r",
+   "label": "21r",
+   "folios": [
+    21
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006114",
+   "width": 2649,
+   "height": 3743,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f21v",
+   "label": "21v",
+   "folios": [
+    21
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006115",
+   "width": 2849,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f22r",
+   "label": "22r",
+   "folios": [
+    22
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006116",
+   "width": 2649,
+   "height": 3743,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f22v",
+   "label": "22v",
+   "folios": [
+    22
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006117",
+   "width": 2849,
+   "height": 3795,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f23r",
+   "label": "23r",
+   "folios": [
+    23
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006118",
+   "width": 2650,
+   "height": 3705,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f23v",
+   "label": "23v",
+   "folios": [
+    23
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006119",
+   "width": 2849,
+   "height": 3780,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f24r",
+   "label": "24r",
+   "folios": [
+    24
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006120",
+   "width": 2688,
+   "height": 3719,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f24v",
+   "label": "24v",
+   "folios": [
+    24
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006121",
+   "width": 2864,
+   "height": 3771,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f25r",
+   "label": "25r",
+   "folios": [
+    25
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006122",
+   "width": 2709,
+   "height": 3743,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f25v",
+   "label": "25v",
+   "folios": [
+    25
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006123",
+   "width": 2863,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f26r",
+   "label": "26r",
+   "folios": [
+    26
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006124",
+   "width": 2727,
+   "height": 3743,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f26v",
+   "label": "26v",
+   "folios": [
+    26
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006125",
+   "width": 2849,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f27r",
+   "label": "27r",
+   "folios": [
+    27
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006126",
+   "width": 2708,
+   "height": 3743,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f27v",
+   "label": "27v",
+   "folios": [
+    27
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006127",
+   "width": 2849,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f28r",
+   "label": "28r",
+   "folios": [
+    28
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006128",
+   "width": 2727,
+   "height": 3743,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f28v",
+   "label": "28v",
+   "folios": [
+    28
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006129",
+   "width": 2885,
+   "height": 3780,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f29r",
+   "label": "29r",
+   "folios": [
+    29
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006130",
+   "width": 2718,
+   "height": 3743,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f29v",
+   "label": "29v",
+   "folios": [
+    29
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006131",
+   "width": 2876,
+   "height": 3777,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f30r",
+   "label": "30r",
+   "folios": [
+    30
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006132",
+   "width": 2742,
+   "height": 3743,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f30v",
+   "label": "30v",
+   "folios": [
+    30
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006133",
+   "width": 2849,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f31r",
+   "label": "31r",
+   "folios": [
+    31
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006134",
+   "width": 2717,
+   "height": 3743,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f31v",
+   "label": "31v",
+   "folios": [
+    31
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006135",
+   "width": 2849,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f32r",
+   "label": "32r",
+   "folios": [
+    32
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006136",
+   "width": 2734,
+   "height": 3731,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f32v",
+   "label": "32v",
+   "folios": [
+    32
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006137",
+   "width": 2849,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f33r",
+   "label": "33r",
+   "folios": [
+    33
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006138",
+   "width": 2766,
+   "height": 3743,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f33v",
+   "label": "33v",
+   "folios": [
+    33
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006139",
+   "width": 2871,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f34r",
+   "label": "34r",
+   "folios": [
+    34
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006140",
+   "width": 2777,
+   "height": 3743,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f34v",
+   "label": "34v",
+   "folios": [
+    34
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006141",
+   "width": 2881,
+   "height": 3787,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f35r",
+   "label": "35r",
+   "folios": [
+    35
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006142",
+   "width": 2793,
+   "height": 3743,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f35v",
+   "label": "35v",
+   "folios": [
+    35
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006143",
+   "width": 2853,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f36r",
+   "label": "36r",
+   "folios": [
+    36
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006144",
+   "width": 2793,
+   "height": 3743,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f36v",
+   "label": "36v",
+   "folios": [
+    36
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006145",
+   "width": 2849,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f37r",
+   "label": "37r",
+   "folios": [
+    37
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006146",
+   "width": 2793,
+   "height": 3743,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f37v",
+   "label": "37v",
+   "folios": [
+    37
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006147",
+   "width": 2882,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f38r",
+   "label": "38r",
+   "folios": [
+    38
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006148",
+   "width": 2793,
+   "height": 3743,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f38v",
+   "label": "38v",
+   "folios": [
+    38
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006149",
+   "width": 2882,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f39r",
+   "label": "39r",
+   "folios": [
+    39
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006150",
+   "width": 2793,
+   "height": 3743,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f39v",
+   "label": "39v",
+   "folios": [
+    39
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006151",
+   "width": 2882,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f40r",
+   "label": "40r",
+   "folios": [
+    40
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006152",
+   "width": 2793,
+   "height": 3734,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f40v",
+   "label": "40v",
+   "folios": [
+    40
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006153",
+   "width": 2882,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f41r",
+   "label": "41r",
+   "folios": [
+    41
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006154",
+   "width": 2840,
+   "height": 3743,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f41v",
+   "label": "41v",
+   "folios": [
+    41
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006155",
+   "width": 2882,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f42r",
+   "label": "42r",
+   "folios": [
+    42
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006156",
+   "width": 2843,
+   "height": 3743,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f42v",
+   "label": "42v",
+   "folios": [
+    42
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006157",
+   "width": 2882,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f43r",
+   "label": "43r",
+   "folios": [
+    43
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006158",
+   "width": 2837,
+   "height": 3751,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f43v",
+   "label": "43v",
+   "folios": [
+    43
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006159",
+   "width": 2882,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f44r",
+   "label": "44r",
+   "folios": [
+    44
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006160",
+   "width": 2799,
+   "height": 3728,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f44v",
+   "label": "44v",
+   "folios": [
+    44
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006161",
+   "width": 2882,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f45r",
+   "label": "45r",
+   "folios": [
+    45
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006162",
+   "width": 2823,
+   "height": 3706,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f45v",
+   "label": "45v",
+   "folios": [
+    45
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006163",
+   "width": 2900,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f46r",
+   "label": "46r",
+   "folios": [
+    46
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006164",
+   "width": 2865,
+   "height": 3719,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f46v",
+   "label": "46v",
+   "folios": [
+    46
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006165",
+   "width": 2938,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f47r",
+   "label": "47r",
+   "folios": [
+    47
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006166",
+   "width": 2826,
+   "height": 3716,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f47v",
+   "label": "47v",
+   "folios": [
+    47
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006167",
+   "width": 2932,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f48r",
+   "label": "48r",
+   "folios": [
+    48
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006168",
+   "width": 2859,
+   "height": 3719,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f48v",
+   "label": "48v",
+   "folios": [
+    48
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006169",
+   "width": 2950,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f49r",
+   "label": "49r",
+   "folios": [
+    49
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006170",
+   "width": 2837,
+   "height": 3762,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f49v",
+   "label": "49v",
+   "folios": [
+    49
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006171",
+   "width": 2935,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f50r",
+   "label": "50r",
+   "folios": [
+    50
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006172",
+   "width": 2840,
+   "height": 3751,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f50v",
+   "label": "50v",
+   "folios": [
+    50
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006173",
+   "width": 2942,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f51r",
+   "label": "51r",
+   "folios": [
+    51
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006174",
+   "width": 2835,
+   "height": 3764,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f51v",
+   "label": "51v",
+   "folios": [
+    51
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006175",
+   "width": 2927,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f52r",
+   "label": "52r",
+   "folios": [
+    52
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006176",
+   "width": 2826,
+   "height": 3757,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f52v",
+   "label": "52v",
+   "folios": [
+    52
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006177",
+   "width": 2935,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f53r",
+   "label": "53r",
+   "folios": [
+    53
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006178",
+   "width": 2793,
+   "height": 3707,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f53v",
+   "label": "53v",
+   "folios": [
+    53
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006179",
+   "width": 2940,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f54r",
+   "label": "54r",
+   "folios": [
+    54
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006180",
+   "width": 2793,
+   "height": 3718,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f54v",
+   "label": "54v",
+   "folios": [
+    54
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006181",
+   "width": 2999,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f55r",
+   "label": "55r",
+   "folios": [
+    55
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006182",
+   "width": 2793,
+   "height": 3738,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f55v",
+   "label": "55v",
+   "folios": [
+    55
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006183",
+   "width": 2979,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f56r",
+   "label": "56r",
+   "folios": [
+    56
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006184",
+   "width": 2793,
+   "height": 3707,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f56v",
+   "label": "56v",
+   "folios": [
+    56
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006185",
+   "width": 2979,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f57r",
+   "label": "57r",
+   "folios": [
+    57
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006186",
+   "width": 2823,
+   "height": 3733,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f57v",
+   "label": "57v",
+   "folios": [
+    57
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006187",
+   "width": 3028,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f58r",
+   "label": "58r",
+   "folios": [
+    58
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006188",
+   "width": 2793,
+   "height": 3749,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f58v",
+   "label": "58v",
+   "folios": [
+    58
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006189",
+   "width": 2986,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f65r",
+   "label": "65r",
+   "folios": [
+    65
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006190",
+   "width": 2793,
+   "height": 3707,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f65v",
+   "label": "65v",
+   "folios": [
+    65
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006191",
+   "width": 3010,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f66r",
+   "label": "66r",
+   "folios": [
+    66
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006192",
+   "width": 2793,
+   "height": 3707,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f66v",
+   "label": "66v",
+   "folios": [
+    66
+   ],
+   "section": "herbal",
+   "service": "https://collections.library.yale.edu/iiif/2/1006193",
+   "width": 2997,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f67r",
+   "label": "67r",
+   "folios": [
+    67
+   ],
+   "section": "astronomical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006194",
+   "width": 4972,
+   "height": 3738,
+   "foldout": true,
+   "part": false
+  },
+  {
+   "slug": "f67v",
+   "label": "67v",
+   "folios": [
+    67
+   ],
+   "section": "astronomical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006195",
+   "width": 5059,
+   "height": 3753,
+   "foldout": true,
+   "part": false
+  },
+  {
+   "slug": "f68r",
+   "label": "68r",
+   "folios": [
+    68
+   ],
+   "section": "astronomical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006196",
+   "width": 7993,
+   "height": 3828,
+   "foldout": true,
+   "part": false
+  },
+  {
+   "slug": "f68v",
+   "label": "68v",
+   "folios": [
+    68
+   ],
+   "section": "astronomical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006197",
+   "width": 8135,
+   "height": 3843,
+   "foldout": true,
+   "part": false
+  },
+  {
+   "slug": "f69r",
+   "label": "69r",
+   "folios": [
+    69
+   ],
+   "section": "astronomical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006198",
+   "width": 2793,
+   "height": 3763,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f69v-70r",
+   "label": "69v and 70r",
+   "folios": [
+    69,
+    70
+   ],
+   "section": "astronomical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006199",
+   "width": 8886,
+   "height": 3876,
+   "foldout": true,
+   "part": false
+  },
+  {
+   "slug": "f70v",
+   "label": "70v (part)",
+   "folios": [
+    70
+   ],
+   "section": "astronomical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006200",
+   "width": 3945,
+   "height": 3772,
+   "foldout": false,
+   "part": true
+  },
+  {
+   "slug": "f70v-2",
+   "label": "70v (part)",
+   "folios": [
+    70
+   ],
+   "section": "astronomical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006201",
+   "width": 2979,
+   "height": 3700,
+   "foldout": false,
+   "part": true
+  },
+  {
+   "slug": "f71r",
+   "label": "71r",
+   "folios": [
+    71
+   ],
+   "section": "astronomical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006202",
+   "width": 2793,
+   "height": 3762,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f71v-72r",
+   "label": "71v and 72r",
+   "folios": [
+    71,
+    72
+   ],
+   "section": "astronomical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006203",
+   "width": 8865,
+   "height": 3018,
+   "foldout": true,
+   "part": false
+  },
+  {
+   "slug": "f72v",
+   "label": "72v (part)",
+   "folios": [
+    72
+   ],
+   "section": "astronomical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006204",
+   "width": 5976,
+   "height": 3794,
+   "foldout": true,
+   "part": true
+  },
+  {
+   "slug": "f72v-2",
+   "label": "72v (part)",
+   "folios": [
+    72
+   ],
+   "section": "astronomical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006205",
+   "width": 2979,
+   "height": 3712,
+   "foldout": false,
+   "part": true
+  },
+  {
+   "slug": "f73r",
+   "label": "73r",
+   "folios": [
+    73
+   ],
+   "section": "astronomical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006206",
+   "width": 2834,
+   "height": 3761,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f73v",
+   "label": "73v",
+   "folios": [
+    73
+   ],
+   "section": "astronomical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006207",
+   "width": 2979,
+   "height": 3724,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f75r",
+   "label": "75r",
+   "folios": [
+    75
+   ],
+   "section": "biological",
+   "service": "https://collections.library.yale.edu/iiif/2/1006208",
+   "width": 2852,
+   "height": 3759,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f75v",
+   "label": "75v",
+   "folios": [
+    75
+   ],
+   "section": "biological",
+   "service": "https://collections.library.yale.edu/iiif/2/1006209",
+   "width": 2868,
+   "height": 3735,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f76r",
+   "label": "76r",
+   "folios": [
+    76
+   ],
+   "section": "biological",
+   "service": "https://collections.library.yale.edu/iiif/2/1006210",
+   "width": 2793,
+   "height": 3769,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f76v",
+   "label": "76v",
+   "folios": [
+    76
+   ],
+   "section": "biological",
+   "service": "https://collections.library.yale.edu/iiif/2/1006211",
+   "width": 2823,
+   "height": 3712,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f77r",
+   "label": "77r",
+   "folios": [
+    77
+   ],
+   "section": "biological",
+   "service": "https://collections.library.yale.edu/iiif/2/1006212",
+   "width": 2793,
+   "height": 3752,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f77v",
+   "label": "77v",
+   "folios": [
+    77
+   ],
+   "section": "biological",
+   "service": "https://collections.library.yale.edu/iiif/2/1006213",
+   "width": 2861,
+   "height": 3697,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f78r",
+   "label": "78r",
+   "folios": [
+    78
+   ],
+   "section": "biological",
+   "service": "https://collections.library.yale.edu/iiif/2/1006214",
+   "width": 2793,
+   "height": 3761,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f78v",
+   "label": "78v",
+   "folios": [
+    78
+   ],
+   "section": "biological",
+   "service": "https://collections.library.yale.edu/iiif/2/1006215",
+   "width": 2841,
+   "height": 3706,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f79r",
+   "label": "79r",
+   "folios": [
+    79
+   ],
+   "section": "biological",
+   "service": "https://collections.library.yale.edu/iiif/2/1006216",
+   "width": 2784,
+   "height": 3755,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f79v",
+   "label": "79v",
+   "folios": [
+    79
+   ],
+   "section": "biological",
+   "service": "https://collections.library.yale.edu/iiif/2/1006217",
+   "width": 2811,
+   "height": 3714,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f80r",
+   "label": "80r",
+   "folios": [
+    80
+   ],
+   "section": "biological",
+   "service": "https://collections.library.yale.edu/iiif/2/1006218",
+   "width": 2793,
+   "height": 3733,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f80v",
+   "label": "80v",
+   "folios": [
+    80
+   ],
+   "section": "biological",
+   "service": "https://collections.library.yale.edu/iiif/2/1006219",
+   "width": 2837,
+   "height": 3712,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f81r",
+   "label": "81r",
+   "folios": [
+    81
+   ],
+   "section": "biological",
+   "service": "https://collections.library.yale.edu/iiif/2/1006220",
+   "width": 2776,
+   "height": 3737,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f81v",
+   "label": "81v",
+   "folios": [
+    81
+   ],
+   "section": "biological",
+   "service": "https://collections.library.yale.edu/iiif/2/1006221",
+   "width": 2835,
+   "height": 3705,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f82r",
+   "label": "82r",
+   "folios": [
+    82
+   ],
+   "section": "biological",
+   "service": "https://collections.library.yale.edu/iiif/2/1006222",
+   "width": 2753,
+   "height": 3745,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f82v",
+   "label": "82v",
+   "folios": [
+    82
+   ],
+   "section": "biological",
+   "service": "https://collections.library.yale.edu/iiif/2/1006223",
+   "width": 2821,
+   "height": 3709,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f83r",
+   "label": "83r",
+   "folios": [
+    83
+   ],
+   "section": "biological",
+   "service": "https://collections.library.yale.edu/iiif/2/1006224",
+   "width": 2753,
+   "height": 3745,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f83v",
+   "label": "83v",
+   "folios": [
+    83
+   ],
+   "section": "biological",
+   "service": "https://collections.library.yale.edu/iiif/2/1006225",
+   "width": 2858,
+   "height": 3693,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f84r",
+   "label": "84r",
+   "folios": [
+    84
+   ],
+   "section": "biological",
+   "service": "https://collections.library.yale.edu/iiif/2/1006226",
+   "width": 2753,
+   "height": 3745,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f84v",
+   "label": "84v",
+   "folios": [
+    84
+   ],
+   "section": "biological",
+   "service": "https://collections.library.yale.edu/iiif/2/1006227",
+   "width": 2838,
+   "height": 3697,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f85r",
+   "label": "85r (part) (part of 85-86 foldout)",
+   "folios": [
+    85
+   ],
+   "section": "cosmological",
+   "service": "https://collections.library.yale.edu/iiif/2/1006228",
+   "width": 2775,
+   "height": 3745,
+   "foldout": true,
+   "part": true
+  },
+  {
+   "slug": "f85r-86v",
+   "label": "85r (part) 86v (part) (part of 85-86 foldout)",
+   "folios": [
+    85,
+    86
+   ],
+   "section": "cosmological",
+   "service": "https://collections.library.yale.edu/iiif/2/1006229",
+   "width": 7754,
+   "height": 3890,
+   "foldout": true,
+   "part": true
+  },
+  {
+   "slug": "f86v",
+   "label": "86v (part) (part of 85-86 foldout)",
+   "folios": [
+    86
+   ],
+   "section": "cosmological",
+   "service": "https://collections.library.yale.edu/iiif/2/1006230",
+   "width": 4897,
+   "height": 3788,
+   "foldout": true,
+   "part": true
+  },
+  {
+   "slug": "f85v-86r",
+   "label": "85v and 86r (foldout)",
+   "folios": [
+    85,
+    86
+   ],
+   "section": "cosmological",
+   "service": "https://collections.library.yale.edu/iiif/2/1006231",
+   "width": 7925,
+   "height": 7268,
+   "foldout": true,
+   "part": false
+  },
+  {
+   "slug": "f87r",
+   "label": "87r",
+   "folios": [
+    87
+   ],
+   "section": "pharmaceutical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006232",
+   "width": 2753,
+   "height": 3745,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f87v",
+   "label": "87v",
+   "folios": [
+    87
+   ],
+   "section": "pharmaceutical",
+   "service": "https://collections.library.yale.edu/iiif/2/1043429",
+   "width": 2893,
+   "height": 3697,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f88r",
+   "label": "88r",
+   "folios": [
+    88
+   ],
+   "section": "pharmaceutical",
+   "service": "https://collections.library.yale.edu/iiif/2/1037112",
+   "width": 2714,
+   "height": 3735,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f88v-89r",
+   "label": "88v and 89r",
+   "folios": [
+    88,
+    89
+   ],
+   "section": "pharmaceutical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006233",
+   "width": 9078,
+   "height": 3777,
+   "foldout": true,
+   "part": false
+  },
+  {
+   "slug": "f89v",
+   "label": "89v (part)",
+   "folios": [
+    89
+   ],
+   "section": "pharmaceutical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006234",
+   "width": 4204,
+   "height": 3809,
+   "foldout": true,
+   "part": true
+  },
+  {
+   "slug": "f89v-90r",
+   "label": "89v (part) and 90r",
+   "folios": [
+    89,
+    90
+   ],
+   "section": "pharmaceutical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006235",
+   "width": 7796,
+   "height": 3761,
+   "foldout": true,
+   "part": true
+  },
+  {
+   "slug": "f90r",
+   "label": "90r",
+   "folios": [
+    90
+   ],
+   "section": "pharmaceutical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006236",
+   "width": 2737,
+   "height": 3752,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f90v",
+   "label": "90v (part)",
+   "folios": [
+    90
+   ],
+   "section": "pharmaceutical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006237",
+   "width": 2838,
+   "height": 3697,
+   "foldout": false,
+   "part": true
+  },
+  {
+   "slug": "f93r",
+   "label": "93r",
+   "folios": [
+    93
+   ],
+   "section": "pharmaceutical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006238",
+   "width": 2718,
+   "height": 3758,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f93v",
+   "label": "93v",
+   "folios": [
+    93
+   ],
+   "section": "pharmaceutical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006239",
+   "width": 2838,
+   "height": 3697,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f94r",
+   "label": "94r",
+   "folios": [
+    94
+   ],
+   "section": "pharmaceutical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006240",
+   "width": 2728,
+   "height": 3754,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f94v-95r",
+   "label": "94v and 95r",
+   "folios": [
+    94,
+    95
+   ],
+   "section": "pharmaceutical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006241",
+   "width": 7642,
+   "height": 3801,
+   "foldout": true,
+   "part": false
+  },
+  {
+   "slug": "f95v",
+   "label": "95v (part)",
+   "folios": [
+    95
+   ],
+   "section": "pharmaceutical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006242",
+   "width": 2731,
+   "height": 3750,
+   "foldout": false,
+   "part": true
+  },
+  {
+   "slug": "f95v-2",
+   "label": "95v",
+   "folios": [
+    95
+   ],
+   "section": "pharmaceutical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006243",
+   "width": 2838,
+   "height": 3697,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f96r",
+   "label": "96r",
+   "folios": [
+    96
+   ],
+   "section": "pharmaceutical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006244",
+   "width": 2699,
+   "height": 3745,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f96v",
+   "label": "96v",
+   "folios": [
+    96
+   ],
+   "section": "pharmaceutical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006245",
+   "width": 2858,
+   "height": 3697,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f99r",
+   "label": "99r",
+   "folios": [
+    99
+   ],
+   "section": "pharmaceutical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006246",
+   "width": 2702,
+   "height": 3765,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f99v",
+   "label": "99v",
+   "folios": [
+    99
+   ],
+   "section": "pharmaceutical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006247",
+   "width": 2802,
+   "height": 3697,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f100r",
+   "label": "100r",
+   "folios": [
+    100
+   ],
+   "section": "pharmaceutical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006248",
+   "width": 2676,
+   "height": 3756,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f100v-101r",
+   "label": "100v and 101r",
+   "folios": [
+    100,
+    101
+   ],
+   "section": "pharmaceutical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006249",
+   "width": 7486,
+   "height": 3715,
+   "foldout": true,
+   "part": false
+  },
+  {
+   "slug": "f101v",
+   "label": "101v (part)",
+   "folios": [
+    101
+   ],
+   "section": "pharmaceutical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006250",
+   "width": 2698,
+   "height": 3779,
+   "foldout": false,
+   "part": true
+  },
+  {
+   "slug": "f101v-102r",
+   "label": "101v (part) and 102r",
+   "folios": [
+    101,
+    102
+   ],
+   "section": "pharmaceutical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006251",
+   "width": 8176,
+   "height": 3864,
+   "foldout": true,
+   "part": true
+  },
+  {
+   "slug": "f102v",
+   "label": "102v (part)",
+   "folios": [
+    102
+   ],
+   "section": "pharmaceutical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006252",
+   "width": 2981,
+   "height": 3795,
+   "foldout": false,
+   "part": true
+  },
+  {
+   "slug": "f102v-2",
+   "label": "102v (part)",
+   "folios": [
+    102
+   ],
+   "section": "pharmaceutical",
+   "service": "https://collections.library.yale.edu/iiif/2/1006253",
+   "width": 2838,
+   "height": 3697,
+   "foldout": false,
+   "part": true
+  },
+  {
+   "slug": "f103r",
+   "label": "103r",
+   "folios": [
+    103
+   ],
+   "section": "recipes",
+   "service": "https://collections.library.yale.edu/iiif/2/1006254",
+   "width": 2688,
+   "height": 3805,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f103v",
+   "label": "103v",
+   "folios": [
+    103
+   ],
+   "section": "recipes",
+   "service": "https://collections.library.yale.edu/iiif/2/1006255",
+   "width": 2762,
+   "height": 3697,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f104r",
+   "label": "104r",
+   "folios": [
+    104
+   ],
+   "section": "recipes",
+   "service": "https://collections.library.yale.edu/iiif/2/1006256",
+   "width": 2677,
+   "height": 3811,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f104v",
+   "label": "104v",
+   "folios": [
+    104
+   ],
+   "section": "recipes",
+   "service": "https://collections.library.yale.edu/iiif/2/1006257",
+   "width": 2744,
+   "height": 3704,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f105r",
+   "label": "105r",
+   "folios": [
+    105
+   ],
+   "section": "recipes",
+   "service": "https://collections.library.yale.edu/iiif/2/1006258",
+   "width": 2662,
+   "height": 3771,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f105v",
+   "label": "105v",
+   "folios": [
+    105
+   ],
+   "section": "recipes",
+   "service": "https://collections.library.yale.edu/iiif/2/1006259",
+   "width": 2663,
+   "height": 3701,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f106r",
+   "label": "106r",
+   "folios": [
+    106
+   ],
+   "section": "recipes",
+   "service": "https://collections.library.yale.edu/iiif/2/1006260",
+   "width": 2635,
+   "height": 3787,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f106v",
+   "label": "106v",
+   "folios": [
+    106
+   ],
+   "section": "recipes",
+   "service": "https://collections.library.yale.edu/iiif/2/1006261",
+   "width": 2670,
+   "height": 3697,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f107r",
+   "label": "107r",
+   "folios": [
+    107
+   ],
+   "section": "recipes",
+   "service": "https://collections.library.yale.edu/iiif/2/1006262",
+   "width": 2641,
+   "height": 3787,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f107v",
+   "label": "107v",
+   "folios": [
+    107
+   ],
+   "section": "recipes",
+   "service": "https://collections.library.yale.edu/iiif/2/1006263",
+   "width": 2689,
+   "height": 3697,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f108r",
+   "label": "108r",
+   "folios": [
+    108
+   ],
+   "section": "recipes",
+   "service": "https://collections.library.yale.edu/iiif/2/1006264",
+   "width": 2641,
+   "height": 3787,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f108v",
+   "label": "108v",
+   "folios": [
+    108
+   ],
+   "section": "recipes",
+   "service": "https://collections.library.yale.edu/iiif/2/1006265",
+   "width": 2649,
+   "height": 3706,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f111r",
+   "label": "111r",
+   "folios": [
+    111
+   ],
+   "section": "recipes",
+   "service": "https://collections.library.yale.edu/iiif/2/1006266",
+   "width": 2622,
+   "height": 3783,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f111v",
+   "label": "111v",
+   "folios": [
+    111
+   ],
+   "section": "recipes",
+   "service": "https://collections.library.yale.edu/iiif/2/1006267",
+   "width": 2666,
+   "height": 3697,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f112r",
+   "label": "112r",
+   "folios": [
+    112
+   ],
+   "section": "recipes",
+   "service": "https://collections.library.yale.edu/iiif/2/1006268",
+   "width": 2602,
+   "height": 3787,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f112v",
+   "label": "112v",
+   "folios": [
+    112
+   ],
+   "section": "recipes",
+   "service": "https://collections.library.yale.edu/iiif/2/1006269",
+   "width": 2664,
+   "height": 3697,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f113r",
+   "label": "113r",
+   "folios": [
+    113
+   ],
+   "section": "recipes",
+   "service": "https://collections.library.yale.edu/iiif/2/1006270",
+   "width": 2582,
+   "height": 3787,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f113v",
+   "label": "113v",
+   "folios": [
+    113
+   ],
+   "section": "recipes",
+   "service": "https://collections.library.yale.edu/iiif/2/1006271",
+   "width": 2666,
+   "height": 3697,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f114r",
+   "label": "114r",
+   "folios": [
+    114
+   ],
+   "section": "recipes",
+   "service": "https://collections.library.yale.edu/iiif/2/1006272",
+   "width": 2599,
+   "height": 3787,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f114v",
+   "label": "114v",
+   "folios": [
+    114
+   ],
+   "section": "recipes",
+   "service": "https://collections.library.yale.edu/iiif/2/1006273",
+   "width": 2671,
+   "height": 3697,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f115r",
+   "label": "115r",
+   "folios": [
+    115
+   ],
+   "section": "recipes",
+   "service": "https://collections.library.yale.edu/iiif/2/1006274",
+   "width": 2584,
+   "height": 3786,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f115v",
+   "label": "115v",
+   "folios": [
+    115
+   ],
+   "section": "recipes",
+   "service": "https://collections.library.yale.edu/iiif/2/1006275",
+   "width": 2676,
+   "height": 3697,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f116r",
+   "label": "116r",
+   "folios": [
+    116
+   ],
+   "section": "recipes",
+   "service": "https://collections.library.yale.edu/iiif/2/1006276",
+   "width": 2559,
+   "height": 3787,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "f116v",
+   "label": "116v",
+   "folios": [
+    116
+   ],
+   "section": "recipes",
+   "service": "https://collections.library.yale.edu/iiif/2/1006277",
+   "width": 2686,
+   "height": 3697,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "back-flyleaf-recto",
+   "label": "[Back flyleaf recto]",
+   "folios": [],
+   "section": "binding",
+   "service": "https://collections.library.yale.edu/iiif/2/1037113",
+   "width": 2570,
+   "height": 3787,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "back-flyleaf-verso-inside-back-cover",
+   "label": "[Back flyleaf verso-inside back cover]",
+   "folios": [],
+   "section": "binding",
+   "service": "https://collections.library.yale.edu/iiif/2/1006278",
+   "width": 5342,
+   "height": 3822,
+   "foldout": true,
+   "part": false
+  },
+  {
+   "slug": "head",
+   "label": "[Head]",
+   "folios": [],
+   "section": "binding",
+   "service": "https://collections.library.yale.edu/iiif/2/11868207",
+   "width": 2829,
+   "height": 1221,
+   "foldout": true,
+   "part": false
+  },
+  {
+   "slug": "tail",
+   "label": "[Tail]",
+   "folios": [],
+   "section": "binding",
+   "service": "https://collections.library.yale.edu/iiif/2/11868208",
+   "width": 2875,
+   "height": 1237,
+   "foldout": true,
+   "part": false
+  },
+  {
+   "slug": "fore-edge",
+   "label": "[Fore-edge]",
+   "folios": [],
+   "section": "binding",
+   "service": "https://collections.library.yale.edu/iiif/2/11868209",
+   "width": 1255,
+   "height": 3838,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "spine",
+   "label": "[Spine]",
+   "folios": [],
+   "section": "binding",
+   "service": "https://collections.library.yale.edu/iiif/2/11868210",
+   "width": 1030,
+   "height": 3833,
+   "foldout": false,
+   "part": false
+  },
+  {
+   "slug": "back-cover",
+   "label": "[Back cover]",
+   "folios": [],
+   "section": "binding",
+   "service": "https://collections.library.yale.edu/iiif/2/1006279",
+   "width": 2889,
+   "height": 3861,
+   "foldout": false,
+   "part": false
+  }
+ ]
+}

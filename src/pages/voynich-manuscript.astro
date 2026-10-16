@@ -1,323 +1,310 @@
 ---
-// Author: Bubba (Claude Sonnet 4.6)
-// Date: 2026-03-22
-// PURPOSE: Voynich Manuscript museum-experience page for VoynichLabs website.
-//          The center of gravity is the mystery — what no one knows, what no one can know,
-//          and why that's extraordinary after 600 years of humanity's best efforts.
-// SRP/DRY check: Pass - single responsibility per page, shared Base layout reused
-// 2026-10-15 Claude Opus 5.5 Low: section list moved to src/data/voynich-worlds.ts (shared with home).
+// Author: Bubba (Claude Sonnet 4.6); rewritten 2026-10-16 by Claude Opus 5.5 Low
+// Date: 2026-03-22 (rewrite 2026-10-16)
+// PURPOSE: The story of the Voynich Manuscript, told with the manuscript's own pages: what the
+//          object is, a walk through its six sections with real folio scans (each opens in the
+//          deep-zoom reader), the script and what its statistics say, the chain of owners, the
+//          people who tried to read it, and the main ideas about what it could be. Leads readers
+//          into /voynich-manuscript/book, the complete page-by-page reader.
+// SRP/DRY check: Pass — sections, notes and page lookups come from src/lib/voynich.ts; images are
+//          the folio scans in public/voynich/folios (Yale, public domain).
 import Base from '../layouts/Base.astro';
-import { voynichWorlds } from '../data/voynich-worlds';
+import { optimized } from '../lib/optimized-image';
+import { pages, sections, sectionBlurbs, notes, pageBySlug, pageTitle, credit } from '../lib/voynich';
 
-const worlds = voynichWorlds;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const book = `${base}/voynich-manuscript/book`;
 
-const unknowns = [
-  { q: 'Who wrote it?', a: 'Unknown' },
-  { q: 'When was it written?', a: 'Probably early 15th century' },
-  { q: 'Where was it written?', a: 'Unknown' },
-  { q: 'What language is it in?', a: 'Unknown — matches no known language' },
-  { q: 'What is it about?', a: 'Unknown' },
-  { q: 'Who was it written for?', a: 'Unknown' },
-  { q: 'Is the script a cipher?', a: 'Unknown' },
-  { q: 'Is it a hoax?', a: 'Possibly — but nobody can prove it' },
-  { q: 'Will it ever be decoded?', a: 'Unknown' },
+// Local scan file -> reader page. Wide spreads span the whole row.
+const shot = (file: string, slug = file) => {
+  const page = pageBySlug(slug)!;
+  return {
+    src: optimized(`/voynich/folios/${file}.jpg`, 'full'),
+    thumb: optimized(`/voynich/folios/${file}.jpg`, 'thumb'),
+    href: `${book}/${slug}`,
+    title: pageTitle(page),
+    note: notes[slug],
+    wide: page.width > page.height * 1.1,
+  };
+};
+
+const tour = [
+  { id: 'herbal', shots: ['f1v', 'f2r', 'f9v', 'f13r', 'f16r', 'f25r', 'f32v', 'f42r'].map((f) => shot(f)),
+    words: 'More than half the book. Each page is one plant, drawn from root to flower with text around it. Some look half-familiar; most are impossible. Roots twist into shapes no plant grows, leaves of one species sprout from the stem of another.' },
+  { id: 'astronomical', shots: [shot('f67r'), shot('f68r'), shot('f70v'), shot('f71r'), shot('f73r'), shot('f73v')],
+    words: 'Suns, moons and stars in circles, then a zodiac: each sign sits in the middle of rings of small figures, roughly one for every day of the month. Month names in ordinary Latin letters were added later by someone who could read them no better than we can read the rest.' },
+  { id: 'biological', shots: ['f75r', 'f76r', 'f77v', 'f78r', 'f80v', 'f84r'].map((f) => shot(f)),
+    words: 'The pages everyone remembers. Small nude figures bathe in green and blue pools linked by pipes, tubes and channels that look almost like organs. Nobody agrees whether this is medicine, bathing, the body, the cosmos, or allegory.' },
+  { id: 'cosmological', shots: [shot('f85v86r-foldout', 'f85v-86r')],
+    words: 'A single sheet folded many times, the largest drawing in the book. Nine circles joined by causeways: one looks like a sun, others like towns or rising towers. In one corner stands a castle with swallowtail battlements, a style some scholars tie to northern Italy.' },
+  { id: 'pharmaceutical', shots: [shot('f88r'), shot('f89v90r', 'f89v-90r'), shot('f99r'), shot('f100r')],
+    words: 'Ornate jars stand in the margins, each beside neat rows of roots and leaves with a short label. It reads like an apothecary\'s handbook. The labels are the most tested words in the book, and still nothing fits.' },
+  { id: 'recipes', shots: ['f103r', 'f108v', 'f111r', 'f116v'].map((f) => shot(f)),
+    words: 'The book ends in dense text: more than three hundred short paragraphs, each marked with a little star. If the manuscript has a body of instructions, this is it. The very last page carries a few lines in a different, Latin-style hand.' },
+].map((t) => {
+  const s = sections.find((x) => x.id === t.id)!;
+  const first = pages.find((p) => p.section === t.id)!;
+  return { ...t, name: s.name, range: `folios ${s.from}–${s.to}`, blurb: sectionBlurbs[t.id], start: `${book}/${first.slug}` };
+});
+
+const owners = [
+  { when: 'c. 1404–1438', who: 'Unknown makers', what: 'The calfskin is radiocarbon dated to these years (University of Arizona, 2009). The ink and paints are ordinary for 15th-century Europe. At least one scribe, probably several, wrote it.' },
+  { when: 'Around 1600', who: 'The court of Rudolf II', what: 'A later letter says the Holy Roman Emperor bought it for 600 gold ducats, thinking it was by Roger Bacon. A faint erased name on the first page may belong to his chemist, Jacobus de Tepenec. Neither is proven.' },
+  { when: '1639', who: 'Georg Baresch, Prague', what: 'The first owner we can confirm. He wrote to the Jesuit scholar Athanasius Kircher in Rome asking for help reading it. This is the oldest surviving mention of the book.' },
+  { when: '1665', who: 'Johannes Marcus Marci', what: 'Inherited it and sent it to Kircher with a covering letter, which was still tucked inside when the book resurfaced.' },
+  { when: '1912', who: 'Wilfrid Voynich', what: 'A rare book dealer bought it from the Jesuits at the Villa Mondragone near Rome. He spent the rest of his life trying to have it read. It has carried his name ever since.' },
+  { when: '1930–1961', who: 'Ethel Voynich, Anne Nill, Hans P. Kraus', what: 'His widow kept it, then her friend Anne Nill, who sold it to the New York dealer Kraus. He could not find a buyer at his price.' },
+  { when: '1969 to now', who: 'Yale University', what: 'Kraus donated it to Yale\'s Beinecke Rare Book & Manuscript Library, where it is catalogued as MS 408 and fully digitized.' },
 ];
----
 
+const attempts = [
+  { who: 'William Newbold, 1921', claim: 'Said microscopic strokes hid a Latin text by Roger Bacon describing telescopes and cells.', fate: 'The "strokes" were cracks in dried ink. Refuted by John Manly in 1931.' },
+  { who: 'The wartime codebreakers', claim: 'William and Elizebeth Friedman, John Tiltman and Prescott Currier, who broke real military ciphers, studied it for decades.', fate: 'Nothing. Friedman came to suspect an early invented language.' },
+  { who: 'Prescott Currier, 1976', claim: 'Showed the text comes in two distinct "languages," A and B, with different common words, tied to different sections and hands.', fate: 'Held up. One of the few solid findings.' },
+  { who: 'Gordon Rugg, 2004', claim: 'Showed a table-and-grille method from the period can churn out text with similar patterns, so a hoax was feasible.', fate: 'Possible, not proven. It explains some patterns, not all.' },
+  { who: 'Stephen Bax, 2014', claim: 'Proposed sounds for a handful of letters from plant and star names.', fate: 'Tentative; never extended to readable sentences.' },
+  { who: 'Gerard Cheshire, 2019', claim: 'Announced it was a lost "proto-Romance" language.', fate: 'Rejected by medieval scholars within days.' },
+  { who: 'Lisa Fagin Davis, 2020', claim: 'Compared letter shapes page by page and identified five different scribes.', fate: 'Widely accepted. Whatever this is, it was a group effort.' },
+  { who: 'Machines, now', claim: 'Statistical models and modern AI have been pointed at it again and again.', fate: 'Patterns, yes. Meaning, no.' },
+];
+
+const ideas = [
+  { name: 'A cipher', for: 'Hiding medicine, alchemy or astrology in code was common in the 1400s.', against: 'Ciphers of the time scramble letters and flatten patterns. This text keeps strong, language-like structure, and repeats words in a way ciphers rarely do.' },
+  { name: 'A real language in an invented alphabet', for: 'Word lengths and frequencies follow the same law as real languages, and the two "dialects" behave like two scribes or two topics.', against: 'Nobody has matched it to any language, living or dead, and its letter patterns are oddly rigid: some words repeat two or three times in a row.' },
+  { name: 'An invented language', for: 'Some medieval thinkers did design languages. A system built from rules would explain the strange regularity.', against: 'No other example of such an elaborate invented language survives from that early.' },
+  { name: 'Beautiful nonsense', for: 'A clever maker with a grille or a habit could produce convincing text, and a mysterious book was worth a fortune to an emperor.', against: 'It is a huge, costly piece of work by several hands, with structure at every level. That is a lot of effort for a forgery, and the pictures were clearly drawn before the text.' },
+];
+
+const wall = ['f1r', 'f3v', 'f42r', 'f49v', 'f56r', 'f69r', 'f72v', 'f73r', 'f79v', 'f82r', 'f99r', 'f111r'];
+---
 <Base
   title="The Voynich Manuscript"
-  description="The most studied, most analyzed, and least understood book ever written. Our namesake."
+  description="The book nobody can read: a 600-year-old illustrated manuscript in an unknown script. Its six sections, its owners, the codebreakers who failed, and what it might be — told with the manuscript's own pages, with every page open to explore."
+  ogImage={`${base}/voynich/folios/f85v86r-foldout.jpg`}
 >
-  <!-- Opening: Five questions, then the title -->
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
-    <div
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-      style="background-image: url('/voynich/f2v-herbal.jpg');"
-    ></div>
-    <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(4,3,2,0.88) 0%, rgba(8,6,4,0.94) 100%);"></div>
-    <div class="relative z-10 text-center max-w-2xl mx-auto px-6 py-32">
-      <div class="space-y-5 mb-16">
-        <div class="flex items-baseline justify-center gap-6">
-          <span class="text-lg sm:text-xl" style="color: #c8b89a; font-family: 'Georgia', serif; font-style: italic;">Who wrote it?</span>
-          <span class="text-lg sm:text-xl font-semibold" style="color: #f5e6c8; font-family: 'Georgia', serif;">Nobody knows.</span>
-        </div>
-        <div class="flex items-baseline justify-center gap-6">
-          <span class="text-lg sm:text-xl" style="color: #c8b89a; font-family: 'Georgia', serif; font-style: italic;">What language is it in?</span>
-          <span class="text-lg sm:text-xl font-semibold" style="color: #f5e6c8; font-family: 'Georgia', serif;">Nobody knows.</span>
-        </div>
-        <div class="flex items-baseline justify-center gap-6">
-          <span class="text-lg sm:text-xl" style="color: #c8b89a; font-family: 'Georgia', serif; font-style: italic;">What is it about?</span>
-          <span class="text-lg sm:text-xl font-semibold" style="color: #f5e6c8; font-family: 'Georgia', serif;">Nobody knows.</span>
-        </div>
-        <div class="flex items-baseline justify-center gap-6">
-          <span class="text-lg sm:text-xl" style="color: #c8b89a; font-family: 'Georgia', serif; font-style: italic;">Who was it written for?</span>
-          <span class="text-lg sm:text-xl font-semibold" style="color: #f5e6c8; font-family: 'Georgia', serif;">Nobody knows.</span>
-        </div>
-        <div class="flex items-baseline justify-center gap-6">
-          <span class="text-lg sm:text-xl" style="color: #c8b89a; font-family: 'Georgia', serif; font-style: italic;">Why was it written?</span>
-          <span class="text-lg sm:text-xl font-semibold" style="color: #f5e6c8; font-family: 'Georgia', serif;">Nobody knows.</span>
-        </div>
-      </div>
-      <div class="w-16 h-px mx-auto mb-12 opacity-30" style="background-color: #c8b89a;"></div>
-      <p class="font-mono text-xs uppercase tracking-widest mb-5 opacity-50" style="color: #c8b89a;">Beinecke MS 408 · c. 1404–1438</p>
-      <h1 class="text-5xl sm:text-6xl font-bold leading-tight" style="font-family: 'Georgia', 'Times New Roman', serif; color: #f5e6c8;">
-        The Voynich<br/>Manuscript
-      </h1>
-      <p class="mt-6 text-sm leading-relaxed opacity-60" style="color: #c8b89a; font-family: 'Georgia', serif; font-style: italic;">
-        The most studied, most analyzed, and least understood book ever written.
-      </p>
-    </div>
-  </section>
+  <div style="background: #0b0906; color: #f5e6c8;">
 
-  <!-- The Object -->
-  <section class="py-24" style="background: rgba(10,8,5,0.95);">
-    <div class="max-w-3xl mx-auto px-6">
-      <p class="font-mono text-xs uppercase tracking-widest mb-10 opacity-40" style="color: #c8b89a;">The Object</p>
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
-        <div class="lg:col-span-3 space-y-6">
-          <p class="text-lg leading-relaxed text-text-secondary">
-            A book. 240 pages of calfskin vellum, each about the size of a paperback.
-          </p>
-          <p class="text-lg leading-relaxed text-text-secondary">
-            Someone sat down and wrote every word of it by hand — in a script they clearly knew well.
-            The strokes are fluid. Confident. Practiced. They also drew hundreds of illustrations:
-            plants, stars, figures, maps. Every page looks purposeful. Organized. Deliberate.
-          </p>
-          <p class="text-xl leading-relaxed" style="color: #f5e6c8; font-family: 'Georgia', serif; font-style: italic;">
-            None of it has ever been understood by anyone who came after them.
-          </p>
-          <p class="text-lg leading-relaxed text-text-secondary">
-            The materials are perfectly ordinary for 15th-century Europe — iron gall ink,
-            plant and mineral pigments, standard vellum. The carbon dating puts it between 1404 and 1438.
-            Nothing unusual. Nothing exotic. Just a book that nobody can read.
-          </p>
-        </div>
-        <div class="lg:col-span-2">
-          <img
-            src="/voynich/f99r-pharmaceutical.jpg"
-            alt="Voynich Manuscript pharmaceutical folio f99r"
-            class="w-full rounded opacity-90"
-            style="border: 1px solid rgba(200,184,154,0.15);"
-          />
-          <p class="mt-3 font-mono text-xs text-center opacity-40" style="color: #c8b89a;">f99r — pharmaceutical section</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- What People Have Tried -->
-  <section class="py-24 border-y border-border" style="background: rgba(14,11,7,0.9);">
-    <div class="max-w-3xl mx-auto px-6">
-      <p class="font-mono text-xs uppercase tracking-widest mb-10 opacity-40" style="color: #c8b89a;">600 Years of Failure</p>
-      <h2 class="text-3xl font-bold mb-6 text-text-primary" style="font-family: 'Georgia', serif;">
-        Everyone who has tried has failed.
-      </h2>
-      <p class="text-lg text-text-secondary mb-14 leading-relaxed">
-        This isn't a mystery that hasn't been looked at. It has been looked at by the best minds of every generation since it was found. Every one of them walked away with nothing.
-      </p>
-      <div class="space-y-10">
-        {[
-          {
-            label: 'Early 1600s',
-            who: 'A Prague physician tried. He failed.',
-            what: 'Jacobus de Tepenec — personal physician to Holy Roman Emperor Rudolf II — owned the manuscript and attempted to decode it. His efforts left marks on the vellum itself. He died without understanding a word of it.',
-          },
-          {
-            label: 'The 1920s–1940s',
-            who: 'Professional codebreakers tried. They failed.',
-            what: 'The same people who cracked the Enigma machine — who broke the most sophisticated military cipher in history — studied the Voynich Manuscript. They brought everything they had. They walked away with nothing.',
-          },
-          {
-            label: 'Mid-20th century',
-            who: 'Generations of cryptographers tried. They failed.',
-            what: 'Brilliant analytical minds, trained specifically for this kind of problem, worked on it for decades. Some published theories. Some became obsessed. Not one produced a single verified decoded line.',
-          },
-          {
-            label: '20th–21st century',
-            who: 'Linguists tried. They found structure. They still failed.',
-            what: 'They mapped the script\'s statistical patterns in exhaustive detail. The word frequencies follow the same laws as real human languages. The letter distributions are consistent and rule-governed. It looks like language. It matches no known one.',
-          },
-          {
-            label: 'Decades of effort',
-            who: 'Historians traced every owner. The author remains unknown.',
-            what: 'The chain of hands is documented: Rudolf II\'s court in Prague, Jesuit libraries in Italy, a London rare book shop. We know where it\'s been. We don\'t know where it came from, or who made it.',
-          },
-          {
-            label: 'Today',
-            who: 'AI tried. Nothing.',
-            what: 'Large language models trained on every digitized human language have been run against it. The same systems that translate between hundreds of languages, read ancient scripts, and find patterns invisible to humans. No match. No breakthrough. Nothing.',
-          },
-        ].map((attempt) => (
-          <div class="border-l-2 pl-8" style="border-color: rgba(200,184,154,0.2);">
-            <p class="font-mono text-xs uppercase tracking-wider mb-2 opacity-40" style="color: #c8b89a;">{attempt.label}</p>
-            <p class="text-lg font-semibold mb-3 text-text-primary" style="font-family: 'Georgia', serif;">{attempt.who}</p>
-            <p class="text-text-secondary leading-relaxed">{attempt.what}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- The Five Worlds -->
-  <section class="py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <p class="font-mono text-xs uppercase tracking-widest mb-10 opacity-40" style="color: #c8b89a;">The Manuscript</p>
-      <h2 class="text-3xl font-bold mb-4 text-text-primary" style="font-family: 'Georgia', serif;">
-        Five worlds inside
-      </h2>
-      <p class="text-text-secondary mb-16 leading-relaxed max-w-2xl">
-        The manuscript is organized into sections. Each has its own visual logic. Each has its own unanswered question.
-      </p>
-      <div class="space-y-0">
-        {worlds.map((world, i) => (
-          <div
-            class={`grid grid-cols-1 lg:grid-cols-2 border border-border ${i > 0 ? 'border-t-0' : ''}`}
-          >
-            <div class={`relative overflow-hidden ${i % 2 === 1 ? 'lg:order-2' : ''}`} style="min-height: 360px;">
-              <img
-                src={world.image}
-                alt={`Voynich Manuscript — ${world.name} section, folio ${world.folio}`}
-                class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-500"
-                style="position: absolute; inset: 0;"
-                loading="lazy"
-              />
-              <div class="absolute bottom-0 left-0 p-4 z-10">
-                <span class="font-mono text-xs px-2 py-1" style="background: rgba(0,0,0,0.75); color: #c8b89a; opacity: 0.7; letter-spacing: 0.05em;">{world.folio}</span>
-              </div>
-            </div>
-            <div
-              class={`flex flex-col justify-center p-10 lg:p-16 ${i % 2 === 1 ? 'lg:order-1' : ''}`}
-              style="background: rgba(12,9,6,0.95);"
-            >
-              <div class="flex items-center gap-3 mb-8">
-                <span class="text-xl">{world.emoji}</span>
-                <span class="font-mono text-xs uppercase tracking-widest opacity-50" style="color: #c8b89a;">{world.name}</span>
-              </div>
-              <p class="text-2xl leading-snug" style="color: #f5e6c8; font-family: 'Georgia', serif; font-style: italic;">
-                {world.question}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- What We Know For Certain -->
-  <section class="py-20 border-y border-border" style="background: rgba(10,8,5,0.97);">
-    <div class="max-w-3xl mx-auto px-6">
-      <p class="font-mono text-xs uppercase tracking-widest mb-10 opacity-40" style="color: #c8b89a;">What We Know</p>
-      <h2 class="text-2xl font-bold mb-10 text-text-primary" style="font-family: 'Georgia', serif;">
-        Three confirmed facts.
-      </h2>
-      <div class="space-y-6">
-        <div class="flex gap-6">
-          <span class="font-mono text-sm opacity-40" style="color: #c8b89a; flex-shrink: 0; padding-top: 2px;">01</span>
-          <p class="text-lg text-text-secondary leading-relaxed">The vellum was made between 1404 and 1438. Carbon dating, confirmed by the University of Arizona in 2009.</p>
-        </div>
-        <div class="flex gap-6">
-          <span class="font-mono text-sm opacity-40" style="color: #c8b89a; flex-shrink: 0; padding-top: 2px;">02</span>
-          <p class="text-lg text-text-secondary leading-relaxed">The pigments and materials are consistent with 15th-century Europe. It was made here, in this world, by human hands.</p>
-        </div>
-        <div class="flex gap-6">
-          <span class="font-mono text-sm opacity-40" style="color: #c8b89a; flex-shrink: 0; padding-top: 2px;">03</span>
-          <p class="text-lg leading-relaxed" style="color: #f5e6c8; font-family: 'Georgia', serif;">Someone wrote it. It is not random. It is not noise. It was made with intent, by a person who knew exactly what they were writing. That person is gone. The meaning went with them.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Wall of Unknowns -->
-  <section class="py-24" style="background: rgba(8,6,4,0.98);">
-    <div class="max-w-3xl mx-auto px-6">
-      <p class="font-mono text-xs uppercase tracking-widest mb-10 opacity-40" style="color: #c8b89a;">Provenance Record</p>
-      <h2 class="text-2xl font-bold mb-4 text-text-primary" style="font-family: 'Georgia', serif;">
-        What remains unknown
-      </h2>
-      <p class="text-text-secondary mb-12 leading-relaxed">After 600 years.</p>
-      <div class="overflow-hidden border border-border">
-        {unknowns.map((item, i) => (
-          <div
-            class={`grid grid-cols-2 gap-0 ${i > 0 ? 'border-t border-border' : ''}`}
-          >
-            <div class="px-6 py-4 text-text-secondary text-sm leading-relaxed" style="font-family: 'Georgia', serif; font-style: italic; background: rgba(20,15,10,0.5);">
-              {item.q}
-            </div>
-            <div class="px-6 py-4 text-sm font-medium leading-relaxed" style={item.a === 'Unknown' ? 'color: #c8b89a; opacity: 0.6;' : 'color: #c8b89a; opacity: 0.8;'}>
-              {item.a}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Gallery -->
-  <section class="py-20 border-t border-border">
-    <div class="max-w-6xl mx-auto px-6">
-      <p class="font-mono text-xs uppercase tracking-widest mb-8 opacity-40" style="color: #c8b89a;">The Folios</p>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
-        {worlds.map((world) => (
-          <a
-            href="https://beinecke.library.yale.edu/collections/highlights/voynich-manuscript"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group relative aspect-[3/4] overflow-hidden border border-border hover:border-amber-400/20 transition-colors duration-300"
-            style="background: #080604;"
-            title={`Folio ${world.folio}`}
-          >
-            <img
-              src={world.image}
-              alt={`Folio ${world.folio}`}
-              class="w-full h-full object-cover opacity-60 group-hover:opacity-85 group-hover:scale-105 transition-all duration-500"
-              loading="lazy"
-            />
-            <div class="absolute bottom-0 left-0 right-0 p-2" style="background: linear-gradient(transparent, rgba(0,0,0,0.8));">
-              <span class="font-mono text-xs opacity-50" style="color: #c8b89a;">{world.folio}</span>
-            </div>
-          </a>
-        ))}
-      </div>
-      <p class="mt-5 text-sm text-text-muted">
-        Images from the Yale Beinecke Library digital collection, public domain.{' '}
-        <a
-          href="https://beinecke.library.yale.edu/collections/highlights/voynich-manuscript"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="hover:text-text-primary underline underline-offset-2 transition-colors"
-        >
-          Browse the full manuscript →
-        </a>
-      </p>
-    </div>
-  </section>
-
-  <!-- Why VoynichLabs -->
-  <section class="py-24 border-t border-border" style="background: rgba(10,8,5,0.97);">
-    <div class="max-w-2xl mx-auto px-6 text-center">
-      <p class="font-mono text-xs uppercase tracking-widest mb-12 opacity-40" style="color: #c8b89a;">Why the name</p>
-      <p class="text-lg leading-relaxed text-text-secondary mb-6">
-        We build systems that try to make intentions legible — to take something complex and unclear
-        and turn it into a plan that can be executed.
-      </p>
-      <p class="text-xl leading-relaxed" style="color: #f5e6c8; font-family: 'Georgia', serif; font-style: italic;">
-        The Voynich Manuscript is a reminder that some things resist being made legible.
-        We think about that.
-      </p>
-      <div class="mt-14 pt-10 border-t border-border">
-        <p class="text-sm text-text-muted leading-relaxed max-w-md mx-auto">
-          VoynichLabs takes its name from Wilfrid Voynich, the rare book dealer who acquired this
-          manuscript in 1912 from a Jesuit villa in Frascati, Italy. It has lived at Yale's Beinecke
-          Rare Book &amp; Manuscript Library since 1969.
+    <!-- Opening -->
+    <section class="relative min-h-[92vh] flex items-center justify-center overflow-hidden">
+      <img src={optimized('/voynich/folios/f85v86r-foldout.jpg', 'full')} alt="" aria-hidden="true"
+           class="absolute inset-0 w-full h-full object-cover opacity-30" />
+      <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, rgba(8,6,4,0.55) 0%, rgba(8,6,4,0.92) 75%);"></div>
+      <div class="relative z-10 text-center max-w-2xl mx-auto px-6 py-24">
+        <p class="font-mono text-xs uppercase tracking-[0.25em] mb-8 opacity-70" style="color: #c8b89a;">Beinecke MS 408 · c. 1404–1438</p>
+        <h1 class="text-5xl sm:text-7xl font-bold leading-[1.05] mb-8 v-serif">The Voynich<br/>Manuscript</h1>
+        <p class="text-lg sm:text-xl leading-relaxed mb-10 v-serif italic" style="color: #c8b89a;">
+          Two hundred and forty pages of plants that don't exist, skies that match no map,
+          and a script that no one, in six hundred years, has ever read.
         </p>
-        <div class="mt-8 flex justify-center gap-6 text-sm">
-          <a href="https://beinecke.library.yale.edu/collections/highlights/voynich-manuscript" target="_blank" rel="noopener noreferrer" class="text-text-muted hover:text-text-primary underline underline-offset-2 transition-colors">Beinecke Library</a>
-          <span class="text-border">·</span>
-          <a href="https://commons.wikimedia.org/wiki/Category:Voynich_manuscript" target="_blank" rel="noopener noreferrer" class="text-text-muted hover:text-text-primary underline underline-offset-2 transition-colors">Wikimedia Commons</a>
-          <span class="text-border">·</span>
-          <a href="https://archive.org/details/TheVoynichManuscript" target="_blank" rel="noopener noreferrer" class="text-text-muted hover:text-text-primary underline underline-offset-2 transition-colors">Internet Archive</a>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href={book} class="px-6 py-3 rounded font-mono text-sm" style="background: #f5e6c8; color: #0b0906;">open the book</a>
+          <a href="#tour" class="px-6 py-3 rounded font-mono text-sm hover:bg-[#f5e6c8]/10 transition-colors" style="border: 1px solid rgba(245,230,200,0.4);">walk through it</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- The object -->
+    <section class="border-t v-rule">
+      <div class="max-w-6xl mx-auto px-6 py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-5 space-y-5 text-lg leading-relaxed" style="color: #d8cab0;">
+          <p class="font-mono text-xs uppercase tracking-widest opacity-60" style="color: #c8b89a;">The object</p>
+          <h2 class="text-3xl sm:text-4xl font-bold v-serif" style="color: #f5e6c8;">A real book, made by real people.</h2>
+          <p>
+            It is about the size of a paperback, written on calfskin in iron-gall ink and painted with
+            ordinary plant and mineral colours. The writing is fluent and practised. Nobody hesitated.
+          </p>
+          <p>
+            About 240 pages survive, some of them foldouts that open to several times the size of the book.
+            Around thirty more were cut out or lost. Every one that remains is in a script found nowhere else.
+          </p>
+          <p class="v-serif italic text-xl" style="color: #f5e6c8;">
+            It is not scribble. It has grammar-like structure, repeated words, two distinct dialects
+            and at least five scribes. It was made to be read. We just can't.
+          </p>
+        </div>
+        <div class="lg:col-span-7 grid grid-cols-2 gap-4">
+          {[shot('cover', 'front-cover'), shot('f1r')].map((s) => (
+            <a href={s.href} class="group block">
+              <img src={s.src} alt={`${s.title} of the Voynich Manuscript`} loading="lazy" class="w-full rounded-sm v-frame group-hover:opacity-100 opacity-90 transition-opacity" />
+              <p class="mt-2 font-mono text-[11px] opacity-60" style="color: #c8b89a;">{s.title}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Tour of the sections -->
+    <section id="tour" class="border-t v-rule scroll-mt-16">
+      <div class="max-w-6xl mx-auto px-6 pt-24 pb-6">
+        <p class="font-mono text-xs uppercase tracking-widest opacity-60 mb-4" style="color: #c8b89a;">Inside</p>
+        <h2 class="text-3xl sm:text-5xl font-bold v-serif mb-5">Six books in one.</h2>
+        <p class="text-lg max-w-2xl leading-relaxed" style="color: #c8b89a;">
+          The pictures sort the manuscript into six sections. Every image below is a real page;
+          click one to open it in the reader and zoom right into the vellum.
+        </p>
+      </div>
+      {tour.map((t, n) => (
+        <div class="max-w-6xl mx-auto px-6 py-16 border-b v-rule last:border-b-0">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
+            <div class="lg:col-span-4">
+              <p class="font-mono text-[11px] uppercase tracking-widest opacity-60 mb-2" style="color: #c8b89a;">{String(n + 1).padStart(2, '0')} · {t.range}</p>
+              <h3 class="text-2xl sm:text-3xl font-bold v-serif mb-3">{t.name}</h3>
+              <a href={t.start} class="font-mono text-xs underline underline-offset-4 opacity-80 hover:opacity-100" style="color: #c8b89a;">read this section &rarr;</a>
+            </div>
+            <p class="lg:col-span-8 text-lg leading-relaxed" style="color: #d8cab0;">{t.words}</p>
+          </div>
+          <div class:list={['grid gap-3', t.shots.length === 1 ? 'grid-cols-1' : t.shots.length <= 4 ? 'grid-cols-2 lg:grid-cols-4' : 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4']}>
+            {t.shots.map((s) => (
+              <a href={s.href} class:list={['group block relative overflow-hidden rounded-sm v-frame', { 'col-span-2 lg:col-span-2': s.wide && t.shots.length > 1 }]} title={s.note ?? s.title}>
+                <img src={t.shots.length === 1 ? s.src : s.thumb} alt={`${s.title} of the Voynich Manuscript, ${t.name.toLowerCase()} section`} loading="lazy"
+                     class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.02] transition duration-500" />
+                <span class="absolute bottom-0 left-0 right-0 px-3 py-2 font-mono text-[11px]" style="background: linear-gradient(transparent, rgba(0,0,0,0.85)); color: #f5e6c8;">{s.title}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <!-- The script -->
+    <section class="border-t v-rule" style="background: #120d08;">
+      <div class="max-w-6xl mx-auto px-6 py-24 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="font-mono text-xs uppercase tracking-widest opacity-60 mb-4" style="color: #c8b89a;">The script</p>
+          <h2 class="text-3xl sm:text-4xl font-bold v-serif mb-6">It behaves like language.</h2>
+          <div class="space-y-4 text-lg leading-relaxed" style="color: #d8cab0;">
+            <p>
+              Researchers transcribe it with a made-up alphabet of about twenty to twenty-five letters.
+              There are around 38,000 words in the book, about 8,000 of them different.
+            </p>
+            <p>
+              Common words are very common and rare words are rare, in exactly the proportion real
+              languages show. Words have favourite beginnings and endings. The two "dialects" use
+              different common words, as two writers or two subjects would.
+            </p>
+            <p>
+              But it is also too tidy. Letters are more predictable than in any known language,
+              and the same word often appears two or three times in a row. That mix of
+              real and strange is the whole puzzle.
+            </p>
+          </div>
+        </div>
+        <a href={`${book}/f108v`} class="group block">
+          <div class="overflow-hidden rounded-sm v-frame">
+            <img src={`${pageBySlug('f108v')!.service}/600,900,1500,1100/1200,/0/default.jpg`}
+                 alt="Close-up of the Voynich script on folio 108v, with the star markers in the margin"
+                 loading="lazy" class="w-full opacity-95 group-hover:scale-[1.02] transition duration-700" />
+          </div>
+          <p class="mt-2 font-mono text-[11px] opacity-60" style="color: #c8b89a;">Close-up, folio 108v. Zoom further in the reader &rarr;</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Owners -->
+    <section class="border-t v-rule">
+      <div class="max-w-4xl mx-auto px-6 py-24">
+        <p class="font-mono text-xs uppercase tracking-widest opacity-60 mb-4" style="color: #c8b89a;">Whose hands</p>
+        <h2 class="text-3xl sm:text-4xl font-bold v-serif mb-12">Six hundred years of owners.</h2>
+        <ol class="space-y-10">
+          {owners.map((o) => (
+            <li class="grid grid-cols-1 sm:grid-cols-4 gap-2 sm:gap-8">
+              <p class="font-mono text-sm pt-1" style="color: #c8b89a;">{o.when}</p>
+              <div class="sm:col-span-3 border-l pl-6 v-rule">
+                <p class="text-xl font-semibold v-serif mb-2">{o.who}</p>
+                <p class="leading-relaxed" style="color: #d8cab0;">{o.what}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- Attempts -->
+    <section class="border-t v-rule" style="background: #120d08;">
+      <div class="max-w-6xl mx-auto px-6 py-24">
+        <p class="font-mono text-xs uppercase tracking-widest opacity-60 mb-4" style="color: #c8b89a;">Who has tried</p>
+        <h2 class="text-3xl sm:text-4xl font-bold v-serif mb-4">Every claimed solution so far has failed.</h2>
+        <p class="text-lg max-w-2xl leading-relaxed mb-12" style="color: #c8b89a;">
+          Some of the best codebreakers of the twentieth century worked on it. So did cranks, linguists,
+          botanists, and now machines.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-px" style="background: rgba(200,184,154,0.15);">
+          {attempts.map((a) => (
+            <div class="p-7" style="background: #120d08;">
+              <p class="font-mono text-xs uppercase tracking-wider mb-3" style="color: #c8b89a;">{a.who}</p>
+              <p class="leading-relaxed mb-3" style="color: #d8cab0;">{a.claim}</p>
+              <p class="v-serif italic" style="color: #f5e6c8;">{a.fate}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- What could it be -->
+    <section class="border-t v-rule">
+      <div class="max-w-6xl mx-auto px-6 py-24">
+        <p class="font-mono text-xs uppercase tracking-widest opacity-60 mb-4" style="color: #c8b89a;">So what is it?</p>
+        <h2 class="text-3xl sm:text-4xl font-bold v-serif mb-12">Four ideas, none of them settled.</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {ideas.map((i) => (
+            <div class="rounded-sm p-7 v-frame" style="background: rgba(20,15,10,0.6);">
+              <h3 class="text-2xl font-bold v-serif mb-4">{i.name}</h3>
+              <p class="text-sm leading-relaxed mb-3" style="color: #d8cab0;"><span class="font-mono text-[11px] uppercase tracking-wider mr-2" style="color: #9fbf8f;">for</span>{i.for}</p>
+              <p class="text-sm leading-relaxed" style="color: #d8cab0;"><span class="font-mono text-[11px] uppercase tracking-wider mr-2" style="color: #d08a6a;">against</span>{i.against}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Page wall -->
+    <section class="border-t v-rule" style="background: #120d08;">
+      <div class="max-w-6xl mx-auto px-6 py-24 text-center">
+        <h2 class="text-3xl sm:text-4xl font-bold v-serif mb-4">See it for yourself.</h2>
+        <p class="text-lg max-w-2xl mx-auto leading-relaxed mb-10" style="color: #c8b89a;">
+          Whatever it is, someone spent years of their life on it. Every surviving page is in the reader,
+          at full resolution, in order.
+        </p>
+        <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-3 mb-10">
+          {wall.map((f) => shot(f)).map((s) => (
+            <a href={s.href} class="group block overflow-hidden rounded-sm v-frame" title={s.title}>
+              <img src={s.thumb} alt={`${s.title} of the Voynich Manuscript`} loading="lazy"
+                   class="w-full aspect-[3/4] object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-500" />
+            </a>
+          ))}
+        </div>
+        <a href={book} class="inline-block px-7 py-3 rounded font-mono text-sm" style="background: #f5e6c8; color: #0b0906;">open the book &rarr;</a>
+      </div>
+    </section>
+
+    <!-- Why the name -->
+    <section class="border-t v-rule">
+      <div class="max-w-2xl mx-auto px-6 py-24 text-center">
+        <p class="font-mono text-xs uppercase tracking-widest opacity-60 mb-8" style="color: #c8b89a;">Why we named the lab after it</p>
+        <p class="text-xl leading-relaxed v-serif italic mb-6">
+          Nobody knows what it is for. It might be medicine, or the sky, or a beautiful fraud.
+          But it is clearly not nonsense, and somebody poured years into it.
+        </p>
+        <p class="text-lg leading-relaxed" style="color: #d8cab0;">
+          We build tools that try to make hard things legible: puzzles machines can't solve yet,
+          plans, patterns in data. The Voynich Manuscript is the oldest open problem of that kind,
+          and we would love to help crack it. In the meantime we can just enjoy it.
+        </p>
+        <div class="mt-14 pt-8 border-t v-rule text-sm leading-relaxed" style="color: #c8b89a;">
+          <p class="mb-4">Scans: {credit}. Public domain.</p>
+          <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+            <a href="https://collections.library.yale.edu/catalog/2002046" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-text-primary">Yale catalogue record</a>
+            <a href="https://www.voynich.nu/" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-text-primary">voynich.nu (René Zandbergen)</a>
+            <a href="https://en.wikipedia.org/wiki/Voynich_manuscript" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-text-primary">Wikipedia</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </Base>
+
+<style>
+  .v-serif { font-family: Georgia, 'Times New Roman', serif; }
+  .v-rule { border-color: rgba(200, 184, 154, 0.15); }
+  .v-frame { border: 1px solid rgba(200, 184, 154, 0.18); background: #15100a; }
+</style>

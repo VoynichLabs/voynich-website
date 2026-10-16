@@ -1,0 +1,308 @@
+---
+// Author: Claude Opus 5.5 Low
+// Date: 2026-10-16
+// PURPOSE: The Voynich book reader — one route per scanned page (/voynich-manuscript/book/{slug}).
+//          Deep zoom streams Yale's full-resolution tiles through OpenSeadragon (IIIF image API,
+//          CORS-open). Turning pages happens in place: the script swaps the image, title, note
+//          and URL (history.pushState) without a reload, so moving through the book feels like a
+//          book. Every page still has its own static URL for links, sharing and search engines.
+//          Controls: arrow keys or side buttons to turn, + / - / 0 to zoom, F for fullscreen,
+//          and a strip of every page along the bottom with the current one highlighted.
+// SRP/DRY check: Pass — page data, notes and URL helpers come from src/lib/voynich.ts.
+import Base from '../../../layouts/Base.astro';
+import {
+  pages, notes, credit, sectionName, sectionBlurbs, pageTitle, thumbUrl, iiifImage, pageBySlug,
+} from '../../../lib/voynich';
+
+export function getStaticPaths() {
+  return pages.map((p) => ({ params: { slug: p.slug } }));
+}
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const { slug } = Astro.params;
+const page = pageBySlug(slug!)!;
+const index = pages.indexOf(page);
+const prev = pages[index - 1];
+const next = pages[index + 1];
+
+// Everything the client needs to turn pages without a reload.
+const clientPages = pages.map((p) => ({
+  slug: p.slug,
+  title: pageTitle(p),
+  section: sectionName(p.section),
+  blurb: sectionBlurbs[p.section] ?? '',
+  note: notes[p.slug] ?? '',
+  service: p.service,
+  width: p.width,
+  height: p.height,
+  thumb: thumbUrl(base, p),
+}));
+
+const title = `${pageTitle(page)} · The Voynich Manuscript`;
+const description = notes[page.slug]
+  ?? `${pageTitle(page)} of the Voynich Manuscript (Beinecke MS 408), ${sectionName(page.section).toLowerCase()} section. Zoom into Yale's full-resolution scan, page by page.`;
+let lastSection = '';
+---
+<Base title={title} description={description} ogImage={iiifImage(page, 1200)} hideFooter>
+  <div
+    id="vr"
+    class="vr flex flex-col"
+    data-pages={JSON.stringify(clientPages)}
+    data-index={index}
+    data-base={base}
+  >
+    <!-- Top bar -->
+    <header class="vr-bar flex flex-wrap items-center gap-x-4 gap-y-2 px-4 sm:px-6 py-3 border-b border-border">
+      <a href={`${base}/voynich-manuscript/book`} class="font-mono text-xs vr-muted hover:text-text-primary transition-colors">
+        &larr; all pages
+      </a>
+      <div class="flex items-baseline gap-3 min-w-0">
+        <h1 id="vr-title" class="vr-serif text-lg sm:text-xl truncate">{pageTitle(page)}</h1>
+        <span id="vr-section" class="font-mono text-[11px] uppercase tracking-widest vr-muted whitespace-nowrap">{sectionName(page.section)}</span>
+      </div>
+      <span class="font-mono text-[11px] vr-muted whitespace-nowrap">
+        page <span id="vr-count">{index + 1}</span> of {pages.length}
+      </span>
+      <div class="ml-auto flex items-center gap-1">
+        <button type="button" class="vr-btn" data-act="zoom-out" aria-label="Zoom out" title="Zoom out (-)">&minus;</button>
+        <button type="button" class="vr-btn" data-act="zoom-in" aria-label="Zoom in" title="Zoom in (+)">+</button>
+        <button type="button" class="vr-btn" data-act="home" aria-label="Fit page" title="Fit page (0)">&#x2922;</button>
+        <button type="button" class="vr-btn" data-act="full" aria-label="Fullscreen" title="Fullscreen (F)">&#x26F6;</button>
+        <button type="button" class="vr-btn lg:hidden" data-act="info" aria-label="About this page" title="About this page">i</button>
+      </div>
+    </header>
+
+    <!-- Viewer + notes -->
+    <div class="flex-1 flex min-h-0 relative">
+      <div class="flex-1 relative min-w-0">
+        <!-- Local thumbnail shown at once, under the viewer, until Yale's sharp tiles arrive -->
+        <img id="vr-ph" src={thumbUrl(base, page)} alt="" aria-hidden="true"
+             class="absolute inset-0 w-full h-full object-contain pointer-events-none transition-opacity duration-500" />
+        <div id="vr-osd" class="absolute inset-0" aria-label={`Zoomable scan of ${pageTitle(page)}`}></div>
+        <noscript>
+          <img src={iiifImage(page, 1400)} alt={`${pageTitle(page)} of the Voynich Manuscript`} class="absolute inset-0 w-full h-full object-contain" />
+        </noscript>
+        <a id="vr-prev" href={prev ? `${base}/voynich-manuscript/book/${prev.slug}` : undefined}
+           class:list={['vr-turn left-2', { 'vr-hidden': !prev }]} aria-label="Previous page" title="Previous page (←)">&#x2039;</a>
+        <a id="vr-next" href={next ? `${base}/voynich-manuscript/book/${next.slug}` : undefined}
+           class:list={['vr-turn right-2', { 'vr-hidden': !next }]} aria-label="Next page" title="Next page (→)">&#x203A;</a>
+      </div>
+
+      <aside id="vr-info" class="vr-info hidden lg:block w-80 shrink-0 border-l border-border overflow-y-auto p-6">
+        <div id="vr-notebox" class:list={[{ hidden: !notes[page.slug] }]}>
+          <p class="font-mono text-[11px] uppercase tracking-widest vr-muted mb-2">About this page</p>
+          <p id="vr-note" class="vr-serif text-[17px] leading-relaxed mb-6">{notes[page.slug]}</p>
+        </div>
+        <p class="font-mono text-[11px] uppercase tracking-widest vr-muted mb-2">The section</p>
+        <p id="vr-blurb" class="text-sm text-text-secondary leading-relaxed mb-8">{sectionBlurbs[page.section]}</p>
+        <div class="text-xs vr-muted leading-relaxed space-y-2 border-t border-border pt-5">
+          <p>Drag to move. Scroll or pinch to zoom all the way into the vellum.</p>
+          <p>Arrow keys turn pages. <kbd>+</kbd> <kbd>-</kbd> zoom, <kbd>0</kbd> fits the page, <kbd>F</kbd> goes fullscreen.</p>
+          <p class="pt-3">Scans: {credit}. Public domain.</p>
+          <p><a href={`${base}/voynich-manuscript`} class="hover:text-text-primary underline underline-offset-2">Read the story of the manuscript &rarr;</a></p>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Every page, in order -->
+    <nav id="vr-strip" class="vr-strip shrink-0 border-t border-border overflow-x-auto overflow-y-hidden" aria-label="All pages">
+      <ol class="flex items-end gap-1.5 px-4 py-2 w-max">
+        {pages.map((p, i) => {
+          const showSection = p.section !== lastSection;
+          lastSection = p.section;
+          return (
+            <li class="flex items-end gap-1.5">
+              {showSection && i > 0 && <span class="vr-divider" aria-hidden="true"></span>}
+              <a href={`${base}/voynich-manuscript/book/${p.slug}`} data-i={i}
+                 class:list={['vr-thumb', { 'is-current': i === index }]}
+                 title={`${pageTitle(p)} · ${sectionName(p.section)}`}>
+                <img src={thumbUrl(base, p)} alt={pageTitle(p)} loading="lazy" decoding="async"
+                     style={`aspect-ratio: ${p.width} / ${p.height};`} />
+              </a>
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
+  </div>
+</Base>
+
+<style>
+  .vr {
+    /* Fill the window under the fixed site nav; the script measures the nav. */
+    height: calc(100svh - var(--vr-nav, 56px));
+    background: #0b0906;
+    color: #f5e6c8;
+  }
+  .vr-bar, .vr-strip, .vr-info { background: rgba(14, 11, 7, 0.96); }
+  .vr-serif { font-family: Georgia, 'Times New Roman', serif; color: #f5e6c8; }
+  .vr-muted { color: #c8b89a; opacity: 0.7; }
+  .vr-btn {
+    width: 2rem; height: 2rem; border-radius: 4px;
+    border: 1px solid rgba(200, 184, 154, 0.25); color: #f5e6c8;
+    font-size: 15px; line-height: 1; display: inline-flex; align-items: center; justify-content: center;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .vr-btn:hover { border-color: rgba(245, 230, 200, 0.6); background: rgba(245, 230, 200, 0.06); }
+  .vr-turn {
+    position: absolute; top: 50%; transform: translateY(-50%); z-index: 5;
+    width: 2.75rem; height: 4.5rem; display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem; line-height: 1; color: #f5e6c8; border-radius: 6px;
+    background: rgba(8, 6, 4, 0.55); border: 1px solid rgba(200, 184, 154, 0.2);
+    transition: background 0.2s, opacity 0.2s;
+  }
+  .vr-turn:hover { background: rgba(8, 6, 4, 0.85); }
+  .vr-hidden { opacity: 0; pointer-events: none; }
+  .vr-strip { height: 84px; scrollbar-width: thin; }
+  .vr-thumb { display: block; border: 2px solid transparent; border-radius: 3px; opacity: 0.55; transition: opacity 0.2s, border-color 0.2s; }
+  .vr-thumb:hover { opacity: 0.9; }
+  .vr-thumb img { height: 64px; width: auto; display: block; background: #1a140d; }
+  .vr-thumb.is-current { opacity: 1; border-color: #f5e6c8; }
+  .vr-divider { width: 1px; height: 64px; background: rgba(200, 184, 154, 0.35); margin: 0 6px; }
+  .vr-info kbd {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 1px 5px;
+    border: 1px solid rgba(200, 184, 154, 0.3); border-radius: 3px;
+  }
+  /* Small screens: the notes panel opens over the page from the "i" button. */
+  @media (max-width: 1023px) {
+    .vr-info.is-open { display: block; position: absolute; inset: 0 0 0 auto; width: min(20rem, 90%); z-index: 10; }
+  }
+</style>
+
+<script>
+  import OpenSeadragon from 'openseadragon';
+
+  interface ClientPage {
+    slug: string; title: string; section: string; blurb: string; note: string;
+    service: string; width: number; height: number; thumb: string;
+  }
+
+  const root = document.getElementById('vr')!;
+  const book: ClientPage[] = JSON.parse(root.dataset.pages!);
+  const base = root.dataset.base ?? '';
+  let current = Number(root.dataset.index);
+
+  // Size the reader to the space under the site's fixed nav (it wraps on small screens).
+  const nav = document.querySelector('body > nav');
+  const fitToWindow = () => root.style.setProperty('--vr-nav', `${nav?.getBoundingClientRect().height ?? 56}px`);
+  fitToWindow();
+  addEventListener('resize', fitToWindow);
+
+  // Yale serves IIIF Image API 2 with 512px tiles; describing the source inline skips one
+  // info.json round trip per page turn.
+  const tileSource = (p: ClientPage) => ({
+    '@context': 'http://iiif.io/api/image/2/context.json',
+    '@id': p.service,
+    protocol: 'http://iiif.io/api/image',
+    width: p.width,
+    height: p.height,
+    profile: ['http://iiif.io/api/image/2/level2.json'],
+    tiles: [{ width: 512, scaleFactors: [1, 2, 4, 8, 16, 32] }],
+  });
+
+  const viewer = OpenSeadragon({
+    element: document.getElementById('vr-osd')!,
+    tileSources: tileSource(book[current]),
+    showNavigationControl: false,
+    showNavigator: true,
+    navigatorPosition: 'BOTTOM_RIGHT',
+    navigatorBackground: '#0b0906',
+    navigatorBorderColor: 'rgba(200,184,154,0.4)',
+    navigatorDisplayRegionColor: '#f5e6c8',
+    maxZoomPixelRatio: 2,
+    visibilityRatio: 0.6,
+    animationTime: 0.6,
+    blendTime: 0.15,
+    immediateRender: true,
+    gestureSettingsMouse: { clickToZoom: false, dblClickToZoom: true },
+    crossOriginPolicy: 'Anonymous',
+  });
+
+  const $ = (id: string) => document.getElementById(id)!;
+
+  // Placeholder: the local thumbnail sits under the viewer (same fit as OpenSeadragon's home view)
+  // and fades out once every tile for the current view has loaded, or as soon as the reader zooms.
+  const ph = $('vr-ph') as HTMLImageElement;
+  const hidePh = () => { ph.style.opacity = '0'; };
+  viewer.addHandler('open', () => {
+    viewer.world.getItemAt(0)?.addHandler('fully-loaded-change', (e) => { if (e.fullyLoaded) hidePh(); });
+  });
+  viewer.addHandler('canvas-drag', hidePh);
+  viewer.addHandler('zoom', () => { if (viewer.viewport.getZoom() > viewer.viewport.getHomeZoom() * 1.05) hidePh(); });
+  const pageUrl = (i: number) => `${base}/voynich-manuscript/book/${book[i].slug}`;
+  const thumbs = [...document.querySelectorAll<HTMLAnchorElement>('.vr-thumb')];
+
+  function showStripCurrent(smooth: boolean) {
+    thumbs.forEach((t) => t.classList.toggle('is-current', Number(t.dataset.i) === current));
+    thumbs[current]?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: smooth ? 'smooth' : 'auto' });
+  }
+
+  function setArrow(el: HTMLElement, i: number) {
+    const ok = i >= 0 && i < book.length;
+    el.classList.toggle('vr-hidden', !ok);
+    if (ok) el.setAttribute('href', pageUrl(i)); else el.removeAttribute('href');
+  }
+
+  function render() {
+    const p = book[current];
+    $('vr-title').textContent = p.title;
+    $('vr-section').textContent = p.section;
+    $('vr-count').textContent = String(current + 1);
+    $('vr-blurb').textContent = p.blurb;
+    $('vr-note').textContent = p.note;
+    $('vr-notebox').classList.toggle('hidden', !p.note);
+    document.title = `${p.title} · The Voynich Manuscript | VoynichLabs`;
+    setArrow($('vr-prev'), current - 1);
+    setArrow($('vr-next'), current + 1);
+    showStripCurrent(true);
+  }
+
+  function go(i: number, push = true) {
+    if (i < 0 || i >= book.length || i === current) return;
+    current = i;
+    ph.src = book[i].thumb;
+    ph.style.opacity = '1';
+    viewer.open(tileSource(book[i]));
+    if (push) history.pushState({ i }, '', pageUrl(i));
+    render();
+    // Warm the next page's overview image so the turn after this one feels instant.
+    const n = book[i + 1];
+    if (n) new Image().src = `${n.service}/full/,1024/0/default.jpg`;
+  }
+
+  // Turn pages in place: plain links still work without the script.
+  const turn = (e: Event, i: number) => { e.preventDefault(); go(i); };
+  $('vr-prev').addEventListener('click', (e) => turn(e, current - 1));
+  $('vr-next').addEventListener('click', (e) => turn(e, current + 1));
+  thumbs.forEach((t) => t.addEventListener('click', (e) => turn(e, Number(t.dataset.i))));
+  addEventListener('popstate', (e) => {
+    const i = (e.state && typeof e.state.i === 'number') ? e.state.i : book.findIndex((p) => location.pathname.endsWith(`/${p.slug}`));
+    if (i >= 0) go(i, false);
+  });
+  history.replaceState({ i: current }, '', location.href);
+
+  const actions: Record<string, () => void> = {
+    'zoom-in': () => viewer.viewport.zoomBy(1.5),
+    'zoom-out': () => viewer.viewport.zoomBy(1 / 1.5),
+    home: () => viewer.viewport.goHome(),
+    full: () => viewer.setFullScreen(!viewer.isFullPage()),
+    info: () => $('vr-info').classList.toggle('is-open'),
+  };
+  document.querySelectorAll<HTMLButtonElement>('.vr-btn').forEach((b) =>
+    b.addEventListener('click', () => actions[b.dataset.act!]?.()));
+
+  addEventListener('keydown', (e) => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const k = e.key;
+    if (k === 'ArrowRight' || k === 'PageDown') go(current + 1);
+    else if (k === 'ArrowLeft' || k === 'PageUp') go(current - 1);
+    else if (k === '+' || k === '=') actions['zoom-in']();
+    else if (k === '-' || k === '_') actions['zoom-out']();
+    else if (k === '0') actions.home();
+    else if (k === 'f' || k === 'F') actions.full();
+    else return;
+    e.preventDefault();
+  });
+
+  showStripCurrent(false);
+</script>

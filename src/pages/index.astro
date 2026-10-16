@@ -1,16 +1,17 @@
 ---
 // Author: Cascade (claude-sonnet-4-20250514); 2026-07-13 update by Claude Fable 5;
-//         2026-10-15 Voynich-first rework by Claude Opus 5.5 Low
+//         2026-10-15 Voynich-first rework by Claude Opus 5.5 Low;
+//         2026-10-16 book ribbon (entry to the page-by-page reader) by Claude Opus 5.5 Low
 // Date: 2026-02-23 (directory section 2026-07-13; Voynich-first 2026-10-15)
 // PURPOSE: Home page. Leads with the Voynich Manuscript (hero + the five manuscript sections,
 //          both pointing at the /voynich-manuscript write-up), then Mark Barney's ARC-AGI work
 //          (ARC Explainer), his agent swarm, the "What's here" directory, and a short
 //          "where it started" note on co-founder Simon Strandgaard with the LODA showcase.
 //          The DAG overlay in the hero is kept as the lab's visual signature.
-// SRP/DRY check: Pass — reuses Base layout; manuscript sections come from src/data/voynich-worlds.ts
+// SRP/DRY check: Pass — reuses Base layout; manuscript pages come from src/lib/voynich.ts
 import Base from '../layouts/Base.astro';
 import { optimized } from '../lib/optimized-image';
-import { voynichWorlds } from '../data/voynich-worlds';
+import { pages as voynichPages, pageBySlug, pageTitle, thumbUrl, sectionName } from '../lib/voynich';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const siteDirectory = [
   { href: `${base}/voynich-manuscript`, label: 'voynich', desc: 'Our write-up on the manuscript the lab is named after. Six centuries, still unread.' },
@@ -23,6 +24,11 @@ const siteDirectory = [
   { href: `${base}/dash`, label: 'dash', desc: 'Client-side text transformer: encoders, ciphers, and an emoji byte codec. No server.' },
   { href: `${base}/lab`, label: 'lab', desc: 'Mathematical visual experiments — chord diagrams, strange attractors, reaction-diffusion.' },
 ];
+// Pages shown in the home ribbon, in book order: a little of every section.
+const ribbon = ['f1r', 'f2r', 'f9v', 'f13r', 'f33v', 'f56r', 'f67r', 'f70v-2', 'f73r', 'f75r', 'f78r', 'f82r', 'f85v-86r', 'f88r', 'f99r', 'f103r', 'f116v']
+  .map((slug) => pageBySlug(slug)!)
+  .filter(Boolean);
+const textPageCount = voynichPages.filter((p) => p.section !== 'binding').length;
 ---
 <Base
   title="VoynichLabs — the Voynich Manuscript, ARC-AGI and an AI agent swarm"
@@ -103,57 +109,70 @@ const siteDirectory = [
 
       <p class="text-base sm:text-lg max-w-xl mx-auto mb-10 leading-relaxed" style="color: #c8b89a;">
         Six centuries of codebreakers, linguists and now machines have tried to read the Voynich Manuscript.
-        All of them failed. We named the lab after it, and we wrote up why it still matters.
+        All of them failed. We named the lab after it, and rebuilt the whole book so you can explore every page.
       </p>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href={`${base}/voynich-manuscript/book`}
+           class="px-6 py-2.5 rounded font-mono text-sm transition-colors duration-200"
+           style="background: #f5e6c8; color: #0b0906;">
+          open the book
+        </a>
         <a href={`${base}/voynich-manuscript`}
            class="px-6 py-2.5 rounded font-mono text-sm transition-colors duration-200 hover:bg-[#f5e6c8]/10"
            style="border: 1px solid rgba(245,230,200,0.5); color: #f5e6c8;">
-          read the manuscript story
-        </a>
-        <a href="#arc"
-           class="px-6 py-2.5 bg-bg-surface border border-border hover:border-border-active text-text-muted hover:text-text-primary font-mono text-sm rounded transition-colors duration-200">
-          see what we build
+          read the story
         </a>
       </div>
     </div>
   </section>
 
   <!-- ════════════════════════════════════════════════════════════════════
-       THE FIVE SECTIONS — teaser strip, every card opens the write-up
+       THE BOOK — ribbon of real pages from every section; each opens in the reader
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="border-t border-border py-20 sm:py-24" style="background: rgba(10,8,5,0.95);">
+  <section class="border-t border-border py-20 sm:py-24 overflow-hidden" style="background: rgba(10,8,5,0.95);">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <p class="font-mono text-xs uppercase tracking-[0.2em] mb-3" style="color: #c8b89a;">
-        Inside the manuscript
-      </p>
-      <h2 class="text-2xl sm:text-3xl font-bold text-text-primary mb-3" style="font-family: Georgia, serif;">
-        Five sections. Not one of them understood.
-      </h2>
-      <p class="text-sm text-text-muted max-w-2xl mb-10 leading-relaxed">
-        Plants that don't exist, a sky that matches no known system, a map of nowhere.
-        Every page is drawn with care, and every page is a question.
-      </p>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-        {voynichWorlds.map((w) => (
-          <a href={`${base}/voynich-manuscript`} class="group block rounded-lg overflow-hidden border border-border hover:border-[#c8b89a]/50 transition-colors duration-200" style="background: rgba(14,11,7,0.9);">
-            <div class="aspect-[3/4] overflow-hidden">
-              <img src={`${base}${w.image}`} alt={`Voynich Manuscript folio ${w.folio}, ${w.name.toLowerCase()} section`}
-                   class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" loading="lazy" />
-            </div>
-            <div class="p-3">
-              <p class="text-sm font-semibold" style="color: #f5e6c8; font-family: Georgia, serif;">{w.emoji} {w.name}</p>
-              <p class="text-xs text-text-muted mt-1 leading-snug">{w.question}</p>
-            </div>
-          </a>
-        ))}
-      </div>
-      <p class="mt-8 text-sm">
-        <a href={`${base}/voynich-manuscript`} class="font-mono text-xs hover:text-text-primary transition-colors" style="color: #c8b89a;">
-          read the full write-up --&gt;
+      <div class="flex flex-wrap items-end justify-between gap-6 mb-10">
+        <div class="max-w-2xl">
+          <p class="font-mono text-xs uppercase tracking-[0.2em] mb-3" style="color: #c8b89a;">
+            The whole manuscript, rebuilt
+          </p>
+          <h2 class="text-2xl sm:text-4xl font-bold text-text-primary mb-3" style="font-family: Georgia, serif;">
+            Every page. Zoom into the ink.
+          </h2>
+          <p class="text-sm sm:text-base leading-relaxed" style="color: #c8b89a;">
+            All {textPageCount} surviving page images, in order, from the impossible plants to the starred
+            recipes. Turn pages with the arrow keys and zoom until you can see the pen strokes.
+          </p>
+        </div>
+        <a href={`${base}/voynich-manuscript/book`}
+           class="px-6 py-2.5 rounded font-mono text-sm shrink-0" style="background: #f5e6c8; color: #0b0906;">
+          open the book &rarr;
         </a>
-      </p>
+      </div>
+    </div>
+    <div class="vb-ribbon overflow-x-auto pb-4">
+      <ol class="flex gap-4 px-4 sm:px-6 w-max">
+        {ribbon.map((p) => (
+          <li>
+            <a href={`${base}/voynich-manuscript/book/${p.slug}`} class="group block" title={`${pageTitle(p)} · ${sectionName(p.section)}`}>
+              <div class="h-56 sm:h-72 overflow-hidden rounded-sm" style="border: 1px solid rgba(200,184,154,0.18); background: #15100a;">
+                <img src={thumbUrl(base, p)} alt={`${pageTitle(p)} of the Voynich Manuscript`} loading="lazy" decoding="async"
+                     class="h-full w-auto opacity-85 group-hover:opacity-100 group-hover:scale-[1.03] transition duration-500"
+                     style={`aspect-ratio: ${p.width} / ${p.height};`} />
+              </div>
+              <p class="mt-2 font-mono text-[11px]" style="color: #c8b89a;">
+                {pageTitle(p)} <span class="opacity-60">· {sectionName(p.section)}</span>
+              </p>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 mt-6">
+      <a href={`${base}/voynich-manuscript`} class="font-mono text-xs hover:text-text-primary transition-colors" style="color: #c8b89a;">
+        or read the story of the manuscript --&gt;
+      </a>
     </div>
   </section>
 
@@ -444,6 +463,7 @@ const siteDirectory = [
   </section>
 
 <style>
+  .vb-ribbon { scrollbar-width: thin; scrollbar-color: rgba(200,184,154,0.3) transparent; }
   /* :global because the hero script adds these classes to SVG nodes it creates at
      runtime, which never get Astro's scoping attribute. */
   @keyframes dag-node-pulse {

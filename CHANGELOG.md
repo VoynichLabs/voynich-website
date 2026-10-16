@@ -5,6 +5,21 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.57.0] - 2026-10-16
+
+### Added
+- The whole Voynich Manuscript as an explorable book. /voynich-manuscript/book shows every scanned page in binding order, grouped into the six sections, with the lost folios marked as gaps. Each page has its own reader at /voynich-manuscript/book/{page}: deep zoom streamed from Yale's full-resolution scans, page turning in place with arrow keys, side buttons or a strip of every page, curator notes on notable pages, and an instant local preview while the sharp image loads.
+- scripts/fetch-voynich-pages.mjs builds the page index and thumbnails from Yale's official digital copy (Beinecke MS 408). OpenSeadragon added for deep zoom.
+
+### Changed
+- /voynich-manuscript rewritten around the manuscript's own pages: the object, a walk through all six sections with real scans, the script and its statistics, the chain of owners, the people who tried to read it, and four leading ideas about what it is.
+- Home: hero buttons now open the book and the story; the five-card strip is replaced by a ribbon of real pages from every section.
+- Removed the old five-section list and five unused manuscript images.
+
+Author: Claude Opus 5.5 Low
+
+---
+
 ## [0.56.0] - 2026-10-15
 
 ### Changed

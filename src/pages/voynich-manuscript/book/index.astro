@@ -1,0 +1,134 @@
+---
+// Author: Claude Opus 5.5 Low
+// Date: 2026-10-16
+// PURPOSE: The whole Voynich Manuscript on one page (/voynich-manuscript/book): every scanned page
+//          as a thumbnail, grouped into the six conventional sections, in binding order. Folios
+//          that were cut out or lost are shown as gaps where they used to be, not hidden.
+//          Each thumbnail opens that page in the deep-zoom reader.
+// SRP/DRY check: Pass — page data, sections and missing-folio runs come from src/lib/voynich.ts.
+import Base from '../../../layouts/Base.astro';
+import {
+  pages, sections, sectionBlurbs, sectionName, pageTitle, thumbUrl, missingFolios, credit, notes,
+} from '../../../lib/voynich';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Binding pieces (covers, edges, flyleaves) bracket the text block; split them so the front
+// matter opens the book and the back matter closes it.
+const firstText = pages.findIndex((p) => p.section !== 'binding');
+const front = pages.slice(0, firstText);
+const back = pages.slice(firstText).filter((p) => p.section === 'binding');
+
+type Cell = { kind: 'page'; page: (typeof pages)[number]; i: number } | { kind: 'gap'; from: number; to: number };
+
+// Walk a section's pages in order and drop a gap cell wherever folios are missing.
+function cellsFor(id: string, from: number, to: number): Cell[] {
+  const cells: Cell[] = [];
+  let expect = from;
+  pages.forEach((p, i) => {
+    if (p.section !== id) return;
+    const f = Math.min(...p.folios);
+    if (f > expect) {
+      const gap = missingFolios.filter((m) => m >= expect && m < f);
+      if (gap.length) cells.push({ kind: 'gap', from: gap[0], to: gap[gap.length - 1] });
+    }
+    cells.push({ kind: 'page', page: p, i });
+    expect = Math.max(expect, Math.max(...p.folios) + 1);
+  });
+  const tail = missingFolios.filter((m) => m >= expect && m <= to);
+  if (tail.length) cells.push({ kind: 'gap', from: tail[0], to: tail[tail.length - 1] });
+  return cells;
+}
+
+const groups = [
+  { id: 'front', name: 'Covers', blurb: sectionBlurbs.binding, cells: front.map((p) => ({ kind: 'page', page: p, i: pages.indexOf(p) }) as Cell) },
+  ...sections.map((s) => ({ id: s.id, name: s.name, blurb: sectionBlurbs[s.id], cells: cellsFor(s.id, s.from, s.to) })),
+  { id: 'back', name: 'Back of the book', blurb: 'Flyleaf, back cover, and the edges and spine of the volume.', cells: back.map((p) => ({ kind: 'page', page: p, i: pages.indexOf(p) }) as Cell) },
+];
+const textPages = pages.filter((p) => p.section !== 'binding').length;
+---
+<Base
+  title="The Voynich Manuscript, page by page"
+  description="Every page of the Voynich Manuscript (Beinecke MS 408) in order, grouped by section, with the lost folios marked. Open any page to zoom into Yale's full-resolution scan."
+  ogImage={`${base}/voynich/folios/f85v86r-foldout.jpg`}
+>
+  <div style="background: #0b0906;">
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-10">
+      <p class="font-mono text-xs uppercase tracking-[0.25em] mb-5" style="color: #c8b89a;">
+        Beinecke MS 408 · the complete scan
+      </p>
+      <h1 class="text-4xl sm:text-5xl font-bold leading-tight mb-5" style="font-family: Georgia, serif; color: #f5e6c8;">
+        The whole book, page by page.
+      </h1>
+      <p class="text-base sm:text-lg max-w-2xl leading-relaxed mb-8" style="color: #c8b89a;">
+        All {textPages} surviving page images, in the order they are bound, from the plants to the stars.
+        Gaps mark the folios that were cut out or lost. Open any page to zoom into the vellum itself.
+      </p>
+      <div class="flex flex-wrap gap-2 mb-2">
+        {groups.filter((g) => g.id !== 'front' && g.id !== 'back').map((g) => (
+          <a href={`#${g.id}`} class="px-3 py-1.5 rounded font-mono text-xs transition-colors hover:bg-[#f5e6c8]/10"
+             style="border: 1px solid rgba(200,184,154,0.3); color: #f5e6c8;">{g.name}</a>
+        ))}
+        <a href={`${base}/voynich-manuscript/book/${pages[firstText].slug}`}
+           class="px-3 py-1.5 rounded font-mono text-xs transition-colors"
+           style="background: #f5e6c8; color: #0b0906;">start reading &rarr;</a>
+      </div>
+    </section>
+
+    {groups.map((g) => (
+      <section id={g.id} class="border-t scroll-mt-20" style="border-color: rgba(200,184,154,0.15);">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+          <div class="flex flex-wrap items-baseline justify-between gap-3 mb-2">
+            <h2 class="text-2xl sm:text-3xl font-bold" style="font-family: Georgia, serif; color: #f5e6c8;">{g.name}</h2>
+            <span class="font-mono text-[11px] uppercase tracking-widest" style="color: #c8b89a; opacity: 0.6;">
+              {g.cells.filter((c) => c.kind === 'page').length} images
+            </span>
+          </div>
+          <p class="text-sm max-w-2xl leading-relaxed mb-8" style="color: #c8b89a;">{g.blurb}</p>
+          <ol class="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-8 gap-3">
+            {g.cells.map((c) => c.kind === 'page' ? (
+              <li>
+                <a href={`${base}/voynich-manuscript/book/${c.page.slug}`} class="group block" title={notes[c.page.slug] ?? pageTitle(c.page)}>
+                  <div class="aspect-[3/4] overflow-hidden rounded-sm flex items-center justify-center transition-colors"
+                       style="background: #15100a; border: 1px solid rgba(200,184,154,0.12);">
+                    <img src={thumbUrl(base, c.page)} alt={`${pageTitle(c.page)}, ${sectionName(c.page.section)}`}
+                         loading="lazy" decoding="async"
+                         class="max-w-full max-h-full object-contain opacity-80 group-hover:opacity-100 group-hover:scale-[1.03] transition duration-300" />
+                  </div>
+                  <p class="mt-1.5 font-mono text-[11px] truncate" style="color: #c8b89a;">
+                    {c.page.label.replace(/[[\]]/g, '')}{notes[c.page.slug] && <span title="Has a note" style="color: #f5e6c8;"> ✦</span>}
+                  </p>
+                </a>
+              </li>
+            ) : (
+              <li>
+                <div class="aspect-[3/4] rounded-sm flex flex-col items-center justify-center text-center p-2"
+                     style="border: 1px dashed rgba(200,184,154,0.3);">
+                  <span class="font-mono text-[11px]" style="color: #c8b89a;">
+                    {c.from === c.to ? `f${c.from}` : `f${c.from}–${c.to}`}
+                  </span>
+                  <span class="text-[11px] mt-1" style="color: #c8b89a; opacity: 0.6;">lost</span>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+    ))}
+
+    <section class="border-t" style="border-color: rgba(200,184,154,0.15);">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 py-14 text-sm leading-relaxed" style="color: #c8b89a;">
+        <p class="mb-3">
+          Sections follow the grouping researchers have used for decades; foldouts sit with their first folio.
+          Pages marked ✦ have a short note in the reader.
+        </p>
+        <p class="mb-6">
+          Scans: {credit}, streamed in full resolution from Yale's public image server. The manuscript is in the public domain.
+        </p>
+        <a href={`${base}/voynich-manuscript`} class="font-mono text-xs underline underline-offset-2 hover:text-text-primary">
+          read the story of the manuscript &rarr;
+        </a>
+      </div>
+    </section>
+  </div>
+</Base>
