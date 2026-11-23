@@ -1,6 +1,6 @@
 ---
-// Author: Claude Opus 4.8 (Bubba coding sub-agent)
-// Date: 12-July-2026
+// Author: Claude Opus 4.8 (Bubba coding sub-agent); glyphs/stealth/wrappers added by Claude Opus 5.5
+// Date: 12-July-2026; updated 23-Nov-2026
 // PURPOSE: DASH — a fully client-side text transformer / prompt encoder toolkit for
 //          voynichlabs.org/dash. A static reimplementation of the transform surface from
 //          peluche's "Deck of Many Prompts" (a Python/FastHTML app), rebuilt as pure
@@ -12,6 +12,11 @@
 //          real per-model tokenizer (Claude/GPT/Llama/Mistral/Gemma) that lazy-loads
 //          transformers.js on demand and renders the actual token split — client-side, opt-in,
 //          and degrading gracefully to the offline transforms if the CDN is unreachable.
+//          23-Nov-2026: appends GLYPH_TRANSFORMS from src/lib/dash-glyphs.ts (Egyptian
+//          hieroglyphs, runes, upside down, Unicode fonts, homoglyphs, zero-width and tag
+//          smuggling, atbash, rot47, typos, scramble, sarcasm, reverse words, unicode escapes,
+//          pseudo-Python and payload split) and loads Noto Egyptian Hieroglyphs / Runic fonts
+//          so those glyphs render on every OS.
 //          Genuinely server-dependent features of the original (network "translate",
 //          server-side text-to-image) remain scoped out — see the note at the foot of the page.
 // SRP/DRY check: Pass — single self-contained tool page. Reuses the shared Base.astro layout,
@@ -23,8 +28,14 @@ import Base from '../layouts/Base.astro';
 
 <Base
   title="DASH — text transformer"
-  description="A fully client-side text transformer and prompt encoder: base64, morse, rot13, leet, hex, binary, braille, NATO and more. Runs entirely in your browser — no server, no data leaves the page."
+  description="A fully client-side text transformer and prompt encoder: Egyptian hieroglyphs, runes, homoglyphs, invisible text, typos, pseudo-Python, base64, morse, leet, braille and more. Runs entirely in your browser — no server, no data leaves the page."
 >
+  <!-- Glyph fonts for the hieroglyph and rune transforms; the browser only downloads them when
+       those characters are on screen (Google Fonts serves them with unicode-range). -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Runic&display=swap"
+    rel="stylesheet"
+  />
   <section class="max-w-5xl mx-auto px-4 sm:px-6 py-14">
     <!-- Header -->
     <p class="font-mono text-xs uppercase tracking-widest text-text-muted mb-4">client-side toolkit</p>
@@ -179,6 +190,15 @@ import Base from '../layouts/Base.astro';
           decode simply strips the combining marks back off.
         </p>
         <p>
+          <span class="text-text-primary">Glyphs and stealth.</span> The Unicode styles (bold, script, fraktur,
+          double-struck, monospace, circled, fullwidth), upside down, homoglyphs, zero-width ink, tag smuggling,
+          unicode escapes and payload split all round-trip exactly. Hieroglyphs, runes and small caps have no
+          letter case, so they decode to lower case; pseudo-python collapses line breaks into spaces.
+          <span class="font-mono text-xs">typos</span>, <span class="font-mono text-xs">scramble</span> and
+          <span class="font-mono text-xs">sarcasm</span> are lossy and encode-only. Typos and scramble are seeded per
+          word, so earlier words stay put while you type.
+        </p>
+        <p>
           <span class="text-text-primary">Network use.</span> Every transform on this page is pure client-side
           JavaScript and never touches the network. The <span class="font-mono text-xs">tokenize</span> panel is the
           one exception, and only when you press the button: it fetches transformers.js and the chosen model's
@@ -198,7 +218,10 @@ import Base from '../layouts/Base.astro';
     </div>
   </section>
 
-  <style>
+  <!-- is:global because the transform buttons and group labels are created in JS at runtime and
+       never receive Astro's scoped data-astro-cid attribute; every selector here is dash-prefixed
+       or an id on this page, so nothing leaks to other pages. -->
+  <style is:global>
     .dash-io {
       width: 100%;
       min-height: 260px;
@@ -208,7 +231,7 @@ import Base from '../layouts/Base.astro';
       border: 1px solid #1e1e2e;
       border-radius: 0.375rem;
       color: #e8e8f0;
-      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-family: 'JetBrains Mono', 'Fira Code', 'Noto Sans Egyptian Hieroglyphs', 'Noto Sans Runic', 'Segoe UI Historic', monospace;
       font-size: 0.8125rem;
       line-height: 1.55;
       outline: none;
@@ -258,6 +281,7 @@ import Base from '../layouts/Base.astro';
 
   <script>
     import { requiredElement } from '../lib/browser-controls';
+    import { GLYPH_TRANSFORMS } from '../lib/dash-glyphs';
     // --- pure transform functions (round-trip verified in node before porting) ---
     const enc = new TextEncoder();
     const dec = new TextDecoder();
@@ -498,6 +522,8 @@ import Base from '../layouts/Base.astro';
       { id: 'disemvowel', label: 'disemvowel', group: 'text ops', enc: disemvowel, dec: null, note: 'lossy — drops all vowels, cannot be reversed.' },
       { id: 'piglatin', label: 'pig latin', group: 'text ops', enc: pigLatin, dec: null, note: 'encode only — pig latin is not reversible.' },
       { id: 'zalgo', label: 'zalgo', group: 'text ops', enc: zalgo, dec: zalgoStrip, encLabel: 'glitch', decLabel: 'strip' },
+      // glyph scripts, stealth text, extra ciphers/text ops and code wrappers (src/lib/dash-glyphs.ts)
+      ...GLYPH_TRANSFORMS,
     ];
 
     // --- UI wiring ---
@@ -514,7 +540,7 @@ import Base from '../layouts/Base.astro';
     let direction = 'enc'; // 'enc' | 'dec'
 
     // build grouped transform buttons
-    const groupOrder = ['encoders', 'ciphers', 'text ops'];
+    const groupOrder = ['encoders', 'glyphs', 'ciphers', 'stealth', 'wrappers', 'text ops'];
     for (const g of groupOrder) {
       const row = document.createElement('div');
       row.className = 'flex flex-wrap items-center gap-2';

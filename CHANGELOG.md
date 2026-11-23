@@ -5,6 +5,26 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.60.0] - 23-Nov-2026
+
+### Added
+- DASH (/dash) gets 21 new transforms, all still 100% client-side:
+  - **glyphs**: Egyptian hieroglyphs (one uniliteral sign per letter, stroke numerals for digits, decodes back), Elder Futhark runes, upside down, small caps, fullwidth, circled, and the Unicode bold / script / fraktur / double-struck / monospace "fonts".
+  - **stealth**: homoglyphs (Cyrillic and Greek lookalikes), zero-width invisible ink, and Unicode tag smuggling (invisible ASCII).
+  - **wrappers**: pseudo-python (the words become a Python list rebuilt by a join) and payload split (the text cut into small string variables joined at the end). Both emit real, runnable Python.
+  - **ciphers**: atbash, rot47. **text ops**: random typos (neighbouring key, swap, drop, double), typoglycemia scramble, sarcasm case, reverse words. **encoders**: unicode escapes.
+- Why: more ways to reshape a prompt for red-teaming practice (for example, the Gray Swan arena).
+- How: the new transforms live in a pure module, src/lib/dash-glyphs.ts, appended to the page's registry. Typos and scramble are seeded per word, so text you have already typed does not reshuffle on every keystroke. Noto Egyptian Hieroglyphs and Noto Runic web fonts load only when those glyphs are shown.
+
+### Fixed
+- DASH transform buttons and group labels were unstyled (no border, no selected state) because they are created in JavaScript and never got Astro's scoped style attribute. The page stylesheet is now global; every selector is dash-prefixed.
+
+Files: src/lib/dash-glyphs.ts (new), src/pages/dash.astro, tests/dash-glyphs.test.mjs (new), docs/2026-11-23-dash-glyphs-plan.md (new).
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.59.0] - 2026-10-16
 
 ### Changed
