@@ -5,6 +5,15 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.61.2] - 23-Nov-2026
+
+### Fixed
+- DASH zalgo no longer re-glitches the whole text on every keystroke. Marks are picked from each character and its position (an integer hash) instead of Math.random, so earlier text keeps its look while you type; marks still vary. Found by the review of the markbarney.net/dash port. Files: src/lib/dash-transforms.ts (copied to MarkSite), tests/dash-glyphs.test.mjs.
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.61.1] - 23-Nov-2026
 
 ### Changed

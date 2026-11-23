@@ -1,5 +1,5 @@
 // Author: Claude Opus 4.8 (Bubba coding sub-agent); moved into this module by Claude Opus 5.5
-// Date: 12-July-2026; moved 23-Nov-2026
+// Date: 12-July-2026; moved 23-Nov-2026; zalgo made stable 23-Nov-2026
 // PURPOSE: The original 17 DASH transforms (base64, hex, binary, ascii, url, braille, emoji, rot13,
 //          leet, morse, nato, reverse, case, spaces, disemvowel, pig latin, zalgo), ported from
 //          peluche's Deck of Many Prompts and first written inline in src/pages/dash.astro. Moved
@@ -155,10 +155,17 @@ function pigLatin(s: string) {
 }
 
 const ZALGO_MARKS = ['̵', '̶', '̴', '̷', '̸'];
+/**
+ * Pick a mark from the character and its position (an integer hash, not Math.random), so the
+ * output looks random but is stable: DASH re-runs on every keystroke, and true randomness made
+ * every earlier character's mark change each time you typed.
+ */
 function zalgo(s: string) {
-  return Array.from(s).map((c) => {
+  return Array.from(s).map((c, index) => {
     if (/\p{M}/u.test(c)) return c;
-    return c + ZALGO_MARKS[Math.floor(Math.random() * ZALGO_MARKS.length)];
+    let mixed = Math.imul((c.codePointAt(0) ?? 0) + 0x9e3779b9, 0x85ebca6b) ^ Math.imul(index + 1, 0xc2b2ae35);
+    mixed ^= mixed >>> 15;
+    return c + ZALGO_MARKS[(mixed >>> 0) % ZALGO_MARKS.length];
   }).join('');
 }
 function zalgoStrip(s: string) {

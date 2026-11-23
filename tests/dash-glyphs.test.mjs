@@ -43,6 +43,10 @@ test('original 17 transforms round trip from the shared module', () => {
   assert.equal(baseById.nato.dec(baseById.nato.enc(plain)), plain.replace(/ /g, ''));
   assert.equal(baseById.rot13.enc(baseById.rot13.enc(text)), text);
   assert.equal(baseById.zalgo.dec(baseById.zalgo.enc(plain)), plain);
+  // zalgo is stable while typing: a longer input keeps the earlier characters' marks
+  const glitched = baseById.zalgo.enc('hello gray');
+  assert.ok(baseById.zalgo.enc('hello gray swan').startsWith(glitched));
+  assert.ok(new Set(Array.from(baseById.zalgo.enc('aaaaaaaaaaaaaaaaaaaa')).filter((c) => /\p{M}/u.test(c))).size > 2, 'marks still vary');
 });
 
 const SENTENCE = 'The Quick Brown Fox jumps over 13 lazy dogs, 2026! (x/y?)';
