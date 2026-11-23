@@ -5,6 +5,27 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.62.0] - 23-Nov-2026
+
+### Added
+- DASH grows from 42 to 171 transforms, covering the inventory of Pliny's P4RS3LT0NGV3 (written fresh from public standard definitions; that repo is AGPL-3.0 and none of its code is used):
+  - **encoders** (24): base32, base32hex, base36, base58, base62, base64url, ascii85, z85, base91, base45, uuencode, quoted-printable, HTML entities, octal, decimal bytes, XOR, bitwise NOT, Gray code, Manchester, Baudot (ITA2), EBCDIC, BCD, Brainfuck, code points.
+  - **ciphers** (35): Caesar, rot5, rot18, rot8000, Vigenère, Beaufort, autokey, Gronsfeld, Porta, Trithemius, keyword, affine, multiplicative, A1Z26, Baconian, Polybius, tap code, Nihilist, QWERTY shift, DNA, Playfair, two-square, four-square, bifid, trifid, ADFGX, ADFGVX, Hill, rail fence, columnar, double transposition, scytale, route, AMSCO, fractionated Morse.
+  - **glyphs**: italic, bold italic, sans styles, bold script and fraktur, super/subscript, strike/slash/underline/overline, regional indicators, squared, parenthesized, mirror, faux Cyrillic, wide spacing.
+  - **alphabets** and **codes**: Younger Futhark, futhorc, Ogham, Phoenician, Gothic, Glagolitic, Old Italic, Coptic, Greek, hiragana, katakana, Standard Galactic, Roman and Mayan numerals, periodic table, seven-segment; semaphore, T9, phone keypad, DTMF, Navajo code talker, spoken Morse, and a QR code drawn in half-block characters (encoder written from ISO/IEC 18004, verified with two independent decoders across all 40 versions and 4 levels).
+  - **case** and **language games**: camel, Pascal, snake, constant, kebab, title, sentence and random case; rövarspråket, ubbi dubbi, Opish, louchebem, javanais, verlan, gibberish with legend, Latin-ish, emoji speak, heavy leet, vowel swap; plus remove accents, strip invisible, shuffle words, boustrophedon, remove punctuation, collapse whitespace.
+- A search box over the transform buttons, and a key/shift/count box for transforms that take a parameter.
+- src/lib/dash-registry.ts: the single list both sites read.
+
+### Fixed
+- NATO decode keeps word gaps and line breaks.
+
+Files: src/lib/dash-{registry,encodings,ciphers-classic,ciphers-grid,unicode-styles,alphabets-codes,wordplay,qr}.ts (new), src/lib/dash-glyphs.ts (param type), src/lib/dash-transforms.ts (group order, nato), src/pages/dash.astro, tests/dash-*.test.mjs (141 tests).
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.61.2] - 23-Nov-2026
 
 ### Fixed

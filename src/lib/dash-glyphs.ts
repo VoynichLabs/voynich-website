@@ -24,7 +24,18 @@
 //          reuse String.prototype.normalize('NFKC') instead of hand-written reverse tables, and
 //          all one-to-one alphabets share charMapTransform().
 
-export type TextFn = (input: string) => string;
+/** A transform function. `param` is the value of the transform's optional parameter box (a key,
+ *  a shift, a count...), always passed as the raw string the user typed; transforms without a
+ *  param ignore it. */
+export type TextFn = (input: string, param?: string) => string;
+
+/** An optional single parameter a transform asks for (cipher key, Caesar shift, rail count...).
+ *  Pages show a small text box when the active transform has one, prefilled with `default`. */
+export interface DashParam {
+  label: string;
+  default: string;
+  hint?: string;
+}
 
 export interface DashTransform {
   id: string;
@@ -35,6 +46,7 @@ export interface DashTransform {
   note?: string;
   encLabel?: string;
   decLabel?: string;
+  param?: DashParam;
 }
 
 // ---------------------------------------------------------------------------------------------

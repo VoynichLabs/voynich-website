@@ -39,8 +39,9 @@ test('original 17 transforms round trip from the shared module', () => {
   }
   // leet cannot tell a real digit from a leet one (1 vs i), so check letters only
   assert.equal(baseById.leet.dec(baseById.leet.enc('hello gray swan')), 'hello gray swan');
-  // Known, long-standing limitation: nato decode drops the gaps between words.
-  assert.equal(baseById.nato.dec(baseById.nato.enc(plain)), plain.replace(/ /g, ''));
+  // nato keeps word gaps and line breaks
+  assert.equal(baseById.nato.dec(baseById.nato.enc(plain)), plain);
+  assert.equal(baseById.nato.dec(baseById.nato.enc('two words\nnew line')), 'two words\nnew line');
   assert.equal(baseById.rot13.enc(baseById.rot13.enc(text)), text);
   assert.equal(baseById.zalgo.dec(baseById.zalgo.enc(plain)), plain);
   // zalgo is stable while typing: a longer input keeps the earlier characters' marks

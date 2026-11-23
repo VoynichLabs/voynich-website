@@ -5,13 +5,15 @@
 //          voynichlabs.org/dash. A static reimplementation of the transform surface from
 //          peluche's "Deck of Many Prompts" (a Python/FastHTML app), rebuilt as pure
 //          in-browser vanilla JS: no server, no Python, no API keys, no network calls.
-//          Ships 17 transforms (base64, hex, binary, ascii, url, braille, emoji, rot13,
+//          Ships 171 transforms from src/lib/dash-registry.ts (originally 17: base64, hex, binary, ascii, url, braille, emoji, rot13,
 //          leet, morse, nato, reverse, case, spaces, disemvowel, pig latin, zalgo) with live
 //          encode/decode, copy, swap and a rough token/character estimate, plus an inline
 //          "field notes" explainer on encoding layers & token representations. Also ships a
 //          real per-model tokenizer (Claude/GPT/Llama/Mistral/Gemma) that lazy-loads
 //          transformers.js on demand and renders the actual token split — client-side, opt-in,
 //          and degrading gracefully to the offline transforms if the CDN is unreachable.
+//          23-Nov-2026: reads ALL_TRANSFORMS from src/lib/dash-registry.ts; adds a search box over the
+//          transform buttons and a param box (cipher key, shift, count) for transforms that declare one.
 //          23-Nov-2026: the original 17 transforms moved to src/lib/dash-transforms.ts (shared
 //          with markbarney.net/dash); this page now holds only UI wiring and the tokenizer.
 //          23-Nov-2026: appends GLYPH_TRANSFORMS from src/lib/dash-glyphs.ts (Egyptian
@@ -55,7 +57,18 @@ import Base from '../layouts/Base.astro';
 
     <!-- Transform selector -->
     <div class="mt-10">
-      <p class="font-mono text-xs uppercase tracking-widest text-text-muted mb-3">transform</p>
+      <div class="flex flex-wrap items-center gap-3 mb-3">
+        <label for="dash-filter" class="font-mono text-xs uppercase tracking-widest text-text-muted">transform</label>
+        <input
+          id="dash-filter"
+          type="search"
+          class="dash-filter"
+          placeholder="filter: cipher, base, invisible, rune…"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <span id="dash-filter-count" class="font-mono text-xs text-text-muted" aria-live="polite"></span>
+      </div>
       <div id="transform-groups" class="space-y-3"></div>
     </div>
 
@@ -65,6 +78,10 @@ import Base from '../layouts/Base.astro';
         <button id="dir-enc" data-dir="enc" class="px-4 py-1.5 transition-colors">encode</button>
         <button id="dir-dec" data-dir="dec" class="px-4 py-1.5 border-l border-border transition-colors">decode</button>
       </div>
+      <label id="param-wrap" class="items-center gap-2 font-mono text-xs text-text-muted" style="display:none">
+        <span id="param-label"></span>
+        <input id="dash-param" type="text" class="dash-filter dash-param" autocomplete="off" spellcheck="false" />
+      </label>
       <p id="active-note" class="font-mono text-xs text-text-muted"></p>
     </div>
 
@@ -213,8 +230,10 @@ import Base from '../layouts/Base.astro';
           Those genuinely need a backend, so they are deliberately omitted — DASH ships as a static page.
         </p>
         <p class="text-text-muted">
-          Transform set adapted from <a href="https://github.com/peluche/deck-of-many-prompts" target="_blank" rel="noopener" class="text-node-blue hover:underline">peluche/deck-of-many-prompts</a>.
-          Reimplemented client-side for VoynichLabs.
+          Transform set adapted from <a href="https://github.com/peluche/deck-of-many-prompts" target="_blank" rel="noopener" class="text-node-blue hover:underline">peluche/deck-of-many-prompts</a>,
+          and extended to cover the inventory of Pliny's
+          <a href="https://github.com/elder-plinius/P4RS3LT0NGV3" target="_blank" rel="noopener" class="text-node-blue hover:underline">P4RS3LT0NGV3</a>
+          (every transform here is written fresh from public standard definitions). Reimplemented client-side for VoynichLabs.
         </p>
       </div>
     </div>
@@ -279,14 +298,27 @@ import Base from '../layouts/Base.astro';
     #dir-enc[aria-pressed="true"] { color: #4ade80; background: rgba(74,222,128,0.08); }
     #dir-dec[aria-pressed="true"] { color: #f97316; background: rgba(249,115,22,0.08); }
     #dir-enc, #dir-dec { color: #6b7085; }
+    .dash-filter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #e8e8f0;
+      background: #0a0a0a;
+      border: 1px solid #1e1e2e;
+      border-radius: 0.25rem;
+      padding: 0.3rem 0.6rem;
+      width: 16rem;
+      max-width: 100%;
+      outline: none;
+    }
+    .dash-filter:focus { border-color: #38bdf8; }
+    .dash-param { width: 11rem; }
   </style>
 
   <script>
     import { requiredElement } from '../lib/browser-controls';
-    import { GLYPH_TRANSFORMS } from '../lib/dash-glyphs';
-    import { BASE_TRANSFORMS, DASH_GROUP_ORDER } from '../lib/dash-transforms';
+    import { ALL_TRANSFORMS, DASH_GROUP_ORDER, transformMatches } from '../lib/dash-registry';
     // --- transform registry: pure functions live in src/lib (shared with markbarney.net/dash) ---
-    const TRANSFORMS = [...BASE_TRANSFORMS, ...GLYPH_TRANSFORMS];
+    const TRANSFORMS = ALL_TRANSFORMS;
 
     // --- UI wiring ---
     const inputEl = requiredElement('dash-input', HTMLTextAreaElement);
@@ -297,6 +329,11 @@ import Base from '../layouts/Base.astro';
     const dirWrap = requiredElement('direction-wrap', HTMLElement);
     const dirEncBtn = requiredElement('dir-enc', HTMLButtonElement);
     const dirDecBtn = requiredElement('dir-dec', HTMLButtonElement);
+    const filterEl = requiredElement('dash-filter', HTMLInputElement);
+    const filterCountEl = requiredElement('dash-filter-count', HTMLElement);
+    const paramWrap = requiredElement('param-wrap', HTMLElement);
+    const paramLabel = requiredElement('param-label', HTMLElement);
+    const paramEl = requiredElement('dash-param', HTMLInputElement);
 
     let activeId = 'base64';
     let direction = 'enc'; // 'enc' | 'dec'
@@ -306,6 +343,7 @@ import Base from '../layouts/Base.astro';
     for (const g of groupOrder) {
       const row = document.createElement('div');
       row.className = 'flex flex-wrap items-center gap-2';
+      row.dataset.group = g;
       const lbl = document.createElement('span');
       lbl.className = 'dash-group-label';
       lbl.textContent = g;
@@ -322,6 +360,42 @@ import Base from '../layouts/Base.astro';
       groupsEl.appendChild(row);
     }
 
+    // search box: hide buttons that do not match, and group rows left empty
+    function applyFilter() {
+      const query = filterEl.value;
+      let shown = 0;
+      groupsEl.querySelectorAll<HTMLElement>('[data-group]').forEach((row) => {
+        let rowShown = 0;
+        row.querySelectorAll<HTMLButtonElement>('.dash-tbtn').forEach((b) => {
+          const t = TRANSFORMS.find((x) => x.id === b.dataset.id);
+          const match = !!t && transformMatches(t, query);
+          b.style.display = match ? '' : 'none';
+          if (match) rowShown++;
+        });
+        row.style.display = rowShown ? '' : 'none';
+        shown += rowShown;
+      });
+      filterCountEl.textContent = query.trim() ? `${shown} of ${TRANSFORMS.length}` : `${TRANSFORMS.length} transforms`;
+    }
+    filterEl.addEventListener('input', applyFilter);
+    applyFilter();
+
+    // parameter box (key, shift, count...) for transforms that declare one
+    function refreshParamUI() {
+      const t = current();
+      if (t.param) {
+        paramWrap.style.display = 'inline-flex';
+        paramLabel.textContent = t.param.label;
+        paramEl.value = t.param.default;
+        paramEl.placeholder = t.param.default;
+        paramEl.title = t.param.hint || '';
+      } else {
+        paramWrap.style.display = 'none';
+        paramEl.value = '';
+      }
+    }
+    paramEl.addEventListener('input', () => run());
+
     function current() {
       return TRANSFORMS.find((t) => t.id === activeId) ?? TRANSFORMS[0];
     }
@@ -335,6 +409,7 @@ import Base from '../layouts/Base.astro';
         b.setAttribute('aria-pressed', String(b.dataset.id === id));
       });
       refreshDirectionUI();
+      refreshParamUI();
       run();
     }
 
@@ -359,7 +434,7 @@ import Base from '../layouts/Base.astro';
       let result;
       try {
         const fn = direction === 'dec' && t.dec ? t.dec : t.enc;
-        result = fn(src);
+        result = fn(src, t.param ? paramEl.value : undefined);
       } catch (err) {
         result = '⚠ could not ' + (direction === 'dec' ? 'decode' : 'encode') +
           ' — input is not valid ' + t.label + '. (' + (err && err.message ? err.message : 'error') + ')';

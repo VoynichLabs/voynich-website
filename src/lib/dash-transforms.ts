@@ -1,5 +1,5 @@
 // Author: Claude Opus 4.8 (Bubba coding sub-agent); moved into this module by Claude Opus 5.5
-// Date: 12-July-2026; moved 23-Nov-2026; zalgo made stable 23-Nov-2026
+// Date: 12-July-2026; moved 23-Nov-2026; zalgo made stable and nato keeps word gaps 23-Nov-2026
 // PURPOSE: The original 17 DASH transforms (base64, hex, binary, ascii, url, braille, emoji, rot13,
 //          leet, morse, nato, reverse, case, spaces, disemvowel, pig latin, zalgo), ported from
 //          peluche's Deck of Many Prompts and first written inline in src/pages/dash.astro. Moved
@@ -14,7 +14,9 @@
 import type { DashTransform } from './dash-glyphs';
 
 /** Order the transform groups appear in on the page. */
-export const DASH_GROUP_ORDER = ['encoders', 'glyphs', 'ciphers', 'stealth', 'wrappers', 'text ops'];
+export const DASH_GROUP_ORDER = [
+  'encoders', 'glyphs', 'alphabets', 'ciphers', 'codes', 'stealth', 'wrappers', 'case', 'language games', 'text ops',
+];
 
 const enc = new TextEncoder();
 const dec = new TextDecoder();
@@ -107,8 +109,17 @@ const NATO_REV = Object.fromEntries(Object.entries(NATO).map(([k, v]) => [v.toLo
 function natoEncode(s: string) {
   return Array.from(s, (c) => NATO[c.toUpperCase()] ?? c).join(' ');
 }
+/**
+ * Encode turns a space into a lone ' ' between two separators, i.e. a run of 2+ spaces, so that
+ * run is a word gap; single spaces separate letters. Lines are decoded one at a time so line
+ * breaks survive too.
+ */
 function natoDecode(s: string) {
-  return s.trim().split(/\s+/).map((w) => NATO_REV[w.toLowerCase()] ?? w).join('').toLowerCase();
+  return s.split('\n').map((line) =>
+    line.trim().split(/ {2,}/).map((word) =>
+      word.trim().split(/\s+/).filter(Boolean).map((w) => NATO_REV[w.toLowerCase()] ?? w).join(''),
+    ).join(' '),
+  ).join('\n').toLowerCase();
 }
 
 function urlEncode(s: string) { return encodeURIComponent(s); }
