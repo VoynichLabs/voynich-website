@@ -5,6 +5,15 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.63.0] - 23-Nov-2026
+
+### Added
+- DASH **expletives** (swear intensifiers such as "fucking" or "goddamn" in front of content words, plus the odd "Shit." between sentences; rate % param, default 20) and **angry** (expletives + typos + a few SHOUTED words + "!!"). Both seeded per word, so text stays stable while typing. Files: src/lib/dash-glyphs.ts (copied to MarkSite), tests/dash-glyphs.test.mjs.
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.62.0] - 23-Nov-2026
 
 ### Added

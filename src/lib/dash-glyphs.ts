@@ -9,7 +9,8 @@
 //            stealth  - Cyrillic/Greek homoglyphs, zero-width invisible ink, Unicode tag smuggling,
 //                       x-ray inspector (spells out invisible / combining / foreign characters)
 //            ciphers  - atbash, rot47
-//            text ops - random typos, typoglycemia scramble, sarcasm case, reverse words
+//            text ops - random typos, typoglycemia scramble, sarcasm case, reverse words,
+//                       expletives (swear intensifiers + interjections) and angry (expletives + typos + shouting)
 //            encoders - \u unicode escapes
 //            wrappers - pseudo-Python (word list + join), payload split (string fragments + concat)
 //          Every function is pure (no DOM, no network, no imports) so the node test suite can
@@ -500,6 +501,94 @@ function sarcasm(input: string): string {
   }).join('');
 }
 
+// ---------------------------------------------------------------------------------------------
+// text ops: expletives and angry. Make text read like an irritated human typed it: swear-word
+// intensifiers in front of content words ("the fucking server"), the odd interjection between
+// sentences ("Shit."), and for angry also typos, shouted words and "!!". Seeded per word like
+// typos, so earlier text does not change while you type.
+// ---------------------------------------------------------------------------------------------
+
+/** Intensifiers that fit in front of almost any noun, verb or adjective. Repeats weight the pick. */
+const INTENSIFIERS = ['fucking', 'fucking', 'fucking', 'goddamn', 'damn', 'bloody', 'freaking', 'motherfucking'];
+/** Short interjections dropped between sentences. */
+const INTERJECTIONS = ['Shit.', 'Fuck.', 'Damn it.', 'Christ.', "For fuck's sake.", 'Ugh, shit.', 'Goddammit.', 'Fuck me.'];
+/** Function words an intensifier sounds wrong in front of ("the fucking the"). */
+const NO_INTENSIFIER = new Set([
+  'the', 'and', 'but', 'for', 'nor', 'yet', 'that', 'this', 'these', 'those', 'with', 'from', 'into', 'than',
+  'then', 'was', 'were', 'are', 'is', 'am', 'be', 'been', 'being', 'have', 'has', 'had', 'not', 'you', 'your',
+  'they', 'them', 'their', 'its', 'our', 'who', 'what', 'when', 'where', 'which', 'will', 'would', 'could',
+  'should', 'can', 'did', 'does', 'just', 'very', 'also', 'about', 'there', 'here', 'some', 'any', 'each',
+  'because', 'while', 'until', 'after', 'before', 'over', 'under', 'onto', 'upon', 'shall', 'might', 'must',
+]);
+
+/** Parse a 0-100 percentage param into a 0-1 rate, falling back when blank or not a number. */
+function parseRatePercent(param: string | undefined, fallbackPercent: number): number {
+  const parsed = Number.parseFloat((param ?? '').trim());
+  const percent = Number.isFinite(parsed) ? parsed : fallbackPercent;
+  return Math.min(100, Math.max(0, percent)) / 100;
+}
+
+function pickFrom<T>(items: readonly T[], random: () => number): T {
+  return items[Math.floor(random() * items.length)];
+}
+
+/**
+ * Insert intensifiers before content words and interjections after finished sentences.
+ * Words at the start of a sentence are left alone so proper nouns and capitals stay right.
+ */
+function swearInto(input: string, rate: number, seedTag: string): string {
+  let out = '';
+  let last = 0;
+  let wordIndex = 0;
+  let atSentenceStart = true;
+  let previousWasIntensifier = false;
+  for (const match of input.matchAll(/\p{L}[\p{L}\p{M}'’]*/gu)) {
+    const word = match[0];
+    const at = match.index ?? 0;
+    let before = input.slice(last, at);
+    const random = seededRandom(hashString(`${seedTag}:${word}:${wordIndex++}`));
+    // Where are we? A sentence ends at . ! ? (plus closing quotes/brackets) followed by whitespace.
+    const sentenceBreak = /[.!?]["'”’)\]]*(\s+)$/.exec(before);
+    if (sentenceBreak) atSentenceStart = true;
+    else if (/\n/.test(before)) atSentenceStart = true;
+    else if (before.trim() !== '') atSentenceStart = false;
+    // Interjection between two sentences ("...is down. Shit. The logs...").
+    if (sentenceBreak && wordIndex > 1 && random() < rate * 0.5) {
+      const gap = sentenceBreak[1];
+      before = `${before.slice(0, before.length - gap.length)} ${pickFrom(INTERJECTIONS, random)}${gap}`;
+    }
+    out += before;
+    // Intensifier in front of a content word, never twice in a row, never at a sentence start.
+    const eligible = !atSentenceStart && !previousWasIntensifier
+      && Array.from(word).length >= 4 && !NO_INTENSIFIER.has(word.toLowerCase());
+    previousWasIntensifier = false;
+    if (eligible && random() < rate) {
+      const swear = pickFrom(INTENSIFIERS, random);
+      const shouting = word.length > 1 && word === word.toUpperCase() && word !== word.toLowerCase();
+      out += `${shouting ? swear.toUpperCase() : swear} `;
+      previousWasIntensifier = true;
+    }
+    out += word;
+    atSentenceStart = false;
+    last = at + word.length;
+  }
+  return out + input.slice(last);
+}
+
+function expletives(input: string, param?: string): string {
+  return swearInto(input, parseRatePercent(param, 20), 'swear');
+}
+
+/** Swearing, typos, a few SHOUTED words, and every . ! ? turned up a notch. */
+function angry(input: string, param?: string): string {
+  const sworn = swearInto(input, parseRatePercent(param, 35), 'angry');
+  const typoed = mapWordsSeeded(sworn, typoWord);
+  let shoutIndex = 0;
+  const shouted = typoed.replace(/\p{L}{3,}/gu, (word) =>
+    seededRandom(hashString(`shout:${word}:${shoutIndex++}`))() < 0.12 ? word.toUpperCase() : word);
+  return shouted.replace(/([.!?])(?=\s|$)/g, (mark) => (mark === '.' ? '!' : mark === '!' ? '!!' : '?!'));
+}
+
 /** Reverse the letters of each word but keep word order. Its own inverse. */
 function reverseWords(input: string): string {
   return input.replace(/\p{L}+/gu, (word) => Array.from(word).reverse().join(''));
@@ -616,6 +705,12 @@ export const GLYPH_TRANSFORMS: DashTransform[] = [
 
   { id: 'typos', label: 'typos', group: 'text ops', enc: typos, dec: null,
     note: 'about 2 in 5 words get one fat-finger typo (neighbouring key, swap, drop or double). Lossy.' },
+  { id: 'expletives', label: 'expletives', group: 'text ops', enc: expletives, dec: null,
+    param: { label: 'rate %', default: '20', hint: 'chance per word, 0-100' },
+    note: 'drops "fucking", "goddamn" and friends in front of words, and the odd "Shit." between sentences. Stable while typing. Lossy.' },
+  { id: 'angry', label: 'angry', group: 'text ops', enc: angry, dec: null,
+    param: { label: 'rate %', default: '35', hint: 'swearing chance per word, 0-100' },
+    note: 'expletives + typos + a few SHOUTED words + "!!": reads like an irritated human. Lossy.' },
   { id: 'scramble', label: 'scramble', group: 'text ops', enc: scramble, dec: null,
     note: 'typoglycemia: middle letters shuffled, first and last kept. Still readable, not reversible.' },
   { id: 'sarcasm', label: 'sarcasm', group: 'text ops', enc: sarcasm, dec: null,

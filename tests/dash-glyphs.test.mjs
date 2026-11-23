@@ -156,6 +156,22 @@ test('x-ray exposes joiners, Sinhala and Thai tone marks, and restores exactly',
   assert.equal(byId.xray.enc('plain ascii'), 'plain ascii');
 });
 
+test('expletives and angry swear, stay stable while typing, and respect the rate', () => {
+  const text = 'The deployment failed again. Please restart the server and check the logs before lunch.';
+  const sworn = byId.expletives.enc(text, '100');
+  assert.match(sworn, /\b(fucking|goddamn|damn|bloody|freaking|motherfucking) (deployment|failed|restart|server|check|logs|lunch|again|before|Please)\b/);
+  assert.match(sworn, /^The /, 'sentence starts are left alone');
+  assert.equal(byId.expletives.enc(text, '0'), text, 'rate 0 changes nothing');
+  assert.equal(byId.expletives.enc(text), byId.expletives.enc(text), 'deterministic');
+  const shorter = byId.expletives.enc('The deployment failed again', '60');
+  assert.ok(byId.expletives.enc('The deployment failed again. Please restart', '60').startsWith(shorter));
+  assert.equal(byId.expletives.enc('SERVER DOWN NOW', '100'), byId.expletives.enc('SERVER DOWN NOW', '100').toUpperCase(), 'shouted words get shouted swears');
+  const mad = byId.angry.enc(text);
+  assert.ok(mad.includes('!'), 'periods become exclamations');
+  assert.notEqual(mad, text);
+  assert.equal(byId.angry.enc(text), mad, 'deterministic');
+});
+
 test('sarcasm alternates letters only', () => {
   assert.equal(byId.sarcasm.enc('hello, world'), 'hElLo, WoRlD');
 });
