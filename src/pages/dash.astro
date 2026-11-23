@@ -12,6 +12,8 @@
 //          real per-model tokenizer (Claude/GPT/Llama/Mistral/Gemma) that lazy-loads
 //          transformers.js on demand and renders the actual token split — client-side, opt-in,
 //          and degrading gracefully to the offline transforms if the CDN is unreachable.
+//          23-Nov-2026: the original 17 transforms moved to src/lib/dash-transforms.ts (shared
+//          with markbarney.net/dash); this page now holds only UI wiring and the tokenizer.
 //          23-Nov-2026: appends GLYPH_TRANSFORMS from src/lib/dash-glyphs.ts (Egyptian
 //          hieroglyphs, runes, upside down, Unicode fonts, homoglyphs, zero-width and tag
 //          smuggling, atbash, rot47, typos, scramble, sarcasm, reverse words, unicode escapes,
@@ -282,249 +284,9 @@ import Base from '../layouts/Base.astro';
   <script>
     import { requiredElement } from '../lib/browser-controls';
     import { GLYPH_TRANSFORMS } from '../lib/dash-glyphs';
-    // --- pure transform functions (round-trip verified in node before porting) ---
-    const enc = new TextEncoder();
-    const dec = new TextDecoder();
-
-    function b64encode(s: string) {
-      const bytes = enc.encode(s);
-      let bin = '';
-      for (const b of bytes) bin += String.fromCharCode(b);
-      return btoa(bin);
-    }
-    function b64decode(s: string) {
-      const bin = atob(s.replace(/\s+/g, ''));
-      const bytes = Uint8Array.from(bin, (c) => c.charCodeAt(0));
-      return dec.decode(bytes);
-    }
-
-    function hexEncode(s: string) {
-      return Array.from(enc.encode(s), (b) => b.toString(16).padStart(2, '0')).join(' ');
-    }
-    function hexDecode(s: string) {
-      const parts = s.trim().split(/\s+/).filter(Boolean);
-      const bytes = Uint8Array.from(parts, (h) => parseInt(h, 16));
-      return dec.decode(bytes);
-    }
-
-    function binEncode(s: string) {
-      return Array.from(enc.encode(s), (b) => b.toString(2).padStart(8, '0')).join(' ');
-    }
-    function binDecode(s: string) {
-      const parts = s.trim().split(/\s+/).filter(Boolean);
-      const bytes = Uint8Array.from(parts, (b) => parseInt(b, 2));
-      return dec.decode(bytes);
-    }
-
-    function asciiEncode(s: string) {
-      return Array.from(s, (c) => c.codePointAt(0)).join(' ');
-    }
-    function asciiDecode(s: string) {
-      const parts = s.trim().split(/\s+/).filter(Boolean);
-      return parts.map((n) => String.fromCodePoint(parseInt(n, 10))).join('');
-    }
-
-    const MORSE = {
-      A: '.-', B: '-...', C: '-.-.', D: '-..', E: '.', F: '..-.', G: '--.', H: '....',
-      I: '..', J: '.---', K: '-.-', L: '.-..', M: '--', N: '-.', O: '---', P: '.--.',
-      Q: '--.-', R: '.-.', S: '...', T: '-', U: '..-', V: '...-', W: '.--', X: '-..-',
-      Y: '-.--', Z: '--..', '0': '-----', '1': '.----', '2': '..---', '3': '...--',
-      '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.',
-      ' ': '/', '&': '.-...', "'": '.----.', '@': '.--.-.', ')': '-.--.-', '(': '-.--.',
-      ':': '---...', ',': '--..--', '=': '-...-', '!': '-.-.--', '.': '.-.-.-', '-': '-....-',
-      '+': '.-.-.', '"': '.-..-.', '?': '..--..', '/': '-..-.',
-    };
-    const MORSE_REV = Object.fromEntries(Object.entries(MORSE).map(([k, v]) => [v, k]));
-    function morseEncode(s: string) {
-      return Array.from(s.toUpperCase(), (c) => MORSE[c] ?? '').filter((x) => x !== '').join(' ');
-    }
-    function morseDecode(s: string) {
-      return s.trim().split(/\s+/).map((m) => MORSE_REV[m] ?? '').join('').toLowerCase();
-    }
-
-    function rot13(s: string) {
-      return s.replace(/[a-zA-Z]/g, (c) => {
-        const base = c <= 'Z' ? 65 : 97;
-        return String.fromCharCode(((c.charCodeAt(0) - base + 13) % 26) + base);
-      });
-    }
-
-    const LEET = { a: '4', b: '8', e: '3', g: '6', i: '1', o: '0', s: '5', t: '7', z: '2' };
-    const LEET_REV = Object.fromEntries(Object.entries(LEET).map(([k, v]) => [v, k]));
-    function leetEncode(s: string) {
-      return Array.from(s, (c) => LEET[c.toLowerCase()] ?? c).join('');
-    }
-    function leetDecode(s: string) {
-      return Array.from(s, (c) => LEET_REV[c] ?? c).join('');
-    }
-
-    function reverse(s: string) {
-      return Array.from(s).reverse().join('');
-    }
-
-    const NATO = {
-      A: 'Alpha', B: 'Bravo', C: 'Charlie', D: 'Delta', E: 'Echo', F: 'Foxtrot', G: 'Golf',
-      H: 'Hotel', I: 'India', J: 'Juliett', K: 'Kilo', L: 'Lima', M: 'Mike', N: 'November',
-      O: 'Oscar', P: 'Papa', Q: 'Quebec', R: 'Romeo', S: 'Sierra', T: 'Tango', U: 'Uniform',
-      V: 'Victor', W: 'Whiskey', X: 'X-ray', Y: 'Yankee', Z: 'Zulu', '0': 'Zero', '1': 'One',
-      '2': 'Two', '3': 'Three', '4': 'Four', '5': 'Five', '6': 'Six', '7': 'Seven',
-      '8': 'Eight', '9': 'Nine',
-    };
-    const NATO_REV = Object.fromEntries(Object.entries(NATO).map(([k, v]) => [v.toLowerCase(), k]));
-    function natoEncode(s: string) {
-      return Array.from(s, (c) => NATO[c.toUpperCase()] ?? c).join(' ');
-    }
-    function natoDecode(s: string) {
-      return s.trim().split(/\s+/).map((w) => NATO_REV[w.toLowerCase()] ?? w).join('').toLowerCase();
-    }
-
-    function urlEncode(s: string) { return encodeURIComponent(s); }
-    function urlDecode(s: string) { return decodeURIComponent(s); }
-
-    function spacesEncode(s: string) { return Array.from(s).join(' '); }
-    function spacesDecode(s: string) {
-      let skipped = false;
-      const out: string[] = [];
-      for (const c of s) {
-        if (c === ' ' && !skipped) { skipped = true; }
-        else { skipped = false; out.push(c); }
-      }
-      return out.join('');
-    }
-
-    function upper(s: string) { return s.toUpperCase(); }
-    function lower(s: string) { return s.toLowerCase(); }
-
-    function disemvowel(s: string) {
-      return Array.from(s).filter((c) => !'aeiouyAEIOUY'.includes(c)).join('');
-    }
-
-    function piggifyWord(word: string) {
-      if (!word) return '';
-      const chars = Array.from(word);
-      let idx = -1;
-      for (let i = 0; i < chars.length; i++) {
-        if ('aeiouy'.includes(chars[i].toLowerCase())) { idx = i; break; }
-      }
-      if (idx === -1) return word + 'ay';
-      if (idx === 0) return word + 'way';
-      return chars.slice(idx).join('') + chars.slice(0, idx).join('') + 'ay';
-    }
-    function pigLatin(s: string) {
-      let out = '', word = '';
-      for (const c of s) {
-        if (/[a-zA-Z]/.test(c)) { word += c; continue; }
-        out += piggifyWord(word) + c;
-        word = '';
-      }
-      out += piggifyWord(word);
-      return out;
-    }
-
-    const ZALGO_MARKS = ['̵', '̶', '̴', '̷', '̸'];
-    function zalgo(s: string) {
-      return Array.from(s).map((c) => {
-        if (/\p{M}/u.test(c)) return c;
-        return c + ZALGO_MARKS[Math.floor(Math.random() * ZALGO_MARKS.length)];
-      }).join('');
-    }
-    function zalgoStrip(s: string) {
-      return s.normalize('NFC').replace(/\p{M}/gu, '');
-    }
-
-    const BR_LETTER = {
-      a: '⠁', b: '⠃', c: '⠉', d: '⠙', e: '⠑', f: '⠋', g: '⠛',
-      h: '⠓', i: '⠊', j: '⠚', k: '⠅', l: '⠇', m: '⠍', n: '⠝',
-      o: '⠕', p: '⠏', q: '⠟', r: '⠗', s: '⠎', t: '⠞', u: '⠥',
-      v: '⠧', w: '⠺', x: '⠭', y: '⠽', z: '⠵', ',': '⠂', ';': '⠆',
-      ':': '⠒', '.': '⠲', '?': '⠦', '!': '⠖', "'": '⠄', '-': '⠤', ' ': ' ',
-    };
-    const BR_NUM = {
-      '1': '⠁', '2': '⠃', '3': '⠉', '4': '⠙', '5': '⠑',
-      '6': '⠋', '7': '⠛', '8': '⠓', '9': '⠊', '0': '⠚',
-    };
-    const BR_LETTER_REV = Object.fromEntries(Object.entries(BR_LETTER).map(([k, v]) => [v, k]));
-    const BR_NUM_REV = Object.fromEntries(Object.entries(BR_NUM).map(([k, v]) => [v, k]));
-    const NUM_SIGN = '⠼';
-    function brailleEncode(s: string) {
-      let out = '', numMode = false;
-      for (const raw of s) {
-        const c = raw.toLowerCase();
-        if (/[0-9]/.test(c)) {
-          if (!numMode) { out += NUM_SIGN; numMode = true; }
-          out += BR_NUM[c];
-        } else if (c in BR_LETTER) {
-          numMode = false;
-          out += BR_LETTER[c];
-        } else if (c === '\n') {
-          numMode = false;
-          out += '\n';
-        } else {
-          numMode = false;
-          out += raw;
-        }
-      }
-      return out;
-    }
-    function brailleDecode(s: string) {
-      let out = '', numMode = false;
-      for (const c of s) {
-        if (c === NUM_SIGN) { numMode = true; continue; }
-        if (c === ' ' || c === '\n') { numMode = false; out += c; continue; }
-        if (numMode && c in BR_NUM_REV) { out += BR_NUM_REV[c]; continue; }
-        if (c in BR_LETTER_REV) { numMode = false; out += BR_LETTER_REV[c]; continue; }
-        out += c;
-      }
-      return out;
-    }
-
-    // emoji codec -- a byte<->emoji bijection. Every UTF-8 byte maps to one single-codepoint
-    // emoji, so any input (including Unicode) round-trips exactly. The 256-symbol alphabet is
-    // built from numeric code-point ranges (no ZWJ / skin-tone modifiers / VS16), which keeps
-    // this source file ASCII-safe and guarantees every symbol is exactly one code point, so
-    // Array.from() splits the encoded string back into bytes cleanly.
-    const EMOJI_ALPHABET = (() => {
-      const ranges = [[0x1f600, 0x1f64f], [0x1f400, 0x1f4fd]]; // emoticons + animals/objects
-      const out: string[] = [];
-      for (const [lo, hi] of ranges) {
-        for (let cp = lo; cp <= hi && out.length < 256; cp++) out.push(String.fromCodePoint(cp));
-      }
-      return out; // exactly 256 distinct single-codepoint symbols
-    })();
-    const EMOJI_REV = new Map(EMOJI_ALPHABET.map((e, i) => [e, i]));
-    function emojiEncode(s: string) {
-      return Array.from(enc.encode(s), (b) => EMOJI_ALPHABET[b]).join('');
-    }
-    function emojiDecode(s: string) {
-      const bytes = Array.from(s).filter((c) => EMOJI_REV.has(c)).map((c) => EMOJI_REV.get(c));
-      return dec.decode(Uint8Array.from(bytes));
-    }
-
-    // --- transform registry ---
-    // dir: 'both' shows encode/decode toggle; 'one' is single direction.
-    const TRANSFORMS = [
-      { id: 'base64', label: 'base64', group: 'encoders', enc: b64encode, dec: b64decode },
-      { id: 'hex', label: 'hex', group: 'encoders', enc: hexEncode, dec: hexDecode },
-      { id: 'binary', label: 'binary', group: 'encoders', enc: binEncode, dec: binDecode },
-      { id: 'ascii', label: 'ascii', group: 'encoders', enc: asciiEncode, dec: asciiDecode },
-      { id: 'url', label: 'url', group: 'encoders', enc: urlEncode, dec: urlDecode },
-      { id: 'braille', label: 'braille', group: 'encoders', enc: brailleEncode, dec: brailleDecode },
-      { id: 'emoji', label: 'emoji', group: 'encoders', enc: emojiEncode, dec: emojiDecode },
-
-      { id: 'rot13', label: 'rot13', group: 'ciphers', enc: rot13, dec: null, note: 'rot13 is its own inverse — run it again to decode.' },
-      { id: 'leet', label: 'leet', group: 'ciphers', enc: leetEncode, dec: leetDecode },
-      { id: 'morse', label: 'morse', group: 'ciphers', enc: morseEncode, dec: morseDecode },
-      { id: 'nato', label: 'nato', group: 'ciphers', enc: natoEncode, dec: natoDecode },
-
-      { id: 'reverse', label: 'reverse', group: 'text ops', enc: reverse, dec: null, note: 'reverse is its own inverse — run it again to restore.' },
-      { id: 'case', label: 'case', group: 'text ops', enc: upper, dec: lower, encLabel: 'UPPER', decLabel: 'lower' },
-      { id: 'spaces', label: 'spaces', group: 'text ops', enc: spacesEncode, dec: spacesDecode },
-      { id: 'disemvowel', label: 'disemvowel', group: 'text ops', enc: disemvowel, dec: null, note: 'lossy — drops all vowels, cannot be reversed.' },
-      { id: 'piglatin', label: 'pig latin', group: 'text ops', enc: pigLatin, dec: null, note: 'encode only — pig latin is not reversible.' },
-      { id: 'zalgo', label: 'zalgo', group: 'text ops', enc: zalgo, dec: zalgoStrip, encLabel: 'glitch', decLabel: 'strip' },
-      // glyph scripts, stealth text, extra ciphers/text ops and code wrappers (src/lib/dash-glyphs.ts)
-      ...GLYPH_TRANSFORMS,
-    ];
+    import { BASE_TRANSFORMS, DASH_GROUP_ORDER } from '../lib/dash-transforms';
+    // --- transform registry: pure functions live in src/lib (shared with markbarney.net/dash) ---
+    const TRANSFORMS = [...BASE_TRANSFORMS, ...GLYPH_TRANSFORMS];
 
     // --- UI wiring ---
     const inputEl = requiredElement('dash-input', HTMLTextAreaElement);
@@ -540,7 +302,7 @@ import Base from '../layouts/Base.astro';
     let direction = 'enc'; // 'enc' | 'dec'
 
     // build grouped transform buttons
-    const groupOrder = ['encoders', 'glyphs', 'ciphers', 'stealth', 'wrappers', 'text ops'];
+    const groupOrder = DASH_GROUP_ORDER;
     for (const g of groupOrder) {
       const row = document.createElement('div');
       row.className = 'flex flex-wrap items-center gap-2';
@@ -606,9 +368,11 @@ import Base from '../layouts/Base.astro';
       updateStats(src);
     }
 
+    const statsEncoder = new TextEncoder(); // UTF-8 byte count for the stats row
+
     function updateStats(src: string) {
       const chars = Array.from(src).length;
-      const bytes = enc.encode(src).length;
+      const bytes = statsEncoder.encode(src).length;
       const words = src.trim() ? src.trim().split(/\s+/).length : 0;
       const tokens = Math.ceil(chars / 4);
       statsEl.innerHTML = '';

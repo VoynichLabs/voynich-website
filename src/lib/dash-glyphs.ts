@@ -17,6 +17,9 @@
 //          GLYPH_TRANSFORMS to its own registry; entries use the same shape as the page's.
 //          Typos and scramble are random-looking but seeded per word, so output stays stable while
 //          the user types instead of reshuffling every earlier word on each keystroke.
+//          SHARED FILE: the master copy is VoynichLabs/voynich-website src/lib/; markbarney.net
+//          (82deutschmark/MarkSite) keeps an identical copy in client/src/lib/dash/. Edit the master,
+//          then copy it across unchanged.
 // SRP/DRY check: Pass - checked dash.astro; none of these transforms existed. The style decoders
 //          reuse String.prototype.normalize('NFKC') instead of hand-written reverse tables, and
 //          all one-to-one alphabets share charMapTransform().

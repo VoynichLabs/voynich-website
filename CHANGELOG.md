@@ -5,6 +5,17 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.61.1] - 23-Nov-2026
+
+### Changed
+- The original 17 DASH transforms moved out of the page's inline script into src/lib/dash-transforms.ts, unchanged apart from explicit table types. No visible change on /dash.
+- Why: markbarney.net/dash now uses the same transforms; both shared modules (dash-transforms.ts, dash-glyphs.ts) are the master copies, kept identical in MarkSite's client/src/lib/dash/.
+- How: dash.astro imports BASE_TRANSFORMS and DASH_GROUP_ORDER; tests/dash-glyphs.test.mjs now round-trips the original transforms too (and documents that nato decode drops word gaps and leet cannot tell 1 from i).
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.61.0] - 23-Nov-2026
 
 ### Added

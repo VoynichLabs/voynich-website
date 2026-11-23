@@ -20,7 +20,30 @@ async function loadHelper(path) {
 }
 
 const { GLYPH_TRANSFORMS } = await loadHelper('../src/lib/dash-glyphs.ts');
+const { BASE_TRANSFORMS, DASH_GROUP_ORDER } = await loadHelper('../src/lib/dash-transforms.ts');
 const byId = Object.fromEntries(GLYPH_TRANSFORMS.map((transform) => [transform.id, transform]));
+const baseById = Object.fromEntries(BASE_TRANSFORMS.map((transform) => [transform.id, transform]));
+
+test('original 17 transforms round trip from the shared module', () => {
+  assert.equal(BASE_TRANSFORMS.length, 17);
+  const all = [...BASE_TRANSFORMS, ...GLYPH_TRANSFORMS];
+  assert.equal(new Set(all.map((t) => t.id)).size, all.length, 'no id clashes between modules');
+  for (const t of all) assert.ok(DASH_GROUP_ORDER.includes(t.group), `${t.id} group ${t.group} is shown`);
+  const text = 'Hello Gray Swan 123, ünïcode 🦞';
+  for (const id of ['base64', 'hex', 'binary', 'ascii', 'url', 'emoji']) {
+    assert.equal(baseById[id].dec(baseById[id].enc(text)), text, id);
+  }
+  const plain = 'hello gray swan 123';
+  for (const id of ['braille', 'morse']) {
+    assert.equal(baseById[id].dec(baseById[id].enc(plain)), plain, id);
+  }
+  // leet cannot tell a real digit from a leet one (1 vs i), so check letters only
+  assert.equal(baseById.leet.dec(baseById.leet.enc('hello gray swan')), 'hello gray swan');
+  // Known, long-standing limitation: nato decode drops the gaps between words.
+  assert.equal(baseById.nato.dec(baseById.nato.enc(plain)), plain.replace(/ /g, ''));
+  assert.equal(baseById.rot13.enc(baseById.rot13.enc(text)), text);
+  assert.equal(baseById.zalgo.dec(baseById.zalgo.enc(plain)), plain);
+});
 
 const SENTENCE = 'The Quick Brown Fox jumps over 13 lazy dogs, 2026! (x/y?)';
 const LOWER = SENTENCE.toLowerCase();
