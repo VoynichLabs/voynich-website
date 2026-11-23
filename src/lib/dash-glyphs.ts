@@ -6,7 +6,8 @@
 //            glyphs   - Egyptian hieroglyphs, Elder Futhark runes, upside down, small caps,
 //                       fullwidth, circled, and the Unicode math "fonts" (bold, script, fraktur,
 //                       double-struck, monospace)
-//            stealth  - Cyrillic/Greek homoglyphs, zero-width invisible ink, Unicode tag smuggling
+//            stealth  - Cyrillic/Greek homoglyphs, zero-width invisible ink, Unicode tag smuggling,
+//                       x-ray inspector (spells out invisible / combining / foreign characters)
 //            ciphers  - atbash, rot47
 //            text ops - random typos, typoglycemia scramble, sarcasm case, reverse words
 //            encoders - \u unicode escapes
@@ -311,6 +312,79 @@ function tagsDecode(input: string): string {
 }
 
 // ---------------------------------------------------------------------------------------------
+// stealth: x-ray. An inspector rather than a cipher: printable ASCII stays as it is and every
+// other character is spelled out as ⟦U+XXXX what-it-is glyph⟧, so invisible joiners, stray
+// combining marks (e.g. a Thai tone mark sitting on a Latin Y) and foreign-script fragments in a
+// model reply become visible. Restore turns the annotations back into the original characters.
+// Browsers ship no Unicode name table, so names are given for the usual invisible suspects and
+// everything else is described by script + general category via \p{...} regexes.
+// ---------------------------------------------------------------------------------------------
+
+const INVISIBLE_NAMES: Record<number, string> = {
+  0x00a0: 'NO-BREAK SPACE', 0x00ad: 'SOFT HYPHEN', 0x034f: 'COMBINING GRAPHEME JOINER',
+  0x061c: 'ARABIC LETTER MARK', 0x115f: 'HANGUL CHOSEONG FILLER', 0x1160: 'HANGUL JUNGSEONG FILLER',
+  0x17b4: 'KHMER VOWEL INHERENT AQ', 0x17b5: 'KHMER VOWEL INHERENT AA', 0x180e: 'MONGOLIAN VOWEL SEPARATOR',
+  0x200b: 'ZERO WIDTH SPACE', 0x200c: 'ZERO WIDTH NON-JOINER', 0x200d: 'ZERO WIDTH JOINER',
+  0x200e: 'LEFT-TO-RIGHT MARK', 0x200f: 'RIGHT-TO-LEFT MARK', 0x202a: 'LEFT-TO-RIGHT EMBEDDING',
+  0x202b: 'RIGHT-TO-LEFT EMBEDDING', 0x202c: 'POP DIRECTIONAL FORMATTING', 0x202d: 'LEFT-TO-RIGHT OVERRIDE',
+  0x202e: 'RIGHT-TO-LEFT OVERRIDE', 0x202f: 'NARROW NO-BREAK SPACE', 0x2060: 'WORD JOINER',
+  0x2061: 'FUNCTION APPLICATION', 0x2062: 'INVISIBLE TIMES', 0x2063: 'INVISIBLE SEPARATOR',
+  0x2064: 'INVISIBLE PLUS', 0x2066: 'LEFT-TO-RIGHT ISOLATE', 0x2067: 'RIGHT-TO-LEFT ISOLATE',
+  0x2068: 'FIRST STRONG ISOLATE', 0x2069: 'POP DIRECTIONAL ISOLATE', 0x3000: 'IDEOGRAPHIC SPACE',
+  0x3164: 'HANGUL FILLER', 0xfeff: 'ZERO WIDTH NO-BREAK SPACE / BOM', 0xffa0: 'HALFWIDTH HANGUL FILLER',
+  0xfffc: 'OBJECT REPLACEMENT CHARACTER', 0xfffd: 'REPLACEMENT CHARACTER',
+};
+
+const XRAY_SCRIPTS = [
+  'Latin', 'Greek', 'Cyrillic', 'Armenian', 'Hebrew', 'Arabic', 'Syriac', 'Thaana', 'Devanagari',
+  'Bengali', 'Gurmukhi', 'Gujarati', 'Tamil', 'Telugu', 'Kannada', 'Malayalam', 'Sinhala', 'Thai',
+  'Lao', 'Tibetan', 'Myanmar', 'Khmer', 'Georgian', 'Hangul', 'Hiragana', 'Katakana', 'Han',
+  'Ethiopic', 'Mongolian', 'Cherokee', 'Runic', 'Ogham', 'Braille', 'Egyptian_Hieroglyphs',
+].map((script) => ({ name: script.replace(/_/g, ' '), test: new RegExp(`^\\p{Script=${script}}$`, 'u') }));
+
+function describeChar(char: string, codePoint: number): string {
+  const named = INVISIBLE_NAMES[codePoint];
+  if (named) return named;
+  if (codePoint >= 0xfe00 && codePoint <= 0xfe0f) return `VARIATION SELECTOR-${codePoint - 0xfe00 + 1}`;
+  if (codePoint >= 0xe0100 && codePoint <= 0xe01ef) return `VARIATION SELECTOR-${codePoint - 0xe0100 + 17}`;
+  if (codePoint >= 0xe0000 && codePoint <= 0xe007f) {
+    const ascii = codePoint - 0xe0000;
+    return ascii >= 0x20 && ascii <= 0x7e ? `TAG "${String.fromCharCode(ascii)}"` : 'TAG CONTROL';
+  }
+  const script = XRAY_SCRIPTS.find((entry) => entry.test.test(char))?.name;
+  let kind = 'character';
+  if (/\p{M}/u.test(char)) kind = 'combining mark';
+  else if (/\p{Cf}/u.test(char)) kind = 'invisible format char';
+  else if (/\p{Z}/u.test(char)) kind = 'space';
+  else if (/\p{Cc}/u.test(char)) kind = 'control char';
+  else if (/\p{Co}/u.test(char)) kind = 'private use';
+  else if (/\p{Cn}/u.test(char)) kind = 'unassigned';
+  else if (/\p{Extended_Pictographic}/u.test(char)) kind = 'emoji';
+  else if (/\p{L}/u.test(char)) kind = 'letter';
+  else if (/\p{N}/u.test(char)) kind = 'digit';
+  else if (/\p{P}|\p{S}/u.test(char)) kind = 'symbol';
+  return script ? `${script} ${kind}` : kind;
+}
+
+function xrayEncode(input: string): string {
+  return Array.from(input, (char) => {
+    const codePoint = char.codePointAt(0) ?? 0;
+    if ((codePoint >= 0x20 && codePoint <= 0x7e) || char === '\n') return char;
+    const hex = codePoint.toString(16).toUpperCase().padStart(4, '0');
+    const description = describeChar(char, codePoint);
+    // Show the glyph when it is visible; combining marks sit on a dotted circle so they do not
+    // land on the bracket. Invisible, space and control characters get no glyph.
+    let glyph = '';
+    if (/\p{M}/u.test(char)) glyph = ` ◌${char}`;
+    else if (!/[\p{Cf}\p{Z}\p{Cc}\p{Cn}]/u.test(char) && char !== '⟦' && char !== '⟧') glyph = ` ${char}`;
+    return `⟦U+${hex} ${description}${glyph}⟧`;
+  }).join('');
+}
+function xrayDecode(input: string): string {
+  return input.replace(/⟦U\+([0-9A-F]{4,6})[^⟧]*⟧/g, (_match, hex) => String.fromCodePoint(parseInt(hex, 16)));
+}
+
+// ---------------------------------------------------------------------------------------------
 // ciphers
 // ---------------------------------------------------------------------------------------------
 
@@ -520,6 +594,10 @@ export const GLYPH_TRANSFORMS: DashTransform[] = [
   { id: 'tags', label: 'tag smuggle', group: 'stealth', enc: tagsEncode, dec: tagsDecode,
     encLabel: 'hide', decLabel: 'reveal',
     note: 'printable ASCII moved into invisible Unicode tag characters. Many apps strip them; many models still read them.' },
+
+  { id: 'xray', label: 'x-ray', group: 'stealth', enc: xrayEncode, dec: xrayDecode,
+    encLabel: 'inspect', decLabel: 'restore',
+    note: 'paste a suspicious reply: every invisible, combining or non-ASCII character is spelled out with its code point and script.' },
 
   { id: 'typos', label: 'typos', group: 'text ops', enc: typos, dec: null,
     note: 'about 2 in 5 words get one fat-finger typo (neighbouring key, swap, drop or double). Lossy.' },

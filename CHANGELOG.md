@@ -5,6 +5,17 @@ Format: SemVer. Author/model included per Mark's coding standards.
 
 ---
 
+## [0.61.0] - 23-Nov-2026
+
+### Added
+- DASH **x-ray** (stealth group): paste any text and every invisible, combining or non-ASCII character is spelled out as ⟦U+XXXX what-it-is glyph⟧, e.g. ⟦U+200D ZERO WIDTH JOINER⟧ or Y⟦U+0E49 Thai combining mark ◌้⟧. "restore" turns it back exactly.
+- Why: to inspect stray characters in model replies (an OpenClaw reply carried a zero-width joiner plus Sinhala "යා", another a Thai tone mark on a Y).
+- How: names for the common invisible characters, plus script and Unicode category for everything else via \p{...} regexes (browsers ship no Unicode name table). Files: src/lib/dash-glyphs.ts, tests/dash-glyphs.test.mjs.
+
+Author: Claude Opus 5.5
+
+---
+
 ## [0.60.0] - 23-Nov-2026
 
 ### Added

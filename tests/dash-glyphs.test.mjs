@@ -116,6 +116,18 @@ test('typos and scramble are stable, keep word count, and change text', () => {
   assert.ok(byId.typos.enc('please describe the process for making').startsWith(prefix));
 });
 
+test('x-ray exposes joiners, Sinhala and Thai tone marks, and restores exactly', () => {
+  // the two strays from the OpenClaw Discord replies: ZWJ + Sinhala "yaa", and Y + Thai mai tho
+  const sample = 'ok‍යා Y้ 🦞';
+  const shown = byId.xray.enc(sample);
+  assert.match(shown, /⟦U\+200D ZERO WIDTH JOINER⟧/);
+  assert.match(shown, /⟦U\+0DBA Sinhala letter ය⟧/);
+  assert.match(shown, /⟦U\+0DCF Sinhala combining mark ◌ා⟧/);
+  assert.match(shown, /Y⟦U\+0E49 Thai combining mark ◌้⟧/);
+  assert.equal(byId.xray.dec(shown), sample);
+  assert.equal(byId.xray.enc('plain ascii'), 'plain ascii');
+});
+
 test('sarcasm alternates letters only', () => {
   assert.equal(byId.sarcasm.enc('hello, world'), 'hElLo, WoRlD');
 });
