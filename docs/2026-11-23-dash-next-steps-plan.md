@@ -1,5 +1,13 @@
 # DASH and red-team toolbox: where things stand and what is next
 
+> **Superseded 23-Nov-2026 (later the same day).** DASH moved: Mark decided it is maintained only on
+> markbarney.net/dash, in `C:\Projects\MarkSite` (`client/src/lib/dash/`, tests in `tests/dash/`,
+> `npm run test:dash`). This repo's `src/lib/dash-*.ts` and `/dash` page are frozen; do not edit them or copy
+> files across. Chaining (item 2) shipped there in MarkSite v1.26.0, with emoji sprinkle and foreign asides.
+> Item 1 (stealth/wrapper module) is **dropped**: Mark says that spec was excessive and not what he meant, and
+> DASH already has tag smuggle, zero-width, x-ray and payload split. Item 5 (sync script) is moot.
+> The current plan is `MarkSite/docs/plans/23-Nov-2026-dash-chaining-emoji-plan.md`.
+
 Date: 23-Nov-2026 · Author: Claude Opus 5.5 · For: the next assistant picking this up, and Mark.
 
 Mark is doing red-teaming contract work (Gray Swan arena style: testing chatbots) and wants DASH to be a
