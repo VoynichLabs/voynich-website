@@ -24,7 +24,7 @@ spend money on AI APIs (see `~/.claude/CLAUDE.md`).
 - **Transform shape** (`src/lib/dash-glyphs.ts`): `{ id, label, group, enc, dec | null, note?,
   encLabel?, decLabel?, param?: { label, default, hint? } }`; `enc(input, param?)`. Modules may only
   `import type` (the node tests transpile each file alone).
-- **Tests**: `npm test` here (143 tests: round trips, published vectors, adversarial regressions).
+- **Tests**: `npm test` here (142 tests: round trips, published vectors, adversarial regressions).
   MarkSite: `npm run check`, `npm run build`, `npm run test:seo`.
 
 ## Shipped today (173 transforms on both sites)
