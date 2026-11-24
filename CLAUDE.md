@@ -51,7 +51,7 @@ Always link to staging when working on the staging branch. Do NOT give out the v
    ```
 3. **Changelog:** Any behavior change requires updating the top entry in `CHANGELOG.md`.
 4. **No placeholders:** No mock data, stubs, or fake integrations in shipped pages.
-5. **Commits:** Only when explicitly requested. Use Conventional Commit prefixes (`feat:`, `fix:`, `docs:`, `refactor:`, `assets:`).
+5. **Commits:** when a task is done, commit and push it without being asked; stage only the files you changed, never secrets (Boss, 24-Nov-2026). Use Conventional Commit prefixes (`feat:`, `fix:`, `docs:`, `refactor:`, `assets:`).
 
 ## Communication Style
 
